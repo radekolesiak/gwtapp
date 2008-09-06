@@ -16,10 +16,10 @@ public abstract class SessionCallback<T> extends WebCallback<T> {
 		}
 	}
 
-	public final void onResponseSuccess(final T result ) {
+	public final void onResponseSuccess(final T result) {
 		onSessionResponseSuccess(result);
 	}
-	
+
 	public abstract void onSessionResponseSuccess(final T result);
 
 	public abstract void onSessionResponseFailure(final Throwable caught);

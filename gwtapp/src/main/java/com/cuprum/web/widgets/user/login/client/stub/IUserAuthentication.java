@@ -1,6 +1,7 @@
 package com.cuprum.web.widgets.user.login.client.stub;
 
 import com.cuprum.web.common.client.data.TUserSession;
+import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.google.gwt.user.client.rpc.RemoteService;
 
 /**
@@ -21,5 +22,5 @@ public interface IUserAuthentication extends RemoteService {
 
 	// UserDetails getCurrentUser();
 	/** Logouts of user and close session associated with its. */
-	void logout(TUserSession session);
+	void logout(TUserSession session) throws SessionNotFoundException;
 }

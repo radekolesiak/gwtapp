@@ -12,8 +12,8 @@ public abstract class SmallAppCallback<T> extends SessionCallback<T> {
 	@Override
 	public void onSessionResponseFailure(Throwable caught) {
 	}
-	
+
 	public static void defaultOnSessionNotFound() {
-		//MainApp.showWelcome();
+		MainApp.showWelcome();
 	}
 }
