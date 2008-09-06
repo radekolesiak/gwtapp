@@ -29,8 +29,8 @@ public class Workspace extends VerticalPanel {
 			}
 
 			public void onSessionNotFound(Widget widget) {
-				SmallAppCallback.defaultOnSessionNotFound();
-			}
+				MainApp.showWelcome();
+			}			
 		});
 
 		add(userLogout);

@@ -2,6 +2,7 @@ package com.cuprum.web.widgets.user.login.client;
 
 import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.SessionCallback;
+import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.widgets.user.login.client.i18n.UserLogoutMessages;
 import com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication;
@@ -39,6 +40,7 @@ public class UserLogout extends FormPanel {
 
 		@Override
 		public void onSessionResponseFailure(Throwable caught) {
+			Util.showOnFailureCallbackDefault();
 		}
 	};
 
