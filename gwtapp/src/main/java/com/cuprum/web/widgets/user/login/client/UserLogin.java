@@ -1,7 +1,6 @@
 package com.cuprum.web.widgets.user.login.client;
 
 import com.cuprum.web.common.client.EndPoint;
-import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.WebCallback;
 import com.cuprum.web.common.client.data.TUserSession;
@@ -39,11 +38,6 @@ public class UserLogin extends FormPanel {
 		@Override
 		public void onBefore() {
 			submit.setEnabled(true);
-		}
-
-		@Override
-		public void onResponseFailure(Throwable caught) {
-			Util.showOnFailureCallbackDefault();
 		}
 
 		@Override

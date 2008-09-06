@@ -45,6 +45,7 @@ public class UserRegister extends FormPanel {
 		}
 
 		public void onResponseFailure(Throwable e) {
+			super.onResponseFailure(e);
 			fireSubmitListener(false);
 		}
 

@@ -22,7 +22,9 @@ public abstract class SessionCallback<T> extends WebCallback<T> {
 
 	public abstract void onSessionResponseSuccess(final T result);
 
-	public abstract void onSessionResponseFailure(final Throwable caught);
+	public void onSessionResponseFailure(final Throwable caught) {
+		super.onResponseFailure(caught);
+	}
 
 	public abstract void onSessionNotFound();
 }
