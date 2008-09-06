@@ -6,4 +6,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface ISmallAppAsync {
 	void getLastSessionActivity(AsyncCallback<Date> callback);
+
+	void forceRemoveSession(AsyncCallback<Object> callback);
 }

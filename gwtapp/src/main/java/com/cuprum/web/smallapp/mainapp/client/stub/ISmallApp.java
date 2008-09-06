@@ -7,4 +7,5 @@ import com.google.gwt.user.client.rpc.RemoteService;
 
 public interface ISmallApp extends RemoteService {
 	Date getLastSessionActivity() throws SessionNotFoundException;
+	void forceRemoveSession() throws SessionNotFoundException;
 }

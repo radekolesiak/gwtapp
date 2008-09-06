@@ -30,7 +30,7 @@ public class Workspace extends VerticalPanel {
 
 			public void onSessionNotFound(Widget widget) {
 				MainApp.showWelcome();
-			}			
+			}
 		});
 
 		add(userLogout);
@@ -49,7 +49,21 @@ public class Workspace extends VerticalPanel {
 			}
 		});
 
+		Button remove = new Button("Force remove session");
+		remove.addClickListener(new ClickListener() {
+			public void onClick(final Widget sender) {
+				SmallAppCallback<Object> callback = new SmallAppCallback<Object>() {
+					public void onSessionResponseSuccess(final Object arg) {
+						add(new Label("Session has been removed"));
+					}
+				};
+				((ISmallAppAsync) UserEndPoint.create(GWT
+						.create(ISmallApp.class))).forceRemoveSession(callback);
+			}
+		});
+
 		add(activity);
+		add(remove);
 	}
 
 	public static void setAsCurrent() {

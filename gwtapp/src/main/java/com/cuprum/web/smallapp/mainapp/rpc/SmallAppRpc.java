@@ -25,4 +25,12 @@ public class SmallAppRpc extends RemoteServiceServletUserSession implements
 			return null;
 		}
 	}
+
+	public void forceRemoveSession() throws SessionNotFoundException {
+		UserSessionModel model = getBean(UserSessionModel.class);
+		UserSession session = model.getSession(getUserSession());
+		if (Util.isNotNull(session)) {
+			model.delete(session);
+		}
+	}
 }
