@@ -27,6 +27,8 @@ public class TUserRegisterValue extends TValuesMap implements Serializable {
 
 	public TDualStringValue mail = new TUserRegisterMailValue();
 
+	public TStringValue uid = new TStringValue();
+
 	public TStringValue getValueLogin() {
 		return login;
 	}
@@ -37,6 +39,10 @@ public class TUserRegisterValue extends TValuesMap implements Serializable {
 
 	public TDualStringValue getValueMail() {
 		return mail;
+	}
+
+	public TStringValue getValueUid() {
+		return uid;
 	}
 
 	public TUserRegisterValue() {

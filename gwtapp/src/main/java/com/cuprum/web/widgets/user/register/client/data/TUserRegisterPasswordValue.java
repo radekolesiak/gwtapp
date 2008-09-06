@@ -10,6 +10,6 @@ public class TUserRegisterPasswordValue extends TDualStringValue implements HasR
 	private static final long serialVersionUID = 2717987440898267529L;
 
 	public boolean match(String value) {
-		return true;
+		return value != null && value.length() > 0;
 	}
 }

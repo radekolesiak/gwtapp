@@ -146,7 +146,7 @@ public class UserLoginTest extends EntityTestDAO {
 		user1.setLogin(LOGIN);
 
 		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
-		assertFalse(login.exists(LOGIN));
+		assertFalse(login.existsLogin(LOGIN));
 	}
 
 	@Test
@@ -165,6 +165,6 @@ public class UserLoginTest extends EntityTestDAO {
 		user2.setLogin(LOGIN);
 
 		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
-		assertTrue(login.exists(LOGIN));
+		assertTrue(login.existsLogin(LOGIN));
 	}
 }

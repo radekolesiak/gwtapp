@@ -4,6 +4,7 @@ import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.WebCallback;
 import com.cuprum.web.common.client.exceptions.RegExpException;
+import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
 import com.cuprum.web.common.client.exceptions.model.user.UserAlreadyExistsException;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.StringValidator;
@@ -54,6 +55,7 @@ public class UserRegister extends FormPanel {
 			userRegister = rpcUserRegister;
 
 			Validate.init(UserRegister.this);
+
 			try {
 				userRegister.getValueLogin().evalError();
 			} catch (TextToShortException e) {
@@ -68,6 +70,7 @@ public class UserRegister extends FormPanel {
 				login.setValidator(new StringValidator(messages
 						.msgLoginFormat()));
 			} catch (Throwable e) {
+				login.setValidator(new StringValidator(e));
 			}
 
 			try {
@@ -81,15 +84,21 @@ public class UserRegister extends FormPanel {
 				password.setValidator(new StringValidator(messages
 						.msgPasswordsDifferent()));
 			} catch (Throwable e) {
+				password.setValidator(new StringValidator(e));
 			}
 
 			try {
 				userRegister.getValueMail().evalError();
 			} catch (RegExpException e) {
-				mail.setValidator(new StringValidator(
-						"Invalid mail format (random)."));
+				mail.setValidator(new StringValidator(e));
+			} catch (DualTextFieldInvalidException e) {
+				mail.setValidator(new StringValidator(e));
+			} catch (MailAlreadyExistsException e) {
+				mail.setValidator(new StringValidator(e));
 			} catch (Throwable e) {
+				mail.setValidator(new StringValidator(e));
 			}
+
 			Validate.done(UserRegister.this);
 
 			fireSubmitListener(!userRegister.hasErrors());

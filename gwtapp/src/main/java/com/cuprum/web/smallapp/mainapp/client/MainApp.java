@@ -1,6 +1,7 @@
 package com.cuprum.web.smallapp.mainapp.client;
 
 import com.cuprum.web.common.client.SessionEntryPoint;
+import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.templates.simple.client.Simple;
 import com.google.gwt.user.client.ui.Label;
@@ -15,6 +16,7 @@ import com.google.gwt.user.client.ui.Label;
 public class MainApp extends SessionEntryPoint {
 	@Override
 	public final void onSessionModuleLoad() {
+		Util.enableDebug();
 		showWelcome();
 	}
 
