@@ -14,8 +14,9 @@ import com.cuprum.web.common.client.Util;
 
 public class CrCleanUserSessions implements HibernateCallback {
 	public Query getQuery(Session session) {
+		Date now = new Date();
 		return session.createQuery("delete from UserSession where "
-				+ UserSession.DATE + " < now() - "
+				+ UserSession.DATE + " < " + now.getTime() / 1000 + " - "
 				+ Constants.USER_SESSION_TIME_OUT / 1000);
 	}
 
