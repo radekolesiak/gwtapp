@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Good tutrial: http://www.makemyinfo.com/Tutorial.do?action=getTutorial&tutId=T0005.jsp -->
+<hibernate-mapping>
+    <class name="com.cuprum.server.common.entities.User" table="user">
+        <id name="id" column="userId">
+            <generator class="native"/>
+        </id>
+        <property name="login" unique="true" not-null="true"/>
+        <property name="password" not-null="true"/>
+        <property name="mail" not-null="true"/>
+    </class>
+</hibernate-mapping>

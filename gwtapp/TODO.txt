@@ -1,0 +1,7 @@
+- constants parameters as xml property configuration file
++ disabling submit buttonsduring asynchronous callback connection
+- i18n for messages
+- anonymous sessions
+- limit of number of sessions per user
++ removing old sessions
++ updating session time and automatically remove too old session.

@@ -1,0 +1,7 @@
+<module>
+	<!-- Inherit the core Web Toolkit stuff.                  -->
+	<inherits name='com.google.gwt.user.User'/>
+
+	<!-- Inherit the server project, which defines a service servlet endpoint -->
+	<servlet path='/com.cuprum.web.common.client.stub.IConnectionSession' class='com.cuprum.web.common.rpc.ConnectionSessionRpc' />
+</module>

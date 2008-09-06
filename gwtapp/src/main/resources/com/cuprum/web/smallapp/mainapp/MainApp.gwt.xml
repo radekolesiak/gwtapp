@@ -1,0 +1,24 @@
+<module>
+	<!-- WidgetSet default theme -->    
+    <stylesheet src="SmallAppStyle.css"/>
+
+	<!-- Inherit the core Web Toolkit stuff.                  -->
+	<inherits name='com.google.gwt.user.User'/>
+
+	<inherits name="com.google.gwt.i18n.I18N"/>
+<!--	<extend-property name="locale" values="pl"/>
+	<extend-property name="locale" values="en"/> -->
+
+	<!-- Inherit the server project, which defines a service servlet endpoint -->
+  	<inherits name='com.cuprum.web.templates.stylesfactory.StylesFactory'/>
+  	<inherits name='com.cuprum.web.templates.simple.Simple'/>
+	<inherits name='com.cuprum.web.templates.extsimple.ExtSimple'/>
+
+	<!-- depedencies -->	
+	<inherits name='com.cuprum.web.widgets.user.login.UserLogin'/>
+	<inherits name='com.cuprum.web.widgets.user.register.UserRegister'/>
+	<inherits name="com.cuprum.web.smallapp.mainapp.rpc.SmallApp" />
+
+	<!-- Specify the app entry point class.                   -->
+	<entry-point class='com.cuprum.web.smallapp.mainapp.client.MainApp'/>
+</module>

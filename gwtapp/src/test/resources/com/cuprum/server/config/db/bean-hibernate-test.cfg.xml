@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/cuprumtest"/>
+		<property name="username" value="cuprumtest"/>
+		<property name="password" value="12345678"/>
+		<property name="initialSize" value="5"/>
+		<property name="maxActive" value="10"/>
+	</bean>
+
+	<bean id="sessionFactory" 
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.cuprum.server.common.model.user.UserLoginModel</value>
+				<value>com.cuprum.server.common.entities.EntityTestDAO</value>
+			</list>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/cuprum/server/common/entities/User.hbm.xml</value>
+				<value>com/cuprum/server/common/entities/UserSession.hbm.xml</value>
+			</list>
+		</property>		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.connection.pool_size">1</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="com.cuprum.server.common.model.user.UserLoginModel" class="com.cuprum.server.common.model.user.UserLoginModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.entities.EntityTestDAO" class="com.cuprum.server.common.entities.EntityTestDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>
