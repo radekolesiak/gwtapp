@@ -1,4 +1,5 @@
-- constants parameters as xml property configuration file
+- internazionalization on server side
++ constants parameters in the db
 + disabling submit buttonsduring asynchronous callback connection
 - i18n for messages
 - anonymous sessions
