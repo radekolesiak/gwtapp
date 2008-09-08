@@ -9,7 +9,7 @@
             <generator class="native"/>
         </id>
         <property name="session" unique="true" not-null="true"/>
-        <property name="date" type="timestamp" />
+        <property name="date" type="timestamp"/>
 		<many-to-one 
 			name="user"
 			class="com.cuprum.server.common.entities.User"
