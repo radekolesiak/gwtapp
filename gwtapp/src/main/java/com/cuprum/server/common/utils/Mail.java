@@ -30,7 +30,7 @@ public class Mail extends Thread {
 		Session session = Session.getInstance(props, null);
 
 		try {
-			LOGGER.error("Sending mail");
+			LOGGER.debug("Sending mail to " + recipientTo);
 			MimeMessage msg = new MimeMessage(session);
 			msg.setFrom();
 			msg.setRecipients(Message.RecipientType.TO, recipientTo);
@@ -38,7 +38,7 @@ public class Mail extends Thread {
 			msg.setSentDate(new Date());
 			msg.setText(content);
 			Transport.send(msg);
-			LOGGER.error("Mail has been sent");
+			LOGGER.debug("Mail has been sent");
 		} catch (MessagingException mex) {
 			LOGGER.error(mex);
 		}

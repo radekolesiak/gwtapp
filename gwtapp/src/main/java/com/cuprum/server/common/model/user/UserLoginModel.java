@@ -12,9 +12,9 @@ import com.cuprum.server.common.model.Model;
 import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.model.user.xql.CrLoginPassword;
 import com.cuprum.server.common.model.user.xql.CrMail;
+import com.cuprum.server.common.model.user.xql.CrUserConfirm;
 import com.cuprum.server.common.model.usersession.xql.CrCleanUserSessions;
 import com.cuprum.server.common.model.usersession.xql.CrGetUserSession;
-import com.cuprum.server.common.utils.Mail;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.HasRegExp;
 import com.cuprum.web.common.client.Util;
@@ -107,6 +107,7 @@ public class UserLoginModel extends Model {
 				confirm.setUser(user);
 				confirm.setPassword(user.getPassword());
 				user.setPassword(Random.getUid());
+				update(user);
 				save(confirm);
 				return confirm;
 			} catch (DataIntegrityViolationException e) {
@@ -155,5 +156,18 @@ public class UserLoginModel extends Model {
 		}
 
 		return userRegister.hasErrors();
+	}
+
+	public boolean confirm(String uid) {
+		UserConfirm confirm = execute(new CrUserConfirm(uid));
+		if (confirm != null) {
+			User user = get(User.class, confirm.getUser().getId());
+			user.setPassword(confirm.getPassword());
+			update(user);
+			delete(confirm);
+			return user != null;
+		} else {
+			return false;
+		}
 	}
 }

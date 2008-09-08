@@ -30,4 +30,8 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 
 		return userRegister;
 	}
+
+	public Boolean confirm(String uid) {
+		return getBean(UserLoginModel.class).confirm(uid);
+	}
 }

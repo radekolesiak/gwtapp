@@ -9,6 +9,7 @@
             <generator class="native"/>
         </id>
         <property name="uid" unique="true" not-null="true"/>
+        <property name="password" not-null="true"/>
         <property name="date" type="timestamp"/>
 		<many-to-one 
 			name="user"

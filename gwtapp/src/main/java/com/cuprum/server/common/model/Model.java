@@ -60,6 +60,10 @@ public abstract class Model extends HibernateDaoSupport {
 		return (T) getHibernateTemplate().save(object);
 	}
 
+	public void update(Object object) {
+		getHibernateTemplate().update(object);
+	}
+
 	public void delete(Object object) {
 		getHibernateTemplate().delete(object);
 	}
@@ -70,11 +74,6 @@ public abstract class Model extends HibernateDaoSupport {
 
 	public boolean contains(Object object) {
 		return getHibernateTemplate().contains(object);
-	}
-
-	@SuppressWarnings("unchecked")
-	public <T> T load(Class<T> c, Serializable s) {
-		return (T) getHibernateTemplate().load(c, s);
 	}
 
 	@SuppressWarnings("unchecked")
