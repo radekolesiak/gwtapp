@@ -16,6 +16,18 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 	public TUserRegisterValue processUserRegister(
 			TUserRegisterValue userRegister) {
 
+		System.out.println("1: " + getRequest().getContextPath());
+		System.out.println("2: " + getRequest().getRemoteAddr());
+		System.out.println("3: " + getRequest().getRemoteHost());
+		System.out.println("4: " + getRequest().getLocalAddr());
+		System.out.println("5: " + getRequest().getLocalName());
+		System.out.println("6: " + getRequest().getSession().getId());
+
+		//Mail mail = new Mail();
+		//mail.setRecipientTo(user.getMail());
+		//mail.setContent("http://)
+		//LOGGER.debug("new user with ID: " + user.getId());
+
 		getBean(UserLoginModel.class).register(userRegister);
 
 		return userRegister;

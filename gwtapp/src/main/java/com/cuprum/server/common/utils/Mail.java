@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
 
-class SendMail extends Thread {
+public class Mail {
 	private final static Logger LOGGER = Logger.getLogger(SendMail.class);
 
 	private String content = "";
@@ -24,8 +24,8 @@ class SendMail extends Thread {
 
 	public static void send(String content, String recipientTo) {
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "docnotify.com");
-		props.put("mail.from", "radek@docnotify.com");
+		props.put("mail.smtp.host", "ks356422.kimsufi.com");
+		props.put("mail.from", "radek@ks356422.kimsufi.com");
 
 		Session session = Session.getInstance(props, null);
 
@@ -77,10 +77,8 @@ class SendMail extends Thread {
 	public String getRecipientTo() {
 		return recipientTo;
 	}
-}
 
-public class Mail {
 	public static void main(String[] args) {
-		SendMail.send();
+		send();
 	}
 }

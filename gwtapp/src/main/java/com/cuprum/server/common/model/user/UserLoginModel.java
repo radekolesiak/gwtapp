@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import com.cuprum.server.common.entities.User;
+import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.Model;
 import com.cuprum.server.common.model.user.xql.CrLogin;
@@ -13,6 +14,7 @@ import com.cuprum.server.common.model.user.xql.CrLoginPassword;
 import com.cuprum.server.common.model.user.xql.CrMail;
 import com.cuprum.server.common.model.usersession.xql.CrCleanUserSessions;
 import com.cuprum.server.common.model.usersession.xql.CrGetUserSession;
+import com.cuprum.server.common.utils.Mail;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.HasRegExp;
 import com.cuprum.web.common.client.Util;
@@ -99,9 +101,15 @@ public class UserLoginModel extends Model {
 			user.setMail(userRegister.mail.get());
 			try {
 				save(user);
-				LOGGER.debug("new user with ID: " + user.getId());
+				UserConfirm confirm = new UserConfirm();
+				confirm.setDate(new Date());
+				confirm.setUid(Random.getUid());
+				confirm.setUser(user);
+				confirm.setPassword(user.getPassword());
+				user.setPassword(Random.getUid());
+				save(confirm);
 			} catch (DataIntegrityViolationException e) {
-				// Probably concurency problem. Check it again.
+				// Probably threads concurency problem. Check it again.
 				if (!errorsUserRegister(userRegister)) {
 					// Unidentified problem. To throw upper the exception.
 					LOGGER.error(e);

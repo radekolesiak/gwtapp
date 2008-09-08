@@ -24,6 +24,10 @@ public class UserConfirm extends Identify {
 
 	public final static String USER = "user";
 
+	private String password;
+
+	public final static String PASSWORD = "password";
+
 	public void setUid(final String uid) {
 		this.uid = uid;
 	}
@@ -46,5 +50,20 @@ public class UserConfirm extends Identify {
 
 	public User getUser() {
 		return user;
+	}
+
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
 	}
 }
