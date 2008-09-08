@@ -1,4 +1,4 @@
-package com.cuprum.web.smallapp.mainapp.client;
+package com.cuprum.web.smallapp.mainapp.client.page;
 
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.data.TUserSession;
@@ -14,8 +14,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Welcome extends VerticalPanel {
-	public Welcome() {
+public class WelcomePage extends VerticalPanel {
+	public WelcomePage() {
 		RootPanel.get().addStyleName("smallapp");
 
 		MainAppMessages messages = GWT.create(MainAppMessages.class);
@@ -30,7 +30,7 @@ public class Welcome extends VerticalPanel {
 			public void onLogin(Widget widget, TUserSession session) {
 				TUserSession.setSession(session);
 				add(new Label("Session = " + session.get()));
-				Workspace.setAsCurrent();
+				WorkspacePage.setAsCurrent();
 			}
 		});
 
@@ -39,6 +39,6 @@ public class Welcome extends VerticalPanel {
 	}
 
 	public static void setAsCurrent() {
-		new Simple().run().setContent(new Welcome());
+		new Simple().run().setContent(new WelcomePage());
 	}
 }

@@ -11,8 +11,8 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
 
-public class Mail {
-	private final static Logger LOGGER = Logger.getLogger(SendMail.class);
+public class Mail extends Thread {
+	private final static Logger LOGGER = Logger.getLogger(Mail.class);
 
 	private String content = "";
 

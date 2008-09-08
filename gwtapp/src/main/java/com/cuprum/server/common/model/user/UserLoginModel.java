@@ -92,7 +92,7 @@ public class UserLoginModel extends Model {
 		return Util.isNotNull(execute(new CrMail(mail)));
 	}
 
-	public void register(TUserRegisterValue userRegister) {
+	public UserConfirm register(TUserRegisterValue userRegister) {
 		if (!errorsUserRegister(userRegister)) {
 			// If there are not error to try insert user into database.
 			User user = new User();
@@ -108,6 +108,7 @@ public class UserLoginModel extends Model {
 				confirm.setPassword(user.getPassword());
 				user.setPassword(Random.getUid());
 				save(confirm);
+				return confirm;
 			} catch (DataIntegrityViolationException e) {
 				// Probably threads concurency problem. Check it again.
 				if (!errorsUserRegister(userRegister)) {
@@ -117,6 +118,7 @@ public class UserLoginModel extends Model {
 				}
 			}
 		}
+		return null;
 	}
 
 	public boolean errorsUserRegister(TUserRegisterValue userRegister) {

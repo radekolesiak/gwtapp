@@ -1,9 +1,11 @@
-package com.cuprum.web.smallapp.mainapp.client;
+package com.cuprum.web.smallapp.mainapp.client.page;
 
 import java.util.Date;
 
 import com.cuprum.web.common.client.UserEndPoint;
 import com.cuprum.web.common.client.data.TUserSession;
+import com.cuprum.web.smallapp.mainapp.client.MainApp;
+import com.cuprum.web.smallapp.mainapp.client.SmallAppCallback;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallAppAsync;
 import com.cuprum.web.templates.extsimple.client.ExtSimple;
@@ -17,8 +19,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Workspace extends VerticalPanel {
-	public Workspace() {
+public class WorkspacePage extends VerticalPanel {
+	public WorkspacePage() {
 		RootPanel.get().addStyleName("smallapp");
 
 		final UserLogout userLogout = new UserLogout();
@@ -67,6 +69,6 @@ public class Workspace extends VerticalPanel {
 	}
 
 	public static void setAsCurrent() {
-		new ExtSimple().run().setContent(new Workspace());
+		new ExtSimple().run().setContent(new WorkspacePage());
 	}
 }
