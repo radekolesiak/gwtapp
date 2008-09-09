@@ -10,9 +10,9 @@ public class SubmitListenerCollection extends ArrayList<SubmitListener> {
 	 */
 	private static final long serialVersionUID = -2036034618683437896L;
 
-	public void fireSubmitListener(Widget sender, boolean doSubmit) {
+	public void fireSubmitListener(Widget sender) {
 		for (SubmitListener listener : this) {
-			listener.onSubmit(sender, doSubmit);
+			listener.onSubmit(sender);
 		}
 	}
 }

@@ -39,69 +39,70 @@ public class UserRegister extends FormPanel {
 
 	TUserRegisterValue userRegister = new TUserRegisterValue();
 
-	// TODO: onFailure
+	public void setUserRegister(final TUserRegisterValue userRegister) {
+		this.userRegister = userRegister;
+
+		Validate.init(UserRegister.this);
+
+		try {
+			userRegister.getValueLogin().evalError();
+		} catch (TextToShortException e) {
+			login.setValidator(new StringValidator(messages
+					.msgLoginTooShort(+TUserRegisterValue.MIN_LOGIN_LENGTH)));
+		} catch (UserAlreadyExistsException e) {
+			login.setValidator(new StringValidator(messages
+					.msgLoginAlreadyExists()));
+		} catch (RegExpException e) {
+			login.setValidator(new StringValidator(messages.msgLoginFormat()));
+		} catch (Throwable e) {
+			login.setValidator(new StringValidator(e));
+		}
+
+		try {
+			userRegister.getValuePassword().evalError();
+		} catch (TextToShortException e) {
+			password
+					.setValidator(new StringValidator(
+							messages
+									.msgPasswordTooShort(TUserRegisterValue.MIN_PASSWORD_LENGTH)));
+		} catch (DualTextFieldInvalidException e) {
+			password.setValidator(new StringValidator(messages
+					.msgPasswordsDifferent()));
+		} catch (Throwable e) {
+			password.setValidator(new StringValidator(e));
+		}
+
+		try {
+			userRegister.getValueMail().evalError();
+		} catch (RegExpException e) {
+			mail.setValidator(new StringValidator(e));
+		} catch (DualTextFieldInvalidException e) {
+			mail.setValidator(new StringValidator(e));
+		} catch (MailAlreadyExistsException e) {
+			mail.setValidator(new StringValidator(e));
+		} catch (Throwable e) {
+			mail.setValidator(new StringValidator(e));
+		}
+
+		Validate.done(UserRegister.this);
+	}
+
+	public TUserRegisterValue getUserRegister() {
+		return userRegister;
+	}
+
 	private final WebCallback<TUserRegisterValue> verifyCallback = new WebCallback<TUserRegisterValue>() {
 		public void onBefore() {
 			submit.setEnabled(true);
 		}
 
-		public void onResponseFailure(Throwable e) {
-			super.onResponseFailure(e);
-			fireSubmitListener(false);
-		}
-
 		// result process (multiple exceptions)
-		public void onResponseSuccess(TUserRegisterValue rpcUserRegister) {
-			userRegister = rpcUserRegister;
+		public void onResponseSuccess(final TUserRegisterValue userRegister) {
+			setUserRegister(userRegister);
 
-			Validate.init(UserRegister.this);
-
-			try {
-				userRegister.getValueLogin().evalError();
-			} catch (TextToShortException e) {
-				login
-						.setValidator(new StringValidator(
-								messages
-										.msgLoginTooShort(+TUserRegisterValue.MIN_LOGIN_LENGTH)));
-			} catch (UserAlreadyExistsException e) {
-				login.setValidator(new StringValidator(messages
-						.msgLoginAlreadyExists()));
-			} catch (RegExpException e) {
-				login.setValidator(new StringValidator(messages
-						.msgLoginFormat()));
-			} catch (Throwable e) {
-				login.setValidator(new StringValidator(e));
+			if (!getUserRegister().hasErrors()) {
+				fireSubmitListener();
 			}
-
-			try {
-				userRegister.getValuePassword().evalError();
-			} catch (TextToShortException e) {
-				password
-						.setValidator(new StringValidator(
-								messages
-										.msgPasswordTooShort(TUserRegisterValue.MIN_PASSWORD_LENGTH)));
-			} catch (DualTextFieldInvalidException e) {
-				password.setValidator(new StringValidator(messages
-						.msgPasswordsDifferent()));
-			} catch (Throwable e) {
-				password.setValidator(new StringValidator(e));
-			}
-
-			try {
-				userRegister.getValueMail().evalError();
-			} catch (RegExpException e) {
-				mail.setValidator(new StringValidator(e));
-			} catch (DualTextFieldInvalidException e) {
-				mail.setValidator(new StringValidator(e));
-			} catch (MailAlreadyExistsException e) {
-				mail.setValidator(new StringValidator(e));
-			} catch (Throwable e) {
-				mail.setValidator(new StringValidator(e));
-			}
-
-			Validate.done(UserRegister.this);
-
-			fireSubmitListener(!userRegister.hasErrors());
 		}
 	};
 
@@ -159,7 +160,7 @@ public class UserRegister extends FormPanel {
 		submitListeners.remove(listener);
 	}
 
-	protected void fireSubmitListener(boolean doSubmit) {
-		submitListeners.fireSubmitListener(this, doSubmit);
+	protected void fireSubmitListener() {
+		submitListeners.fireSubmitListener(this);
 	}
 }
