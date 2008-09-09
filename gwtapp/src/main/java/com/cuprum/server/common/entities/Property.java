@@ -1,19 +1,20 @@
 package com.cuprum.server.common.entities;
 
 public class Property extends Identify {
-	
+
 	/** Property name field. */
 	private String property;
 
 	public final static String PROPERTY = "property";
 
 	/** Property value field. */
-	private String login;
+	private String value;
 
 	public final static String VALUE = "value";
 
 	/**
-	 * @param property the property to set
+	 * @param property
+	 *            the property to set
 	 */
 	public void setProperty(String property) {
 		this.property = property;
@@ -27,16 +28,21 @@ public class Property extends Identify {
 	}
 
 	/**
-	 * @param login the login to set
+	 * @param login
+	 *            the login to set
 	 */
-	public void setLogin(String login) {
-		this.login = login;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	/**
 	 * @return the login
 	 */
-	public String getLogin() {
-		return login;
+	public String getValue() {
+		return value;
+	}
+
+	public String toString() {
+		return "" + value;
 	}
 }

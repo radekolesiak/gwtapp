@@ -6,6 +6,7 @@ import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
 import com.cuprum.web.templates.simple.client.Simple;
+import com.cuprum.web.widgets.user.register.client.Constants;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 
@@ -20,7 +21,7 @@ public class MainApp extends SessionEntryPoint {
 	@Override
 	public final void onSessionModuleLoad() {
 		Util.enableDebug();
-		String confirm = Window.Location.getParameter("confirm");
+ 		String confirm = Window.Location.getParameter(Constants.CONFIRM_REQUEST);
 		if (confirm != null) {
 			showConfirm();
 		} else {

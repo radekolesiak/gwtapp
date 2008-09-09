@@ -21,6 +21,7 @@
 			<list>
 				<value>com.cuprum.server.common.model.user.UserLoginModel</value>
 				<value>com.cuprum.server.common.model.usersession.UserSessionModel</value>				
+				<value>com.cuprum.server.common.model.property.PropertyModel</value>				
 			</list>
 		</property>
 		<property name="mappingResources">
@@ -29,6 +30,7 @@
 				<value>com/cuprum/server/common/entities/UserSession.hbm.xml</value>
 				<value>com/cuprum/server/common/entities/UserConfirm.hbm.xml</value>
 				<value>com/cuprum/server/common/entities/UserPasswordRemind.hbm.xml</value>
+				<value>com/cuprum/server/common/entities/Property.hbm.xml</value>
 			</list>
 		</property>		
 		<property name="hibernateProperties">
@@ -47,6 +49,9 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="com.cuprum.server.common.model.usersession.UserSessionModel" class="com.cuprum.server.common.model.usersession.UserSessionModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.property.PropertyModel" class="com.cuprum.server.common.model.property.PropertyModel">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>

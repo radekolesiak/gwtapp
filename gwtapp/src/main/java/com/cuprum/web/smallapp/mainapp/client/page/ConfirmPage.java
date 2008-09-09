@@ -1,10 +1,15 @@
 package com.cuprum.web.smallapp.mainapp.client.page;
 
 import com.cuprum.web.common.client.EndPoint;
+import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.WebCallback;
 import com.cuprum.web.templates.simple.client.Simple;
+import com.cuprum.web.widgets.user.register.client.Constants;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
+import com.extjs.gxt.ui.client.event.ComponentEvent;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
@@ -15,6 +20,21 @@ public class ConfirmPage extends VerticalPanel {
 		@Override
 		public void onResponseSuccess(Boolean result) {
 			add(new LabelField("Result: " + result));
+			String description = "";
+			if(result) {
+				description = "Go to login on main page.";
+			} else {
+				description = "Go to main page.";
+			}
+			Button redirect = new Button(description);
+			redirect
+					.addSelectionListener(new SelectionListener<ComponentEvent>() {
+						@Override
+						public void componentSelected(ComponentEvent ce) {
+							Window.Location.replace(Util.getUrl());
+						}
+					});
+			add(redirect);
 		}
 	};
 
@@ -22,8 +42,8 @@ public class ConfirmPage extends VerticalPanel {
 			.create(GWT.create(IUserRegister.class)));
 
 	public ConfirmPage() {
-		add(new LabelField("Confirm"));
-		endPoint.confirm(Window.Location.getParameter("confirm"), callback);
+		endPoint.confirm(Window.Location
+				.getParameter(Constants.CONFIRM_REQUEST), callback);
 	}
 
 	public static void setAsCurrent() {

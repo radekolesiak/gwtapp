@@ -41,7 +41,7 @@ public class WelcomePage extends VerticalPanel {
 			public void onSubmit(Widget sender) {
 				userRegister.setUserRegister(new TUserRegisterValue());
 				add(new LabelField(
-						"Account has benn created. Receive email and click on link to confirm registration."));
+						"Account has been created. Receive email and click on link to confirm registration."));
 
 			}
 		});

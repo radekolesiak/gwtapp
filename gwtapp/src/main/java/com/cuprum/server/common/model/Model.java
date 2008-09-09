@@ -77,6 +77,11 @@ public abstract class Model extends HibernateDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
+	public <T> T load(Class <T> c, Serializable s) {
+		return (T) getHibernateTemplate().load(c, s);
+	}
+
+	@SuppressWarnings("unchecked")
 	public <T> T get(Class <T> c, Serializable s) {
 		return (T) getHibernateTemplate().get(c, s);
 	}

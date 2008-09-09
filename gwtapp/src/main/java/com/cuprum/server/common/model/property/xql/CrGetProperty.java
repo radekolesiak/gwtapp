@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.server.common.entities.Property;
-import com.cuprum.server.common.entities.User;
 import com.cuprum.web.common.client.Util;
 
 public class CrGetProperty implements HibernateCallback {
@@ -24,7 +23,7 @@ public class CrGetProperty implements HibernateCallback {
 	}
 
 	public Criteria getCriteria(final Session session) {
-		return session.createCriteria(User.class).add(
+		return session.createCriteria(Property.class).add(
 				Restrictions.eq(Property.PROPERTY, getProperty()));
 	}
 

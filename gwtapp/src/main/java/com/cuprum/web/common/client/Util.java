@@ -5,6 +5,7 @@ import java.util.List;
 import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.extjs.gxt.ui.client.widget.Info;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -21,6 +22,11 @@ public class Util {
 
 	public static boolean isDebug() {
 		return isDebug;
+	}
+
+	public static String getUrl() {
+		return Window.Location.getProtocol() + "//" + Window.Location.getHost()
+				+ Window.Location.getPath();
 	}
 
 	@SuppressWarnings("unchecked")
