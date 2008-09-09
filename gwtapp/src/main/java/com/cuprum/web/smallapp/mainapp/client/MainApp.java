@@ -21,7 +21,8 @@ public class MainApp extends SessionEntryPoint {
 	@Override
 	public final void onSessionModuleLoad() {
 		Util.enableDebug();
- 		String confirm = Window.Location.getParameter(Constants.CONFIRM_REQUEST);
+		String confirm = Window.Location
+				.getParameter(Constants.CONFIRM_REQUEST);
 		if (confirm != null) {
 			showConfirm();
 		} else {
@@ -35,8 +36,8 @@ public class MainApp extends SessionEntryPoint {
 	}
 
 	@Override
-	public final void onSessionModuleError() {
-		new Simple().run().setContent(new Label("Error"));
+	public final void onSessionModuleError(final Throwable caught) {
+		new Simple().run().setContent(new Label(caught.getMessage()));
 	}
 
 	public static void showWelcome() {

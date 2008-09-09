@@ -1,3 +1,4 @@
+- notify on login if user is not confirmed yet
 !- i18n messages on server side
 - i18n for registration
 - remove too old unconfirmed registrations

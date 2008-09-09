@@ -24,6 +24,7 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 
 		UserConfirm confirm = getBean(UserLoginModel.class).register(
 				userRegister);
+		
 		Property confirmUrl = getBean(PropertyModel.class).get(
 				Properties.CONFIRM_URL);
 

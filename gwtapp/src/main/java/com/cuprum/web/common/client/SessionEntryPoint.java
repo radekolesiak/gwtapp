@@ -18,7 +18,7 @@ public abstract class SessionEntryPoint implements EntryPoint {
 	public final void onModuleLoad() {
 		final AsyncCallback<Object> callback = new AsyncCallback<Object>() {
 			public void onFailure(final Throwable caught) {
-				onSessionModuleError();
+				onSessionModuleError(caught);
 			}
 
 			public void onSuccess(final Object token) {
@@ -34,7 +34,7 @@ public abstract class SessionEntryPoint implements EntryPoint {
 
 	public abstract void onSessionModuleLoad();
 
-	public abstract void onSessionModuleError();
+	public abstract void onSessionModuleError(final Throwable caught);
 
 	public abstract String getModuleName();
 }
