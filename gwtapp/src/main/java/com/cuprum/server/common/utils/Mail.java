@@ -14,38 +14,41 @@ import org.apache.log4j.Logger;
 public class Mail extends Thread {
 	private final static Logger LOGGER = Logger.getLogger(Mail.class);
 
+	private String smtp = "";
+
+	private String subject = "";
+
 	private String content = "";
+
+	private String mailFrom = "";
 
 	private String recipientTo = "";
 
-	public static void send() {
-		send("Hello, world!\n", "r.olesiak@gmail.com");
-	}
+	private static int counter = 0;
 
-	public static void send(String content, String recipientTo) {
+	public void run() {
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "ks356422.kimsufi.com");
-		props.put("mail.from", "radek@ks356422.kimsufi.com");
+		props.put("mail.smtp.host", getSmtp());
+		props.put("mail.from", getMailFrom());
 
 		Session session = Session.getInstance(props, null);
 
 		try {
-			LOGGER.debug("Sending mail to " + recipientTo);
+			LOGGER.debug("[" + counter + "] Sending mail to "
+					+ getRecipientTo());
 			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom();
-			msg.setRecipients(Message.RecipientType.TO, recipientTo);
-			msg.setSubject("JavaMail hello world example");
+			msg.setRecipients(Message.RecipientType.TO, getRecipientTo());
+			msg.setSubject(getSubject());
 			msg.setSentDate(new Date());
-			msg.setText(content);
+			msg.setText(getContent());
 			Transport.send(msg);
-			LOGGER.debug("Mail has been sent");
+			LOGGER.debug("[" + counter + "] Mail has been sent to "
+					+ getRecipientTo());
 		} catch (MessagingException mex) {
-			LOGGER.error(mex);
+			LOGGER.error("[" + counter + "] ", mex);
+		} finally {
+			counter++;
 		}
-	}
-
-	public void run() {
-		send(getContent(), getRecipientTo());
 	}
 
 	/**
@@ -78,7 +81,48 @@ public class Mail extends Thread {
 		return recipientTo;
 	}
 
-	public static void main(String[] args) {
-		send();
+	/**
+	 * @param mailFrom
+	 *            the mailFrom to set
+	 */
+	public void setMailFrom(String mailFrom) {
+		this.mailFrom = mailFrom;
+	}
+
+	/**
+	 * @return the mailFrom
+	 */
+	public String getMailFrom() {
+		return mailFrom;
+	}
+
+	/**
+	 * @param subject
+	 *            the subject to set
+	 */
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	/**
+	 * @return the subject
+	 */
+	public String getSubject() {
+		return subject;
+	}
+
+	/**
+	 * @param smtp
+	 *            the smtp to set
+	 */
+	public void setSmtp(String smtp) {
+		this.smtp = smtp;
+	}
+
+	/**
+	 * @return the smtp
+	 */
+	public String getSmtp() {
+		return smtp;
 	}
 }

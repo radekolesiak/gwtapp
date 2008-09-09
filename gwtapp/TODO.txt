@@ -1,3 +1,4 @@
+!- i18n messages on server side
 - i18n for registration
 - remove too old unconfirmed registrations
 - internazionalization on server side

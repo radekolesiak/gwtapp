@@ -28,8 +28,20 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 				Properties.CONFIRM_URL);
 
 		if (!userRegister.hasErrors() && confirm != null) {
+			String smtp = getBean(PropertyModel.class)
+					.get(
+							com.cuprum.server.common.properties.Properties.MAIL_SMTP_SERVER)
+					.getValue();
+			String noreply = getBean(PropertyModel.class)
+					.get(
+							com.cuprum.server.common.properties.Properties.MAIL_USER_NOREPLY)
+					.getValue();
+
 			Mail mail = new Mail();
+			mail.setSmtp(smtp);
+			mail.setMailFrom(noreply);
 			mail.setRecipientTo(userRegister.mail.value);
+			mail.setSubject("Confirm registration.");
 			mail.setContent(confirmUrl + "?" + Constants.CONFIRM_REQUEST + "="
 					+ confirm.getUid());
 			mail.start();
