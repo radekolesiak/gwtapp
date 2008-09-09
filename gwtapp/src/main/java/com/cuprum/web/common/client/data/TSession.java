@@ -3,8 +3,9 @@ package com.cuprum.web.common.client.data;
 import java.io.Serializable;
 
 import com.cuprum.web.common.client.Equals;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
-public abstract class TSession extends TValue<String> implements Serializable {
+public abstract class TSession extends TValue<String> implements Serializable, IsSerializable {
 	/** Constructor for IsSerializable. */
 	public TSession() {
 	}

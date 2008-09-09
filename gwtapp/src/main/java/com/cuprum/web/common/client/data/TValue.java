@@ -3,8 +3,10 @@ package com.cuprum.web.common.client.data;
 import java.io.Serializable;
 
 import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class TValue<T extends Serializable> implements Serializable {
+public class TValue<T extends Serializable> implements Serializable,
+		IsSerializable {
 	/**
 	 * UID.
 	 */
@@ -30,7 +32,7 @@ public class TValue<T extends Serializable> implements Serializable {
 	public T get() {
 		return value;
 	}
-	
+
 	public TValue<T> set(T value) {
 		this.value = value;
 		return this;
