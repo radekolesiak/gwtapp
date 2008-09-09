@@ -1,6 +1,7 @@
 package com.cuprum.web.widgets.common.client;
 
 import com.cuprum.web.common.client.data.TDualStringValue;
+import com.cuprum.web.common.client.data.TDualValue;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.form.Validator;
@@ -104,34 +105,44 @@ public abstract class DualTextBoxes {
 		setEmptyTextA(emptyTextA);
 		setEmptyTextB(emptyTextB);
 	}
-	
+
 	public void setValidatorA(Validator validator) {
-		getTextA().setValidator(validator);		
+		getTextA().setValidator(validator);
 	}
-	
+
 	public void setValidatorB(Validator validator) {
-		getTextB().setValidator(validator);		
+		getTextB().setValidator(validator);
 	}
-	
+
 	public void setValidator(Validator validator) {
 		setValidatorA(validator);
 		setValidatorB(validator);
 	}
-	
-	public void setValidator(Validator validatorA,Validator validatorB) {
+
+	public void setValidator(Validator validatorA, Validator validatorB) {
 		setValidatorA(validatorA);
 		setValidatorB(validatorB);
 	}
-	
+
 	public boolean validate() {
 		boolean validate = true;
-		validate &= getTextA().validate();		
+		validate &= getTextA().validate();
 		validate &= getTextB().validate();
 		return validate;
 	}
-	
+
 	public void setAllowBlank(boolean allow) {
 		getTextA().setAllowBlank(allow);
 		getTextB().setAllowBlank(allow);
+	}
+
+	public void setValue(String value) {
+		getTextA().setValue(value);
+		getTextB().setValue(value);
+	}
+
+	public void setValue(TDualValue<String> value) {
+		getTextA().setValue(value.value);
+		getTextB().setValue(value.second);
 	}
 }

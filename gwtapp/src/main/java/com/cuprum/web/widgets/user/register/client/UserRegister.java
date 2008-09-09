@@ -37,11 +37,21 @@ public class UserRegister extends FormPanel {
 
 	private final Button submit = new Button(messages.msgSubmit());
 
-	TUserRegisterValue userRegister = new TUserRegisterValue();
+	public TUserRegisterValue getUserRegister() {
+		TUserRegisterValue userRegister = new TUserRegisterValue();
+		userRegister.login.set(login.getValue());
+		userRegister.password.set(password.getValues());
+		userRegister.mail.set(mail.getValues());
+		return userRegister;
+	}
 
 	public void setUserRegister(final TUserRegisterValue userRegister) {
-		this.userRegister = userRegister;
+		login.setValue(userRegister.login.get());
+		password.setValue(userRegister.password.getDual());
+		mail.setValue(userRegister.mail.getDual());
+	}
 
+	public void validate(final TUserRegisterValue userRegister) {
 		Validate.init(UserRegister.this);
 
 		try {
@@ -87,20 +97,14 @@ public class UserRegister extends FormPanel {
 		Validate.done(UserRegister.this);
 	}
 
-	public TUserRegisterValue getUserRegister() {
-		return userRegister;
-	}
-
 	private final WebCallback<TUserRegisterValue> verifyCallback = new WebCallback<TUserRegisterValue>() {
 		public void onBefore() {
 			submit.setEnabled(true);
 		}
 
-		// result process (multiple exceptions)
 		public void onResponseSuccess(final TUserRegisterValue userRegister) {
-			setUserRegister(userRegister);
-
-			if (!getUserRegister().hasErrors()) {
+			validate(userRegister);
+			if (!userRegister.hasErrors()) {
 				fireSubmitListener();
 			}
 		}
@@ -140,14 +144,9 @@ public class UserRegister extends FormPanel {
 		addButton(submit);
 	}
 
-	// data process definition
 	public void submit() {
-		userRegister.login.set(login.getValue());
-		userRegister.password.set(password.getValues());
-		userRegister.mail.set(mail.getValues());
-
 		submit.setEnabled(false);
-		endPoint.processUserRegister(userRegister, verifyCallback);
+		endPoint.processUserRegister(getUserRegister(), verifyCallback);
 	}
 
 	private final SubmitListenerCollection submitListeners = new SubmitListenerCollection();

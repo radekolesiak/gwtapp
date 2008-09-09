@@ -3,10 +3,10 @@ package com.cuprum.web.common.client.data;
 import java.io.Serializable;
 
 public class TDualValue<T extends Serializable> extends TValue<T> {
-	
+
 	/** Value for a process call */
 	public T second;
-	
+
 	/**
 	 * UID.
 	 */
@@ -20,5 +20,9 @@ public class TDualValue<T extends Serializable> extends TValue<T> {
 
 	public TDualValue<T> set(TDualValue<T> values) {
 		return set(values.value, values.second);
+	}
+
+	public TDualValue<T> getDual() {
+		return this;
 	}
 }

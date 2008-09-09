@@ -4,9 +4,12 @@ import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.i18n.MainAppMessages;
 import com.cuprum.web.templates.simple.client.Simple;
+import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.LoginListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
+import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
+import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
@@ -20,10 +23,10 @@ public class WelcomePage extends VerticalPanel {
 
 		MainAppMessages messages = GWT.create(MainAppMessages.class);
 
-		Window.setTitle("SmallApp :: "
-				+ TConnectionSession.getSession().get() + " :: "
-				+ messages.msgHelloWorld());
+		Window.setTitle("SmallApp :: " + TConnectionSession.getSession().get()
+				+ " :: " + messages.msgHelloWorld());
 
+		final UserRegister userRegister = new UserRegister();
 		final UserLogin userLogin = new UserLogin();
 
 		userLogin.loginListeners.add(new LoginListener() {
@@ -34,7 +37,16 @@ public class WelcomePage extends VerticalPanel {
 			}
 		});
 
-		add(new UserRegister());
+		userRegister.addSubmitListener(new SubmitListener() {
+			public void onSubmit(Widget sender) {
+				userRegister.setUserRegister(new TUserRegisterValue());
+				add(new LabelField(
+						"Account has benn created. Receive email and click on link to confirm registration."));
+
+			}
+		});
+
+		add(userRegister);
 		add(userLogin);
 	}
 
