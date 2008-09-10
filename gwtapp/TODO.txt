@@ -1,8 +1,9 @@
-- notify on login if user is not confirmed yet
+- reset password
+- long term session id stored in the js cookie
++ notify on login if user is not confirmed yet
 !- i18n messages on server side
 - i18n for registration
 - remove too old unconfirmed registrations
-- internazionalization on server side
 + constants parameters in the db
 + disabling submit buttonsduring asynchronous callback connection
 - i18n for messages

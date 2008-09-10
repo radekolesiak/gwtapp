@@ -13,6 +13,7 @@ import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.model.user.xql.CrLoginPassword;
 import com.cuprum.server.common.model.user.xql.CrMail;
 import com.cuprum.server.common.model.user.xql.CrUserConfirm;
+import com.cuprum.server.common.model.user.xql.CrUserToConfirm;
 import com.cuprum.server.common.model.usersession.xql.CrCleanUserSessions;
 import com.cuprum.server.common.model.usersession.xql.CrGetUserSession;
 import com.cuprum.server.common.utils.Random;
@@ -24,6 +25,7 @@ import com.cuprum.web.common.client.exceptions.RegExpException;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
 import com.cuprum.web.common.client.exceptions.model.user.UserAlreadyExistsException;
+import com.cuprum.web.common.client.exceptions.model.user.UserNotConfirmedException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 import com.cuprum.web.widgets.common.client.exception.TextToShortException;
@@ -41,7 +43,8 @@ public class UserLoginModel extends Model {
 	}
 
 	public UserSession login(String login, String password)
-			throws UserNotFoundException, InvalidPasswordException {
+			throws UserNotFoundException, UserNotConfirmedException,
+			InvalidPasswordException {
 
 		execute(new CrCleanUserSessions());
 
@@ -60,8 +63,10 @@ public class UserLoginModel extends Model {
 
 			return connection;
 		} else {
-			if (Util.isNull(execute(new CrLogin(login)))) {
+			if (!existsLogin(login)) {
 				throw new UserNotFoundException();
+			} else if (isToConfirm(login)) {
+				throw new UserNotConfirmedException();
 			} else {
 				throw new InvalidPasswordException();
 			}
@@ -82,6 +87,19 @@ public class UserLoginModel extends Model {
 
 	public boolean existsLogin(String login) {
 		return Util.isNotNull(execute(new CrLogin(login)));
+	}
+
+	public boolean isToConfirm(User user) {
+		return Util.isNotNull(execute(new CrUserToConfirm(user)));
+	}
+
+	public boolean isToConfirm(String login) {
+		User user = execute(new CrLogin(login));
+		if (Util.isNotNull(user)) {
+			return isToConfirm(user);
+		} else {
+			return false;
+		}
 	}
 
 	public boolean existsMail(User user) {

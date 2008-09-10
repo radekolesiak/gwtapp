@@ -5,6 +5,7 @@ import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.WebCallback;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
+import com.cuprum.web.common.client.exceptions.model.user.UserNotConfirmedException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
@@ -49,6 +50,9 @@ public class UserLogin extends FormPanel {
 			} catch (UserNotFoundException e) {
 				login.setValidator(new StringValidator(messages
 						.msgUserNotFound()));
+			} catch (UserNotConfirmedException e) {
+				login.setValidator(new StringValidator(messages
+						.msgPleaseConfirmUser()));
 			} catch (InvalidPasswordException e) {
 				password.setValidator(new StringValidator(messages
 						.msgInvalidPassword()));

@@ -10,4 +10,5 @@ public interface UserLoginMessages extends Messages {
 	String msgLoginLabel();
 	String msgLoginEmptyText();
 	String msgPasswordLabel();
+	String msgPleaseConfirmUser();
 }
