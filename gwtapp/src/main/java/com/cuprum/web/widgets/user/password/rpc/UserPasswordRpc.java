@@ -2,6 +2,8 @@ package com.cuprum.web.widgets.user.password.rpc;
 
 import org.apache.log4j.Logger;
 
+import com.cuprum.server.common.entities.User;
+import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.user.UserPasswordModel;
 import com.cuprum.server.common.model.usersession.UserSessionModel;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
@@ -32,13 +34,15 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 
 		LOGGER.debug("Old password: :" + passwords.oldPassword.value);
 
-		modelPassword.verifyOldPassword(modelSession
-				.getSession(getUserSession()), passwords.oldPassword);
-		
+		UserSession session = modelSession.getSession(getUserSession());
+
+		modelPassword.verifyOldPassword(session, passwords.oldPassword);
 		modelPassword.verifyNewPasswordDual(passwords.newPassword);
 
 		if (!passwords.hasErrors()) {
-			// TODO: change password.
+			User user = modelPassword.get(User.class, session.getUser().getId());
+			user.setPassword(passwords.newPassword.value);
+			modelPassword.update(user);
 		}
 
 		return passwords;
