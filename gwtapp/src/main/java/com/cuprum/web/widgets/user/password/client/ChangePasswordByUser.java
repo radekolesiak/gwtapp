@@ -2,16 +2,20 @@ package com.cuprum.web.widgets.user.password.client;
 
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.TextBox;
+import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordByUserMessages;
 import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
+import com.google.gwt.core.client.GWT;
 
 public class ChangePasswordByUser extends FormPanel {
+	ChangePasswordByUserMessages messages = GWT.create(ChangePasswordByUserMessages.class);
+	
 	private final TextBox oldPassword = new TextBox();
 
 	private final PasswordTextBoxes newPassword = new PasswordTextBoxes();
 
-	private final Button submit = new Button("Change password");
+	private final Button submit = new Button(messages.msgSubmit());
 
 	public ChangePasswordByUser() {
 		setFrame(true);
@@ -19,12 +23,12 @@ public class ChangePasswordByUser extends FormPanel {
 		setLabelWidth(125);
 		setFieldWidth(210);
 		setButtonAlign(HorizontalAlignment.CENTER);
-		setHeading("Change password by user form");
+		setHeading(messages.msgHeading());
 
-		oldPassword.setFieldLabel("Old password");
+		oldPassword.setFieldLabel(messages.msgOldPasswordLabel());
 		oldPassword.setPassword(true);
 
-		newPassword.setFieldLabel("New password", "Confirm new password");
+		newPassword.setFieldLabel(messages.msgNewPasswordLabel(), messages.msgNewPasswordConfirmLabel());
 
 		add(oldPassword);
 		newPassword.attachTo(this);
