@@ -11,6 +11,7 @@ import com.cuprum.web.smallapp.mainapp.client.stub.ISmallAppAsync;
 import com.cuprum.web.templates.extsimple.client.ExtSimple;
 import com.cuprum.web.widgets.user.login.client.LogoutListener;
 import com.cuprum.web.widgets.user.login.client.UserLogout;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -20,6 +21,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WorkspacePage extends VerticalPanel {
+	final ChangePasswordByUser changePasswordByUser = new ChangePasswordByUser();
+
 	public WorkspacePage() {
 		RootPanel.get().addStyleName("smallapp");
 
@@ -66,6 +69,7 @@ public class WorkspacePage extends VerticalPanel {
 
 		add(activity);
 		add(remove);
+		add(changePasswordByUser);
 	}
 
 	public static void setAsCurrent() {

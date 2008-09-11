@@ -1,12 +1,19 @@
 package com.cuprum.web.widgets.user.password.rpc;
 
+import org.apache.log4j.Logger;
+
+import com.cuprum.server.common.model.user.UserPasswordModel;
+import com.cuprum.server.common.model.usersession.UserSessionModel;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
-import com.cuprum.web.common.rpc.RemoteServiceServletSession;
+import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 
-public class UserPasswordRpc extends RemoteServiceServletSession implements
+public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 		IUserPassword {
+
+	private final static Logger LOGGER = Logger
+			.getLogger(UserPasswordRpc.class);
 
 	/**
 	 * UID.
@@ -15,6 +22,25 @@ public class UserPasswordRpc extends RemoteServiceServletSession implements
 
 	public TChangePasswordByUser processChangePasswordByUser(
 			TChangePasswordByUser passwords) throws SessionNotFoundException {
-		return null;
+
+		passwords.clearErrors();
+
+		UserPasswordModel modelPassword = getDAO().getBean(
+				UserPasswordModel.class);
+		UserSessionModel modelSession = getDAO()
+				.getBean(UserSessionModel.class);
+
+		LOGGER.debug("Old password: :" + passwords.oldPassword.value);
+
+		modelPassword.verifyOldPassword(modelSession
+				.getSession(getUserSession()), passwords.oldPassword);
+		
+		modelPassword.verifyNewPasswordDual(passwords.newPassword);
+
+		if (!passwords.hasErrors()) {
+			// TODO: change password.
+		}
+
+		return passwords;
 	}
 }

@@ -8,7 +8,6 @@ import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.LoginListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
-import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
@@ -26,8 +25,6 @@ public class WelcomePage extends VerticalPanel {
 	final UserLogin userLogin = new UserLogin();
 
 	final ChangePasswordByToken changePasswordByToken = new ChangePasswordByToken();
-
-	final ChangePasswordByUser changePasswordByUser = new ChangePasswordByUser();
 
 	final ChangePasswordGetToken changePasswordGetToken = new ChangePasswordGetToken();
 
@@ -60,7 +57,6 @@ public class WelcomePage extends VerticalPanel {
 		add(userLogin);
 		add(changePasswordGetToken);
 		add(changePasswordByToken);
-		add(changePasswordByUser);
 	}
 
 	public static void setAsCurrent() {

@@ -17,7 +17,7 @@ public class StringValidator implements Validator {
 
 	public StringValidator(final Throwable e) {
 		if (Util.isDebug()) {
-			this.msg = e.getClass().getName();
+			this.msg = e.getClass().getName().replace('.', ' ');
 		}
 	}
 

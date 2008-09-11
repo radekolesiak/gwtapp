@@ -91,7 +91,7 @@ public class UserRegisterModel extends Model {
 		userRegister.clearErrors();
 
 		verifyNewLogin(userRegister.getValueLogin());
-		modelPassword.verifyPasswordDual(userRegister.getValuePassword());
+		modelPassword.verifyNewPasswordDual(userRegister.getValuePassword());
 		modelMail.verifyNewMail(userRegister.getValueMail());
 
 		return userRegister.hasErrors();
