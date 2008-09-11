@@ -1,6 +1,7 @@
 package com.cuprum.web.templates.simple.client.page;
 
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
+import com.extjs.gxt.ui.client.Style.Scroll;
 import com.extjs.gxt.ui.client.util.Margins;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.Viewport;
@@ -52,17 +53,13 @@ public class Body extends Viewport {
 		southData.setFloatable(true);
 		southData.setMargins(new Margins(0, 5, 5, 5));
 
+		center.setScrollMode(Scroll.AUTO);
+
 		add(north, northData);
 		add(west, westData);
 		add(center, centerData);
 		add(east, eastData);
 		add(south, southData);
-
-		// setStyleName(Styles.STYLE_PAGE_BODY);
-		// add(new Header(), DockPanel.NORTH);
-		// add(new Left(), DockPanel.EAST);
-		// add(new Right(), DockPanel.WEST);
-		// add(new Footer(), DockPanel.SOUTH);
 	}
 
 	private Widget content = null;

@@ -7,6 +7,9 @@ import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.LoginListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
@@ -18,6 +21,16 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WelcomePage extends VerticalPanel {
+	final UserRegister userRegister = new UserRegister();
+
+	final UserLogin userLogin = new UserLogin();
+
+	final ChangePasswordByToken changePasswordByToken = new ChangePasswordByToken();
+
+	final ChangePasswordByUser changePasswordByUser = new ChangePasswordByUser();
+
+	final ChangePasswordGetToken changePasswordGetToken = new ChangePasswordGetToken();
+
 	public WelcomePage() {
 		RootPanel.get().addStyleName("smallapp");
 
@@ -25,9 +38,6 @@ public class WelcomePage extends VerticalPanel {
 
 		Window.setTitle("SmallApp :: " + TConnectionSession.getSession().get()
 				+ " :: " + messages.msgHelloWorld());
-
-		final UserRegister userRegister = new UserRegister();
-		final UserLogin userLogin = new UserLogin();
 
 		userLogin.loginListeners.add(new LoginListener() {
 			public void onLogin(Widget widget, TUserSession session) {
@@ -48,6 +58,9 @@ public class WelcomePage extends VerticalPanel {
 
 		add(userRegister);
 		add(userLogin);
+		add(changePasswordGetToken);
+		add(changePasswordByToken);
+		add(changePasswordByUser);
 	}
 
 	public static void setAsCurrent() {
