@@ -3,7 +3,7 @@ package com.cuprum.web.widgets.user.register.rpc;
 import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.server.common.model.property.PropertyModel;
-import com.cuprum.server.common.model.user.UserLoginModel;
+import com.cuprum.server.common.model.user.UserRegisterModel;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.rpc.RemoteServiceServletSession;
 import com.cuprum.web.widgets.user.register.client.Constants;
@@ -22,9 +22,9 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 	public TUserRegisterValue processUserRegister(
 			TUserRegisterValue userRegister) {
 
-		UserConfirm confirm = getBean(UserLoginModel.class).register(
+		UserConfirm confirm = getBean(UserRegisterModel.class).register(
 				userRegister);
-		
+
 		Property confirmUrl = getBean(PropertyModel.class).get(
 				Properties.CONFIRM_URL);
 
@@ -52,6 +52,6 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 	}
 
 	public Boolean confirm(String uid) {
-		return getBean(UserLoginModel.class).confirm(uid);
+		return getBean(UserRegisterModel.class).confirm(uid);
 	}
 }

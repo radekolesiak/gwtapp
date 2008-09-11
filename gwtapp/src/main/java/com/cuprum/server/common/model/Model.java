@@ -8,9 +8,13 @@ import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.cuprum.server.common.utils.IDAO;
+
 public abstract class Model extends HibernateDaoSupport {
 	private LinkedList<Transaction> transactions = new LinkedList<Transaction>();
 
+	private IDAO dao;
+	
 	public void pushTX() {
 		transactions.add(getSession().beginTransaction());
 	}
@@ -84,5 +88,19 @@ public abstract class Model extends HibernateDaoSupport {
 	@SuppressWarnings("unchecked")
 	public <T> T get(Class <T> c, Serializable s) {
 		return (T) getHibernateTemplate().get(c, s);
+	}
+
+	/**
+	 * @param dao the dao to set
+	 */
+	public void setDAO(IDAO dao) {
+		this.dao = dao;
+	}
+
+	/**
+	 * @return the dao
+	 */
+	public IDAO getDAO() {
+		return dao;
 	}
 }

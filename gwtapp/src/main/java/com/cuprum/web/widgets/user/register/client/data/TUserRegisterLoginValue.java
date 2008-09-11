@@ -9,6 +9,10 @@ public class TUserRegisterLoginValue extends TStringValue implements HasRegExp {
 	 */
 	private static final long serialVersionUID = 2717987440898267529L;
 
+	public final static int MIN_LOGIN_LENGTH = 5;
+
+	public final static int MAX_LOGIN_LENGTH = 16;
+
 	public boolean match(String value) {
 		return value != null && value.length() > 0;
 	}

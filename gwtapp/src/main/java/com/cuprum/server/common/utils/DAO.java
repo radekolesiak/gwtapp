@@ -19,7 +19,9 @@ public class DAO implements IDAO {
 		if (context == null || c == null) {
 			return null;
 		} else {
-			return (T) context.getBean(c.getName());
+			T model = (T) context.getBean(c.getName());
+			model.setDAO(this);
+			return model;
 		}
 	}
 

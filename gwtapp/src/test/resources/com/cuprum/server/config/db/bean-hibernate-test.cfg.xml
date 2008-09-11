@@ -20,6 +20,10 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.cuprum.server.common.model.user.UserLoginModel</value>
+				<value>com.cuprum.server.common.model.user.UserPasswordModel</value>
+				<value>com.cuprum.server.common.model.user.UserMailModel</value>
+				<value>com.cuprum.server.common.model.user.UserRegisterModel</value>
+				<value>com.cuprum.server.common.model.usersession.UserSessionModel</value>				
 				<value>com.cuprum.server.common.entities.EntityTestDAO</value>
 			</list>
 		</property>
@@ -42,6 +46,21 @@
 	</bean>
 	
 	<bean id="com.cuprum.server.common.model.user.UserLoginModel" class="com.cuprum.server.common.model.user.UserLoginModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.user.UserPasswordModel" class="com.cuprum.server.common.model.user.UserPasswordModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.user.UserMailModel" class="com.cuprum.server.common.model.user.UserMailModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.user.UserRegisterModel" class="com.cuprum.server.common.model.user.UserRegisterModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.usersession.UserSessionModel" class="com.cuprum.server.common.model.usersession.UserSessionModel">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="com.cuprum.server.common.model.property.PropertyModel" class="com.cuprum.server.common.model.property.PropertyModel">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="com.cuprum.server.common.entities.EntityTestDAO" class="com.cuprum.server.common.entities.EntityTestDAO">

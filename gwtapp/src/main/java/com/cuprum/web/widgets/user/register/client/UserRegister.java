@@ -14,6 +14,8 @@ import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.common.client.TextBoxes;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 import com.cuprum.web.widgets.common.client.exception.TextToShortException;
+import com.cuprum.web.widgets.user.password.client.data.TUserPasswordValue;
+import com.cuprum.web.widgets.user.register.client.data.TUserRegisterLoginValue;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.cuprum.web.widgets.user.register.client.i18n.UserRegisterMessages;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
@@ -57,8 +59,10 @@ public class UserRegister extends FormPanel {
 		try {
 			userRegister.getValueLogin().evalError();
 		} catch (TextToShortException e) {
-			login.setValidator(new StringValidator(messages
-					.msgLoginTooShort(+TUserRegisterValue.MIN_LOGIN_LENGTH)));
+			login
+					.setValidator(new StringValidator(
+							messages
+									.msgLoginTooShort(TUserRegisterLoginValue.MIN_LOGIN_LENGTH)));
 		} catch (UserAlreadyExistsException e) {
 			login.setValidator(new StringValidator(messages
 					.msgLoginAlreadyExists()));
@@ -74,7 +78,7 @@ public class UserRegister extends FormPanel {
 			password
 					.setValidator(new StringValidator(
 							messages
-									.msgPasswordTooShort(TUserRegisterValue.MIN_PASSWORD_LENGTH)));
+									.msgPasswordTooShort(TUserPasswordValue.MIN_PASSWORD_LENGTH)));
 		} catch (DualTextFieldInvalidException e) {
 			password.setValidator(new StringValidator(messages
 					.msgPasswordsDifferent()));
