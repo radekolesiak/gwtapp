@@ -9,8 +9,7 @@ import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.Model;
 import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.model.user.xql.CrLoginPassword;
-import com.cuprum.server.common.model.usersession.xql.CrCleanUserSessions;
-import com.cuprum.server.common.model.usersession.xql.CrGetUserSession;
+import com.cuprum.server.common.model.usersession.UserSessionModel;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
@@ -34,8 +33,10 @@ public class UserLoginModel extends Model {
 
 		UserRegisterModel modelRegister = getDAO().getBean(
 				UserRegisterModel.class);
+		UserSessionModel modelSession = getDAO().getBean(
+				UserSessionModel.class);
 
-		execute(new CrCleanUserSessions());
+		modelSession.cleanSessions();
 
 		User user = execute(new CrLoginPassword(login, password));
 
@@ -63,7 +64,8 @@ public class UserLoginModel extends Model {
 	}
 
 	public void logout(String session) {
-		logout((UserSession) execute(new CrGetUserSession(session)));
+		UserSessionModel model = getDAO().getBean(UserSessionModel.class);		
+		logout(model.getSession(session));
 	}
 
 	public void logout(UserSession session) {
