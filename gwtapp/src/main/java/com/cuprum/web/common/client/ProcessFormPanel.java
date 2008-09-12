@@ -24,14 +24,14 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		@Override
 		public void onSessionResponseSuccess(final T value) {
 			validate(value);
-			if(value instanceof TValuesMap) {
-				if(!((TValuesMap)value).hasErrors()){
+			if (value instanceof TValuesMap) {
+				if (!((TValuesMap) value).hasErrors()) {
 					fireSubmitListener();
 				}
-			} else if(value instanceof TValue) {
-				if(!((TValue)value).hasError()){
+			} else if (value instanceof TValue) {
+				if (!((TValue) value).hasError()) {
 					fireSubmitListener();
-				}				
+				}
 			} else {
 				fireSubmitListener();
 			}
@@ -45,22 +45,26 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 
 	public ProcessFormPanel() {
 		onInitMessages();
-		
+
 		submit.setText(getSubmitMessage());
-		
+
 		submit.addSelectionListener(new SelectionListener<ComponentEvent>() {
 			public void componentSelected(ComponentEvent ce) {
 				submit();
 			}
 		});
 
+		addButton(submit);
+
+		setStyles();
+	}
+
+	public void setStyles() {
 		setFrame(true);
 		setWidth(400);
 		setLabelWidth(125);
 		setFieldWidth(210);
 		setButtonAlign(HorizontalAlignment.CENTER);
-
-		addButton(submit);
 	}
 
 	public void submit() {
@@ -107,7 +111,7 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 	}
 
 	protected abstract void onInitMessages();
-	
+
 	public abstract T getValue();
 
 	public abstract void setValue(T value);
