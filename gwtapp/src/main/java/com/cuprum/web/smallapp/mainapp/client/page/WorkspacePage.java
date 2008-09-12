@@ -9,6 +9,7 @@ import com.cuprum.web.smallapp.mainapp.client.SmallAppCallback;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallAppAsync;
 import com.cuprum.web.templates.extsimple.client.ExtSimple;
+import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.LogoutListener;
 import com.cuprum.web.widgets.user.login.client.UserLogout;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
@@ -66,6 +67,15 @@ public class WorkspacePage extends VerticalPanel {
 						.create(ISmallApp.class))).forceRemoveSession(callback);
 			}
 		});
+
+		changePasswordByUser.addSubmitListener(new SubmitListener() {
+			public void onSubmit(Widget sender) {
+				add(new Label("Password has been changed"));
+			}
+		});
+
+		changePasswordByUser
+				.addSessionNotFoundListener(MainApp.getDefaultSessionNotFoundListener());
 
 		add(activity);
 		add(remove);

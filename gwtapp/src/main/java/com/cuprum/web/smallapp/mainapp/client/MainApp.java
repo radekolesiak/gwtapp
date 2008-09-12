@@ -1,14 +1,19 @@
 package com.cuprum.web.smallapp.mainapp.client;
 
 import com.cuprum.web.common.client.SessionEntryPoint;
+import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TUserSession;
+import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
 import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.user.register.client.Constants;
+import com.extjs.gxt.ui.client.widget.Info;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>. GWT modules
@@ -50,4 +55,21 @@ public class MainApp extends SessionEntryPoint {
 		ConfirmPage.setAsCurrent();
 	}
 
+
+	public static void defaultOnSessionNotFound() {
+		InfoMessages messages = GWT.create(InfoMessages.class);
+		Info.display(messages.msgSessionNotFoundTitle(), messages
+				.msgSessionNotFound(), new String[] {});
+	}
+
+	private final static SessionNotFoundListener sessionNotFoundListener = new SessionNotFoundListener() {
+		public void onSessionNotFound(Widget widget) {
+			defaultOnSessionNotFound();
+		}
+	};
+
+	public static SessionNotFoundListener getDefaultSessionNotFoundListener() {
+		return sessionNotFoundListener;
+	}
 }
+
