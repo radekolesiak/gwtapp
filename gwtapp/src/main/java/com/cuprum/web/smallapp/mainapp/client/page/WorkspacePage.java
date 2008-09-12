@@ -2,6 +2,7 @@ package com.cuprum.web.smallapp.mainapp.client.page;
 
 import java.util.Date;
 
+import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.UserEndPoint;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.MainApp;
@@ -10,7 +11,6 @@ import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallAppAsync;
 import com.cuprum.web.templates.extsimple.client.ExtSimple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
-import com.cuprum.web.widgets.user.login.client.LogoutListener;
 import com.cuprum.web.widgets.user.login.client.UserLogout;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
 import com.google.gwt.core.client.GWT;
@@ -29,11 +29,13 @@ public class WorkspacePage extends VerticalPanel {
 
 		final UserLogout userLogout = new UserLogout();
 		userLogout.setSession(TUserSession.getSession());
-		userLogout.addLogoutListener(new LogoutListener() {
-			public void onLogout(Widget widget) {
+		userLogout.addSubmitListener(new SubmitListener() {
+			public void onSubmit(Widget widget) {
 				MainApp.showWelcome();
 			}
+		});
 
+		userLogout.addSessionNotFoundListener(new SessionNotFoundListener() {
 			public void onSessionNotFound(Widget widget) {
 				MainApp.showWelcome();
 			}
@@ -74,8 +76,8 @@ public class WorkspacePage extends VerticalPanel {
 			}
 		});
 
-		changePasswordByUser
-				.addSessionNotFoundListener(MainApp.getDefaultSessionNotFoundListener());
+		changePasswordByUser.addSessionNotFoundListener(MainApp
+				.getDefaultSessionNotFoundListener());
 
 		add(activity);
 		add(remove);

@@ -1,16 +1,11 @@
 package com.cuprum.web.widgets.user.login.client;
 
 import com.cuprum.web.common.client.EndPoint;
-import com.cuprum.web.common.client.SessionCallback;
+import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.widgets.user.login.client.i18n.UserLogoutMessages;
 import com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication;
 import com.cuprum.web.widgets.user.login.client.stub.IUserAuthenticationAsync;
-import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
-import com.extjs.gxt.ui.client.event.ComponentEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -19,48 +14,12 @@ import com.google.gwt.core.client.GWT;
  * @author Radek Olesiak
  * 
  */
-public class UserLogout extends FormPanel {
+public class UserLogout extends ProcessFormPanel<Object> {
+	private final IUserAuthenticationAsync endPoint = (IUserAuthenticationAsync) EndPoint
+			.create(GWT.create(IUserAuthentication.class));
+
 	private final UserLogoutMessages messages = GWT
 			.create(UserLogoutMessages.class);
-
-	private final SessionCallback<Object> logoutCallback = new SessionCallback<Object>() {
-		public void onBefore() {
-			submit.setEnabled(true);
-		}
-
-		public void onSessionResponseSuccess(final Object object) {
-			fireLogoutListener();
-		}
-
-		@Override
-		public void onSessionNotFound() {
-			fireLogoutSessionNotFoundListener();
-		}
-	};
-
-	private final Button submit = new Button(messages.msgSubmit());
-
-	/** Sets widgets. */
-	public UserLogout() {
-
-		setFrame(true);
-		setWidth(400);
-		setLabelWidth(125);
-		setFieldWidth(210);
-		setButtonAlign(HorizontalAlignment.CENTER);
-		setHeading(messages.msgHeading());
-
-		submit.addSelectionListener(new SelectionListener<ComponentEvent>() {
-			public void componentSelected(ComponentEvent ce) {
-				submit.setEnabled(false);
-				((IUserAuthenticationAsync) EndPoint.create(GWT
-						.create(IUserAuthentication.class))).logout(
-						getSession(), logoutCallback);
-			}
-		});
-
-		addButton(submit);
-	}
 
 	private TUserSession session = null;
 
@@ -72,21 +31,31 @@ public class UserLogout extends FormPanel {
 		return session;
 	}
 
-	LogoutListenerCollection logoutListeners = new LogoutListenerCollection();
-
-	public void addLogoutListener(final LogoutListener listener) {
-		logoutListeners.add(listener);
+	@Override
+	public String getSubmitMessage() {
+		return messages.msgSubmit();
 	}
 
-	public void removeLogoutListener(final LogoutListener listener) {
-		logoutListeners.remove(listener);
+	@Override
+	public Object getValue() {
+		return new Object();
 	}
 
-	protected void fireLogoutSessionNotFoundListener() {
-		logoutListeners.fireSessionNotFound(this);
+	@Override
+	protected void onAddFields() {
+		setHeading(messages.msgHeading());
 	}
 
-	protected void fireLogoutListener() {
-		logoutListeners.fireLogoutListener(this);
+	@Override
+	protected void onSubmit() {
+		endPoint.logout(getSession(), getCallback());
+	}
+
+	@Override
+	protected void onValidate(Object value) {
+	}
+
+	@Override
+	public void setValue(Object value) {
 	}
 }
