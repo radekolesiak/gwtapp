@@ -11,13 +11,12 @@ import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
 
 public abstract class ProcessFormPanel<T> extends FormPanel {
-	public abstract String getSubmitMessage();
-
 	private final Button submit = new Button();
 
 	private final SessionCallback<T> callback = new SessionCallback<T>() {
 		@Override
 		public void onBefore() {
+			setReadOnly(false);
 			submit.setEnabled(true);
 		}
 
@@ -43,8 +42,8 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		}
 	};
 
-	public ProcessFormPanel() {
-		onInitMessages();
+	protected void beforeRender() {
+		super.beforeRender();
 
 		submit.setText(getSubmitMessage());
 
@@ -55,6 +54,8 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		});
 
 		addButton(submit);
+
+		onAddFields();
 
 		setStyles();
 	}
@@ -68,6 +69,7 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 	}
 
 	public void submit() {
+		setReadOnly(true);
 		submit.setEnabled(false);
 		onSubmit();
 	}
@@ -110,11 +112,13 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		sessionListeners.fireSessionNotFoundListener(this);
 	}
 
-	protected abstract void onInitMessages();
+	public abstract String getSubmitMessage();
 
 	public abstract T getValue();
 
 	public abstract void setValue(T value);
+
+	protected abstract void onAddFields();
 
 	protected abstract void onValidate(T value);
 

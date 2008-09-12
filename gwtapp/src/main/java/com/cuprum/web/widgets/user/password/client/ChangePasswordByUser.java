@@ -20,14 +20,15 @@ public class ChangePasswordByUser extends
 	private final IUserPasswordAsync endPoint = ((IUserPasswordAsync) UserEndPoint
 			.create(GWT.create(IUserPassword.class)));
 
-	private ChangePasswordByUserMessages messages;
+	private ChangePasswordByUserMessages messages = GWT
+			.create(ChangePasswordByUserMessages.class);
 
 	private final TextBox oldPassword = new TextBox();
 
 	private final PasswordTextBoxes newPassword = new PasswordTextBoxes();
 
-	public ChangePasswordByUser() {
-		super();
+	protected void onAddFields() {
+		setHeading(messages.msgHeading());
 
 		oldPassword.setFieldLabel(messages.msgOldPasswordLabel());
 		oldPassword.setPassword(true);
@@ -37,10 +38,6 @@ public class ChangePasswordByUser extends
 
 		add(oldPassword);
 		newPassword.attachTo(this);
-	}
-
-	protected void onInitMessages() {
-		messages = GWT.create(ChangePasswordByUserMessages.class);
 	}
 
 	public void onValidate(TChangePasswordByUser passwords) {
