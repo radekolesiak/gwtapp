@@ -3,11 +3,15 @@ package com.cuprum.web.widgets.user.password.client;
 import com.cuprum.web.common.client.SessionCallback;
 import com.cuprum.web.common.client.UserEndPoint;
 import com.cuprum.web.common.client.Validate;
+import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
+import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
+import com.cuprum.web.widgets.common.client.exception.TextToShortException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
+import com.cuprum.web.widgets.user.password.client.data.TUserPasswordValue;
 import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordByUserMessages;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPasswordAsync;
@@ -57,12 +61,23 @@ public class ChangePasswordByUser extends FormPanel {
 
 		try {
 			passwords.oldPassword.evalError();
+		} catch (InvalidPasswordException e) {
+			oldPassword.setValidator(new StringValidator(messages
+					.msgInvalidOldPasswordLabel()));
 		} catch (Throwable e) {
 			oldPassword.setValidator(new StringValidator(e));
 		}
 
 		try {
 			passwords.newPassword.evalError();
+		} catch (DualTextFieldInvalidException e) {
+			newPassword.setValidator(new StringValidator(messages
+					.msgNewPasswordsDifferent()));
+		} catch (TextToShortException e) {
+			newPassword
+					.setValidator(new StringValidator(
+							messages
+									.msgNewPasswordTooShort(TUserPasswordValue.MIN_PASSWORD_LENGTH)));
 		} catch (Throwable e) {
 			newPassword.setValidator(new StringValidator(e));
 		}

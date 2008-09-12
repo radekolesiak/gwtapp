@@ -32,15 +32,14 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 		UserSessionModel modelSession = getDAO()
 				.getBean(UserSessionModel.class);
 
-		LOGGER.debug("Old password: :" + passwords.oldPassword.value);
-
 		UserSession session = modelSession.getSession(getUserSession());
 
 		modelPassword.verifyOldPassword(session, passwords.oldPassword);
 		modelPassword.verifyNewPasswordDual(passwords.newPassword);
 
 		if (!passwords.hasErrors()) {
-			User user = modelPassword.get(User.class, session.getUser().getId());
+			User user = modelPassword
+					.get(User.class, session.getUser().getId());
 			user.setPassword(passwords.newPassword.value);
 			modelPassword.update(user);
 		}

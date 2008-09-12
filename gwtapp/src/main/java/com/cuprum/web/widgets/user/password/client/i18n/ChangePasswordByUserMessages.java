@@ -7,9 +7,15 @@ public interface ChangePasswordByUserMessages extends Messages {
 
 	String msgOldPasswordLabel();
 
+	String msgInvalidOldPasswordLabel();
+
 	String msgNewPasswordLabel();
 
 	String msgNewPasswordConfirmLabel();
+	
+	String msgNewPasswordsDifferent();
+	
+	String msgNewPasswordTooShort(int min);
 
 	String msgSubmit();
 }

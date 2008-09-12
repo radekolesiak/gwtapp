@@ -1,3 +1,4 @@
+- feedback for unrecognised or unimplmeneted exceptions handling on client side
 !- unit tests
 - javadoc
 - check length too long on login and password during user registration
