@@ -51,6 +51,13 @@ public class WelcomePage extends VerticalPanel {
 
 			}
 		});
+		
+		changePasswordGetToken.addSubmitListener(new SubmitListener(){
+			public void onSubmit(Widget sender) {
+				add(new LabelField(
+				"Token to change password has been sent. Receive email and click on link to change password."));
+			}
+		});
 
 		add(userRegister);
 		add(userLogin);

@@ -26,7 +26,13 @@ public class Mail extends Thread {
 
 	private static int counter = 0;
 
+	synchronized protected int updateCounter() {
+		return counter++;
+	}
+
 	public void run() {
+		int localCounter = updateCounter();
+
 		Properties props = new Properties();
 		props.put("mail.smtp.host", getSmtp());
 		props.put("mail.from", getMailFrom());
@@ -34,7 +40,7 @@ public class Mail extends Thread {
 		Session session = Session.getInstance(props, null);
 
 		try {
-			LOGGER.debug("[" + counter + "] Sending mail to "
+			LOGGER.debug("[" + localCounter + "] Sending mail to "
 					+ getRecipientTo());
 			MimeMessage msg = new MimeMessage(session);
 			msg.setRecipients(Message.RecipientType.TO, getRecipientTo());
@@ -42,12 +48,10 @@ public class Mail extends Thread {
 			msg.setSentDate(new Date());
 			msg.setText(getContent());
 			Transport.send(msg);
-			LOGGER.debug("[" + counter + "] Mail has been sent to "
+			LOGGER.debug("[" + localCounter + "] Mail has been sent to "
 					+ getRecipientTo());
 		} catch (MessagingException mex) {
-			LOGGER.error("[" + counter + "] ", mex);
-		} finally {
-			counter++;
+			LOGGER.error("[" + localCounter + "] ", mex);
 		}
 	}
 

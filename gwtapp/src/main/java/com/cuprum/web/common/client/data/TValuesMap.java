@@ -6,7 +6,8 @@ import java.util.Vector;
 import com.cuprum.web.widgets.common.client.exception.MultipleException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class TValuesMap extends Vector<TValue> implements Serializable, IsSerializable {
+public class TValuesMap extends Vector<TValue> implements Serializable,
+		IsSerializable {
 
 	/**
 	 * UID.
@@ -16,15 +17,13 @@ public class TValuesMap extends Vector<TValue> implements Serializable, IsSerial
 	@SuppressWarnings("unchecked")
 	public void clearErrors() {
 		for (TValue value : this) {
-			if (value != null) {
-				value.error = null;
-			}
+			value.clearError();
 		}
 	}
 
 	public boolean hasErrors() {
 		for (TValue value : this) {
-			if(value.hasError()) {
+			if (value.hasError()) {
 				return true;
 			}
 		}

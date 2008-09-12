@@ -22,6 +22,33 @@ public class UserLoginModel extends Model {
 	 */
 	static final Logger LOGGER = Logger.getLogger(UserLoginModel.class);
 
+	private void verifyUserInstance(String login) throws UserNotFoundException,
+			UserNotConfirmedException, InvalidPasswordException {
+		UserRegisterModel modelRegister = getDAO().getBean(
+				UserRegisterModel.class);
+
+		if (!existsLogin(login)) {
+			throw new UserNotFoundException();
+		} else if (modelRegister.isToConfirm(login)) {
+			throw new UserNotConfirmedException();
+		} 
+	}
+
+	public User getUser(String login) throws UserNotFoundException,
+			UserNotConfirmedException {
+		verifyUserInstance(login);
+		User user = execute(new CrLogin(login));
+		return user;
+	}
+
+	public User getUser(String login, String password)
+			throws UserNotFoundException, UserNotConfirmedException,
+			InvalidPasswordException {
+		verifyUserInstance(login);
+		User user = execute(new CrLoginPassword(login, password));
+		return user;
+	}
+
 	public UserSession login(User user) throws UserNotFoundException,
 			InvalidPasswordException {
 		return login(user.getLogin(), user.getPassword());
@@ -31,40 +58,34 @@ public class UserLoginModel extends Model {
 			throws UserNotFoundException, UserNotConfirmedException,
 			InvalidPasswordException {
 
-		UserRegisterModel modelRegister = getDAO().getBean(
-				UserRegisterModel.class);
-		UserSessionModel modelSession = getDAO().getBean(
-				UserSessionModel.class);
+		UserSessionModel modelSession = getDAO()
+				.getBean(UserSessionModel.class);
 
 		modelSession.cleanSessions();
 
-		User user = execute(new CrLoginPassword(login, password));
+		verifyUserInstance(login);
 
-		if (Util.isNotNull(user)) {
-			UserSession connection = new UserSession();
+		User user = getUser(login, password);
 
-			// TODO: get unique session id by database!
-			connection.setSession(Random.getUid());
-
-			connection.setUser(user);
-			connection.setDate(new Date());
-
-			save(connection);
-
-			return connection;
-		} else {
-			if (!existsLogin(login)) {
-				throw new UserNotFoundException();
-			} else if (modelRegister.isToConfirm(login)) {
-				throw new UserNotConfirmedException();
-			} else {
-				throw new InvalidPasswordException();
-			}
+		if(user == null) {
+			throw new InvalidPasswordException();
 		}
+		
+		UserSession connection = new UserSession();
+
+		// TODO: get unique session id by database!
+		connection.setSession(Random.getUid());
+
+		connection.setUser(user);
+		connection.setDate(new Date());
+
+		save(connection);
+
+		return connection;
 	}
 
 	public void logout(String session) {
-		UserSessionModel model = getDAO().getBean(UserSessionModel.class);		
+		UserSessionModel model = getDAO().getBean(UserSessionModel.class);
 		logout(model.getSession(session));
 	}
 

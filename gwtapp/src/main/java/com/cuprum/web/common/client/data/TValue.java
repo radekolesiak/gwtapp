@@ -45,4 +45,8 @@ public class TValue<T extends Serializable> implements Serializable,
 	public boolean hasError() {
 		return error != null;
 	}
+	
+	public void clearError() {
+		error = null;
+	}
 }

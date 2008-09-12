@@ -14,7 +14,7 @@ public abstract class Model extends HibernateDaoSupport {
 	private LinkedList<Transaction> transactions = new LinkedList<Transaction>();
 
 	private IDAO dao;
-	
+
 	public void pushTX() {
 		transactions.add(getSession().beginTransaction());
 	}
@@ -58,10 +58,15 @@ public abstract class Model extends HibernateDaoSupport {
 	public <T> T execute(HibernateCallback callback) {
 		return (T) getHibernateTemplate().execute(callback);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public <T> T save(Object object) {
 		return (T) getHibernateTemplate().save(object);
+	}
+
+	@SuppressWarnings("unchecked")
+	public void saveOrUpdate(Object object) {
+		getHibernateTemplate().saveOrUpdate(object);
 	}
 
 	public void update(Object object) {
@@ -81,17 +86,18 @@ public abstract class Model extends HibernateDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T load(Class <T> c, Serializable s) {
+	public <T> T load(Class<T> c, Serializable s) {
 		return (T) getHibernateTemplate().load(c, s);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T get(Class <T> c, Serializable s) {
+	public <T> T get(Class<T> c, Serializable s) {
 		return (T) getHibernateTemplate().get(c, s);
 	}
 
 	/**
-	 * @param dao the dao to set
+	 * @param dao
+	 *            the dao to set
 	 */
 	public void setDAO(IDAO dao) {
 		this.dao = dao;

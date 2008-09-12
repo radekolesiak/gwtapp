@@ -9,5 +9,9 @@ public interface ChangePasswordGetTokenMessages extends Messages {
 	
 	String msgLoginEmptyText();
 
+	String msgLoginNotFound();
+
+	String msgLoginNotConfirmed();
+
 	String msgSubmit();
 }
