@@ -46,7 +46,7 @@ public class WelcomePage extends VerticalPanel {
 
 		userRegister.addSubmitListener(new SubmitListener() {
 			public void onSubmit(Widget sender) {
-				userRegister.setUserRegister(new TUserRegisterValue());
+				userRegister.setValue(new TUserRegisterValue());
 				add(new LabelField(
 						"Account has been created. Receive email and click on link to confirm registration."));
 

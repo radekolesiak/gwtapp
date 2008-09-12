@@ -1,15 +1,12 @@
 package com.cuprum.web.widgets.user.register.client;
 
 import com.cuprum.web.common.client.EndPoint;
-import com.cuprum.web.common.client.Validate;
-import com.cuprum.web.common.client.WebCallback;
+import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.exceptions.RegExpException;
 import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
 import com.cuprum.web.common.client.exceptions.model.user.UserAlreadyExistsException;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.StringValidator;
-import com.cuprum.web.widgets.common.client.SubmitListener;
-import com.cuprum.web.widgets.common.client.SubmitListenerCollection;
 import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.common.client.TextBoxes;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
@@ -20,14 +17,12 @@ import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.cuprum.web.widgets.user.register.client.i18n.UserRegisterMessages;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
-import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
-import com.extjs.gxt.ui.client.event.ComponentEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.google.gwt.core.client.GWT;
 
-public class UserRegister extends FormPanel {
+public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
+	private final IUserRegisterAsync endPoint = ((IUserRegisterAsync) EndPoint
+			.create(GWT.create(IUserRegister.class)));
+
 	private final UserRegisterMessages messages = GWT
 			.create(UserRegisterMessages.class);
 
@@ -37,9 +32,7 @@ public class UserRegister extends FormPanel {
 
 	private final TextBoxes mail = new TextBoxes();
 
-	private final Button submit = new Button(messages.msgSubmit());
-
-	public TUserRegisterValue getUserRegister() {
+	public TUserRegisterValue getValue() {
 		TUserRegisterValue userRegister = new TUserRegisterValue();
 		userRegister.login.set(login.getValue());
 		userRegister.password.set(password.getValues());
@@ -47,15 +40,13 @@ public class UserRegister extends FormPanel {
 		return userRegister;
 	}
 
-	public void setUserRegister(final TUserRegisterValue userRegister) {
+	public void setValue(final TUserRegisterValue userRegister) {
 		login.setValue(userRegister.login.get());
 		password.setValue(userRegister.password.getDual());
 		mail.setValue(userRegister.mail.getDual());
 	}
 
-	public void validate(final TUserRegisterValue userRegister) {
-		Validate.init(UserRegister.this);
-
+	protected void onValidate(final TUserRegisterValue userRegister) {
 		try {
 			userRegister.getValueLogin().evalError();
 		} catch (TextToShortException e) {
@@ -97,41 +88,11 @@ public class UserRegister extends FormPanel {
 		} catch (Throwable e) {
 			mail.setValidator(new StringValidator(e));
 		}
-
-		Validate.done(UserRegister.this);
 	}
 
-	private final WebCallback<TUserRegisterValue> verifyCallback = new WebCallback<TUserRegisterValue>() {
-		public void onBefore() {
-			submit.setEnabled(true);
-		}
-
-		public void onResponseSuccess(final TUserRegisterValue userRegister) {
-			validate(userRegister);
-			if (!userRegister.hasErrors()) {
-				fireSubmitListener();
-			}
-		}
-	};
-
-	private final IUserRegisterAsync endPoint = ((IUserRegisterAsync) EndPoint
-			.create(GWT.create(IUserRegister.class)));
-
-	// form definition
-	public UserRegister() {
-		submit.addSelectionListener(new SelectionListener<ComponentEvent>() {
-			public void componentSelected(ComponentEvent ce) {
-				submit();
-			}
-		});
-
-		setFrame(true);
-		setWidth(400);
-		setLabelWidth(125);
-		setFieldWidth(210);
-		setButtonAlign(HorizontalAlignment.CENTER);
+	protected void onAddFields() {
 		setHeading(messages.msgHeading());
-
+		
 		login.setFieldLabel(messages.msgLoginLabel());
 		login.setEmptyText(messages.msgLoginEmptyText());
 
@@ -145,25 +106,13 @@ public class UserRegister extends FormPanel {
 		add(login);
 		password.attachTo(this);
 		mail.attachTo(this);
-		addButton(submit);
 	}
 
-	public void submit() {
-		submit.setEnabled(false);
-		endPoint.processUserRegister(getUserRegister(), verifyCallback);
+	protected void onSubmit() {
+		endPoint.processUserRegister(getValue(), getCallback());
 	}
 
-	private final SubmitListenerCollection submitListeners = new SubmitListenerCollection();
-
-	public void addSubmitListener(SubmitListener listener) {
-		submitListeners.add(listener);
-	}
-
-	public void removeSubmitListener(SubmitListener listener) {
-		submitListeners.remove(listener);
-	}
-
-	protected void fireSubmitListener() {
-		submitListeners.fireSubmitListener(this);
+	public String getSubmitMessage() {
+		return messages.msgSubmit();
 	}
 }
