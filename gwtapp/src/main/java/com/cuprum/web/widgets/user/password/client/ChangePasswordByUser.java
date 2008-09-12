@@ -40,7 +40,7 @@ public class ChangePasswordByUser extends
 		newPassword.attachTo(this);
 	}
 
-	public void onValidate(TChangePasswordByUser passwords) {
+	protected void onValidate(TChangePasswordByUser passwords) {
 		try {
 			passwords.oldPassword.evalError();
 		} catch (InvalidPasswordException e) {
