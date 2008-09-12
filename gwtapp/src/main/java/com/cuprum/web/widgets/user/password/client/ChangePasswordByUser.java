@@ -27,6 +27,7 @@ public class ChangePasswordByUser extends
 
 	private final PasswordTextBoxes newPassword = new PasswordTextBoxes();
 
+	@Override
 	protected void onAddFields() {
 		setHeading(messages.msgHeading());
 
@@ -40,6 +41,7 @@ public class ChangePasswordByUser extends
 		newPassword.attachTo(this);
 	}
 
+	@Override
 	protected void onValidate(TChangePasswordByUser passwords) {
 		try {
 			passwords.oldPassword.evalError();

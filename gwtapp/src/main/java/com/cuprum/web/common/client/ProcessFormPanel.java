@@ -86,11 +86,11 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 
 	private final SubmitListenerCollection submitListeners = new SubmitListenerCollection();
 
-	public void addSubmitListener(SubmitListener listener) {
+	public void addSubmitListener(final SubmitListener listener) {
 		submitListeners.add(listener);
 	}
 
-	public void removeSubmitListener(SubmitListener listener) {
+	public void removeSubmitListener(final SubmitListener listener) {
 		submitListeners.remove(listener);
 	}
 
@@ -100,11 +100,11 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 
 	private final SessionNotFoundListenerCollection sessionListeners = new SessionNotFoundListenerCollection();
 
-	public void addSessionNotFoundListener(SessionNotFoundListener listener) {
+	public void addSessionNotFoundListener(final SessionNotFoundListener listener) {
 		sessionListeners.add(listener);
 	}
 
-	public void removeSessionNotFoundListener(SessionNotFoundListener listener) {
+	public void removeSessionNotFoundListener(final SessionNotFoundListener listener) {
 		sessionListeners.remove(listener);
 	}
 
@@ -116,11 +116,11 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 
 	public abstract T getValue();
 
-	public abstract void setValue(T value);
+	public abstract void setValue(final T value);
 
 	protected abstract void onAddFields();
 
-	protected abstract void onValidate(T value);
+	protected abstract void onValidate(final T value);
 
 	protected abstract void onSubmit();
 }

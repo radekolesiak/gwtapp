@@ -5,7 +5,6 @@ import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.i18n.MainAppMessages;
 import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
-import com.cuprum.web.widgets.user.login.client.LoginListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
@@ -36,10 +35,10 @@ public class WelcomePage extends VerticalPanel {
 		Window.setTitle("SmallApp :: " + TConnectionSession.getSession().get()
 				+ " :: " + messages.msgHelloWorld());
 
-		userLogin.loginListeners.add(new LoginListener() {
-			public void onLogin(Widget widget, TUserSession session) {
-				TUserSession.setSession(session);
-				add(new Label("Session = " + session.get()));
+		userLogin.addSubmitListener(new SubmitListener() {
+			public void onSubmit(Widget sender) {
+				TUserSession.setSession(userLogin.getValue());
+				add(new Label("Session = " + userLogin.getValue()));
 				WorkspacePage.setAsCurrent();
 			}
 		});
