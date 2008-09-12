@@ -41,4 +41,8 @@ public class TValue<T extends Serializable> implements Serializable,
 	public TValue<T> set(TValue<T> value) {
 		return set(value.value);
 	}
+	
+	public boolean hasError() {
+		return error != null;
+	}
 }

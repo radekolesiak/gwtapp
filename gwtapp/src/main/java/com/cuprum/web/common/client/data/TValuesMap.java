@@ -24,9 +24,7 @@ public class TValuesMap extends Vector<TValue> implements Serializable, IsSerial
 
 	public boolean hasErrors() {
 		for (TValue value : this) {
-			try {
-				value.evalError();
-			} catch (RuntimeException e) {
+			if(value.hasError()) {
 				return true;
 			}
 		}
