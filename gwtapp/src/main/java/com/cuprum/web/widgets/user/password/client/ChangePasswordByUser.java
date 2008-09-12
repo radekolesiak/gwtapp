@@ -1,10 +1,8 @@
 package com.cuprum.web.widgets.user.password.client;
 
-import com.cuprum.web.common.client.SessionCallback;
+import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.UserEndPoint;
-import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
-import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
@@ -15,50 +13,37 @@ import com.cuprum.web.widgets.user.password.client.data.TUserPasswordValue;
 import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordByUserMessages;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPasswordAsync;
-import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
-import com.extjs.gxt.ui.client.event.ComponentEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.Info;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.google.gwt.core.client.GWT;
 
-public class ChangePasswordByUser extends FormPanel {
+public class ChangePasswordByUser extends
+		ProcessFormPanel<TChangePasswordByUser> {
 	private final IUserPasswordAsync endPoint = ((IUserPasswordAsync) UserEndPoint
 			.create(GWT.create(IUserPassword.class)));
 
-	ChangePasswordByUserMessages messages = GWT
-			.create(ChangePasswordByUserMessages.class);
+	private ChangePasswordByUserMessages messages;
 
 	private final TextBox oldPassword = new TextBox();
 
 	private final PasswordTextBoxes newPassword = new PasswordTextBoxes();
 
-	private final Button submit = new Button(messages.msgSubmit());
+	public ChangePasswordByUser() {
+		super();
 
-	private final SessionCallback<TChangePasswordByUser> callback = new SessionCallback<TChangePasswordByUser>() {
-		@Override
-		public void onBefore() {
-			submit.setEnabled(true);
-		}
+		oldPassword.setFieldLabel(messages.msgOldPasswordLabel());
+		oldPassword.setPassword(true);
 
-		@Override
-		public void onSessionResponseSuccess(
-				final TChangePasswordByUser passwords) {
-			validate(passwords);
-		}
+		newPassword.setFieldLabel(messages.msgNewPasswordLabel(), messages
+				.msgNewPasswordConfirmLabel());
 
-		@Override
-		public void onSessionNotFound() {
-			InfoMessages messages = GWT.create(InfoMessages.class);
-			Info.display(messages.msgSessionNotFoundTitle(), messages
-					.msgSessionNotFound(), new String[] {});
-		}
-	};
+		add(oldPassword);
+		newPassword.attachTo(this);
+	}
 
-	public void validate(TChangePasswordByUser passwords) {
-		Validate.init(ChangePasswordByUser.this);
+	protected void onInitMessages() {
+		messages = GWT.create(ChangePasswordByUserMessages.class);
+	}
 
+	public void onValidate(TChangePasswordByUser passwords) {
 		try {
 			passwords.oldPassword.evalError();
 		} catch (InvalidPasswordException e) {
@@ -81,50 +66,29 @@ public class ChangePasswordByUser extends FormPanel {
 		} catch (Throwable e) {
 			newPassword.setValidator(new StringValidator(e));
 		}
-
-		Validate.done(ChangePasswordByUser.this);
 	}
 
-	public TChangePasswordByUser getChangePasswordByUser() {
+	@Override
+	public TChangePasswordByUser getValue() {
 		TChangePasswordByUser passwords = new TChangePasswordByUser();
 		passwords.oldPassword.set(oldPassword.getValue());
 		passwords.newPassword.set(newPassword.getValues());
 		return passwords;
 	}
 
-	public void setUserRegister(final TChangePasswordByUser passwords) {
+	@Override
+	public void setValue(final TChangePasswordByUser passwords) {
 		oldPassword.setValue(passwords.oldPassword.get());
 		newPassword.setValue(passwords.newPassword.getDual());
 	}
 
-	public ChangePasswordByUser() {
-		submit.addSelectionListener(new SelectionListener<ComponentEvent>() {
-			public void componentSelected(ComponentEvent ce) {
-				submit();
-			}
-		});
-
-		setFrame(true);
-		setWidth(400);
-		setLabelWidth(125);
-		setFieldWidth(210);
-		setButtonAlign(HorizontalAlignment.CENTER);
-		setHeading(messages.msgHeading());
-
-		oldPassword.setFieldLabel(messages.msgOldPasswordLabel());
-		oldPassword.setPassword(true);
-
-		newPassword.setFieldLabel(messages.msgNewPasswordLabel(), messages
-				.msgNewPasswordConfirmLabel());
-
-		add(oldPassword);
-		newPassword.attachTo(this);
-		addButton(submit);
+	@Override
+	protected void onSubmit() {
+		endPoint.processChangePasswordByUser(getValue(), getCallback());
 	}
 
-	public void submit() {
-		submit.setEnabled(false);
-		endPoint.processChangePasswordByUser(getChangePasswordByUser(),
-				callback);
+	@Override
+	public String getSubmitMessage() {
+		return messages.msgSubmit();
 	}
 }
