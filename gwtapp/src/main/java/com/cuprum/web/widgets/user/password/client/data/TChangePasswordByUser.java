@@ -12,7 +12,7 @@ public class TChangePasswordByUser extends TValuesMap {
 
 	public TStringValue oldPassword = new TStringValue();
 
-	public TDualStringValue newPassword = new TUserPasswordValue();
+	public TDualStringValue newPassword = new TUserPassword();
 
 	public TChangePasswordByUser() {
 		add(oldPassword);

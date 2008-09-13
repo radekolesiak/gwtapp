@@ -11,7 +11,7 @@ import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.common.client.TextBoxes;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 import com.cuprum.web.widgets.common.client.exception.TextToShortException;
-import com.cuprum.web.widgets.user.password.client.data.TUserPasswordValue;
+import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterLoginValue;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.cuprum.web.widgets.user.register.client.i18n.UserRegisterMessages;
@@ -69,7 +69,7 @@ public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
 			password
 					.setValidator(new StringValidator(
 							messages
-									.msgPasswordTooShort(TUserPasswordValue.MIN_PASSWORD_LENGTH)));
+									.msgPasswordTooShort(TUserPassword.MIN_PASSWORD_LENGTH)));
 		} catch (DualTextFieldInvalidException e) {
 			password.setValidator(new StringValidator(messages
 					.msgPasswordsDifferent()));

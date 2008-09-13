@@ -6,6 +6,7 @@ import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
+import com.cuprum.web.smallapp.mainapp.client.page.RemindPasswordPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
 import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.user.register.client.Constants;
@@ -26,10 +27,10 @@ public class MainApp extends SessionEntryPoint {
 	@Override
 	public final void onSessionModuleLoad() {
 		Util.enableDebug();
-		String confirm = Window.Location
-				.getParameter(Constants.CONFIRM_REQUEST);
-		if (confirm != null) {
+		if (Window.Location.getParameter(Constants.CONFIRM_REQUEST) != null) {
 			showConfirm();
+		} else if (Window.Location.getParameter(Constants.REMIND_REQUEST) != null) {
+			showRemindPassword();
 		} else {
 			showWelcome();
 		}
@@ -55,6 +56,10 @@ public class MainApp extends SessionEntryPoint {
 		ConfirmPage.setAsCurrent();
 	}
 
+	public static void showRemindPassword() {
+		TUserSession.setSession(null);
+		RemindPasswordPage.setAsCurrent();
+	}
 
 	public static void defaultOnSessionNotFound() {
 		InfoMessages messages = GWT.create(InfoMessages.class);
@@ -72,4 +77,3 @@ public class MainApp extends SessionEntryPoint {
 		return sessionNotFoundListener;
 	}
 }
-

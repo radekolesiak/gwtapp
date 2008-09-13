@@ -3,7 +3,7 @@ package com.cuprum.web.widgets.user.password.client.data;
 import com.cuprum.web.common.client.HasRegExp;
 import com.cuprum.web.common.client.data.TDualStringValue;
 
-public class TUserPasswordValue extends TDualStringValue implements HasRegExp {
+public class TUserPassword extends TDualStringValue implements HasRegExp {
 	/**
 	 * UID.
 	 */

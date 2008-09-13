@@ -10,4 +10,8 @@ public interface ChangePasswordByTokenMessages extends Messages {
 	String msgPasswordConfirmLabel();
 
 	String msgSubmit();
+
+	String msgPasswordsDifferent();
+
+	String msgPasswordTooShort(int min);
 }

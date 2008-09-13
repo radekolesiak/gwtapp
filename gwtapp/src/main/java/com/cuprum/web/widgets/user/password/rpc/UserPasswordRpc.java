@@ -14,8 +14,9 @@ import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
-import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetTokenValue;
+import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.register.client.Constants;
 import com.cuprum.web.widgets.user.register.properties.Properties;
@@ -53,8 +54,8 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 		return passwords;
 	}
 
-	public TChangePasswordGetTokenValue ChangePasswordGetToken(
-			TChangePasswordGetTokenValue login) {
+	public TChangePasswordGetToken changePasswordGetToken(
+			TChangePasswordGetToken login) {
 
 		login.clearError();
 
@@ -94,5 +95,23 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 		}
 
 		return login;
+	}
+
+	public TChangePasswordByToken changePasswordByToken(
+			TChangePasswordByToken password) {
+
+		password.clearErrors();
+
+		UserPasswordModel modelPassword = getDAO().getBean(
+				UserPasswordModel.class);
+
+		modelPassword.verifyNewPasswordDual(password.password);
+		modelPassword.verifyRemindPasswordToken(password.uid);
+
+		if (!password.hasErrors()) {
+			modelPassword.updatePasswordByToken(password);
+		}
+
+		return password;
 	}
 }

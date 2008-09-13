@@ -6,14 +6,14 @@ import com.cuprum.web.common.client.exceptions.model.user.UserNotConfirmedExcept
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
-import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetTokenValue;
+import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordGetTokenMessages;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPasswordAsync;
 import com.google.gwt.core.client.GWT;
 
 public class ChangePasswordGetToken extends
-		ProcessFormPanel<TChangePasswordGetTokenValue> {
+		ProcessFormPanel<TChangePasswordGetToken> {
 
 	private final IUserPasswordAsync endPoint = ((IUserPasswordAsync) UserEndPoint
 			.create(GWT.create(IUserPassword.class)));
@@ -29,8 +29,8 @@ public class ChangePasswordGetToken extends
 	}
 
 	@Override
-	public TChangePasswordGetTokenValue getValue() {
-		TChangePasswordGetTokenValue value = new TChangePasswordGetTokenValue();
+	public TChangePasswordGetToken getValue() {
+		TChangePasswordGetToken value = new TChangePasswordGetToken();
 		value.set(login.getValue());
 		return value;
 	}
@@ -47,11 +47,11 @@ public class ChangePasswordGetToken extends
 
 	@Override
 	protected void onSubmit() {
-		endPoint.ChangePasswordGetToken(getValue(), getCallback());
+		endPoint.changePasswordGetToken(getValue(), getCallback());
 	}
 
 	@Override
-	protected void onValidate(TChangePasswordGetTokenValue value) {
+	protected void onValidate(TChangePasswordGetToken value) {
 		try {
 			value.evalError();
 		} catch (UserNotFoundException e) {
@@ -67,7 +67,7 @@ public class ChangePasswordGetToken extends
 	}
 
 	@Override
-	public void setValue(TChangePasswordGetTokenValue value) {
+	public void setValue(TChangePasswordGetToken value) {
 		login.setValue(value.get());
 	}
 }

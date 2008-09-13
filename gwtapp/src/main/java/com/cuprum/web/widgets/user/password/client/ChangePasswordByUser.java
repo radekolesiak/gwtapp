@@ -9,7 +9,7 @@ import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 import com.cuprum.web.widgets.common.client.exception.TextToShortException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
-import com.cuprum.web.widgets.user.password.client.data.TUserPasswordValue;
+import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordByUserMessages;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPasswordAsync;
@@ -61,7 +61,7 @@ public class ChangePasswordByUser extends
 			newPassword
 					.setValidator(new StringValidator(
 							messages
-									.msgNewPasswordTooShort(TUserPasswordValue.MIN_PASSWORD_LENGTH)));
+									.msgNewPasswordTooShort(TUserPassword.MIN_PASSWORD_LENGTH)));
 		} catch (Throwable e) {
 			newPassword.setValidator(new StringValidator(e));
 		}
