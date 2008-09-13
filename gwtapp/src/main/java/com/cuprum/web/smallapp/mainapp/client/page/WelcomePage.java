@@ -7,6 +7,7 @@ import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
+import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
@@ -51,6 +52,7 @@ public class WelcomePage extends VerticalPanel {
 
 		changePasswordGetToken.addSubmitListener(new SubmitListener() {
 			public void onSubmit(Widget sender) {
+				changePasswordGetToken.setValue(new TChangePasswordGetToken());
 				add(new LabelField(
 						"Token to change password has been sent. Receive email and click on link to change password."));
 			}
