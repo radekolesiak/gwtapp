@@ -20,6 +20,8 @@ import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
 import com.google.gwt.core.client.GWT;
 
 public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
+	public final static String CONFIRM_REQUEST = "confirm";
+
 	private final IUserRegisterAsync endPoint = ((IUserRegisterAsync) EndPoint
 			.create(GWT.create(IUserRegister.class)));
 
@@ -66,10 +68,8 @@ public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
 		try {
 			userRegister.getValuePassword().evalError();
 		} catch (TextToShortException e) {
-			password
-					.setValidator(new StringValidator(
-							messages
-									.msgPasswordTooShort(TUserPassword.MIN_PASSWORD_LENGTH)));
+			password.setValidator(new StringValidator(messages
+					.msgPasswordTooShort(TUserPassword.MIN_PASSWORD_LENGTH)));
 		} catch (DualTextFieldInvalidException e) {
 			password.setValidator(new StringValidator(messages
 					.msgPasswordsDifferent()));
@@ -92,7 +92,7 @@ public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
 
 	protected void onAddFields() {
 		setHeading(messages.msgHeading());
-		
+
 		login.setFieldLabel(messages.msgLoginLabel());
 		login.setEmptyText(messages.msgLoginEmptyText());
 

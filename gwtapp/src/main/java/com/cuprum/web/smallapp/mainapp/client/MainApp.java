@@ -9,7 +9,8 @@ import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.RemindPasswordPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
 import com.cuprum.web.templates.simple.client.Simple;
-import com.cuprum.web.widgets.user.register.client.Constants;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
+import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.extjs.gxt.ui.client.widget.Info;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
@@ -27,9 +28,10 @@ public class MainApp extends SessionEntryPoint {
 	@Override
 	public final void onSessionModuleLoad() {
 		Util.enableDebug();
-		if (Window.Location.getParameter(Constants.CONFIRM_REQUEST) != null) {
+		if (Window.Location.getParameter(UserRegister.CONFIRM_REQUEST) != null) {
 			showConfirm();
-		} else if (Window.Location.getParameter(Constants.REMIND_REQUEST) != null) {
+		} else if (Window.Location
+				.getParameter(ChangePasswordByToken.REMIND_REQUEST) != null) {
 			showRemindPassword();
 		} else {
 			showWelcome();

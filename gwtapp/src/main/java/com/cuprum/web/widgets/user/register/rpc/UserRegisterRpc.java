@@ -6,7 +6,7 @@ import com.cuprum.server.common.model.property.PropertyModel;
 import com.cuprum.server.common.model.user.UserRegisterModel;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.rpc.RemoteServiceServletSession;
-import com.cuprum.web.widgets.user.register.client.Constants;
+import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.properties.Properties;
@@ -43,8 +43,8 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 			mail.setMailFrom(noreply);
 			mail.setRecipientTo(userRegister.mail.value);
 			mail.setSubject("Confirm registration.");
-			mail.setContent(confirmUrl + "?" + Constants.CONFIRM_REQUEST + "="
-					+ confirm.getUid());
+			mail.setContent(confirmUrl + "?" + UserRegister.CONFIRM_REQUEST
+					+ "=" + confirm.getUid());
 			mail.start();
 		}
 

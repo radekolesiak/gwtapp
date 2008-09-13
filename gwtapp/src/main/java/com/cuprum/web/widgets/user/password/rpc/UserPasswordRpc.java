@@ -14,11 +14,11 @@ import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
-import com.cuprum.web.widgets.user.register.client.Constants;
 import com.cuprum.web.widgets.user.register.properties.Properties;
 
 public class UserPasswordRpc extends RemoteServiceServletUserSession implements
@@ -87,7 +87,8 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 			mail.setMailFrom(noreply);
 			mail.setRecipientTo(user.getMail());
 			mail.setSubject("Password remind.");
-			mail.setContent(remindUrl + "?" + Constants.REMIND_REQUEST + "="
+			mail.setContent(remindUrl + "?"
+					+ ChangePasswordByToken.REMIND_REQUEST + "="
 					+ remind.getUid());
 			mail.start();
 		} catch (RpcException e) {

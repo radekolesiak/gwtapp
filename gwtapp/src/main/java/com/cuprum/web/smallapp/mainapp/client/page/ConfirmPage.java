@@ -4,7 +4,7 @@ import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.WebCallback;
 import com.cuprum.web.templates.simple.client.Simple;
-import com.cuprum.web.widgets.user.register.client.Constants;
+import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
@@ -21,7 +21,7 @@ public class ConfirmPage extends VerticalPanel {
 		public void onResponseSuccess(Boolean result) {
 			add(new LabelField("Result: " + result));
 			String description = "";
-			if(result) {
+			if (result) {
 				description = "Go to login on main page.";
 			} else {
 				description = "Go to main page.";
@@ -43,7 +43,7 @@ public class ConfirmPage extends VerticalPanel {
 
 	public ConfirmPage() {
 		endPoint.confirm(Window.Location
-				.getParameter(Constants.CONFIRM_REQUEST), callback);
+				.getParameter(UserRegister.CONFIRM_REQUEST), callback);
 	}
 
 	public static void setAsCurrent() {
