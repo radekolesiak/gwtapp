@@ -108,11 +108,16 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		LOGGER.info("RN: "+request.getLocalName());
-		
+
 		setRequest(request);
 		setResponse(response);
 		super.service(request, response);
+	}
+
+	/**
+	 * @return the requestUrl
+	 */
+	public String getRequestUrl() {
+		return request.getRequestURL().toString();
 	}
 }
