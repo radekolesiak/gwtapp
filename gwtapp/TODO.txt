@@ -1,13 +1,13 @@
 - feedback for unrecognised or unimplmeneted exceptions handling on client side
 !- unit tests
 - javadoc
-- check length too long on login and password during user registration
-- reset password
+- check length too long login and password texts 
++ reset password
 - long term session id stored in the js cookie
 + notify on login if user is not confirmed yet
 !- i18n messages on server side
-- i18n for registration
-- remove too old unconfirmed registrations
++ i18n for registration
+- remove too old unconfirmed registrations and password reminders
 + constants parameters in the db
 + disabling submit buttonsduring asynchronous callback connection
 - i18n for messages
