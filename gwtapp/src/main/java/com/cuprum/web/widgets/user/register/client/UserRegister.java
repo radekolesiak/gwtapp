@@ -80,11 +80,14 @@ public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
 		try {
 			userRegister.getValueMail().evalError();
 		} catch (RegExpException e) {
-			mail.setValidator(new StringValidator(e));
+			mail.setValidator(new StringValidator(messages.msgMailFormat()));
 		} catch (DualTextFieldInvalidException e) {
-			mail.setValidator(new StringValidator(e));
+			mail
+					.setValidator(new StringValidator(messages
+							.msgMailsDifferent()));
 		} catch (MailAlreadyExistsException e) {
-			mail.setValidator(new StringValidator(e));
+			mail.setValidator(new StringValidator(messages
+					.msgMailAlreadyExists()));
 		} catch (Throwable e) {
 			mail.setValidator(new StringValidator(e));
 		}
