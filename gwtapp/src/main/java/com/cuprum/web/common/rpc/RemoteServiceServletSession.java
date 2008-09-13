@@ -49,11 +49,6 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		return response;
 	}
 
-	public String getRequestUrl() {
-		LOGGER.info("RN: "+getRequest().getLocalName());
-		return getRequest().getLocalName();
-	}
-	
 	/**
 	 * Reads connection session id from query string.
 	 * 
@@ -114,7 +109,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		getRequestUrl();
+		LOGGER.info("RN: "+request.getLocalName());
 		
 		setRequest(request);
 		setResponse(response);
