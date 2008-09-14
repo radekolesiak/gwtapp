@@ -1,11 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cuprum</groupId>
+	<parent>
+	    <groupId>com.cuprum</groupId>
+	    <artifactId>cuprum-base</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+	</parent>
 	<artifactId>gwtapp</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
 	<name>gwtapp</name>
+<!--
+	<packaging>jar</packaging>
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
@@ -32,6 +36,7 @@
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
+-->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -42,13 +47,13 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>1.5.0-rc1</version>
+			<version>${gwtVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
-			<version>1.5.0-rc1</version>
+			<version>${gwtVersion}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -113,6 +118,15 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
+	        <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
+		<resources>
+		    <resource>
+		        <directory>src/main/java</directory>
+		    </resource>
+		    <resource>
+		        <directory>src/main/resources</directory>
+		    </resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -123,61 +137,8 @@
 				  <target>1.5</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.totsp.gwt</groupId>
-				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
-				<version>2.0-beta15</version>
-				<configuration>
-					<gwtVersion>1.5.0-rc1</gwtVersion>
-					<logLevel>INFO</logLevel>
-					<runTarget>com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html</runTarget>
-					<generatorRootClasses>
-						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
-					</generatorRootClasses>
-					<compileTargets>
-						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
-		  			</compileTargets>
-					<overwriteGeneratedClasses>
-						true
-					</overwriteGeneratedClasses>
-					<!-- use style OBF for prod -->
-					<style>DETAILED</style>
-					<generateGettersAndSetters>
-						true
-					</generateGettersAndSetters>
-					<noServer>false</noServer>
-					<extraJvmArgs>-Xmx256M -Xms64M</extraJvmArgs>
-				</configuration>
-				<executions>
-					<execution>
-					<goals>
-						<goal>setup</goal> 
-						<goal>extractGwt</goal> 
-						<goal>mergewebxml</goal>
-						<goal>compile</goal> 
-						<goal>gwt</goal> 
-					</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<webXml>target/web.xml</webXml>
-				</configuration>
-			</plugin>
-			<plugin>
-		        <groupId>org.mortbay.jetty</groupId>
-		        <artifactId>maven-jetty-plugin</artifactId>
-		        <configuration>
-		                <scanIntervalSeconds>10</scanIntervalSeconds>
-		                <stopKey>foo</stopKey>
-		                <stopPort>9999</stopPort>
-		        </configuration>
-			</plugin>			
 		</plugins>
+		<finalName>gwtapp</finalName>
 	</build>
 	<reporting>
 		<plugins>
