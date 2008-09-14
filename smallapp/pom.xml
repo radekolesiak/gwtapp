@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	    <groupId>com.cuprum</groupId>
+	    <artifactId>cuprum-base</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>smallapp</artifactId>
+	<name>smallapp</name>
+	<packaging>war</packaging>
+<!--
+	<inceptionYear>2008</inceptionYear>
+	<url>http://sourceforge.net/projects/gwtapp/</url>
+	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
+	<licenses>
+		<license>
+			<name>GPL</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>cuprum</id>
+			<name>Radek Olesiak</name>
+			<email>r.olesiak@gmail.com</email>
+		</developer>
+	</developers>
+	<distributionManagement>
+		<site>
+			<id>gwtapp.sourceforge.net</id>
+			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
+		</site>
+	</distributionManagement>
+-->
+	<dependencies>
+	    <dependency>
+		<groupId>com.cuprum</groupId>
+		<artifactId>gwtapp</artifactId>
+	    </dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+				  <source>1.5</source>
+				  <target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<webXml>target/web.xml</webXml>
+				</configuration>
+			</plugin>
+			<!-- All the fantastical settings that GWT needs -->
+			<plugin>
+				<groupId>com.totsp.gwt</groupId>
+				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
+				<version>2.0-beta22</version>
+				<configuration>					
+					<logLevel>INFO</logLevel>
+					<compileTargets>
+						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
+		  			</compileTargets>
+					<runTarget>com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html</runTarget>
+					<!-- use style OBF for prod -->
+					<style>DETAILED</style>					
+					<noServer>false</noServer>
+					<extraJvmArgs>-Xmx512m</extraJvmArgs>
+					<!--  this parameter is VERY important with automatic mode - has to match the version in your declared deps -->
+					<!--  if this is set incorrect, or left out and default does not match (default is 1.5.1 for 2.0-beta22) you will have mysterious errors -->
+					<gwtVersion>${gwtVersion}</gwtVersion>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>							
+							<!-- plugin goals -->
+							<goal>mergewebxml</goal>
+							<goal>compile</goal>
+							<goal>gwt</goal>
+<!--							<goal>test</goal> -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	
+<!--
+			<plugin>
+				<groupId>com.totsp.gwt</groupId>
+				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
+				<version>2.0-beta15</version>
+				<configuration>
+					<gwtVersion>${gwtVersion}</gwtVersion>
+					<logLevel>INFO</logLevel>
+					<runTarget>com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html</runTarget>
+					<generatorRootClasses>
+						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
+					</generatorRootClasses>
+					<compileTargets>
+						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
+		  			</compileTargets>
+					<overwriteGeneratedClasses>
+						true
+					</overwriteGeneratedClasses>
+					<style>DETAILED</style>
+					<generateGettersAndSetters>
+						true
+					</generateGettersAndSetters>
+					<noServer>false</noServer>
+					<extraJvmArgs>-Xmx256M -Xms128M</extraJvmArgs>
+				</configuration>
+				<executions>
+					<execution>
+					<goals>
+						<goal>setup</goal> 
+						<goal>extractGwt</goal>
+						<goal>mergewebxml</goal>
+						<goal>compile</goal> 
+						<goal>gwt</goal> 
+					</goals>
+					</execution>
+				</executions>
+			</plugin>
+-->
+			<plugin>
+		        <groupId>org.mortbay.jetty</groupId>
+		        <artifactId>maven-jetty-plugin</artifactId>
+		        <configuration>
+		                <scanIntervalSeconds>10</scanIntervalSeconds>
+		                <stopKey>foo</stopKey>
+		                <stopPort>9999</stopPort>
+		        </configuration>
+			</plugin>			
+		</plugins>
+	</build>
+</project>

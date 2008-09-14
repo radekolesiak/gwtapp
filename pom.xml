@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cuprum</groupId>
+	<artifactId>cuprum-base</artifactId>
+	<name>cuprum-base</name>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<inceptionYear>2008</inceptionYear>
+	<url>http://sourceforge.net/projects/gwtapp/</url>
+	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
+
+	<properties>
+	    <gwtVersion>1.5.2</gwtVersion>
+	</properties>
+
+	<dependencyManagement>
+	    <dependencies>
+		<dependency>
+		    <groupId>com.cuprum</groupId>
+		    <artifactId>gwtapp</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.cuprum</groupId>
+		    <artifactId>smallapp</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+	    </dependencies>
+	</dependencyManagement>
+
+	<modules>
+	    <module>gwtapp</module>
+	    <module>smallapp</module>
+	</modules>
+	
+	<profiles>
+        <profile>
+            <id>gwt-dev-windows</id>
+            <properties>
+                <platform>windows</platform>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+        </profile>
+        <profile>
+            <id>gwt-dev-mac</id>
+            <properties>
+                <platform>mac</platform>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+        </profile>
+        <profile>
+            <id>gwt-dev-linux</id>
+            <properties>
+                <platform>linux</platform>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <name>Linux</name>
+                </os>
+            </activation>           
+        </profile>
+    </profiles>
+
+</project>

@@ -1,0 +1,11 @@
+.smallapp .weak_invalid_field {
+	font-style:italic; 
+	background-color:yellow;
+}
+.smallapp .invalid_field {
+	font-style:italic; 
+	background-color:red;
+}
+.smallapp .field_help {
+	max-width: 300px;
+}
