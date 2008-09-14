@@ -6,16 +6,18 @@
 	<name>cuprum-base</name>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
-
+	<distributionManagement>
+		<site>
+			<id>gwtapp.sourceforge.net</id>
+			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
+		</site>
+	</distributionManagement>
 	<properties>
 	    <gwtVersion>1.5.2</gwtVersion> 
-<!--	    <gwtVersion>1.5.0-RC1</gwtVersion> -->
 	</properties>
-
 	<dependencyManagement>
 	    <dependencies>
 		<dependency>
@@ -30,12 +32,26 @@
 		</dependency>
 	    </dependencies>
 	</dependencyManagement>
-
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-doap-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 	<modules>
 	    <module>gwtapp</module>
 	    <module>smallapp</module>
 	</modules>
-	
 	<profiles>
         <profile>
             <id>gwt-dev-windows</id>
@@ -74,5 +90,4 @@
             </activation>           
         </profile>
     </profiles>
-
 </project>
