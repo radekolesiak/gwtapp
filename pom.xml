@@ -12,8 +12,8 @@
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
 
 	<properties>
-<!-- 	    	    <gwtVersion>1.5.2</gwtVersion>  -->
-<gwtVersion>1.5.0-rc1</gwtVersion>
+ 	    	    <gwtVersion>1.5.2</gwtVersion>  
+<!--<gwtVersion>1.5.0-rc1</gwtVersion>-->
 	</properties>
 
 	<dependencyManagement>
