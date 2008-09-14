@@ -13,7 +13,7 @@
 
 	<properties>
 	    <gwtVersion>1.5.2</gwtVersion> 
-<!--	    <gwtVersion>1.5.0-rc1</gwtVersion> -->
+<!--	    <gwtVersion>1.5.0-RC1</gwtVersion> -->
 	</properties>
 
 	<dependencyManagement>
@@ -55,7 +55,7 @@
                 <platform>mac</platform>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
                 <os>
                     <family>mac</family>
                 </os>
@@ -67,7 +67,7 @@
                 <platform>linux</platform>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
                 <os>
                     <name>Linux</name>
                 </os>
