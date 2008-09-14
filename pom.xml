@@ -43,7 +43,7 @@
                 <platform>windows</platform>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
                 <os>
                     <family>Windows</family>
                 </os>
@@ -67,7 +67,7 @@
                 <platform>linux</platform>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
                 <os>
                     <name>Linux</name>
                 </os>

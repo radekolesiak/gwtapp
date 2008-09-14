@@ -1,0 +1,18 @@
+<VirtualHost *>
+    DocumentRoot /home/cuprum/www/gwtapp
+    ServerName gwtapp.cuprum.biz
+
+    RewriteEngine On
+    
+    RewriteRule ^/$ http://gwtapp.cuprum.biz:8080/smallapp/com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html [P] 
+    RewriteRule ^/gwtapp/(.*) http://gwtapp.cuprum.biz:8080/smallapp/$1 [P] 
+    RewriteRule ^/(.*) http://gwtapp.cuprum.biz:8080/smallapp/com.cuprum.web.smallapp.mainapp.MainApp/$1 [P] 
+
+    <Directory />
+	AddHandler cgi-script .cgi .pl
+	Options ExecCGI Indexes MultiViews FollowSymLinks
+	AllowOverride All
+	Order allow,deny
+	Allow from all
+    </Directory>
+</VirtualHost>
