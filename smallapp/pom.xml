@@ -9,9 +9,7 @@
 	<artifactId>smallapp</artifactId>
 	<name>smallapp</name>
 	<packaging>war</packaging>
-<!--
 	<inceptionYear>2008</inceptionYear>
-	<url>http://sourceforge.net/projects/gwtapp/</url>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
 	<licenses>
 		<license>
@@ -26,19 +24,11 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
-	<distributionManagement>
-		<site>
-			<id>gwtapp.sourceforge.net</id>
-			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
-		</site>
-	</distributionManagement>
--->
 	<dependencies>
 	    <dependency>
 		<groupId>com.cuprum</groupId>
 		<artifactId>gwtapp</artifactId>
 	    </dependency>
-
         <!--  GWT deps -->
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -67,7 +57,6 @@
             <classifier>${platform}</classifier>
             <scope>provided</scope>
         </dependency>        
-	
 	</dependencies>
 	<repositories>
 		<repository>
@@ -165,46 +154,6 @@
                     </execution>
                 </executions>
             </plugin>			
-
-	
-<!--
-			<plugin>
-				<groupId>com.totsp.gwt</groupId>
-				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
-				<version>2.0-beta15</version>
-				<configuration>
-					<gwtVersion>${gwtVersion}</gwtVersion>
-					<logLevel>INFO</logLevel>
-					<runTarget>com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html</runTarget>
-					<generatorRootClasses>
-						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
-					</generatorRootClasses>
-					<compileTargets>
-						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
-		  			</compileTargets>
-					<overwriteGeneratedClasses>
-						true
-					</overwriteGeneratedClasses>
-					<style>DETAILED</style>
-					<generateGettersAndSetters>
-						true
-					</generateGettersAndSetters>
-					<noServer>false</noServer>
-					<extraJvmArgs>-Xmx256M -Xms128M</extraJvmArgs>
-				</configuration>
-				<executions>
-					<execution>
-					<goals>
-						<goal>setup</goal> 
-						<goal>extractGwt</goal>
-						<goal>mergewebxml</goal>
-						<goal>compile</goal> 
-						<goal>gwt</goal> 
-					</goals>
-					</execution>
-				</executions>
-			</plugin>
--->
 			<plugin>
 		        <groupId>org.mortbay.jetty</groupId>
 		        <artifactId>maven-jetty-plugin</artifactId>

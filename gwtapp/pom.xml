@@ -8,19 +8,12 @@
 	</parent>
 	<artifactId>gwtapp</artifactId>
 	<name>gwtapp</name>
-<!--
-	<packaging>jar</packaging>
-	<inceptionYear>2008</inceptionYear>
-	<url>http://sourceforge.net/projects/gwtapp/</url>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
+	<inceptionYear>2008</inceptionYear>
 	<licenses>
 		<license>
 			<name>This license is general license for this projects.</name>
 			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
-		</license>
-		<license>
-			<name>This license is for web.smallapp.* and server.smallapp.* example packages. It uses e107 CMS styles.</name>
-			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
 		</license>
 	</licenses>
 	<developers>
@@ -30,13 +23,6 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
-	<distributionManagement>
-		<site>
-			<id>gwtapp.sourceforge.net</id>
-			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
-		</site>
-	</distributionManagement>
--->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -90,7 +76,14 @@
 			<groupId>com.extjs</groupId>
 			<artifactId>gxt</artifactId>
 			<version>1.0-RC2</version>
-		</dependency>	
+		</dependency>
+		<!-- 
+		<dependency>		
+			<groupId>com.gwtext</groupId>
+			<artifactId>gwtext</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		 -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -109,6 +102,10 @@
 		<repository>
 			<id>spring-repository</id>
 			<url>http://www.springframework.org</url>
+		</repository>
+		<repository>
+			<id>gwtext-repository</id>
+			<url>http://www.gwt-ext.com/maven2/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -138,23 +135,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-<!--		<finalName>gwtapp</finalName>-->
-	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-doap-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
-	
+	</build>	
 </project>
