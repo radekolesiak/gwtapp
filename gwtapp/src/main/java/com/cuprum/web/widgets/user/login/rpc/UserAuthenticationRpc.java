@@ -41,7 +41,9 @@ public class UserAuthenticationRpc extends RemoteServiceServletSession
 
 	/** {@inheritDoc} */
 	public void logout(TUserSession session) {
-		UserLoginModel userLogin = getBean(UserLoginModel.class);
-		userLogin.logout(session.get());
+		if (session != null && session.get() != null) {
+			UserLoginModel userLogin = getBean(UserLoginModel.class);
+			userLogin.logout(session.get());
+		}
 	}
 }

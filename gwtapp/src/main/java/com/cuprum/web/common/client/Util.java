@@ -2,6 +2,7 @@ package com.cuprum.web.common.client;
 
 import java.util.List;
 
+import com.extjs.gxt.ui.client.widget.Info;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -60,5 +61,6 @@ public class Util {
 		// InfoMessages messages = GWT.create(InfoMessages.class);
 		// Info.display(messages.msgOnFailureTitle(), messages.msgOnFailure(),
 		// new String[] {});
+		Info.display("Error", "Error", new String[] {});
 	}
 }
