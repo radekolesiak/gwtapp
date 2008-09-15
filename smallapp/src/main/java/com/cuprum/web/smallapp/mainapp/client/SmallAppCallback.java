@@ -8,4 +8,7 @@ public abstract class SmallAppCallback<T> extends SessionCallback<T> {
 	public void onSessionNotFound() {
 		MainApp.defaultOnSessionNotFound();
 	}
+	public void onSessionResponseFailure(final Throwable caught) {
+		MainApp.defaultOnSessionNotFound();
+	}
 }

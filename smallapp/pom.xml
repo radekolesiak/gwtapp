@@ -58,26 +58,6 @@
             <scope>provided</scope>
         </dependency>        
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>gwt-maven</id>
-			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
-		</repository>
-		<repository>
-			<id>jboss-maven</id>
-			<url>http://repository.jboss.org/maven2/</url>
-		</repository>
-		<repository>
-			<id>spring-repository</id>
-			<url>http://www.springframework.org</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>gwt-maven</id>
-			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<build>
 		<plugins>
 			<plugin>

@@ -4,11 +4,11 @@ import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.SessionEntryPoint;
 import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.Util;
-import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.RemindPasswordPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
+import com.cuprum.web.smallapp.mainapp.client.page.WorkspacePage;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.extjs.gxt.ui.client.widget.Info;
@@ -25,6 +25,8 @@ import com.google.gwt.user.client.ui.Widget;
  */
 
 public class MainApp extends SessionEntryPoint {
+	static SmallappViewport view = new SmallappViewport();
+
 	@Override
 	public final void onSessionModuleLoad() {
 		Util.enableDebug();
@@ -45,22 +47,28 @@ public class MainApp extends SessionEntryPoint {
 
 	@Override
 	public final void onSessionModuleError(final Throwable caught) {
-		Application.setWidget(new Label(caught.getMessage()));
+		setPage(new Label(caught.getMessage()));
+	}
+
+	public static void setPage(Widget page) {
+		view.setContent(page);
+		Application.setPage(view);
 	}
 
 	public static void showWelcome() {
-		TUserSession.setSession(null);
-		WelcomePage.setAsCurrent();
+		setPage(new WelcomePage());
+	}
+
+	public static void showWorkspace() {
+		setPage(new WorkspacePage());
 	}
 
 	public static void showConfirm() {
-		TUserSession.setSession(null);
-		ConfirmPage.setAsCurrent();
+		setPage(new ConfirmPage());
 	}
 
 	public static void showRemindPassword() {
-		TUserSession.setSession(null);
-		RemindPasswordPage.setAsCurrent();
+		setPage(new RemindPasswordPage());
 	}
 
 	public static void defaultOnSessionNotFound() {

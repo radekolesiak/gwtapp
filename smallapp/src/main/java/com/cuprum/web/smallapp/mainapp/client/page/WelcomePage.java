@@ -1,8 +1,10 @@
 package com.cuprum.web.smallapp.mainapp.client.page;
 
-import com.cuprum.web.common.client.Application;
+import java.util.Date;
+
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.data.TUserSession;
+import com.cuprum.web.smallapp.mainapp.client.MainApp;
 import com.cuprum.web.smallapp.mainapp.client.i18n.MainAppMessages;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
@@ -10,15 +12,15 @@ import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
-import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
-import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WelcomePage extends Viewport {
+public class WelcomePage extends VerticalPanel {
 	final UserRegister userRegister = new UserRegister();
 
 	final UserLogin userLogin = new UserLogin();
@@ -26,8 +28,6 @@ public class WelcomePage extends Viewport {
 	final ChangePasswordGetToken changePasswordGetToken = new ChangePasswordGetToken();
 
 	public WelcomePage() {
-		setLayout(new BorderLayout());
-
 		MainAppMessages messages = GWT.create(MainAppMessages.class);
 
 		Window.setTitle("SmallApp :: " + TConnectionSession.getSession().get()
@@ -36,8 +36,7 @@ public class WelcomePage extends Viewport {
 		userLogin.addSubmitListener(new SubmitListener() {
 			public void onSubmit(Widget sender) {
 				TUserSession.setSession(userLogin.getValue());
-				add(new Label("Session = " + userLogin.getValue()));
-				WorkspacePage.setAsCurrent();
+				MainApp.showWorkspace();
 			}
 		});
 
@@ -58,12 +57,16 @@ public class WelcomePage extends Viewport {
 			}
 		});
 
+		Button activity = new Button("Activity");
+		activity.addClickListener(new ClickListener() {
+			public void onClick(final Widget sender) {
+				add(new LabelField(new Date() + ""));
+			}
+		});
+
 		add(userRegister);
 		add(userLogin);
 		add(changePasswordGetToken);
-	}
-
-	public static void setAsCurrent() {
-		Application.setPage(new WelcomePage());
+		add(activity);
 	}
 }
