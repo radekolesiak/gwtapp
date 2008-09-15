@@ -1,3 +1,5 @@
 <module>
-	<inherits name='com.google.gwt.user.User'/>
+	<inherits name='com.cuprum.web.common.Common'/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name='com.extjs.gxt.ui.GXT'/>
 </module>

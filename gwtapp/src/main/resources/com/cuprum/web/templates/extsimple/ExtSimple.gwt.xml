@@ -1,7 +1,0 @@
-<module>
-	<!-- WidgetSet default theme -->    
-    <stylesheet src="ExtSimpleStyle.css"/>
-	
-	<!-- Inherit the core Web Toolkit stuff.                  -->
-	<inherits name='com.google.gwt.user.User'/>
-</module>
