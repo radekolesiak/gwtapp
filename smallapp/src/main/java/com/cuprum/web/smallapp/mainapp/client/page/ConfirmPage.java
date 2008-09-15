@@ -1,21 +1,21 @@
 package com.cuprum.web.smallapp.mainapp.client.page;
 
+import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.WebCallback;
-import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class ConfirmPage extends VerticalPanel {
+public class ConfirmPage extends Viewport {
 	private final WebCallback<Boolean> callback = new WebCallback<Boolean>() {
 		@Override
 		public void onResponseSuccess(Boolean result) {
@@ -47,6 +47,6 @@ public class ConfirmPage extends VerticalPanel {
 	}
 
 	public static void setAsCurrent() {
-		new Simple().run().setContent(new ConfirmPage());
+		Application.setPage(new ConfirmPage());
 	}
 }

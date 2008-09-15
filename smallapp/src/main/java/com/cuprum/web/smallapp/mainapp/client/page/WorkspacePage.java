@@ -2,6 +2,7 @@ package com.cuprum.web.smallapp.mainapp.client.page;
 
 import java.util.Date;
 
+import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.UserEndPoint;
 import com.cuprum.web.common.client.data.TUserSession;
@@ -9,19 +10,18 @@ import com.cuprum.web.smallapp.mainapp.client.MainApp;
 import com.cuprum.web.smallapp.mainapp.client.SmallAppCallback;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallAppAsync;
-import com.cuprum.web.templates.extsimple.client.ExtSimple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.UserLogout;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByUser;
+import com.extjs.gxt.ui.client.widget.Viewport;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WorkspacePage extends VerticalPanel {
+public class WorkspacePage extends Viewport {
 	final ChangePasswordByUser changePasswordByUser = new ChangePasswordByUser();
 
 	public WorkspacePage() {
@@ -85,6 +85,6 @@ public class WorkspacePage extends VerticalPanel {
 	}
 
 	public static void setAsCurrent() {
-		new ExtSimple().run().setContent(new WorkspacePage());
+		Application.setPage(new WorkspacePage());
 	}
 }

@@ -1,5 +1,6 @@
 package com.cuprum.web.smallapp.mainapp.client;
 
+import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.SessionEntryPoint;
 import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.Util;
@@ -8,7 +9,6 @@ import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.RemindPasswordPage;
 import com.cuprum.web.smallapp.mainapp.client.page.WelcomePage;
-import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.extjs.gxt.ui.client.widget.Info;
@@ -45,7 +45,7 @@ public class MainApp extends SessionEntryPoint {
 
 	@Override
 	public final void onSessionModuleError(final Throwable caught) {
-		new Simple().run().setContent(new Label(caught.getMessage()));
+		Application.setWidget(new Label(caught.getMessage()));
 	}
 
 	public static void showWelcome() {

@@ -1,24 +1,24 @@
 package com.cuprum.web.smallapp.mainapp.client.page;
 
+import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.smallapp.mainapp.client.i18n.MainAppMessages;
-import com.cuprum.web.templates.simple.client.Simple;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.user.login.client.UserLogin;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
+import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
+import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WelcomePage extends VerticalPanel {
+public class WelcomePage extends Viewport {
 	final UserRegister userRegister = new UserRegister();
 
 	final UserLogin userLogin = new UserLogin();
@@ -26,7 +26,7 @@ public class WelcomePage extends VerticalPanel {
 	final ChangePasswordGetToken changePasswordGetToken = new ChangePasswordGetToken();
 
 	public WelcomePage() {
-		RootPanel.get().addStyleName("smallapp");
+		setLayout(new BorderLayout());
 
 		MainAppMessages messages = GWT.create(MainAppMessages.class);
 
@@ -64,6 +64,6 @@ public class WelcomePage extends VerticalPanel {
 	}
 
 	public static void setAsCurrent() {
-		new Simple().run().setContent(new WelcomePage());
+		Application.setPage(new WelcomePage());
 	}
 }

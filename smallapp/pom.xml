@@ -26,8 +26,8 @@
 	</developers>
 	<dependencies>
 	    <dependency>
-		<groupId>com.cuprum</groupId>
-		<artifactId>gwtapp</artifactId>
+			<groupId>com.cuprum</groupId>
+			<artifactId>gwtapp</artifactId>
 	    </dependency>
         <!--  GWT deps -->
         <dependency>
@@ -165,4 +165,38 @@
 			</plugin>			
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>
+					maven-project-info-reports-plugin
+				</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependencies</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<!--  the Maven Surefire Report plugin has a bug where it re-runs the tests, 
+				this is needed to avoid that  - http://jira.codehaus.org/browse/SUREFIRE-257 -->
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>				
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>	
 </project>
