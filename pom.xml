@@ -15,6 +15,30 @@
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gwt-maven-plugins</id>
+			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>	
+		<repository>
+			<id>gwt-maven</id>
+			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+		</repository>		
+		<repository>
+			<id>jboss-maven</id>
+			<url>http://repository.jboss.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>spring-repository</id>
+			<url>http://www.springframework.org</url>
+		</repository>
+		<repository>
+			<id>gwtext-repository</id>
+			<url>http://www.gwt-ext.com/maven2/</url>
+		</repository>
+	</repositories>	
 	<properties>
 	    <gwtVersion>1.5.2</gwtVersion> 
 	</properties>
@@ -32,22 +56,6 @@
 		</dependency>
 	    </dependencies>
 	</dependencyManagement>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-doap-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
 	<modules>
 	    <module>gwtapp</module>
 	    <module>smallapp</module>
@@ -59,7 +67,7 @@
                 <platform>windows</platform>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
                 <os>
                     <family>Windows</family>
                 </os>
@@ -83,7 +91,7 @@
                 <platform>linux</platform>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
                 <os>
                     <name>Linux</name>
                 </os>
