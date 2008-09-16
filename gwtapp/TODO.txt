@@ -1,3 +1,5 @@
++ i18n messages overriding
++ attributes for the process fields
 - feedback for unrecognised or unimplmeneted exceptions handling on client side
 !- unit tests
 - javadoc

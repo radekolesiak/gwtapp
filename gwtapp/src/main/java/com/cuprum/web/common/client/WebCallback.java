@@ -21,9 +21,25 @@ public abstract class WebCallback<T> implements AsyncCallback<T> {
 	public abstract void onResponseSuccess(final T result);
 
 	public void onResponseFailure(Throwable caught) {
-		Util.showOnFailureCallbackDefault();
+		IFailureCallbackHandler handler = getIFailureCallbackHandler();
+		if (handler == null) {
+			Util.showOnFailureCallbackDefault();
+		} else {
+			handler.onResponseFailure(caught);
+		}
 	}
 
 	public void onAfter() {
+	}
+
+	private static IFailureCallbackHandler handler = null;
+
+	public static void setIFailureCallbackHandler(
+			final IFailureCallbackHandler handler) {
+		WebCallback.handler = handler;
+	}
+
+	public static IFailureCallbackHandler getIFailureCallbackHandler() {
+		return handler;
 	}
 }
