@@ -6,15 +6,17 @@
 	    <artifactId>cuprum-base</artifactId>
 	    <version>1.0-SNAPSHOT</version>
 	</parent>
+	<groupId>com.cuprum.smallapp</groupId>
 	<artifactId>smallapp</artifactId>
+	<version>1.0-SNAPSHOT</version>
 	<name>smallapp</name>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<inceptionYear>2008</inceptionYear>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
+	<description>Sample Proxy App</description>
 	<licenses>
 		<license>
-			<name>GPL</name>
-			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+			<name>LGPL</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
 		</license>
 	</licenses>
 	<developers>
@@ -24,159 +26,23 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
-	<dependencies>
-	    <dependency>
-			<groupId>com.cuprum</groupId>
-			<artifactId>gwtapp</artifactId>
-	    </dependency>
-        <!--  GWT deps -->
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-            <version>${gwtVersion}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <version>${gwtVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <version>${gwtVersion}</version>
-            <classifier>${platform}-libs</classifier>
-            <type>zip</type>
-            <scope>provided</scope>
-        </dependency>       
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <version>${gwtVersion}</version>
-            <classifier>${platform}</classifier>
-            <scope>provided</scope>
-        </dependency>        
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0</version>
-				<configuration>
-				  <source>1.5</source>
-				  <target>1.5</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<webXml>target/web.xml</webXml>
-				</configuration>
-			</plugin>
-			<!-- All the fantastical settings that GWT needs -->
-			<plugin>
-				<groupId>com.totsp.gwt</groupId>
-				<artifactId>maven-googlewebtoolkit2-plugin</artifactId>
-				<version>2.0-beta22</version>
-				<configuration>					
-					<logLevel>INFO</logLevel>
-					<compileTargets>
-						<value>com.cuprum.web.smallapp.mainapp.MainApp</value>
-		  			</compileTargets>
-					<runTarget>com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html</runTarget>
-					<!-- use style OBF for prod -->
-					<style>DETAILED</style>					
-					<noServer>false</noServer>
-					<extraJvmArgs>-Xmx512m</extraJvmArgs>
-					<!--  this parameter is VERY important with automatic mode - has to match the version in your declared deps -->
-					<!--  if this is set incorrect, or left out and default does not match (default is 1.5.1 for 2.0-beta22) you will have mysterious errors -->
-					<gwtVersion>${gwtVersion}</gwtVersion>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>							
-							<!-- plugin goals -->
-							<goal>mergewebxml</goal>
-							<goal>compile</goal>
-							<goal>gwt</goal>
-<!--							<goal>test</goal> -->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.google.gwt</groupId>
-                                    <artifactId>gwt-dev</artifactId>
-                                    <version>${gwtVersion}</version>
-                                    <classifier>${platform}-libs</classifier>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>			
-			<plugin>
-		        <groupId>org.mortbay.jetty</groupId>
-		        <artifactId>maven-jetty-plugin</artifactId>
-		        <configuration>
-		                <scanIntervalSeconds>10</scanIntervalSeconds>
-		                <stopKey>foo</stopKey>
-		                <stopPort>9999</stopPort>
-		        </configuration>
-			</plugin>			
-		</plugins>
-	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependencies</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<!--  the Maven Surefire Report plugin has a bug where it re-runs the tests, 
-				this is needed to avoid that  - http://jira.codehaus.org/browse/SUREFIRE-257 -->
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>				
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>	
+	<dependencyManagement>
+	    <dependencies>
+		<dependency>
+		    <groupId>com.cuprum.smallapp</groupId>
+		    <artifactId>rpc</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.cuprum.smallapp</groupId>
+		    <artifactId>srv</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+	    </dependencies>
+	</dependencyManagement>
+	<modules>
+   	    <module>rpc</module>
+	    <module>srv</module>
+	    <module>app</module>
+	</modules>
 </project>

@@ -60,6 +60,7 @@
 	    <module>gwtapp</module>
 	    <module>smallapp</module>
 	</modules>
+	
 	<profiles>
         <profile>
             <id>gwt-dev-windows</id>
