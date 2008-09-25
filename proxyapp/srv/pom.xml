@@ -15,6 +15,11 @@
             <groupId>com.cuprum.smallapp</groupId>
             <artifactId>smallapp-rpc</artifactId>
         </dependency>        
+		<dependency>
+			<groupId>apache-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+		</dependency>
          <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>

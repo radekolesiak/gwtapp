@@ -7,6 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 
@@ -14,6 +18,7 @@ import com.cuprum.server.common.model.Model;
 import com.cuprum.server.common.utils.DAO;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.web.common.client.data.TConnectionSession;
+import com.google.gwt.user.server.rpc.RPCServletUtils;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -29,25 +34,25 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 
 	private Logger LOGGER = Logger.getLogger(RemoteServiceServletSession.class);
 
-	private HttpServletRequest request = null;
+//	private HttpServletRequest request = null;
 
-	private HttpServletResponse response = null;
+//	private HttpServletResponse response = null;
 
-	private void setRequest(final HttpServletRequest request) {
-		this.request = request;
-	}
+//	protected void setRequest(final HttpServletRequest request) {
+		//this.request = request;
+	//}
 
-	public HttpServletRequest getRequest() {
-		return request;
-	}
+	//public HttpServletRequest getRequest() {
+		//return request;
+	//}
 
-	private void setResponse(final HttpServletResponse response) {
-		this.response = response;
-	}
+	//protected void setResponse(final HttpServletResponse response) {
+		//this.response = response;
+//	}
 
-	public HttpServletResponse getResponse() {
-		return response;
-	}
+	//public HttpServletResponse getResponse() {
+		//return response;
+	//}
 
 	/**
 	 * Reads connection session id from query string.
@@ -57,8 +62,8 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 	public final String getConnectionSession() {
 		String session = null;
 
-		if (getRequest() != null) {
-			session = getRequest().getParameter(
+		if (getThreadLocalRequest() != null) {
+			session = getThreadLocalRequest().getParameter(
 					TConnectionSession.CONNECTION_SESSION_REQUEST);
 		}
 
@@ -106,18 +111,53 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		}
 	}
 
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		setRequest(request);
-		setResponse(response);
-		super.service(request, response);
-	}
-
 	/**
 	 * @return the requestUrl
 	 */
 	public String getRequestUrl() {
-		return request.getRequestURL().toString();
+		return getThreadLocalRequest().getRequestURL().toString();
+	}
+
+
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO: use spring framework to inject the below code
+		//proxy(request, response);
+	}
+	
+	protected void proxy(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println(request.getMethod());
+		System.out.println(request.getQueryString());
+
+		try {
+			HttpClient client = new HttpClient();
+			PostMethod method = new PostMethod(
+					"http://gwtapp.cuprum.biz/com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication");
+			method.setQueryString(request.getQueryString());
+			method.setRequestEntity(new StringRequestEntity(
+					readContent(request), "text/x-gwt-rpc", "utf-8"));
+			if (client.executeMethod(method) == HttpStatus.SC_OK) {
+				System.out.println("Succes");
+				writeResponse(request, response, method
+						.getResponseBodyAsString());
+			} else {
+				System.out.println("Fail");
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+
+	@SuppressWarnings("unused")
+	private void writeResponse(HttpServletRequest request,
+			HttpServletResponse response, String responsePayload)
+			throws IOException {
+		boolean gzipEncode = RPCServletUtils.acceptsGzipEncoding(request)
+				&& shouldCompressResponse(request, response, responsePayload);
+
+		RPCServletUtils.writeResponse(getServletContext(), response,
+				responsePayload, gzipEncode);
 	}
 }

@@ -9,7 +9,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/smallapp"/>
 		<property name="username" value="smallapp"/>
-		<property name="password" value="12345678"/>
+		<property name="password" value="12345678-"/>
 		<property name="initialSize" value="5"/>
 		<property name="maxActive" value="4"/>
 	</bean>

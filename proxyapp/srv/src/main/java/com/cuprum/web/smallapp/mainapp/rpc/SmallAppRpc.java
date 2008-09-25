@@ -1,19 +1,13 @@
 package com.cuprum.web.smallapp.mainapp.rpc;
 
-import java.util.Date;
 
-import com.cuprum.server.common.entities.UserSession;
-import com.cuprum.server.common.model.usersession.UserSessionModel;
-import com.cuprum.web.common.client.Util;
-import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
-import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
-import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
+// TODO Remove this class for proxy and connector to the database
 
-public class SmallAppRpc extends RemoteServiceServletUserSession implements
+public class SmallAppRpc {}
+/*
+extends RemoteServiceServletUserSession implements
 		ISmallApp {
-	/**
-	 * UID
-	 */
+
 	private static final long serialVersionUID = -5462277142458843488L;
 
 	public Date getLastSessionActivity() throws SessionNotFoundException {
@@ -34,3 +28,4 @@ public class SmallAppRpc extends RemoteServiceServletUserSession implements
 		}
 	}
 }
+*/
