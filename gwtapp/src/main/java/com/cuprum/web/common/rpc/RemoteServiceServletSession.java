@@ -122,7 +122,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO: use spring framework to inject the below code
-		//proxy(request, response);
+		proxy(request, response);
 	}
 	
 	protected void proxy(HttpServletRequest request,
@@ -130,14 +130,17 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 
 		System.out.println(request.getMethod());
 		System.out.println(request.getQueryString());
-
+		System.out.println(request.getCharacterEncoding());
+		System.out.println(request.getContentType());
+		
 		try {
 			HttpClient client = new HttpClient();
 			PostMethod method = new PostMethod(
 					"http://gwtapp.cuprum.biz/com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication");
 			method.setQueryString(request.getQueryString());
+			
 			method.setRequestEntity(new StringRequestEntity(
-					readContent(request), "text/x-gwt-rpc", "utf-8"));
+					readContent(request), "text/x-gwt-rpc", request.getCharacterEncoding()));
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
 				System.out.println("Succes");
 				writeResponse(request, response, method

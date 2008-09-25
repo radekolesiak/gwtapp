@@ -3,5 +3,5 @@
 	<!--	Instead of this servlet definition -->
 <!--	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp' class='com.cuprum.web.smallapp.mainapp.rpc.SmallAppRpc' /> -->
 	<!--	Use this servlet definition for the proxy request -->
-	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp' class='com.cuprum.web.common.rpc.RemoteServiceServletProxy' />
+	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp' class='com.cuprum.web.common.rpc.RemoteServiceServletUserSession' />
 </module>
