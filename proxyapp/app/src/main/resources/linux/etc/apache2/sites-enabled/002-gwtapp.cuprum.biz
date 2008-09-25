@@ -1,0 +1,11 @@
+<VirtualHost *>
+    DocumentRoot /var/www/
+
+    ServerName gwtapp.cuprum.biz
+
+    RewriteEngine On
+    
+    RewriteRule ^/$ http://gwtapp.cuprum.biz:8080/smallapp/com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html [P] 
+    RewriteRule ^/gwtapp/(.*) http://gwtapp.cuprum.biz:8080/smallapp/$1 [P] 
+    RewriteRule ^/(.*) http://gwtapp.cuprum.biz:8080/smallapp/com.cuprum.web.smallapp.mainapp.MainApp/$1 [P] 
+</VirtualHost>

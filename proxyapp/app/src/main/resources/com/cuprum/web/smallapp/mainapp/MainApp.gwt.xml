@@ -1,0 +1,15 @@
+<module>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.cuprum.web.widgets.common.Common'/>
+	
+	<!-- depedencies -->	
+	<inherits name='com.cuprum.web.widgets.user.login.UserLogin'/>
+	<inherits name='com.cuprum.web.widgets.user.register.UserRegister'/>
+	<inherits name='com.cuprum.web.widgets.user.password.UserChangePassword'/>
+	
+	<!-- servlets -->	
+	<inherits name="com.cuprum.web.smallapp.mainapp.rpc.SmallApp" />
+	
+	<!-- Specify the app entry point class. -->
+	<entry-point class='com.cuprum.web.smallapp.mainapp.client.MainApp'/>
+</module>
