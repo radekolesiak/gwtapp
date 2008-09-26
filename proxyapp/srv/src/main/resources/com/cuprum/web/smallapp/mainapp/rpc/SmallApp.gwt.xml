@@ -1,7 +1,5 @@
 <module>
 	<inherits name='com.google.gwt.user.User' />
-	<!--	Instead of this servlet definition -->
-<!--	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp' class='com.cuprum.web.smallapp.mainapp.rpc.SmallAppRpc' /> -->
-	<!--	Use this servlet definition for the proxy request -->
+	<!-- Proxy is used and there is no needed implementation of ISmallApp interface -->
 	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp' class='com.cuprum.web.common.rpc.RemoteServiceServletUserSession' />
 </module>
