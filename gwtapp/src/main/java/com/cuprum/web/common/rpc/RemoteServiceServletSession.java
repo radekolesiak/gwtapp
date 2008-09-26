@@ -34,26 +34,6 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 
 	private Logger LOGGER = Logger.getLogger(RemoteServiceServletSession.class);
 
-//	private HttpServletRequest request = null;
-
-//	private HttpServletResponse response = null;
-
-//	protected void setRequest(final HttpServletRequest request) {
-		//this.request = request;
-	//}
-
-	//public HttpServletRequest getRequest() {
-		//return request;
-	//}
-
-	//protected void setResponse(final HttpServletResponse response) {
-		//this.response = response;
-//	}
-
-	//public HttpServletResponse getResponse() {
-		//return response;
-	//}
-
 	/**
 	 * Reads connection session id from query string.
 	 * 
@@ -118,38 +98,47 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		return getThreadLocalRequest().getRequestURL().toString();
 	}
 
-
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO: use spring framework to inject the below code
 		proxy(request, response);
 	}
-	
+
 	protected void proxy(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println(request.getMethod());
-		System.out.println(request.getQueryString());
-		System.out.println(request.getCharacterEncoding());
-		System.out.println(request.getContentType());
-		
+		LOGGER.debug("1: " + request.getMethod());
+		LOGGER.debug("2: " + request.getQueryString());
+		LOGGER.debug("3: " + request.getCharacterEncoding());
+		LOGGER.debug("4: " + request.getContentType());
+		LOGGER.debug("5: " + request.getContextPath());
+		LOGGER.debug("6: " + request.getRequestURL());
+		LOGGER.debug("7: " + request.getMethod());
+		LOGGER.debug("8: " + request.getPathTranslated());
+
 		try {
+			String path = request.getRequestURL().toString();
+			if (path.lastIndexOf("/") >= 0) {
+				path = path.substring(path.lastIndexOf("/") + 1);
+			}
+			LOGGER.debug("9: " + path);
 			HttpClient client = new HttpClient();
-			PostMethod method = new PostMethod(
-					"http://gwtapp.cuprum.biz/com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication");
+			PostMethod method = new PostMethod("http://gwtapp.cuprum.biz/"
+					+ path);
 			method.setQueryString(request.getQueryString());
-			
+
 			method.setRequestEntity(new StringRequestEntity(
-					readContent(request), "text/x-gwt-rpc", request.getCharacterEncoding()));
+					readContent(request), request.getContentType(), request
+							.getCharacterEncoding()));
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
-				System.out.println("Succes");
+				LOGGER.debug("Succes");
 				writeResponse(request, response, method
 						.getResponseBodyAsString());
 			} else {
-				System.out.println("Fail");
+				LOGGER.error("Fail");
 			}
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 
