@@ -104,6 +104,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		proxy(request, response);
 	}
 
+	// TODO: proxy requests errors
 	protected void proxy(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
