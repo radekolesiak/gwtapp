@@ -1,8 +1,11 @@
 package com.cuprum.web.common.client.data;
 
-import com.cuprum.web.common.client.Constants;
+import java.io.Serializable;
 
-public class TConnectionSession extends TSession {
+import com.cuprum.web.common.client.Constants;
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class TConnectionSession extends TSession implements Serializable, IsSerializable {
 	/**
 	 * UID.
 	 */
