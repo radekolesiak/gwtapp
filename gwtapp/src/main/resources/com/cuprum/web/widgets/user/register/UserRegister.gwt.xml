@@ -2,5 +2,5 @@
 	<!-- Inherit the core Web Toolkit stuff. -->
 	<inherits name='com.cuprum.web.widgets.common.Common'/>
 	<!-- Servlet -->
-	<servlet path='/com.cuprum.web.widgets.user.register.client.stub.IUserRegister.rpc' class='com.cuprum.web.widgets.user.register.rpc.UserRegisterRpc' />
+	<inherits name="com.cuprum.web.widgets.user.register.rpc.UserRegisterRpc" />
 </module>

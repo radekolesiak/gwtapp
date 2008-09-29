@@ -1,5 +1,5 @@
 <module>
 	<inherits name='com.google.gwt.user.User' />
-	<!-- Proxy servlet handler -->
+	<!-- Proxy servlet handler. We don't have and we don't need the servlet definition in .java. -->
 	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp.rpc' class='com.cuprum.web.common.rpc.RemoteServiceServletProxy' />
 </module>
