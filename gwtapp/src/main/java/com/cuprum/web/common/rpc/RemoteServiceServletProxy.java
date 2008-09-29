@@ -3,6 +3,7 @@ package com.cuprum.web.common.rpc;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,25 +14,34 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
 
 import com.google.gwt.user.server.rpc.RPCServletUtils;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class RemoteServiceServletProxy extends RemoteServiceServlet {
+public class RemoteServiceServletProxy extends HttpServlet {
 	/**
 	 * UID.
 	 */
 	private static final long serialVersionUID = 7609350964035145107L;
-	
+
 	Logger LOGGER = Logger.getLogger(RemoteServiceServletProxy.class);
+
+	public RemoteServiceServletProxy() {
+		LOGGER.debug("I am here !!!!");
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		proxy(request, response);
+	}
 
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO: use spring framework to inject the below code
 		proxy(request, response);
 	}
 
 	// TODO: proxy requests errors
-	protected void proxy(HttpServletRequest request,
+	public void proxy(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
+		LOGGER.debug("-------PROXY----------");
 
 		LOGGER.debug("1: " + request.getMethod());
 		LOGGER.debug("2: " + request.getQueryString());
@@ -68,7 +78,17 @@ public class RemoteServiceServletProxy extends RemoteServiceServlet {
 		}
 	}
 
-	@SuppressWarnings("unused")
+	protected boolean shouldCompressResponse(HttpServletRequest request,
+			HttpServletResponse response, String responsePayload) {
+		return RPCServletUtils
+				.exceedsUncompressedContentLengthLimit(responsePayload);
+	}
+
+	protected String readContent(HttpServletRequest request)
+			throws ServletException, IOException {
+		return RPCServletUtils.readContentAsUtf8(request, true);
+	}
+
 	protected void writeResponse(HttpServletRequest request,
 			HttpServletResponse response, String responsePayload)
 			throws IOException {

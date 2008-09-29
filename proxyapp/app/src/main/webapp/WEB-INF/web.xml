@@ -2,11 +2,19 @@
 <web-app>
 	<display-name>GWT</display-name>
 	<filter>
-		<filter-name>2WayFilter</filter-name>
+		<filter-name>GZIP</filter-name>
 		<filter-class>com.cuprum.filters.GZIPFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>2WayFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
+		<filter-name>GZIP</filter-name>
+		<url-pattern>*.rpc</url-pattern>
+	</filter-mapping>
+	<filter>
+     <filter-name>Proxy</filter-name>
+     <filter-class>com.cuprum.filters.ProxyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+     <filter-name>Proxy</filter-name>
+     <url-pattern>*.rpc</url-pattern>
 	</filter-mapping>
 </web-app>

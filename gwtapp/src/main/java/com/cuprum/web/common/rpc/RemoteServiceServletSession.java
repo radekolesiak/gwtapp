@@ -1,6 +1,11 @@
 package com.cuprum.web.common.rpc;
 
+import java.io.IOException;
 import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -19,6 +24,10 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  */
 
 public class RemoteServiceServletSession extends RemoteServiceServlet {
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.debug("---------------SERVICE-------------");
+	}
 	/** UID. */
 	private static final long serialVersionUID = -4539898520470145102L;
 
