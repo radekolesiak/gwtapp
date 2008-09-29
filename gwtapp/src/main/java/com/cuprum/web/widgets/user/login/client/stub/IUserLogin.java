@@ -10,7 +10,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
  * @author Radek Olesiak
  * 
  */
-public interface IUserAuthentication extends RemoteService {
+public interface IUserLogin extends RemoteService {
 	/**
 	 * @param login
 	 *            Login of user.
@@ -21,6 +21,6 @@ public interface IUserAuthentication extends RemoteService {
 	TUserSession login(String login, String password);
 
 	// UserDetails getCurrentUser();
-	/** Logouts of user and close session associated with its. */
+	/** Logouts the user and closes session associated with user. */
 	void logout(TUserSession session) throws SessionNotFoundException;
 }

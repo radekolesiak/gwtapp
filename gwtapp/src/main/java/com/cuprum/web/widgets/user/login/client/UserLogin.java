@@ -9,8 +9,8 @@ import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.user.login.client.i18n.UserLoginMessages;
-import com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication;
-import com.cuprum.web.widgets.user.login.client.stub.IUserAuthenticationAsync;
+import com.cuprum.web.widgets.user.login.client.stub.IUserLogin;
+import com.cuprum.web.widgets.user.login.client.stub.IUserLoginAsync;
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -27,8 +27,8 @@ public class UserLogin extends ProcessFormPanel<TUserSession> {
 
 	private final TextBox password = new TextBox();
 
-	private final IUserAuthenticationAsync endPoint = ((IUserAuthenticationAsync) EndPoint
-			.create(GWT.create(IUserAuthentication.class)));
+	private final IUserLoginAsync endPoint = ((IUserLoginAsync) EndPoint
+			.create(GWT.create(IUserLogin.class)));
 
 	@Override
 	public String getSubmitMessage() {

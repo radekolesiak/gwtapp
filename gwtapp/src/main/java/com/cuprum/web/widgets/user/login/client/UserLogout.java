@@ -4,8 +4,8 @@ import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.widgets.user.login.client.i18n.UserLogoutMessages;
-import com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication;
-import com.cuprum.web.widgets.user.login.client.stub.IUserAuthenticationAsync;
+import com.cuprum.web.widgets.user.login.client.stub.IUserLogin;
+import com.cuprum.web.widgets.user.login.client.stub.IUserLoginAsync;
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -15,8 +15,8 @@ import com.google.gwt.core.client.GWT;
  * 
  */
 public class UserLogout extends ProcessFormPanel<Object> {
-	private final IUserAuthenticationAsync endPoint = (IUserAuthenticationAsync) EndPoint
-			.create(GWT.create(IUserAuthentication.class));
+	private final IUserLoginAsync endPoint = (IUserLoginAsync) EndPoint
+			.create(GWT.create(IUserLogin.class));
 
 	private final UserLogoutMessages messages = GWT
 			.create(UserLogoutMessages.class);

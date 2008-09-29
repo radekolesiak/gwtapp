@@ -9,7 +9,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * @author Radek Olesiak
  * 
  */
-public interface IUserAuthenticationAsync {
+public interface IUserLoginAsync {
 	/**
 	 * @param login
 	 *            Login of user.

@@ -8,14 +8,14 @@ import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordExcepti
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 import com.cuprum.web.common.rpc.RemoteServiceServletSession;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
-import com.cuprum.web.widgets.user.login.client.stub.IUserAuthentication;
+import com.cuprum.web.widgets.user.login.client.stub.IUserLogin;
 
 /** {@inheritDoc} */
-public class UserAuthenticationRpc extends RemoteServiceServletSession
-		implements IUserAuthentication {
+public class UserLoginRpc extends RemoteServiceServletSession
+		implements IUserLogin {
 
 	/** Logger for this class. */
-	static final Logger LOGGER = Logger.getLogger(UserAuthenticationRpc.class);
+	static final Logger LOGGER = Logger.getLogger(UserLoginRpc.class);
 
 	/** UID. */
 	private static final long serialVersionUID = 1215885952887020928L;
