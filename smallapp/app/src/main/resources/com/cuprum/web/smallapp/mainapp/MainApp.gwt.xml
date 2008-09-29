@@ -5,7 +5,7 @@
 	<!-- depedencies -->	
 	<inherits name='com.cuprum.web.widgets.user.login.UserLogin'/>
 	<inherits name='com.cuprum.web.widgets.user.register.UserRegister'/>
-	<inherits name='com.cuprum.web.widgets.user.password.UserChangePassword'/>
+	<inherits name='com.cuprum.web.widgets.user.password.UserPassword'/>
 	
 	<!-- servlets -->	
 	<inherits name="com.cuprum.web.smallapp.mainapp.rpc.SmallApp" />

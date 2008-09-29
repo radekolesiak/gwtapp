@@ -57,6 +57,8 @@ public class EndPoint {
 
 	}
 
+	public final static String EXTENSION = "rpc";
+
 	/**
 	 * Setups end point for default service by end point owner class.
 	 * 
@@ -72,7 +74,8 @@ public class EndPoint {
 			try {
 				name = name.substring(0, name.indexOf("_Proxy"));
 			} catch (Exception e) {
-				name = name + "";
+			} finally {
+				name += "." + EXTENSION;
 			}
 			return get(endpoint, name);
 		} catch (Exception e) {
