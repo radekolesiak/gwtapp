@@ -7,13 +7,13 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>srv</artifactId>
-	<name>srv</name>
+	<artifactId>smallapp-srv</artifactId>
+	<name>smallapp-srv</name>
 	
 	<dependencies>
         <dependency>
             <groupId>com.cuprum.smallapp</groupId>
-            <artifactId>rpc</artifactId>
+            <artifactId>smallapp-rpc</artifactId>
         </dependency>        
          <dependency>
             <groupId>com.google.gwt</groupId>

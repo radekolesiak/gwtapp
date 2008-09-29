@@ -30,12 +30,12 @@
 	    <dependencies>
 		<dependency>
 		    <groupId>com.cuprum.smallapp</groupId>
-		    <artifactId>rpc</artifactId>
+		    <artifactId>smallapp-rpc</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.cuprum.smallapp</groupId>
-		    <artifactId>srv</artifactId>
+		    <artifactId>smallapp-srv</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
 	    </dependencies>

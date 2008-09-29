@@ -6,8 +6,8 @@
 	    <artifactId>smallapp</artifactId>
 	    <version>1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>app</artifactId>
-	<name>app</name>
+	<artifactId>smallapp-app</artifactId>
+	<name>smallapp-app</name>
 	<packaging>war</packaging>
 	<inceptionYear>2008</inceptionYear>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
@@ -27,7 +27,7 @@
 	<dependencies>
 	    <dependency>
 			<groupId>com.cuprum.smallapp</groupId>
-			<artifactId>srv</artifactId>
+			<artifactId>smallapp-srv</artifactId>
 	    </dependency>
         <!--  GWT deps -->
         <dependency>
