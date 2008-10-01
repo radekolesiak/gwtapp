@@ -26,8 +26,8 @@
 	</developers>
 	<dependencies>
 	    <dependency>
-			<groupId>com.cuprum.proxyapp</groupId>
-			<artifactId>proxyapp-srv</artifactId>
+			<groupId>com.cuprum.smallapp</groupId>
+			<artifactId>smallapp-rpc</artifactId>
 	    </dependency>
         <!--  GWT deps -->
         <dependency>

@@ -33,16 +33,18 @@
 		    <artifactId>smallapp-rpc</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
+		<!--
 		<dependency>
 		    <groupId>com.cuprum.proxyapp</groupId>
 		    <artifactId>proxyapp-srv</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
+		-->
 	    </dependencies>
 	</dependencyManagement>
 	<modules>
 <!--   	    <module>rpc</module>-->
-	    <module>srv</module>
+<!--	    <module>srv</module>-->
 	    <module>app</module>
 	</modules>
 </project>
