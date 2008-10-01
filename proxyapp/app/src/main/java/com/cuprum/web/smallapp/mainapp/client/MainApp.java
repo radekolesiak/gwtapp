@@ -18,8 +18,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>. GWT modules
- * tutorial: http://developerlife.com/tutorials/?p=229
+ * Entry point classes define <code>onModuleLoad()</code>. GWT modules tutorial:
+ * http://developerlife.com/tutorials/?p=229
  * 
  * @author Radek Olesiak
  */
@@ -47,7 +47,8 @@ public class MainApp extends SessionEntryPoint {
 
 	@Override
 	public final void onSessionModuleError(final Throwable caught) {
-		setPage(new Label(caught.getMessage()));
+		setPage(new Label(caught.getClass().getName() + " "
+				+ caught.getMessage()));
 	}
 
 	public static void setPage(Widget page) {

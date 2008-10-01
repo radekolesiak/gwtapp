@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -21,12 +22,13 @@ public class RemoteServiceServletProxy extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 7609350964035145107L;
 
-	Logger LOGGER = Logger.getLogger(RemoteServiceServletProxy.class);
+	private static Logger LOGGER = Logger
+			.getLogger(RemoteServiceServletProxy.class);
 
 	public RemoteServiceServletProxy() {
 		LOGGER.debug("I am here !!!!");
 	}
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		proxy(request, response);
@@ -38,8 +40,8 @@ public class RemoteServiceServletProxy extends HttpServlet {
 	}
 
 	// TODO: proxy requests errors
-	public void proxy(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public void proxy(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		LOGGER.debug("-------PROXY----------");
 
@@ -68,8 +70,11 @@ public class RemoteServiceServletProxy extends HttpServlet {
 							.getCharacterEncoding()));
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
 				LOGGER.debug("Succes");
-				writeResponse(request, response, method
-						.getResponseBodyAsString());
+				LOGGER.debug(method.getResponseBodyAsString());
+				for(Header header : method.getResponseHeaders()) {
+					response.setHeader(header.getName(), header.getValue());
+				}
+				response.getWriter().write(method.getResponseBodyAsString());
 			} else {
 				LOGGER.error("Fail");
 			}
@@ -78,24 +83,8 @@ public class RemoteServiceServletProxy extends HttpServlet {
 		}
 	}
 
-	protected boolean shouldCompressResponse(HttpServletRequest request,
-			HttpServletResponse response, String responsePayload) {
-		return RPCServletUtils
-				.exceedsUncompressedContentLengthLimit(responsePayload);
-	}
-
 	protected String readContent(HttpServletRequest request)
 			throws ServletException, IOException {
 		return RPCServletUtils.readContentAsUtf8(request, true);
-	}
-
-	protected void writeResponse(HttpServletRequest request,
-			HttpServletResponse response, String responsePayload)
-			throws IOException {
-		boolean gzipEncode = RPCServletUtils.acceptsGzipEncoding(request)
-				&& shouldCompressResponse(request, response, responsePayload);
-
-		RPCServletUtils.writeResponse(getServletContext(), response,
-				responsePayload, gzipEncode);
 	}
 }
