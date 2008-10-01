@@ -10,11 +10,15 @@
 		<url-pattern>*.rpc</url-pattern>
 	</filter-mapping>
 	<filter>
-     <filter-name>Proxy</filter-name>
-     <filter-class>com.cuprum.filters.ProxyFilter</filter-class>
+		<filter-name>Proxy</filter-name>
+		<filter-class>com.cuprum.filters.ProxyFilter</filter-class>
+		<init-param>
+      		<param-name>server</param-name>
+      		<param-value>http://gwtapp.cuprum.biz/</param-value>
+    	</init-param>		
 	</filter>
 	<filter-mapping>
-     <filter-name>Proxy</filter-name>
-     <url-pattern>*.rpc</url-pattern>
+		<filter-name>Proxy</filter-name>
+		<url-pattern>*.rpc</url-pattern>
 	</filter-mapping>
 </web-app>

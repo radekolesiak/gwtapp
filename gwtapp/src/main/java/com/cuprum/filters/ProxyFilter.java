@@ -18,10 +18,17 @@ import com.cuprum.web.common.rpc.RemoteServiceServletProxy;
 public class ProxyFilter implements Filter {
 	static Logger LOGGER = Logger.getLogger(ProxyFilter.class);
 
+	public final static String PARAM_SERVER = "server";
+
+	private String server = null;
+
 	public void destroy() {
 	}
 
-	public void init(FilterConfig arg0) throws ServletException {
+	public void init(FilterConfig config) throws ServletException {
+		if (config != null) {
+			setServer(config.getInitParameter(PARAM_SERVER));
+		}
 	}
 
 	public void doFilter(ServletRequest _request, ServletResponse _response,
@@ -30,7 +37,16 @@ public class ProxyFilter implements Filter {
 			LOGGER.debug("----FILTER-----");
 			HttpServletRequest request = (HttpServletRequest) _request;
 			HttpServletResponse response = (HttpServletResponse) _response;
-			new RemoteServiceServletProxy().proxy(request, response);
+			new RemoteServiceServletProxy().proxy(request, response,
+					getServer());
 		}
+	}
+
+	protected void setServer(String server) {
+		this.server = server;
+	}
+
+	public String getServer() {
+		return server;
 	}
 }

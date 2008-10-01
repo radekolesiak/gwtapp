@@ -29,19 +29,14 @@ public class RemoteServiceServletProxy extends HttpServlet {
 		LOGGER.debug("I am here !!!!");
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		proxy(request, response);
-	}
-
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		proxy(request, response);
+		// proxy(request, response);
 	}
 
 	// TODO: proxy requests errors
-	public void proxy(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void proxy(HttpServletRequest request, HttpServletResponse response,
+			String server) throws ServletException, IOException {
 
 		LOGGER.debug("-------PROXY----------");
 
@@ -61,8 +56,7 @@ public class RemoteServiceServletProxy extends HttpServlet {
 			}
 			LOGGER.debug("9: " + path);
 			HttpClient client = new HttpClient();
-			PostMethod method = new PostMethod("http://gwtapp.cuprum.biz/"
-					+ path);
+			PostMethod method = new PostMethod(server + path);
 			method.setQueryString(request.getQueryString());
 
 			method.setRequestEntity(new StringRequestEntity(
@@ -71,7 +65,7 @@ public class RemoteServiceServletProxy extends HttpServlet {
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
 				LOGGER.debug("Succes");
 				LOGGER.debug(method.getResponseBodyAsString());
-				for(Header header : method.getResponseHeaders()) {
+				for (Header header : method.getResponseHeaders()) {
 					response.setHeader(header.getName(), header.getValue());
 				}
 				response.getWriter().write(method.getResponseBodyAsString());
