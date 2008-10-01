@@ -10,7 +10,7 @@ import com.cuprum.web.common.client.exceptions.RegExpException;
 import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
 import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 
-public class UserMailModel extends Model {
+public class UserMailModel extends Model implements IUserMailModel {
 	public boolean existsMail(User user) {
 		return existsMail(user.getMail());
 	}

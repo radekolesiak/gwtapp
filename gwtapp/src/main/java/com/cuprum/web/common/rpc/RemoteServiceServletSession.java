@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 
-import com.cuprum.server.common.model.Model;
+import com.cuprum.server.common.model.IModel;
 import com.cuprum.server.common.utils.DAO;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.web.common.client.data.TConnectionSession;
@@ -72,7 +72,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		}
 	}
 
-	public final <T extends Model> T getBean(Class<T> c) {
+	public final <T extends IModel> T getBean(Class<T> c) {
 		if (getDAO() != null) {
 			return getDAO().getBean(c);
 		} else {

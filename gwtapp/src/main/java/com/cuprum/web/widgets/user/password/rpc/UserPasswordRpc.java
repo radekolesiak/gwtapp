@@ -6,10 +6,10 @@ import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserPasswordRemind;
 import com.cuprum.server.common.entities.UserSession;
-import com.cuprum.server.common.model.property.PropertyModel;
-import com.cuprum.server.common.model.user.UserLoginModel;
-import com.cuprum.server.common.model.user.UserPasswordModel;
-import com.cuprum.server.common.model.usersession.UserSessionModel;
+import com.cuprum.server.common.model.property.IPropertyModel;
+import com.cuprum.server.common.model.user.IUserLoginModel;
+import com.cuprum.server.common.model.user.IUserPasswordModel;
+import com.cuprum.server.common.model.usersession.IUserSessionModel;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
@@ -37,10 +37,10 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 
 		passwords.clearErrors();
 
-		UserPasswordModel modelPassword = getDAO().getBean(
-				UserPasswordModel.class);
-		UserSessionModel modelSession = getDAO()
-				.getBean(UserSessionModel.class);
+		IUserPasswordModel modelPassword = getDAO().getBean(
+				IUserPasswordModel.class);
+		IUserSessionModel modelSession = getDAO().getBean(
+				IUserSessionModel.class);
 
 		UserSession session = modelSession.getSession(getUserSession());
 
@@ -59,12 +59,12 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 
 		login.clearError();
 
-		UserLoginModel modelLogin = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel modelLogin = getDAO().getBean(IUserLoginModel.class);
 
-		UserPasswordModel modelPassword = getDAO().getBean(
-				UserPasswordModel.class);
+		IUserPasswordModel modelPassword = getDAO().getBean(
+				IUserPasswordModel.class);
 
-		Property remindUrl = getBean(PropertyModel.class).get(
+		Property remindUrl = getBean(IPropertyModel.class).get(
 				Properties.REMIND_URL);
 
 		try {
@@ -73,11 +73,11 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 			UserPasswordRemind remind = modelPassword
 					.getPasswordRemindToken(user);
 
-			String smtp = getBean(PropertyModel.class)
+			String smtp = getBean(IPropertyModel.class)
 					.get(
 							com.cuprum.server.common.properties.Properties.MAIL_SMTP_SERVER)
 					.getValue();
-			String noreply = getBean(PropertyModel.class)
+			String noreply = getBean(IPropertyModel.class)
 					.get(
 							com.cuprum.server.common.properties.Properties.MAIL_USER_NOREPLY)
 					.getValue();
@@ -103,8 +103,8 @@ public class UserPasswordRpc extends RemoteServiceServletUserSession implements
 
 		password.clearErrors();
 
-		UserPasswordModel modelPassword = getDAO().getBean(
-				UserPasswordModel.class);
+		IUserPasswordModel modelPassword = getDAO().getBean(
+				IUserPasswordModel.class);
 
 		modelPassword.verifyNewPasswordDual(password.password);
 		modelPassword.verifyRemindPasswordToken(password.uid);

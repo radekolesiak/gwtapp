@@ -2,7 +2,7 @@ package com.cuprum.web.widgets.user.login.rpc;
 
 import org.apache.log4j.Logger;
 
-import com.cuprum.server.common.model.user.UserLoginModel;
+import com.cuprum.server.common.model.user.IUserLoginModel;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
@@ -30,7 +30,7 @@ public class UserLoginRpc extends RemoteServiceServletSession
 	public final TUserSession login(final String login, final String password) {
 		TUserSession session = new TUserSession();
 		try {
-			UserLoginModel userLogin = getBean(UserLoginModel.class);
+			IUserLoginModel userLogin = getBean(IUserLoginModel.class);
 			session.set(userLogin.login(login, password).getSession());
 		} catch (RpcException e) {
 			session.error = e;
@@ -42,7 +42,7 @@ public class UserLoginRpc extends RemoteServiceServletSession
 	/** {@inheritDoc} */
 	public void logout(TUserSession session) {
 		if (session != null && session.get() != null) {
-			UserLoginModel userLogin = getBean(UserLoginModel.class);
+			IUserLoginModel userLogin = getBean(IUserLoginModel.class);
 			userLogin.logout(session.get());
 		}
 	}

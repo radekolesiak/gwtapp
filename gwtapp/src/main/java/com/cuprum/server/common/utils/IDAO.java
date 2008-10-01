@@ -2,7 +2,7 @@ package com.cuprum.server.common.utils;
 
 import org.springframework.context.support.AbstractRefreshableApplicationContext;
 
-import com.cuprum.server.common.model.Model;
+import com.cuprum.server.common.model.IModel;
 
 public interface IDAO {
 	/**
@@ -14,7 +14,7 @@ public interface IDAO {
 	 */
 	AbstractRefreshableApplicationContext getApplicationContext();
 
-	<T extends Model> T getBean(Class<T> c);
+	<T extends IModel> T getBean(Class<T> c);
 	
 	String getName();
 	

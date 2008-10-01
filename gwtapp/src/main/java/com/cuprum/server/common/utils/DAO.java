@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractRefreshableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cuprum.server.common.model.Model;
+import com.cuprum.server.common.model.IModel;
 
 public class DAO implements IDAO {
 	ClassPathXmlApplicationContext context = null;
@@ -14,7 +14,7 @@ public class DAO implements IDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends Model> T getBean(Class<T> c) {
+	public <T extends IModel> T getBean(Class<T> c) {
 		ApplicationContext context = getApplicationContext();
 		if (context == null || c == null) {
 			return null;

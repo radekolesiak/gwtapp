@@ -21,7 +21,7 @@ import com.cuprum.web.widgets.common.client.exception.TextToShortException;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterLoginValue;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 
-public class UserRegisterModel extends Model {
+public class UserRegisterModel extends Model implements IUserRegisterModel {
 	/**
 	 * Logger for this class.
 	 */
@@ -71,7 +71,7 @@ public class UserRegisterModel extends Model {
 	}
 
 	public void verifyNewLogin(TValue<String> login) {
-		UserLoginModel modelLogin = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel modelLogin = getDAO().getBean(IUserLoginModel.class);
 
 		if (login instanceof HasRegExp
 				&& !((HasRegExp) login).match(login.value)) {
@@ -84,9 +84,9 @@ public class UserRegisterModel extends Model {
 	}
 
 	public boolean errorsUserRegister(TUserRegisterValue userRegister) {
-		UserPasswordModel modelPassword = getDAO().getBean(
-				UserPasswordModel.class);
-		UserMailModel modelMail = getDAO().getBean(UserMailModel.class);
+		IUserPasswordModel modelPassword = getDAO().getBean(
+				IUserPasswordModel.class);
+		IUserMailModel modelMail = getDAO().getBean(IUserMailModel.class);
 
 		userRegister.clearErrors();
 

@@ -2,8 +2,8 @@ package com.cuprum.web.widgets.user.register.rpc;
 
 import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.entities.UserConfirm;
-import com.cuprum.server.common.model.property.PropertyModel;
-import com.cuprum.server.common.model.user.UserRegisterModel;
+import com.cuprum.server.common.model.property.IPropertyModel;
+import com.cuprum.server.common.model.user.IUserRegisterModel;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.rpc.RemoteServiceServletSession;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
@@ -22,18 +22,18 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 	public TUserRegisterValue processUserRegister(
 			TUserRegisterValue userRegister) {
 
-		UserConfirm confirm = getBean(UserRegisterModel.class).register(
+		UserConfirm confirm = getBean(IUserRegisterModel.class).register(
 				userRegister);
 
-		Property confirmUrl = getBean(PropertyModel.class).get(
+		Property confirmUrl = getBean(IPropertyModel.class).get(
 				Properties.CONFIRM_URL);
 
 		if (!userRegister.hasErrors() && confirm != null) {
-			String smtp = getBean(PropertyModel.class)
+			String smtp = getBean(IPropertyModel.class)
 					.get(
 							com.cuprum.server.common.properties.Properties.MAIL_SMTP_SERVER)
 					.getValue();
-			String noreply = getBean(PropertyModel.class)
+			String noreply = getBean(IPropertyModel.class)
 					.get(
 							com.cuprum.server.common.properties.Properties.MAIL_USER_NOREPLY)
 					.getValue();
@@ -52,6 +52,6 @@ public class UserRegisterRpc extends RemoteServiceServletSession implements
 	}
 
 	public Boolean confirm(String uid) {
-		return getBean(UserRegisterModel.class).confirm(uid);
+		return getBean(IUserRegisterModel.class).confirm(uid);
 	}
 }

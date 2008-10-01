@@ -9,14 +9,14 @@ import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.Model;
 import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.model.user.xql.CrLoginPassword;
-import com.cuprum.server.common.model.usersession.UserSessionModel;
+import com.cuprum.server.common.model.usersession.IUserSessionModel;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotConfirmedException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 
-public class UserLoginModel extends Model {
+public class UserLoginModel extends Model implements IUserLoginModel {
 	/**
 	 * Logger for this class.
 	 */
@@ -24,14 +24,14 @@ public class UserLoginModel extends Model {
 
 	private void verifyUserInstance(String login) throws UserNotFoundException,
 			UserNotConfirmedException, InvalidPasswordException {
-		UserRegisterModel modelRegister = getDAO().getBean(
-				UserRegisterModel.class);
+		IUserRegisterModel modelRegister = getDAO().getBean(
+				IUserRegisterModel.class);
 
 		if (!existsLogin(login)) {
 			throw new UserNotFoundException();
 		} else if (modelRegister.isToConfirm(login)) {
 			throw new UserNotConfirmedException();
-		} 
+		}
 	}
 
 	public User getUser(String login) throws UserNotFoundException,
@@ -58,8 +58,8 @@ public class UserLoginModel extends Model {
 			throws UserNotFoundException, UserNotConfirmedException,
 			InvalidPasswordException {
 
-		UserSessionModel modelSession = getDAO()
-				.getBean(UserSessionModel.class);
+		IUserSessionModel modelSession = getDAO().getBean(
+				IUserSessionModel.class);
 
 		modelSession.cleanSessions();
 
@@ -67,10 +67,10 @@ public class UserLoginModel extends Model {
 
 		User user = getUser(login, password);
 
-		if(user == null) {
+		if (user == null) {
 			throw new InvalidPasswordException();
 		}
-		
+
 		UserSession connection = new UserSession();
 
 		// TODO: get unique session id by database!
@@ -85,7 +85,7 @@ public class UserLoginModel extends Model {
 	}
 
 	public void logout(String session) {
-		UserSessionModel model = getDAO().getBean(UserSessionModel.class);
+		IUserSessionModel model = getDAO().getBean(IUserSessionModel.class);
 		logout(model.getSession(session));
 	}
 

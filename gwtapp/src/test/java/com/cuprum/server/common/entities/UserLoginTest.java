@@ -10,7 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.cuprum.server.common.model.user.UserLoginModel;
+import com.cuprum.server.common.model.user.IUserLoginModel;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 
@@ -37,7 +37,7 @@ public class UserLoginTest extends EntityTestDAO {
 
 		restart();
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 
 		UserSession session1 = login.login(LOGIN, PASSWORD);
 
@@ -59,7 +59,7 @@ public class UserLoginTest extends EntityTestDAO {
 
 		restart();
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		login.login(LOGIN, PASSWORD);
 	}
 
@@ -75,7 +75,7 @@ public class UserLoginTest extends EntityTestDAO {
 
 		restart();
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		login.login(LOGIN, PASSWORD);
 	}
 
@@ -91,7 +91,7 @@ public class UserLoginTest extends EntityTestDAO {
 
 		restart();
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		UserSession session1 = login.login(LOGIN, PASSWORD);
 
 		LOGGER.debug(session1.getSession());
@@ -119,7 +119,7 @@ public class UserLoginTest extends EntityTestDAO {
 
 		restart();
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 
 		UserSession session1 = login.login(LOGIN, PASSWORD);
 
@@ -145,7 +145,7 @@ public class UserLoginTest extends EntityTestDAO {
 		User user1 = new User();
 		user1.setLogin(LOGIN);
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		assertFalse(login.existsLogin(LOGIN));
 	}
 
@@ -164,7 +164,7 @@ public class UserLoginTest extends EntityTestDAO {
 		User user2 = new User();
 		user2.setLogin(LOGIN);
 
-		UserLoginModel login = getDAO().getBean(UserLoginModel.class);
+		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		assertTrue(login.existsLogin(LOGIN));
 	}
 }

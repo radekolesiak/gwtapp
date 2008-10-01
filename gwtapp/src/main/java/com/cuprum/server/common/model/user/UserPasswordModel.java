@@ -19,7 +19,7 @@ import com.cuprum.web.widgets.common.client.exception.UnknownTokenException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 
-public class UserPasswordModel extends Model {
+public class UserPasswordModel extends Model implements IUserPasswordModel {
 	private final static Logger LOGGER = Logger
 			.getLogger(UserPasswordModel.class);
 
@@ -66,7 +66,7 @@ public class UserPasswordModel extends Model {
 	}
 
 	public UserPasswordRemind getPasswordRemindToken(String login) {
-		User user = getDAO().getBean(UserLoginModel.class).getUser(login);
+		User user = getDAO().getBean(IUserLoginModel.class).getUser(login);
 		return getPasswordRemindToken(user);
 	}
 

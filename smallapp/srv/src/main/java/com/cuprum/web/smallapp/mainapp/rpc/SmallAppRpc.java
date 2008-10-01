@@ -3,7 +3,7 @@ package com.cuprum.web.smallapp.mainapp.rpc;
 import java.util.Date;
 
 import com.cuprum.server.common.entities.UserSession;
-import com.cuprum.server.common.model.usersession.UserSessionModel;
+import com.cuprum.server.common.model.usersession.IUserSessionModel;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
@@ -17,7 +17,7 @@ public class SmallAppRpc extends RemoteServiceServletUserSession implements
 	private static final long serialVersionUID = -5462277142458843488L;
 
 	public Date getLastSessionActivity() throws SessionNotFoundException {
-		UserSessionModel model = getBean(UserSessionModel.class);
+		IUserSessionModel model = getBean(IUserSessionModel.class);
 		UserSession session = model.getSession(getUserSession());
 		if (Util.isNotNull(session)) {
 			return session.getDate();
@@ -27,7 +27,7 @@ public class SmallAppRpc extends RemoteServiceServletUserSession implements
 	}
 
 	public void forceRemoveSession() throws SessionNotFoundException {
-		UserSessionModel model = getBean(UserSessionModel.class);
+		IUserSessionModel model = getBean(IUserSessionModel.class);
 		UserSession session = model.getSession(getUserSession());
 		if (Util.isNotNull(session)) {
 			model.delete(session);
