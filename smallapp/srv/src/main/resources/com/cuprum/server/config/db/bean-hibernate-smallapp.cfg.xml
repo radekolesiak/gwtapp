@@ -17,16 +17,6 @@
 	<bean id="sessionFactory" 
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="annotatedClasses">
-			<list>
-				<value>com.cuprum.server.common.model.user.UserLoginModel</value>
-				<value>com.cuprum.server.common.model.user.UserPasswordModel</value>
-				<value>com.cuprum.server.common.model.user.UserMailModel</value>
-				<value>com.cuprum.server.common.model.user.UserRegisterModel</value>
-				<value>com.cuprum.server.common.model.usersession.UserSessionModel</value>				
-				<value>com.cuprum.server.common.model.property.PropertyModel</value>				
-			</list>
-		</property>
 		<property name="mappingResources">
 			<list>
 				<value>com/cuprum/server/common/entities/User.hbm.xml</value>

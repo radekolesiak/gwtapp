@@ -10,7 +10,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.cuprum.server.common.utils.IDAO;
 
-public abstract class Model extends HibernateDaoSupport {
+public abstract class Model extends HibernateDaoSupport implements IModel {
 	private LinkedList<Transaction> transactions = new LinkedList<Transaction>();
 
 	private IDAO dao;
@@ -64,7 +64,6 @@ public abstract class Model extends HibernateDaoSupport {
 		return (T) getHibernateTemplate().save(object);
 	}
 
-	@SuppressWarnings("unchecked")
 	public void saveOrUpdate(Object object) {
 		getHibernateTemplate().saveOrUpdate(object);
 	}
@@ -77,6 +76,7 @@ public abstract class Model extends HibernateDaoSupport {
 		getHibernateTemplate().delete(object);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List createQuery(String query) {
 		return getHibernateTemplate().find(query);
 	}
