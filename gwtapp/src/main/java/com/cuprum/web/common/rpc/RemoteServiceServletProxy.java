@@ -35,7 +35,7 @@ public class RemoteServiceServletProxy extends HttpServlet {
 	}
 
 	// TODO: proxy requests errors
-	public void proxy(HttpServletRequest request, HttpServletResponse response,
+	public static void proxy(HttpServletRequest request, HttpServletResponse response,
 			String server) throws ServletException, IOException {
 
 		LOGGER.debug("-------PROXY----------");
@@ -77,7 +77,7 @@ public class RemoteServiceServletProxy extends HttpServlet {
 		}
 	}
 
-	protected String readContent(HttpServletRequest request)
+	protected static String readContent(HttpServletRequest request)
 			throws ServletException, IOException {
 		return RPCServletUtils.readContentAsUtf8(request, true);
 	}

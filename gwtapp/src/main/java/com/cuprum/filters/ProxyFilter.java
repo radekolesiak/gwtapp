@@ -37,8 +37,7 @@ public class ProxyFilter implements Filter {
 			LOGGER.debug("----FILTER-----");
 			HttpServletRequest request = (HttpServletRequest) _request;
 			HttpServletResponse response = (HttpServletResponse) _response;
-			new RemoteServiceServletProxy().proxy(request, response,
-					getServer());
+			RemoteServiceServletProxy.proxy(request, response, getServer());
 		}
 	}
 
