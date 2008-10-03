@@ -1,13 +1,14 @@
 package com.cuprum.web.common.rpc;
 
 import org.apache.log4j.Logger;
-import org.springframework.context.ApplicationContext;
 
 import com.cuprum.server.common.model.IModel;
 import com.cuprum.server.common.utils.DAOMap;
 import com.cuprum.server.common.utils.HibernateDAO;
 import com.cuprum.server.common.utils.IDAO;
+import com.cuprum.server.common.utils.RemoteServiceDAO;
 import com.cuprum.web.common.client.data.TConnectionSession;
+import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -48,7 +49,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		return getConnectionSession();
 	}
 
-	private final DAOMap<IModel> daoMap = new DAOMap<IModel>() {
+	private final DAOMap<IModel> hibernateDAOMap = new DAOMap<IModel>() {
 		@Override
 		protected IDAO<IModel> createDAO() {
 			return new HibernateDAO();
@@ -56,23 +57,34 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 	};
 	
 	protected synchronized IDAO<IModel> getDAO() {
-		return daoMap.getDAO(getModuleName());
-	}
-
-	public final ApplicationContext getApplicationContext() {
-		if (getDAO() != null) {
-			return getDAO().getApplicationContext();
-		} else {
-			LOGGER.error("DAO not found for: " + getModuleName());
-			return null;
-		}
+		return hibernateDAOMap.getDAO(getModuleName());
 	}
 
 	public final <T extends IModel> T getBean(Class<T> c) {
 		if (getDAO() != null) {
 			return getDAO().getBean(c);
 		} else {
-			LOGGER.error("DAO not found for: " + getModuleName());
+			LOGGER.error("Hibernate DAO not found for: " + getModuleName());
+			return null;
+		}
+	}
+
+	private final DAOMap<RemoteService> remoteServiceDAOMap = new DAOMap<RemoteService>() {
+		@Override
+		protected IDAO<RemoteService> createDAO() {
+			return new RemoteServiceDAO();
+		}
+	};
+	
+	protected synchronized IDAO<RemoteService> getRemoteServiceDAO() {
+		return remoteServiceDAOMap.getDAO(getModuleName());
+	}
+
+	public final <T extends RemoteService> T getRpcBean(Class<T> c) {
+		if (getRemoteServiceDAO() != null) {
+			return getRemoteServiceDAO().getBean(c);
+		} else {
+			LOGGER.error("RemoteService DAO not found for: " + getModuleName());
 			return null;
 		}
 	}
