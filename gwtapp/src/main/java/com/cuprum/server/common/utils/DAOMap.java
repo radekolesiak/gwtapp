@@ -10,13 +10,11 @@ public abstract class DAOMap<T> {
 	private final HashMap<String, IDAO<T>> daos = new HashMap<String, IDAO<T>>();
 
 	public synchronized IDAO<T> getDAO(final String name) {
-		if (!daos.containsKey(name)
-				|| !((IDAO<T>) daos.get(name)).getApplicationContext()
-						.isActive()) {
+		if (!daos.containsKey(name)) {
 			LOGGER.info("Creating DAO for: " + name);
 			IDAO<T> dao = createDAO();
-			dao.setupContext(name);
 			daos.put(name, dao);
+			dao.setupContext(name);
 		}
 		return daos.get(name);
 	}

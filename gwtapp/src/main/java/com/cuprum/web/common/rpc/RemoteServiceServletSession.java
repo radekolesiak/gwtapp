@@ -1,5 +1,12 @@
 package com.cuprum.web.common.rpc;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.model.IModel;
@@ -49,13 +56,13 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		return getConnectionSession();
 	}
 
-	private final DAOMap<IModel> hibernateDAOMap = new DAOMap<IModel>() {
+	private final static DAOMap<IModel> hibernateDAOMap = new DAOMap<IModel>() {
 		@Override
 		protected IDAO<IModel> createDAO() {
 			return new HibernateDAO();
 		}
 	};
-	
+
 	protected synchronized IDAO<IModel> getDAO() {
 		return hibernateDAOMap.getDAO(getModuleName());
 	}
@@ -69,13 +76,13 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		}
 	}
 
-	private final DAOMap<RemoteService> remoteServiceDAOMap = new DAOMap<RemoteService>() {
+	private final static DAOMap<RemoteService> remoteServiceDAOMap = new DAOMap<RemoteService>() {
 		@Override
 		protected IDAO<RemoteService> createDAO() {
 			return new RemoteServiceDAO();
 		}
 	};
-	
+
 	protected synchronized IDAO<RemoteService> getRemoteServiceDAO() {
 		return remoteServiceDAOMap.getDAO(getModuleName());
 	}
@@ -94,5 +101,28 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 	 */
 	public String getRequestUrl() {
 		return getThreadLocalRequest().getRequestURL().toString();
+	}
+
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		HttpServlet servlet = null;
+
+		if (this instanceof RemoteService) {
+			try {
+				RemoteService bean = getRpcBean(((RemoteService) this)
+						.getClass());
+				if (bean != null && bean instanceof HttpServlet) {
+					servlet = (HttpServlet) bean;
+					servlet.service(request, response);
+				}
+			} catch (Throwable e) {
+				LOGGER.error(e);
+			}
+		}
+
+		if (servlet == null) {
+			super.service(request, response);
+		}
 	}
 }
