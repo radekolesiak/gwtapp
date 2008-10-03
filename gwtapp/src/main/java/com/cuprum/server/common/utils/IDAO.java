@@ -14,8 +14,6 @@ public interface IDAO <T> {
 
 	<C extends T> C getBean(Class<C> c);
 	
-	//String getName();
-	
 	void setupContext(String database);
 	
 	void setupContext(HibernateDatabases database);
