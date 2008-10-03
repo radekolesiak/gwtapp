@@ -13,7 +13,7 @@ import com.cuprum.server.common.utils.IDAO;
 public abstract class Model extends HibernateDaoSupport implements IModel {
 	private LinkedList<Transaction> transactions = new LinkedList<Transaction>();
 
-	private IDAO dao;
+	private IDAO<IModel> dao;
 
 	public void pushTX() {
 		transactions.add(getSession().beginTransaction());
@@ -99,14 +99,14 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 	 * @param dao
 	 *            the dao to set
 	 */
-	public void setDAO(IDAO dao) {
+	public void setDAO(IDAO<IModel> dao) {
 		this.dao = dao;
 	}
 
 	/**
 	 * @return the dao
 	 */
-	public IDAO getDAO() {
+	public IDAO<IModel> getDAO() {
 		return dao;
 	}
 }

@@ -4,8 +4,9 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 
+import com.cuprum.server.common.model.IModel;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.utils.DAO;
+import com.cuprum.server.common.utils.HibernateDAO;
 import com.cuprum.server.common.utils.HibernateDatabases;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.utils.ToTestHibernateDatabases;
@@ -16,9 +17,9 @@ public class EntityTestDAO extends Model {
 	 */
 	static final Logger LOGGER = Logger.getLogger(EntityTestDAO.class);
 
-	private IDAO dao = null;
+	private IDAO<IModel> dao = null;
 
-	public IDAO getDAO() {
+	public IDAO<IModel> getDAO() {
 		return dao;
 	}
 
@@ -33,7 +34,7 @@ public class EntityTestDAO extends Model {
 	public void setUp() throws Exception {
 		LOGGER.debug("setUp");
 
-		dao = new DAO();
+		dao = new HibernateDAO();
 		dao.setupContext(getDatabase());
 		open();
 	}

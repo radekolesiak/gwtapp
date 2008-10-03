@@ -2,9 +2,7 @@ package com.cuprum.server.common.utils;
 
 import org.springframework.context.support.AbstractRefreshableApplicationContext;
 
-import com.cuprum.server.common.model.IModel;
-
-public interface IDAO {
+public interface IDAO <T> {
 	/**
 	 * Application context for a servlet 'RPC' methods. All objects wich
 	 * derivates from com.cuprum.server.common.model.Model must be created by
@@ -14,7 +12,7 @@ public interface IDAO {
 	 */
 	AbstractRefreshableApplicationContext getApplicationContext();
 
-	<T extends IModel> T getBean(Class<T> c);
+	<C extends T> C getBean(Class<C> c);
 	
 	String getName();
 	

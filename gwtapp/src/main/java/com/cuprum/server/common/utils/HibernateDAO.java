@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cuprum.server.common.model.IModel;
 
-public class DAO implements IDAO {
+public class HibernateDAO implements IDAO<IModel> {
 	ClassPathXmlApplicationContext context = null;
 
 	public AbstractRefreshableApplicationContext getApplicationContext() {
@@ -14,12 +14,12 @@ public class DAO implements IDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IModel> T getBean(Class<T> c) {
+	public <C extends IModel> C getBean(Class<C> c) {
 		ApplicationContext context = getApplicationContext();
 		if (context == null || c == null) {
 			return null;
 		} else {
-			T model = (T) context.getBean(c.getName());
+			C model = (C) context.getBean(c.getName());
 			model.setDAO(this);
 			return model;
 		}

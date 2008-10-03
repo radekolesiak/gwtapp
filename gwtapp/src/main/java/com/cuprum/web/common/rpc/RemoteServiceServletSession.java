@@ -1,12 +1,11 @@
 package com.cuprum.web.common.rpc;
 
-import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 
 import com.cuprum.server.common.model.IModel;
-import com.cuprum.server.common.utils.DAO;
+import com.cuprum.server.common.utils.DAOMap;
+import com.cuprum.server.common.utils.HibernateDAO;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -49,18 +48,15 @@ public class RemoteServiceServletSession extends RemoteServiceServlet {
 		return getConnectionSession();
 	}
 
-	private final static HashMap<String, IDAO> daos = new HashMap<String, IDAO>();
-
-	protected synchronized IDAO getDAO() {
-		if (!daos.containsKey(getModuleName())
-				|| !((IDAO) daos.get(getModuleName())).getApplicationContext()
-						.isActive()) {
-			LOGGER.info("Creating DAO for: " + getModuleName());
-			IDAO dao = new DAO();
-			dao.setupContext(getModuleName());
-			daos.put(getModuleName(), dao);
+	private final DAOMap<IModel> daoMap = new DAOMap<IModel>() {
+		@Override
+		protected IDAO<IModel> createDAO() {
+			return new HibernateDAO();
 		}
-		return daos.get(getModuleName());
+	};
+	
+	protected synchronized IDAO<IModel> getDAO() {
+		return daoMap.getDAO(getModuleName());
 	}
 
 	public final ApplicationContext getApplicationContext() {

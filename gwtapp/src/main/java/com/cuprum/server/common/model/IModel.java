@@ -36,7 +36,7 @@ public interface IModel {
 
 	<T> T get(Class<T> c, Serializable s);
 
-	void setDAO(IDAO dao);
+	void setDAO(IDAO<IModel> dao);
 
-	IDAO getDAO();
+	IDAO<IModel> getDAO();
 }
