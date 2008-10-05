@@ -43,10 +43,6 @@ public abstract class AbstractDAO<T> implements IDAO<T> {
 		setApplicationContext(new ClassPathXmlApplicationContext(getClassPath()));
 	}
 
-	public void setupContext(HibernateDatabases database) {
-		setupContext(database.getDatabase());
-	}
-
 	public void close() {
 		ClassPathXmlApplicationContext ctx = ((ClassPathXmlApplicationContext) getApplicationContext());
 		if (ctx != null) {

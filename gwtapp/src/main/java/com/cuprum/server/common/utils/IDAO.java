@@ -16,7 +16,5 @@ public interface IDAO <T> {
 	
 	void setupContext(String database);
 	
-	void setupContext(HibernateDatabases database);
-	
 	void close();
 }

@@ -13,7 +13,7 @@ public class EntityTestDAO extends Model {
 	 */
 	static final Logger LOGGER = Logger.getLogger(EntityTestDAO.class);
 
-	private IDAO<IModel> dao = null;
+	private IHibernateDAO<IModel> dao = null;
 
 	public IDAO<IModel> getDAO() {
 		return dao;
