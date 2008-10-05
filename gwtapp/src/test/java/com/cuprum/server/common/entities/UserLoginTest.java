@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.cuprum.server.common.model.user.IUserLoginModel;
+import com.cuprum.server.common.utils.EntityTestDAO;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 

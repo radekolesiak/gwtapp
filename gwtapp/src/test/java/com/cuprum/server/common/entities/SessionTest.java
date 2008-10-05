@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import com.cuprum.server.common.utils.EntityTestDAO;
+
 public class SessionTest extends EntityTestDAO {
 	static final Logger LOGGER = Logger.getLogger(SessionTest.class);
 

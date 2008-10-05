@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.hibernate3.HibernateObjectRetrievalFailureException;
 
+import com.cuprum.server.common.utils.EntityTestDAO;
+
 public class UserTest extends EntityTestDAO {
 	/**
 	 * Logger for this class.
@@ -23,7 +25,7 @@ public class UserTest extends EntityTestDAO {
 	private final static String PASSWORD = "password";
 
 	private final static String MAIL = "mail@mail.com";
-	
+
 	/**
 	 * Inserts first user.
 	 */

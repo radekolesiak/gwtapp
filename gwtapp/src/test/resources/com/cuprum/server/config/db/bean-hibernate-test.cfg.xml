@@ -53,7 +53,7 @@
 	<bean id="com.cuprum.server.common.model.property.IPropertyModel" class="com.cuprum.server.common.model.property.PropertyModel">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<bean id="com.cuprum.server.common.entities.EntityTestDAO" class="com.cuprum.server.common.entities.EntityTestDAO">
+	<bean id="com.cuprum.server.common.utils.EntityTestDAO" class="com.cuprum.server.common.utils.EntityTestDAO">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>

@@ -1,4 +1,4 @@
-package com.cuprum.server.common.entities;
+package com.cuprum.server.common.utils;
 
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -6,10 +6,6 @@ import org.junit.Before;
 
 import com.cuprum.server.common.model.IModel;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.utils.HibernateDAO;
-import com.cuprum.server.common.utils.HibernateDatabases;
-import com.cuprum.server.common.utils.IDAO;
-import com.cuprum.utils.ToTestHibernateDatabases;
 
 public class EntityTestDAO extends Model {
 	/**
@@ -24,7 +20,7 @@ public class EntityTestDAO extends Model {
 	}
 
 	public HibernateDatabases getDatabase() {
-		return ToTestHibernateDatabases.TEST;
+		return DefaultTestHibernateDatabases.TEST;
 	}
 
 	/**

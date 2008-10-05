@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.cuprum.server.common.utils.EntityTestDAO;
+
 public class BeansTest extends EntityTestDAO {
 	/**
 	 * Inserts first user.
@@ -14,5 +16,4 @@ public class BeansTest extends EntityTestDAO {
 		EntityTestDAO bean2 = getDAO().getBean(EntityTestDAO.class);
 		assertTrue(bean1 == bean2);
 	}
-
 }
