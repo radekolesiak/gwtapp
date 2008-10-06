@@ -61,7 +61,32 @@ public class Util {
 
 	public static void showOnFailureCallbackDefault() {
 		InfoMessages messages = GWT.create(InfoMessages.class);
-		 Info.display(messages.msgOnFailureTitle(), messages.msgOnFailure(),
-		 new String[] {});
+		Info.display(messages.msgOnFailureTitle(), messages.msgOnFailure(),
+				new String[] {});
+	}
+
+
+	public static <T> boolean equals(T a, T b) {
+		if (a == b) {
+			return true;
+		}
+
+		if (a == null) {
+			return false;
+		}
+
+		return a.equals(b);
+	}
+
+	public static <T extends HasEqualsT> boolean equalsT(T a, T b) {
+		if (a == b) {
+			return true;
+		}
+
+		if (a == null) {
+			return false;
+		}
+
+		return a.equalsT(b);
 	}
 }
