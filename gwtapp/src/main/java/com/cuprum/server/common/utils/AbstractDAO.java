@@ -21,6 +21,16 @@ public abstract class AbstractDAO<T> implements IDAO<T> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public <C> C getRawBean(Class<T> c) {
+		ApplicationContext context = getApplicationContext();
+		if (context == null || c == null) {
+			return null;
+		} else {
+			return (C) context.getBean(c.getName());
+		}
+	}
+
 	public void setApplicationContext(
 			final ClassPathXmlApplicationContext context) {
 		this.context = context;
