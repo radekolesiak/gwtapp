@@ -35,8 +35,9 @@ public class RemoteServiceServletProxy extends HttpServlet {
 	}
 
 	// TODO: proxy requests errors
-	public static void proxy(HttpServletRequest request, HttpServletResponse response,
-			String server) throws ServletException, IOException {
+	public static void proxy(HttpServletRequest request,
+			HttpServletResponse response, String server)
+			throws ServletException, IOException {
 
 		LOGGER.debug("-------PROXY----------");
 
@@ -62,15 +63,20 @@ public class RemoteServiceServletProxy extends HttpServlet {
 			method.setRequestEntity(new StringRequestEntity(
 					readContent(request), request.getContentType(), request
 							.getCharacterEncoding()));
-			if (client.executeMethod(method) == HttpStatus.SC_OK) {
-				LOGGER.debug("Succes");
-				LOGGER.debug(method.getResponseBodyAsString());
-				for (Header header : method.getResponseHeaders()) {
-					response.setHeader(header.getName(), header.getValue());
+			try {
+				if (client.executeMethod(method) == HttpStatus.SC_OK) {
+					LOGGER.debug("Succes");
+					LOGGER.debug(method.getResponseBodyAsString());
+					for (Header header : method.getResponseHeaders()) {
+						response.setHeader(header.getName(), header.getValue());
+					}
+					response.getWriter()
+							.write(method.getResponseBodyAsString());
+				} else {
+					LOGGER.error("Fail");
 				}
-				response.getWriter().write(method.getResponseBodyAsString());
-			} else {
-				LOGGER.error("Fail");
+			} finally {
+				method.releaseConnection();
 			}
 		} catch (Throwable e) {
 			LOGGER.error(e);
