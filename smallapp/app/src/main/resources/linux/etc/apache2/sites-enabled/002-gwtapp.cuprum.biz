@@ -8,4 +8,11 @@
     RewriteRule ^/$ http://gwtapp.cuprum.biz:8080/smallapp-app/com.cuprum.web.smallapp.mainapp.MainApp/MainApp.html [P] 
     RewriteRule ^/gwtapp/(.*) http://gwtapp.cuprum.biz:8080/smallapp-app/$1 [P] 
     RewriteRule ^/(.*) http://gwtapp.cuprum.biz:8080/smallapp-app/com.cuprum.web.smallapp.mainapp.MainApp/$1 [P] 
+
+	<Proxy *>
+		Options ExecCGI Indexes MultiViews +FollowSymLinks
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+    </Proxy>    
 </VirtualHost>
