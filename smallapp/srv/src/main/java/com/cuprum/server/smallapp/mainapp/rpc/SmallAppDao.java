@@ -1,4 +1,4 @@
-package com.cuprum.web.smallapp.mainapp.rpc;
+package com.cuprum.server.smallapp.mainapp.rpc;
 
 import java.util.Date;
 
@@ -6,10 +6,19 @@ import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.usersession.IUserSessionModel;
+import com.cuprum.server.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
-import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
+
+/**
+ * 
+ * @author Radek Olesiak
+ * 
+ *         Redirected class SmallAppRpc to this class SmallAppDao. Configuration
+ *         is in the com/cuprum/server/config/rpc/bean-rpc-smallapp.cfg.xml
+ *         resource file.
+ */
 
 public class SmallAppDao extends RemoteServiceServletUserSession implements
 		ISmallApp {

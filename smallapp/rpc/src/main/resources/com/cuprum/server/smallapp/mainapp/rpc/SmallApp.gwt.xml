@@ -1,0 +1,4 @@
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	<servlet path='/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp.rpc' class='com.cuprum.server.smallapp.mainapp.rpc.SmallAppRpc' />
+</module>

@@ -1,12 +1,12 @@
-package com.cuprum.web.smallapp.mainapp.rpc;
+package com.cuprum.server.smallapp.mainapp.rpc;
 
-import com.cuprum.web.common.rpc.RemoteServiceServletSpring;
+import com.cuprum.server.common.rpc.RemoteServiceServletSpring;
 
 /**
  * 
  * @author cuprum
  * 
- * This uses Spring DAO or can filtered by the Proxy filter.
+ * This class uses Spring DAO or can filtered by the Proxy filter.
  *
  */
 public class SmallAppRpc extends RemoteServiceServletSpring {
