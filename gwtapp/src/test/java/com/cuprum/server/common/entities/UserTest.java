@@ -26,16 +26,28 @@ public class UserTest extends EntityTestDAO {
 
 	private final static String MAIL = "mail@mail.com";
 
+	public static User createUser1() {
+		User user = new User();
+		user.setLogin(LOGIN1);
+		user.setPassword(PASSWORD);
+		user.setMail(MAIL);
+		return user;
+	}
+	
+	public static User createUser2() {
+		User user = new User();
+		user.setLogin(LOGIN2);
+		user.setPassword(PASSWORD);
+		user.setMail(MAIL);
+		return user;
+	}
+	
 	/**
 	 * Inserts first user.
 	 */
 	@Test
 	public final void InsertValue1a() {
-		User user = new User();
-		user.setLogin(LOGIN1);
-		user.setPassword(PASSWORD);
-		user.setMail(MAIL);
-
+		User user = createUser1();
 		getBean().save(user);
 	}
 
@@ -44,16 +56,9 @@ public class UserTest extends EntityTestDAO {
 	 */
 	@Test
 	public final void InsertValue1b() {
-		User user1 = new User();
-		user1.setLogin(LOGIN1);
-		user1.setPassword(PASSWORD);
-		user1.setMail(MAIL);
-
-		User user2 = new User();
-		user2.setLogin(LOGIN2);
-		user2.setPassword(PASSWORD);
-		user2.setMail(MAIL);
-
+		User user1 = createUser1();
+		User user2 = createUser2();
+		
 		getBean().save(user1);
 		getBean().save(user2);
 	}
@@ -63,13 +68,9 @@ public class UserTest extends EntityTestDAO {
 	 */
 	@Test(expected = DataIntegrityViolationException.class)
 	public final void InsertValue1c() {
-		User user1 = new User();
-		user1.setLogin(LOGIN1);
-		user1.setPassword(PASSWORD);
+		User user1 = createUser1();
 
-		User user2 = new User();
-		user2.setLogin(LOGIN1);
-		user2.setPassword(PASSWORD);
+		User user2 = createUser1();
 
 		try {
 			getBean().save(user1);
@@ -86,10 +87,7 @@ public class UserTest extends EntityTestDAO {
 	 */
 	@Test
 	public final void RemoveValue1a() {
-		User user1 = new User();
-		user1.setLogin(LOGIN1);
-		user1.setPassword(PASSWORD);
-		user1.setMail(MAIL);
+		User user1 = createUser1();
 
 		getBean().save(user1);
 
@@ -106,10 +104,7 @@ public class UserTest extends EntityTestDAO {
 	 */
 	@Test(expected = HibernateObjectRetrievalFailureException.class)
 	public final void RemoveValue1b() {
-		User user1 = new User();
-		user1.setLogin(LOGIN1);
-		user1.setPassword(PASSWORD);
-		user1.setMail(MAIL);
+		User user1 = createUser1();
 
 		getBean().save(user1);
 		//assertTrue(getBean().contains(user1));
