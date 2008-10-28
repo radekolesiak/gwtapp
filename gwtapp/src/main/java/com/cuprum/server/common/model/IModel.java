@@ -24,6 +24,8 @@ public interface IModel {
 	void saveOrUpdate(Object object);
 
 	void saveOrIgnore(Object object);
+
+	<T> T saveAndGet(Class<T> c, Object object);
 	
 	void update(Object object);
 

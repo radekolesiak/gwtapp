@@ -66,6 +66,10 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 		return (T) getHibernateTemplate().save(object);
 	}
 
+	public <T> T saveAndGet(Class<T> c, Object object) {
+		return get(c, (Long) getHibernateTemplate().save(object));
+	}
+
 	public void saveOrUpdate(Object object) {
 		getHibernateTemplate().saveOrUpdate(object);
 	}
