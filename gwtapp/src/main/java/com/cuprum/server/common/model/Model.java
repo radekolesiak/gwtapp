@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -66,6 +68,17 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 
 	public void saveOrUpdate(Object object) {
 		getHibernateTemplate().saveOrUpdate(object);
+	}
+
+	public void saveOrIgnore(Object object) {
+		try {
+			getHibernateTemplate().save(object);
+		} catch (DataIntegrityViolationException e) {
+			if (e.getCause() instanceof ConstraintViolationException) {
+			} else {
+				throw e;
+			}
+		}
 	}
 
 	public void update(Object object) {

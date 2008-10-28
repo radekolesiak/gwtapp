@@ -23,6 +23,8 @@ public interface IModel {
 
 	void saveOrUpdate(Object object);
 
+	void saveOrIgnore(Object object);
+	
 	void update(Object object);
 
 	void delete(Object object);
