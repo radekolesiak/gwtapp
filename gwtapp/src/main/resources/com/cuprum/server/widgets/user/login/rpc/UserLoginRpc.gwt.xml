@@ -1,0 +1,4 @@
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	<servlet path='/com.cuprum.web.widgets.user.login.client.stub.IUserLogin.rpc' class='com.cuprum.server.widgets.user.login.rpc.UserLoginRpc' />
+</module>

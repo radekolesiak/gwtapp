@@ -1,4 +1,4 @@
-package com.cuprum.web.common.rpc;
+package com.cuprum.server.common.rpc;
 
 import java.io.IOException;
 

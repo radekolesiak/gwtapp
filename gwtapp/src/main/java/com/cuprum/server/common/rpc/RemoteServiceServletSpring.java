@@ -1,4 +1,4 @@
-package com.cuprum.web.common.rpc;
+package com.cuprum.server.common.rpc;
 
 import org.apache.log4j.Logger;
 

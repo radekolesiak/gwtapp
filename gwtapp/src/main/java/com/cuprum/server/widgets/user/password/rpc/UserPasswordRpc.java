@@ -1,4 +1,4 @@
-package com.cuprum.web.widgets.user.password.rpc;
+package com.cuprum.server.widgets.user.password.rpc;
 
 import org.apache.log4j.Logger;
 
@@ -10,9 +10,9 @@ import com.cuprum.server.common.model.property.IPropertyModel;
 import com.cuprum.server.common.model.user.IUserLoginModel;
 import com.cuprum.server.common.model.user.IUserPasswordModel;
 import com.cuprum.server.common.model.usersession.IUserSessionModel;
+import com.cuprum.server.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
-import com.cuprum.web.common.rpc.RemoteServiceServletUserSession;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
 import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;

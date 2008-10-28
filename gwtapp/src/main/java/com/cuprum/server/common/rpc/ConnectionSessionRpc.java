@@ -1,4 +1,4 @@
-package com.cuprum.web.common.rpc;
+package com.cuprum.server.common.rpc;
 
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.stub.IConnectionSession;

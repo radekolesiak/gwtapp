@@ -1,12 +1,12 @@
-package com.cuprum.web.widgets.user.login.rpc;
+package com.cuprum.server.widgets.user.login.rpc;
 
 import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.model.user.IUserLoginModel;
+import com.cuprum.server.common.rpc.RemoteServiceServletSession;
 import com.cuprum.web.common.client.data.TUserSession;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
-import com.cuprum.web.common.rpc.RemoteServiceServletSession;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
 import com.cuprum.web.widgets.user.login.client.stub.IUserLogin;
 

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.cuprum.web.common.rpc.RemoteServiceServletProxy;
+import com.cuprum.server.common.rpc.RemoteServiceServletProxy;
 
 public class ProxyFilter implements Filter {
 	static Logger LOGGER = Logger.getLogger(ProxyFilter.class);

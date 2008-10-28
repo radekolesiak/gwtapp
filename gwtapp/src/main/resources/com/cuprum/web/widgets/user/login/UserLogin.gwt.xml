@@ -2,5 +2,5 @@
 	<!-- Inherit the core Web Toolkit stuff. -->
 	<inherits name='com.cuprum.web.widgets.common.Common'/>
 	<!-- Servlet -->
-	<inherits name="com.cuprum.web.widgets.user.login.rpc.UserLoginRpc" />
+	<inherits name="com.cuprum.server.widgets.user.login.rpc.UserLoginRpc" />
 </module>
