@@ -7,7 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.model.xql.CrValue;
 
-public class CrLogin extends CrValue<String> {
+public class CrLogin extends CrValue<String, User> {
 	public CrLogin(final String value) {
 		super(value);
 	}

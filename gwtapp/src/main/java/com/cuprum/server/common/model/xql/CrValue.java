@@ -9,7 +9,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.web.common.client.Util;
 
-public abstract class CrValue<T> implements HibernateCallback {
+public abstract class CrValue<T, R> implements HibernateCallback {
 	private T value;
 
 	public CrValue(final T value) {
@@ -20,9 +20,10 @@ public abstract class CrValue<T> implements HibernateCallback {
 		return value;
 	}
 
-	public Object doInHibernate(Session session) throws HibernateException,
+	@SuppressWarnings("unchecked")
+	public R doInHibernate(Session session) throws HibernateException,
 			SQLException {
-		return Util.getFirst(getCriteria(session).list());
+		return (R) Util.getFirst(getCriteria(session).list());
 	}
 
 	public abstract Criteria getCriteria(final Session session);

@@ -74,6 +74,20 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 		getHibernateTemplate().saveOrUpdate(object);
 	}
 
+	// TODO: Important: refactor and move this action to the hibernate/database
+	// level. Warning for ugly 'synchronized' statement!!
+	public synchronized <T, R> T saveOnDuplicateUpdate(Class<T> c,
+			IOnDuplicateUpdate<T> callback) {
+		T object = callback.find();
+		if (object == null) {
+			object = saveAndGet(c, callback.create());
+		} else {
+			object = callback.update(object);
+			update(object);
+		}
+		return object;
+	}
+
 	public void saveOrIgnore(Object object) {
 		try {
 			getHibernateTemplate().save(object);

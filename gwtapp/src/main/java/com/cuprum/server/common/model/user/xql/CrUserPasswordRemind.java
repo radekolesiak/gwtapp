@@ -7,7 +7,8 @@ import org.hibernate.criterion.Restrictions;
 import com.cuprum.server.common.entities.UserPasswordRemind;
 import com.cuprum.server.common.model.xql.CrValue;
 
-public class CrUserPasswordRemind extends CrValue<String> {
+
+public class CrUserPasswordRemind extends CrValue<String, UserPasswordRemind> {
 	public CrUserPasswordRemind(final String value) {
 		super(value);
 	}

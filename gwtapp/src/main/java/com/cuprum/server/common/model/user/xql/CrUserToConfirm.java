@@ -8,7 +8,7 @@ import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.server.common.model.xql.CrValue;
 
-public class CrUserToConfirm extends CrValue<User> {
+public class CrUserToConfirm extends CrValue<User, UserConfirm> {
 	public CrUserToConfirm(final User value) {
 		super(value);
 	}

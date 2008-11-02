@@ -25,8 +25,10 @@ public interface IModel {
 
 	void saveOrIgnore(Object object);
 
+	<T, R> T saveOnDuplicateUpdate(Class<T> c, IOnDuplicateUpdate<T> callback);
+
 	<T> T saveAndGet(Class<T> c, Object object);
-	
+
 	void update(Object object);
 
 	void delete(Object object);
