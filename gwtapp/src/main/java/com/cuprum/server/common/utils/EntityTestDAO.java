@@ -23,6 +23,13 @@ public class EntityTestDAO extends Model {
 		return DefaultTestHibernateDatabases.TEST;
 	}
 
+	static {
+		org.hsqldb.Server.main(new String[] {
+				"database.0=mem:test",
+				"dbname.0=test" }
+		);
+	}
+
 	/**
 	 * Sets some stuff before unit test calling.
 	 */

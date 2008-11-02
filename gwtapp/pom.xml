@@ -25,6 +25,11 @@
 	</developers>
 	<dependencies>
 		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.7</version>
+		</dependency>
+		<dependency>
 			<groupId>apache-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.0.1</version>

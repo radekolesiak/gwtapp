@@ -4,35 +4,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/cuprumtest"/>
-		<property name="username" value="cuprumtest"/>
-		<property name="password" value="12345678"/>
-		<property name="initialSize" value="5"/>
-		<property name="maxActive" value="10"/>
-	</bean>
-
+	<import resource="bean-hibernate.cfg.xml"/>
+		
 	<bean id="sessionFactory" 
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="databaseSource"/>
+		<property name="hibernateProperties" ref="hibernateProperties" />
 		<property name="mappingResources">
 			<list>
 				<value>com/cuprum/server/common/entities/User.hbm.xml</value>
 				<value>com/cuprum/server/common/entities/UserSession.hbm.xml</value>
 			</list>
 		</property>		
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
-				<prop key="hibernate.connection.pool_size">1</prop>
-				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
-			</props>
-		</property>
 	</bean>
 	
 	<bean id="com.cuprum.server.common.model.user.IUserLoginModel" class="com.cuprum.server.common.model.user.UserLoginModel">
