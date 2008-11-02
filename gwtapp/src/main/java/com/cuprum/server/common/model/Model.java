@@ -75,7 +75,7 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 	}
 
 	// TODO: Important: refactor and move this action to the hibernate/database
-	// level. Warning for ugly 'synchronized' statement!!
+	// level. Warning for ugly 'synchronized' statement!! replace to lock on hibernate level
 	public synchronized <T, R> T saveOnDuplicateUpdate(Class<T> c,
 			IOnDuplicateUpdate<T> callback) {
 		T object = callback.find();
