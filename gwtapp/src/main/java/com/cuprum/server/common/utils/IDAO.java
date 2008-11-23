@@ -5,7 +5,7 @@ import org.springframework.context.support.AbstractRefreshableApplicationContext
 public interface IDAO <T> {
 	/**
 	 * Application context for a servlet 'RPC' methods. All objects wich
-	 * derivates from com.cuprum.server.common.model.Model must be created by
+	 * inherit from com.cuprum.server.common.model.Model must be created by
 	 * beans. <code>
 	 * InheritsModel object = dao.getBean(InheritsModel.class);
 	 * </code>.

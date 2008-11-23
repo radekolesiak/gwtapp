@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.model.IModel;
-import com.cuprum.server.common.utils.DAOMap;
-import com.cuprum.server.common.utils.HibernateDAO;
+import com.cuprum.server.common.utils.AbstractDAOMap;
+import com.cuprum.server.common.utils.HibernateDAOMap;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.server.common.utils.RemoteServiceDAO;
 import com.cuprum.web.common.client.data.TConnectionSession;
@@ -57,23 +57,24 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 		return getConnectionSession();
 	}
 
-	private final static DAOMap<IModel> hibernateDAOMap = new DAOMap<IModel>() {
+	/*private final static AbstractDAOMap<IModel> hibernateDAOMap = new AbstractDAOMap<IModel>() {
 		@Override
 		protected IDAO<IModel> createDAO() {
 			return new HibernateDAO();
 		}
-	};
+	};*/
 
 	protected synchronized IDAO<IModel> getDAO() {
 		LOGGER.debug("Hibernate DAO module name: " + getModuleName());
-		return hibernateDAOMap.getDAO(getModuleName());
+		//return hibernateDAOMap.getDAO(getModuleName());
+		return HibernateDAOMap.dao.getDAO(getModuleName());
 	}
 
 	public final <T extends IModel> T getBean(Class<T> c) {
 		return getDAO().getBean(c);
 	}
 
-	private final static DAOMap<RemoteService> remoteServiceDAOMap = new DAOMap<RemoteService>() {
+	private final static AbstractDAOMap<RemoteService> remoteServiceDAOMap = new AbstractDAOMap<RemoteService>() {
 		@Override
 		protected IDAO<RemoteService> createDAO() {
 			return new RemoteServiceDAO();

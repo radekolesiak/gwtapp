@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-public abstract class DAOMap<T> {
-	private static Logger LOGGER = Logger.getLogger(DAOMap.class);
+public abstract class AbstractDAOMap<T> {
+	private static Logger LOGGER = Logger.getLogger(AbstractDAOMap.class);
 	
 	private final HashMap<String, IDAO<T>> daos = new HashMap<String, IDAO<T>>();
 
