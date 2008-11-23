@@ -9,14 +9,15 @@ public abstract class AbstractDAOMap<T> {
 	
 	private final HashMap<String, IDAO<T>> daos = new HashMap<String, IDAO<T>>();
 
-	public synchronized IDAO<T> getDAO(final String name) {
+	@SuppressWarnings("unchecked")
+	public synchronized <Z extends IDAO<T>> Z getDAO(final String name) {
 		if (!daos.containsKey(name)) {
 			LOGGER.info("Creating DAO for: " + name);
 			IDAO<T> dao = createDAO();
 			daos.put(name, dao);
 			dao.setupContext(name);
 		}
-		return daos.get(name);
+		return (Z) daos.get(name);
 	}
 	
 	abstract protected IDAO<T> createDAO();

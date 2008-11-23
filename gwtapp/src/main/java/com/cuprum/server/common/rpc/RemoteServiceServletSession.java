@@ -67,7 +67,7 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 	protected synchronized IDAO<IModel> getDAO() {
 		LOGGER.debug("Hibernate DAO module name: " + getModuleName());
 		//return hibernateDAOMap.getDAO(getModuleName());
-		return HibernateDAOMap.dao.getDAO(getModuleName());
+		return HibernateDAOMap.DAO.getDAO(getModuleName());
 	}
 
 	public final <T extends IModel> T getBean(Class<T> c) {
