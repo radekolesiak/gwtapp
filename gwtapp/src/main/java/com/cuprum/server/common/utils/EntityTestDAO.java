@@ -24,10 +24,7 @@ public class EntityTestDAO extends Model {
 	}
 
 	static {
-		org.hsqldb.Server.main(new String[] {
-				"database.0=mem:test",
-				"dbname.0=test" }
-		);
+		org.hsqldb.Server.main(new String[] {});
 	}
 
 	/**
