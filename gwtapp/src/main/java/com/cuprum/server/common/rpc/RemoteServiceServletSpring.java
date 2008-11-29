@@ -49,7 +49,7 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession
 				return RPC.encodeResponseForFailure(null, e);
 			}
 		} catch (Throwable e) {
-			LOGGER.error(e);
+			LOGGER.error("", e);
 			return RPC.encodeResponseForFailure(null, e);
 		}
 	}
