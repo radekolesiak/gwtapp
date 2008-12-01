@@ -1,7 +1,7 @@
 package com.cuprum.web.common.client;
 
 import com.cuprum.web.common.client.data.TValue;
-import com.cuprum.web.common.client.data.TValuesMap;
+import com.cuprum.web.common.client.data.TValueList;
 import com.cuprum.web.widgets.common.client.SubmitListener;
 import com.cuprum.web.widgets.common.client.SubmitListenerCollection;
 import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
@@ -23,8 +23,8 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		@Override
 		public void onSessionResponseSuccess(final T value) {
 			validate(value);
-			if (value instanceof TValuesMap) {
-				if (!((TValuesMap) value).hasErrors()) {
+			if (value instanceof TValueList) {
+				if (!((TValueList) value).hasErrors()) {
 					fireSubmitListener();
 				}
 			} else if (value instanceof TValue) {

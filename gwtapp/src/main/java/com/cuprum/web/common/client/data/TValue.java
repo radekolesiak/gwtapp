@@ -5,15 +5,12 @@ import java.io.Serializable;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class TValue<T extends Serializable> implements Serializable,
-		IsSerializable {
+public class TValue<T extends Serializable> implements IsSerializable {
 	/**
 	 * UID.
 	 */
 	private static final long serialVersionUID = -4289330029611037159L;
 
-	/** Widget associated with value. Widget is not serializable. */
-	// public Widget widget;
 	/** Value for a process call */
 	public T value;
 
@@ -41,11 +38,11 @@ public class TValue<T extends Serializable> implements Serializable,
 	public TValue<T> set(TValue<T> value) {
 		return set(value.value);
 	}
-	
+
 	public boolean hasError() {
 		return error != null;
 	}
-	
+
 	public void clearError() {
 		error = null;
 	}

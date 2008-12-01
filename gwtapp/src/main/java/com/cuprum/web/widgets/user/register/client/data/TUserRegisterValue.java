@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 import com.cuprum.web.common.client.data.TDualStringValue;
 import com.cuprum.web.common.client.data.TStringValue;
-import com.cuprum.web.common.client.data.TValuesMap;
+import com.cuprum.web.common.client.data.TValue;
+import com.cuprum.web.common.client.data.TValueList;
 import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 
-public class TUserRegisterValue extends TValuesMap implements Serializable {
+@SuppressWarnings("unchecked")
+public class TUserRegisterValue extends TValueList<TValue> implements Serializable {
 
 	/**
 	 * UID.

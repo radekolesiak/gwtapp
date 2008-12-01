@@ -1,11 +1,15 @@
 package com.cuprum.web.common.client.data;
 
-import java.io.Serializable;
-
 import com.cuprum.web.common.client.Equals;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public abstract class TSession extends TValue<String> implements Serializable, IsSerializable {
+
+public abstract class TSession extends TValue<String> implements IsSerializable {
+	/**
+	 * UID.
+	 */
+	private static final long serialVersionUID = -231753083360214967L;
+
 	/** Constructor for IsSerializable. */
 	public TSession() {
 	}

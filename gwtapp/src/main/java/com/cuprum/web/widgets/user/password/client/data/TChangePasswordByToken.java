@@ -2,9 +2,11 @@ package com.cuprum.web.widgets.user.password.client.data;
 
 import com.cuprum.web.common.client.data.TDualStringValue;
 import com.cuprum.web.common.client.data.TStringValue;
-import com.cuprum.web.common.client.data.TValuesMap;
+import com.cuprum.web.common.client.data.TValue;
+import com.cuprum.web.common.client.data.TValueList;
 
-public class TChangePasswordByToken extends TValuesMap {
+@SuppressWarnings("unchecked")
+public class TChangePasswordByToken extends TValueList<TValue> {
 
 	/**
 	 * UID.

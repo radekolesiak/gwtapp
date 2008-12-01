@@ -1,36 +1,34 @@
 package com.cuprum.web.common.client.data;
 
-import java.io.Serializable;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import com.cuprum.web.widgets.common.client.exception.MultipleException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class TValuesMap extends Vector<TValue> implements Serializable,
-		IsSerializable {
+@SuppressWarnings("unchecked")
+public class TValueList<T extends TValue> extends ArrayList<T> implements IValueCollection, IsSerializable {
 
 	/**
 	 * UID.
 	 */
 	private static final long serialVersionUID = -2912317755557759390L;
 
-	@SuppressWarnings("unchecked")
+	public TValueList() {
+	}
+
 	public void clearErrors() {
-		for (TValue value : this) {
+		for (T value : this) {
 			value.clearError();
 		}
 	}
 
 	public boolean hasErrors() {
-		for (TValue value : this) {
+		for (T value : this) {
 			if (value.hasError()) {
 				return true;
 			}
 		}
 		return false;
-	}
-
-	public TValuesMap() {
 	}
 
 	public void evalErrors() throws MultipleException {
