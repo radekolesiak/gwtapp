@@ -46,4 +46,9 @@ public class TValue<T extends Serializable> implements IsSerializable {
 	public void clearError() {
 		error = null;
 	}
+
+	@Override
+	public String toString() {
+		return "" + get();
+	}
 }
