@@ -69,7 +69,7 @@ public class TValueModelData<T extends TValue> implements ModelData,
 		if (value == null) {
 			return null;
 		} else {
-			return (X) value.get();
+			return (X) value.value;
 		}
 	}
 
@@ -82,7 +82,7 @@ public class TValueModelData<T extends TValue> implements ModelData,
 			if (value == null) {
 				map.put(key, null);
 			} else {
-				map.put(key, value.get());
+				map.put(key, value.value);
 			}
 		}
 		return map;
