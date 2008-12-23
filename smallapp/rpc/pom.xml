@@ -51,7 +51,7 @@
 			</resource>
 		</resources>		
 	</build>
-	
+	<!--	
 	<repositories>
 		<repository>
 			<id>gwt-maven</id>
@@ -60,5 +60,6 @@
 			</url>
 		</repository>
 	</repositories>	
+	-->
 </project>
 
