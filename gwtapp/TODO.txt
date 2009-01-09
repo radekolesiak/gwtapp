@@ -7,7 +7,7 @@
 - limit for the sessions per user
 - converter for a String type in the ModelData
 
-- feedback for unrecognised or unimplmeneted exceptions handling on client side
+- feedback for an unrecognised or unimplmeneted exceptions handling on the client side
 - javadoc
 - long term session id store as a js cookie
 - anonymous sessions
