@@ -1,20 +1,27 @@
-- rpc files to move from web to server package 
+- hibernate stateless
+- use PrimaryName instead of add/setStyleName for the style names; use inner public static class Styles for styles
+- check length for too long login and password texts 
+- remove too old unconfirmed registrations and password reminders
+- i18n for messages
+- i18n messages on the server side, e.g. mail
+- limit for the sessions per user
+- converter for a String type in the ModelData
+
+- feedback for unrecognised or unimplmeneted exceptions handling on client side
+- javadoc
+- long term session id store as a js cookie
+- anonymous sessions
+
+- installator - set up parameters, database creator for the server side
+
++ unit tests
++ move rpc files from the web to server package 
 + i18n messages overriding
 + attributes for the process fields
-- feedback for unrecognised or unimplmeneted exceptions handling on client side
-!- unit tests
-- javadoc
-- check length too long login and password texts 
 + reset password
-- long term session id stored in the js cookie
 + notify on login if user is not confirmed yet
-!- i18n messages on server side
 + i18n for registration
-- remove too old unconfirmed registrations and password reminders
 + constants parameters in the db
 + disabling submit buttonsduring asynchronous callback connection
-- i18n for messages
-- anonymous sessions
-- limit of number of sessions per user
 + removing old sessions
 + updating session time and automatically remove too old session.
