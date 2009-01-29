@@ -15,23 +15,7 @@
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
-	<!--
-	-->
 	<repositories>	
-		<!--
-		<repository>
-			<id>gwt-maven</id>
-			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
-		</repository>		
-		<repository>
-			<id>jboss-maven</id>
-			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-		<repository>
-			<id>spring-repository</id>
-			<url>http://www.springframework.org</url>
-		</repository>
-		-->
 		<repository>
 			<id>ibildo-repository</id>
 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
@@ -86,7 +70,7 @@
                 <platform>windows</platform>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
                 <os>
                     <family>Windows</family>
                 </os>
