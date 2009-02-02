@@ -17,9 +17,15 @@
 	</distributionManagement>
 	<repositories>	
 		<repository>
+			<id>atlassian</id>
+			<url>http://maven.atlassian.com/repository/public</url>
+		</repository>
+		<!--
+		<repository>
 			<id>ibildo-repository</id>
 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
 		</repository>
+		-->
 		<repository>
 			<id>gwtext-repository</id>
 			<url>http://www.gwt-ext.com/maven2</url>
