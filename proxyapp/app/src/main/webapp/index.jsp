@@ -5,7 +5,6 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="gwt/com.cuprum.web.smallapp.mainapp.MainApp/css/ext-all.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="gwt:module" content="gwt/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.smallapp.mainapp.MainApp">
 		<title>Insert title here</title>
 		<script language='javascript' src='gwt/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.smallapp.mainapp.MainApp.nocache.js'></script>
 	</head>
