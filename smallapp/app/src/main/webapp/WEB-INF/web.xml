@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 	<display-name>GWT</display-name>
+	
 	<filter>
 		<filter-name>GZIP</filter-name>
-		<filter-class>com.cuprum.filters.GZIPFilter</filter-class>
+		<filter-class>com.cuprum.filters.GZIPFilter
+		</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>GZIP</filter-name>
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
+
+	<servlet>
+		<servlet-name>
+			com.cuprum.server.common.rpc.ConnectionSessionRpc/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.common.client.stub.IConnectionSession.rpc
+		</servlet-name>
+		<servlet-class>com.cuprum.server.common.rpc.ConnectionSessionRpc
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>
+			com.cuprum.server.widgets.user.login.rpc.UserLoginRpc/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.widgets.user.login.client.stub.IUserLogin.rpc
+		</servlet-name>
+		<servlet-class>com.cuprum.server.widgets.user.login.rpc.UserLoginRpc
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>
+			com.cuprum.server.widgets.user.register.rpc.UserRegisterRpc/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.widgets.user.register.client.stub.IUserRegister.rpc
+		</servlet-name>
+		<servlet-class>
+			com.cuprum.server.widgets.user.register.rpc.UserRegisterRpc
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>
+			com.cuprum.server.widgets.user.password.rpc.UserPasswordRpc/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.widgets.user.password.client.stub.IUserPassword.rpc
+		</servlet-name>
+		<servlet-class>
+			com.cuprum.server.widgets.user.password.rpc.UserPasswordRpc
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>
+			com.cuprum.server.smallapp.mainapp.rpc.SmallAppRpc/com.cuprum.web.smallapp.mainapp.MainApp/com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp.rpc
+		</servlet-name>
+		<servlet-class>com.cuprum.server.smallapp.mainapp.rpc.SmallAppRpc
+		</servlet-class>
+	</servlet>
 </web-app>
