@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import com.cuprum.web.common.client.data.TUserSession;
 
 public class UserEndPoint extends EndPoint {
+	
+	@Override
 	protected LinkedList<String> getQueries() {
 		LinkedList<String> list = super.getQueries();
 		if (TUserSession.getSession() != null) {

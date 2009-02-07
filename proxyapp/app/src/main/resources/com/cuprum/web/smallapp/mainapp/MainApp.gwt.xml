@@ -7,9 +7,6 @@
 	<inherits name='com.cuprum.web.widgets.user.register.UserRegister'/>
 	<inherits name='com.cuprum.web.widgets.user.password.UserPassword'/>
 	
-	<!-- servlets -->	
-	<inherits name="com.cuprum.server.smallapp.mainapp.rpc.SmallApp" />
-	
 	<!-- Specify the app entry point class. -->
 	<entry-point class='com.cuprum.web.smallapp.mainapp.client.MainApp'/>
 </module>

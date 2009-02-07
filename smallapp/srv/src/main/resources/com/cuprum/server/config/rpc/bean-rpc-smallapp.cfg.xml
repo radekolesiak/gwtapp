@@ -4,5 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+	<bean id="com.cuprum.web.common.client.stub.IConnectionSession" class="com.cuprum.server.common.rpc.ConnectionSessionRpc"/>
 	<bean id="com.cuprum.server.smallapp.mainapp.rpc.SmallAppRpc" class="com.cuprum.server.smallapp.mainapp.rpc.SmallAppDao" />
 </beans>

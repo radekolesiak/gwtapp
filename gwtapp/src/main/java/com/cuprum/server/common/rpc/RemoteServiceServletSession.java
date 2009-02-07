@@ -13,6 +13,7 @@ import com.cuprum.server.common.utils.AbstractDAOMap;
 import com.cuprum.server.common.utils.HibernateDAOMap;
 import com.cuprum.server.common.utils.IDAO;
 import com.cuprum.server.common.utils.RemoteServiceDAO;
+import com.cuprum.web.common.client.SessionEntryPoint;
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -54,19 +55,15 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 	 * @return module name.
 	 */
 	public String getModuleName() {
-		return getConnectionSession();
-	}
-
-	/*private final static AbstractDAOMap<IModel> hibernateDAOMap = new AbstractDAOMap<IModel>() {
-		@Override
-		protected IDAO<IModel> createDAO() {
-			return new HibernateDAO();
+		if (getRequest() != null) {
+			return getRequest().getParameter(
+					SessionEntryPoint.MODULE_NAME_REQUEST);
 		}
-	};*/
+		return null;
+	}
 
 	protected synchronized IDAO<IModel> getDAO() {
 		LOGGER.debug("Hibernate DAO module name: " + getModuleName());
-		//return hibernateDAOMap.getDAO(getModuleName());
 		return HibernateDAOMap.DAO.getDAO(getModuleName());
 	}
 

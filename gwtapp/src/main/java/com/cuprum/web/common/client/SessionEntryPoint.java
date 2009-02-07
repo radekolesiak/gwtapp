@@ -15,6 +15,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 
 public abstract class SessionEntryPoint implements EntryPoint {
+	public final static String MODULE_NAME_REQUEST = "mn";
+	public static String MODULE_NAME = null;
+	
 	public final void onModuleLoad() {
 		final AsyncCallback<Object> callback = new AsyncCallback<Object>() {
 			public void onFailure(final Throwable caught) {
@@ -27,9 +30,10 @@ public abstract class SessionEntryPoint implements EntryPoint {
 			}
 		};
 
+		MODULE_NAME = getModuleName();
+		
 		((IConnectionSessionAsync) EndPoint.create(GWT
-				.create(IConnectionSession.class))).getNewConnectionSession(
-				getModuleName(), callback);
+				.create(IConnectionSession.class))).getNewConnectionSession(callback);
 	}
 
 	public abstract void onSessionModuleLoad();

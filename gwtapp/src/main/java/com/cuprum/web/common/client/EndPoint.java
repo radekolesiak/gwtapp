@@ -32,6 +32,10 @@ public class EndPoint {
 			list.add(TConnectionSession.CONNECTION_SESSION_REQUEST + "="
 					+ TConnectionSession.getSession().get());
 		}
+		if (SessionEntryPoint.MODULE_NAME != null) {
+			list.add(SessionEntryPoint.MODULE_NAME_REQUEST + "="
+					+ SessionEntryPoint.MODULE_NAME);
+		}
 		return list;
 	}
 

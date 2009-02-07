@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-	    <groupId>com.cuprum</groupId>
-	    <artifactId>cuprum-base</artifactId>
-	    <version>1.0-SNAPSHOT</version>
+		<groupId>com.cuprum</groupId>
+		<artifactId>cuprum-base</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>gwtapp</artifactId>
 	<name>gwtapp</name>
@@ -25,10 +25,10 @@
 	</developers>
 	<dependencies>
 		<dependency>
-    		<groupId>javax.persistence</groupId>
-    		<artifactId>persistence-api</artifactId>
-    		<version>1.0</version>
-		</dependency> 
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
@@ -69,7 +69,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.13</version>		
+			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -85,44 +85,40 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
-			<version>2.5.5</version>
-		</dependency>		
+			<version>${springVersion}</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.1</version>
 		</dependency>
-		<dependency>		
+		<dependency>
 			<groupId>com.extjs</groupId>
 			<artifactId>gxt</artifactId>
 			<version>1.1</version>
 		</dependency>
-		<!-- 		
-		<dependency>		
-			<groupId>com.gwtext</groupId>
-			<artifactId>gwtext</artifactId>
-			<version>2.0.5</version>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
-		</dependency> 
+		</dependency>
 	</dependencies>
 	<build>
-	        <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
+		<!--
+			Include SOURCE in output artifact for GWT (GWT libraries must include
+			source)
+		-->
 		<resources>
-		    <resource>
-		        <directory>src/main/java</directory>
-		    </resource>
-		    <resource>
-		        <directory>src/main/resources</directory>
-		    </resource>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
@@ -130,10 +126,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0</version>
 				<configuration>
-				  <source>1.5</source>
-				  <target>1.5</target>
+					<source>1.5</source>
+					<target>1.5</target>
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>	
+	</build>
 </project>

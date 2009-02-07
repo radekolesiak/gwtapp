@@ -1,5 +1,6 @@
 package com.cuprum.server.common.rpc;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException;
@@ -8,23 +9,44 @@ import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.server.rpc.RPC;
 import com.google.gwt.user.server.rpc.RPCRequest;
 
-public class RemoteServiceServletSpring extends RemoteServiceServletSession
-		implements RemoteService {
+public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 
 	private static Logger LOGGER = Logger
 			.getLogger(RemoteServiceServletSpring.class);
 
+	static {
+		LOGGER.setLevel(Level.ALL);
+	}
 	/**
 	 * UID.
 	 */
 	private static final long serialVersionUID = -7179809962226883713L;
 
+	protected String getClassName() {
+		final String suffix = ".rpc";
+		String[] s = getThreadLocalRequest().getServletPath().split("/");
+		if (s.length > 0) {
+			String q = s[s.length - 1];
+			if (q.endsWith(suffix)) {
+				return q.substring(0, q.length() - suffix.length());
+			}
+		}
+		// TODO: fix this
+		return "";
+	}
+
 	@Override
 	public String processCall(String payload) throws SerializationException {
 		try {
-			LOGGER.info("RPC bean: " + getClass().getName());
 
-			RemoteService bean = getRpcBean(getClass());
+			Class c = Class.forName(getClassName());
+
+			try {
+				getRpcBean(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			RemoteService bean = getRpcBean(c);
 
 			LOGGER.info("RPC mapped: " + bean.getClass().getName());
 
@@ -53,5 +75,4 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession
 			return RPC.encodeResponseForFailure(null, e);
 		}
 	}
-
 }

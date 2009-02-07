@@ -2,18 +2,18 @@ package com.cuprum.server.common.rpc;
 
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.stub.IConnectionSession;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class ConnectionSessionRpc extends RemoteServiceServlet implements
+public class ConnectionSessionRpc extends RemoteServiceServletSession implements
 		IConnectionSession {
 	/**
 	 * UID.
 	 */
 	private static final long serialVersionUID = -4314081539603481697L;
 
-	public TConnectionSession getNewConnectionSession(String moduleName) {
+	public TConnectionSession getNewConnectionSession() {
 		TConnectionSession session = new TConnectionSession();
-		session.set(moduleName);
+		// e.g. set unique connection session id per IP and browser
+		session.set(getModuleName());
 		return session;
 	}
 }
