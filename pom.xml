@@ -43,6 +43,7 @@
 	</pluginRepositories>
 	<properties>
 	    <gwtVersion>1.5.3</gwtVersion> 
+	    <springVersion>2.5.5</springVersion> 
 	</properties>
 	<dependencyManagement>
 	    <dependencies>
