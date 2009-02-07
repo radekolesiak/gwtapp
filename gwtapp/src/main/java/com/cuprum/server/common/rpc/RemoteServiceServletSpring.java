@@ -41,11 +41,6 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 
 			Class c = Class.forName(getClassName());
 
-			try {
-				getRpcBean(c);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			RemoteService bean = getRpcBean(c);
 
 			LOGGER.info("RPC mapped: " + bean.getClass().getName());
