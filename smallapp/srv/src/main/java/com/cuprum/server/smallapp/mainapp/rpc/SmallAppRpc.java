@@ -15,9 +15,6 @@ import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
  * 
  * @author Radek Olesiak
  * 
- *         Redirected class SmallAppRpc to this class SmallAppDao. Configuration
- *         is in the com/cuprum/server/config/rpc/bean-rpc-smallapp.cfg.xml
- *         resource file.
  */
 
 public class SmallAppRpc extends RemoteServiceServletUserSession implements
