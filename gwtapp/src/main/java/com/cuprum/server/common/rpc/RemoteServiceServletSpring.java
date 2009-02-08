@@ -1,7 +1,11 @@
 package com.cuprum.server.common.rpc;
 
+import java.io.Serializable;
+import java.lang.reflect.Method;
+
 import org.apache.log4j.Logger;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.server.rpc.RPC;
@@ -32,6 +36,7 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String processCall(String payload) throws SerializationException {
+		Method method = null;
 		try {
 
 			Class c = Class.forName(getClassName());
@@ -46,11 +51,18 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 
 			RPCRequest rpcRequest = RPC.decodeRequest(payload, bean.getClass());
 
-			return RPC.invokeAndEncodeResponse(bean, rpcRequest.getMethod(),
-					rpcRequest.getParameters());
+			method = rpcRequest.getMethod();
+
+			return RPC.invokeAndEncodeResponse(bean, method, rpcRequest
+					.getParameters());
 		} catch (Exception e) {
 			LOGGER.error("", e);
-			return RPC.encodeResponseForFailure(null, e);
+			if (e instanceof IsSerializable || e instanceof Serializable) {
+				return RPC.encodeResponseForFailure(method, e);
+			} else {
+				return RPC.encodeResponseForFailure(method,
+						new SpringRpcException());
+			}
 		}
 	}
 }

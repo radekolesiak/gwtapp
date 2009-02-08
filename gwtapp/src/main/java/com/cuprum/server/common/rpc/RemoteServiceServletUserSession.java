@@ -18,8 +18,8 @@ public class RemoteServiceServletUserSession extends
 	public final String getUserSession() {
 		String session = null;
 
-		if (getRequest() != null) {
-			session = getRequest().getParameter(
+		if (getThreadLocalRequest() != null) {
+			session = getThreadLocalRequest().getParameter(
 					TUserSession.USER_SESSION_REQUEST);
 		}
 

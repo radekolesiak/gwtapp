@@ -1,8 +1,5 @@
 package com.cuprum.server.common.rpc;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,38 +25,29 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class RemoteServiceServletSession extends RemoteServiceServlet implements
 		IsSerializable {
+
 	/** UID. */
 	private static final long serialVersionUID = -4539898520470145102L;
 
 	private Logger LOGGER = Logger.getLogger(RemoteServiceServletSession.class);
 
 	/**
-	 * Reads connection session id from query string.
+	 * Reads connection session id from the query string.
 	 * 
 	 * @return Connection session.
 	 */
 	public final String getConnectionSession() {
-		String session = null;
-
-		if (getRequest() != null) {
-			session = getRequest().getParameter(
-					TConnectionSession.CONNECTION_SESSION_REQUEST);
-		}
-
-		return session;
+		return getRequest().getParameter(
+				TConnectionSession.CONNECTION_SESSION_REQUEST);
 	}
 
 	/**
-	 * Recognises module name by session.
+	 * Reads module name from the query string.
 	 * 
-	 * @return module name.
+	 * @return Module name.
 	 */
 	public String getModuleName() {
-		if (getRequest() != null) {
-			return getRequest().getParameter(
-					SessionEntryPoint.MODULE_NAME_REQUEST);
-		}
-		return null;
+		return getRequest().getParameter(SessionEntryPoint.MODULE_NAME_REQUEST);
 	}
 
 	protected synchronized IDAO<IModel> getDAO() {
@@ -91,34 +79,34 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 	 * @return the requestUrl
 	 */
 	public String getRequestUrl() {
-		return getRequest().getRequestURL().toString();
+		return getThreadLocalRequest().getRequestURL().toString();
 	}
 
-	private HttpServletRequest request;
-	private HttpServletResponse response;
+	private ThreadLocal<HttpServletRequest> request = new ThreadLocal<HttpServletRequest>();
+	private ThreadLocal<HttpServletResponse> response = new ThreadLocal<HttpServletResponse>();
 
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		setRequest(request);
-		setResponse(response);
-
-		super.service(request, response);
+	public void setRequest(final HttpServletRequest request) {
+		this.request.set(request);
 	}
 
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
+	public void setResponse(final HttpServletResponse response) {
+		this.response.set(response);
 	}
 
 	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	public void setResponse(HttpServletResponse response) {
-		this.response = response;
+		if (request.get() != null) {
+			return request.get();
+		} else {
+			return getThreadLocalRequest();
+		}
 	}
 
 	public HttpServletResponse getResponse() {
-		return response;
+		if (response.get() != null) {
+			return response.get();
+		} else {
+			return getThreadLocalResponse();
+		}
 	}
+
 }
