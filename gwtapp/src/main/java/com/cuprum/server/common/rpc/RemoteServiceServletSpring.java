@@ -1,9 +1,7 @@
 package com.cuprum.server.common.rpc;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-import com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.server.rpc.RPC;
@@ -14,9 +12,6 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 	private static Logger LOGGER = Logger
 			.getLogger(RemoteServiceServletSpring.class);
 
-	static {
-		LOGGER.setLevel(Level.ALL);
-	}
 	/**
 	 * UID.
 	 */
@@ -31,10 +26,10 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 				return q.substring(0, q.length() - suffix.length());
 			}
 		}
-		// TODO: fix this
-		return "";
+		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String processCall(String payload) throws SerializationException {
 		try {
@@ -43,29 +38,17 @@ public class RemoteServiceServletSpring extends RemoteServiceServletSession {
 
 			RemoteService bean = getRpcBean(c);
 
-			LOGGER.info("RPC mapped: " + bean.getClass().getName());
-
 			if (bean instanceof RemoteServiceServletSession) {
 				RemoteServiceServletSession session = (RemoteServiceServletSession) bean;
 				session.setRequest(getThreadLocalRequest());
 				session.setResponse(getThreadLocalResponse());
 			}
 
-			try {
-				RPCRequest rpcRequest = RPC.decodeRequest(payload, bean
-						.getClass());
+			RPCRequest rpcRequest = RPC.decodeRequest(payload, bean.getClass());
 
-				// delegate work to the spring injected service
-				return RPC.invokeAndEncodeResponse(bean,
-						rpcRequest.getMethod(), rpcRequest.getParameters());
-			} catch (IncompatibleRemoteServiceException e) {
-				getServletContext()
-						.log(
-								"An IncompatibleRemoteServiceException was thrown while processing this call.",
-								e);
-				return RPC.encodeResponseForFailure(null, e);
-			}
-		} catch (Throwable e) {
+			return RPC.invokeAndEncodeResponse(bean, rpcRequest.getMethod(),
+					rpcRequest.getParameters());
+		} catch (Exception e) {
 			LOGGER.error("", e);
 			return RPC.encodeResponseForFailure(null, e);
 		}
