@@ -17,6 +17,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -67,6 +68,7 @@ public class WelcomePage extends VerticalPanel {
 			}
 		});
 
+		add(new HTML("<small>This proxyapp-app is only client side code<br />  and shows how to write a client side application<br />  without access to the smallapp-srv server side source code.<br /> The proxyapp-app uses only shared common<br />  gwtapp (rpc & client) and smallapp-rpc source code.</small>"));
 		add(userRegister);
 		add(userLogin);
 		add(changePasswordGetToken);
