@@ -20,10 +20,10 @@ import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
  *         resource file.
  */
 
-public class SmallAppDao extends RemoteServiceServletUserSession implements
+public class SmallAppRpc extends RemoteServiceServletUserSession implements
 		ISmallApp {
 
-	private static Logger LOGGER = Logger.getLogger(SmallAppDao.class);
+	private static Logger LOGGER = Logger.getLogger(SmallAppRpc.class);
 
 	/**
 	 * UID
