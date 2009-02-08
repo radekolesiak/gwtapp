@@ -9,5 +9,5 @@
 	<bean id='com.cuprum.web.widgets.user.password.client.stub.IUserPassword' class='com.cuprum.server.widgets.user.password.rpc.UserPasswordRpc' />
 	<bean id='com.cuprum.web.widgets.user.register.client.stub.IUserRegister' class='com.cuprum.server.widgets.user.register.rpc.UserRegisterRpc' />
 
-	<bean id="com.cuprum.server.smallapp.mainapp.rpc.SmallAppRpc" class="com.cuprum.server.smallapp.mainapp.rpc.SmallAppDao" />
+	<bean id="com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp" class="com.cuprum.server.smallapp.mainapp.rpc.SmallAppDao" />
 </beans>
