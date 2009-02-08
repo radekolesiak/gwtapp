@@ -1,2 +1,3 @@
-NameVirtualHost localhost:80
+NameVirtualHost *:80
+#NameVirtualHost localhost:80
 
