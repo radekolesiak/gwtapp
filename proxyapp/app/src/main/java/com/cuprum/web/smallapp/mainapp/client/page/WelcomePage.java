@@ -36,7 +36,10 @@ public class WelcomePage extends VerticalPanel {
 		userLogin.addSubmitListener(new SubmitListener() {
 			public void onSubmit(Widget sender) {
 				TUserSession.setSession(userLogin.getValue());
-				MainApp.showWorkspace();
+				if (userLogin.getValue() != null
+						&& userLogin.getValue().get() != null) {
+					MainApp.showWorkspace();
+				}
 			}
 		});
 
