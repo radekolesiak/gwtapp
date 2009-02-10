@@ -1,0 +1,4 @@
+<module>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.cuprum.web.widgets.common.Common'/>
+</module>
