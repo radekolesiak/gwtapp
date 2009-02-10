@@ -2,8 +2,8 @@ package com.cuprum.server.common.rpc;
 
 import com.cuprum.web.common.client.data.TUserSession;
 
-public class RemoteServiceServletUserSession extends
-		RemoteServiceServletSession {
+public class RemoteServiceUserSession extends
+		RemoteServiceSession {
 
 	/**
 	 * UID.

@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.usersession.IUserSessionModel;
-import com.cuprum.server.common.rpc.RemoteServiceServletUserSession;
+import com.cuprum.server.common.rpc.RemoteServiceUserSession;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
@@ -17,7 +17,7 @@ import com.cuprum.web.smallapp.mainapp.client.stub.ISmallApp;
  * 
  */
 
-public class SmallAppRpc extends RemoteServiceServletUserSession implements
+public class SmallAppRpc extends RemoteServiceUserSession implements
 		ISmallApp {
 
 	private static Logger LOGGER = Logger.getLogger(SmallAppRpc.class);

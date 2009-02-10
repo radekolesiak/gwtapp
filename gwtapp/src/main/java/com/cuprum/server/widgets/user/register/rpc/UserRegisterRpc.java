@@ -4,14 +4,14 @@ import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.server.common.model.property.IPropertyModel;
 import com.cuprum.server.common.model.user.IUserRegisterModel;
-import com.cuprum.server.common.rpc.RemoteServiceServletSession;
+import com.cuprum.server.common.rpc.RemoteServiceSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.properties.Properties;
 
-public class UserRegisterRpc extends RemoteServiceServletSession implements
+public class UserRegisterRpc extends RemoteServiceSession implements
 		IUserRegister {
 
 	/**

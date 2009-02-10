@@ -20,13 +20,13 @@ import com.google.gwt.user.client.rpc.RemoteService;
  * 
  */
 
-public class RemoteServiceServletSession implements RemoteService,
+public class RemoteServiceSession implements RemoteService,
 		IsSerializable {
 
 	/** UID. */
 	private static final long serialVersionUID = -4539898520470145102L;
 
-	private Logger LOGGER = Logger.getLogger(RemoteServiceServletSession.class);
+	private Logger LOGGER = Logger.getLogger(RemoteServiceSession.class);
 
 	/**
 	 * Reads connection session id from the query string.

@@ -36,7 +36,7 @@ public class RemoteServiceServletSpring extends RemoteServiceServlet {
 
 	protected synchronized IDAO<RemoteService> getRemoteServiceDAO(
 			final HttpServletRequest request) {
-		return remoteServiceDAOMap.getDAO(RemoteServiceServletSession
+		return remoteServiceDAOMap.getDAO(RemoteServiceSession
 				.getModuleName(request));
 	}
 
@@ -58,16 +58,16 @@ public class RemoteServiceServletSpring extends RemoteServiceServlet {
 	}
 
 	protected void setRequestResponse(final RemoteService bean) {
-		if (bean instanceof RemoteServiceServletSession) {
-			RemoteServiceServletSession session = (RemoteServiceServletSession) bean;
+		if (bean instanceof RemoteServiceSession) {
+			RemoteServiceSession session = (RemoteServiceSession) bean;
 			session.setRequest(getThreadLocalRequest());
 			session.setResponse(getThreadLocalResponse());
 		}
 	}
 
 	protected void unsetRequestResponse(final RemoteService bean) {
-		if (bean instanceof RemoteServiceServletSession) {
-			RemoteServiceServletSession session = (RemoteServiceServletSession) bean;
+		if (bean instanceof RemoteServiceSession) {
+			RemoteServiceSession session = (RemoteServiceSession) bean;
 			session.setRequest(null);
 			session.setResponse(null);
 		}
