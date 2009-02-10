@@ -10,7 +10,7 @@ import com.cuprum.server.common.model.property.IPropertyModel;
 import com.cuprum.server.common.model.user.IUserLoginModel;
 import com.cuprum.server.common.model.user.IUserPasswordModel;
 import com.cuprum.server.common.model.usersession.IUserSessionModel;
-import com.cuprum.server.common.rpc.RemoteServiceServletUserSession;
+import com.cuprum.server.common.rpc.RemoteServiceUserSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
@@ -21,7 +21,7 @@ import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.cuprum.web.widgets.user.password.client.stub.IUserPassword;
 import com.cuprum.web.widgets.user.register.properties.Properties;
 
-public class UserPasswordRpc extends RemoteServiceServletUserSession implements
+public class UserPasswordRpc extends RemoteServiceUserSession implements
 		IUserPassword {
 
 	private final static Logger LOGGER = Logger

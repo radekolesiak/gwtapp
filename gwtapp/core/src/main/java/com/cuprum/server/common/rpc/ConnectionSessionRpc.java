@@ -3,7 +3,7 @@ package com.cuprum.server.common.rpc;
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.cuprum.web.common.client.stub.IConnectionSession;
 
-public class ConnectionSessionRpc extends RemoteServiceServletSession implements
+public class ConnectionSessionRpc extends RemoteServiceSession implements
 		IConnectionSession {
 	/**
 	 * UID.

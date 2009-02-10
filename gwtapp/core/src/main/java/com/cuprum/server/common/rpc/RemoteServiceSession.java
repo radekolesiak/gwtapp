@@ -6,15 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.cuprum.server.common.model.IModel;
-import com.cuprum.server.common.utils.AbstractDAOMap;
 import com.cuprum.server.common.utils.HibernateDAOMap;
 import com.cuprum.server.common.utils.IDAO;
-import com.cuprum.server.common.utils.RemoteServiceDAO;
 import com.cuprum.web.common.client.SessionEntryPoint;
 import com.cuprum.web.common.client.data.TConnectionSession;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * RemoteServiceServlet with session support.
@@ -23,13 +20,13 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  * 
  */
 
-public class RemoteServiceServletSession extends RemoteServiceServlet implements
+public class RemoteServiceSession implements RemoteService,
 		IsSerializable {
 
 	/** UID. */
 	private static final long serialVersionUID = -4539898520470145102L;
 
-	private Logger LOGGER = Logger.getLogger(RemoteServiceServletSession.class);
+	private Logger LOGGER = Logger.getLogger(RemoteServiceSession.class);
 
 	/**
 	 * Reads connection session id from the query string.
@@ -47,7 +44,11 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 	 * @return Module name.
 	 */
 	public String getModuleName() {
-		return getRequest().getParameter(SessionEntryPoint.MODULE_NAME_REQUEST);
+		return getModuleName(getRequest());
+	}
+
+	public static String getModuleName(final HttpServletRequest request) {
+		return request.getParameter(SessionEntryPoint.MODULE_NAME_REQUEST);
 	}
 
 	protected synchronized IDAO<IModel> getDAO() {
@@ -59,27 +60,11 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 		return getDAO().getBean(c);
 	}
 
-	private final static AbstractDAOMap<RemoteService> remoteServiceDAOMap = new AbstractDAOMap<RemoteService>() {
-		@Override
-		protected IDAO<RemoteService> createDAO() {
-			return new RemoteServiceDAO();
-		}
-	};
-
-	protected synchronized IDAO<RemoteService> getRemoteServiceDAO() {
-		LOGGER.debug("RPC DAO module name: " + getModuleName());
-		return remoteServiceDAOMap.getDAO(getModuleName());
-	}
-
-	public final <T extends RemoteService> T getRpcBean(Class<T> c) {
-		return getRemoteServiceDAO().getBean(c);
-	}
-
 	/**
 	 * @return the requestUrl
 	 */
 	public String getRequestUrl() {
-		return getThreadLocalRequest().getRequestURL().toString();
+		return getRequest().getRequestURL().toString();
 	}
 
 	private ThreadLocal<HttpServletRequest> request = new ThreadLocal<HttpServletRequest>();
@@ -94,19 +79,10 @@ public class RemoteServiceServletSession extends RemoteServiceServlet implements
 	}
 
 	public HttpServletRequest getRequest() {
-		if (request.get() != null) {
-			return request.get();
-		} else {
-			return getThreadLocalRequest();
-		}
+		return request.get();
 	}
 
 	public HttpServletResponse getResponse() {
-		if (response.get() != null) {
-			return response.get();
-		} else {
-			return getThreadLocalResponse();
-		}
+		return response.get();
 	}
-
 }

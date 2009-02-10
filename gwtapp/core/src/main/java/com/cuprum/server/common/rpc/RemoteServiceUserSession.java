@@ -2,8 +2,8 @@ package com.cuprum.server.common.rpc;
 
 import com.cuprum.web.common.client.data.TUserSession;
 
-public class RemoteServiceServletUserSession extends
-		RemoteServiceServletSession {
+public class RemoteServiceUserSession extends
+		RemoteServiceSession {
 
 	/**
 	 * UID.
@@ -16,13 +16,6 @@ public class RemoteServiceServletUserSession extends
 	 * @return User session.
 	 */
 	public final String getUserSession() {
-		String session = null;
-
-		if (getThreadLocalRequest() != null) {
-			session = getThreadLocalRequest().getParameter(
-					TUserSession.USER_SESSION_REQUEST);
-		}
-
-		return session;
+		return getRequest().getParameter(TUserSession.USER_SESSION_REQUEST);
 	}
 }

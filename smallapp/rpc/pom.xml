@@ -12,8 +12,9 @@
 	
 	<dependencies>    
 	    <dependency>
-			<groupId>com.cuprum</groupId>
-			<artifactId>gwtapp</artifactId>
+			<groupId>com.cuprum.gwtapp</groupId>
+			<version>${project.version}</version>
+			<artifactId>gwtapp-core</artifactId>
 	    </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
