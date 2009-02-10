@@ -14,7 +14,7 @@
 		<filter-class>com.cuprum.filters.ProxyFilter</filter-class>
 		<init-param>
       		<param-name>server</param-name>
-      		<param-value>http://gwtapp.cuprum.biz/</param-value>
+      		<param-value>http://gwtapp.cuprum.biz:8080/smallapp-app/</param-value>
     	</init-param>		
 	</filter>
 	<filter-mapping>
