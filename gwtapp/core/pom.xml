@@ -99,7 +99,7 @@
 		<dependency>
 			<groupId>com.extjs</groupId>
 			<artifactId>gxt</artifactId>
-			<version>1.1</version>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -108,10 +108,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<!--
-			Include SOURCE in output artifact for GWT (GWT libraries must include
-			source)
-		-->
+		<!-- Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
