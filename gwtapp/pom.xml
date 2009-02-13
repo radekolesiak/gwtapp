@@ -33,9 +33,27 @@
 		    <artifactId>gwtapp-core</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.cuprum.gwtapp</groupId>
+		    <artifactId>gwtapp-rpc</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.cuprum.gwtapp</groupId>
+		    <artifactId>gwtapp-srv</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.cuprum.gwtapp</groupId>
+		    <artifactId>gwtapp-app</artifactId>
+		    <version>${project.version}</version>
+		</dependency>
 	    </dependencies>
 	</dependencyManagement>
 	<modules>
    	    <module>core</module>
+   	    <module>rpc</module>
+   	    <module>srv</module>
+   	    <module>app</module>
 	</modules>
 </project>
