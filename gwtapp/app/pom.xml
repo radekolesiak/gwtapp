@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>gwtapp-app</artifactId>
 	<name>gwtapp-app</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<inceptionYear>2008</inceptionYear>
 	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
 	<licenses>
