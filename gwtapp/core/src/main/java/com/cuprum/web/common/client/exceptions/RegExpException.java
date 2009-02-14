@@ -1,6 +1,5 @@
 package com.cuprum.web.common.client.exceptions;
 
-import com.cuprum.web.widgets.common.client.exception.RpcException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class RegExpException extends RpcException implements IsSerializable {

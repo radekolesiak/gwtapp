@@ -1,4 +1,4 @@
-package com.cuprum.web.widgets.common.client.exception;
+package com.cuprum.web.common.client.exceptions;
 
 import java.io.Serializable;
 

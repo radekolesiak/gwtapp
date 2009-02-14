@@ -92,6 +92,7 @@ public class SessionTest extends EntityTestDAO {
 		assertFalse(session2.getUser() == session2b.getUser());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void SessionTest3() {
 		User user1 = new User();

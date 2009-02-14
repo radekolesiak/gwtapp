@@ -1,6 +1,6 @@
 package com.cuprum.web.common.client.exceptions.model.usersession;
 
-import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.cuprum.web.common.client.exceptions.RpcException;
 
 public class SessionNotFoundException extends RpcException {
 	public SessionNotFoundException() {

@@ -1,11 +1,5 @@
 package com.cuprum.server.common;
 
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
-import com.cuprum.server.common.entities.User;
-import com.cuprum.server.common.model.IOnDuplicateUpdate;
-//import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.utils.EntityTestDAO;
 
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)

@@ -1,6 +1,6 @@
 package com.cuprum.web.common.client.exceptions.model.user;
 
-import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.cuprum.web.common.client.exceptions.RpcException;
 
 public class UserNotConfirmedException extends RpcException {
 

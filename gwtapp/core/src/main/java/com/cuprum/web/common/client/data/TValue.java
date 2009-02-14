@@ -2,7 +2,7 @@ package com.cuprum.web.common.client.data;
 
 import java.io.Serializable;
 
-import com.cuprum.web.widgets.common.client.exception.RpcException;
+import com.cuprum.web.common.client.exceptions.RpcException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class TValue<T extends Serializable> implements IsSerializable {
