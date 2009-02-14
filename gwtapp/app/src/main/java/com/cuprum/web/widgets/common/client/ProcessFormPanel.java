@@ -3,7 +3,6 @@ package com.cuprum.web.widgets.common.client;
 import com.cuprum.web.common.client.SessionCallback;
 import com.cuprum.web.common.client.SessionNotFoundListener;
 import com.cuprum.web.common.client.SessionNotFoundListenerCollection;
-import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.data.TValue;
 import com.cuprum.web.common.client.data.TValueList;
 import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
@@ -45,6 +44,7 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		}
 	};
 
+	@Override
 	protected void beforeRender() {
 		super.beforeRender();
 
@@ -71,6 +71,7 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 		setButtonAlign(HorizontalAlignment.CENTER);
 	}
 
+	@Override
 	public void submit() {
 		setReadOnly(true);
 		submit.setEnabled(false);
