@@ -14,7 +14,7 @@ import com.cuprum.server.common.rpc.RemoteServiceUserSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
-import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
+//import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
@@ -56,6 +56,7 @@ public class UserPasswordRpc extends RemoteServiceUserSession implements
 
 	public TChangePasswordGetToken changePasswordGetToken(
 			TChangePasswordGetToken login) {
+		/*-
 
 		login.clearError();
 
@@ -96,6 +97,8 @@ public class UserPasswordRpc extends RemoteServiceUserSession implements
 		}
 
 		return login;
+	-*/
+		return null;
 	}
 
 	public TChangePasswordByToken changePasswordByToken(

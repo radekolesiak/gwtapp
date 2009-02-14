@@ -5,13 +5,14 @@ import org.junit.Test;
 
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.model.IOnDuplicateUpdate;
-import com.cuprum.server.common.model.user.xql.CrLogin;
+//import com.cuprum.server.common.model.user.xql.CrLogin;
 import com.cuprum.server.common.utils.EntityTestDAO;
 
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 //@Transactional
 //@RunWith(SpringJUnit4ClassRunner.class)
 public class TransactionsTest extends EntityTestDAO {
+	/*-
 	private final static Logger LOGGER = Logger
 			.getLogger(TransactionsTest.class);
 
@@ -57,4 +58,5 @@ public class TransactionsTest extends EntityTestDAO {
 					}
 				});
 	}
+	-*/
 }
