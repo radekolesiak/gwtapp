@@ -2,9 +2,6 @@ package com.cuprum.web.common.client;
 
 import java.util.List;
 
-import com.cuprum.web.common.client.i18n.InfoMessages;
-import com.extjs.gxt.ui.client.widget.Info;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -58,13 +55,6 @@ public class Util {
 			return new Label();
 		}
 	}
-
-	public static void showOnFailureCallbackDefault() {
-		InfoMessages messages = GWT.create(InfoMessages.class);
-		Info.display(messages.msgOnFailureTitle(), messages.msgOnFailure(),
-				new String[] {});
-	}
-
 
 	public static <T> boolean equals(T a, T b) {
 		if (a == b) {

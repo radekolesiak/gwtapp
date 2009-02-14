@@ -5,31 +5,34 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public abstract class WebCallback<T> implements AsyncCallback<T> {
 	public final void onFailure(final Throwable caught) {
 		onBefore();
-		onResponseFailure(caught);
-		onAfter();
+		try {
+			onResponseFailure(caught);
+		} finally {
+			onAfter();
+		}
 	}
 
 	public final void onSuccess(final T result) {
 		onBefore();
-		onResponseSuccess(result);
-		onAfter();
+		try {
+			onResponseSuccess(result);
+		} finally {
+			onAfter();
+		}
 	}
 
 	public void onBefore() {
 	}
 
+	public void onAfter() {
+	}
+
 	public abstract void onResponseSuccess(final T result);
 
 	public void onResponseFailure(Throwable caught) {
-		IFailureCallbackHandler handler = getIFailureCallbackHandler();
-		if (handler == null) {
-			Util.showOnFailureCallbackDefault();
-		} else {
-			handler.onResponseFailure(caught);
+		if (getIFailureCallbackHandler() != null) {
+			getIFailureCallbackHandler().onResponseFailure(caught);
 		}
-	}
-
-	public void onAfter() {
 	}
 
 	private static IFailureCallbackHandler handler = null;

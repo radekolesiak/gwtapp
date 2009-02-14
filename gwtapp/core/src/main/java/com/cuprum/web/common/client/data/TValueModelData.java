@@ -6,18 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cuprum.web.common.client.data.IValueCollection;
-import com.cuprum.web.common.client.data.TValue;
 import com.cuprum.web.widgets.common.client.exception.MultipleException;
 import com.cuprum.web.widgets.common.client.exception.RpcException;
-import com.extjs.gxt.ui.client.data.ModelData;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
  * 
  * @author radek
  * 
- *  TODO: to extend at the gwtapp-app project and implement with the extjs's ModelData
  */
 @SuppressWarnings("unchecked")
 public class TValueModelData<T extends TValue> implements IModelData,
@@ -36,11 +32,14 @@ public class TValueModelData<T extends TValue> implements IModelData,
 	protected void updateMap(Map<String, T> map) {
 	}
 
+	 //  TODO: to extend at the gwtapp-app project and implement with the extjs's ModelData
+	/*-
 	public void copyFrom(final ModelData model) {
 		for (String key : map.keySet()) {
 			map.get(key).set((Serializable) model.get(key));
 		}
 	}
+	 */
 
 	public void clearErrors() {
 		for (T value : getMap().values()) {
@@ -120,6 +119,7 @@ public class TValueModelData<T extends TValue> implements IModelData,
 		return e;
 	}
 
+	@Override
 	public String toString() {
 		StringBuffer s = new StringBuffer();
 		for (Entry<String, T> entry : map.entrySet()) {

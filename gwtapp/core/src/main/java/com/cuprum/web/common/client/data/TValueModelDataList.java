@@ -2,9 +2,7 @@ package com.cuprum.web.common.client.data;
 
 import java.util.ArrayList;
 
-import com.cuprum.web.common.client.data.IValueCollection;
 import com.cuprum.web.widgets.common.client.exception.MultipleException;
-import com.extjs.gxt.ui.client.store.ListStore;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
@@ -43,7 +41,8 @@ public class TValueModelDataList<T extends TValueModelData> extends
 		}
 	}
 
-	// TODO: to extend at the gwtapp-app project and implement with the extjs's ModelData
+	// TODO: to extend at the gwtapp-app project and implement with the extjs's
+	// ModelData
 	/*-
 	public <X extends TValueModelDataList<T>> X copyFrom(
 			final ListStore<T> store) {
