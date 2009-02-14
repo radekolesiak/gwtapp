@@ -106,19 +106,22 @@ public abstract class DualTextBoxes {
 		setEmptyTextB(emptyTextB);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setValidatorA(Validator validator) {
 		getTextA().setValidator(validator);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setValidatorB(Validator validator) {
 		getTextB().setValidator(validator);
 	}
 
-	public void setValidator(Validator validator) {
+	public void setValidator(Validator<?, ?> validator) {
 		setValidatorA(validator);
 		setValidatorB(validator);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setValidator(Validator validatorA, Validator validatorB) {
 		setValidatorA(validatorA);
 		setValidatorB(validatorB);

@@ -4,6 +4,7 @@ import com.cuprum.web.common.client.Util;
 import com.extjs.gxt.ui.client.widget.form.Field;
 import com.extjs.gxt.ui.client.widget.form.Validator;
 
+@SuppressWarnings("unchecked")
 public class StringValidator implements Validator {
 	private String msg = null;
 
