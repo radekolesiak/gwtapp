@@ -44,6 +44,7 @@
 	<properties>
 	    <gwtVersion>1.5.3</gwtVersion> 
 	    <springVersion>2.5.5</springVersion> 
+	    <gxtVersion>1.2</gxtVersion> 
 	</properties>
 	<dependencyManagement>
 	    <dependencies>
