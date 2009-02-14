@@ -1,9 +1,11 @@
-package com.cuprum.web.common.client;
+package com.cuprum.web.widgets.common.client;
 
+import com.cuprum.web.common.client.SessionCallback;
+import com.cuprum.web.common.client.SessionNotFoundListener;
+import com.cuprum.web.common.client.SessionNotFoundListenerCollection;
+import com.cuprum.web.common.client.Validate;
 import com.cuprum.web.common.client.data.TValue;
 import com.cuprum.web.common.client.data.TValueList;
-import com.cuprum.web.widgets.common.client.SubmitListener;
-import com.cuprum.web.widgets.common.client.SubmitListenerCollection;
 import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
@@ -20,6 +22,7 @@ public abstract class ProcessFormPanel<T> extends FormPanel {
 			submit.setEnabled(true);
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public void onSessionResponseSuccess(final T value) {
 			validate(value);

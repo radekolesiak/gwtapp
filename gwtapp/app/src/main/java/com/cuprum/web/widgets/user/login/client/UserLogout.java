@@ -1,8 +1,8 @@
 package com.cuprum.web.widgets.user.login.client;
 
 import com.cuprum.web.common.client.EndPoint;
-import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.data.TUserSession;
+import com.cuprum.web.widgets.common.client.ProcessFormPanel;
 import com.cuprum.web.widgets.user.login.client.i18n.UserLogoutMessages;
 import com.cuprum.web.widgets.user.login.client.stub.IUserLogin;
 import com.cuprum.web.widgets.user.login.client.stub.IUserLoginAsync;

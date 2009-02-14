@@ -30,6 +30,11 @@
 			<groupId>com.cuprum.gwtapp</groupId>
 			<artifactId>gwtapp-srv</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.extjs</groupId>
+			<artifactId>gxt</artifactId>
+			<version>${gxtVersion}</version>
+		</dependency>
 		<!--  GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>

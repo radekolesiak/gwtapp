@@ -1,11 +1,11 @@
 package com.cuprum.web.widgets.user.register.client;
 
 import com.cuprum.web.common.client.EndPoint;
-import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.exceptions.RegExpException;
 import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
 import com.cuprum.web.common.client.exceptions.model.user.UserAlreadyExistsException;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
+import com.cuprum.web.widgets.common.client.ProcessFormPanel;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.common.client.TextBoxes;

@@ -17,10 +17,10 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * 
  * @author radek
  * 
- *         TODO: move to the gwtapp project.
+ *  TODO: to extend at the gwtapp-app project and implement with the extjs's ModelData
  */
 @SuppressWarnings("unchecked")
-public class TValueModelData<T extends TValue> implements ModelData,
+public class TValueModelData<T extends TValue> implements IModelData,
 		IValueCollection, IsSerializable {
 
 	private Map<String, T> map = null;

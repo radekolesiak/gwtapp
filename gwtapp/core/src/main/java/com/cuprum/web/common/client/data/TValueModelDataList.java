@@ -43,6 +43,8 @@ public class TValueModelDataList<T extends TValueModelData> extends
 		}
 	}
 
+	// TODO: to extend at the gwtapp-app project and implement with the extjs's ModelData
+	/*-
 	public <X extends TValueModelDataList<T>> X copyFrom(
 			final ListStore<T> store) {
 		clear();
@@ -55,4 +57,5 @@ public class TValueModelDataList<T extends TValueModelData> extends
 		store.add(this);
 		store.commitChanges();
 	}
+	-*/
 }

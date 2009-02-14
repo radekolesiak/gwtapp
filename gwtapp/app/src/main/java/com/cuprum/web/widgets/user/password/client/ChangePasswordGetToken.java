@@ -1,9 +1,9 @@
 package com.cuprum.web.widgets.user.password.client;
 
-import com.cuprum.web.common.client.ProcessFormPanel;
 import com.cuprum.web.common.client.UserEndPoint;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotConfirmedException;
 import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
+import com.cuprum.web.widgets.common.client.ProcessFormPanel;
 import com.cuprum.web.widgets.common.client.StringValidator;
 import com.cuprum.web.widgets.common.client.TextBox;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
