@@ -1,6 +1,6 @@
 package com.cuprum.web.widgets.user.password.client.stub;
 
-import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
+import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;

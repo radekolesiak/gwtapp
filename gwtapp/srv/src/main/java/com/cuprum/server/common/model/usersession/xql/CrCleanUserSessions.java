@@ -28,7 +28,7 @@ public class CrCleanUserSessions implements HibernateCallback {
 			SQLException {
 
 		Date now = new Date();
-		if (Util.isToUpdate(lastUpdate, now.getTime())) {
+		if (Util.isUserSessionToUpdate(lastUpdate, now.getTime())) {
 			lastUpdate = now.getTime();
 			return getQuery(session).executeUpdate();
 		} else {

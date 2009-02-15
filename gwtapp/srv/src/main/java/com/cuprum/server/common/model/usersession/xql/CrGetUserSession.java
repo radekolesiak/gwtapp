@@ -12,7 +12,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.web.common.client.Util;
-import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
+import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
 
 public class CrGetUserSession implements HibernateCallback {
 	private String sessionName;
@@ -48,7 +48,7 @@ public class CrGetUserSession implements HibernateCallback {
 
 		// updating not too often
 
-		if (Util.isToUpdate(userSession.getDate().getTime(), now.getTime())) {
+		if (Util.isUserSessionToUpdate(userSession.getDate().getTime(), now.getTime())) {
 			userSession.setDate(now);
 			session.update(userSession);
 		}

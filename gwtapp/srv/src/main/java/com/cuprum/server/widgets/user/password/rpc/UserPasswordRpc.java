@@ -13,7 +13,7 @@ import com.cuprum.server.common.model.usersession.IUserSessionModel;
 import com.cuprum.server.common.rpc.RemoteServiceUserSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.RpcException;
-import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
+import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
 //import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;

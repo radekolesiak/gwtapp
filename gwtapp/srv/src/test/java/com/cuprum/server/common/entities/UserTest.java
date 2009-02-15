@@ -77,7 +77,6 @@ public class UserTest extends EntityTestDAO {
 			getBean().save(user2);
 		} catch (DataIntegrityViolationException e) {
 			LOGGER.debug("InsertValue1c::exception");
-			getBean().exceptionTX();
 			throw e;
 		}
 	}
