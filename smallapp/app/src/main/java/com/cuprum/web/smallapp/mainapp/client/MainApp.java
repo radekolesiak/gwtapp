@@ -3,7 +3,6 @@ package com.cuprum.web.smallapp.mainapp.client;
 import com.cuprum.web.common.client.Application;
 import com.cuprum.web.common.client.SessionEntryPoint;
 import com.cuprum.web.common.client.SessionNotFoundListener;
-import com.cuprum.web.common.client.Util;
 import com.cuprum.web.smallapp.mainapp.client.i18n.InfoMessages;
 import com.cuprum.web.smallapp.mainapp.client.page.ConfirmPage;
 import com.cuprum.web.smallapp.mainapp.client.page.RemindPasswordPage;
@@ -29,7 +28,6 @@ public class MainApp extends SessionEntryPoint {
 
 	@Override
 	public final void onSessionModuleLoad() {
-		Util.enableDebug();
 		if (Window.Location.getParameter(UserRegister.CONFIRM_REQUEST) != null) {
 			showConfirm();
 		} else if (Window.Location
