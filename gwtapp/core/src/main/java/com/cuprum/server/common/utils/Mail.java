@@ -30,6 +30,7 @@ public class Mail extends Thread {
 		return counter++;
 	}
 
+	@Override
 	public void run() {
 		int localCounter = updateCounter();
 

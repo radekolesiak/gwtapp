@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.cuprum.web.common.client.exceptions.RpcException;
-import com.cuprum.web.widgets.common.client.exception.MultipleException;
+import com.cuprum.web.widgets.common.client.exception.MultipleValuesException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
@@ -56,9 +56,9 @@ public class TValueModelData<T extends TValue> implements IModelData,
 		return false;
 	}
 
-	public void evalErrors() throws MultipleException {
+	public void evalErrors() throws MultipleValuesException {
 		if (hasErrors()) {
-			throw new MultipleException();
+			throw new MultipleValuesException();
 		}
 	}
 

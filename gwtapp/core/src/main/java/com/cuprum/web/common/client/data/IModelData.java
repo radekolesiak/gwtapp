@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 
 public interface IModelData {
+	
 	public <X> X get(String property);
 
 	public Map<String, Object> getProperties();

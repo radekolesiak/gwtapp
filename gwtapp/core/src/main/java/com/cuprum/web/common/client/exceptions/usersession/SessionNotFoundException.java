@@ -1,4 +1,4 @@
-package com.cuprum.web.common.client.exceptions.model.usersession;
+package com.cuprum.web.common.client.exceptions.usersession;
 
 import com.cuprum.web.common.client.exceptions.RpcException;
 

@@ -3,20 +3,11 @@ package com.cuprum.server.common.model;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.server.common.utils.IDAO;
 
 public interface IModel {
-	void pushTX();
-
-	Transaction getTX();
-
-	void popTX();
-
-	void exceptionTX();
-
 	<T> T execute(HibernateCallback callback);
 
 	<T> T save(Object object);

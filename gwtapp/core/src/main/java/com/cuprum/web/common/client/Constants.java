@@ -18,10 +18,10 @@ public class Constants {
 	 * User session inactivity time out in miliseconds. TODO: to make this
 	 * configurable.
 	 */
-	public static final long USER_SESSION_TIME_OUT = 15 * 60 * 1000;
+	public static final long USER_SESSION_TIME_OUT = 15L * 60L * 1000L;
 
-	/** Update frequency in miliseconds */
-	public final static long UPDATE_FREQUENCY = 5 * 1000;
+	/** User session update frequency in miliseconds */
+	public final static long USER_SESSION_UPDATE_TIMER = 5000L;
 
 	public final static String INVALID_FIELD_STYLE = "invalid_field";
 

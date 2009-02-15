@@ -6,7 +6,7 @@ package com.cuprum.server.common.utils;
  * @author radek
  * TODO: replace by interface with getDatabase method
  */
-public enum DefaultTestHibernateDatabases implements HibernateDatabases {
+public enum DefaultTestingHibernateDatabases implements IHibernateDatabases {
 	/** The general testing database configuration. */
 	TEST("test");
 
@@ -17,7 +17,7 @@ public enum DefaultTestHibernateDatabases implements HibernateDatabases {
 	 * Sets database configuration name.
 	 * @param aDatabase Database configuration name.
 	 */
-	DefaultTestHibernateDatabases(final String aDatabase) {
+	DefaultTestingHibernateDatabases(final String aDatabase) {
 		this.database = aDatabase;
 	}
 

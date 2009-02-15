@@ -49,7 +49,7 @@ public final class HibernateUtil {
 	 *            Database to set as current default.
 	 */
 	public static synchronized void setDefaultSessionFactory(
-			final HibernateDatabases database) {
+			final IHibernateDatabases database) {
 		clearDefaultSessionFactory();
 		defaultSession = getSessionFactory(database);
 	}
@@ -69,7 +69,7 @@ public final class HibernateUtil {
 	 * @return Database.
 	 */
 	public static synchronized SessionFactory getSessionFactory(
-			final HibernateDatabases database) {
+			final IHibernateDatabases database) {
 		try {
 			// Create the SessionFactory from hibernate.cfg.xml
 			AnnotationConfiguration ac = new AnnotationConfiguration();

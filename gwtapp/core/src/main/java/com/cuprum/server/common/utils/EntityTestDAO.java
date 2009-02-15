@@ -15,12 +15,13 @@ public class EntityTestDAO extends Model {
 
 	private IHibernateDAO<IModel> dao = null;
 
+	@Override
 	public IDAO<IModel> getDAO() {
 		return dao;
 	}
 
-	public HibernateDatabases getDatabase() {
-		return DefaultTestHibernateDatabases.TEST;
+	public IHibernateDatabases getDatabase() {
+		return DefaultTestingHibernateDatabases.TEST;
 	}
 
 	static {
@@ -59,12 +60,10 @@ public class EntityTestDAO extends Model {
 	public void open() {
 		close();
 		bean = (EntityTestDAO) dao.getBean(EntityTestDAO.class);
-		// bean.pushTX();
 	}
 
 	public void close() {
 		if (bean != null) {
-			// bean.popTX();
 			bean.close();
 		}
 		bean = null;

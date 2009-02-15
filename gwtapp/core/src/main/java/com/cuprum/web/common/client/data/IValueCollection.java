@@ -1,11 +1,12 @@
 package com.cuprum.web.common.client.data;
 
-import com.cuprum.web.widgets.common.client.exception.MultipleException;
+import com.cuprum.web.widgets.common.client.exception.MultipleValuesException;
 
 public interface IValueCollection {
+	
 	void clearErrors();
 
 	boolean hasErrors();
 
-	void evalErrors() throws MultipleException;
+	void evalErrors() throws MultipleValuesException;
 }

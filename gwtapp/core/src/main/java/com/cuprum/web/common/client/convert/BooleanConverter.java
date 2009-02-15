@@ -1,6 +1,7 @@
 package com.cuprum.web.common.client.convert;
 
 public class BooleanConverter implements IConverter<Boolean> {
+	
 	public Boolean convert(Object o) {
 		if (o == null) {
 			return null;

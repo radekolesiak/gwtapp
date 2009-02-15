@@ -5,7 +5,7 @@ package com.cuprum.server.common.utils;
  * @author radek
  * TODO: replace by interface with getDatabase method
  */
-public interface HibernateDatabases {
+public interface IHibernateDatabases {
 	/**
 	 * Sets database configuration name. 
 	 * @return Database configuration name.

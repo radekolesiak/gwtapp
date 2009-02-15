@@ -1,6 +1,6 @@
 package com.cuprum.web.common.client;
 
-import com.cuprum.web.common.client.exceptions.model.usersession.SessionNotFoundException;
+import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
 
 public abstract class SessionCallback<T> extends WebCallback<T> {
 

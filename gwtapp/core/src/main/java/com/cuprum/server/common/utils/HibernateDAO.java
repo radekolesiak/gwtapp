@@ -9,7 +9,7 @@ public class HibernateDAO extends AbstractDAO<IModel> implements
 				+ ".cfg.xml";
 	}
 
-	public void setupContext(HibernateDatabases database) {
+	public void setupContext(IHibernateDatabases database) {
 		setupContext(database.getDatabase());
 	}
 

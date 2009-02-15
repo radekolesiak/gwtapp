@@ -3,23 +3,8 @@ package com.cuprum.web.common.client;
 import java.util.List;
 
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 public class Util {
-	private static boolean isDebug = false;
-
-	public static void enableDebug() {
-		isDebug = true;
-	}
-
-	public static void disableDebug() {
-		isDebug = true;
-	}
-
-	public static boolean isDebug() {
-		return isDebug;
-	}
 
 	public static String getUrl() {
 		return Window.Location.getProtocol() + "//" + Window.Location.getHost()
@@ -43,17 +28,9 @@ public class Util {
 		return o != null;
 	}
 
-	public static boolean isToUpdate(long t0, long t1) {
+	public static boolean isUserSessionToUpdate(long t0, long t1) {
 		return t1 - t0 >= Math.min(Constants.USER_SESSION_TIME_OUT,
-				Constants.UPDATE_FREQUENCY);
-	}
-
-	public static Widget getWidget(Widget widget) {
-		if (isNotNull(widget)) {
-			return widget;
-		} else {
-			return new Label();
-		}
+				Constants.USER_SESSION_UPDATE_TIMER);
 	}
 
 	public static <T> boolean equals(T a, T b) {

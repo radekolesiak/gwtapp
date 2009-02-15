@@ -2,7 +2,7 @@ package com.cuprum.web.widgets.common.client.exception;
 
 import com.cuprum.web.common.client.exceptions.RpcException;
 
-public class MultipleException extends RpcException {
+public class MultipleValuesException extends RpcException {
 
 	/**
 	 * UID. 
