@@ -58,17 +58,11 @@
 		    <artifactId>smallapp</artifactId>
 		    <version>${project.version}</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.cuprum.proxyapp</groupId>
-		    <artifactId>smallapp</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
 	    </dependencies>
 	</dependencyManagement>
 	<modules>
 	    <module>gwtapp</module>
 	    <module>smallapp</module>
-	    <module>proxyapp</module>
 	</modules>
 	
 	<profiles>
