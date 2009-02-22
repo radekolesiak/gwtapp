@@ -1,31 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 	    <groupId>com.cuprum</groupId>
 	    <artifactId>cuprum-base</artifactId>
-	    <version>1.0-SNAPSHOT</version>
+	    <version>1.0.0</version>
 	</parent>
+
 	<groupId>com.cuprum.smallapp</groupId>
-	<artifactId>smallapp</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>smallapp</artifactId>	
 	<name>smallapp</name>
+	
+	<version>1.0.0</version>
+	
 	<packaging>pom</packaging>
-	<inceptionYear>2008</inceptionYear>
-	<description>Sample Proxy App</description>
+	
+	<description>Sample App</description>
 	<licenses>
 		<license>
 			<name>LGPL</name>
 			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
 		</license>
 	</licenses>
-	<developers>
-		<developer>
-			<id>cuprum</id>
-			<name>Radek Olesiak</name>
-			<email>r.olesiak@gmail.com</email>
-		</developer>
-	</developers>
+
+	<properties>
+	    <gwtappVersion>1.0.0</gwtappVersion>
+	</properties>
+
+	<!-- 
 	<dependencyManagement>
 	    <dependencies>
 		<dependency>
@@ -40,6 +44,7 @@
 		</dependency>
 	    </dependencies>
 	</dependencyManagement>
+	 -->
 	<modules>
    	    <module>rpc</module>
 	    <module>srv</module>

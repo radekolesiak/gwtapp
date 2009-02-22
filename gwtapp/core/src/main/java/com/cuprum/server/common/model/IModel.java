@@ -24,8 +24,7 @@ public interface IModel {
 
 	void delete(Object object);
 
-	@SuppressWarnings("unchecked")
-	List createQuery(String query);
+	<T> List<T> createQuery(String query);
 
 	boolean contains(Object object);
 

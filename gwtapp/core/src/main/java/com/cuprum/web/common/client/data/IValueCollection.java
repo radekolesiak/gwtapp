@@ -1,6 +1,6 @@
 package com.cuprum.web.common.client.data;
 
-import com.cuprum.web.widgets.common.client.exception.MultipleValuesException;
+import com.cuprum.web.common.client.exceptions.MultipleValuesException;
 
 public interface IValueCollection {
 	

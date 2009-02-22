@@ -14,10 +14,10 @@ import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
 
-public class CrGetUserSession implements HibernateCallback {
+public class XqlGetUserSession implements HibernateCallback {
 	private String sessionName;
 
-	public CrGetUserSession(final String sessionName) {
+	public XqlGetUserSession(final String sessionName) {
 		this.sessionName = sessionName;
 	}
 
@@ -34,7 +34,7 @@ public class CrGetUserSession implements HibernateCallback {
 			throws HibernateException, SQLException, SessionNotFoundException {
 
 		// remove old sessions
-		new CrCleanUserSessions().doInHibernate(session);
+		new XqlCleanUserSessions().doInHibernate(session);
 
 		List list = getCriteria(session).list();
 

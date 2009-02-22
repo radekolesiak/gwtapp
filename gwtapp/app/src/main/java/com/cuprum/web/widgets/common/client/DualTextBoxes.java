@@ -2,7 +2,7 @@ package com.cuprum.web.widgets.common.client;
 
 import com.cuprum.web.common.client.data.TDualStringValue;
 import com.cuprum.web.common.client.data.TDualValue;
-import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
+import com.cuprum.web.common.client.exceptions.DualTextFieldInvalidException;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.form.Validator;
 

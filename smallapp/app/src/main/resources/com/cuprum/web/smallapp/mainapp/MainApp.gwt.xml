@@ -1,6 +1,6 @@
 <module>
 	<!-- Inherit the core Web Toolkit stuff. -->
-	<inherits name='com.cuprum.web.widgets.common.Common'/>
+	<inherits name='com.cuprum.web.common.Common'/>
 	
 	<!-- depedencies -->	
 	<inherits name='com.cuprum.web.widgets.user.login.UserLogin'/>

@@ -8,16 +8,16 @@ import org.springframework.dao.DataIntegrityViolationException;
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.model.user.xql.CrLogin;
-import com.cuprum.server.common.model.user.xql.CrUserConfirm;
-import com.cuprum.server.common.model.user.xql.CrUserToConfirm;
+import com.cuprum.server.common.model.user.xql.XqlLogin;
+import com.cuprum.server.common.model.user.xql.XqlUserConfirm;
+import com.cuprum.server.common.model.user.xql.XqlUserToConfirm;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.HasRegExp;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TValue;
 import com.cuprum.web.common.client.exceptions.RegExpException;
+import com.cuprum.web.common.client.exceptions.TextToShortException;
 import com.cuprum.web.common.client.exceptions.model.user.UserAlreadyExistsException;
-import com.cuprum.web.widgets.common.client.exception.TextToShortException;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterLoginValue;
 import com.cuprum.web.widgets.user.register.client.data.TUserRegisterValue;
 
@@ -28,11 +28,11 @@ public class UserRegisterModel extends Model implements IUserRegisterModel {
 	static final Logger LOGGER = Logger.getLogger(UserRegisterModel.class);
 
 	public boolean isToConfirm(User user) {
-		return Util.isNotNull(execute(new CrUserToConfirm(user)));
+		return Util.isNotNull(execute(new XqlUserToConfirm(user)));
 	}
 
 	public boolean isToConfirm(String login) {
-		User user = execute(new CrLogin(login));
+		User user = execute(new XqlLogin(login));
 		if (Util.isNotNull(user)) {
 			return isToConfirm(user);
 		} else {
@@ -98,7 +98,7 @@ public class UserRegisterModel extends Model implements IUserRegisterModel {
 	}
 
 	public boolean confirm(String uid) {
-		UserConfirm confirm = execute(new CrUserConfirm(uid));
+		UserConfirm confirm = execute(new XqlUserConfirm(uid));
 		if (confirm != null) {
 			User user = get(User.class, confirm.getUser().getId());
 			user.setPassword(confirm.getPassword());

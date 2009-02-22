@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.model.user.xql.CrLogin;
-import com.cuprum.server.common.model.user.xql.CrLoginPassword;
+import com.cuprum.server.common.model.user.xql.XqlLogin;
+import com.cuprum.server.common.model.user.xql.XqlLoginPassword;
 import com.cuprum.server.common.model.usersession.IUserSessionModel;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.Util;
@@ -37,7 +37,7 @@ public class UserLoginModel extends Model implements IUserLoginModel {
 	public User getUser(String login) throws UserNotFoundException,
 			UserNotConfirmedException {
 		verifyUserInstance(login);
-		User user = execute(new CrLogin(login));
+		User user = execute(new XqlLogin(login));
 		return user;
 	}
 
@@ -45,7 +45,7 @@ public class UserLoginModel extends Model implements IUserLoginModel {
 			throws UserNotFoundException, UserNotConfirmedException,
 			InvalidPasswordException {
 		verifyUserInstance(login);
-		User user = execute(new CrLoginPassword(login, password));
+		User user = execute(new XqlLoginPassword(login, password));
 		return user;
 	}
 
@@ -98,6 +98,6 @@ public class UserLoginModel extends Model implements IUserLoginModel {
 	}
 
 	public boolean existsLogin(String login) {
-		return Util.isNotNull(execute(new CrLogin(login)));
+		return Util.isNotNull(execute(new XqlLogin(login)));
 	}
 }

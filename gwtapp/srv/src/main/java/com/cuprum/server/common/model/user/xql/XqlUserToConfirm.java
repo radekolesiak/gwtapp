@@ -6,10 +6,10 @@ import org.hibernate.criterion.Restrictions;
 
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserConfirm;
-import com.cuprum.server.common.model.xql.CrValue;
+import com.cuprum.server.common.model.xql.XqlValue;
 
-public class CrUserToConfirm extends CrValue<User, UserConfirm> {
-	public CrUserToConfirm(final User value) {
+public class XqlUserToConfirm extends XqlValue<User, UserConfirm> {
+	public XqlUserToConfirm(final User value) {
 		super(value);
 	}
 

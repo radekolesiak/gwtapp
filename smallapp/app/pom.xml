@@ -1,22 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.cuprum.smallapp</groupId>
 		<artifactId>smallapp</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
+	
 	<artifactId>smallapp-app</artifactId>
 	<name>smallapp-app</name>
+	
+	<version>1.1.0</version>
+
 	<packaging>war</packaging>
-	<inceptionYear>2008</inceptionYear>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
-	<licenses>
-		<license>
-			<name>GPL</name>
-			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
-		</license>
-	</licenses>
+
 	<developers>
 		<developer>
 			<id>cuprum</id>
@@ -24,29 +22,19 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.cuprum.gwtapp</groupId>
-			<version>${project.version}</version>
+			<version>${gwtappVersion}</version>
 			<artifactId>gwtapp-app</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.cuprum.smallapp</groupId>
-			<artifactId>smallapp-srv</artifactId>
+			<artifactId>smallapp-rpc</artifactId>
+            <version>${project.parent.version}</version>
 		</dependency>
 		<!--  GWT deps -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwtVersion}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwtVersion}</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
@@ -82,7 +70,7 @@
 							<includes>
 								<include>*</include>
 							</includes>
-							<followSymlinks>true</followSymlinks>
+							<followSymlinks>false</followSymlinks>
 						</fileset>
 					</filesets>
 				</configuration>
@@ -118,7 +106,13 @@
 				<version>2.0-beta26</version>
 				<configuration>
 					<logLevel>INFO</logLevel>
-					<output>target/smallapp-app-1.0-SNAPSHOT/gwt</output>
+
+					<sourceDirectories>
+						<param>${basedir}/src/main/java/</param>
+						<param>${basedir}/src/main/resources/</param>
+					</sourceDirectories>
+
+					<output>target/smallapp-app-${project.version}/gwt</output>
 					<compileTargets>
 						<value>
 							com.cuprum.web.smallapp.mainapp.MainApp
@@ -134,10 +128,6 @@
 					<!--
 						this parameter is VERY important with automatic mode - has to
 						match the version in your declared deps
-					-->
-					<!--
-						if this is set incorrect, or left out and default does not match
-						(default is 1.5.1 for 2.0-beta22) you will have mysterious errors
 					-->
 					<gwtVersion>${gwtVersion}</gwtVersion>
 				</configuration>
@@ -189,46 +179,9 @@
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<stopKey>foo</stopKey>
-					<stopPort>9999</stopPort>
+					<stopPort>9080</stopPort>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependencies</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<!--
-					the Maven Surefire Report plugin has a bug where it re-runs the
-					tests, this is needed to avoid that -
-					http://jira.codehaus.org/browse/SUREFIRE-257
-				-->
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>

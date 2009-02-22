@@ -1,31 +1,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.cuprum</groupId>
 	<artifactId>cuprum-base</artifactId>
 	<name>cuprum-base</name>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
+
+	<properties>
+	    <gwtVersion>1.5.3</gwtVersion>
+	</properties>
+
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
+	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz:8080/</description>
+
 	<distributionManagement>
 		<site>
 			<id>gwtapp.sourceforge.net</id>
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
+
 	<repositories>	
 		<repository>
 			<id>atlassian</id>
 			<url>http://maven.atlassian.com/repository/public</url>
 		</repository>
-		<!--
-		<repository>
-			<id>ibildo-repository</id>
-			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-		</repository>
-		-->
 		<repository>
 			<id>gwtext-repository</id>
 			<url>http://www.gwt-ext.com/maven2</url>
@@ -35,31 +38,7 @@
 			<url>http://repository.jboss.org/maven2</url>
 		</repository>
 	</repositories>	
-	<pluginRepositories>
-		<pluginRepository>
-			<id>gwt-maven-plugins</id>
-			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
-		</pluginRepository>
-	</pluginRepositories>
-	<properties>
-	    <gwtVersion>1.5.3</gwtVersion> 
-	    <springVersion>2.5.5</springVersion> 
-	    <gxtVersion>1.2</gxtVersion> 
-	</properties>
-	<dependencyManagement>
-	    <dependencies>
-		<dependency>
-		    <groupId>com.cuprum</groupId>
-		    <artifactId>gwtapp</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.cuprum.smallapp</groupId>
-		    <artifactId>smallapp</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
-	    </dependencies>
-	</dependencyManagement>
+
 	<modules>
 	    <module>gwtapp</module>
 	    <module>smallapp</module>

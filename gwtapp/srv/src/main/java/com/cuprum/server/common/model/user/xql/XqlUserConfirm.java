@@ -11,10 +11,10 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import com.cuprum.server.common.entities.UserConfirm;
 import com.cuprum.web.common.client.Util;
 
-public class CrUserConfirm implements HibernateCallback {
+public class XqlUserConfirm implements HibernateCallback {
 	private String uid;
 
-	public CrUserConfirm(final String uid) {
+	public XqlUserConfirm(final String uid) {
 		this.uid = uid;
 	}
 

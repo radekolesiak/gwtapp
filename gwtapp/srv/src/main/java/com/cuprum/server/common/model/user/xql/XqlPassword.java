@@ -5,10 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.cuprum.server.common.entities.User;
-import com.cuprum.server.common.model.xql.CrValue;
+import com.cuprum.server.common.model.xql.XqlValue;
 
-public class CrPassword extends CrValue<String, User> {
-	public CrPassword(String value) {
+public class XqlPassword extends XqlValue<String, User> {
+	public XqlPassword(String value) {
 		super(value);
 	}
 

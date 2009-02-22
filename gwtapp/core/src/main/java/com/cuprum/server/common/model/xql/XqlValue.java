@@ -9,10 +9,10 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.web.common.client.Util;
 
-public abstract class CrValue<T, R> implements HibernateCallback {
+public abstract class XqlValue<T, R> implements HibernateCallback {
 	private T value;
 
-	public CrValue(final T value) {
+	public XqlValue(final T value) {
 		this.value = value;
 	}
 

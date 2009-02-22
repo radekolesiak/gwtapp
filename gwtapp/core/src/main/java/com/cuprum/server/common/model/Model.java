@@ -67,7 +67,7 @@ public abstract class Model extends HibernateDaoSupport implements IModel {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List createQuery(String query) {
+	public <T> List<T> createQuery(String query) {
 		return getHibernateTemplate().find(query);
 	}
 

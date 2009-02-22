@@ -8,14 +8,14 @@ import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserPasswordRemind;
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.model.user.xql.CrUserPasswordRemind;
+import com.cuprum.server.common.model.user.xql.XqlUserPasswordRemind;
 import com.cuprum.server.common.utils.Random;
 import com.cuprum.web.common.client.data.TDualValue;
 import com.cuprum.web.common.client.data.TValue;
+import com.cuprum.web.common.client.exceptions.DualTextFieldInvalidException;
+import com.cuprum.web.common.client.exceptions.TextToShortException;
+import com.cuprum.web.common.client.exceptions.UnknownTokenException;
 import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
-import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
-import com.cuprum.web.widgets.common.client.exception.TextToShortException;
-import com.cuprum.web.widgets.common.client.exception.UnknownTokenException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 
@@ -83,7 +83,7 @@ public class UserPasswordModel extends Model implements IUserPasswordModel {
 	}
 
 	public UserPasswordRemind getUserPasswordRemind(String token) {
-		return execute(new CrUserPasswordRemind(token));
+		return execute(new XqlUserPasswordRemind(token));
 	}
 
 	public void updatePasswordByToken(TChangePasswordByToken password) {

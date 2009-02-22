@@ -2,13 +2,13 @@ package com.cuprum.server.common.model.user;
 
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.model.Model;
-import com.cuprum.server.common.model.user.xql.CrMail;
+import com.cuprum.server.common.model.user.xql.XqlMail;
 import com.cuprum.web.common.client.HasRegExp;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.data.TDualValue;
+import com.cuprum.web.common.client.exceptions.DualTextFieldInvalidException;
 import com.cuprum.web.common.client.exceptions.RegExpException;
 import com.cuprum.web.common.client.exceptions.model.user.MailAlreadyExistsException;
-import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
 
 public class UserMailModel extends Model implements IUserMailModel {
 	public boolean existsMail(User user) {
@@ -16,7 +16,7 @@ public class UserMailModel extends Model implements IUserMailModel {
 	}
 
 	public boolean existsMail(String mail) {
-		return Util.isNotNull(execute(new CrMail(mail)));
+		return Util.isNotNull(execute(new XqlMail(mail)));
 	}
 
 	public void verifyNewMail(TDualValue<String> mail) {

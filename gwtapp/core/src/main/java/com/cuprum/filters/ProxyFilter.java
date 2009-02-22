@@ -21,11 +21,13 @@ import org.apache.log4j.Logger;
 import com.google.gwt.user.server.rpc.RPCServletUtils;
 
 public class ProxyFilter implements Filter {
-	static Logger LOGGER = Logger.getLogger(ProxyFilter.class);
+	private final static Logger LOGGER = Logger.getLogger(ProxyFilter.class);
 
 	public final static String PARAM_SERVER = "server";
+	public final static String PARAM_PRODUCTION_SERVER = "productionServer";
 
 	private String server = null;
+	private String productionServer = null;
 
 	public void destroy() {
 	}
@@ -33,6 +35,7 @@ public class ProxyFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		if (config != null) {
 			setServer(config.getInitParameter(PARAM_SERVER));
+			setProductionServer(config.getInitParameter(PARAM_PRODUCTION_SERVER));
 		}
 	}
 
@@ -76,6 +79,7 @@ public class ProxyFilter implements Filter {
 				path = path.substring(path.lastIndexOf("/") + 1);
 			}
 			LOGGER.debug("9: " + path);
+			LOGGER.debug("A: " + server + path);
 			HttpClient client = new HttpClient();
 			PostMethod method = new PostMethod(server + path);
 			method.setQueryString(request.getQueryString());
@@ -106,5 +110,13 @@ public class ProxyFilter implements Filter {
 	protected String readContent(HttpServletRequest request)
 			throws ServletException, IOException {
 		return RPCServletUtils.readContentAsUtf8(request, true);
+	}
+
+	public void setProductionServer(String productionServer) {
+		this.productionServer = productionServer;
+	}
+
+	public String getProductionServer() {
+		return productionServer;
 	}
 }

@@ -1,21 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<parent>
 		<groupId>com.cuprum.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
+	
 	<artifactId>gwtapp-core</artifactId>
 	<name>gwtapp-core</name>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz/</description>
-	<inceptionYear>2008</inceptionYear>
-	<licenses>
-		<license>
-			<name>This license is general license for this projects.</name>
-			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
-		</license>
-	</licenses>
+
 	<developers>
 		<developer>
 			<id>cuprum</id>
@@ -23,6 +18,7 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
+	
 	<dependencies>
 		<dependency>
 			<groupId>javax.persistence</groupId>
@@ -58,13 +54,11 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwtVersion}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwtVersion}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -89,7 +83,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
-			<version>${springVersion}</version>
+			<version>2.5.5</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>

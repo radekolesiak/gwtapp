@@ -1,8 +1,19 @@
 package com.cuprum.server.common.entities;
 
-import org.apache.log4j.Logger;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+import com.cuprum.server.common.model.user.IUserLoginModel;
 import com.cuprum.server.common.utils.EntityTestDAO;
+import com.cuprum.web.common.client.exceptions.model.user.InvalidPasswordException;
+import com.cuprum.web.common.client.exceptions.model.user.UserNotFoundException;
 
 public class UserLoginTest extends EntityTestDAO {
 	/**
@@ -10,7 +21,6 @@ public class UserLoginTest extends EntityTestDAO {
 	 */
 	static final Logger LOGGER = Logger.getLogger(UserLoginTest.class);
 
-	/*-
 	private final static String LOGIN = "testdLogin";
 
 	private final static String PASSWORD = "password";
@@ -98,6 +108,7 @@ public class UserLoginTest extends EntityTestDAO {
 		assertNull(getBean().get(UserSession.class, sessionId));
 	}
 
+	@SuppressWarnings("unchecked")
 	public void LogoutTest2() throws UserNotFoundException,
 			InvalidPasswordException {
 		User user1 = new User();
@@ -157,5 +168,4 @@ public class UserLoginTest extends EntityTestDAO {
 		IUserLoginModel login = getDAO().getBean(IUserLoginModel.class);
 		assertTrue(login.existsLogin(LOGIN));
 	}
-	-*/
 }

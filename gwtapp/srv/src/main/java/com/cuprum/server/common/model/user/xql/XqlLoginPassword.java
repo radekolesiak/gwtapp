@@ -9,27 +9,37 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.cuprum.server.common.entities.User;
+import com.cuprum.server.common.model.usersession.xql.XqlCleanUserSessions;
 import com.cuprum.web.common.client.Util;
 
-public class CrMail implements HibernateCallback {
-	private String mail;
+public class XqlLoginPassword implements HibernateCallback {
+	private String login;
 
-	public CrMail(final String mail) {
-		this.mail = mail;
+	private String password;
+
+	public XqlLoginPassword(final String login, final String password) {
+		this.login = login;
+		this.password = password;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getLogin() {
+		return login;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public Criteria getCriteria(final Session session) {
-		return session.createCriteria(User.class).add(
-				Restrictions.eq(User.MAIL, getMail()));
+		return new XqlLogin(getLogin()).getCriteria(session).add(
+				Restrictions.eq(User.PASSWORD, getPassword()));
 	}
 
 	public User doInHibernate(Session session) throws HibernateException,
 			SQLException {
-		
+
+		new XqlCleanUserSessions().doInHibernate(session);
+
 		return Util.getFirst(getCriteria(session).list());
 	}
 }

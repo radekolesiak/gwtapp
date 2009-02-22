@@ -13,7 +13,7 @@ import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.web.common.client.Constants;
 import com.cuprum.web.common.client.Util;
 
-public class CrCleanUserSessions implements HibernateCallback {
+public class XqlCleanUserSessions implements HibernateCallback {
 	public Query getQuery(Session session) {
 		Query query = session.createQuery("delete from UserSession where "
 				+ UserSession.DATE + " < :timeoff");

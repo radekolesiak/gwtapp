@@ -12,13 +12,18 @@
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
 
-	<servlet>
-		<servlet-name>GWTSpring</servlet-name>
-		<servlet-class>com.cuprum.server.common.rpc.RemoteServiceServletSpring
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GWTSpring</servlet-name>
+	<filter>
+		<filter-name>RPC</filter-name>
+		<filter-class>com.cuprum.filters.ProxyFilter</filter-class>
+		<init-param>
+			<param-name>server</param-name>
+<!-- 			<param-value>http://gwtapp.cuprum.biz:8081/smallapp-srv/</param-value>  -->
+<!-- 			<param-value>http://localhost:8080/smallapp-srv/</param-value>  -->
+			<param-value>http://gwtapp.cuprum.biz:8081/smallapp-srv/</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>RPC</filter-name>
 		<url-pattern>*.rpc</url-pattern>
-	</servlet-mapping>
+	</filter-mapping>
 </web-app>

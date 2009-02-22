@@ -1,6 +1,5 @@
-package com.cuprum.web.widgets.common.client.exception;
+package com.cuprum.web.common.client.exceptions;
 
-import com.cuprum.web.common.client.exceptions.RpcException;
 
 public class DualTextFieldInvalidException extends RpcException {
 	/**

@@ -2,7 +2,7 @@ package com.cuprum.web.common.client.data;
 
 import java.util.ArrayList;
 
-import com.cuprum.web.widgets.common.client.exception.MultipleValuesException;
+import com.cuprum.web.common.client.exceptions.MultipleValuesException;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**

@@ -10,10 +10,10 @@ import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserSession;
 import com.cuprum.web.common.client.Util;
 
-public class CrGetUserSessionWithUser implements HibernateCallback {
+public class XqlGetUserSessionWithUser implements HibernateCallback {
 	private String sessionName;
 
-	public CrGetUserSessionWithUser(final String sessionName) {
+	public XqlGetUserSessionWithUser(final String sessionName) {
 		this.sessionName = sessionName;
 	}
 
@@ -24,7 +24,7 @@ public class CrGetUserSessionWithUser implements HibernateCallback {
 	public UserSession doInHibernate(final Session session)
 			throws HibernateException, SQLException {
 
-		UserSession sess = new CrGetUserSession(getSessionName())
+		UserSession sess = new XqlGetUserSession(getSessionName())
 				.doInHibernate(session);
 
 		if (Util.isNotNull(sess)) {

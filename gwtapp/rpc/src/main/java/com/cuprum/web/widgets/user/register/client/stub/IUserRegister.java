@@ -5,5 +5,6 @@ import com.google.gwt.user.client.rpc.RemoteService;
 
 public interface IUserRegister extends RemoteService {
 	TUserRegisterValue processUserRegister(TUserRegisterValue userRegister);
+
 	Boolean confirm(String uid);
 }

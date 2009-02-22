@@ -1,11 +1,11 @@
 package com.cuprum.web.widgets.user.password.client;
 
 import com.cuprum.web.common.client.UserEndPoint;
+import com.cuprum.web.common.client.exceptions.DualTextFieldInvalidException;
+import com.cuprum.web.common.client.exceptions.TextToShortException;
 import com.cuprum.web.widgets.common.client.PasswordTextBoxes;
 import com.cuprum.web.widgets.common.client.ProcessFormPanel;
 import com.cuprum.web.widgets.common.client.StringValidator;
-import com.cuprum.web.widgets.common.client.exception.DualTextFieldInvalidException;
-import com.cuprum.web.widgets.common.client.exception.TextToShortException;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TUserPassword;
 import com.cuprum.web.widgets.user.password.client.i18n.ChangePasswordByTokenMessages;

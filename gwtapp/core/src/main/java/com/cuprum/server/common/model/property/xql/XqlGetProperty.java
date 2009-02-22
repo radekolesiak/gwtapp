@@ -11,10 +11,10 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import com.cuprum.server.common.entities.Property;
 import com.cuprum.web.common.client.Util;
 
-public class CrGetProperty implements HibernateCallback {
+public class XqlGetProperty implements HibernateCallback {
 	private String property;
 
-	public CrGetProperty(final String property) {
+	public XqlGetProperty(final String property) {
 		this.property = property;
 	}
 

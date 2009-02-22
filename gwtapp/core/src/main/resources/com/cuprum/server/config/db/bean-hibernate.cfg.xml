@@ -4,6 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	
+	<!-- This is a pattern only for the tests configuration. -->
+	
 	<bean id="databaseSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>

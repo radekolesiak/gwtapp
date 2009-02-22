@@ -42,7 +42,8 @@ public class Property extends Identify {
 		return value;
 	}
 
+	@Override
 	public String toString() {
-		return "" + value;
+		return property + ": " + value;
 	}
 }

@@ -1,5 +1,6 @@
+- write html code generator which creates html code from the java source and allows for the interaction with the gwt modules. gwt should be reduced and used only to control state of the web page elements.
+- web application pages by separate jsp files
 - hibernate stateless
-- use PrimaryName instead of add/setStyleName for the style names; use inner public static class Styles for styles
 - check length for too long login and password texts 
 - remove too old unconfirmed registrations and password reminders
 - i18n for messages

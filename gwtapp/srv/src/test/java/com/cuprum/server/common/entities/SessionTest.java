@@ -92,7 +92,6 @@ public class SessionTest extends EntityTestDAO {
 		assertFalse(session2.getUser() == session2b.getUser());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void SessionTest3() {
 		User user1 = new User();
@@ -125,10 +124,9 @@ public class SessionTest extends EntityTestDAO {
 		String query = "from User where login='" + LOGIN1 + "' and password='"
 				+ PASSWORD + "A'";
 
-		List list = getBean().createQuery(query);
+		List<User> list = getBean().createQuery(query);
 
-		for (Object item : list) {
-			User user = (User) item;
+		for (User user : list) {
 			LOGGER.info(user.getLogin());
 		}
 	}

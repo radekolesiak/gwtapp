@@ -13,12 +13,12 @@ import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.extjs.gxt.ui.client.widget.Info;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>. GWT modules
- * tutorial: http://developerlife.com/tutorials/?p=229
+ * Entry point classes define <code>onModuleLoad()</code>. GWT modules tutorial:
+ * http://developerlife.com/tutorials/?p=229
  * 
  * @author Radek Olesiak
  */
@@ -45,7 +45,7 @@ public class MainApp extends SessionEntryPoint {
 
 	@Override
 	public final void onSessionModuleError(final Throwable caught) {
-		setPage(new Label(caught.getMessage()));
+		setPage(new HTML("" + caught));
 	}
 
 	public static void setPage(Widget page) {
