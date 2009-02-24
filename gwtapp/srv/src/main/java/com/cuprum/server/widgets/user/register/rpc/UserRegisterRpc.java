@@ -43,7 +43,7 @@ public class UserRegisterRpc extends RemoteServiceSession implements
 			mail.setMailFrom(noreply);
 			mail.setRecipientTo(userRegister.mail.value);
 			mail.setSubject("Confirm registration.");
-			//mail.setContent(confirmUrl + "?" + UserRegister.CONFIRM_REQUEST+ "=" + confirm.getUid());
+			mail.setContent(confirmUrl + "?" + IUserRegister.CONFIRM_REQUEST+ "=" + confirm.getUid());
 			mail.start();
 		}
 

@@ -7,6 +7,8 @@ import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
 import com.google.gwt.user.client.rpc.RemoteService;
 
 public interface IUserPassword extends RemoteService {
+	public final static String REMIND_REQUEST = "remind";
+
 	TChangePasswordByUser processChangePasswordByUser(
 			TChangePasswordByUser passwords) throws SessionNotFoundException;
 

@@ -1,3 +1,4 @@
+- external properties stored outsie of the subversion, e.g. stored outside of any subversion directory
 - write html code generator which creates html code from the java source and allows for the interaction with the gwt modules. gwt should be reduced and used only to control state of the web page elements.
 - web application pages by separate jsp files
 - hibernate stateless

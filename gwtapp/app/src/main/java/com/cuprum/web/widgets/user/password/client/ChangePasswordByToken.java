@@ -17,8 +17,6 @@ import com.google.gwt.user.client.Window;
 public class ChangePasswordByToken extends
 		ProcessFormPanel<TChangePasswordByToken> {
 
-	public final static String REMIND_REQUEST = "remind";
-
 	private final IUserPasswordAsync endPoint = ((IUserPasswordAsync) UserEndPoint
 			.create(GWT.create(IUserPassword.class)));
 
@@ -27,7 +25,7 @@ public class ChangePasswordByToken extends
 
 	private final PasswordTextBoxes password = new PasswordTextBoxes();
 
-	private String uid = Window.Location.getParameter(REMIND_REQUEST);
+	private String uid = Window.Location.getParameter(IUserPassword.REMIND_REQUEST);
 
 	@Override
 	public String getSubmitMessage() {

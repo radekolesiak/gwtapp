@@ -17,9 +17,8 @@
 		<filter-class>com.cuprum.filters.ProxyFilter</filter-class>
 		<init-param>
 			<param-name>server</param-name>
-<!-- 			<param-value>http://gwtapp.cuprum.biz:8081/smallapp-srv/</param-value>  -->
-<!-- 			<param-value>http://localhost:8080/smallapp-srv/</param-value>  -->
-			<param-value>http://gwtapp.cuprum.biz:8081/smallapp-srv/</param-value>
+			<!-- <param-value>http://gwtapp.cuprum.biz:8081/smallapp-srv/</param-value>  -->
+			<param-value>http://localhost:8080/smallapp-srv/</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

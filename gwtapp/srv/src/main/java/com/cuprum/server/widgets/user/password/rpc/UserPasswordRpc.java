@@ -1,7 +1,5 @@
 package com.cuprum.server.widgets.user.password.rpc;
 
-import org.apache.log4j.Logger;
-
 import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.entities.User;
 import com.cuprum.server.common.entities.UserPasswordRemind;
@@ -14,7 +12,6 @@ import com.cuprum.server.common.rpc.RemoteServiceUserSession;
 import com.cuprum.server.common.utils.Mail;
 import com.cuprum.web.common.client.exceptions.RpcException;
 import com.cuprum.web.common.client.exceptions.usersession.SessionNotFoundException;
-//import com.cuprum.web.widgets.user.password.client.ChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByToken;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordByUser;
 import com.cuprum.web.widgets.user.password.client.data.TChangePasswordGetToken;
@@ -23,9 +20,6 @@ import com.cuprum.web.widgets.user.register.properties.Properties;
 
 public class UserPasswordRpc extends RemoteServiceUserSession implements
 		IUserPassword {
-
-	private final static Logger LOGGER = Logger
-			.getLogger(UserPasswordRpc.class);
 
 	/**
 	 * UID.
@@ -56,7 +50,6 @@ public class UserPasswordRpc extends RemoteServiceUserSession implements
 
 	public TChangePasswordGetToken changePasswordGetToken(
 			TChangePasswordGetToken login) {
-		/*-
 
 		login.clearError();
 
@@ -88,17 +81,14 @@ public class UserPasswordRpc extends RemoteServiceUserSession implements
 			mail.setMailFrom(noreply);
 			mail.setRecipientTo(user.getMail());
 			mail.setSubject("Password remind.");
-			mail.setContent(remindUrl + "?"
-					+ ChangePasswordByToken.REMIND_REQUEST + "="
-					+ remind.getUid());
+			mail.setContent(remindUrl + "?" + IUserPassword.REMIND_REQUEST
+					+ "=" + remind.getUid());
 			mail.start();
 		} catch (RpcException e) {
 			login.error = e;
 		}
 
 		return login;
-	-*/
-		return null;
 	}
 
 	public TChangePasswordByToken changePasswordByToken(

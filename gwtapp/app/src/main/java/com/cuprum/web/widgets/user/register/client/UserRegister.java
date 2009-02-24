@@ -20,7 +20,6 @@ import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
 import com.google.gwt.core.client.GWT;
 
 public class UserRegister extends ProcessFormPanel<TUserRegisterValue> {
-	public final static String CONFIRM_REQUEST = "confirm";
 
 	private final IUserRegisterAsync endPoint = ((IUserRegisterAsync) EndPoint
 			.create(GWT.create(IUserRegister.class)));

@@ -3,7 +3,6 @@ package com.cuprum.web.smallapp.mainapp.client.page;
 import com.cuprum.web.common.client.EndPoint;
 import com.cuprum.web.common.client.Util;
 import com.cuprum.web.common.client.WebCallback;
-import com.cuprum.web.widgets.user.register.client.UserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegister;
 import com.cuprum.web.widgets.user.register.client.stub.IUserRegisterAsync;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
@@ -42,6 +41,6 @@ public class ConfirmPage extends VerticalPanel {
 
 	public ConfirmPage() {
 		endPoint.confirm(Window.Location
-				.getParameter(UserRegister.CONFIRM_REQUEST), callback);
+				.getParameter(IUserRegister.CONFIRM_REQUEST), callback);
 	}
 }
