@@ -19,13 +19,9 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mappingResources">
 			<list>
-				<value>com/cuprum/server/common/entities/User.hbm.xml</value>
-				<value>com/cuprum/server/common/entities/UserSession.hbm.xml</value>
-				<value>com/cuprum/server/common/entities/UserConfirm.hbm.xml</value>
-				<value>com/cuprum/server/common/entities/UserPasswordRemind.hbm.xml</value>
 				<value>com/cuprum/server/common/entities/Property.hbm.xml</value>
 			</list>
-		</property>		
+		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
@@ -38,21 +34,6 @@
 		</property>
 	</bean>
 		
-	<bean id="com.cuprum.server.common.model.user.IUserLoginModel" class="com.cuprum.server.common.model.user.UserLoginModel">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="com.cuprum.server.common.model.user.IUserPasswordModel" class="com.cuprum.server.common.model.user.UserPasswordModel">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="com.cuprum.server.common.model.user.IUserMailModel" class="com.cuprum.server.common.model.user.UserMailModel">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="com.cuprum.server.common.model.user.IUserRegisterModel" class="com.cuprum.server.common.model.user.UserRegisterModel">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="com.cuprum.server.common.model.usersession.IUserSessionModel" class="com.cuprum.server.common.model.usersession.UserSessionModel">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	<bean id="com.cuprum.server.common.model.property.IPropertyModel" class="com.cuprum.server.common.model.property.PropertyModel">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
