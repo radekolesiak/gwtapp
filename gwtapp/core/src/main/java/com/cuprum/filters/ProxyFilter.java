@@ -46,7 +46,7 @@ public class ProxyFilter implements Filter {
 		RemoteServiceSession session = new RemoteServiceSession();
 		session.setRequest(request);
 		session.setResponse(response);
-		// TODO: to think about moving this property as a file property file
+		// TODO: think about moving this property as a property file
 		// configurable in the maven's parent project.
 		try {
 			Property p = session.getBean(IPropertyModel.class).get(
