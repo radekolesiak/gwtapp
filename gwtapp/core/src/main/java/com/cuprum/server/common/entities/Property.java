@@ -2,6 +2,8 @@ package com.cuprum.server.common.entities;
 
 public class Property extends Identify {
 
+	// TODO use hibernate caching for the Property entity
+	
 	/** Property name field. */
 	private String property;
 

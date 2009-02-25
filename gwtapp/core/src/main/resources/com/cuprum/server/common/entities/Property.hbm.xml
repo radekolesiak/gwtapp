@@ -6,6 +6,7 @@
 <!-- Good tutrial: http://www.makemyinfo.com/Tutorial.do?action=getTutorial&tutId=T0005.jsp -->
 <hibernate-mapping>
     <class name="com.cuprum.server.common.entities.Property" table="properties">
+    	<cache usage="read-only"/>
         <id name="id" column="propertyId">
             <generator class="native"/>
         </id>

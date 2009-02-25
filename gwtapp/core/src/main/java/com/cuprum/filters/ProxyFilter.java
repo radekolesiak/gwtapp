@@ -18,16 +18,19 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
 
+import com.cuprum.server.common.entities.Property;
+import com.cuprum.server.common.model.property.IPropertyModel;
+import com.cuprum.server.common.properties.Properties;
+import com.cuprum.server.common.rpc.RemoteServiceSession;
+import com.cuprum.server.common.utils.DAOMapException;
 import com.google.gwt.user.server.rpc.RPCServletUtils;
 
 public class ProxyFilter implements Filter {
 	private final static Logger LOGGER = Logger.getLogger(ProxyFilter.class);
 
 	public final static String PARAM_SERVER = "server";
-	public final static String PARAM_PRODUCTION_SERVER = "productionServer";
 
 	private String server = null;
-	private String productionServer = null;
 
 	public void destroy() {
 	}
@@ -35,8 +38,33 @@ public class ProxyFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		if (config != null) {
 			setServer(config.getInitParameter(PARAM_SERVER));
-			setProductionServer(config.getInitParameter(PARAM_PRODUCTION_SERVER));
 		}
+	}
+
+	protected String getServerProperty(HttpServletRequest request,
+			HttpServletResponse response) {
+		String server = null;
+		RemoteServiceSession session = new RemoteServiceSession();
+		session.setRequest(request);
+		session.setResponse(response);
+		try {
+			Property p = session.getBean(IPropertyModel.class).get(
+					Properties.PROXY);
+			if (p != null) {
+				server = p.getValue();
+			}
+			throw new DAOMapException();
+		} catch (DAOMapException e) {
+			LOGGER.error("", e);
+		} finally {
+			session.setRequest(null);
+			session.setResponse(null);
+			if (server == null) {
+				server = getServer();
+			}
+		}
+
+		return server;
 	}
 
 	public void doFilter(ServletRequest _request, ServletResponse _response,
@@ -45,7 +73,7 @@ public class ProxyFilter implements Filter {
 			LOGGER.debug("----FILTER-----");
 			HttpServletRequest request = (HttpServletRequest) _request;
 			HttpServletResponse response = (HttpServletResponse) _response;
-			proxy(request, response, getServer());
+			proxy(request, response, getServerProperty(request, response));
 		}
 	}
 
@@ -57,10 +85,9 @@ public class ProxyFilter implements Filter {
 		return server;
 	}
 
-	// TODO: proxy requests errors
-	public void proxy(HttpServletRequest request,
-			HttpServletResponse response, String server)
-			throws ServletException, IOException {
+	// TODO: proxy request errors
+	public void proxy(HttpServletRequest request, HttpServletResponse response,
+			String server) throws ServletException, IOException {
 
 		LOGGER.debug("-------PROXY----------");
 
@@ -110,13 +137,5 @@ public class ProxyFilter implements Filter {
 	protected String readContent(HttpServletRequest request)
 			throws ServletException, IOException {
 		return RPCServletUtils.readContentAsUtf8(request, true);
-	}
-
-	public void setProductionServer(String productionServer) {
-		this.productionServer = productionServer;
-	}
-
-	public String getProductionServer() {
-		return productionServer;
 	}
 }

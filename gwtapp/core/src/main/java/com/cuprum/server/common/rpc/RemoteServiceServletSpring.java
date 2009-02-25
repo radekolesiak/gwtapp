@@ -1,15 +1,13 @@
 package com.cuprum.server.common.rpc;
 
-import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import com.cuprum.server.common.utils.AbstractDAOMap;
 import com.cuprum.server.common.utils.IDAO;
-import com.cuprum.server.common.utils.RemoteServiceDAO;
+import com.cuprum.server.common.utils.RemoteServiceDAOMap;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.SerializationException;
@@ -27,12 +25,7 @@ public class RemoteServiceServletSpring extends RemoteServiceServlet {
 	 */
 	private static final long serialVersionUID = -7179809962226883713L;
 
-	private final static AbstractDAOMap<RemoteService> remoteServiceDAOMap = new AbstractDAOMap<RemoteService>() {
-		@Override
-		protected IDAO<RemoteService> createDAO() {
-			return new RemoteServiceDAO();
-		}
-	};
+	private final static RemoteServiceDAOMap remoteServiceDAOMap = new RemoteServiceDAOMap();
 
 	protected synchronized IDAO<RemoteService> getRemoteServiceDAO(
 			final HttpServletRequest request) {
@@ -98,7 +91,7 @@ public class RemoteServiceServletSpring extends RemoteServiceServlet {
 			}
 		} catch (Exception e) {
 			LOGGER.error("", e);
-			if (e instanceof IsSerializable || e instanceof Serializable) {
+			if (e instanceof IsSerializable) {
 				return RPC.encodeResponseForFailure(method, e);
 			} else {
 				return RPC.encodeResponseForFailure(method,

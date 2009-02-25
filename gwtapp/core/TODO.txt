@@ -1,0 +1,29 @@
+- external properties stored outsie of the subversion, e.g. stored outside of any subversion directory
+- write html code generator which creates html code from the java source and allows for the interaction with the gwt modules. gwt should be reduced and used only to control state of the web page elements.
+- web application pages by separate jsp files
+- hibernate stateless
+- check length for too long login and password texts 
+- remove too old unconfirmed registrations and password reminders
+- i18n for messages
+- i18n messages on the server side, e.g. mail
+- limit for the sessions per user
+- converter for a String type in the ModelData
+
+- feedback for an unrecognised or unimplmeneted exceptions handling on the client side
+- javadoc
+- long term session id store as a js cookie
+- anonymous sessions
+
+- installator - set up parameters, database creator for the server side
+
++ unit tests
++ move rpc files from the web to server package 
++ i18n messages overriding
++ attributes for the process fields
++ reset password
++ notify on login if user is not confirmed yet
++ i18n for registration
++ constants parameters in the db
++ disabling submit buttonsduring asynchronous callback connection
++ removing old sessions
++ updating session time and automatically remove too old session.

@@ -16,7 +16,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 /**
  * RemoteServiceServlet with session support.
  * 
- * @author Radek Olesiak
+ * @author cuprum
  * 
  */
 
@@ -51,7 +51,7 @@ public class RemoteServiceSession implements RemoteService,
 		return request.getParameter(SessionEntryPoint.MODULE_NAME_REQUEST);
 	}
 
-	protected synchronized IDAO<IModel> getDAO() {
+	protected IDAO<IModel> getDAO() {
 		LOGGER.debug("Hibernate DAO module name: " + getModuleName());
 		return HibernateDAOMap.DAO.getDAO(getModuleName());
 	}
