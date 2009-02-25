@@ -47,7 +47,7 @@ public class ProxyFilter implements Filter {
 		session.setRequest(request);
 		session.setResponse(response);
 		// TODO: think about moving this property as a property file
-		// configurable in the maven's parent project.
+		// configurable in the maven's top parent project.
 		try {
 			Property p = session.getBean(IPropertyModel.class).get(
 					Properties.PROXY);
