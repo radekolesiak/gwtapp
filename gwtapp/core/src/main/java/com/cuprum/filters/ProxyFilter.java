@@ -22,7 +22,6 @@ import com.cuprum.server.common.entities.Property;
 import com.cuprum.server.common.model.property.IPropertyModel;
 import com.cuprum.server.common.properties.Properties;
 import com.cuprum.server.common.rpc.RemoteServiceSession;
-import com.cuprum.server.common.utils.DAOMapException;
 import com.google.gwt.user.server.rpc.RPCServletUtils;
 
 public class ProxyFilter implements Filter {
@@ -47,14 +46,16 @@ public class ProxyFilter implements Filter {
 		RemoteServiceSession session = new RemoteServiceSession();
 		session.setRequest(request);
 		session.setResponse(response);
+		// TODO: to think about moving this property as a file property file
+		// configurable in the maven's parent project.
 		try {
 			Property p = session.getBean(IPropertyModel.class).get(
 					Properties.PROXY);
 			if (p != null) {
 				server = p.getValue();
 			}
-			throw new DAOMapException();
-		} catch (DAOMapException e) {
+		} catch (Exception e) {
+			// Enabling/disabling by log4.properties file.
 			LOGGER.error("", e);
 		} finally {
 			session.setRequest(null);
