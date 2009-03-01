@@ -29,22 +29,6 @@
 	    <gwtappVersion>1.0.0</gwtappVersion>
 	</properties>
 
-	<!-- 
-	<dependencyManagement>
-	    <dependencies>
-		<dependency>
-		    <groupId>com.cuprum.smallapp</groupId>
-		    <artifactId>smallapp-rpc</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.cuprum.smallapp</groupId>
-		    <artifactId>smallapp-srv</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
-	    </dependencies>
-	</dependencyManagement>
-	 -->
 	<modules>
    	    <module>rpc</module>
 	    <module>srv</module>
