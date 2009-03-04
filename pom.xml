@@ -24,6 +24,13 @@
 		</site>
 	</distributionManagement>
 
+<pluginRepositories>
+    <pluginRepository>
+      <id>gwt-maven</id>
+      <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
+    </pluginRepository>
+</pluginRepositories>
+
 	<repositories>	
 		<repository>
 			<id>atlassian</id>
