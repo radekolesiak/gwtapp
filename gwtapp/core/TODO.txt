@@ -19,9 +19,7 @@
 
 + converter for a String type in the ModelData
 + unit tests
-+ move rpc files from the web to server package 
 + i18n messages overriding
-+ attributes for the process fields
 + reset password
 + notify on login if user is not confirmed yet
 + i18n for registration
