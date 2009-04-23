@@ -1,21 +1,20 @@
-- change entity definitions to javax.persistence
-- fix jsession
-- external properties stored outsie of the subversion, e.g. stored outside of any subversion directory
-- write html code generator which creates a html code from the java source and allows to interact with the gwt modules. gwt' usage should be reduced and used to control only the state of the web page elements.
-- web application pages by separate jsp files
+- change entity definitions to javax.persistence annotations
 - hibernate stateless
+- fix jsession
 - check length for too long login and password texts 
 - remove too old unconfirmed registrations and password reminders
 - i18n for messages
 - i18n messages on the server side, e.g. mail
-- # sessions limit per user
 
-- feedback for an unrecognised or unimplmeneted exceptions handling on the client side to the server side
-- javadoc
+- # sessions limit per user
+- feedback for an unrecognised or unimplemented exceptions on the client side to the server side
+- write static html code generator which creates a html code from the java source and which allows to interact with the gwt modules and widgets.
+- separate web application pages by jsp files
+- java doc
 - long term session id store as a js cookie
 - anonymous sessions
 
-- installator - set up parameters, database creator for the server side
+- installer - set up parameters, database creator for the server side
 
 + converter for a String type in the ModelData
 + unit tests
@@ -24,6 +23,6 @@
 + notify on login if user is not confirmed yet
 + i18n for registration
 + constants parameters in the db
-+ disabling submit buttonsduring asynchronous callback connection
++ disabling submit buttons during asynchronous callback connection
 + removing old sessions
 + updating session time and automatically remove too old session.
