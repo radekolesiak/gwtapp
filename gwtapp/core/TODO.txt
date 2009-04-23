@@ -9,7 +9,7 @@
 - # sessions limit per user
 - feedback for an unrecognised or unimplemented exceptions on the client side to the server side
 - write static html code generator which creates a html code from the java source and which allows to interact with the gwt modules and widgets.
-- separate web application pages by jsp files
+- separate web application pages by jsp files and 
 - java doc
 - long term session id store as a js cookie
 - anonymous sessions
