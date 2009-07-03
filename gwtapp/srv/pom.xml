@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>biz.cuprum.gwtapp</groupId>
+		<artifactId>gwtapp</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<artifactId>gwtapp-srv</artifactId>
+	<name>gwtapp-srv</name>
+	
+	<developers>
+		<developer>
+			<id>cuprum</id>
+			<name>Radek Olesiak</name>
+			<email>r.olesiak@gmail.com</email>
+		</developer>
+	</developers>
+	
+	<dependencies>
+        <dependency>
+            <groupId>biz.cuprum.gwtapp</groupId>
+            <artifactId>gwtapp-rpc</artifactId>
+            <version>${project.version}</version>
+        </dependency>        
+    </dependencies>
+	
+	<build>		
+	    <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>		
+	
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>	
+</project>
+

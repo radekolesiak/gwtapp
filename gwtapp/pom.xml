@@ -26,5 +26,8 @@
 	
 	<modules>
    	    <module>core</module>
+   	    <module>rpc</module>
+   	    <module>app</module>
+   	    <module>srv</module>
 	</modules>
 </project>
