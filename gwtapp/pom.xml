@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+	    <groupId>biz.cuprum</groupId>
+	    <artifactId>cuprum-base</artifactId>
+	    <version>1.0.0</version>
+	</parent>
+	
+	<groupId>biz.cuprum.gwtapp</groupId>
+	<artifactId>gwtapp</artifactId>
+	<name>gwtapp</name>
+	
+	
+	<packaging>pom</packaging>
+
+	<description>Gwt App</description>
+	<licenses>
+		<license>
+			<name>LGPL</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
+		</license>
+	</licenses>
+	
+	<modules>
+   	    <module>core</module>
+	</modules>
+</project>

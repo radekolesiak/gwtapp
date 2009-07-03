@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>biz.cuprum</groupId>
+	<artifactId>cuprum-base</artifactId>
+	<name>cuprum-base</name>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+	    <gwtVersion>1.6.4</gwtVersion>
+	</properties>
+
+	<inceptionYear>2008</inceptionYear>
+	<url>http://sourceforge.net/projects/gwtapp/</url>
+	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz:8080/</description>
+
+	<distributionManagement>
+		<site>
+			<id>gwtapp.sourceforge.net</id>
+			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
+		</site>
+	</distributionManagement>
+
+	<repositories>	
+		<repository>
+			<id>atlassian</id>
+			<url>http://maven.atlassian.com/repository/public</url>
+		</repository>
+		<repository>
+			<id>jboss-maven</id>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+	</repositories>	
+
+	<modules>
+	    <module>gwtapp</module>
+	</modules>
+	
+	<profiles>
+        <profile>
+            <id>gwt-dev-windows</id>
+            <properties>
+                <platform>windows</platform>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+        </profile>
+        <profile>
+            <id>gwt-dev-mac</id>
+            <properties>
+                <platform>mac</platform>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+        </profile>
+        <profile>
+            <id>gwt-dev-linux</id>
+            <properties>
+                <platform>linux</platform>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <os>
+                    <name>Linux</name>
+                </os>
+            </activation>           
+        </profile>
+    </profiles>
+</project>
