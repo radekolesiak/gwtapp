@@ -15,11 +15,13 @@ public class FieldPanel<M extends ModelData, T> extends FlowPanel implements
 		HasName, HasValue<T> {
 
 	private String name;
+	private String property;
 	private HasValue<T> controller;
 
-	public FieldPanel(final HasValue<M> model, final String property,
-			String label, HasValue<T> controller) {
+	public FieldPanel(final HasValue<M> model, String property, String label,
+			HasValue<T> controller) {
 		this.controller = controller;
+		setProperty(property);
 		add(new Label(label));
 		if (controller instanceof Widget) {
 			add((Widget) controller);
@@ -27,7 +29,7 @@ public class FieldPanel<M extends ModelData, T> extends FlowPanel implements
 		controller.addValueChangeHandler(new ValueChangeHandler<T>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<T> event) {
-				model.getValue().set(property, event.getValue());
+				model.getValue().set(getProperty(), event.getValue());
 				model.setValue(model.getValue(), true);
 			}
 		});
@@ -62,6 +64,14 @@ public class FieldPanel<M extends ModelData, T> extends FlowPanel implements
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<T> handler) {
 		return controller.addValueChangeHandler(handler);
+	}
+
+	public void setProperty(String property) {
+		this.property = property;
+	}
+
+	public String getProperty() {
+		return property;
 	}
 
 }

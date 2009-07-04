@@ -6,9 +6,16 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class UserRegister implements ModelData, IsSerializable {
 
-	public final static String LOGIN = "login";
-	public final static String EMAIL = "email";
-	public final static String PASSWORD = "password";
+	//protected final static Set<String> properties = new HashSet<String>();
+
+	protected static String createProperty(String property) {
+		//properties.add(property);
+		return property;
+	}
+
+	public final static String LOGIN = createProperty("login");
+	public final static String EMAIL = createProperty("email");
+	public final static String PASSWORD = createProperty("password");
 
 	private String login;
 	private String password;

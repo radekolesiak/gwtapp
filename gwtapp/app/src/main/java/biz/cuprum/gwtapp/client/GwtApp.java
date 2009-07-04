@@ -19,6 +19,9 @@ public class GwtApp implements EntryPoint {
 				System.out.println(event.getValue());
 			}
 		});
+		UserRegister userRegister = new UserRegister();
+		userRegister.setLogin("abc");
+		//userRegisterPanel.setValue(userRegister);
 		RootPanel.get().add(new Label("Hello world."));
 		RootPanel.get().add(userRegisterPanel);
 	}
