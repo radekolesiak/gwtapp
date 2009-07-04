@@ -11,8 +11,7 @@
 	
 	<groupId>biz.cuprum.gwtapp</groupId>
 	<artifactId>gwtapp</artifactId>
-	<name>gwtapp</name>
-	
+	<name>gwtapp</name>	
 	
 	<packaging>pom</packaging>
 
