@@ -68,9 +68,9 @@
 							<followSymlinks>true</followSymlinks>
 						</fileset>
 						<fileset>
-							<directory>src/main/webapp/gwt</directory>
+							<directory>src/main/webapp/</directory>
 							<includes>
-								<include>*</include>
+								<include>biz.cuprum.gwtapp.GwtApp</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
@@ -85,7 +85,6 @@
 					<execution>
 						<phase>process-classes</phase>
 						<configuration>
-							<webappDirectory>target/${project.name}-${project.version}/gwt</webappDirectory>
 							<logLevel>INFO</logLevel>
 						</configuration>
 						<goals>
