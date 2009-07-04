@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>GwtApp</title>
-		<script language='javascript' src='gwt/biz.cuprum.gwtapp.GwtApp/biz.cuprum.gwtapp.GwtApp.nocache.js'></script>
+		<script language='javascript' src='biz.cuprum.gwtapp.GwtApp/biz.cuprum.gwtapp.GwtApp.nocache.js'></script>
 	</head>
 	<body>
 	</body>
