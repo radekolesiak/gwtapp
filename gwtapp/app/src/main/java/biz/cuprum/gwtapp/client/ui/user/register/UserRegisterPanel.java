@@ -18,33 +18,12 @@ public class UserRegisterPanel extends FlowPanel implements HasName,
 	private UserRegister userRegister = new UserRegister();
 
 	public UserRegisterPanel() {
-		FieldPanel<String> login = new FieldPanel<String>("Login:",
-				new TextBox());
-		FieldPanel<String> email = new FieldPanel<String>("Email:",
-				new TextBox());
-		FieldPanel<String> password = new FieldPanel<String>("Password:",
-				new TextBox());
-		login.addValueChangeHandler(new ValueChangeHandler<String>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
-				userRegister.setLogin(event.getValue());
-				ValueChangeEvent.fire(UserRegisterPanel.this, getValue());
-			}
-		});
-		email.addValueChangeHandler(new ValueChangeHandler<String>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
-				userRegister.setEmail(event.getValue());
-				ValueChangeEvent.fire(UserRegisterPanel.this, getValue());
-			}
-		});
-		password.addValueChangeHandler(new ValueChangeHandler<String>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
-				userRegister.setPassword(event.getValue());
-				ValueChangeEvent.fire(UserRegisterPanel.this, getValue());
-			}
-		});
+		FieldPanel<UserRegister, String> login = new FieldPanel<UserRegister, String>(
+				this, UserRegister.LOGIN, "Login:", new TextBox());
+		FieldPanel<UserRegister, String> email = new FieldPanel<UserRegister, String>(
+				this, UserRegister.EMAIL, "Email:", new TextBox());
+		FieldPanel<UserRegister, String> password = new FieldPanel<UserRegister, String>(
+				this, UserRegister.PASSWORD, "Password:", new TextBox());
 		add(login);
 		add(email);
 		add(password);
