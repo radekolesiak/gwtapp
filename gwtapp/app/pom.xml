@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>biz.cuprum.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	
+
 	<artifactId>gwtapp-app</artifactId>
 	<name>gwtapp-app</name>
-	
+
+	<packaging>war</packaging>
+
 	<developers>
 		<developer>
 			<id>cuprum</id>
@@ -19,17 +20,32 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>biz.cuprum.gwtapp</groupId>
 			<artifactId>gwtapp-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!--  GWT deps -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}-libs</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}</classifier>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
-		<!-- Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -39,6 +55,81 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>.</directory>
+							<includes>
+								<include>**/*.log</include>
+							</includes>
+							<followSymlinks>true</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>src/main/webapp/gwt</directory>
+							<includes>
+								<include>*</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<configuration>
+							<webappDirectory>target/${project.name}-${project.version}/gwt</webappDirectory>
+							<logLevel>INFO</logLevel>
+						</configuration>
+						<goals>
+							<goal>compile</goal>
+							<goal>mergewebxml</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.google.gwt</groupId>
+									<artifactId>gwt-dev</artifactId>
+									<version>${gwtVersion}</version>
+									<classifier>${platform}-libs</classifier>
+									<type>zip</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>foo</stopKey>
+					<stopPort>9080</stopPort>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -54,4 +145,11 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Codehaus Mojo Snapshot</id>
+			<url>http://snapshots.repository.codehaus.org/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
