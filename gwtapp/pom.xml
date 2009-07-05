@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-	    <groupId>biz.cuprum</groupId>
-	    <artifactId>cuprum-base</artifactId>
+	    <groupId>org.gwtapp</groupId>
+	    <artifactId>gwtapp-base</artifactId>
 	    <version>1.0.0</version>
 	</parent>
 	
-	<groupId>biz.cuprum.gwtapp</groupId>
+	<groupId>org.gwtapp</groupId>
 	<artifactId>gwtapp</artifactId>
 	<name>gwtapp</name>	
 	

@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>biz.cuprum</groupId>
-	<artifactId>cuprum-base</artifactId>
-	<name>cuprum-base</name>
+	<groupId>org.gwtapp</groupId>
+	<artifactId>gwtapp-base</artifactId>
+	<name>gwtapp-base</name>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -15,7 +15,7 @@
 
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz:8080/</description>
+	<description>GwtWebApp. Demo http://gwtapp.org:8080/</description>
 
 	<distributionManagement>
 		<site>
@@ -32,10 +32,6 @@
 		<repository>
 			<id>jboss-maven</id>
 			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-		<repository>
-		<id>maven</id>
-		<url>http://repo1.maven.org/maven2/</url>
 		</repository>
 	</repositories>	
 
