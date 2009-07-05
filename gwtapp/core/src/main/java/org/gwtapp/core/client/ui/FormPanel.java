@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.gwtapp.core.client.data.ModelData;
 
-
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -19,13 +18,18 @@ public abstract class FormPanel<T extends ModelData> extends FlowPanel
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
 	private String name;
-	private T value = createInstance();
+	private T value;
 
-	protected abstract T createInstance();
+	public FormPanel(T value) {
+		if (value == null) {
+			throw new NullPointerException("value can't be null");
+		}
+		this.value = value;
+	}
 
 	@SuppressWarnings("unchecked")
 	private void updateValues(T value) {
-		for(Map.Entry<String, FieldPanel> entry : fields.entrySet()){
+		for (Map.Entry<String, FieldPanel> entry : fields.entrySet()) {
 			entry.getValue().setValue(value.get(entry.getKey()));
 		}
 	}

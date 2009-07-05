@@ -26,20 +26,22 @@ public class StartApp implements EntryPoint {
 						System.out.println(event.getValue());
 					}
 				});
-		UserRegister userRegister = new UserRegister();
-		userRegister.setLogin("abc");
-		// userRegisterPanel.setValue(userRegister);
+		
 		RootPanel.get().add(new Label("Hello world."));
 		RootPanel.get().add(userRegisterPanel);
 	}
 
 	private void testGenerator() {
-		TestModel test = GWT.create(TestModel.class);
-		test.setText("aaa");
-		System.out.println(test.getText());
-		System.out.println(test.get(TestModel.TEXT));
-		test.set(TestModel.TEXT, "bbb");
-		System.out.println(test.getText());
-		System.out.println(test.get(TestModel.TEXT));
+		TestModel testModel = GWT.create(TestModel.class);
+		testModel.setText("aaa");
+		System.out.println(testModel.getText());
+		System.out.println(testModel.get(TestModel.TEXT));
+		testModel.set(TestModel.TEXT, "bbb");
+		System.out.println(testModel.getText());
+		System.out.println(testModel.get(TestModel.TEXT));
+		
+		UserRegister userRegister = GWT.create(UserRegister.class);
+		userRegister.setLogin("VloginV");
+		System.out.println(userRegister.getLogin());
 	}
 }

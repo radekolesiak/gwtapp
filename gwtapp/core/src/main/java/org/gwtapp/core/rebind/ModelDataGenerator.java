@@ -46,7 +46,8 @@ public class ModelDataGenerator extends Generator {
 		return packageName + "." + className;
 	}
 
-	private void generateClass(TreeLogger logger, GeneratorContext context) {
+	private void generateClass(TreeLogger logger, GeneratorContext context)
+			throws ClassNotFoundException {
 		// get print writer that receives the source code
 		PrintWriter printWriter = null;
 		printWriter = context.tryCreate(logger, packageName, className);
@@ -58,16 +59,22 @@ public class ModelDataGenerator extends Generator {
 		// init composer, set class properties, create source writer
 		ClassSourceFileComposerFactory composer = null;
 		composer = new ClassSourceFileComposerFactory(packageName, className);
-		composer.addImplementedInterface(typeName);
-		composer.setSuperclass("java.util.HashMap");
+		if (Class.forName(typeName).isInterface()) {
+			composer.addImplementedInterface(typeName);
+			composer.setSuperclass("java.util.HashMap");
+		} else {
+			composer.setSuperclass(typeName);
+		}
 		SourceWriter sourceWriter = null;
 		sourceWriter = composer.createSourceWriter(context, printWriter);
 		// generator constructor source code
 		generateConstructor(sourceWriter);
-		generateGet(sourceWriter);
-		generateSet(sourceWriter);
-		generateGetText(sourceWriter);
-		generateSetText(sourceWriter);
+		if (Class.forName(typeName).isInterface()) {
+			generateGet(sourceWriter);
+			generateSet(sourceWriter);
+			generateGetText(sourceWriter);
+			generateSetText(sourceWriter);
+		}
 		// close generated class
 		sourceWriter.outdent();
 		sourceWriter.println("}");
