@@ -1,4 +1,0 @@
-<module>
-	<inherits name='biz.cuprum.gwtapp.core.Core'/>
-	<entry-point class='biz.cuprum.gwtapp.client.GwtApp'/>
-</module>

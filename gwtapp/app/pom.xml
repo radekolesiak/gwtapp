@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>biz.cuprum.gwtapp</groupId>
+		<groupId>org.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
 		<version>1.0.0</version>
 	</parent>
@@ -23,7 +23,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>biz.cuprum.gwtapp</groupId>
+			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -70,7 +70,7 @@
 						<fileset>
 							<directory>src/main/webapp/</directory>
 							<includes>
-								<include>biz.cuprum.gwtapp.GwtApp</include>
+								<include>org.gwtapp.startapp.StartApp</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
