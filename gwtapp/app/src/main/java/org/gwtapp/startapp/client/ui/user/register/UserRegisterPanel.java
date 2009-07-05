@@ -4,7 +4,7 @@ import org.gwtapp.core.client.ui.FieldPanel;
 import org.gwtapp.core.client.ui.FormPanel;
 import org.gwtapp.startapp.client.data.UserRegister;
 
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class UserRegisterPanel extends FormPanel<UserRegister> {
@@ -24,6 +24,6 @@ public class UserRegisterPanel extends FormPanel<UserRegister> {
 
 	@Override
 	protected UserRegister createInstance() {
-		return new UserRegister();
+		return GWT.create(UserRegister.class);
 	}
 }

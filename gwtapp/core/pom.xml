@@ -52,6 +52,13 @@
 			<version>${gwtVersion}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}</classifier>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.13</version>

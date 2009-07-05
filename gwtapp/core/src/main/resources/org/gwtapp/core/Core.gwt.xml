@@ -1,4 +1,8 @@
 <module>
-	<inherits name='com.google.gwt.user.User'/>
-	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name="com.google.gwt.i18n.I18N" />
+
+	<generate-with class="org.gwtapp.core.rebind.ModelDataGenerator">
+		<when-type-assignable class="org.gwtapp.core.client.data.TestModel" />
+	</generate-with>
 </module>
