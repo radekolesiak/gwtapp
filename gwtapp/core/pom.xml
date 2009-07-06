@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -21,6 +20,20 @@
 	</developers>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.sun</groupId>
+			<artifactId>tools</artifactId>
+			<version>1.6.0</version>
+			<scope>system</scope>
+			<systemPath>${java.home}/../lib/tools.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.helionprime</groupId>
+			<artifactId>jruntime</artifactId>
+			<version>1.0rc0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/lib/jruntime-1.0rc0.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>apache-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
@@ -57,7 +70,7 @@
 			<version>${gwtVersion}</version>
 			<classifier>${platform}</classifier>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -70,7 +83,10 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<!-- Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
+		<!--
+			Include SOURCE in output artifact for GWT (GWT libraries must include
+			source)
+		-->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
