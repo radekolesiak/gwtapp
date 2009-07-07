@@ -2,7 +2,7 @@ package org.gwtapp.core.client.data;
 
 public interface ModelData {
 
-	public <X> X get(String property);
+	public Object get(String property);
 
 	/*-
 	public Map<String, Object> getProperties();
@@ -12,5 +12,5 @@ public interface ModelData {
 	public <X> X remove(String property);
 	 */
 
-	public <X> X set(String property, X value);
+	public Object set(String property, Object value);
 }

@@ -9,15 +9,14 @@ public class HashModelData implements ModelData {
 
 	private final Map<String, Object> map = new HashMap<String, Object>();
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <X> X get(String property) {
-		return (X) map.get(property);
+	public Object get(String property) {
+		return map.get(property);
 	}
 
 	@Override
-	public <X> X set(String property, X value) {
-		X x = get(property);
+	public Object set(String property, Object value) {
+		Object x = get(property);
 		map.put(property, value);
 		return x;
 	}

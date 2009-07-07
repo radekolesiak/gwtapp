@@ -6,16 +6,9 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class UserRegister implements ModelData, IsSerializable {
 
-	//protected final static Set<String> properties = new HashSet<String>();
-
-	protected static String createProperty(String property) {
-		//properties.add(property);
-		return property;
-	}
-
-	public final static String LOGIN = createProperty("login");
-	public final static String EMAIL = createProperty("email");
-	public final static String PASSWORD = createProperty("password");
+	public final static String LOGIN = "login";
+	public final static String EMAIL = "email";
+	public final static String PASSWORD = "password";
 
 	private String login;
 	private String password;
@@ -50,31 +43,29 @@ public class UserRegister implements ModelData, IsSerializable {
 		return login + " " + password + " " + email;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <X> X get(String property) {
+	public Object get(String property) {
 		if (LOGIN.equals(property)) {
-			return (X) login;
+			return login;
 		} else if (EMAIL.equals(property)) {
-			return (X) email;
+			return email;
 		} else if (PASSWORD.equals(property)) {
-			return (X) password;
+			return password;
 		}
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <X> X set(String property, X value) {
-		X old = null;
+	public Object set(String property, Object value) {
+		Object old = null;
 		if (LOGIN.equals(property)) {
-			old = (X) login;
+			old = login;
 			login = (String) value;
 		} else if (EMAIL.equals(property)) {
-			old = (X) email;
+			old = email;
 			email = (String) value;
 		} else if (PASSWORD.equals(property)) {
-			old = (X) password;
+			old = password;
 			password = (String) value;
 		}
 		return old;

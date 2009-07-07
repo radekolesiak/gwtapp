@@ -30,6 +30,16 @@
 		<!--  GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwtVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwtVersion}</version>
 			<classifier>${platform}-libs</classifier>
@@ -90,6 +100,7 @@
 						<goals>
 							<goal>compile</goal>
 							<goal>mergewebxml</goal>
+							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>

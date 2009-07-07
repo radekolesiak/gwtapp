@@ -95,9 +95,9 @@ public class ModelDataGenerator extends Generator {
 
 	private void generateGet(SourceWriter sourceWriter) {
 		// start constructor source generation
-		sourceWriter.println("public <X> X get(String property) { ");
+		sourceWriter.println("public Object get(String property) { ");
 		sourceWriter.indent();
-		sourceWriter.println("return (X) super.get(property);");
+		sourceWriter.println("return super.get(property);");
 		// end constructor source generation
 		sourceWriter.outdent();
 		sourceWriter.println("}");
@@ -105,9 +105,9 @@ public class ModelDataGenerator extends Generator {
 
 	private void generateSet(SourceWriter sourceWriter) {
 		// start constructor source generation
-		sourceWriter.println("public <X> X set(String property, X value) { ");
+		sourceWriter.println("public Object set(String property, Object value) { ");
 		sourceWriter.indent();
-		sourceWriter.println("X x  = get(property);");
+		sourceWriter.println("Object x  = get(property);");
 		sourceWriter.println("super.put(property, value);");
 		sourceWriter.println("return x;");
 		// end constructor source generation
@@ -119,7 +119,7 @@ public class ModelDataGenerator extends Generator {
 		// start constructor source generation
 		sourceWriter.println("public String getText() { ");
 		sourceWriter.indent();
-		sourceWriter.println("return get(\"text\");");
+		sourceWriter.println("return (String) get(\"text\");");
 		// end constructor source generation
 		sourceWriter.outdent();
 		sourceWriter.println("}");
