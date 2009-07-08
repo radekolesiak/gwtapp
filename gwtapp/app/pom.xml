@@ -93,10 +93,6 @@
 				<version>1.1</version>
 				<executions>
 					<execution>
-						<phase>process-classes</phase>
-						<configuration>
-							<logLevel>INFO</logLevel>
-						</configuration>
 						<goals>
 							<goal>compile</goal>
 							<goal>mergewebxml</goal>
