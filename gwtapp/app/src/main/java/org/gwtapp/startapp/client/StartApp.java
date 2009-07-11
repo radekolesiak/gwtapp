@@ -1,11 +1,9 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.data.TestModel;
 import org.gwtapp.startapp.client.data.UserRegister;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Label;
@@ -14,9 +12,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class StartApp implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
-
-		testGenerator();
-
 		UserRegisterPanel userRegisterPanel = new UserRegisterPanel();
 		userRegisterPanel
 				.addValueChangeHandler(new ValueChangeHandler<UserRegister>() {
@@ -29,19 +24,5 @@ public class StartApp implements EntryPoint {
 		
 		RootPanel.get().add(new Label("Hello world."));
 		RootPanel.get().add(userRegisterPanel);
-	}
-
-	private void testGenerator() {
-		TestModel testModel = GWT.create(TestModel.class);
-		testModel.setText("aaa");
-		System.out.println(testModel.getText());
-		System.out.println(testModel.get(TestModel.TEXT));
-		testModel.set(TestModel.TEXT, "bbb");
-		System.out.println(testModel.getText());
-		System.out.println(testModel.get(TestModel.TEXT));
-		
-		UserRegister userRegister = GWT.create(UserRegister.class);
-		userRegister.setLogin("VloginV");
-		System.out.println(userRegister.getLogin());
 	}
 }

@@ -33,6 +33,7 @@ public class RebindTest {
 
 	@Test
 	public void runtimeClassLowLevelTest() {
+		@SuppressWarnings("unchecked")
 		class JavaMemFileManager extends ForwardingJavaFileManager {
 
 			class ClassMemFileObject extends SimpleJavaFileObject {
@@ -113,10 +114,12 @@ public class RebindTest {
 		CompilationTask task = compiler.getTask(null, fileManager, null, null,
 				null, sources);
 		Assert.assertTrue(task.call());
+		@SuppressWarnings("unused")
 		byte[] myClassBytes = ((JavaMemFileManager) fileManager)
 				.getClassBytes("TestClass");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void runtimeClassHighLevelTest() throws ClassNotFoundException, RuntimeClassException, InstantiationException, IllegalAccessException {
 		RuntimeClass myFirstRuntimeClass = new RuntimeClass(

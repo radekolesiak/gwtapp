@@ -1,5 +1,7 @@
-package org.gwtapp.core.client.data;
+package org.gwtapp.startapp.client.data;
 
+
+import org.gwtapp.core.client.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
