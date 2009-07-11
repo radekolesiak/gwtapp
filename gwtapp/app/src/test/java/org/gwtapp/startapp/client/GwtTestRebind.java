@@ -17,6 +17,7 @@ public class GwtTestRebind extends GWTTestCase {
 		String textA = "aaa";
 		String textB = "bbb";
 		String login = "login";
+		Integer number = 3;
 
 		TestModel testModel = GWT.create(TestModel.class);
 		testModel.setText(textA);
@@ -25,6 +26,10 @@ public class GwtTestRebind extends GWTTestCase {
 		testModel.set(TestModel.TEXT, textB);
 		assertEquals(textB, testModel.getText());
 		assertEquals(textB, testModel.get(TestModel.TEXT));
+
+		testModel.set(TestModel.NUMBER, number);
+		assertEquals(number, testModel.getNumber());
+		assertEquals(number, testModel.get(TestModel.NUMBER));
 
 		UserRegister userRegister = GWT.create(UserRegister.class);
 		userRegister.setLogin(login);
