@@ -13,11 +13,11 @@ public class GwtTestRebind extends GWTTestCase {
 		return "org.gwtapp.startapp.StartApp";
 	}
 
-	public void testGenerator() {
-		String textA ="aaa";
-		String textB ="bbb";
-		String login ="login";
-		
+	public void testGenerator1() {
+		String textA = "aaa";
+		String textB = "bbb";
+		String login = "login";
+
 		TestModel testModel = GWT.create(TestModel.class);
 		testModel.setText(textA);
 		assertEquals(textA, testModel.getText());
@@ -25,9 +25,18 @@ public class GwtTestRebind extends GWTTestCase {
 		testModel.set(TestModel.TEXT, textB);
 		assertEquals(textB, testModel.getText());
 		assertEquals(textB, testModel.get(TestModel.TEXT));
-		
+
 		UserRegister userRegister = GWT.create(UserRegister.class);
 		userRegister.setLogin(login);
 		assertEquals(login, userRegister.getLogin());
+	}
+
+	public void testGenerator2() throws IllegalArgumentException {
+		TestModel testModel = GWT.create(TestModel.class);
+		try {
+			testModel.get("abc" + TestModel.TEXT);
+			assertTrue(false);
+		} catch (IllegalArgumentException e) {
+		}
 	}
 }

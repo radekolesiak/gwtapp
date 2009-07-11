@@ -1,6 +1,9 @@
 package org.gwtapp.core.rebind;
 
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -61,7 +64,8 @@ public class ModelDataGenerator extends Generator {
 		composer = new ClassSourceFileComposerFactory(packageName, className);
 		if (Class.forName(typeName).isInterface()) {
 			composer.addImplementedInterface(typeName);
-			composer.setSuperclass("java.util.HashMap");
+			composer
+					.setSuperclass("org.gwtapp.core.client.data.HashIterableModelData");
 		} else {
 			composer.setSuperclass(typeName);
 		}
@@ -70,10 +74,11 @@ public class ModelDataGenerator extends Generator {
 		// generator constructor source code
 		generateConstructor(sourceWriter);
 		if (Class.forName(typeName).isInterface()) {
-			generateGet(sourceWriter);
-			generateSet(sourceWriter);
-			generateGetText(sourceWriter);
-			generateSetText(sourceWriter);
+			Set<String> properties = new HashSet<String>();
+			for (Method method : Class.forName(typeName).getMethods()) {
+				generateMethod(sourceWriter, properties, method);
+			}
+			generateMethodGetPropertyNames(sourceWriter, properties);
 		}
 		// close generated class
 		sourceWriter.outdent();
@@ -93,44 +98,66 @@ public class ModelDataGenerator extends Generator {
 		sourceWriter.println("}");
 	}
 
-	private void generateGet(SourceWriter sourceWriter) {
-		// start constructor source generation
-		sourceWriter.println("public Object get(String property) { ");
+	private String getPropertyName(String methodName) {
+		String property = methodName.substring(3);
+		return property.substring(0, 1).toLowerCase() + property.substring(1);
+	}
+
+	private void generateMethod(SourceWriter sourceWriter,
+			Set<String> properties, Method method) {
+		String name = method.getName();
+		if (name.startsWith("get") || name.startsWith("set")) {
+			if (name.equals("get") || name.equals("set")) {
+				return;
+			}
+			properties.add(getPropertyName(name));
+			if (name.startsWith("get")) {
+				generateMethodGet(sourceWriter, method);
+			} else {
+				generateMethodSet(sourceWriter, method);
+			}
+		} else {
+			throw new IllegalStateException(
+					"method must starts with 'set' or 'get': " + name);
+		}
+	}
+
+	private void generateMethodGetPropertyNames(SourceWriter sourceWriter,
+			Set<String> properties) {
+		String s = "";
+		for (String property : properties) {
+			if (!s.isEmpty()) {
+				s += ",";
+			}
+			s += "\"" + property + "\"";
+		}
+		String[] a = new String[] { "a" };
+		java.util.Arrays.asList(a);
+		sourceWriter
+				.println("public java.util.Collection<java.lang.String> getPropertyNames() {");
+		sourceWriter
+				.println("return java.util.Arrays.asList(new java.lang.String[]{"
+						+ s + "});");
+		sourceWriter.println("}");
+	}
+
+	private void generateMethodGet(SourceWriter sourceWriter, Method method) {
+		String name = method.getName();
+		String type = method.getReturnType().getName();
+		sourceWriter.println("public " + type + " " + name + "() { ");
 		sourceWriter.indent();
-		sourceWriter.println("return super.get(property);");
-		// end constructor source generation
+		sourceWriter.println("return (" + type + ") get(\""
+				+ getPropertyName(name) + "\");");
 		sourceWriter.outdent();
 		sourceWriter.println("}");
 	}
 
-	private void generateSet(SourceWriter sourceWriter) {
-		// start constructor source generation
-		sourceWriter.println("public Object set(String property, Object value) { ");
+	private void generateMethodSet(SourceWriter sourceWriter, Method method) {
+		String name = method.getName();
+		String type = method.getParameterTypes()[0].getName();
+		sourceWriter.println("public void " + name + "(" + type + " value) { ");
 		sourceWriter.indent();
-		sourceWriter.println("Object x  = get(property);");
-		sourceWriter.println("super.put(property, value);");
-		sourceWriter.println("return x;");
-		// end constructor source generation
-		sourceWriter.outdent();
-		sourceWriter.println("}");
-	}
-
-	private void generateGetText(SourceWriter sourceWriter) {
-		// start constructor source generation
-		sourceWriter.println("public String getText() { ");
-		sourceWriter.indent();
-		sourceWriter.println("return (String) get(\"text\");");
-		// end constructor source generation
-		sourceWriter.outdent();
-		sourceWriter.println("}");
-	}
-
-	private void generateSetText(SourceWriter sourceWriter) {
-		// start constructor source generation
-		sourceWriter.println("public void setText(String text) { ");
-		sourceWriter.indent();
-		sourceWriter.println("set(\"text\", text);");
-		// end constructor source generation
+		sourceWriter.println("set(\"" + getPropertyName(name) + "\", value);");
 		sourceWriter.outdent();
 		sourceWriter.println("}");
 	}
