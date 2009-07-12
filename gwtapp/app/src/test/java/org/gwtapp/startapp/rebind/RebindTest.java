@@ -10,7 +10,6 @@ import java.util.HashMap;
 import javax.tools.FileObject;
 import javax.tools.ForwardingJavaFileManager;
 import javax.tools.JavaCompiler;
-import javax.tools.JavaFileManager;
 import javax.tools.JavaFileObject;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardLocation;
@@ -18,6 +17,9 @@ import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 import javax.tools.JavaFileObject.Kind;
 
+import org.gwtapp.core.rebind.ModelDataGenerator;
+import org.gwtapp.startapp.client.data.TestModel;
+import org.gwtapp.startapp.client.data.UserRegister;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,8 +31,11 @@ public class RebindTest {
 	// http://www.rgagnon.com/javadetails/java-0039.html
 	// http://www.ibm.com/developerworks/java/library/j-jcomp/index.html
 	// http://www.java2s.com/Tutorial/Java/0120__Development/CompilingfromMemory.
-	// http://opensource.helion-prime.com/jruntime/ & https://sourceforge.net/projects/jruntime/files/
+	// http://opensource.helion-prime.com/jruntime/ &
+	// https://sourceforge.net/projects/jruntime/files/
 
+	// http://openjpa.apache.org/builds/1.2.1/apache-openjpa-1.2.1/docs/manual/manual.html#ref_guide_pc_interfaces
+	
 	@Test
 	public void runtimeClassLowLevelTest() {
 		@SuppressWarnings("unchecked")
@@ -109,24 +114,55 @@ public class RebindTest {
 		JavaSourceFromString source = new JavaSourceFromString("TestClass",
 				code);
 		Iterable<? extends JavaFileObject> sources = Arrays.asList(source);
-		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-		JavaFileManager fileManager = new JavaMemFileManager();
+		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();		
+		JavaMemFileManager fileManager = new JavaMemFileManager();
 		CompilationTask task = compiler.getTask(null, fileManager, null, null,
 				null, sources);
 		Assert.assertTrue(task.call());
 		@SuppressWarnings("unused")
-		byte[] myClassBytes = ((JavaMemFileManager) fileManager)
-				.getClassBytes("TestClass");
+		byte[] myClassBytes = fileManager.getClassBytes("TestClass");
 	}
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void runtimeClassHighLevelTest() throws ClassNotFoundException, RuntimeClassException, InstantiationException, IllegalAccessException {
+	public void runtimeClassHighLevelTest() throws ClassNotFoundException,
+			RuntimeClassException, InstantiationException,
+			IllegalAccessException {
 		RuntimeClass myFirstRuntimeClass = new RuntimeClass(
-				"public class MyRuntimeClass{" +
-				"public String toString() {return \"-- MyRuntimeClass --\";}" +
-				"}");
+				"public class MyRuntimeClass{"
+						+ "public String toString() {return \"-- MyRuntimeClass --\";}"
+						+ "}");
 		Object instance = myFirstRuntimeClass.newInstance();
 		Assert.assertEquals("-- MyRuntimeClass --", instance.toString());
+	}
+
+	//@Test
+	public void bindingTest1() {
+		String textA = "aaa";
+		String textB = "bbb";
+		String login = "login";
+		Integer number = 3;
+
+		TestModel testModel = ModelDataGenerator.bind(TestModel.class);
+		testModel.setText(textA);
+		Assert.assertEquals(textA, testModel.getText());
+		Assert.assertEquals(textA, testModel.get(TestModel.TEXT));
+		testModel.set(TestModel.TEXT, textB);
+		Assert.assertEquals(textB, testModel.getText());
+		Assert.assertEquals(textB, testModel.get(TestModel.TEXT));
+
+		testModel.set(TestModel.NUMBER, number);
+		Assert.assertEquals(number, testModel.getNumber());
+		Assert.assertEquals(number, testModel.get(TestModel.NUMBER));
+
+		UserRegister userRegister = ModelDataGenerator.bind(UserRegister.class);
+		userRegister.setLogin(login);
+		Assert.assertEquals(login, userRegister.getLogin());
+	}
+
+	//@Test(expected = IllegalArgumentException.class)
+	public void bindingTest2() {
+		TestModel testModel = ModelDataGenerator.bind(TestModel.class);
+		testModel.get("abc" + TestModel.TEXT);
 	}
 }

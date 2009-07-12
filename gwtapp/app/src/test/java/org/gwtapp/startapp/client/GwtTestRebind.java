@@ -1,5 +1,8 @@
 package org.gwtapp.startapp.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.gwtapp.startapp.client.data.TestModel;
 import org.gwtapp.startapp.client.data.UserRegister;
 
@@ -44,4 +47,31 @@ public class GwtTestRebind extends GWTTestCase {
 		} catch (IllegalArgumentException e) {
 		}
 	}
+
+	public void testGeneratorGenerics1() {
+		TestModel testModel = GWT.create(TestModel.class);
+		List<Double> doubles = new ArrayList<Double>();
+		doubles.add(3.0);
+		testModel.set(TestModel.DOUBLES, doubles);
+		doubles = testModel.getDoubles();
+		assertNotNull(doubles);
+		assertEquals(1, doubles.size());
+		assertTrue(Math.abs(3.0 - doubles.get(0)) < 1e-3);
+	}
+
+	/*-
+	public void testGeneratorGenerics2() {
+		TestModel testModel = GWT.create(TestModel.class);
+		List<Integer> integers = new ArrayList<Integer>();
+		integers.add(3);
+		try {
+			testModel.set(TestModel.DOUBLES, integers);
+			assertTrue(false);
+		} catch (Exception e) {
+		}
+		List<Double> doubles = testModel.getDoubles();
+		assertNotNull(integers);
+		assertEquals(1, integers.size());
+		assertTrue(Math.abs(3.0 - doubles.get(0)) < 1e-3);
+	}*/
 }
