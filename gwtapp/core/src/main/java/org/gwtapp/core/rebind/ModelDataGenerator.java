@@ -14,7 +14,6 @@ import com.google.gwt.core.ext.typeinfo.TypeOracle;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 import com.helionprime.jruntime.RuntimeClass;
-import com.helionprime.jruntime.RuntimeClassException;
 
 public class ModelDataGenerator extends Generator {
 
@@ -202,34 +201,16 @@ public class ModelDataGenerator extends Generator {
 		s.append("\n");
 		s.append("}");
 		s.append("\n");
-		
-		System.out.println(s);
 		return s.toString();
 	}
 
 	@SuppressWarnings("unchecked")
 	public static <T> T bind(Class<T> c) {
-		System.out.println(System.getProperty("java.class.path"));
 		try {
 			RuntimeClass myFirstRuntimeClass = new RuntimeClass(
 					generateToBind(c));
-			try {
-				return (T) myFirstRuntimeClass.newInstance();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RuntimeClassException e) {
-			// TODO Auto-generated catch block
+			return (T) myFirstRuntimeClass.newInstance();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

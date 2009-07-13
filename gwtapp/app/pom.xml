@@ -151,11 +151,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>Codehaus Mojo Snapshot</id>
-			<url>http://snapshots.repository.codehaus.org/</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>

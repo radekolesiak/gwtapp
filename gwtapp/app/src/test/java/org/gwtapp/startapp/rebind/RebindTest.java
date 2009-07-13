@@ -136,7 +136,7 @@ public class RebindTest {
 		Assert.assertEquals("-- MyRuntimeClass --", instance.toString());
 	}
 
-	//@Test
+	@Test
 	public void bindingTest1() {
 		String textA = "aaa";
 		String textB = "bbb";
