@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.startapp.client.data.UserRegister;
+import org.gwtapp.startapp.client.data.UserRegisterModel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -14,14 +14,13 @@ public class StartApp implements EntryPoint {
 	public void onModuleLoad() {
 		UserRegisterPanel userRegisterPanel = new UserRegisterPanel();
 		userRegisterPanel
-				.addValueChangeHandler(new ValueChangeHandler<UserRegister>() {
+				.addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 					@Override
 					public void onValueChange(
-							ValueChangeEvent<UserRegister> event) {
+							ValueChangeEvent<UserRegisterModel> event) {
 						System.out.println(event.getValue());
 					}
 				});
-		
 		RootPanel.get().add(new Label("Hello world."));
 		RootPanel.get().add(userRegisterPanel);
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gwtapp.startapp.client.data.TestModel;
 import org.gwtapp.startapp.client.data.UserRegister;
+import org.gwtapp.startapp.client.data.UserRegisterModel;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -34,7 +35,7 @@ public class GwtTestRebind extends GWTTestCase {
 		assertEquals(number, testModel.getNumber());
 		assertEquals(number, testModel.get(TestModel.NUMBER));
 
-		UserRegister userRegister = GWT.create(UserRegister.class);
+		UserRegister userRegister = GWT.create(UserRegisterModel.class);
 		userRegister.setLogin(login);
 		assertEquals(login, userRegister.getLogin());
 	}
