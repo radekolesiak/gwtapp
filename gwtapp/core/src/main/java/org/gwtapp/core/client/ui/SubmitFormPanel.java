@@ -2,42 +2,38 @@ package org.gwtapp.core.client.ui;
 
 import org.gwtapp.core.client.data.ModelData;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
 public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
-		HasName, HasValue<T> {
+		HasName, HasValue<T>, HasFieldPanel<T> {
 
 	private String name;
 	private T value;
 
-	private final Button submit = new Button("Submit");
 	private final FormPanel<T> form;
 
 	public SubmitFormPanel(T value, FormPanel<T> form) {
 		this.value = value;
 		this.form = form;
 		add(form);
-		add(submit);
-		submit.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				setValue(SubmitFormPanel.this.form.getValue(), true);
-			}
-		});
 	}
 
+	public void submit() {
+		// value.copy() from its internal state
+		setValue(SubmitFormPanel.this.form.getValue(), true);
+	}
+
+	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		form.addField(field);
 	}
 
+	@Override
 	public <X> void removeField(FieldPanel<T, X> field) {
 		form.removeField(field);
 	}
@@ -68,7 +64,7 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 			throw new IllegalArgumentException("value must not be null");
 		}
 		this.value = value;
-		form.setValue(value);
+		form.setValue(value); // value.copy() to its internal state
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}

@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
 public class FormPanel<T extends ModelData> extends FlowPanel implements
-		HasName, HasValue<T> {
+		HasName, HasValue<T>, HasFieldPanel<T> {
 
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
@@ -31,11 +31,13 @@ public class FormPanel<T extends ModelData> extends FlowPanel implements
 		}
 	}
 
+	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);
 		add(field);
 	}
 
+	@Override
 	public <X> void removeField(FieldPanel<T, X> field) {
 		fields.remove(field.getProperty());
 		remove(field);
