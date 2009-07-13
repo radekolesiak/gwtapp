@@ -18,7 +18,7 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 			this, UserRegister.PASSWORD, "Password:", new TextBox());
 
 	public UserRegisterPanel() {
-		super((UserRegisterModel) GWT.create(UserRegisterModel.class));
+		super((UserRegisterModel)GWT.create(UserRegisterModel.class));
 		addField(login);
 		addField(email);
 		addField(password);

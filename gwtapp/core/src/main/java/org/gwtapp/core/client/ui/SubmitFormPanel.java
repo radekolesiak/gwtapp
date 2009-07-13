@@ -1,44 +1,37 @@
 package org.gwtapp.core.client.ui;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.gwtapp.core.client.data.ModelData;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class FormPanel<T extends ModelData> extends FlowPanel implements
+public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 		HasName, HasValue<T> {
 
-	@SuppressWarnings("unchecked")
-	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
 	private String name;
 	private T value;
 
-	public FormPanel(T value) {
-		this.value = value;
-	}
+	private final Button submit = new Button("Submit");
+	private final FormPanel<T> form;
 
-	@SuppressWarnings("unchecked")
-	private void updateValues(T value) {
-		for (Map.Entry<String, FieldPanel> entry : fields.entrySet()) {
-			entry.getValue().setValue(value.get(entry.getKey()));
-		}
+	public SubmitFormPanel(T value, FormPanel<T> form) {
+		this.value = value;
+		this.form = form;
+		add(form);
+		add(submit);
 	}
 
 	public <X> void addField(FieldPanel<T, X> field) {
-		fields.put(field.getProperty(), field);
-		add(field);
+		form.addField(field);
 	}
 
 	public <X> void removeField(FieldPanel<T, X> field) {
-		fields.remove(field.getProperty());
-		remove(field);
+		form.removeField(field);
 	}
 
 	@Override
@@ -67,7 +60,7 @@ public class FormPanel<T extends ModelData> extends FlowPanel implements
 			throw new IllegalArgumentException("value must not be null");
 		}
 		this.value = value;
-		updateValues(value);
+		form.setValue(value);
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}
