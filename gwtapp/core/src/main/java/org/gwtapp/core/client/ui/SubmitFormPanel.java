@@ -2,6 +2,8 @@ package org.gwtapp.core.client.ui;
 
 import org.gwtapp.core.client.data.ModelData;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -24,6 +26,12 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 		this.form = form;
 		add(form);
 		add(submit);
+		submit.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				setValue(SubmitFormPanel.this.form.getValue(), true);
+			}
+		});
 	}
 
 	public <X> void addField(FieldPanel<T, X> field) {
