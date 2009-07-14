@@ -3,7 +3,7 @@ package org.gwtapp.core.client.data;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class HashIterableModelData implements IterableModelData {
+public abstract class HashModelData implements ModelData {
 
 	private Map<String, Object> delegated = new HashMap<String, Object>();
 
@@ -38,6 +38,11 @@ public abstract class HashIterableModelData implements IterableModelData {
 		} else {
 			throw new IllegalArgumentException("Unknown property: " + property);
 		}
+	}
+
+	@Override
+	public Object remove(String property) {
+		return set(property, null);
 	}
 
 	private boolean equalsAB(Object a, Object b) {
@@ -80,5 +85,18 @@ public abstract class HashIterableModelData implements IterableModelData {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void copyTo(ModelData model) {
+		for (java.lang.String property : getPropertyNames()) {
+			Object value = get(property);
+			if (value instanceof ModelData) {
+				((ModelData) value).copyTo((ModelData) model
+						.get(property));
+			} else {
+				model.set(property, value);
+			}
+		}
 	}
 }

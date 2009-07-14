@@ -1,16 +1,16 @@
 package org.gwtapp.core.client.data;
 
+import java.util.Collection;
 
 public interface ModelData {
 
-	public Object get(String property);
+	Object get(String property);
+
+	Object set(String property, Object value);
 	
-	/*-
-	public Map<String, Object> getProperties();
+	Object remove(String property);
 
-
-	public <X> X remove(String property);
-	 */
-
-	public Object set(String property, Object value);
+	Collection<String> getPropertyNames();
+	
+	void copyTo(ModelData model);
 }

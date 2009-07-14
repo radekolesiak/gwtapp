@@ -28,7 +28,7 @@ public class ModelDataGenerator extends Generator {
 	/** Fully qualified class name passed into GWT.create() */
 	private String typeName = null;
 
-	private final static String SUPER_CLASS = "org.gwtapp.core.client.data.HashIterableModelData";
+	private final static String SUPER_CLASS = "org.gwtapp.core.client.data.HashModelData";
 	private final static String CLASS_NAME_SUFFIX = "Wrapper";
 
 	@Override
@@ -74,6 +74,7 @@ public class ModelDataGenerator extends Generator {
 		}
 		SourceWriter sourceWriter = null;
 		sourceWriter = composer.createSourceWriter(context, printWriter);
+		//System.out.println(generateContent(typeName, className));
 		sourceWriter.println(generateContent(typeName, className));
 		// close generated class
 		sourceWriter.outdent();
@@ -115,6 +116,9 @@ public class ModelDataGenerator extends Generator {
 	private static void generateMethod(StringBuffer sourceWriter,
 			Set<String> properties, Method method) {
 		String name = method.getName();
+		if (name.equals("getPropertyNames") || name.equals("copyTo") || name.equals("remove")) {
+			return;
+		}
 		if (name.startsWith("get") || name.startsWith("set")) {
 			if (name.equals("get") || name.equals("set")) {
 				return;

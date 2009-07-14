@@ -24,8 +24,8 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 	}
 
 	public void submit() {
-		// value.copy() from its internal state
-		setValue(SubmitFormPanel.this.form.getValue(), true);
+		SubmitFormPanel.this.form.getValue().copyTo(value);
+		ValueChangeEvent.fire(this, value);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 			throw new IllegalArgumentException("value must not be null");
 		}
 		this.value = value;
-		form.setValue(value); // value.copy() to its internal state
+		value.copyTo(form.getValue());
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}
