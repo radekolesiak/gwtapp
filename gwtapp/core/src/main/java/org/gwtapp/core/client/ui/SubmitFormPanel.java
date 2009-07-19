@@ -20,11 +20,14 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 	public SubmitFormPanel(T value, FormPanel<T> form) {
 		this.value = value;
 		this.form = form;
-		add(form);
+	}
+
+	public FormPanel<T> getForm() {
+		return form;
 	}
 
 	public void submit() {
-		SubmitFormPanel.this.form.getValue().copyTo(value);
+		getForm().getValue().copyTo(value);
 		ValueChangeEvent.fire(this, value);
 	}
 

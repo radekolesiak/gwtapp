@@ -10,5 +10,6 @@ public class UserRegisterSubmitPanel extends SubmitFormPanel<UserRegisterModel> 
 	public UserRegisterSubmitPanel() {
 		super((UserRegisterModel) GWT.create(UserRegisterModel.class),
 				new UserRegisterPanel());
+		add(getForm());
 	}
 }

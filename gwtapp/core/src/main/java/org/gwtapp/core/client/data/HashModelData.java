@@ -1,5 +1,6 @@
 package org.gwtapp.core.client.data;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,6 +95,8 @@ public abstract class HashModelData implements ModelData {
 			if (value instanceof ModelData) {
 				((ModelData) value).copyTo((ModelData) model
 						.get(property));
+			}else if (value instanceof Map) {
+			}else if (value instanceof Collection) {
 			} else {
 				model.set(property, value);
 			}

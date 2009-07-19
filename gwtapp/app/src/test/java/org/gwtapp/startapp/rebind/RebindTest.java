@@ -17,7 +17,7 @@ import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 import javax.tools.JavaFileObject.Kind;
 
-import org.gwtapp.core.rebind.ModelDataGenerator;
+import org.gwtapp.core.rebind.Util;
 import org.gwtapp.startapp.client.data.TestModel;
 import org.gwtapp.startapp.client.data.UserRegister;
 import org.junit.Assert;
@@ -143,7 +143,7 @@ public class RebindTest {
 		String login = "login";
 		Integer number = 3;
 
-		TestModel testModel = ModelDataGenerator.bind(TestModel.class);
+		TestModel testModel = Util.bind(TestModel.class);
 		testModel.setText(textA);
 		Assert.assertEquals(textA, testModel.getText());
 		Assert.assertEquals(textA, testModel.get(TestModel.TEXT));
@@ -155,14 +155,14 @@ public class RebindTest {
 		Assert.assertEquals(number, testModel.getNumber());
 		Assert.assertEquals(number, testModel.get(TestModel.NUMBER));
 
-		UserRegister userRegister = ModelDataGenerator.bind(UserRegister.class);
+		UserRegister userRegister = Util.bind(UserRegister.class);
 		userRegister.setLogin(login);
 		Assert.assertEquals(login, userRegister.getLogin());
 	}
 
 	//@Test(expected = IllegalArgumentException.class)
 	public void bindingTest2() {
-		TestModel testModel = ModelDataGenerator.bind(TestModel.class);
+		TestModel testModel = Util.bind(TestModel.class);
 		testModel.get("abc" + TestModel.TEXT);
 	}
 }
