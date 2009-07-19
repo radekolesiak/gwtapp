@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4">
 	<display-name>GWT</display-name>
+	<!-- 
+	<servlet>
+		<servlet-name>Test</servlet-name>
+		<servlet-class>org.gwtapp.startapp.server.TestApiImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Test</servlet-name>
+		<url-pattern>/org.gwtapp.startapp.StartApp/api</url-pattern>
+	</servlet-mapping>
+	 -->
 </web-app>

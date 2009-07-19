@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp implements EntryPoint {
+
 	@Override
 	public void onModuleLoad() {
 		UserRegisterPanel userRegisterPanel = new UserRegisterPanel();

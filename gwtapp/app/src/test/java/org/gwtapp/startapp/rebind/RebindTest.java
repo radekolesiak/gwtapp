@@ -36,6 +36,8 @@ public class RebindTest {
 
 	// http://openjpa.apache.org/builds/1.2.1/apache-openjpa-1.2.1/docs/manual/manual.html#ref_guide_pc_interfaces
 	
+	// http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with
+		
 	@Test
 	public void runtimeClassLowLevelTest() {
 		@SuppressWarnings("unchecked")

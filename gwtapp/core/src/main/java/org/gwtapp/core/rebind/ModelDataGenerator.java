@@ -68,7 +68,7 @@ public class ModelDataGenerator extends Generator {
 		}
 		SourceWriter sourceWriter = null;
 		sourceWriter = composer.createSourceWriter(context, printWriter);
-		// System.out.println(generateContent(typeName, className));
+		System.out.println(Util.generateContent(typeName, className));
 		sourceWriter.println(Util.generateContent(typeName, className));
 		// close generated class
 		sourceWriter.outdent();

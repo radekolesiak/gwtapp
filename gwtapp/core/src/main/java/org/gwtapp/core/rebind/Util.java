@@ -21,6 +21,7 @@ public class Util {
 				generateMethod(buffer, properties, method);
 			}
 			generateMethodGetPropertyNames(buffer, properties);
+			generateMethodCloneTo(buffer, className);
 		}
 		return buffer.toString();
 	}
@@ -43,7 +44,7 @@ public class Util {
 	private static void generateMethod(StringBuffer sourceWriter,
 			Set<String> properties, Method method) {
 		String name = method.getName();
-		if (name.equals("getPropertyNames") || name.equals("copyTo")
+		if (name.equals("getPropertyNames") || name.equals("cloneTo")
 				|| name.equals("remove")) {
 			return;
 		}
@@ -102,6 +103,28 @@ public class Util {
 		sourceWriter.append("public void " + name + "(" + type + " value) { ");
 		sourceWriter.append("\n");
 		sourceWriter.append("set(\"" + getPropertyName(name) + "\", value);");
+		sourceWriter.append("\n");
+		sourceWriter.append("}");
+		sourceWriter.append("\n");
+	}
+
+	private static void generateMethodCloneTo(StringBuffer sourceWriter,
+			String className) {
+		sourceWriter.append("public " + className + " cloneTo() {");
+		sourceWriter.append("\n");
+		sourceWriter.append(className + " model = new " + className + "();");
+		sourceWriter.append("\n");
+		sourceWriter
+				.append("for (java.lang.String property : getPropertyNames()) {");
+		sourceWriter.append("\n");
+		sourceWriter
+				.append("java.lang.Object value = org.gwtapp.core.client.utils.Data.copy(get(property));");
+		sourceWriter.append("\n");
+		sourceWriter.append("model.set(property, value);");
+		sourceWriter.append("\n");
+		sourceWriter.append("}");
+		sourceWriter.append("\n");
+		sourceWriter.append("return model;");
 		sourceWriter.append("\n");
 		sourceWriter.append("}");
 		sourceWriter.append("\n");

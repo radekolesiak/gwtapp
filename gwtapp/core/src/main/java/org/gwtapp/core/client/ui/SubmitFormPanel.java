@@ -26,9 +26,9 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 		return form;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void submit() {
-		getForm().getValue().copyTo(value);
-		ValueChangeEvent.fire(this, value);
+		setValue((T) getForm().getValue().cloneTo(), true);
 	}
 
 	@Override
@@ -61,13 +61,14 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 		setValue(value, false);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		if (value == null) {
 			throw new IllegalArgumentException("value must not be null");
 		}
 		this.value = value;
-		value.copyTo(form.getValue());
+		form.setValue((T) value.cloneTo());
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}
