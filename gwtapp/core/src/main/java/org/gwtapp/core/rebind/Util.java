@@ -1,8 +1,11 @@
 package org.gwtapp.core.rebind;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.gwtapp.core.client.data.Property;
 
 import com.helionprime.jruntime.RuntimeClass;
 
@@ -14,7 +17,7 @@ public class Util {
 	public static String generateContent(String typeName, String className)
 			throws SecurityException, ClassNotFoundException {
 		StringBuffer buffer = new StringBuffer();
-		generateConstructor(buffer, className);
+		generateConstructor(buffer, typeName, className);
 		if (Class.forName(typeName).isInterface()) {
 			Set<String> properties = new HashSet<String>();
 			for (Method method : Class.forName(typeName).getMethods()) {
@@ -27,11 +30,41 @@ public class Util {
 	}
 
 	private static void generateConstructor(StringBuffer sourceWriter,
-			String className) {
+			String typeName, String className) throws SecurityException,
+			ClassNotFoundException {
 		sourceWriter.append("public " + className + "() { ");
 		sourceWriter.append("\n");
 		sourceWriter.append("super();");
 		sourceWriter.append("\n");
+
+		for (Method method : Class.forName(typeName).getMethods()) {
+			if (isGetter(method)) {
+				Property p = method.getAnnotation(Property.class);
+				System.out.println("IsA: "+method.isAnnotationPresent(Property.class));
+				if (p != null && p.initBy() != null) {
+					String name = method.getName();
+					String property = getPropertyName(name);
+					sourceWriter.append("{");
+					sourceWriter.append("\n");
+					sourceWriter.append("java.lang.Object o = get(\""
+							+ property + "\");");
+					sourceWriter.append("\n");
+					sourceWriter.append("if(o == null){ ");
+					sourceWriter.append("\n");
+					sourceWriter.append("try{ ");
+					sourceWriter.append("\n");
+					sourceWriter.append("set(\"" + property + "\", new "
+							+ p.initBy().getName() + "());");
+					sourceWriter.append("\n");
+					sourceWriter.append("} catch(Exception e) {}");
+					sourceWriter.append("\n");
+					sourceWriter.append("} ");
+					sourceWriter.append("\n");
+					sourceWriter.append("}");
+					sourceWriter.append("\n");
+				}
+			}
+		}
 		sourceWriter.append("}");
 		sourceWriter.append("\n");
 	}
@@ -41,26 +74,49 @@ public class Util {
 		return property.substring(0, 1).toLowerCase() + property.substring(1);
 	}
 
-	private static void generateMethod(StringBuffer sourceWriter,
-			Set<String> properties, Method method) {
+	private static boolean isSetterOrGetter(Method method) {
 		String name = method.getName();
 		if (name.equals("getPropertyNames") || name.equals("cloneTo")
 				|| name.equals("remove")) {
-			return;
+			return false;
 		}
 		if (name.startsWith("get") || name.startsWith("set")) {
 			if (name.equals("get") || name.equals("set")) {
-				return;
-			}
-			properties.add(getPropertyName(name));
-			if (name.startsWith("get")) {
-				generateMethodGet(sourceWriter, method);
+				return false;
 			} else {
-				generateMethodSet(sourceWriter, method);
+				return true;
 			}
 		} else {
 			throw new IllegalStateException(
 					"method must starts with 'set' or 'get': " + name);
+		}
+	}
+
+	private static boolean isSetter(Method method) {
+		if (isSetterOrGetter(method)) {
+			return method.getName().startsWith("set");
+		} else {
+			return false;
+		}
+	}
+
+	private static boolean isGetter(Method method) {
+		if (isSetterOrGetter(method)) {
+			return method.getName().startsWith("get");
+		} else {
+			return false;
+		}
+	}
+
+	private static void generateMethod(StringBuffer sourceWriter,
+			Set<String> properties, Method method) {
+		if (isSetter(method)) {
+			properties.add(getPropertyName(method.getName()));
+			generateMethodSet(sourceWriter, method);
+		}
+		if (isGetter(method)) {
+			properties.add(getPropertyName(method.getName()));
+			generateMethodGet(sourceWriter, method);
 		}
 	}
 
