@@ -6,6 +6,7 @@ import java.util.List;
 import org.gwtapp.startapp.client.data.TestModel;
 import org.gwtapp.startapp.client.data.UserRegister;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
+import org.junit.Test;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -75,4 +76,13 @@ public class GwtTestRebind extends GWTTestCase {
 		assertEquals(1, integers.size());
 		assertTrue(Math.abs(3.0 - doubles.get(0)) < 1e-3);
 	}*/
+	
+
+	@Test
+	public void bindingAnnotationTest1() {
+		UserRegister userRegister = GWT.create(UserRegister.class);
+		assertNotNull(userRegister.getTockens());
+		assertTrue(userRegister.getTockens() instanceof ArrayList);
+	}
+	
 }

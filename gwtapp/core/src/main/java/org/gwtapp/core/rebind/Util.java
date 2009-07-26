@@ -1,6 +1,5 @@
 package org.gwtapp.core.rebind;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +39,6 @@ public class Util {
 		for (Method method : Class.forName(typeName).getMethods()) {
 			if (isGetter(method)) {
 				Property p = method.getAnnotation(Property.class);
-				System.out.println("IsA: "+method.isAnnotationPresent(Property.class));
 				if (p != null && p.initBy() != null) {
 					String name = method.getName();
 					String property = getPropertyName(name);

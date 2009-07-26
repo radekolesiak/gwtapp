@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -35,9 +36,9 @@ public class RebindTest {
 	// https://sourceforge.net/projects/jruntime/files/
 
 	// http://openjpa.apache.org/builds/1.2.1/apache-openjpa-1.2.1/docs/manual/manual.html#ref_guide_pc_interfaces
-	
+
 	// http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with
-		
+
 	@Test
 	public void runtimeClassLowLevelTest() {
 		@SuppressWarnings("unchecked")
@@ -116,7 +117,7 @@ public class RebindTest {
 		JavaSourceFromString source = new JavaSourceFromString("TestClass",
 				code);
 		Iterable<? extends JavaFileObject> sources = Arrays.asList(source);
-		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();		
+		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 		JavaMemFileManager fileManager = new JavaMemFileManager();
 		CompilationTask task = compiler.getTask(null, fileManager, null, null,
 				null, sources);
@@ -162,9 +163,16 @@ public class RebindTest {
 		Assert.assertEquals(login, userRegister.getLogin());
 	}
 
-	//@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void bindingTest2() {
 		TestModel testModel = Util.bind(TestModel.class);
 		testModel.get("abc" + TestModel.TEXT);
+	}
+
+	@Test
+	public void bindingAnnotationTest1() {
+		UserRegister userRegister = Util.bind(UserRegister.class);
+		Assert.assertNotNull(userRegister.getTockens());
+		Assert.assertTrue(userRegister.getTockens() instanceof ArrayList);
 	}
 }
