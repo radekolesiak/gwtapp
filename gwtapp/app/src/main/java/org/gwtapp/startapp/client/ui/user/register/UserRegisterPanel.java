@@ -10,6 +10,10 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 
+	public static class Style {
+		public final static String USER_REGISTER_PANEL = "userRegisterPanel";
+	}
+	
 	private final FieldPanel<UserRegisterModel, String> login = new FieldPanel<UserRegisterModel, String>(
 			this, UserRegister.LOGIN, "Login:", new TextBox());
 	private final FieldPanel<UserRegisterModel, String> email = new FieldPanel<UserRegisterModel, String>(
@@ -19,6 +23,7 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 
 	public UserRegisterPanel() {
 		super((UserRegisterModel) GWT.create(UserRegisterModel.class));
+		addStyleName(Style.USER_REGISTER_PANEL);
 		addField(login);
 		addField(email);
 		addField(password);
