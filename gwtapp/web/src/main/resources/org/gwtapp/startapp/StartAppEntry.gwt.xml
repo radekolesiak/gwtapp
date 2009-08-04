@@ -1,4 +1,4 @@
-<module>
+<module rename-to="startappentry">
 	<inherits name='org.gwtapp.core.Core' />
 	<entry-point class='org.gwtapp.startapp.client.StartApp' />
 </module>

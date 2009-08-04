@@ -126,7 +126,7 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>mergewebxml</goal>
+							<!-- <goal>mergewebxml</goal> -->
 						</goals>
 					</execution>
 				</executions>

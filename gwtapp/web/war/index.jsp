@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>StartApp</title>
 <script language='javascript'
-	src='org.gwtapp.startapp.StartAppEntry/org.gwtapp.startapp.StartAppEntry.nocache.js'></script>
+	src='startappentry/startappentry.nocache.js'></script>
 </head>
 <body>
 </body>
