@@ -91,7 +91,6 @@
 			</resource>
 		</resources>
 		<plugins>
-		<!-- 
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.2</version>
@@ -107,14 +106,13 @@
 						<fileset>
 							<directory>src/main/webapp/</directory>
 							<includes>
-								<include>org.gwtapp.startapp.StartApp</include>
+								<include>startappentry</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
-			 -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
@@ -126,7 +124,7 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<!-- <goal>mergewebxml</goal> -->
+							<goal>mergewebxml</goal>
 						</goals>
 					</execution>
 				</executions>
