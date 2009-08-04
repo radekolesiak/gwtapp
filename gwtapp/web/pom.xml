@@ -8,10 +8,10 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<artifactId>gwtapp-app</artifactId>
-	<name>gwtapp-app</name>
+	<artifactId>gwtapp-web</artifactId>
+	<name>gwtapp-web</name>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<developers>
 		<developer>
@@ -24,7 +24,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-rpc</artifactId>
+			<artifactId>gwtapp-app</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-srv</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -66,10 +71,14 @@
 			<version>${gwtVersion}</version>
 			<classifier>${platform}</classifier>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
+		<!-- 
+		<directory>war</directory>
+		<outputDirectory>war</outputDirectory>
+		 -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -77,8 +86,35 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+			</resource>
 		</resources>
 		<plugins>
+		<!-- 
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>.</directory>
+							<includes>
+								<include>**/*.log</include>
+							</includes>
+							<followSymlinks>true</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>src/main/webapp/</directory>
+							<includes>
+								<include>org.gwtapp.startapp.StartApp</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			 -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
@@ -89,7 +125,8 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>test</goal>
+							<goal>compile</goal>
+							<goal>mergewebxml</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -119,6 +156,19 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>foo</stopKey>
+					<stopPort>9080</stopPort>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
