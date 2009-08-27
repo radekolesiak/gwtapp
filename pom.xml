@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-	    <gwtVersion>1.6.4</gwtVersion>
+	    <gwtVersion>1.7.0</gwtVersion>
 	</properties>
 
 	<inceptionYear>2008</inceptionYear>
