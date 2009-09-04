@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.html.ui;
+package org.gwtapp.core.client.html.ui.core;
 
 public class HLabel extends HWidget implements HasHTML {
 

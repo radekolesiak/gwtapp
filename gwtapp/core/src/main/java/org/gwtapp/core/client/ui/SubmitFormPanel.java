@@ -2,15 +2,17 @@ package org.gwtapp.core.client.ui;
 
 import org.gwtapp.core.client.data.ModelData;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
-		HasName, HasValue<T>, IsFieldPanel<T> {
+public class SubmitFormPanel<T extends ModelData> extends ComplexPanel
+		implements HasName, HasValue<T>, IsFieldPanel<T> {
 
 	private String name;
 	private T value;
@@ -18,6 +20,11 @@ public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
 	private final FormPanel<T> form;
 
 	public SubmitFormPanel(T value, FormPanel<T> form) {
+		this(DOM.createDiv(), value, form);
+	}
+
+	public SubmitFormPanel(Element element, T value, FormPanel<T> form) {
+		setElement(element);
 		this.value = value;
 		this.form = form;
 	}

@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.server.html;
 
-import org.gwtapp.core.client.html.ui.HPanel;
+import org.gwtapp.core.client.html.ui.core.HPanel;
 import org.gwtapp.core.server.html.HSerializer;
 import org.junit.Assert;
 import org.junit.Test;

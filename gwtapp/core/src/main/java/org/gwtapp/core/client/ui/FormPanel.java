@@ -4,15 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.client.data.ModelData;
+import org.gwtapp.core.client.html.ui.HFormPanel;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class FormPanel<T extends ModelData> extends FlowPanel implements
+public class FormPanel<T extends ModelData> extends ComplexPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T> {
 
 	@SuppressWarnings("unchecked")
@@ -21,7 +24,17 @@ public class FormPanel<T extends ModelData> extends FlowPanel implements
 	private T value;
 
 	public FormPanel(T value) {
+		this(DOM.createDiv(), value);
+	}
+
+	public FormPanel(Element element, T value) {
+		setElement(element);
 		this.value = value;
+	}
+
+	public FormPanel(HFormPanel<T> panel) {
+		this(DOM.getElementById(panel.getId()), panel.getValue());
+		setName(panel.getName());
 	}
 
 	@SuppressWarnings("unchecked")

@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.html.ui;
+package org.gwtapp.core.client.html.ui.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;

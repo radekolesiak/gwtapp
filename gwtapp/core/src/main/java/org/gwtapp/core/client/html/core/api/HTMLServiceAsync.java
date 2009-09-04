@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.core.api;
 
-import org.gwtapp.core.client.html.ui.HWidget;
+import org.gwtapp.core.client.html.ui.core.HWidget;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
