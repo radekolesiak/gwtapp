@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
 public class FormPanel<T extends ModelData> extends FlowPanel implements
-		HasName, HasValue<T>, HasFieldPanel<T> {
+		HasName, HasValue<T>, IsFieldPanel<T> {
 
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();

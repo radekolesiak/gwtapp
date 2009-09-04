@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
 public class SubmitFormPanel<T extends ModelData> extends FlowPanel implements
-		HasName, HasValue<T>, HasFieldPanel<T> {
+		HasName, HasValue<T>, IsFieldPanel<T> {
 
 	private String name;
 	private T value;
