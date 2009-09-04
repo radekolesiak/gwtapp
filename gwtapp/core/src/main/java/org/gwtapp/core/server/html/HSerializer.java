@@ -14,7 +14,8 @@ public class HSerializer {
 			SecurityException, NoSuchMethodException {
 		Method serviceMethod = HTMLService.class.getMethod("getWidget",
 				String.class);
-		return RPC.encodeResponseForSuccess(serviceMethod, widget,
-				new HSerializationPolicy());
+		assert (serviceMethod != null);
+		assert (widget != null);
+		return RPC.encodeResponseForSuccess(serviceMethod, widget);
 	}
 }

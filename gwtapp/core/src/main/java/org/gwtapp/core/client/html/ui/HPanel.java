@@ -9,7 +9,7 @@ public class HPanel extends HWidget implements IsContainer {
 
 	public final static String TAG = "div";
 
-	private final List<HWidget> widgets = new ArrayList<HWidget>();
+	private List<HWidget> widgets = new ArrayList<HWidget>();
 
 	public HPanel() {
 		super(TAG);

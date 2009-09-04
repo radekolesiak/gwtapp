@@ -18,6 +18,10 @@ public class GwtTestRebind extends GWTTestCase {
 		return "org.gwtapp.startapp.StartApp";
 	}
 
+	public void testMockup() {
+		
+	}
+	
 	public void testGenerator1() {
 		String textA = "aaa";
 		String textB = "bbb";

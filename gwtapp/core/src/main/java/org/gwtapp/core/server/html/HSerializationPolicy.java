@@ -24,7 +24,7 @@ public class HSerializationPolicy extends SerializationPolicy {
 	}
 
 	private boolean isFieldSerializable(Class<?> c) {
-		if (c.isPrimitive()) {
+		if (c==null||c.isPrimitive()) {
 			return true;
 		} else {
 			return true;
