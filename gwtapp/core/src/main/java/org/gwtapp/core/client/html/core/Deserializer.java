@@ -1,14 +1,12 @@
-package org.gwtapp.core.client.html.core.api;
+package org.gwtapp.core.client.html.core;
+
+import org.gwtapp.core.client.html.core.api.HTMLService;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
 
 public class Deserializer {
-
-	public static native String getString(String name) /*-{
-		return eval("$wnd."+name);
-	}-*/;
 
 	@SuppressWarnings("unchecked")
 	public static <T> T getSerializedObject(String serialized)

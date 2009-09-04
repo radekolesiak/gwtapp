@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.html.core.api.Deserializer;
+import org.gwtapp.core.client.html.core.Deserializer;
 import org.gwtapp.core.client.html.ui.HPanel;
 import org.junit.Test;
 
