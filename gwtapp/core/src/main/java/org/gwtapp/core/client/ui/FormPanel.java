@@ -11,11 +11,11 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.ComplexPanel;
+import com.google.gwt.user.client.ui.ContainerPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class FormPanel<T extends ModelData> extends ComplexPanel implements
+public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T> {
 
 	@SuppressWarnings("unchecked")
