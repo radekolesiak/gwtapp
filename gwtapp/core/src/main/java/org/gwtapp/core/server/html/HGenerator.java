@@ -12,12 +12,12 @@ public class HGenerator {
 	private String rpc = "";
 
 	public HGenerator(HWidget widget) throws HGeneratorException {
+		setId(widget);
 		try {
 			rpc = HSerializer.serialize(widget);
 		} catch (HSerializerException e) {
 			throw new HGeneratorException(e);
 		}
-		setId(widget);
 		createRPC(html, rpc);
 		createDOM(html, widget);
 	}
@@ -34,8 +34,15 @@ public class HGenerator {
 
 	private void createRPC(StringBuffer html, String rpc) {
 		html.append("<script>");
+		html.append("HWidget = new Array();");
 		html.append("HWidget[\"HWidget\"]=\"");
-		html.append(rpc);
+		byte[] bytes = rpc.getBytes();
+		for (int i = 0; i < bytes.length; i++) {
+			html.append(bytes[i]);
+			if (i < bytes.length - 1) {
+				html.append(",");
+			}
+		}
 		html.append("\";");
 		html.append("</script>");
 	}
@@ -55,8 +62,8 @@ public class HGenerator {
 			for (HWidget child : container) {
 				createDOM(html, child);
 			}
-		}else if(widget instanceof HasHTML) {
-			HasHTML h = (HasHTML)widget;
+		} else if (widget instanceof HasHTML) {
+			HasHTML h = (HasHTML) widget;
 			html.append(h.getHTML());
 		}
 		html.append(o + "/");
