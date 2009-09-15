@@ -1,6 +1,7 @@
 package org.gwtapp.core.server.html;
 
 import org.gwtapp.core.client.html.ui.core.HWidget;
+import org.gwtapp.core.client.html.ui.core.HasHTML;
 import org.gwtapp.core.client.html.ui.core.IsContainer;
 
 public class HGenerator {
@@ -25,8 +26,8 @@ public class HGenerator {
 		widget.setId(getId());
 		if (widget instanceof IsContainer) {
 			IsContainer container = (IsContainer) widget;
-			for (int i = 0; i < container.size(); i++) {
-				setId(container.getWidget(i));
+			for (HWidget child : container) {
+				setId(child);
 			}
 		}
 	}
@@ -39,22 +40,28 @@ public class HGenerator {
 		html.append("</script>");
 	}
 
+	private static String o = "<";
+	private static String c = ">";
+
 	private void createDOM(StringBuffer html, HWidget widget) {
-		html.append("<");
+		html.append(o);
 		html.append(widget.getTag());
 		html.append(" id=\"");
 		html.append(widget.getId());
-		html.append("\" id=\"");
-		html.append(">");
+		html.append("\"");
+		html.append(c);
 		if (widget instanceof IsContainer) {
 			IsContainer container = (IsContainer) widget;
-			for (int i = 0; i < container.size(); i++) {
-				createDOM(html, container.getWidget(i));
+			for (HWidget child : container) {
+				createDOM(html, child);
 			}
+		}else if(widget instanceof HasHTML) {
+			HasHTML h = (HasHTML)widget;
+			html.append(h.getHTML());
 		}
-		html.append("</");
+		html.append(o + "/");
 		html.append(widget.getTag());
-		html.append(">");
+		html.append(c);
 	}
 
 	public synchronized static String getId() {

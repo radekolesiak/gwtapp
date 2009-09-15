@@ -34,10 +34,12 @@ public class HFormPanel<T extends ModelData> extends HPanel {
 
 	public void addField(HFieldPanel field) {
 		fields.put(field.getProperty(), field);
+		addWidget(field);
 	}
 
 	public void removeField(HFieldPanel field) {
 		fields.remove(field.getProperty());
+		removeWidget(field);
 	}
 	
 	public HFieldPanel getField(String property){

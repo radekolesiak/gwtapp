@@ -15,6 +15,7 @@ public class HFieldPanel extends HPanel {
 		this.property=property;
 		this.label.setHTML(label);
 		addWidget(this.label);
+		addWidget(controller);
 	}
 	
 	public void setName(String name) {

@@ -2,7 +2,7 @@
 <%@page import="org.gwtapp.core.server.html.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
-<%@page import="org.gwtapp.startapp.client.data.UserRegisterModel"%>
+<%@page import="org.gwtapp.startapp.client.data.*"%>
 <%@page import="org.gwtapp.core.rebind.Util"%>
 <html>
 <head>
@@ -13,9 +13,11 @@
 </head>
 <body>
 <%
-UserRegisterModel model = null;//Util.bind(UserRegisterModel.class);
-HUserRegisterPanel widget = null;//new HUserRegisterPanel(model);
-HGenerator g = null;//new HGenerator(widget);
+	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
+	HUserRegisterPanel widget = new HUserRegisterPanel(model);
+	HGenerator g = new HGenerator(widget);
 %>
+<%=g.getRPC() %>
+<%=g.getHTML() %>
 </body>
 </html>
