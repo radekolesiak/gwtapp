@@ -47,7 +47,9 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);
-		add(field);
+		if (!field.isAttached()) {
+			add(field);
+		}
 	}
 
 	@Override
