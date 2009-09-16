@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public class HLabel extends HWidget implements HasHTML {
+public class HLabel extends HWidget implements ILeaf, IValue<String> {
 
 	public final static String TAG = "div";
 
@@ -12,17 +12,27 @@ public class HLabel extends HWidget implements HasHTML {
 
 	public HLabel(String html) {
 		this();
-		setHTML(html);
+		setLeaf(html);
 	}
 
 	@Override
-	public String getHTML() {
+	public String getLeaf() {
 		return html;
 	}
 
 	@Override
-	public void setHTML(String html) {
+	public void setLeaf(String html) {
 		this.html = html;
+	}
+
+	@Override
+	public String getValue() {
+		return getLeaf();
+	}
+
+	@Override
+	public void setValue(String value) {
+		setLeaf(value);
 	}
 
 }

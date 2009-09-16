@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public class HTextBox extends HWidget implements HValue<String> {
+public class HTextBox extends HWidget implements IElementValue, IValue<String> {
 
 	public final static String TAG = "input";
 
@@ -16,12 +16,22 @@ public class HTextBox extends HWidget implements HValue<String> {
 	}
 
 	@Override
-	public String getValue() {
+	public String getElementValue() {
 		return value;
 	}
 
 	@Override
-	public void setValue(String value) {
+	public void setElementValue(String value) {
 		this.value = value;
+	}
+
+	@Override
+	public String getValue() {
+		return getElementValue();
+	}
+
+	@Override
+	public void setValue(String value) {
+		setElementValue(value);
 	}
 }

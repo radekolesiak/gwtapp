@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public interface IsContainer extends Iterable<HWidget> {
+public interface IContainer extends Iterable<HWidget> {
 	
 	void addWidget(HWidget widget);
 	

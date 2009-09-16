@@ -1,8 +1,9 @@
 package org.gwtapp.core.server.html;
 
 import org.gwtapp.core.client.html.ui.core.HWidget;
-import org.gwtapp.core.client.html.ui.core.HasHTML;
-import org.gwtapp.core.client.html.ui.core.IsContainer;
+import org.gwtapp.core.client.html.ui.core.IContainer;
+import org.gwtapp.core.client.html.ui.core.IElementValue;
+import org.gwtapp.core.client.html.ui.core.ILeaf;
 
 public class HGenerator {
 
@@ -24,8 +25,8 @@ public class HGenerator {
 
 	private void setId(HWidget widget) {
 		widget.setId(getId());
-		if (widget instanceof IsContainer) {
-			IsContainer container = (IsContainer) widget;
+		if (widget instanceof IContainer) {
+			IContainer container = (IContainer) widget;
 			for (HWidget child : container) {
 				setId(child);
 			}
@@ -50,28 +51,39 @@ public class HGenerator {
 	private static String o = "<";
 	private static String c = ">";
 
+	private void createAttr(StringBuffer html, String attr, String value) {
+		html.append(" ");
+		html.append(attr);
+		html.append("=\"");
+		html.append(value); // TODO: replace "
+		html.append("\"");
+	}
+
 	private void createDOM(StringBuffer html, HWidget widget) {
 		html.append(o);
 		html.append(widget.getTag());
-		html.append(" id=\"");
-		html.append(widget.getId());
+		createAttr(html, "id", widget.getId());
 		html.append("\"");
+		if (widget instanceof IElementValue) {
+			IElementValue elementValue = (IElementValue) widget;
+			createAttr(html, "value", elementValue.getElementValue());
+		}
 		html.append(c);
-		if (widget instanceof IsContainer) {
-			IsContainer container = (IsContainer) widget;
+		if (widget instanceof ILeaf) {
+			ILeaf h = (ILeaf) widget;
+			html.append(h.getLeaf());
+		} else if (widget instanceof IContainer) {
+			IContainer container = (IContainer) widget;
 			for (HWidget child : container) {
 				createDOM(html, child);
 			}
-		} else if (widget instanceof HasHTML) {
-			HasHTML h = (HasHTML) widget;
-			html.append(h.getHTML());
 		}
 		html.append(o + "/");
 		html.append(widget.getTag());
 		html.append(c);
 	}
 
-	public synchronized static String getId() {
+	private synchronized static String getId() {
 		return "" + (++id);
 	}
 

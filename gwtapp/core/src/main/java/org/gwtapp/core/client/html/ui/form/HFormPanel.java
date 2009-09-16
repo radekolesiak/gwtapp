@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.gwtapp.core.client.data.ModelData;
 import org.gwtapp.core.client.html.ui.core.HPanel;
-import org.gwtapp.core.client.html.ui.core.HValue;
+import org.gwtapp.core.client.html.ui.core.IValue;
 
 public class HFormPanel<T extends ModelData> extends HPanel implements
-		HValue<T> {
+		IValue<T> {
 
 	@SuppressWarnings("unchecked")
 	private Map<String, HFieldPanel> fields = new HashMap<String, HFieldPanel>();
