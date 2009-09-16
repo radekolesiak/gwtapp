@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.core.client.ui.SubmitFormPanel;
+import org.gwtapp.core.client.ui.form.SubmitFormPanel;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
 
 import com.google.gwt.core.client.GWT;

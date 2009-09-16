@@ -1,8 +1,8 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.core.client.html.ui.HFieldPanel;
-import org.gwtapp.core.client.ui.FieldPanel;
-import org.gwtapp.core.client.ui.FormPanel;
+import org.gwtapp.core.client.html.ui.form.HFieldPanel;
+import org.gwtapp.core.client.ui.form.FieldPanel;
+import org.gwtapp.core.client.ui.form.FormPanel;
 import org.gwtapp.startapp.client.data.UserRegister;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
 

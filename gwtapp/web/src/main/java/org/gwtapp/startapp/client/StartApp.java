@@ -46,9 +46,9 @@ public class StartApp implements EntryPoint {
 		}
 		try {
 			HWidget hWidget = (HWidget) Deserializer.getSerializedObject(s);
-			HLabel hLabel = (HLabel) hWidget;
-			Label label = Label.wrap(DOM.getElementById(hLabel.getId()));
-			label.setText(label.getText()+" -> and gwt");
+			//HLabel hLabel = (HLabel) hWidget;
+			//Label label = Label.wrap(DOM.getElementById(hLabel.getId()));
+			//label.setText(label.getText()+" -> and gwt");
 		} catch (SerializationException e) {
 			e.printStackTrace();
 		}

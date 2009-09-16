@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.ui;
+package org.gwtapp.core.client.ui.form;
 
 import org.gwtapp.core.client.data.ModelData;
 

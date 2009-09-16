@@ -1,7 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,8 +19,8 @@ public class HPanel extends HWidget implements IsContainer {
 	}
 
 	@Override
-	public void addWidget(HWidget... widgets) {
-		getWidgets().addAll(Arrays.asList(widgets));
+	public void addWidget(HWidget widget) {
+		getWidgets().add(widget);
 	}
 
 	@Override
@@ -35,8 +34,8 @@ public class HPanel extends HWidget implements IsContainer {
 	}
 
 	@Override
-	public void removeWidget(HWidget... widgets) {
-		getWidgets().removeAll(Arrays.asList(widgets));
+	public void removeWidget(HWidget widget) {
+		getWidgets().remove(widget);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="org.gwtapp.core.server.html.*"%>
-<%@page import="org.gwtapp.core.client.html.ui.*"%>
+<%@page import="org.gwtapp.core.client.html.ui.form.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.core.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.data.*"%>
@@ -15,10 +15,9 @@
 <body>
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
-	HUserRegisterPanel widget = new HUserRegisterPanel(model);
-	HLabel label = new HLabel();
-	label.setHTML("abc");
-	HGenerator g = new HGenerator(label);
+	//HUserRegisterPanel widget = new HUserRegisterPanel(model);
+	HWidget widget =  new HTextBox();
+	HGenerator g = new HGenerator(widget);
 %>
 <%=g.getRPC() %>
 <%=g.getHTML() %>

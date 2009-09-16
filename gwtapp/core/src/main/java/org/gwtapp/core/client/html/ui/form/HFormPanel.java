@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.html.ui;
+package org.gwtapp.core.client.html.ui.form;
 
 import java.util.HashMap;
 import java.util.Map;
