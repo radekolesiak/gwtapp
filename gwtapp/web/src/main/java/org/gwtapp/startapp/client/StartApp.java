@@ -1,7 +1,6 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.core.Deserializer;
-import org.gwtapp.core.client.html.ui.core.HLabel;
 import org.gwtapp.core.client.html.ui.core.HWidget;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
@@ -11,7 +10,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;

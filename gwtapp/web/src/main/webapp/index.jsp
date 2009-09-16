@@ -15,11 +15,11 @@
 <body>
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
-	//HUserRegisterPanel widget = new HUserRegisterPanel(model);
-	HWidget widget =  new HTextBox();
+	model.setLogin("login");
+	HUserRegisterPanel widget = new HUserRegisterPanel(model);
 	HGenerator g = new HGenerator(widget);
 %>
-<%=g.getRPC() %>
-<%=g.getHTML() %>
+<%=g.getRPC()%>
+<%=g.getHTML()%>
 </body>
 </html>

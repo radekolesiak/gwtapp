@@ -2,22 +2,26 @@ package org.gwtapp.core.client.html.ui.form;
 
 import org.gwtapp.core.client.html.ui.core.HLabel;
 import org.gwtapp.core.client.html.ui.core.HPanel;
+import org.gwtapp.core.client.html.ui.core.HValue;
 import org.gwtapp.core.client.html.ui.core.HWidget;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-
-public class HFieldPanel extends HPanel implements IsSerializable {
+public class HFieldPanel<T> extends HPanel implements HValue<T> {
 
 	private String name;
 	private String property;
-	private HWidget controller;
-	//private HLabel label = new HLabel();
+	private HValue<T> controller;
+	private HLabel label = new HLabel();
 
-	public HFieldPanel(String property, String label, HWidget controller) {
+	public HFieldPanel() {
+	}
+
+	public <E extends HWidget & HValue<T>> HFieldPanel(String property,
+			String label, E controller) {
 		this.property = property;
-		//this.label.setHTML(label);
-		// addWidget(this.label);
-		// addWidget(controller);
+		this.controller = controller;
+		this.label.setHTML(label);
+		addWidget(this.label);
+		addWidget(controller);
 	}
 
 	public void setName(String name) {
@@ -36,20 +40,21 @@ public class HFieldPanel extends HPanel implements IsSerializable {
 		return property;
 	}
 
-	public void setController(HWidget controller) {
-		this.controller = controller;
-	}
-
-	public HWidget getController() {
-		return controller;
-	}
-
 	public void setLabel(HLabel label) {
-		//this.label = label;
+		this.label = label;
 	}
 
 	public HLabel getLabel() {
-		//return label;
-		return null;
+		return label;
+	}
+
+	@Override
+	public T getValue() {
+		return controller.getValue();
+	}
+
+	@Override
+	public void setValue(T value) {
+		controller.setValue(value);
 	}
 }

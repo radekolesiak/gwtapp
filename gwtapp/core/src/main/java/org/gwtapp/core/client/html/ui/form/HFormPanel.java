@@ -5,23 +5,36 @@ import java.util.Map;
 
 import org.gwtapp.core.client.data.ModelData;
 import org.gwtapp.core.client.html.ui.core.HPanel;
+import org.gwtapp.core.client.html.ui.core.HValue;
 
-public class HFormPanel<T extends ModelData> extends HPanel {
+public class HFormPanel<T extends ModelData> extends HPanel implements
+		HValue<T> {
 
+	@SuppressWarnings("unchecked")
+	private Map<String, HFieldPanel> fields = new HashMap<String, HFieldPanel>();
 	private T value;
 	private String name;
-	private Map<String, HFieldPanel> fields = new HashMap<String, HFieldPanel>();
 
-	public HFormPanel(T value) {
-		this.value = value;
+	public HFormPanel() {
 	}
 
+	public HFormPanel(T value) {
+		setValue(value);
+	}
+
+	@Override
 	public T getValue() {
 		return value;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
 	public void setValue(T value) {
 		this.value = value;
+		for (Map.Entry<String, HFieldPanel> entry : fields.entrySet()) {
+			Object v = value.get(entry.getKey());
+			entry.getValue().setValue(v);
+		}
 	}
 
 	public void setName(String name) {
@@ -32,17 +45,18 @@ public class HFormPanel<T extends ModelData> extends HPanel {
 		return name;
 	}
 
-	public void addField(HFieldPanel field) {
+	public void addField(HFieldPanel<?> field) {
 		fields.put(field.getProperty(), field);
 		addWidget(field);
 	}
 
-	public void removeField(HFieldPanel field) {
+	public void removeField(HFieldPanel<?> field) {
 		fields.remove(field.getProperty());
 		removeWidget(field);
 	}
-	
-	public HFieldPanel getField(String property){
+
+	@SuppressWarnings("unchecked")
+	public HFieldPanel getField(String property) {
 		return fields.get(property);
 	}
 }

@@ -29,7 +29,7 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel implement
 	}
 
 	public <E extends Widget & HasValue<T>> FieldPanel(HasValue<M> model,
-			HFieldPanel panel, E controller) {
+			HFieldPanel<T> panel, E controller) {
 		this(DOM.getElementById(panel.getId()), model, panel.getProperty(),
 				controller);
 	}
