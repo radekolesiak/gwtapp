@@ -56,7 +56,7 @@ public class HFormPanel<T extends ModelData> extends HPanel implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public HFieldPanel getField(String property) {
+	public <S> HFieldPanel<S> getField(String property) {
 		return fields.get(property);
 	}
 }

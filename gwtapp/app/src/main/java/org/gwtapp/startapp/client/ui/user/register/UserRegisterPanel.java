@@ -25,9 +25,10 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 	// hybrid example
 	public UserRegisterPanel(HUserRegisterPanel modelPanel) {
 		super(modelPanel);
-		HFieldPanel loginField = modelPanel.getField(UserRegister.LOGIN);
+		HFieldPanel<String> loginField = modelPanel
+				.getField(UserRegister.LOGIN);
 		login = new FieldPanel<UserRegisterModel, String>(this, loginField,
-				TextBox.wrap(DOM.getElementById(loginField.getId())));
+				TextBox.wrap(DOM.getElementById(loginField.getControllerId())));
 		addFields();
 	}
 

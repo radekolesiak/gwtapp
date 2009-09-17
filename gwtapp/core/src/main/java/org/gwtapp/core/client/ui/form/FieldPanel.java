@@ -14,8 +14,8 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-public class FieldPanel<M extends ModelData, T> extends ContainerPanel implements
-		HasName, HasValue<T> {
+public class FieldPanel<M extends ModelData, T> extends ContainerPanel
+		implements HasName, HasValue<T> {
 
 	private String name;
 	private String property;
@@ -32,6 +32,9 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel implement
 			HFieldPanel<T> panel, E controller) {
 		this(DOM.getElementById(panel.getId()), model, panel.getProperty(),
 				controller);
+		// user can change this value before gwt app is loaded and HFieldPanel
+		// object should be updated
+		panel.setValue(controller.getValue());
 	}
 
 	private <E extends HasValue<T>> FieldPanel(Element element,

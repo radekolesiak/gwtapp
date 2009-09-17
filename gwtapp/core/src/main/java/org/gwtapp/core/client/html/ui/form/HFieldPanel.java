@@ -2,8 +2,8 @@ package org.gwtapp.core.client.html.ui.form;
 
 import org.gwtapp.core.client.html.ui.core.HLabel;
 import org.gwtapp.core.client.html.ui.core.HPanel;
-import org.gwtapp.core.client.html.ui.core.IValue;
 import org.gwtapp.core.client.html.ui.core.HWidget;
+import org.gwtapp.core.client.html.ui.core.IValue;
 
 public class HFieldPanel<T> extends HPanel implements IValue<T> {
 
@@ -22,6 +22,10 @@ public class HFieldPanel<T> extends HPanel implements IValue<T> {
 		this.label.setLeaf(label);
 		addWidget(this.label);
 		addWidget(controller);
+	}
+
+	public String getControllerId() {
+		return ((HWidget) controller).getId();
 	}
 
 	public void setName(String name) {

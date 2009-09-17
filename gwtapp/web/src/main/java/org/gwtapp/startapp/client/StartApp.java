@@ -1,8 +1,8 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.core.Deserializer;
-import org.gwtapp.core.client.html.ui.core.HWidget;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
+import org.gwtapp.startapp.client.ui.user.register.HUserRegisterPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterSubmitPanel;
 
@@ -43,10 +43,8 @@ public class StartApp implements EntryPoint {
 			s += (char) Byte.parseByte(w);
 		}
 		try {
-			HWidget hWidget = (HWidget) Deserializer.getSerializedObject(s);
-			//HLabel hLabel = (HLabel) hWidget;
-			//Label label = Label.wrap(DOM.getElementById(hLabel.getId()));
-			//label.setText(label.getText()+" -> and gwt");
+			HUserRegisterPanel modelPanel = (HUserRegisterPanel) Deserializer.getSerializedObject(s);
+			new UserRegisterPanel(modelPanel);
 		} catch (SerializationException e) {
 			e.printStackTrace();
 		}
