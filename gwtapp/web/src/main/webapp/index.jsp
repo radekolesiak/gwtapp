@@ -17,6 +17,7 @@
 	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
 	model.setLogin("login");
 	HUserRegisterPanel widget = new HUserRegisterPanel(model);
+	//HLabel widget = new HLabel("ABC");
 	HGenerator g = new HGenerator(widget);
 %>
 <%=g.getRPC()%>
