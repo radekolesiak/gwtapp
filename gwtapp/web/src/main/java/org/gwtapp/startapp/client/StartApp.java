@@ -14,7 +14,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -40,7 +39,7 @@ public class StartApp implements EntryPoint {
 						System.out.println(event.getValue());
 					}
 				});
-		String[] widget = Dictionary.getDictionary("HWidget").get("HWidget")
+		String[] widget = Dictionary.getDictionary(HWidgets.DICTIONARY).get(HWidgets.HUserRegisterPanel)
 				.split(",");
 		String s = "";
 		for (String w : widget) {

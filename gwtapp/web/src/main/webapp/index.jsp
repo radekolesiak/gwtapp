@@ -5,6 +5,7 @@
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.data.*"%>
 <%@page import="org.gwtapp.core.rebind.Util"%>
+<%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,10 +16,10 @@
 <body>
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
-	model.setLogin("login");
+	model.setLogin("login_value");
 	HUserRegisterPanel widget = new HUserRegisterPanel(model);
-	//HLabel widget = new HLabel("ABC");
-	HGenerator g = new HGenerator(widget);
+	widget.setName(HWidgets.HUserRegisterPanel);
+	HGenerator g = new HGenerator(HWidgets.DICTIONARY, widget);
 %>
 <%=g.getRPC()%>
 <%=g.getHTML()%>

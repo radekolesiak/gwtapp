@@ -8,10 +8,9 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class HWidget implements IsSerializable {
 
-	private String id;
-	
+	private String id;	
 	private String tag;
-
+	private String name;
 	private List<String> styles = new ArrayList<String>();
 
 	public HWidget() {
@@ -47,6 +46,14 @@ public class HWidget implements IsSerializable {
 
 	public List<String> getStyles() {
 		return styles;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

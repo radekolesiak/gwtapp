@@ -1,5 +1,8 @@
 package org.gwtapp.core.server.html;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.gwtapp.core.client.html.ui.core.HWidget;
 import org.gwtapp.core.client.html.ui.core.IContainer;
 import org.gwtapp.core.client.html.ui.core.IElementValue;
@@ -9,18 +12,34 @@ public class HGenerator {
 
 	private static int id = 0;
 
+	private final String dictionary;
 	private StringBuffer html = new StringBuffer();
 	private String rpc = "";
 
-	public HGenerator(HWidget widget) throws HGeneratorException {
-		setId(widget);
-		try {
-			rpc = HSerializer.serialize(widget);
-		} catch (HSerializerException e) {
-			throw new HGeneratorException(e);
+	public HGenerator(String dictionary, HWidget widget)
+			throws HGeneratorException {
+		this(dictionary, new HWidget[] { widget });
+	}
+
+	public HGenerator(String dictionary, HWidget[] widgets)
+			throws HGeneratorException {
+		this(dictionary, Arrays.asList(widgets));
+	}
+
+	public HGenerator(String dictionary, List<HWidget> widgets)
+			throws HGeneratorException {
+		this.dictionary = dictionary;
+		createDictionary(html);
+		for (HWidget widget : widgets) {
+			setId(widget);
+			try {
+				rpc = HSerializer.serialize(widget);
+			} catch (HSerializerException e) {
+				throw new HGeneratorException(e);
+			}
+			createRPC(html, widget.getName(), rpc);
+			createDOM(html, widget);
 		}
-		createRPC(html, rpc);
-		createDOM(html, widget);
 	}
 
 	private void setId(HWidget widget) {
@@ -33,10 +52,19 @@ public class HGenerator {
 		}
 	}
 
-	private void createRPC(StringBuffer html, String rpc) {
+	private void createDictionary(StringBuffer html) {
 		html.append("<script>");
-		html.append("HWidget = new Array();");
-		html.append("HWidget[\"HWidget\"]=\"");
+		html.append(dictionary);
+		html.append(" = new Array();");
+		html.append("</script>");
+	}
+
+	private void createRPC(StringBuffer html, String name, String rpc) {
+		html.append("<script>");
+		html.append(dictionary);
+		html.append("[\"");
+		html.append(name);
+		html.append("\"]=\"");
 		byte[] bytes = rpc.getBytes();
 		for (int i = 0; i < bytes.length; i++) {
 			html.append(bytes[i]);
