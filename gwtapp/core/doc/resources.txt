@@ -1,0 +1,12 @@
+I. Runtime compiling, interfaces binding:
+	http://www.rgagnon.com/javadetails/java-0039.html
+	http://www.ibm.com/developerworks/java/library/j-jcomp/index.html
+	http://www.java2s.com/Tutorial/Java/0120__Development/CompilingfromMemory.
+	http://opensource.helion-prime.com/jruntime/ &
+	https://sourceforge.net/projects/jruntime/files/
+
+	http://openjpa.apache.org/builds/1.2.1/apache-openjpa-1.2.1/docs/manual/manual.html#ref_guide_pc_interfaces
+	
+II. HWidget:
+	Passing RPC objects via HTML page:
+	http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with
