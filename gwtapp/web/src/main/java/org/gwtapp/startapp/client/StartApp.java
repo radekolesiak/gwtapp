@@ -22,6 +22,7 @@ public class StartApp implements EntryPoint {
 	public void onModuleLoad() {
 		final UserRegisterPanel userRegisterPanel1 = new UserRegisterPanel();
 		final UserRegisterPanel userRegisterPanel2 = new UserRegisterPanel();
+		userRegisterPanel1.setFireOnUpdate(true);
 		userRegisterPanel1
 				.addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 					@Override

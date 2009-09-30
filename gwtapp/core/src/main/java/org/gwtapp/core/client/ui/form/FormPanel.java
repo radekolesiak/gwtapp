@@ -16,10 +16,11 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 
 public class FormPanel<T extends ModelData> extends ContainerPanel implements
-		HasName, HasValue<T>, IsFieldPanel<T> {
+		HasName, HasValue<T>, IsFieldPanel<T>, HasFireOnUpdate {
 
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
+	private boolean fireOnUpdate = false;
 	private String name;
 	private T value;
 
@@ -36,7 +37,7 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this(DOM.getElementById(panel.getId()), panel.getValue());
 		setName(panel.getName());
 	}
-	
+
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);
@@ -94,5 +95,15 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
+	}
+
+	@Override
+	public void setFireOnUpdate(boolean fireOnUpdate) {
+		this.fireOnUpdate = fireOnUpdate;
+	}
+
+	@Override
+	public boolean isFireOnUpdate() {
+		return fireOnUpdate;
 	}
 }

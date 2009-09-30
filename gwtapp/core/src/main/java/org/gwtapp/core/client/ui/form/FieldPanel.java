@@ -45,8 +45,11 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 		controller.addValueChangeHandler(new ValueChangeHandler<T>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<T> event) {
-				model.getValue().set(getProperty(), event.getValue());
-				model.setValue(model.getValue(), true);
+				if (model instanceof HasFireOnUpdate) {
+					if (((HasFireOnUpdate) model).isFireOnUpdate()) {
+						model.setValue(model.getValue(), true);
+					}
+				}
 			}
 		});
 	}
