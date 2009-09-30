@@ -38,15 +38,12 @@ public class StartApp implements EntryPoint {
 						userRegisterPanel1.setValue(event.getValue());
 					}
 				});
-		String[] widget = Dictionary.getDictionary(HWidgets.DICTIONARY).get(
-				HWidgets.HUserRegisterPanel).split(",");
-		String s = "";
-		for (String w : widget) {
-			s += (char) Byte.parseByte(w);
-		}
+		String serializedHWidget = Deserializer.decode(Dictionary
+				.getDictionary(HWidgets.DICTIONARY).get(
+						HWidgets.HUserRegisterPanel));
 		try {
 			HUserRegisterPanel modelPanel = (HUserRegisterPanel) Deserializer
-					.getSerializedObject(s);
+					.getSerializedObject(serializedHWidget);
 			final UserRegisterPanel urp = new UserRegisterPanel(modelPanel);
 			final Button btn = new Button("Remove wrapped form");
 			btn.addClickHandler(new ClickHandler() {
@@ -61,7 +58,7 @@ public class StartApp implements EntryPoint {
 		} catch (SerializationException e) {
 			e.printStackTrace();
 		}
-		RootPanel.get().add(new Label(s));
+		RootPanel.get().add(new Label(serializedHWidget));
 		RootPanel.get().add(new Label("Form Panel 1:"));
 		RootPanel.get().add(userRegisterPanel1);
 		RootPanel.get().add(new Label("Form Panel 2:"));

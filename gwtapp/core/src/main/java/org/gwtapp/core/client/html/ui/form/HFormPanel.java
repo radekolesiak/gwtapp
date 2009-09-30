@@ -37,10 +37,12 @@ public class HFormPanel<T extends ModelData> extends HPanel implements
 		}
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}

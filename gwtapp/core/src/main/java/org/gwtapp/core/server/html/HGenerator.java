@@ -65,13 +65,7 @@ public class HGenerator {
 		html.append("[\"");
 		html.append(name);
 		html.append("\"]=\"");
-		byte[] bytes = rpc.getBytes();
-		for (int i = 0; i < bytes.length; i++) {
-			html.append(bytes[i]);
-			if (i < bytes.length - 1) {
-				html.append(",");
-			}
-		}
+		html.append(HSerializer.encode(rpc));
 		html.append("\";");
 		html.append("</script>");
 	}

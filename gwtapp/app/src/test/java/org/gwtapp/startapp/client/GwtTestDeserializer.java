@@ -16,8 +16,8 @@ public class GwtTestDeserializer extends GWTTestCase {
 	
 	@Test
 	public void testDeserializer1() throws SerializationException{
-		String serialized = "//OK[4,0,2,3,0,2,1,[\"org.gwtapp.core.client.html.ui.core.HPanel/3925950824\",\"java.util.ArrayList/3821976829\",\"h1\",\"div\"],0,5]";
-		HPanel panel = Deserializer.getSerializedObject(serialized);
+		String serialized = "Ly9PS1s0LDAsMiwwLDMsMCwyLDEsWyJvcmcuZ3d0YXBwLmNvcmUuY2xpZW50Lmh0bWwudWkuY29yZS5IUGFuZWwvMjI1NTYzODk5OCIsImphdmEudXRpbC5BcnJheUxpc3QvMzgyMTk3NjgyOSIsImgxIiwiZGl2Il0sMCw1XQ==";
+		HPanel panel = Deserializer.getSerializedObject(Deserializer.decode(serialized));
 		assertNotNull(panel);
 		assertEquals("h1", panel.getId());
 		assertEquals("div", panel.getTag());

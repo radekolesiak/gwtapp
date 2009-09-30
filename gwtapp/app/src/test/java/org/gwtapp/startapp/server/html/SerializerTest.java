@@ -15,5 +15,6 @@ public class SerializerTest {
 		String s = HSerializer.serialize(widget);
 		Assert.assertNotNull(s);
 		System.out.println(s);
+		System.out.println(HSerializer.encode(s));
 	}
 }
