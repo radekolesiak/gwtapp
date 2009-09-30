@@ -23,7 +23,7 @@ public class Util {
 				generateMethod(buffer, properties, method);
 			}
 			generateMethodGetPropertyNames(buffer, properties);
-			generateMethodCloneTo(buffer, className);
+			//generateMethodCloneTo(buffer, className);
 		}
 		return buffer.toString();
 	}

@@ -58,15 +58,4 @@ public class UserRegisterModelImpl extends HashModelData implements
 				"login", "password", "tockens" });
 	}
 
-	@SuppressWarnings("unchecked")
-	public UserRegisterModelImpl cloneTo() {
-		UserRegisterModelImpl model = new UserRegisterModelImpl();
-		for (java.lang.String property : getPropertyNames()) {
-			java.lang.Object value = org.gwtapp.core.client.utils.Data
-					.copy(get(property));
-			model.set(property, value);
-		}
-		return model;
-	}
-
 }

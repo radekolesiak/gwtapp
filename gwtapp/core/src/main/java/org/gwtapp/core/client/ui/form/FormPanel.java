@@ -36,14 +36,7 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this(DOM.getElementById(panel.getId()), panel.getValue());
 		setName(panel.getName());
 	}
-
-	@SuppressWarnings("unchecked")
-	private void updateValues(T value) {
-		for (Map.Entry<String, FieldPanel> entry : fields.entrySet()) {
-			entry.getValue().setValue(value.get(entry.getKey()));
-		}
-	}
-
+	
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);
@@ -68,8 +61,12 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this.name = name;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getValue() {
+		for (Map.Entry<String, FieldPanel> entry : fields.entrySet()) {
+			value.set(entry.getKey(), entry.getValue().getValue());
+		}
 		return value;
 	}
 
@@ -78,13 +75,16 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		setValue(value, false);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		if (value == null) {
-			throw new IllegalArgumentException("value must not be null");
+			throw new IllegalArgumentException("value cannot be null");
 		}
 		this.value = value;
-		updateValues(value);
+		for (Map.Entry<String, FieldPanel> entry : fields.entrySet()) {
+			entry.getValue().setValue(value.get(entry.getKey()));
+		}
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}

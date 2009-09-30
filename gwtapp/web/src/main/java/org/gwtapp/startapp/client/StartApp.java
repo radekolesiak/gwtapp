@@ -4,7 +4,6 @@ import org.gwtapp.core.client.html.core.Deserializer;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
 import org.gwtapp.startapp.client.ui.user.register.HUserRegisterPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
-import org.gwtapp.startapp.client.ui.user.register.UserRegisterSubmitPanel;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -21,26 +20,26 @@ public class StartApp implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		UserRegisterPanel userRegisterPanel = new UserRegisterPanel();
-		UserRegisterSubmitPanel userRegisterSubmitPanel = new UserRegisterSubmitPanel();
-		userRegisterPanel
+		final UserRegisterPanel userRegisterPanel1 = new UserRegisterPanel();
+		final UserRegisterPanel userRegisterPanel2 = new UserRegisterPanel();
+		userRegisterPanel1
 				.addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 					@Override
 					public void onValueChange(
 							ValueChangeEvent<UserRegisterModel> event) {
-						System.out.println(event.getValue());
+						userRegisterPanel2.setValue(event.getValue());
 					}
 				});
-		userRegisterSubmitPanel
+		userRegisterPanel2
 				.addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 					@Override
 					public void onValueChange(
 							ValueChangeEvent<UserRegisterModel> event) {
-						System.out.println(event.getValue());
+						userRegisterPanel1.setValue(event.getValue());
 					}
 				});
-		String[] widget = Dictionary.getDictionary(HWidgets.DICTIONARY).get(HWidgets.HUserRegisterPanel)
-				.split(",");
+		String[] widget = Dictionary.getDictionary(HWidgets.DICTIONARY).get(
+				HWidgets.HUserRegisterPanel).split(",");
 		String s = "";
 		for (String w : widget) {
 			s += (char) Byte.parseByte(w);
@@ -48,8 +47,7 @@ public class StartApp implements EntryPoint {
 		try {
 			HUserRegisterPanel modelPanel = (HUserRegisterPanel) Deserializer
 					.getSerializedObject(s);
-			final UserRegisterPanel urp = new UserRegisterPanel(
-					modelPanel);
+			final UserRegisterPanel urp = new UserRegisterPanel(modelPanel);
 			final Button btn = new Button("Remove wrapped form");
 			btn.addClickHandler(new ClickHandler() {
 				@Override
@@ -64,9 +62,9 @@ public class StartApp implements EntryPoint {
 			e.printStackTrace();
 		}
 		RootPanel.get().add(new Label(s));
-		RootPanel.get().add(new Label("Form Panel:"));
-		RootPanel.get().add(userRegisterPanel);
-		RootPanel.get().add(new Label("Submit Form Panel:"));
-		RootPanel.get().add(userRegisterSubmitPanel);
+		RootPanel.get().add(new Label("Form Panel 1:"));
+		RootPanel.get().add(userRegisterPanel1);
+		RootPanel.get().add(new Label("Form Panel 2:"));
+		RootPanel.get().add(userRegisterPanel2);
 	}
 }

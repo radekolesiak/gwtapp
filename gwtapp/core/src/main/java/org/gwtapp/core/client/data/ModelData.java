@@ -2,7 +2,7 @@ package org.gwtapp.core.client.data;
 
 import java.util.Collection;
 
-public interface ModelData extends IsClonable<ModelData> {
+public interface ModelData {
 
 	Object get(String property);
 
