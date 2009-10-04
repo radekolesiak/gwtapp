@@ -3,19 +3,19 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.cuprum</groupId>
-	<artifactId>cuprum-base</artifactId>
-	<name>cuprum-base</name>
+	<groupId>org.gwtapp</groupId>
+	<artifactId>gwtapp-base</artifactId>
+	<name>gwtapp-base</name>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
-	    <gwtVersion>1.5.3</gwtVersion>
+	    <gwtVersion>1.7.0</gwtVersion>
 	</properties>
 
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
-	<description>GwtWebApp. Demo http://gwtapp.cuprum.biz:8080/</description>
+	<description>GwtWebApp. Demo http://gwtapp.org:8080/</description>
 
 	<distributionManagement>
 		<site>
@@ -24,21 +24,10 @@
 		</site>
 	</distributionManagement>
 
-<pluginRepositories>
-    <pluginRepository>
-      <id>gwt-maven</id>
-      <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
-    </pluginRepository>
-</pluginRepositories>
-
 	<repositories>	
 		<repository>
 			<id>atlassian</id>
 			<url>http://maven.atlassian.com/repository/public</url>
-		</repository>
-		<repository>
-			<id>gwtext-repository</id>
-			<url>http://www.gwt-ext.com/maven2</url>
 		</repository>
 		<repository>
 			<id>jboss-maven</id>
@@ -48,7 +37,6 @@
 
 	<modules>
 	    <module>gwtapp</module>
-	    <module>smallapp</module>
 	</modules>
 	
 	<profiles>

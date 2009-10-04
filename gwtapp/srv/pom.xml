@@ -4,7 +4,7 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.cuprum.gwtapp</groupId>
+		<groupId>org.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
 		<version>1.0.0</version>
 	</parent>
@@ -22,13 +22,23 @@
 	
 	<dependencies>
         <dependency>
-            <groupId>com.cuprum.gwtapp</groupId>
+            <groupId>org.gwtapp</groupId>
             <artifactId>gwtapp-rpc</artifactId>
             <version>${project.version}</version>
         </dependency>        
     </dependencies>
 	
 	<build>		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	    <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
 		<resources>
 			<resource>
@@ -38,17 +48,6 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>		
-	
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>	
 </project>
 
