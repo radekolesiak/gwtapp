@@ -1,9 +1,5 @@
 package org.gwtapp.core.client.data;
 
-public abstract class BeanModelData implements ModelData {
-
-	@Override
-	public Object remove(String property) {
-		return set(property, null);
-	}
+public abstract class BeanModelData extends AbstractModelData {
+	// Deferred binder generates the setter and getters which use fields. 
 }
