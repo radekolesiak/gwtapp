@@ -52,7 +52,7 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 			public void onValueChange(ValueChangeEvent<T> event) {
 				if (model instanceof HasFireOnUpdate) {
 					if (((HasFireOnUpdate) model).isFireOnUpdate()) {
-						model.setValue(model.getValue(), true);
+						ValueChangeEvent.fire(model, model.getValue());
 					}
 				}
 			}
