@@ -1,0 +1,1 @@
+appcfg update target/gwtapp-web-1.0.0
