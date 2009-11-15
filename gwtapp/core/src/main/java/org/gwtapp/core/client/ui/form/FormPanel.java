@@ -52,6 +52,12 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		remove(field);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public <X> FieldPanel<T, X> getField(String fieldName){
+		return fields.get(fieldName);
+	}
+	
 	@Override
 	public String getName() {
 		return name;
