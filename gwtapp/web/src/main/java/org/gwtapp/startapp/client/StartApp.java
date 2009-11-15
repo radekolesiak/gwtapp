@@ -4,7 +4,6 @@ import org.gwtapp.core.client.html.core.Deserializer;
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
-import org.gwtapp.startapp.client.data.UserRegisterModelImpl;
 import org.gwtapp.startapp.client.ui.user.register.HUserRegisterPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
 

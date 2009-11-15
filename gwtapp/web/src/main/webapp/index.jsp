@@ -14,6 +14,9 @@
 	src='startappentry/startappentry.nocache.js'></script>
 </head>
 <body>
+Applications that use GWTApp:<br />
+<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
+<br />
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
 	model.setLogin("login_value");
