@@ -17,6 +17,10 @@ import com.google.gwt.user.client.ui.Widget;
 public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 		implements HasName, HasValue<T> {
 
+	public static class Style {
+		public final static String FIELD_PANEL = "fieldPanel";
+	}
+
 	private String name;
 	private String property;
 	private HasValue<T> controller;
@@ -45,6 +49,8 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	private <E extends HasValue<T>> FieldPanel(Element element,
 			final HasValue<M> model, String property, E controller) {
 		setElement(element);
+		addStyleName(Style.FIELD_PANEL);
+		addStyleName(Style.FIELD_PANEL + "-" + property);
 		this.controller = controller;
 		setProperty(property);
 		controller.addValueChangeHandler(new ValueChangeHandler<T>() {

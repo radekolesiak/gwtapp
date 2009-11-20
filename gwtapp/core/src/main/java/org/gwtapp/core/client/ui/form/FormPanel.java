@@ -18,6 +18,10 @@ import com.google.gwt.user.client.ui.HasValue;
 public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T>, HasFireOnUpdate {
 
+	public final static class Style {
+		public final static String FORM_PANEL="formPanel";
+	}
+	
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
 	private boolean fireOnUpdate = false;
@@ -28,14 +32,15 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this(DOM.createDiv(), value);
 	}
 
-	public FormPanel(Element element, T value) {
-		setElement(element);
-		this.value = value;
-	}
-
 	public FormPanel(HFormPanel<T> panel) {
 		this(DOM.getElementById(panel.getId()), panel.getValue());
 		setName(panel.getName());
+	}
+
+	public FormPanel(Element element, T value) {
+		setElement(element);
+		addStyleName(Style.FORM_PANEL);
+		this.value = value;
 	}
 
 	@Override
