@@ -61,33 +61,20 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwtVersion}</version>
-			<classifier>${platform}-libs</classifier>
-			<type>zip</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwtVersion}</version>
-			<classifier>${platform}</classifier>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<!-- 
-		<directory>war</directory>
-		<outputDirectory>war</outputDirectory>
-		 -->
+		<!--
+			<directory>war</directory> <outputDirectory>war</outputDirectory>
+		-->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/webapp</directory>
 			</resource>
 		</resources>
 		<plugins>
@@ -114,44 +101,25 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<runTarget>/</runTarget>
-				</configuration>
+				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>mergewebxml</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack</id>
 						<phase>compile</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
 						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.google.gwt</groupId>
-									<artifactId>gwt-dev</artifactId>
-									<version>${gwtVersion}</version>
-									<classifier>${platform}-libs</classifier>
-									<type>zip</type>
-									<overWrite>true</overWrite>
-									<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory>
-								</artifactItem>
-							</artifactItems>
+							<tasks>
+								<property name="compile_classpath" refid="maven.compile.classpath" />
+								<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+									<classpath refid="maven.compile.classpath" />
+									<jvmarg value="-Xmx512M" />
+									<arg value="org.gwtapp.startapp.StartAppEntry" />
+									<arg value="-war" />
+									<arg value="target/${project.build.finalName}" />
+								</java>
+							</tasks>
 						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

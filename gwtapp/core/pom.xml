@@ -63,7 +63,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwtVersion}</version>
-			<classifier>${platform}</classifier>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
