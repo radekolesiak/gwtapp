@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4">
+	<display-name>GWT</display-name>
+	<servlet>
+		<servlet-name>GwtApp</servlet-name>
+		<servlet-class>org.gwtapp.startapp.server.GwtAppServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GwtApp</servlet-name>
+		<url-pattern>/startappentry/gwtapp.rpc</url-pattern>
+	</servlet-mapping>
+</web-app>

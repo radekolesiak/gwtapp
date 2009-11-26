@@ -66,9 +66,6 @@
 	</dependencies>
 
 	<build>
-		<!--
-			<directory>war</directory> <outputDirectory>war</outputDirectory>
-		-->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -101,6 +98,14 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1-alpha-1</version>
+				<configuration>
+					<webappDirectory>war</webappDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -112,8 +117,6 @@
 									<classpath refid="maven.compile.classpath" />
 									<jvmarg value="-Xmx512M" />
 									<arg value="org.gwtapp.startapp.StartAppEntry" />
-									<arg value="-war" />
-									<arg value="target/${project.build.finalName}" />
 								</java>
 							</tasks>
 						</configuration>
