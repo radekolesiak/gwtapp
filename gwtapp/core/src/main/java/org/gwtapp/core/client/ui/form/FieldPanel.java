@@ -19,6 +19,8 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 
 	public static class Style {
 		public final static String FIELD_PANEL = "fieldPanel";
+		public final static String LABEL = "label";
+		public final static String CONTROLLER = "controller";
 	}
 
 	private String name;
@@ -33,7 +35,10 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	public <E extends Widget & HasValue<T>> FieldPanel(Element element,
 			final HasValue<M> model, String property, String label, E controller) {
 		this(element, model, property, controller);
-		add(new Label(label));
+		Label labelPanel =new Label(label);
+		labelPanel.addStyleName(Style.LABEL);
+		controller.addStyleName(Style.CONTROLLER);
+		add(labelPanel);
 		add(controller);
 	}
 
@@ -41,6 +46,7 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 			HFieldPanel<T> panel, E controller) {
 		this(DOM.getElementById(panel.getId()), model, panel.getProperty(),
 				controller);
+		controller.addStyleName(Style.CONTROLLER);
 		// user could change this value before gwt app is loaded and HFieldPanel
 		// object should be updated
 		panel.setValue(controller.getValue());
