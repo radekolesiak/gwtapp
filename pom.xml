@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-	    <gwtVersion>1.7.0</gwtVersion>
+		<gwtVersion>2.0.0-ms1</gwtVersion>
 	</properties>
 
 	<inceptionYear>2008</inceptionYear>
@@ -24,7 +24,14 @@
 		</site>
 	</distributionManagement>
 
-	<repositories>	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gwt-maven</id>
+			<url> http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
 		<repository>
 			<id>atlassian</id>
 			<url>http://maven.atlassian.com/repository/public</url>
@@ -33,48 +40,48 @@
 			<id>jboss-maven</id>
 			<url>http://repository.jboss.org/maven2</url>
 		</repository>
-	</repositories>	
+	</repositories>
 
 	<modules>
-	    <module>gwtapp</module>
+		<module>gwtapp</module>
 	</modules>
-	
+
 	<profiles>
-        <profile>
-            <id>gwt-dev-windows</id>
-            <properties>
-                <platform>windows</platform>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <os>
-                    <family>Windows</family>
-                </os>
-            </activation>
-        </profile>
-        <profile>
-            <id>gwt-dev-mac</id>
-            <properties>
-                <platform>mac</platform>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-        </profile>
-        <profile>
-            <id>gwt-dev-linux</id>
-            <properties>
-                <platform>linux</platform>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <os>
-                    <name>Linux</name>
-                </os>
-            </activation>           
-        </profile>
-    </profiles>
+		<profile>
+			<id>gwt-dev-windows</id>
+			<properties>
+				<platform>windows</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<family>Windows</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-mac</id>
+			<properties>
+				<platform>mac</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-linux</id>
+			<properties>
+				<platform>linux</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<name>Linux</name>
+				</os>
+			</activation>
+		</profile>
+	</profiles>
 </project>
