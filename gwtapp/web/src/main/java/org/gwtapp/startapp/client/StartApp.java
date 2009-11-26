@@ -22,6 +22,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp implements EntryPoint {
 
+	// GAE + GWT: http://code.google.com/intl/pl/appengine/docs/java/tools/eclipse.html
+	
 	private final static GwtAppServiceAsync SERVICE = GWT
 			.create(GwtAppService.class);
 
