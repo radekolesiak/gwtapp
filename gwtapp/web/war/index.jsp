@@ -4,7 +4,6 @@
 <%@page import="org.gwtapp.core.client.html.ui.core.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.data.*"%>
-<%@page import="org.gwtapp.core.rebind.Util"%>
 <%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <html>
 <head>
@@ -18,7 +17,7 @@ Applications that use GWTApp:<br />
 <a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 <br />
 <%
-	UserRegisterModel model = new UserRegisterModelImpl();//Util.bind(UserRegisterModel.class);
+	UserRegisterModel model = new UserRegisterModelImpl();
 	model.setLogin("login_value");
 	HUserRegisterPanel widget = new HUserRegisterPanel(model);
 	widget.setName(HWidgets.HUserRegisterPanel);

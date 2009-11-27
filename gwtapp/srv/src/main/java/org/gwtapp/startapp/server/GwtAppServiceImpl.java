@@ -12,6 +12,7 @@ public class GwtAppServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	public void register(UserRegisterModel user) throws RpcException {
+		System.out.println("Register GWT Servlet");
 	}
 
 }

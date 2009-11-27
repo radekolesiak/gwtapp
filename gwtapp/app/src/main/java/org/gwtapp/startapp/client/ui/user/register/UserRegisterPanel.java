@@ -5,8 +5,8 @@ import org.gwtapp.core.client.ui.form.FieldPanel;
 import org.gwtapp.core.client.ui.form.FormPanel;
 import org.gwtapp.startapp.client.data.UserRegister;
 import org.gwtapp.startapp.client.data.UserRegisterModel;
+import org.gwtapp.startapp.client.data.UserRegisterModelImpl;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -33,7 +33,7 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 	}
 
 	public UserRegisterPanel() {
-		super((UserRegisterModel) GWT.create(UserRegisterModel.class));
+		super(new UserRegisterModelImpl());
 		login = new FieldPanel<UserRegisterModel, String>(this,
 				UserRegister.LOGIN, "Login:", new TextBox());
 		addFields();

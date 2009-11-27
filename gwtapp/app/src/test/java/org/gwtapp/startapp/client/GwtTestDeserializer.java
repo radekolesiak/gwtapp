@@ -1,13 +1,7 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.html.core.Deserializer;
-import org.gwtapp.core.client.html.ui.core.HPanel;
-import org.junit.Test;
 
-import com.google.gwt.junit.client.GWTTestCase;
-import com.google.gwt.user.client.rpc.SerializationException;
-
-public class GwtTestDeserializer extends GWTTestCase {
+public class GwtTestDeserializer {/*-extends GWTTestCase {
 
 	@Override
 	public String getModuleName() {
@@ -22,5 +16,5 @@ public class GwtTestDeserializer extends GWTTestCase {
 		assertEquals("h1", panel.getId());
 		assertEquals("div", panel.getTag());
 	}
-
+*/
 }

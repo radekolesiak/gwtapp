@@ -1,61 +1,62 @@
 package org.gwtapp.startapp.client.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.gwtapp.core.client.data.HashModelData;
 
 public class UserRegisterModelImpl extends HashModelData implements
 		UserRegisterModel {
-	
-	@SuppressWarnings("unchecked")
+
+	private String login;
+	private String email;
+	private String password;
+	private List<String> tockens = new ArrayList<String>();
+
 	public UserRegisterModelImpl() {
-		super();
-		{
-			java.lang.Object o = get("tockens");
-			if (o == null) {
-				try {
-					set("tockens", new java.util.ArrayList());
-				} catch (Exception e) {
-				}
-			}
-		}
+		addAutoField(UserRegisterModel.LOGIN_FIELD);
+		addAutoField(UserRegisterModel.EMAIL_FIELD);
+		addAutoField(UserRegisterModel.PASSWORD_FIELD);
+		addAutoField(UserRegisterModel.TOCKENS_FIELD);
 	}
 
-	public void setPassword(java.lang.String value) {
-		set("password", value);
+	@Override
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public java.lang.String getLogin() {
-		return (java.lang.String) get("login");
+	@Override
+	public String getLogin() {
+		return login;
 	}
 
-	public void setLogin(java.lang.String value) {
-		set("login", value);
+	@Override
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setEmail(java.lang.String value) {
-		set("email", value);
+	@Override
+	public String getEmail() {
+		return email;
 	}
 
-	public java.lang.String getEmail() {
-		return (java.lang.String) get("email");
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	@SuppressWarnings("unchecked")
-	public void setTockens(java.util.List value) {
-		set("tockens", value);
+	@Override
+	public String getPassword() {
+		return password;
 	}
 
-	@SuppressWarnings("unchecked")
-	public java.util.List getTockens() {
-		return (java.util.List) get("tockens");
+	@Override
+	public void setTockens(List<String> tockens) {
+		this.tockens = tockens;
 	}
 
-	public java.lang.String getPassword() {
-		return (java.lang.String) get("password");
+	@Override
+	public List<String> getTockens() {
+		return tockens;
 	}
-
-	public java.util.Collection<java.lang.String> getPropertyNames() {
-		return java.util.Arrays.asList(new java.lang.String[] { "email",
-				"login", "password", "tockens" });
-	}
-
 }

@@ -7,7 +7,6 @@ import org.gwtapp.core.client.data.Property;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-@SuppressWarnings("unchecked")
 public interface UserRegister extends IsSerializable {
 
 	public final static String LOGIN = "login";
@@ -27,8 +26,8 @@ public interface UserRegister extends IsSerializable {
 
 	String getEmail();
 
-	void setTockens(List tockens);
+	void setTockens(List<String> tockens);
 
 	@Property(initBy = ArrayList.class)
-	List getTockens();
+	List<String> getTockens();
 }
