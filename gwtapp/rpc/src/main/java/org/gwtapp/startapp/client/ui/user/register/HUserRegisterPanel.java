@@ -8,8 +8,8 @@ import org.gwtapp.startapp.client.data.UserRegisterModel;
 
 public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 
-	private HFieldPanel<String> login = new HFieldPanel<String>(UserRegister.LOGIN, "Login:",
-			new HTextBox());
+	private HFieldPanel<String> login = new HFieldPanel<String>(
+			UserRegister.LOGIN.name(), "Login:", new HTextBox());
 
 	/*-
 	private HFieldPanel email = new HFieldPanel(UserRegister.EMAIL, "Email:", new HTextBox());
@@ -18,7 +18,7 @@ public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 
 	public HUserRegisterPanel() {
 	}
-	
+
 	public HUserRegisterPanel(UserRegisterModel value) {
 		super(value);
 		addField(login);
@@ -30,7 +30,7 @@ public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 	public HFieldPanel<String> getLogin() {
 		return login;
 	}
-	
+
 	/*-
 	 public HFieldPanel getEmail() {
 	 return email;

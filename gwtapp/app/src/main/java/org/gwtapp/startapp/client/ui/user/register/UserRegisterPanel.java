@@ -18,15 +18,15 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 
 	private final FieldPanel<UserRegisterModel, String> login;
 	private final FieldPanel<UserRegisterModel, String> email = new FieldPanel<UserRegisterModel, String>(
-			this, UserRegister.EMAIL, "Email:", new TextBox());
+			this, UserRegister.EMAIL.name(), "Email:", new TextBox());
 	private final FieldPanel<UserRegisterModel, String> password = new FieldPanel<UserRegisterModel, String>(
-			this, UserRegister.PASSWORD, "Password:", new TextBox());
+			this, UserRegister.PASSWORD.name(), "Password:", new TextBox());
 
 	// hybrid example
 	public UserRegisterPanel(HUserRegisterPanel modelPanel) {
 		super(modelPanel);
-		HFieldPanel<String> loginField = modelPanel
-				.getField(UserRegister.LOGIN);
+		HFieldPanel<String> loginField = modelPanel.getField(UserRegister.LOGIN
+				.name());
 		login = new FieldPanel<UserRegisterModel, String>(this, loginField,
 				TextBox.wrap(DOM.getElementById(loginField.getControllerId())));
 		addFields();
@@ -35,7 +35,7 @@ public class UserRegisterPanel extends FormPanel<UserRegisterModel> {
 	public UserRegisterPanel() {
 		super(new UserRegisterModelImpl());
 		login = new FieldPanel<UserRegisterModel, String>(this,
-				UserRegister.LOGIN, "Login:", new TextBox());
+				UserRegister.LOGIN.name(), "Login:", new TextBox());
 		addFields();
 	}
 

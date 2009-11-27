@@ -30,7 +30,7 @@ public class AutoFieldsTest {
 		Assert.assertNull(ur.getEmail());
 		Assert.assertNotNull(ur.getTockens());
 		ur.setLogin(login);
-		Assert.assertNotNull(ur.get(UserRegister.LOGIN));
-		Assert.assertEquals(login, ur.get(UserRegister.LOGIN));
+		Assert.assertNotNull(ur.get(UserRegister.LOGIN.name()));
+		Assert.assertEquals(login, ur.get(UserRegister.LOGIN.name()));
 	}
 }

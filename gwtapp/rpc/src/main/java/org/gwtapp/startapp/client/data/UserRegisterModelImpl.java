@@ -1,6 +1,5 @@
 package org.gwtapp.startapp.client.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtapp.core.client.data.HashModelData;
@@ -8,16 +7,12 @@ import org.gwtapp.core.client.data.HashModelData;
 public class UserRegisterModelImpl extends HashModelData implements
 		UserRegisterModel {
 
-	private String login;
-	private String email;
-	private String password;
-	private List<String> tockens = new ArrayList<String>();
+	private String login = UserRegister.LOGIN.add(this).def();
+	private String email = UserRegister.EMAIL.add(this).def();
+	private String password = UserRegister.PASSWORD.add(this).def();
+	private List<String> tockens = UserRegister.TOCKENS.add(this).def();
 
 	public UserRegisterModelImpl() {
-		addAutoField(UserRegisterModel.LOGIN_FIELD);
-		addAutoField(UserRegisterModel.EMAIL_FIELD);
-		addAutoField(UserRegisterModel.PASSWORD_FIELD);
-		addAutoField(UserRegisterModel.TOCKENS_FIELD);
 	}
 
 	@Override

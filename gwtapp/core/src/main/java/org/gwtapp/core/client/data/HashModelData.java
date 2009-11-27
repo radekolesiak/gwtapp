@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
-public abstract class HashModelData extends AbstractModelData {
+public abstract class HashModelData extends AbstractModelData implements HasAutoField{
 
 	private Map<String, AutoField> autofields = new HashMap<String, AutoField>();
 
-	public void addAutoField(final AutoField field) {
+	@Override
+	public void addAutoField(AutoField field) {
 		autofields.put(field.name(), field);
 	}
 
