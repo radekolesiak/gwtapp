@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>StartApp</title>
 <script language='javascript'
-	src='startappentry/startappentry.nocache.js'></script>
+	src='gwt.startappentry/gwt.startappentry.nocache.js'></script>
 </head>
 <body>
 Applications that use GWTApp:<br />

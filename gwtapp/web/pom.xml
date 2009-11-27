@@ -90,7 +90,9 @@
 						<fileset>
 							<directory>war</directory>
 							<includes>
-								<include>startappentry</include>
+								<include>gwt.*</include>
+								<include>WEB-INF/classes</include>
+								<include>WEB-INF/lib</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>

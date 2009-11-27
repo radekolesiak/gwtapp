@@ -7,6 +7,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GwtApp</servlet-name>
-		<url-pattern>/startappentry/gwtapp.rpc</url-pattern>
+		<url-pattern>/gwt.startappentry/gwtapp.rpc</url-pattern>
 	</servlet-mapping>
 </web-app>
