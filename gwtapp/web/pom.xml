@@ -118,7 +118,7 @@
 								<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
 									<classpath refid="maven.compile.classpath" />
 									<jvmarg value="-Xmx512M" />
-									<arg value="org.gwtapp.startapp.StartAppEntry" />
+									<arg value="org.gwtapp.startapp.StartAppEntryPoint" />
 								</java>
 							</tasks>
 						</configuration>
