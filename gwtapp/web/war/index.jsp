@@ -3,7 +3,7 @@
 <%@page import="org.gwtapp.core.client.html.ui.form.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.core.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
-<%@page import="org.gwtapp.startapp.client.data.*"%>
+<%@page import="org.gwtapp.startapp.client.data.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <html>
 <head>
@@ -13,6 +13,8 @@
 	src='gwt.startappentry/gwt.startappentry.nocache.js'></script>
 </head>
 <body>
+<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
+<br />
 Applications that use GWTApp:<br />
 <a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 <br />
