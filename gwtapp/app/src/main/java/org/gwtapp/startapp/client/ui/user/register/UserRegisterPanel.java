@@ -3,9 +3,9 @@ package org.gwtapp.startapp.client.ui.user.register;
 import org.gwtapp.core.client.html.ui.form.HFieldPanel;
 import org.gwtapp.core.client.ui.form.FieldPanel;
 import org.gwtapp.core.client.ui.form.FormPanel;
-import org.gwtapp.startapp.client.data.UserRegister;
-import org.gwtapp.startapp.client.data.UserRegisterModel;
-import org.gwtapp.startapp.client.data.UserRegisterModelImpl;
+import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.TextBox;

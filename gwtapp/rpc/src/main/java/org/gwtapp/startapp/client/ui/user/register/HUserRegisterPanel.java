@@ -3,8 +3,8 @@ package org.gwtapp.startapp.client.ui.user.register;
 import org.gwtapp.core.client.html.ui.core.HTextBox;
 import org.gwtapp.core.client.html.ui.form.HFieldPanel;
 import org.gwtapp.core.client.html.ui.form.HFormPanel;
-import org.gwtapp.startapp.client.data.UserRegister;
-import org.gwtapp.startapp.client.data.UserRegisterModel;
+import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 
 public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 

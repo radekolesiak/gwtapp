@@ -1,8 +1,8 @@
 package org.gwtapp.startapp.server.data;
 
-import org.gwtapp.startapp.client.data.UserRegister;
-import org.gwtapp.startapp.client.data.UserRegisterModel;
-import org.gwtapp.startapp.client.data.UserRegisterModelImpl;
+import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
