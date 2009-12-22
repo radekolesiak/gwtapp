@@ -12,7 +12,7 @@ public class SerializerTest {
 	public void serializeTest() throws HSerializerException {
 		HPanel widget = new HPanel();
 		widget.setId("h1");
-		String s = HSerializer.serialize(widget);
+		String s = HSerializer.success(widget);
 		Assert.assertNotNull(s);
 		System.out.println(s);
 		System.out.println(HSerializer.encode(s));

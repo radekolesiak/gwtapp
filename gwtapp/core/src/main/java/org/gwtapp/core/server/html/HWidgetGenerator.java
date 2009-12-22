@@ -33,7 +33,7 @@ public class HWidgetGenerator {
 		for (HWidget widget : widgets) {
 			setId(widget);
 			try {
-				rpc = HSerializer.serialize(widget);
+				rpc = HSerializer.success(widget);
 			} catch (HSerializerException e) {
 				throw new HWidgetGeneratorException(e);
 			}
