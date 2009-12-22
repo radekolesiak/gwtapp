@@ -10,20 +10,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>StartApp</title>
 <script language='javascript'
-	src='gwt.startappentry/gwt.startappentry.nocache.js'></script>
+	src='gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>'></script>
 </head>
 <body>
-<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
+<a href="http://sourceforge.net/projects/gwtapp/develop/">Source
+code</a>
 <br />
-Applications that use GWTApp:<br />
-<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
+<br />
+Applications that use GWTApp:
+<br />
+<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a>
+<br />
 <br />
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();
 	model.setLogin("login_value");
 	HUserRegisterPanel widget = new HUserRegisterPanel(model);
 	widget.setName(HWidgets.HUserRegisterPanel);
-	HGenerator g = new HGenerator(HWidgets.DICTIONARY, widget);
+	HWidgetGenerator g = new HWidgetGenerator(HWidgets.DICTIONARY, widget);
 %>
 <%=g.getRPC()%>
 <%=g.getHTML()%>

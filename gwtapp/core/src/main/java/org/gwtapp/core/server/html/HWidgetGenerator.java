@@ -8,7 +8,7 @@ import org.gwtapp.core.client.html.ui.core.IContainer;
 import org.gwtapp.core.client.html.ui.core.IElementValue;
 import org.gwtapp.core.client.html.ui.core.ILeaf;
 
-public class HGenerator {
+public class HWidgetGenerator {
 
 	private static int id = 0;
 
@@ -16,18 +16,18 @@ public class HGenerator {
 	private StringBuffer html = new StringBuffer();
 	private String rpc = "";
 
-	public HGenerator(String dictionary, HWidget widget)
-			throws HGeneratorException {
+	public HWidgetGenerator(String dictionary, HWidget widget)
+			throws HWidgetGeneratorException {
 		this(dictionary, new HWidget[] { widget });
 	}
 
-	public HGenerator(String dictionary, HWidget[] widgets)
-			throws HGeneratorException {
+	public HWidgetGenerator(String dictionary, HWidget[] widgets)
+			throws HWidgetGeneratorException {
 		this(dictionary, Arrays.asList(widgets));
 	}
 
-	public HGenerator(String dictionary, List<HWidget> widgets)
-			throws HGeneratorException {
+	public HWidgetGenerator(String dictionary, List<HWidget> widgets)
+			throws HWidgetGeneratorException {
 		this.dictionary = dictionary;
 		createDictionary(html);
 		for (HWidget widget : widgets) {
@@ -35,7 +35,7 @@ public class HGenerator {
 			try {
 				rpc = HSerializer.serialize(widget);
 			} catch (HSerializerException e) {
-				throw new HGeneratorException(e);
+				throw new HWidgetGeneratorException(e);
 			}
 			createRPC(html, widget.getName(), rpc);
 			createDOM(html, widget);

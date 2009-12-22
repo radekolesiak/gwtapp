@@ -12,8 +12,7 @@ public class HSerializer {
 
 	public static String serialize(HWidget widget) throws HSerializerException {
 		try {
-			Method serviceMethod = HTMLService.class.getMethod("getWidget",
-					String.class);
+			Method serviceMethod = HTMLService.class.getMethod("getResponse");
 			assert (serviceMethod != null);
 			assert (widget != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, widget);
