@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.html.core.Deserializer;
+import org.gwtapp.core.client.html.core.HDeserializer;
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
@@ -60,11 +60,11 @@ public class StartApp implements EntryPoint {
 						userRegisterPanel1.setValue(event.getValue());
 					}
 				});
-		String serializedHWidget = Deserializer.decode(Dictionary
+		String serializedHWidget = HDeserializer.decode(Dictionary
 				.getDictionary(HWidgets.DICTIONARY).get(
 						HWidgets.HUserRegisterPanel));
 		try {
-			HUserRegisterPanel modelPanel = (HUserRegisterPanel) Deserializer
+			HUserRegisterPanel modelPanel = (HUserRegisterPanel) HDeserializer
 					.getSerializedObject(serializedHWidget);
 			final UserRegisterPanel urp = new UserRegisterPanel(modelPanel);
 			final Button btn = new Button("Remove wrapped form");

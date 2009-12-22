@@ -6,7 +6,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
 
-public class Deserializer {
+public class HDeserializer {
 
 	/*
 	 * http://www.webtoolkit.info/javascript-base64.html
