@@ -8,11 +8,20 @@ import org.gwtapp.core.client.html.core.api.HTMLService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.server.rpc.RPC;
+import com.google.gwt.user.server.rpc.RPCRequest;
 
-public class HSerializer {
+public class HServer {
 
-	public static String success(IsSerializable object)
-			throws HSerializerException {
+	public static <T> T getSerializedObject(String object) {
+		RPCRequest request = RPC.decodeRequest(object);
+		if (request != null && request.getParameters() != null
+				&& request.getParameters().length > 0) {
+			System.out.println(request.getParameters()[0]);
+		}
+		return null;
+	}
+
+	public static String success(IsSerializable object) throws HServerException {
 		try {
 			Method serviceMethod = HTMLService.class
 					.getMethod("getResponseIsSerializable");
@@ -20,12 +29,11 @@ public class HSerializer {
 			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HSerializerException(e);
+			throw new HServerException(e);
 		}
 	}
 
-	public static String success(Serializable object)
-			throws HSerializerException {
+	public static String success(Serializable object) throws HServerException {
 		try {
 			Method serviceMethod = HTMLService.class
 					.getMethod("getResponseSerializable");
@@ -33,11 +41,11 @@ public class HSerializer {
 			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HSerializerException(e);
+			throw new HServerException(e);
 		}
 	}
 
-	public static String failure(Throwable object) throws HSerializerException {
+	public static String failure(Throwable object) throws HServerException {
 		try {
 			Method serviceMethod = HTMLService.class
 					.getMethod("getResponseIsSerializable");
@@ -45,7 +53,7 @@ public class HSerializer {
 			assert (object != null);
 			return RPC.encodeResponseForFailure(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HSerializerException(e);
+			throw new HServerException(e);
 		}
 	}
 

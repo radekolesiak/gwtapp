@@ -33,8 +33,8 @@ public class HWidgetGenerator {
 		for (HWidget widget : widgets) {
 			setId(widget);
 			try {
-				rpc = HSerializer.success(widget);
-			} catch (HSerializerException e) {
+				rpc = HServer.success(widget);
+			} catch (HServerException e) {
 				throw new HWidgetGeneratorException(e);
 			}
 			createRPC(html, widget.getName(), rpc);
@@ -65,7 +65,7 @@ public class HWidgetGenerator {
 		html.append("[\"");
 		html.append(name);
 		html.append("\"]=\"");
-		html.append(HSerializer.encode(rpc));
+		html.append(HServer.encode(rpc));
 		html.append("\";");
 		html.append("</script>");
 	}

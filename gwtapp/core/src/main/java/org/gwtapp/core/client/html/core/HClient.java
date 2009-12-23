@@ -5,18 +5,26 @@ import org.gwtapp.core.client.html.core.api.HTMLService;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
+import com.google.gwt.user.client.rpc.SerializationStreamWriter;
 
-public class HDeserializer {
+public class HClient {
 
 	/*
 	 * http://www.webtoolkit.info/javascript-base64.html
 	 * http://www.webtoolkit.info/licence.html
 	 */
 	
+	private final static SerializationStreamFactory ssf = GWT.create(HTMLService.class);
+	
+	public static String getSerializedString(Object object) throws SerializationException{
+		SerializationStreamWriter ssw = ssf.createStreamWriter();
+		ssw.writeObject(object);
+		return ssw.toString();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static <T> T getSerializedObject(String serialized)
 			throws SerializationException {
-		SerializationStreamFactory ssf = GWT.create(HTMLService.class);
 		return (T) ssf.createStreamReader(serialized).readObject();
 	}
 	
