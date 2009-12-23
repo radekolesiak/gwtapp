@@ -40,7 +40,7 @@ public class HSerializer {
 	public static String failure(Throwable object) throws HSerializerException {
 		try {
 			Method serviceMethod = HTMLService.class
-					.getMethod("getResponseSerializable");
+					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
 			return RPC.encodeResponseForFailure(serviceMethod, object);
