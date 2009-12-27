@@ -1,4 +1,4 @@
-package org.gwtapp.core.server.html;
+package org.gwtapp.core.server.html.core;
 
 @SuppressWarnings("serial")
 public class HWidgetGeneratorException extends Exception {

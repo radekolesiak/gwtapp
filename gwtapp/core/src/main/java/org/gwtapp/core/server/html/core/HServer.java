@@ -1,4 +1,4 @@
-package org.gwtapp.core.server.html;
+package org.gwtapp.core.server.html.core;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;

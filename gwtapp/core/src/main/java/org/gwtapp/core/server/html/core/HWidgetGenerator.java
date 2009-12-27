@@ -1,4 +1,4 @@
-package org.gwtapp.core.server.html;
+package org.gwtapp.core.server.html.core;
 
 import java.util.Arrays;
 import java.util.List;

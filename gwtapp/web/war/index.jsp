@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="org.gwtapp.core.server.html.*"%>
+<%@page import="org.gwtapp.core.server.html.core.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.form.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.core.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
@@ -13,14 +13,10 @@
 	src='gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>'></script>
 </head>
 <body>
-<a href="http://sourceforge.net/projects/gwtapp/develop/">Source
-code</a>
+<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
 <br />
-<br />
-Applications that use GWTApp:
-<br />
-<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a>
-<br />
+Applications that use GWTApp:<br />
+<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 <br />
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();

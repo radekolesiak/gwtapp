@@ -21,6 +21,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>apache-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.0</version>
@@ -34,6 +39,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit-dep</artifactId>
 			<version>4.5</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
