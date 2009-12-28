@@ -2,6 +2,7 @@
 <%@page import="org.gwtapp.core.server.html.core.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.form.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.core.*"%>
+<%@page import="org.gwtapp.startapp.client.ui.*"%>
 <%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.data.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.HWidgets"%>
@@ -18,15 +19,30 @@
 Applications that use GWTApp:<br />
 <a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 <br />
+<table>
+<tr>
+<td>
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();
 	model.setLogin("login_value");
-	HUserRegisterPanel widget = new HUserRegisterPanel(model);
-	widget.setName(HWidgets.HUserRegisterPanel);
-	HWidgetGenerator g = new HWidgetGenerator(HWidgets.DICTIONARY, widget);
+	HUserRegisterPanel userRegisterPanel = new HUserRegisterPanel(model);
+	userRegisterPanel.setName(HWidgets.HUserRegisterPanel);
+	HWidgetGenerator gUserRegister = new HWidgetGenerator(HWidgets.DICTIONARY, userRegisterPanel);
 %>
-<%=g.getRPC()%>
-<%=g.getHTML()%>
+<%=gUserRegister.getHTML()%>
+</td>
+<td>
+<%
+	HTabPanel tabPanel = new HTabPanel();
+	tabPanel.setName(HWidgets.HTabPanel);
+	HWidgetGenerator gTab = new HWidgetGenerator(HWidgets.DICTIONARY, tabPanel);
+%>
+<%=gTab.getHTML()%>
+</td>
+</tr>
+</table>
+
+
 <!-- GA  -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

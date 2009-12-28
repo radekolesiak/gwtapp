@@ -28,10 +28,12 @@ public class HFieldPanel<T> extends HPanel implements IValue<T> {
 		return ((HWidget) controller).getId();
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}

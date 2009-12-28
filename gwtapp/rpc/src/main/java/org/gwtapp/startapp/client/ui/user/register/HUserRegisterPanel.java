@@ -5,6 +5,7 @@ import org.gwtapp.core.client.html.ui.form.HFieldPanel;
 import org.gwtapp.core.client.html.ui.form.HFormPanel;
 import org.gwtapp.startapp.client.data.user.register.UserRegister;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 
 public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 
@@ -17,6 +18,7 @@ public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 	-*/
 
 	public HUserRegisterPanel() {
+		this(new UserRegisterModelImpl());
 	}
 
 	public HUserRegisterPanel(UserRegisterModel value) {

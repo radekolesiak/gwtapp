@@ -54,8 +54,14 @@ public class HWidgetGenerator {
 
 	private void createDictionary(StringBuffer html) {
 		html.append("<script>");
+		html.append("var ");
+		html.append(dictionary);
+		html.append("; if(!");
+		html.append(dictionary);
+		html.append("){");
 		html.append(dictionary);
 		html.append(" = new Array();");
+		html.append("}");
 		html.append("</script>");
 	}
 
@@ -74,11 +80,15 @@ public class HWidgetGenerator {
 	private static String c = ">";
 
 	private void createAttr(StringBuffer html, String attr, String value) {
-		html.append(" ");
-		html.append(attr);
-		html.append("=\"");
-		html.append(value); // TODO: replace "
-		html.append("\"");
+		if (attr != null) {
+			html.append(" ");
+			html.append(attr);
+			html.append("=\"");
+			if (value != null) {
+				html.append(value);
+			}
+			html.append("\"");
+		}
 	}
 
 	private void createDOM(StringBuffer html, HWidget widget) {

@@ -22,8 +22,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp implements EntryPoint {
 
-	// GAE + GWT: http://code.google.com/intl/pl/appengine/docs/java/tools/eclipse.html
-	
+	// GAE + GWT:
+	// http://code.google.com/intl/pl/appengine/docs/java/tools/eclipse.html
+
 	private final static GwtAppServiceAsync SERVICE = GWT
 			.create(GwtAppService.class);
 
@@ -40,7 +41,10 @@ public class StartApp implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
+		userRegister();
+	}
 
+	private void userRegister() {
 		final UserRegisterPanel userRegisterPanel1 = new UserRegisterPanel();
 		final UserRegisterPanel userRegisterPanel2 = new UserRegisterPanel();
 		userRegisterPanel1.setFireOnUpdate(true);
@@ -60,9 +64,8 @@ public class StartApp implements EntryPoint {
 						userRegisterPanel1.setValue(event.getValue());
 					}
 				});
-		String serializedHWidget = HClient.decode(Dictionary
-				.getDictionary(HWidgets.DICTIONARY).get(
-						HWidgets.HUserRegisterPanel));
+		String serializedHWidget = HClient.decode(Dictionary.getDictionary(
+				HWidgets.DICTIONARY).get(HWidgets.HUserRegisterPanel));
 		try {
 			HUserRegisterPanel modelPanel = (HUserRegisterPanel) HClient
 					.getSerializedObject(serializedHWidget);
@@ -80,7 +83,7 @@ public class StartApp implements EntryPoint {
 		} catch (SerializationException e) {
 			e.printStackTrace();
 		}
-		RootPanel.get().add(new Label(serializedHWidget));
+
 		RootPanel.get().add(new Label("Form Panel 1:"));
 		RootPanel.get().add(userRegisterPanel1);
 		RootPanel.get().add(new Button("Register 1:", new ClickHandler() {
