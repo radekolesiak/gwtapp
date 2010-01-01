@@ -1,10 +1,13 @@
 package com.google.gwt.user.client.ui;
 
-import com.google.gwt.user.client.ui.ComplexPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class ContainerPanel extends ComplexPanel {
-
+	
+	@Override
+	protected void setParent(Widget parent) {
+		super.setParent(parent);
+	}
+	
 	@Override
 	public void add(Widget w) {
 		add(w, getElement());

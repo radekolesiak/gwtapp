@@ -42,7 +42,7 @@ Applications that use GWTApp:<br />
 </tr>
 </table>
 
-
+<%if ("gwtapp-web.appspot.com".equals(request.getServerName())){ %>
 <!-- GA  -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -55,5 +55,6 @@ pageTracker._trackPageview();
 } catch(err) {}
 </script>
 <!-- GA  -->
+<%}%>
 </body>
 </html>
