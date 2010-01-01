@@ -1,7 +1,6 @@
 package org.gwtapp.startapp.client.ui;
 
-import java.util.Date;
-
+import org.gwtapp.core.client.Utils;
 import org.gwtapp.core.client.html.core.HClient;
 import org.gwtapp.startapp.client.HWidgets;
 import org.gwtapp.startapp.client.StartApp;
@@ -22,6 +21,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class UserRegisterTabExt {
 
 	private RootPanel root;
+	
+	private final Button btn1 = new Button("Register 1:");
+	private final Button btn2 = new Button("Register 2:");
 
 	public UserRegisterTabExt() {
 		String serializedUserRegisterPanel = HClient.decode(Dictionary
@@ -32,25 +34,21 @@ public class UserRegisterTabExt {
 					.getSerializedObject(serializedUserRegisterPanel);
 			final UserRegisterPanel urp = new UserRegisterPanel(
 					hUserRegisterPanel);
-
-			String id = urp.getElement().getParentElement().getAttribute("id");
-			if (id == null || id.isEmpty()) {
-				id = Math.random() + ":" + new Date().getTime();
-				urp.getElement().getParentElement().setAttribute("id", id);
-			}
-			root = RootPanel.get(id);
+			root = Utils.updateToRootPanel(urp);
 
 			final Button btn = new Button("Remove wrapped form");
 			btn.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
 					btn.setEnabled(false);
+					btn1.setEnabled(false);
 					root.remove(urp);
 				}
 			});
 			
 			root.add(new Label("Form Panel 1:"));
-			root.add(urp); // reattach and add logicaly 
+			root.add(urp);
+			root.add(btn1);			
 			root.add(btn);			
 			ui(urp);
 		} catch (SerializationException e) {
@@ -77,13 +75,20 @@ public class UserRegisterTabExt {
 						userRegisterPanel1.setValue(event.getValue());
 					}
 				});
-		root.add(new Button("Register 1:", new ClickHandler() {
+		btn1.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent arg0) {
 				StartApp.service.register(userRegisterPanel1.getValue(),
 						StartApp.callback);
 			}
-		}));
+		});
+		btn2.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent arg0) {
+				StartApp.service.register(userRegisterPanel2.getValue(),
+						StartApp.callback);
+			}
+		});
 		root.add(new Label("Form Panel 2:"));
 		root.add(userRegisterPanel2);
 		root.add(new Button("Register 2:", new ClickHandler() {

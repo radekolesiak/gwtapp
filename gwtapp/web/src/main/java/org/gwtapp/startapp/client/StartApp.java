@@ -6,6 +6,7 @@ import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class StartApp implements EntryPoint {
@@ -29,7 +30,13 @@ public class StartApp implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		new UserRegisterTabExt();
+		Timer timer = new Timer(){
+			@Override
+			public void run() {
+				new UserRegisterTabExt();
+			}
+		};
+		timer.schedule(1000);
 	}
 
 }
