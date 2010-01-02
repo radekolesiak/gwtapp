@@ -18,7 +18,7 @@
 <tr>
 <th>Wrap and remove sample</th>
 <th>Wrap and download/upload sample</th>
-<th>Sample of changing type on<br /> the two different data model type panels</th>
+<th>Sample of changing a type on<br /> the two different data model type panels</th>
 </tr>
 <tr>
 <td valign="top">
