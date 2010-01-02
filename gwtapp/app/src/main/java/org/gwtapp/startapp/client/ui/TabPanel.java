@@ -29,7 +29,15 @@ public class TabPanel extends FormPanel<TabModel> {
 		userRegister = new FieldPanel<TabModel, UserRegisterModel>(this, urf,
 				urp);
 		urp.setFireOnUpdate(true);
-		
+
 		wrap();
+	}
+	
+	public UserRegisterModel getUserRegisterModel(){
+		return userRegister.getValue();
+	}
+	
+	public void setUserRegisterModel(UserRegisterModel userRegisterModel){
+		userRegister.setValue(userRegisterModel);
 	}
 }

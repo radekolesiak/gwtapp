@@ -12,4 +12,13 @@
 		<servlet-name>GwtApp</servlet-name>
 		<url-pattern>/gwt.startappentry/gwtapp.rpc</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Download</servlet-name>
+		<url-pattern>/gwt.startappentry/gwtapp-download.rpc</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Download</servlet-name>
+		<servlet-class>org.gwtapp.startapp.server.DownloadServiceImpl
+		</servlet-class>
+	</servlet>
 </web-app>

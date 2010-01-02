@@ -1,14 +1,22 @@
 package org.gwtapp.startapp.client;
 
+import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
+import org.gwtapp.startapp.client.api.DownloadService;
+import org.gwtapp.startapp.client.api.DownloadServiceAsync;
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.api.GwtAppServiceAsync;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.google.gwt.user.client.ui.Button;
 
 public class StartApp implements EntryPoint {
 
@@ -17,6 +25,12 @@ public class StartApp implements EntryPoint {
 
 	public final static GwtAppServiceAsync service = GWT
 			.create(GwtAppService.class);
+
+	public final static DownloadServiceAsync downloader = GWT
+			.create(DownloadService.class);
+	static {
+		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
+	}
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 		@Override
@@ -29,16 +43,38 @@ public class StartApp implements EntryPoint {
 		}
 	};
 
+	private final Button clear = new Button("Clear");
+	private final Button download = new Button("Download");
+
 	@Override
 	public void onModuleLoad() {
 		Timer timer = new Timer() {
 			@Override
 			public void run() {
-				new UserRegisterTabExt();
-				new UserRegisterTab();
+				ui();
 			}
 		};
 		timer.schedule(100);
 	}
 
+	private void ui() {
+		new UserRegisterTabExt();
+		final UserRegisterTab urt = new UserRegisterTab();
+		urt.getTabPanel().add(clear);
+		urt.getTabPanel().add(download);
+		clear.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				urt.getTabPanel().setUserRegisterModel(
+						new UserRegisterModelImpl());
+			}
+		});
+		download.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				downloader.download(urt.getTabPanel().getUserRegisterModel(),
+						callback);
+			}
+		});
+	}
 }
