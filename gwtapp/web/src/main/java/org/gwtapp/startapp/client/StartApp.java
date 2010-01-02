@@ -24,9 +24,6 @@ import com.google.gwt.user.client.ui.Button;
 
 public class StartApp implements EntryPoint {
 
-	// GAE + GWT:
-	// http://code.google.com/intl/pl/appengine/docs/java/tools/eclipse.html
-
 	public final static GwtAppServiceAsync service = GWT
 			.create(GwtAppService.class);
 
@@ -47,10 +44,9 @@ public class StartApp implements EntryPoint {
 		}
 	};
 
-	private final UploadPanel upload = new UploadPanel();
-
 	private final Button clear = new Button("Clear");
 	private final Button download = new Button("Download");
+	private final UploadPanel upload = new UploadPanel();
 
 	@Override
 	public void onModuleLoad() {
@@ -60,7 +56,7 @@ public class StartApp implements EntryPoint {
 				ui();
 			}
 		};
-		timer.schedule(100);
+		timer.schedule(1000);
 	}
 
 	private void ui() {
@@ -87,7 +83,7 @@ public class StartApp implements EntryPoint {
 				.addSubmitCompleteHandler(new HSubmitCompleteHandler<UserRegisterModel>() {
 					@Override
 					public void onFailure(Throwable e) {
-						Window.alert("There was a problem when uploading");
+						Window.alert("There was a problem while uploading");
 					}
 
 					@Override

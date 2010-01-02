@@ -18,7 +18,7 @@ public class UploadPanel extends FormPanel {
 
 	public final static String ACTION = "/gwt.startappentry/upload.rpc";
 
-	private final Button upload = new Button("Load");
+	private final Button upload = new Button("Upload");
 	private final FlowPanel panel = new FlowPanel();
 	private final FileUpload fileUpload = new FileUpload();
 	private final FlowPanel file = new FlowPanel();

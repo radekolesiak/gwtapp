@@ -16,7 +16,7 @@ import org.gwtapp.core.server.html.io.HUploadHttpServlet;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
-public class UploadImpl extends HUploadHttpServlet<UserRegisterModel> {
+public class UploadServiceImpl extends HUploadHttpServlet<UserRegisterModel> {
 
 	public final static int MAX_SIZE = 1024 * 1024;
 
