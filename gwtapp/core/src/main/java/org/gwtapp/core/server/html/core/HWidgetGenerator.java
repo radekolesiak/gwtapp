@@ -38,7 +38,9 @@ public class HWidgetGenerator {
 				throw new HWidgetGeneratorException(e);
 			}
 			createRPC(html, widget.getName(), rpc);
+			html.append("\n");
 			createDOM(html, widget);
+			html.append("\n");
 		}
 	}
 

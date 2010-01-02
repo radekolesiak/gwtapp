@@ -14,14 +14,14 @@
 	src='gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>'></script>
 </head>
 <body>
-<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
-<br />
-Applications that use GWTApp:<br />
-<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
-<br />
-<table>
+<table border cellspacing="5" cellpadding="15">
 <tr>
-<td>
+<th>Wrap and remove sample</th>
+<th>Wrap and download/upload sample</th>
+<th>Sample of changing type on<br /> the two different data model type panels</th>
+</tr>
+<tr>
+<td valign="top">
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();
 	model.setLogin("login_value");
@@ -31,7 +31,7 @@ Applications that use GWTApp:<br />
 %>
 <%=gUserRegister.getHTML()%>
 </td>
-<td>
+<td valign="top">
 <%
 	HTabPanel tabPanel = new HTabPanel();
 	tabPanel.setName(HWidgets.HTabPanel);
@@ -54,9 +54,20 @@ Source code files that are used to upload the form from a file on single HTTP re
 <li>The web.xml file - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/WEB-INF/web.xml?view=markup">web.xml</a></li>
 </ul>
 </td>
+<td valign="top">
+Source code files
+<ul>
+<li>Abstract UI Panel - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/core/src/main/java/org/gwtapp/core/client/ui/DelegatedPanel.java?view=markup">DelegatedPanel</a></li>
+</ul>
+</td>
 </tr>
+<tr><td colspan="3">
+<b>Applications that use GWTApp:</b><br />
+<br />
+<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
+</td></tr>
+<tr><td colspan="3"><a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a></td></tr>
 </table>
-
 <%if ("gwtapp-web.appspot.com".equals(request.getServerName())){ %>
 <!-- GA  -->
 <script type="text/javascript">

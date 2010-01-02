@@ -35,8 +35,9 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 	}
 
 	/**
-	 * Use this when a type of delegated viewer is different than the type of
-	 * this viewer
+	 * Use this when a delegated viewer's type is different than this viewer's
+	 * type. You also need to create custom data converter on getValue() and
+	 * setValue(X value, boolean fireEvents) methods implementation.
 	 */
 	protected HandlerRegistration addValueChangeHandler(
 			final ValueChangeHandler<X> handler, final HasValue<Y> delegated) {
