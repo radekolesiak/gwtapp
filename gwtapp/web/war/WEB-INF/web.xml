@@ -11,7 +11,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Download</servlet-name>
-		<url-pattern>/gwt.startappentry/gwtapp-download.rpc</url-pattern>
+		<url-pattern>/gwt.startappentry/download.rpc</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Download</servlet-name>
