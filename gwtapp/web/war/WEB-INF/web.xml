@@ -20,7 +20,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>Upload</servlet-name>
-		<servlet-class>org.gwtapp.startapp.server.UploadImpl</servlet-class>
+		<servlet-class>org.gwtapp.startapp.server.UploadServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Upload</servlet-name>
