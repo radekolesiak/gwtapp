@@ -14,6 +14,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ContainerPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T>, HasFireOnUpdate {
@@ -43,6 +44,11 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this.value = value;
 	}
 
+	protected void wrap(){
+		onAttach();
+		RootPanel.detachOnWindowClose(this);
+	}
+	
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);

@@ -1,6 +1,8 @@
 package org.gwtapp.core.client.ui.form;
 
 import org.gwtapp.core.client.data.ModelData;
+import org.gwtapp.core.client.html.ui.core.HValue;
+import org.gwtapp.core.client.html.ui.core.HWidget;
 import org.gwtapp.core.client.html.ui.form.HFieldPanel;
 
 import com.google.gwt.dom.client.Element;
@@ -12,6 +14,7 @@ import com.google.gwt.user.client.ui.ContainerPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class FieldPanel<M extends ModelData, T> extends ContainerPanel
@@ -35,7 +38,7 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	public <E extends Widget & HasValue<T>> FieldPanel(Element element,
 			final HasValue<M> model, String property, String label, E controller) {
 		this(element, model, property, controller);
-		Label labelPanel =new Label(label);
+		Label labelPanel = new Label(label);
 		labelPanel.addStyleName(Style.LABEL);
 		controller.addStyleName(Style.CONTROLLER);
 		add(labelPanel);
@@ -69,6 +72,16 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 				}
 			}
 		});
+	}
+
+	protected void wrap() {
+		onAttach();
+		RootPanel.detachOnWindowClose(this);
+	}
+
+	@SuppressWarnings("unchecked")
+	public <E extends HWidget & HValue<T>> E getController() {
+		return (E) controller;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public interface IValue<T> {
+public interface HValue<T> {
 	
 	void setValue(T value);
 

@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public class HTextBox extends HWidget implements IElementValue, IValue<String> {
+public class HTextBox extends HWidget implements IElementValue, HValue<String> {
 
 	public final static String TAG = "input";
 

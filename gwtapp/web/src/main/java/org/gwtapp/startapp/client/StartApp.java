@@ -2,6 +2,7 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.api.GwtAppServiceAsync;
+import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -30,13 +31,14 @@ public class StartApp implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		Timer timer = new Timer(){
+		Timer timer = new Timer() {
 			@Override
 			public void run() {
 				new UserRegisterTabExt();
+				new UserRegisterTab();
 			}
 		};
-		timer.schedule(1000);
+		timer.schedule(100);
 	}
 
 }

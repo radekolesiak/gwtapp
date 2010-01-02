@@ -2,20 +2,20 @@ package org.gwtapp.core.client.html.ui.form;
 
 import org.gwtapp.core.client.html.ui.core.HLabel;
 import org.gwtapp.core.client.html.ui.core.HPanel;
+import org.gwtapp.core.client.html.ui.core.HValue;
 import org.gwtapp.core.client.html.ui.core.HWidget;
-import org.gwtapp.core.client.html.ui.core.IValue;
 
-public class HFieldPanel<T> extends HPanel implements IValue<T> {
+public class HFieldPanel<T> extends HPanel implements HValue<T> {
 
 	private String name;
 	private String property;
-	private IValue<T> controller;
+	private HValue<T> controller;
 	private HLabel label = new HLabel();
 
 	public HFieldPanel() {
 	}
 
-	public <E extends HWidget & IValue<T>> HFieldPanel(String property,
+	public <E extends HWidget & HValue<T>> HFieldPanel(String property,
 			String label, E controller) {
 		this.property = property;
 		this.controller = controller;
@@ -24,6 +24,11 @@ public class HFieldPanel<T> extends HPanel implements IValue<T> {
 		addWidget(controller);
 	}
 
+	@SuppressWarnings("unchecked")
+	public  <E extends HWidget & HValue<T>> E getController(){
+		return (E)controller;
+	}
+	
 	public String getControllerId() {
 		return ((HWidget) controller).getId();
 	}

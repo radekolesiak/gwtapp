@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.html.ui.core;
 
-public class HLabel extends HWidget implements ILeaf, IValue<String> {
+public class HLabel extends HWidget implements ILeaf, HValue<String> {
 
 	public final static String TAG = "div";
 

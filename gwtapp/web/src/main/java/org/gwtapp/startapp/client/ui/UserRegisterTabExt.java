@@ -15,13 +15,13 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class UserRegisterTabExt {
 
-	private RootPanel root;
-	
+	private ComplexPanel root;
+
 	private final Button btn1 = new Button("Register 1:");
 	private final Button btn2 = new Button("Register 2:");
 
@@ -35,21 +35,21 @@ public class UserRegisterTabExt {
 			final UserRegisterPanel urp = new UserRegisterPanel(
 					hUserRegisterPanel);
 			root = Utils.updateToRootPanel(urp);
-
+			
 			final Button btn = new Button("Remove wrapped form");
 			btn.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
-					btn.setEnabled(false);
 					btn1.setEnabled(false);
+					btn.setEnabled(false);
 					root.remove(urp);
 				}
 			});
-			
+
 			root.add(new Label("Form Panel 1:"));
 			root.add(urp);
-			root.add(btn1);			
-			root.add(btn);			
+			root.add(btn1);
+			root.add(btn);
 			ui(urp);
 		} catch (SerializationException e) {
 			e.printStackTrace();
