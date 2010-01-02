@@ -2,14 +2,14 @@ package org.gwtapp.startapp.server;
 
 import org.gwtapp.core.server.html.io.HDownloadHttpServlet;
 import org.gwtapp.startapp.client.api.DownloadService;
-import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
 public class DownloadServiceImpl extends HDownloadHttpServlet implements
 		DownloadService {
 
 	@Override
-	public void download(UserRegister userRegister) {
+	public void download(UserRegisterModel userRegister) {
 		try {
 			if (userRegister != null) {
 				String content = new String(Utils.encode(userRegister));

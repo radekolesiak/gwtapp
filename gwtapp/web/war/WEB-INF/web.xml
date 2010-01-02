@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE web-app
-    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app version="2.4">
 	<display-name>GWT</display-name>
 	<servlet>
@@ -21,4 +18,12 @@
 		<servlet-class>org.gwtapp.startapp.server.DownloadServiceImpl
 		</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>org.gwtapp.startapp.server.UploadImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/gwt.startappentry/upload.rpc</url-pattern>
+	</servlet-mapping>
 </web-app>

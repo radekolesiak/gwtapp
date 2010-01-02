@@ -7,7 +7,7 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 
 public class Utils {
@@ -20,24 +20,24 @@ public class Utils {
 		return DEFAULT_NAME + "." + EXTENSION;
 	}
 
-	public static UserRegister decode(String str) {
+	public static UserRegisterModel decode(String str) {
 		return decode(str.getBytes());
 	}
 
-	public static UserRegister decode(byte[] array) {
-		UserRegister book = new UserRegisterModelImpl();
+	public static UserRegisterModel decode(byte[] array) {
+		UserRegisterModel urm = new UserRegisterModelImpl();
 		try {
 			XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(
 					new ByteArrayInputStream(array)));
-			book = (UserRegister) decoder.readObject();
+			urm = (UserRegisterModel) decoder.readObject();
 			decoder.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return book;
+		return urm;
 	}
 
-	public static byte[] encode(UserRegister book) {
+	public static byte[] encode(UserRegisterModel book) {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(output));
 		encoder.writeObject(book);
