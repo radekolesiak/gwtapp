@@ -16,15 +16,15 @@
 <body>
 <table border cellspacing="5" cellpadding="15">
 <tr>
-<th>Wrap and remove sample</th>
-<th>Wrap and download/upload sample</th>
+<th>Wrap and remove sample<br /><small>1 second delay to load GWT</small></th>
+<th>Wrap and download/upload sample<br /><small>1 second delay to load GWT</small></th>
 <th>Sample of changing a type on<br /> the two different data model type panels</th>
 </tr>
 <tr>
 <td valign="top">
 <%
 	UserRegisterModel model = new UserRegisterModelImpl();
-	model.setLogin("login_value");
+	model.setLogin("static html field to wrap");
 	HUserRegisterPanel userRegisterPanel = new HUserRegisterPanel(model);
 	userRegisterPanel.setName(HWidgets.HUserRegisterPanel);
 	HWidgetGenerator gUserRegister = new HWidgetGenerator(HWidgets.DICTIONARY, userRegisterPanel);
