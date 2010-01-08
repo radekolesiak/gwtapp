@@ -18,7 +18,7 @@
 <tr>
 <th>Wrap and remove sample<br /><small>1 second delay to load GWT</small></th>
 <th>Wrap and download/upload sample<br /><small>1 second delay to load GWT</small></th>
-<th>Sample of changing a type on<br /> different model data type panels</th>
+<th>Sample of changing a type on<br /> different data model type panels</th>
 </tr>
 <tr>
 <td valign="top">
