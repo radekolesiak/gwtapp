@@ -68,6 +68,8 @@ Source code files
 </td></tr>
 <tr><td colspan="3"><a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a></td></tr>
 </table>
+<b style="margin-left:15px;">Radek Olesiak</b>
+
 <%if ("gwtapp-web.appspot.com".equals(request.getServerName())){ %>
 <!-- GA  -->
 <script type="text/javascript">
@@ -82,5 +84,6 @@ pageTracker._trackPageview();
 </script>
 <!-- GA  -->
 <%}%>
+
 </body>
 </html>
