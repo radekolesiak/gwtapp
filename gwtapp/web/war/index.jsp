@@ -84,6 +84,32 @@ pageTracker._trackPageview();
 </script>
 <!-- GA  -->
 <%}%>
-
+<script>
+ String.prototype.RandomCase = function(){
+ 	return(
+ 		this.replace(
+ 			new RegExp("(t1)|(t2)|(t3)", "gi"),  
+ 			function($1){
+				document.write(" -"+$1+"- ");
+ 				if (Math.random() > .5){
+ 					return( $1.toLowerCase() );
+ 				} else {
+ 					return( $1.toUpperCase() );
+ 				}
+ 			}
+ 		)
+ 	);
+ }
+	var s = "tx[t3]yy[t1]zz[t1]aa";
+	var m = Array();
+	m["t1"] = "id=\"gwt-uid-1\"";
+	m["t2"] = "id=\"gwt-uid-2\"";
+	m["t3"] = "id=\"gwt-uid-3\"";
+	document.write(s.replace(
+			new RegExp("(t1)|(t2)|(t3)", "gi"),  
+ 			function($1){ return(m[$1]); }
+		)
+	);
+</script>
 </body>
 </html>

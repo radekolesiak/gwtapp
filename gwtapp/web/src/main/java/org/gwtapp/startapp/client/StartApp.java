@@ -2,12 +2,14 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
+import org.gwtapp.core.client.template.Templater;
 import org.gwtapp.startapp.client.api.DownloadService;
 import org.gwtapp.startapp.client.api.DownloadServiceAsync;
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.client.ui.TemplatePanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
@@ -32,6 +34,12 @@ public class StartApp implements EntryPoint {
 	static {
 		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
+
+	/**
+	 * Templater service like "GwtAppServiceAsync service" and
+	 * "DownloadServiceAsync downloader"
+	 */
+	public final static Templater templater = new Templater("/templates/");
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 		@Override
@@ -65,6 +73,7 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
+		urt.getTabPanel().add(new TemplatePanel());
 		clear.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
