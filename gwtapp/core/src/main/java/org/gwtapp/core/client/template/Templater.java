@@ -3,6 +3,9 @@ package org.gwtapp.core.client.template;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gwtapp.core.client.Utils;
+
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -10,8 +13,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Templater {
 
-	// TODO important: cache templates in the main html page by means of Dictionary !!!!
-	
+	// TODO important: cache templates in the main html page by means of
+	// Dictionary !!!!
+
 	TemplateRepository repository = new TemplateRepository();
 
 	public Templater() {
@@ -62,7 +66,7 @@ public class Templater {
 					}
 					handler.onTemplate(new TemplateHTMLPanel(replaceTemplate(
 							template, ids)));
-				} catch (Exception e) {
+				} catch (Throwable e) {
 					handler.onFailure(e);
 				}
 			}
@@ -74,12 +78,34 @@ public class Templater {
 		});
 	}
 
-	private String buildRegExp(Map<String, String> ids) {
-		return "";
-	}
+	private native String replaceTemplate(String template, String regexp,
+			JavaScriptObject array)/*-{
+									return template.replace(
+									new RegExp(regexp, "gi"),  
+									function($1){
+										if($1 && array[$1]){
+											return("id=\""+array[$1]+"\"");
+										} else {
+											return("");
+										}
+									}
+									)
+									}-*/;
 
 	private String replaceTemplate(String template, Map<String, String> ids) {
-		return template;
+		String regexp = "";
+		for (String name : ids.keySet()) {
+			if (!regexp.isEmpty()) {
+				regexp += "|";
+			}
+			regexp += "(template=\"" + name + "\")";
+		}
+		JavaScriptObject array = Utils.createArray();
+		for (Map.Entry<String, ?> entry : ids.entrySet()) {
+			Utils.addToArray(array, "template=\"" + entry.getKey() + "\"",
+					entry.getValue() + "");
+		}
+		return replaceTemplate(template, regexp, array);
 	}
 
 	public void setPath(String path) {

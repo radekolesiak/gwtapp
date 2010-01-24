@@ -16,7 +16,7 @@ public class TemplateRepository {
 
 	private String path;
 	private Map<String, String> templates = new HashMap<String, String>();
-	private String uid = HTMLPanel.createUniqueId();
+	private String uid = "";//HTMLPanel.createUniqueId();
 
 	public TemplateRepository() {
 		this("/");
