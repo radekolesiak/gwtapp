@@ -100,13 +100,13 @@ pageTracker._trackPageview();
  		)
  	);
  }
-	var s = "tx[t3]yy[t1]zz[t1]aa";
+	var s = "tx[template=\"3\"]yy[template=\"1\"]zz[template=\"2\"]aa";
 	var m = Array();
-	m["t1"] = "id=\"gwt-uid-1\"";
-	m["t2"] = "id=\"gwt-uid-2\"";
-	m["t3"] = "id=\"gwt-uid-3\"";
+	m["template=\"1\""] = "id=\"gwt-uid-1\"";
+	m["template=\"2\""] = "id=\"gwt-uid-2\"";
+	m["template=\"3\""] = "id=\"gwt-uid-3\"";
 	document.write(s.replace(
-			new RegExp("(t1)|(t2)|(t3)", "gi"),  
+			new RegExp("(template=\"1\")|(template=\"2\")|(template=\"3\")", "gi"),  
  			function($1){ return(m[$1]); }
 		)
 	);
