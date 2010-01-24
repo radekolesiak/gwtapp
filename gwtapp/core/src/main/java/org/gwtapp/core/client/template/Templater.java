@@ -10,6 +10,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Templater {
 
+	// TODO important: cache templates in the main html page by means of Dictionary !!!!
+	
 	TemplateRepository repository = new TemplateRepository();
 
 	public Templater() {
