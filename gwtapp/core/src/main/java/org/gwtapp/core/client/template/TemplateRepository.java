@@ -7,7 +7,6 @@ import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.user.client.ui.HTMLPanel;
 
 ;
 public class TemplateRepository {
@@ -16,7 +15,6 @@ public class TemplateRepository {
 
 	private String path;
 	private Map<String, String> templates = new HashMap<String, String>();
-	private String uid = "";//HTMLPanel.createUniqueId();
 
 	public TemplateRepository() {
 		this("/");
@@ -34,22 +32,17 @@ public class TemplateRepository {
 		return path;
 	}
 
-	protected String getUID() {
-		return uid;
-	}
-
 	public void load(String name, TemplateRepositoryHandler handler) {
 		load(name, handler, true);
 	}
 
 	public void load(String name, final TemplateRepositoryHandler handler,
 			boolean cache) {
-		final String uid = getUID();
 		if (cache && templates.containsKey(name)) {
-			handler.onTemplate(templates.get(name), uid);
+			handler.onTemplate(templates.get(name));
 		} else {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
-					getPath() + name + "?uid=" + uid);
+					getPath() + name);
 			try {
 				builder.sendRequest(null, new RequestCallback() {
 					public void onError(Request request, Throwable e) {
@@ -59,7 +52,7 @@ public class TemplateRepository {
 					public void onResponseReceived(Request request,
 							Response response) {
 						if (STATUS_CODE_OK == response.getStatusCode()) {
-							handler.onTemplate(response.getText(), uid);
+							handler.onTemplate(response.getText());
 						} else {
 							// TODO support RPC exceptions
 							handler.onFailure(new IllegalStateException(

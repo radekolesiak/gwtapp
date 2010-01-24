@@ -34,7 +34,7 @@ public class Templater {
 		}
 		repository.load(name, new TemplateRepositoryHandler() {
 			@Override
-			public void onTemplate(String template, String uid) {
+			public void onTemplate(String template) {
 				try {
 					class TemplateHTMLPanel extends HTMLPanel {
 						public TemplateHTMLPanel(String html) {
