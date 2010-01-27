@@ -2,7 +2,7 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
-import org.gwtapp.core.client.template.Templater;
+import org.gwtapp.core.client.template.HttpTemplater;
 import org.gwtapp.startapp.client.api.DownloadService;
 import org.gwtapp.startapp.client.api.DownloadServiceAsync;
 import org.gwtapp.startapp.client.api.GwtAppService;
@@ -39,7 +39,7 @@ public class StartApp implements EntryPoint {
 	 * Templater service like "GwtAppServiceAsync service" and
 	 * "DownloadServiceAsync downloader"
 	 */
-	public final static Templater templater = new Templater("/templates/");
+	public final static HttpTemplater templater = new HttpTemplater("/templates/");
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 		@Override

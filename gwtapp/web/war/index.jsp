@@ -70,7 +70,7 @@ Source code files
 </table>
 <b style="margin-left:15px;">Radek Olesiak</b>
 
-<%if ("gwtapp-web.appspot.com".equals(request.getServerName())){ %>
+<%if ("app.gwtapp.org".equals(request.getServerName())){ %>
 <!-- GA  -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

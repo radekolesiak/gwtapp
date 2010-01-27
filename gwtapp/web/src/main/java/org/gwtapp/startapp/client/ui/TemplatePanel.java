@@ -3,8 +3,8 @@ package org.gwtapp.startapp.client.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.template.TemplateHandler;
 import org.gwtapp.core.client.template.TemplaterHandler;
+import org.gwtapp.core.client.template.WidgetHandler;
 import org.gwtapp.startapp.client.StartApp;
 
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -16,20 +16,20 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplatePanel extends FlowPanel {
 
 	public TemplatePanel() {
-		Map<String, TemplateHandler> th = new HashMap<String, TemplateHandler>();
-		th.put("t1", new TemplateHandler() {
+		Map<String, WidgetHandler> wh = new HashMap<String, WidgetHandler>();
+		wh.put("t1", new WidgetHandler() {
 			@Override
-			public Widget onTemplate(String id) {
+			public Widget onWidget(String id) {
 				return new TextBox();
 			}
 		});
-		th.put("t2", new TemplateHandler() {
+		wh.put("t2", new WidgetHandler() {
 			@Override
-			public Widget onTemplate(String id) {
+			public Widget onWidget(String id) {
 				return new TextBox();
 			}
 		});
-		StartApp.templater.template("startapp.jsp", new TemplaterHandler() {
+		StartApp.templater.template("startapp.jsp", wh, new TemplaterHandler() {
 			@Override
 			public void onTemplate(HTMLPanel panel) {
 				add(panel);
@@ -40,7 +40,6 @@ public class TemplatePanel extends FlowPanel {
 				add(new Label("ERROR"));
 				e.printStackTrace();
 			}
-		}, th);
-
+		});
 	}
 }

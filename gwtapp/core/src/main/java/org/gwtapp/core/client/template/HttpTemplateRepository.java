@@ -9,18 +9,18 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 
 ;
-public class TemplateRepository {
+public class HttpTemplateRepository {
 
 	private static final int STATUS_CODE_OK = 200;
 
 	private String path;
 	private Map<String, String> templates = new HashMap<String, String>();
 
-	public TemplateRepository() {
+	public HttpTemplateRepository() {
 		this("/");
 	}
 
-	public TemplateRepository(String path) {
+	public HttpTemplateRepository(String path) {
 		setPath(path);
 	}
 
@@ -64,7 +64,6 @@ public class TemplateRepository {
 			} catch (Throwable e) {
 				handler.onFailure(e);
 			}
-
 		}
 	}
 }
