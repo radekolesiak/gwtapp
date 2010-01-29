@@ -75,8 +75,8 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
-		urt.getTabPanel().add(new ExternalTemplatingPanel());
 		urt.getTabPanel().add(new InternalTemplatingPanel());
+		urt.getTabPanel().add(new ExternalTemplatingPanel());
 		clear.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
