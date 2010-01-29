@@ -8,7 +8,6 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 
-;
 public class HttpTemplateRepository {
 
 	private static final int STATUS_CODE_OK = 200;

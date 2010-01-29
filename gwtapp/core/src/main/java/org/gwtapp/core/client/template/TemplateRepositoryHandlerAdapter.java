@@ -3,9 +3,6 @@ package org.gwtapp.core.client.template;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.Utils;
-
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -48,7 +45,8 @@ public class TemplateRepositoryHandlerAdapter implements
 						Element element = DOM.getElementById(id);
 						if (element != null) {
 							String style = element.getAttribute("class");
-							Widget widget = widgetHandlers.get(field).onWidget(id);
+							Widget widget = widgetHandlers.get(field).onWidget(
+									id);
 							if (style != null && !style.isEmpty()) {
 								widget.addStyleName(style);
 							}
@@ -57,8 +55,8 @@ public class TemplateRepositoryHandlerAdapter implements
 					}
 				};
 			}
-			handler.onTemplate(new TemplateHTMLPanel(replaceTemplate(template,
-					ids)));
+			handler.onTemplate(new TemplateHTMLPanel(TemplateUtils
+					.replaceTemplate(template, ids)));
 		} catch (Throwable e) {
 			handler.onFailure(e);
 		}
@@ -67,35 +65,5 @@ public class TemplateRepositoryHandlerAdapter implements
 	@Override
 	public void onFailure(Throwable e) {
 		handler.onFailure(e);
-	}
-
-	private native String replaceTemplate(String template, String regexp,
-			JavaScriptObject array)/*-{
-									return template.replace(
-									new RegExp(regexp, "gi"),  
-									function($1){
-										if($1 && array[$1]){
-											return("id=\""+array[$1]+"\"");
-										} else {
-											return("");
-										}
-									}
-									)
-									}-*/;
-
-	private String replaceTemplate(String template, Map<String, String> ids) {
-		String regexp = "";
-		for (String name : ids.keySet()) {
-			if (!regexp.isEmpty()) {
-				regexp += "|";
-			}
-			regexp += "(template=\"" + name + "\")";
-		}
-		JavaScriptObject array = Utils.createArray();
-		for (Map.Entry<String, ?> entry : ids.entrySet()) {
-			Utils.addToArray(array, "template=\"" + entry.getKey() + "\"",
-					entry.getValue() + "");
-		}
-		return replaceTemplate(template, regexp, array);
 	}
 }

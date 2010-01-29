@@ -31,4 +31,10 @@ public class HttpTemplater implements Templater {
 	public String getPath() {
 		return repository.getPath();
 	}
+
+	@Override
+	public void template(String name, TemplaterHandler handler) {
+		// TODO Auto-generated method stub
+		
+	}
 }
