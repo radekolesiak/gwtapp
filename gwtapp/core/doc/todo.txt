@@ -1,0 +1,5 @@
+1. 
+	- create (or replace existing) FormPanel and FieldPanel that extends TemplatePanel
+	- no label field is necessary in that case
+	- don't re-add wrapped fields in the form
+2. use TemplatePanels to generate static page first and then wrap elements
