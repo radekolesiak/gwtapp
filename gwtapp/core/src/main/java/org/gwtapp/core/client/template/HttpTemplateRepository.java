@@ -13,7 +13,7 @@ public class HttpTemplateRepository {
 	private static final int STATUS_CODE_OK = 200;
 
 	private String path;
-	private Map<String, String> templates = new HashMap<String, String>();
+	private Map<String, Template> templates = new HashMap<String, Template>();
 
 	public HttpTemplateRepository() {
 		this("/");
@@ -52,7 +52,8 @@ public class HttpTemplateRepository {
 							Response response) {
 						// TODO support RPC exceptions in the header
 						if (STATUS_CODE_OK == response.getStatusCode()) {
-							handler.onTemplate(response.getText());
+							handler.onTemplate(new Template("div", "", response
+									.getText()));
 						} else {
 							handler.onFailure(new IllegalStateException(
 									"Response Status Code = "

@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.client.ui;
 
+import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.client.template.WidgetHandler;
 import org.gwtapp.core.client.template.ui.TemplatePanel;
 
@@ -14,8 +15,8 @@ public class ExternalTemplatingPanel extends TemplatePanel<Void> {
 	private final TextBox t1 = new TextBox();
 	private final TextBox t2 = new TextBox();
 
-	public ExternalTemplatingPanel() {
-		super("p");
+	public ExternalTemplatingPanel(Template template) {
+		super(template);
 		ValueChangeHandler<String> handler = new ValueChangeHandler<String>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) {

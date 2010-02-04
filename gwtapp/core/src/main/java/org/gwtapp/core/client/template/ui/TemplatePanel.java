@@ -29,7 +29,7 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	private final Map<String, WidgetHandler> widgetHandlers = new HashMap<String, WidgetHandler>();
 
 	private boolean isTemplated = false;
-	private String template = "";
+	private Template template = new Template();
 
 	private T value;
 
@@ -47,7 +47,7 @@ public class TemplatePanel<T> extends HTMLPanel implements
 
 	public TemplatePanel(Template template) {
 		super(template.getTag(), "");
-		this.template = template.getHtml();
+		this.template = template;
 		addStyleName(Style.TEMPLATE_PANEL);
 		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
 			addStyleName(template.getStyle());
@@ -65,17 +65,15 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		if (isTemplated) {
-			addWidgets();
-		}
+		template();
 	}
 
 	private void addWidgets() {
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
-		DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(template,
-				ids));
+		DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(template
+				.getHtml(), ids));
 		for (Map.Entry<String, String> entry : ids.entrySet()) {
 			String field = entry.getKey();
 			String id = entry.getValue();
@@ -95,8 +93,10 @@ public class TemplatePanel<T> extends HTMLPanel implements
 		template(template);
 	}
 
-	public void template(String template) {
-		if (!isTemplated) {
+	public void template(Template template) {
+		if (!isTemplated)
+			;
+		{
 			isTemplated = true;
 			this.template = template;
 			if (isAttached()) {
@@ -111,7 +111,7 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	@Override
-	public void onTemplate(String template) {
+	public void onTemplate(Template template) {
 		template(template);
 	}
 

@@ -3,6 +3,8 @@ package org.gwtapp.startapp.client;
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
 import org.gwtapp.core.client.template.HttpTemplateRepository;
+import org.gwtapp.core.client.template.Template;
+import org.gwtapp.core.client.template.TemplateRepositoryHandlerAdapter;
 import org.gwtapp.startapp.client.api.DownloadService;
 import org.gwtapp.startapp.client.api.DownloadServiceAsync;
 import org.gwtapp.startapp.client.api.GwtAppService;
@@ -54,9 +56,6 @@ public class StartApp implements EntryPoint {
 	private final Button download = new Button("Download");
 	private final UploadPanel upload = new UploadPanel();
 
-	private final InternalTemplatingPanel internalTemplatingPanel = new InternalTemplatingPanel();
-	private final ExternalTemplatingPanel externalTemplatingPanel = new ExternalTemplatingPanel();
-
 	@Override
 	public void onModuleLoad() {
 		Timer timer = new Timer() {
@@ -74,12 +73,17 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
-		urt.getTabPanel().add(internalTemplatingPanel);
-		urt.getTabPanel().add(externalTemplatingPanel);
-		
+		urt.getTabPanel().add(new InternalTemplatingPanel());
 		templateService.load("startapp.jsp?type=external",
-				externalTemplatingPanel);
-		
+				new TemplateRepositoryHandlerAdapter() {
+					@Override
+					public void onTemplate(Template template) {
+						template.setTag("p");
+						urt.getTabPanel().add(
+								new ExternalTemplatingPanel(template));
+					}
+				});
+
 		clear.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
