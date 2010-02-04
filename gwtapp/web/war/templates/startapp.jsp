@@ -1,4 +1,3 @@
-<br />
 <%if("internal".equals(request.getParameter("type"))){ %>
 <div style="background-color:#efef8f;">
 <%} else if("external".equals(request.getParameter("type"))){ %>

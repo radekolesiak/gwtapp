@@ -38,6 +38,14 @@ public class StartApp implements EntryPoint {
 		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
+	public static Template getTemplateFromSynchronizedRepositoryMockup() {
+		// This can be e.g. Dictionary
+		return new Template(
+				"p",
+				"",
+				"<div style=\"background-color:#efcfcf;\">@This is HTML template - begin<br /><ul><li>Template - <a href=\"/templates/startapp.jsp\">startapp.jsp</a></li></ul><div><input template=\"t1\" type=\"text\" style=\"width:250px;\" class=\"style-t1\" value=\"it should be replaced to the empty field\"/></div><div>BBB<div>CCC<input template=\"t2\" type=\"text\" style=\"width:250px;\" class=\"style-t2\" value=\"it should be replaced to the empty field\"/></div></div>@This is HTML template - end</div>");
+	}
+
 	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
 			"/templates/");
 
@@ -74,6 +82,9 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
 		urt.getTabPanel().add(new InternalTemplatingPanel());
+		urt.getTabPanel().add(
+				new ExternalTemplatingPanel(
+						getTemplateFromSynchronizedRepositoryMockup()));
 		templateService.load("startapp.jsp?type=external",
 				new TemplateRepositoryHandlerAdapter() {
 					@Override
