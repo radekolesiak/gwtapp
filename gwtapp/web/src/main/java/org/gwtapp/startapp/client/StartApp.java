@@ -3,7 +3,6 @@ package org.gwtapp.startapp.client;
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
 import org.gwtapp.core.client.template.HttpTemplateRepository;
-import org.gwtapp.core.client.template.HttpTemplater;
 import org.gwtapp.startapp.client.api.DownloadService;
 import org.gwtapp.startapp.client.api.DownloadServiceAsync;
 import org.gwtapp.startapp.client.api.GwtAppService;
@@ -25,7 +24,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Label;
 
 public class StartApp implements EntryPoint {
 
@@ -38,9 +36,6 @@ public class StartApp implements EntryPoint {
 		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
-	/* Two similar ways of templating. */
-	public final static HttpTemplater templater = new HttpTemplater(
-			"/templates/");
 	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
 			"/templates/");
 
@@ -59,6 +54,9 @@ public class StartApp implements EntryPoint {
 	private final Button download = new Button("Download");
 	private final UploadPanel upload = new UploadPanel();
 
+	private final InternalTemplatingPanel internalTemplatingPanel = new InternalTemplatingPanel();
+	private final ExternalTemplatingPanel externalTemplatingPanel = new ExternalTemplatingPanel();
+
 	@Override
 	public void onModuleLoad() {
 		Timer timer = new Timer() {
@@ -76,9 +74,12 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
-		urt.getTabPanel().add(new InternalTemplatingPanel());
-		urt.getTabPanel().add(new ExternalTemplatingPanel());
-		urt.getTabPanel().add(new Label("-------------------"));
+		urt.getTabPanel().add(internalTemplatingPanel);
+		urt.getTabPanel().add(externalTemplatingPanel);
+		
+		templateService.load("startapp.jsp?type=external",
+				externalTemplatingPanel);
+		
 		clear.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

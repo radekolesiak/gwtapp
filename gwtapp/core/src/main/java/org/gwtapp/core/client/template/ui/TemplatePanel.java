@@ -34,11 +34,11 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	private T value;
 
 	public TemplatePanel() {
-		this("");
+		this("div");
 	}
 
-	public TemplatePanel(String html) {
-		this("div", html);
+	public TemplatePanel(String tag) {
+		this(tag, "");
 	}
 
 	public TemplatePanel(String tag, String html) {
@@ -55,7 +55,6 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	public void addWidgetHandler(String name, WidgetHandler handler) {
-		System.out.println("addWidgetHandler");
 		widgetHandlers.put(name, handler);
 	}
 
@@ -66,14 +65,12 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		System.out.println("onAttach");
 		if (isTemplated) {
 			addWidgets();
 		}
 	}
 
 	private void addWidgets() {
-		System.out.println("addWidgets");
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
@@ -115,7 +112,6 @@ public class TemplatePanel<T> extends HTMLPanel implements
 
 	@Override
 	public void onTemplate(String template) {
-		System.out.println("onTemplate");
 		template(template);
 	}
 
