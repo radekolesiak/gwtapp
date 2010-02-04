@@ -3,6 +3,7 @@ package org.gwtapp.core.client.template.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.client.template.TemplateRepositoryHandler;
 import org.gwtapp.core.client.template.TemplateUtils;
 import org.gwtapp.core.client.template.WidgetHandler;
@@ -20,6 +21,11 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplatePanel<T> extends HTMLPanel implements
 		TemplateRepositoryHandler, HasValue<T> {
 
+	public static class Style {
+		public final static String TEMPLATE_PANEL = "templatePanel";
+	}
+
+	private final Map<String, String> ids = new HashMap<String, String>();
 	private final Map<String, WidgetHandler> widgetHandlers = new HashMap<String, WidgetHandler>();
 
 	private boolean isTemplated = false;
@@ -28,10 +34,28 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	private T value;
 
 	public TemplatePanel() {
-		super("");
+		this("");
+	}
+
+	public TemplatePanel(String html) {
+		this("div", html);
+	}
+
+	public TemplatePanel(String tag, String html) {
+		this(new Template(tag, "", html));
+	}
+
+	public TemplatePanel(Template template) {
+		super(template.getTag(), "");
+		this.template = template.getHtml();
+		addStyleName(Style.TEMPLATE_PANEL);
+		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
+			addStyleName(template.getStyle());
+		}
 	}
 
 	public void addWidgetHandler(String name, WidgetHandler handler) {
+		System.out.println("addWidgetHandler");
 		widgetHandlers.put(name, handler);
 	}
 
@@ -42,13 +66,14 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	@Override
 	protected void onAttach() {
 		super.onAttach();
+		System.out.println("onAttach");
 		if (isTemplated) {
 			addWidgets();
 		}
 	}
 
 	private void addWidgets() {
-		final Map<String, String> ids = new HashMap<String, String>();
+		System.out.println("addWidgets");
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
@@ -69,6 +94,20 @@ public class TemplatePanel<T> extends HTMLPanel implements
 		}
 	}
 
+	public void template() {
+		template(template);
+	}
+
+	public void template(String template) {
+		if (!isTemplated) {
+			isTemplated = true;
+			this.template = template;
+			if (isAttached()) {
+				addWidgets();
+			}
+		}
+	}
+
 	@Override
 	public void onFailure(Throwable e) {
 		GWT.getUncaughtExceptionHandler().onUncaughtException(e);
@@ -76,13 +115,8 @@ public class TemplatePanel<T> extends HTMLPanel implements
 
 	@Override
 	public void onTemplate(String template) {
-		if (!isTemplated) {
-			this.template = template;
-			isTemplated = true;
-			if (isAttached()) {
-				addWidgets();
-			}
-		}
+		System.out.println("onTemplate");
+		template(template);
 	}
 
 	@Override

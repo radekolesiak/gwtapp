@@ -25,6 +25,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
 
 public class StartApp implements EntryPoint {
 
@@ -77,6 +78,7 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(upload);
 		urt.getTabPanel().add(new InternalTemplatingPanel());
 		urt.getTabPanel().add(new ExternalTemplatingPanel());
+		urt.getTabPanel().add(new Label("-------------------"));
 		clear.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

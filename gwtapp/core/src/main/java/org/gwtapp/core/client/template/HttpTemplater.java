@@ -1,7 +1,5 @@
 package org.gwtapp.core.client.template;
 
-import java.util.Map;
-
 public class HttpTemplater implements Templater {
 
 	// TODO important: cache templates in the main html page by means of
@@ -18,10 +16,9 @@ public class HttpTemplater implements Templater {
 	}
 
 	@Override
-	public void template(String name,
-			Map<String, WidgetHandler> widgetHandlers, TemplaterHandler handler) {
+	public void template(String name, TemplaterHandler handler) {
 		repository.load(name, new TemplateRepositoryHandlerAdapter(name,
-				widgetHandlers, handler));
+				handler));
 	}
 
 	public void setPath(String path) {
@@ -32,9 +29,4 @@ public class HttpTemplater implements Templater {
 		return repository.getPath();
 	}
 
-	@Override
-	public void template(String name, TemplaterHandler handler) {
-		// TODO Auto-generated method stub
-		
-	}
 }
