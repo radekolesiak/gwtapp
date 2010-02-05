@@ -8,7 +8,7 @@
   <short-name></short-name>
  <tag>
     <name>template</name>
-    <tag-class>org.gwtapp.core.client.template.TemplateTag</tag-class>
+    <tag-class>org.gwtapp.core.server.template.TemplateTag</tag-class>
     <body-content>JSP</body-content>
     <attribute>
       <name>tag</name>
