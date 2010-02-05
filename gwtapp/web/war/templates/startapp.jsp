@@ -10,7 +10,7 @@
 <%} %>
 	@This is HTML template - begin<br />
 	<ul>
-		<li>Template - <a href="/templates/startapp.jsp">startapp.jsp</a></li>
+		<li>Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a> (<a href="/templates/startapp.jsp">view</a>)</li>
 		<%if("internal".equals(request.getParameter("type"))){ %>
 		<li>GWT Panel - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/InternalTemplatingPanel.java?view=markup">InternalTemplatingPanel.java</a></li>
 		<%} %>
