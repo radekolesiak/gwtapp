@@ -1,8 +1,6 @@
-<%@ page import = "org.gwtapp.core.client.template.Template" %>
-<%
-response.addHeader(Template.Header.TAG, "p");
-response.addHeader(Template.Header.STYLE, "startapp");
-%>
+<%@ taglib uri="/template.tld" prefix="t" %>
+<t:template tag="p"></t:template>
+
 <%if("internal".equals(request.getParameter("type"))){ %>
 <div style="background-color:#efef8f;">
 <%} else if("external".equals(request.getParameter("type"))){ %>

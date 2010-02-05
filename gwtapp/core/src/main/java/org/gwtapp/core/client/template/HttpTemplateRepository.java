@@ -68,8 +68,8 @@ public class HttpTemplateRepository {
 					private String getHeader(Response response, String header,
 							String def) {
 						try {
-							if (response.getHeader(Template.Header.TAG) != null) {
-								return response.getHeader(Template.Header.TAG);
+							if (response.getHeader(header) != null) {
+								return response.getHeader(header);
 							}
 						} catch (Exception e) {
 						}
