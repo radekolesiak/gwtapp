@@ -2,6 +2,11 @@ package org.gwtapp.core.client.template;
 
 public class Template {
 
+	public static class Header {
+		public final static String TAG = "Template-Tag";
+		public final static String STYLE = "Template-Style";
+	}
+
 	private String tag = "div";
 	private String style = "";
 	private String html = "";

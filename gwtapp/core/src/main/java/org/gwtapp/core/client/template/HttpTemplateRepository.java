@@ -50,15 +50,30 @@ public class HttpTemplateRepository {
 
 					public void onResponseReceived(Request request,
 							Response response) {
-						// TODO support RPC exceptions in the header
+						// TODO support RPC exceptions into header
 						if (STATUS_CODE_OK == response.getStatusCode()) {
-							handler.onTemplate(new Template("div", "", response
-									.getText()));
+							String tag = getHeader(response,
+									Template.Header.TAG, "div");
+							String style = getHeader(response,
+									Template.Header.STYLE, "");
+							handler.onTemplate(new Template(tag, style,
+									response.getText()));
 						} else {
 							handler.onFailure(new IllegalStateException(
 									"Response Status Code = "
 											+ response.getStatusCode()));
 						}
+					}
+
+					private String getHeader(Response response, String header,
+							String def) {
+						try {
+							if (response.getHeader(Template.Header.TAG) != null) {
+								return response.getHeader(Template.Header.TAG);
+							}
+						} catch (Exception e) {
+						}
+						return def;
 					}
 				});
 			} catch (Throwable e) {

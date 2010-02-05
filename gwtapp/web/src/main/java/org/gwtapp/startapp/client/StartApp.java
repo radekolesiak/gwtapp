@@ -72,7 +72,11 @@ public class StartApp implements EntryPoint {
 				ui();
 			}
 		};
-		timer.schedule(1000);
+		if (Window.Location.getHostName().equals("localhost")) {
+			timer.schedule(10);
+		} else {
+			timer.schedule(1000);
+		}
 	}
 
 	private void ui() {
@@ -89,7 +93,6 @@ public class StartApp implements EntryPoint {
 				new TemplateRepositoryHandlerAdapter() {
 					@Override
 					public void onTemplate(Template template) {
-						template.setTag("p");
 						urt.getTabPanel().add(
 								new ExternalTemplatingPanel(template));
 					}
