@@ -67,7 +67,8 @@ public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
 		fields.remove(name);
 	}
 
-	public HasValue<?> getField(String fieldName) {
+	@SuppressWarnings("unchecked")
+	public HasValue getField(String fieldName) {
 		return fields.get(fieldName);
 	}
 
