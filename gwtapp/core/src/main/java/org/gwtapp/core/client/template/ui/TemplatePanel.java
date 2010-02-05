@@ -15,11 +15,12 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplatePanel<T> extends HTMLPanel implements
-		TemplateRepositoryHandler, HasValue<T> {
+		TemplateRepositoryHandler, HasValue<T>, HasName {
 
 	public static class Style {
 		public final static String TEMPLATE_PANEL = "templatePanel";
@@ -28,9 +29,9 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	private final Map<String, String> ids = new HashMap<String, String>();
 	private final Map<String, WidgetHandler> widgetHandlers = new HashMap<String, WidgetHandler>();
 
-	private boolean isTemplated = false;
 	private Template template = new Template();
 
+	private String name;
 	private T value;
 
 	public TemplatePanel() {
@@ -54,6 +55,25 @@ public class TemplatePanel<T> extends HTMLPanel implements
 		}
 	}
 
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public void add(Widget w) {
+		try {
+			add(w, getElement());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void addWidgetHandler(String name, WidgetHandler handler) {
 		widgetHandlers.put(name, handler);
 	}
@@ -65,10 +85,11 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		template();
+		onTemplate(template);
 	}
 
 	private void addWidgets() {
+		clear();
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
@@ -87,6 +108,10 @@ public class TemplatePanel<T> extends HTMLPanel implements
 				addAndReplaceElement(widget, id);
 			}
 		}
+		onAddWidgets();
+	}
+
+	public void onAddWidgets() {
 	}
 
 	public void template() {
@@ -94,15 +119,8 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	public void template(Template template) {
-		if (!isTemplated)
-			;
-		{
-			isTemplated = true;
-			this.template = template;
-			if (isAttached()) {
-				addWidgets();
-			}
-		}
+		this.template = template;
+		addWidgets();
 	}
 
 	@Override

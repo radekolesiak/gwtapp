@@ -20,9 +20,9 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T>, HasFireOnUpdate {
 
 	public final static class Style {
-		public final static String FORM_PANEL="formPanel";
+		public final static String FORM_PANEL = "formPanel";
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private final Map<String, FieldPanel> fields = new HashMap<String, FieldPanel>();
 	private boolean fireOnUpdate = false;
@@ -44,11 +44,11 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this.value = value;
 	}
 
-	protected void wrap(){
+	protected void wrap() {
 		onAttach();
 		RootPanel.detachOnWindowClose(this);
 	}
-	
+
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
 		fields.put(field.getProperty(), field);
@@ -65,10 +65,10 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <X> FieldPanel<T, X> getField(String fieldName){
+	public <X> FieldPanel<T, X> getField(String fieldName) {
 		return fields.get(fieldName);
 	}
-	
+
 	@Override
 	public String getName() {
 		return name;

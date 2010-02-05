@@ -2,7 +2,10 @@ package org.gwtapp.startapp.client.ui;
 
 import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.client.template.WidgetHandler;
-import org.gwtapp.core.client.template.ui.TemplatePanel;
+import org.gwtapp.core.client.template.ui.TemplateFormPanel;
+import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -10,32 +13,43 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ExternalTemplatingPanel extends TemplatePanel<Void> {
+public class ExternalTemplatingPanel extends
+		TemplateFormPanel<UserRegisterModel> {
 
-	private final TextBox t1 = new TextBox();
-	private final TextBox t2 = new TextBox();
+	private final TextBox login = new TextBox();
+	private final TextBox password = new TextBox();
+	private final TextBox email = new TextBox();
 
 	public ExternalTemplatingPanel(Template template) {
-		super(template);
-		ValueChangeHandler<String> handler = new ValueChangeHandler<String>() {
+		super(new UserRegisterModelImpl(), template);
+
+		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
+			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {
 				Window.alert("New value is: " + event.getValue());
 			}
-		};
-		t1.addValueChangeHandler(handler);
-		t2.addValueChangeHandler(handler);
-		addWidgetHandler("t1", new WidgetHandler() {
+		});
+
+		addField(UserRegister.LOGIN.name(), login);
+		addField(UserRegister.PASSWORD.name(), password);
+		addField(UserRegister.EMAIL.name(), email);
+
+		addWidgetHandler(UserRegister.LOGIN.name(), new WidgetHandler() {
 			@Override
 			public Widget onWidget(String id) {
-				return t1;
+				return login;
 			}
 		});
-		addWidgetHandler("t2", new WidgetHandler() {
+		addWidgetHandler(UserRegister.PASSWORD.name(), new WidgetHandler() {
 			@Override
 			public Widget onWidget(String id) {
-				return t2;
+				return password;
 			}
 		});
+	}
+	
+	@Override
+	public void onAddWidgets() {
+		add(email);
 	}
 }

@@ -43,7 +43,7 @@ public class StartApp implements EntryPoint {
 		return new Template(
 				"p",
 				"",
-				"<div style=\"background-color:#efcfcf;\">@This is HTML template - begin<br /><ul><li>Template - <a href=\"/templates/startapp.jsp\">startapp.jsp</a></li></ul><div><input template=\"t1\" type=\"text\" style=\"width:250px;\" class=\"style-t1\" value=\"it should be replaced to the empty field\"/></div><div>BBB<div>CCC<input template=\"t2\" type=\"text\" style=\"width:250px;\" class=\"style-t2\" value=\"it should be replaced to the empty field\"/></div></div>@This is HTML template - end</div>");
+				"<div style=\"background-color:#efcfcf;\">@This is HTML template - begin<br /><ul><li>Template - <a href=\"/templates/startapp.jsp\">startapp.jsp</a></li></ul><div><input template=\"login\" type=\"text\" style=\"width:250px;\" class=\"style-t1\" value=\"it should be replaced to the empty field\"/></div><div>BBB<div>CCC<input template=\"password\" type=\"text\" style=\"width:250px;\" class=\"style-t2\" value=\"it should be replaced to the empty field\"/></div></div>@This is HTML template - end</div>");
 	}
 
 	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
