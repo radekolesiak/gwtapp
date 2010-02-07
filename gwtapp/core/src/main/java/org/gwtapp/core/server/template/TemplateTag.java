@@ -5,7 +5,6 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.gwtapp.core.client.template.Template;
-import org.gwtapp.core.client.template.Template.Header;
 
 @SuppressWarnings("serial")
 public class TemplateTag extends TagSupport {
