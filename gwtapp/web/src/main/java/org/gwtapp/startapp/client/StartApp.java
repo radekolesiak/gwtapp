@@ -13,6 +13,7 @@ import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.startapp.client.ui.ExternalTemplatingPanel;
 import org.gwtapp.startapp.client.ui.InternalTemplatingPanel;
+import org.gwtapp.startapp.client.ui.SynchronizedRepositoryTemplatingPanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
@@ -45,7 +46,7 @@ public class StartApp implements EntryPoint {
 				"",
 				"<div style=\"background-color:#efcfcf;\">@This is HTML template mockup - begin<br /><ul>"
 						+ "<li>UI Panel 1 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup\">StartApp.java</a></li>"
-						+ "<li>UI Panel 2 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/ExternalTemplatingPanel.java?view=markup\">ExternalTemplatingPanel.java</a></li>"
+						+ "<li>UI Panel 2 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/SynchronizedRepositoryTemplatingPanel.java?view=markup\">SynchronizedRepositoryTemplatingPanel.java</a></li>"
 						+ "</ul><div><input template=\"login\" type=\"text\" style=\"width:250px;\" class=\"style-t1\" value=\"it should be replaced to the empty field\"/></div><div>BBB<div>CCC<input template=\"password\" type=\"text\" style=\"width:250px;\" class=\"style-t2\" value=\"it should be replaced to the empty field\"/></div></div>@This is HTML template mockup - end</div>");
 	}
 
@@ -88,15 +89,13 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
-		
+
 		// template 1
 		urt.getTabPanel().add(new InternalTemplatingPanel());
-		
+
 		// template 2
-		urt.getTabPanel().add(
-				new ExternalTemplatingPanel(
-						getTemplateFromSynchronizedRepositoryMockup()));
-		
+		urt.getTabPanel().add(new SynchronizedRepositoryTemplatingPanel());
+
 		// template 3
 		templateService.load("startapp.jsp?type=external",
 				new TemplateRepositoryHandlerAdapter() {
