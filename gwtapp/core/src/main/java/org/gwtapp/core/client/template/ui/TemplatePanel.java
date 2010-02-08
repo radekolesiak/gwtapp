@@ -70,12 +70,22 @@ public class TemplatePanel<T> extends HTMLPanel implements
 		try {
 			add(w, getElement());
 		} catch (Throwable e) {
+			// TODO
 			e.printStackTrace();
 		}
 	}
 
 	public void addWidgetHandler(String name, WidgetHandler handler) {
 		widgetHandlers.put(name, handler);
+	}
+
+	public void addWidgetHandler(String name, final Widget widget) {
+		addWidgetHandler(name, new WidgetHandler() {
+			@Override
+			public Widget onWidget(String id) {
+				return widget;
+			}
+		});
 	}
 
 	public void removeWidgetHandler(String name) {
