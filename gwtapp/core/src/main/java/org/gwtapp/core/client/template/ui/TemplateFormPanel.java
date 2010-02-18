@@ -10,6 +10,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
 
@@ -56,6 +57,12 @@ public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
 		field.addValueChangeHandler(handler);
 		fields.put(name, field);
 		handlers.put(name, handler);
+	}
+
+	public <E extends Widget & HasValue<?>> void addFieldHandler(String name,
+			E field) {
+		addWidgetHandler(name, field);
+		addField(name, field);
 	}
 
 	public <E extends HasValue<?> & HasName> void removeField(E field) {
