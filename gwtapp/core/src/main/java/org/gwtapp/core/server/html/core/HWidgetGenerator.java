@@ -10,7 +10,7 @@ import org.gwtapp.core.client.html.ui.core.ILeaf;
 
 public class HWidgetGenerator {
 
-	private static int id = 0;
+	private static volatile int id = 0;
 
 	private final String dictionary;
 	private StringBuffer html = new StringBuffer();
@@ -55,7 +55,7 @@ public class HWidgetGenerator {
 	}
 
 	private void createDictionary(StringBuffer html) {
-		html.append("<script>");
+		html.append("<script type=\"text/javascript\">");
 		html.append("var ");
 		html.append(dictionary);
 		html.append("; if(!");
@@ -68,7 +68,7 @@ public class HWidgetGenerator {
 	}
 
 	private void createRPC(StringBuffer html, String name, String rpc) {
-		html.append("<script>");
+		html.append("<script type=\"text/javascript\">");
 		html.append(dictionary);
 		html.append("[\"");
 		html.append(name);
@@ -97,7 +97,6 @@ public class HWidgetGenerator {
 		html.append(o);
 		html.append(widget.getTag());
 		createAttr(html, "id", widget.getId());
-		html.append("\"");
 		if (widget instanceof IElementValue) {
 			IElementValue elementValue = (IElementValue) widget;
 			createAttr(html, "value", elementValue.getElementValue());
@@ -117,8 +116,8 @@ public class HWidgetGenerator {
 		html.append(c);
 	}
 
-	private synchronized static String getId() {
-		return "" + (++id);
+	private static String getId() {
+		return "hwidget-" + (++id);
 	}
 
 	public String getRPC() {
