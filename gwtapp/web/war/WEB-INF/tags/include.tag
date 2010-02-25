@@ -5,8 +5,6 @@
 <%@attribute name="repository" required="true" type="java.lang.String"%>
 <%@attribute name="template" required="true" type="java.lang.String"%>
 
-<!-- TODO move this tag's code into TemplateTag.java -->
-
 <script type="text/javascript">
 var Templates; 
 if(!Templates){Templates = new Array();}
