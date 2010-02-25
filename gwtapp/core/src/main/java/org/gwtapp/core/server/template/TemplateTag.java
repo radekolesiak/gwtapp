@@ -6,6 +6,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.gwtapp.core.client.template.Template;
 
 @SuppressWarnings("serial")
@@ -13,7 +14,7 @@ public class TemplateTag extends TagSupport {
 
 	private String tag;
 	private String style;
-	private Boolean dictionary;
+	private String templating;
 
 	@Override
 	public int doStartTag() throws JspException {
@@ -25,19 +26,36 @@ public class TemplateTag extends TagSupport {
 		if (getStyle() != null && !getStyle().isEmpty()) {
 			style = getStyle();
 		}
-		if (!isDictionary()) {
+		if (!isTemplating()) {
 			((HttpServletResponse) pageContext.getResponse()).addHeader(
 					Template.Header.TAG, tag);
 			((HttpServletResponse) pageContext.getResponse()).addHeader(
 					Template.Header.STYLE, style);
+			return EVAL_BODY_INCLUDE;
 		} else {
-			try {
-				JspWriter out = pageContext.getOut();
-			} catch (Exception e) {
-				return SKIP_PAGE;
+			String templating = getTemplating();
+			if ("tag".equalsIgnoreCase(templating)) {
+				try {
+					JspWriter out = pageContext.getOut();
+					out.print(StringEscapeUtils.escapeHtml(getTag()));
+				} catch (Exception e) {
+				}
+				return SKIP_BODY;
+			} else if ("style".equals(templating)) {
+				try {
+					JspWriter out = pageContext.getOut();
+					out.print(StringEscapeUtils.escapeHtml(getStyle()));
+				} catch (Exception e) {
+				}
+				return SKIP_BODY;
+			} else if ("body".equals(templating)) {
+				return EVAL_BODY_INCLUDE;
+			} else if ("all".equals(templating)) {
+				return EVAL_BODY_INCLUDE;
+			} else {
+				return EVAL_BODY_INCLUDE;
 			}
 		}
-		return EVAL_BODY_INCLUDE;
 	}
 
 	@Override
@@ -50,13 +68,8 @@ public class TemplateTag extends TagSupport {
 		return EVAL_PAGE;
 	}
 
-	private boolean isDictionary() {
-		if (getDictionary() != null) {
-			return getDictionary();
-		}
-		String dictionary = ((HttpServletRequest) pageContext.getRequest())
-				.getParameter("dictionary");
-		return "true".equalsIgnoreCase(dictionary);
+	private boolean isTemplating() {
+		return getTemplating() != null;
 	}
 
 	public void setTag(String tag) {
@@ -64,7 +77,11 @@ public class TemplateTag extends TagSupport {
 	}
 
 	public String getTag() {
-		return tag;
+		if (tag != null && !tag.isEmpty()) {
+			return tag;
+		} else {
+			return "div";
+		}
 	}
 
 	public void setStyle(String style) {
@@ -72,14 +89,23 @@ public class TemplateTag extends TagSupport {
 	}
 
 	public String getStyle() {
-		return style;
+		if (style == null) {
+			return "";
+		} else {
+			return style;
+		}
 	}
 
-	public void setDictionary(Boolean dictionary) {
-		this.dictionary = dictionary;
+	public void setTemplating(String templating) {
+		this.templating = templating;
 	}
 
-	public Boolean getDictionary() {
-		return dictionary;
+	public String getTemplating() {
+		if (templating != null) {
+			return templating;
+		} else {
+			return ((HttpServletRequest) pageContext.getRequest())
+					.getParameter("templating");
+		}
 	}
 }
