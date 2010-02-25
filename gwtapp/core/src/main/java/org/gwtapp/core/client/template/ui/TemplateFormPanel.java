@@ -3,6 +3,7 @@ package org.gwtapp.core.client.template.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gwtapp.core.client.data.AutoField;
 import org.gwtapp.core.client.data.ModelData;
 import org.gwtapp.core.client.template.Template;
 
@@ -57,6 +58,12 @@ public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
 		field.addValueChangeHandler(handler);
 		fields.put(name, field);
 		handlers.put(name, handler);
+	}
+
+	public <E extends Widget & HasValue<?>> void addFieldHandler(
+			AutoField<?, ?> autofield, E field) {
+		addWidgetHandler(autofield.name(), field);
+		addField(autofield.name(), field);
 	}
 
 	public <E extends Widget & HasValue<?>> void addFieldHandler(String name,
