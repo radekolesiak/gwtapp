@@ -17,7 +17,7 @@
 			@import "startapp.css";
 		</style>
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
-		<t:include repository="/templates/" template="startapp.jsp"/>
+		<t:include repository="/templates/" template="sync-startapp.jsp"/>
 	</head>
 	<body>
 		<table border="border" cellspacing="5" cellpadding="15">

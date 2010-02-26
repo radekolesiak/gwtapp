@@ -3,6 +3,7 @@ package org.gwtapp.startapp.client;
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
 import org.gwtapp.core.client.template.HttpTemplateRepository;
+import org.gwtapp.core.client.template.SyncTemplateRepository;
 import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.client.template.TemplateRepositoryHandlerAdapter;
 import org.gwtapp.startapp.client.api.DownloadService;
@@ -13,7 +14,7 @@ import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.startapp.client.ui.ExternalTemplatingPanel;
 import org.gwtapp.startapp.client.ui.InternalTemplatingPanel;
-import org.gwtapp.startapp.client.ui.SynchronizedRepositoryTemplatingPanel;
+import org.gwtapp.startapp.client.ui.SyncRepositoryTemplatingPanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
@@ -52,6 +53,8 @@ public class StartApp implements EntryPoint {
 	}
 
 	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
+			"/templates/");
+	public final static SyncTemplateRepository syncTemplateService = new SyncTemplateRepository(
 			"/templates/");
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
@@ -95,7 +98,7 @@ public class StartApp implements EntryPoint {
 		urt.getTabPanel().add(new InternalTemplatingPanel());
 
 		// template 2
-		urt.getTabPanel().add(new SynchronizedRepositoryTemplatingPanel());
+		urt.getTabPanel().add(new SyncRepositoryTemplatingPanel());
 
 		// template 3
 		templateService.load("startapp.jsp?type=external",

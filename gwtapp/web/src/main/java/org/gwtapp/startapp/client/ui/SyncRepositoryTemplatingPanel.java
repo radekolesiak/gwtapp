@@ -13,16 +13,16 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class SynchronizedRepositoryTemplatingPanel extends
+public class SyncRepositoryTemplatingPanel extends
 		TemplateFormPanel<UserRegisterModel> {
 
 	private final TextBox login = new TextBox();
 	private final TextBox password = new TextBox();
 	private final TextBox email = new TextBox();
 
-	public SynchronizedRepositoryTemplatingPanel() {
+	public SyncRepositoryTemplatingPanel() {
 		super(new UserRegisterModelImpl(), StartApp
-				.getTemplateFromSynchronizedRepositoryMockup());
+				.syncTemplateService.load("sync-startapp.jsp"));
 
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
