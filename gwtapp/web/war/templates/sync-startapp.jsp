@@ -5,8 +5,8 @@
 		@This is sync HTML template - begin<br />
 		<ul>
 			<li>Template - <a
-				href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a>
-			(<a href="/templates/startapp.jsp">view</a>)</li>
+				href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/sync-startapp.jsp?view=markup">sync-startapp.jsp</a>
+			(<a href="/templates/sync-startapp.jsp">view</a>)</li>
 			<li>UI Panel 1 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/SyncRepositoryTemplatingPanel.java?view=markup\">SyncRepositoryTemplatingPanel.java</a></li>
 		</ul>
