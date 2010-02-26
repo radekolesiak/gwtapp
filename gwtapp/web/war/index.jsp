@@ -20,6 +20,12 @@
 		<t:include repository="/templates/" template="sync-startapp.jsp"/>
 	</head>
 	<body>
+	    <noscript>
+      		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        		Your web browser must have JavaScript enabled in order for this application to display correctly.
+      		</div>
+    	</noscript>
+	
 		<table border="border" cellspacing="5" cellpadding="15">
 		<tr>
 		<th>Wrap and remove sample<br /><small>1 second delay to load GWT</small></th>
