@@ -12,23 +12,23 @@ public class HttpTemplateRepository {
 
 	private static final int STATUS_CODE_OK = 200;
 
-	private String path;
+	private String repository;
 	private Map<String, Template> templates = new HashMap<String, Template>();
 
 	public HttpTemplateRepository() {
 		this("/");
 	}
 
-	public HttpTemplateRepository(String path) {
-		setPath(path);
+	public HttpTemplateRepository(String repository) {
+		setRepository(repository);
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setRepository(String repository) {
+		this.repository = repository;
 	}
 
-	public String getPath() {
-		return path;
+	public String getRepository() {
+		return repository;
 	}
 
 	public void load(String name, TemplateRepositoryHandler handler) {
@@ -41,7 +41,7 @@ public class HttpTemplateRepository {
 			handler.onTemplate(templates.get(name));
 		} else {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
-					getPath() + name);
+					getRepository() + name);
 			try {
 				builder.sendRequest(null, new RequestCallback() {
 					public void onError(Request request, Throwable e) {
@@ -50,14 +50,15 @@ public class HttpTemplateRepository {
 
 					public void onResponseReceived(Request request,
 							Response response) {
-						// TODO support RPC exceptions into header
 						if (STATUS_CODE_OK == response.getStatusCode()) {
 							String tag = getHeader(response,
 									Template.Header.TAG, "div");
 							String style = getHeader(response,
 									Template.Header.STYLE, "");
+							String styleClass = getHeader(response,
+									Template.Header.STYLE_CLASS, "");
 							handler.onTemplate(new Template(tag, style,
-									response.getText()));
+									styleClass, response.getText()));
 						} else {
 							handler.onFailure(new IllegalStateException(
 									"Response Status Code = "

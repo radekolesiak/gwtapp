@@ -44,6 +44,7 @@ public class StartApp implements EntryPoint {
 		return new Template(
 				"p",
 				"",
+				"",
 				"<div style=\"background-color:#efcfcf;\">@This is HTML template mockup - begin<br /><ul>"
 						+ "<li>UI Panel 1 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup\">StartApp.java</a></li>"
 						+ "<li>UI Panel 2 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/SynchronizedRepositoryTemplatingPanel.java?view=markup\">SynchronizedRepositoryTemplatingPanel.java</a></li>"

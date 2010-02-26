@@ -13,6 +13,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>StartApp</title>
+		<style type="text/css"> 
+			@import "startapp.css";
+		</style>
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
 		<t:include repository="/templates/" template="startapp.jsp"/>
 	</head>

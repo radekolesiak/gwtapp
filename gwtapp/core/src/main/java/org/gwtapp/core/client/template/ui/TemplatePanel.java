@@ -43,15 +43,19 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	public TemplatePanel(String tag, String html) {
-		this(new Template(tag, "", html));
+		this(new Template(tag, "", "", html));
 	}
 
 	public TemplatePanel(Template template) {
 		super(template.getTag(), "");
 		this.template = template;
 		addStyleName(Style.TEMPLATE_PANEL);
+		if (template.getStyleClass() != null
+				&& !template.getStyleClass().isEmpty()) {
+			addStyleName(template.getStyleClass());
+		}
 		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
-			addStyleName(template.getStyle());
+			getElement().setAttribute("style", template.getStyle());
 		}
 	}
 

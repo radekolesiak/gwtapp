@@ -21,6 +21,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>styleclass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>dictionary</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>

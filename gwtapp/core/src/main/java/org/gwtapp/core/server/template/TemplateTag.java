@@ -14,23 +14,30 @@ public class TemplateTag extends TagSupport {
 
 	private String tag;
 	private String style;
+	private String styleclass;
 	private String templating;
 
 	@Override
 	public int doStartTag() throws JspException {
 		String tag = "div";
 		String style = "";
+		String styleclass = "";
 		if (getTag() != null && !getTag().isEmpty()) {
 			tag = getTag();
 		}
 		if (getStyle() != null && !getStyle().isEmpty()) {
 			style = getStyle();
 		}
+		if (getStyleclass() != null && !getStyleclass().isEmpty()) {
+			styleclass = getStyleclass();
+		}
 		if (!isTemplating()) {
 			((HttpServletResponse) pageContext.getResponse()).addHeader(
 					Template.Header.TAG, tag);
 			((HttpServletResponse) pageContext.getResponse()).addHeader(
 					Template.Header.STYLE, style);
+			((HttpServletResponse) pageContext.getResponse()).addHeader(
+					Template.Header.STYLE_CLASS, styleclass);
 			return EVAL_BODY_INCLUDE;
 		} else {
 			String templating = getTemplating();
@@ -48,6 +55,13 @@ public class TemplateTag extends TagSupport {
 				} catch (Exception e) {
 				}
 				return SKIP_BODY;
+			} else if ("styleclass".equals(templating)) {
+				try {
+					JspWriter out = pageContext.getOut();
+					out.print(StringEscapeUtils.escapeHtml(getStyleclass()));
+				} catch (Exception e) {
+				}
+				return SKIP_BODY;
 			} else if ("body".equals(templating)) {
 				return EVAL_BODY_INCLUDE;
 			} else if ("all".equals(templating)) {
@@ -56,16 +70,6 @@ public class TemplateTag extends TagSupport {
 				return EVAL_BODY_INCLUDE;
 			}
 		}
-	}
-
-	@Override
-	public int doEndTag() throws JspException {
-		try {
-			JspWriter out = pageContext.getOut();
-		} catch (Exception e) {
-			return SKIP_PAGE;
-		}
-		return EVAL_PAGE;
 	}
 
 	private boolean isTemplating() {
@@ -107,5 +111,13 @@ public class TemplateTag extends TagSupport {
 			return ((HttpServletRequest) pageContext.getRequest())
 					.getParameter("templating");
 		}
+	}
+
+	public void setStyleclass(String styleclass) {
+		this.styleclass = styleclass;
+	}
+
+	public String getStyleclass() {
+		return styleclass;
 	}
 }
