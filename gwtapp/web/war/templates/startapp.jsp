@@ -1,6 +1,6 @@
 <%@ taglib uri="/template.tld" prefix="t" %>
 <%@page import="org.gwtapp.startapp.client.data.user.register.UserRegister"%>
-<t:template tag="p" style="color:#663333;" styleclass="startapp-template">
+<t:template tag="b" style="color:#663333;" styleclass="startapp-template">
 	<%if("internal".equals(request.getParameter("type"))){ %>
 	<div style="background-color:#efef8f;">
 	<%} else if("external".equals(request.getParameter("type"))){ %>

@@ -1,6 +1,6 @@
 <%@ taglib uri="/template.tld" prefix="t"%>
 <%@page import="org.gwtapp.startapp.client.data.user.register.UserRegister"%>
-<t:template tag="p" style="color:#336633;" styleclass="startapp-template">
+<t:template tag="b" style="color:#336633;" styleclass="startapp-template">
 	<div style="background-color: #efefef;">
 		@This is sync HTML template - begin<br />
 		<ul>
