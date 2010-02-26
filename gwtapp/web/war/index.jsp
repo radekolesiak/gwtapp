@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@page pageEncoding="utf-8"%>        
 <%@page import="org.gwtapp.core.server.html.core.*"%>
 <%@page import="org.gwtapp.core.client.html.ui.form.*"%>
@@ -28,9 +27,10 @@
 	
 		<table border="border" cellspacing="5" cellpadding="15">
 		<tr>
-		<th>Wrap and remove sample<br /><small>1 second delay to load GWT</small></th>
-		<th>Wrap and download/upload sample<br /><small>1 second delay to load GWT</small></th>
-		<th>Sample of changing a type on<br /> different data model type panels</th>
+		<th>Wrap and remove sample</th>
+		<th>HTML Templating</th>
+		<th>Wrap and download/upload sample<br /></th>
+		<th>Sample of changing a type on<br />different data model type panels</th>
 		</tr>
 		<tr>
 		<td valign="top">
@@ -42,6 +42,9 @@
 			HWidgetGenerator gUserRegister = new HWidgetGenerator(HWidgets.DICTIONARY, userRegisterPanel);
 		%>
 		<%=gUserRegister.getHTML()%>
+		</td>
+		<td valign="top">
+			<div id="templates" />
 		</td>
 		<td valign="top">
 		<%
@@ -73,14 +76,16 @@
 		</ul>
 		</td>
 		</tr>
-		<tr><td colspan="3">
+		<tr><td colspan="4">
 		<b>Applications that use GWTApp:</b><br />
 		<br />
 		<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 		</td></tr>
-		<tr><td colspan="3"><a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a></td></tr>
-		</table>
-		<div style="margin-left: 15px; font-weight: bold;">Radek Olesiak</div>
+		<tr><td colspan="4">
+			<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
+			<small>Radek Olesiak</small>
+		</td></tr>
+		</table>		
 		<p>
 			<a href="http://validator.w3.org/check?uri=referer">
 				<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />

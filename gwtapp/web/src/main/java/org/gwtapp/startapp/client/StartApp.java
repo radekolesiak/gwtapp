@@ -23,11 +23,11 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp implements EntryPoint {
 
@@ -72,43 +72,20 @@ public class StartApp implements EntryPoint {
 	private final Button download = new Button("Download");
 	private final UploadPanel upload = new UploadPanel();
 
+	private final static String TEMPLATES_DIV = "templates";
+
 	@Override
 	public void onModuleLoad() {
-		Timer timer = new Timer() {
-			@Override
-			public void run() {
-				ui();
-			}
-		};
-		if (Window.Location.getHostName().equals("localhost")) {
-			timer.schedule(10);
-		} else {
-			timer.schedule(1000);
-		}
+		hwidgets();
+		templating();
 	}
 
-	private void ui() {
+	private void hwidgets() {
 		new UserRegisterTabExt();
 		final UserRegisterTab urt = new UserRegisterTab();
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);
 		urt.getTabPanel().add(upload);
-
-		// template 1
-		urt.getTabPanel().add(new InternalTemplatingPanel());
-
-		// template 2
-		urt.getTabPanel().add(new SyncRepositoryTemplatingPanel());
-
-		// template 3
-		templateService.load("startapp.jsp?type=external",
-				new TemplateRepositoryHandlerAdapter() {
-					@Override
-					public void onTemplate(Template template) {
-						urt.getTabPanel().add(
-								new ExternalTemplatingPanel(template));
-					}
-				});
 
 		clear.addClickHandler(new ClickHandler() {
 			@Override
@@ -134,6 +111,22 @@ public class StartApp implements EntryPoint {
 					@Override
 					public void onSuccessful(UserRegisterModel result) {
 						urt.getTabPanel().setUserRegisterModel(result);
+					}
+				});
+	}
+
+	private void templating() {
+		// template 1
+		RootPanel.get(TEMPLATES_DIV).add(new InternalTemplatingPanel());
+		// template 2
+		RootPanel.get(TEMPLATES_DIV).add(new SyncRepositoryTemplatingPanel());
+		// template 3
+		templateService.load("startapp.jsp?type=external",
+				new TemplateRepositoryHandlerAdapter() {
+					@Override
+					public void onTemplate(Template template) {
+						RootPanel.get(TEMPLATES_DIV).add(
+								new ExternalTemplatingPanel(template));
 					}
 				});
 	}
