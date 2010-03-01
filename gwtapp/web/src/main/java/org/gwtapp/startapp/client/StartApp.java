@@ -40,18 +40,6 @@ public class StartApp implements EntryPoint {
 		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
-	public static Template getTemplateFromSynchronizedRepositoryMockup() {
-		// This can be e.g. Dictionary
-		return new Template(
-				"p",
-				"",
-				"",
-				"<div style=\"background-color:#efcfcf;\">@This is HTML template mockup - begin<br /><ul>"
-						+ "<li>UI Panel 1 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup\">StartApp.java</a></li>"
-						+ "<li>UI Panel 2 - <a href=\"http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/SynchronizedRepositoryTemplatingPanel.java?view=markup\">SynchronizedRepositoryTemplatingPanel.java</a></li>"
-						+ "</ul><div><input template=\"login\" type=\"text\" style=\"width:250px;\" class=\"style-t1\" value=\"it should be replaced to the empty field\"/></div><div>BBB<div>CCC<input template=\"password\" type=\"text\" style=\"width:250px;\" class=\"style-t2\" value=\"it should be replaced to the empty field\"/></div></div>@This is HTML template mockup - end</div>");
-	}
-
 	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
 			"/templates/");
 	public final static SyncTemplateRepository syncTemplateService = new SyncTemplateRepository(
