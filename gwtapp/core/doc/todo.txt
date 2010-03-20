@@ -1,3 +1,3 @@
 1. replace attribute "template" with attribute "t:template" (or any:template) in the HTML tag elements
-2. add attribute "t:event" and class {Event|Virtual|VirtualEvent}Widget that will be able to receive events from HTML template
+2. add attribute "t:event" and class {Event|Virtual|VirtualEvent}Widget (or native JS) that will be able to receive events from HTML template
 3. use TemplatePanels to generate static page first and then wrap elements
