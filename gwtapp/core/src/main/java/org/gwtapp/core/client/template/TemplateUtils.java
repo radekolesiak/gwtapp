@@ -29,11 +29,11 @@ public class TemplateUtils {
 			if (!regexp.isEmpty()) {
 				regexp += "|";
 			}
-			regexp += "(template=\"" + name + "\")";
+			regexp += "(t:template=\"" + name + "\")";
 		}
 		JavaScriptObject array = Utils.createArray();
 		for (Map.Entry<String, ?> entry : ids.entrySet()) {
-			Utils.addToArray(array, "template=\"" + entry.getKey() + "\"",
+			Utils.addToArray(array, "t:template=\"" + entry.getKey() + "\"",
 					entry.getValue() + "");
 		}
 		return replaceTemplate(template, regexp, array);

@@ -20,13 +20,13 @@
 			<%} %>
 		</ul>
 		<div>
-			<input template="<%=UserRegister.LOGIN.name()%>" type="text" style="width:250px;" class="style-t1" value="it should be replaced to the empty field"/>
+			<input t:template="<%=UserRegister.LOGIN.name()%>" type="text" style="width:250px;" class="style-t1" value="it should be replaced to the empty field"/>
 		</div>
 		<div>
 			BBB
 			<div>
 				CCC
-				<input template="<%=UserRegister.PASSWORD.name()%>" type="text" style="width:250px;" class="style-t2" value="it should be replaced to the empty field"/>
+				<input t:template="<%=UserRegister.PASSWORD.name()%>" type="text" style="width:250px;" class="style-t2" value="it should be replaced to the empty field"/>
 			</div>
 		</div>
 		@This is HTML template - end

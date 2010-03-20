@@ -11,8 +11,8 @@
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/SyncRepositoryTemplatingPanel.java?view=markup\">SyncRepositoryTemplatingPanel.java</a></li>
 		</ul>
 		<div>
-			<input template="login" type="text" style="width: 250px;" class="style-t1" value="it should be replaced to the empty field" /><br /> 
-			<input template="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /><br />
+			<input t:template="login" type="text" style="width: 250px;" class="style-t1" value="it should be replaced to the empty field" /><br /> 
+			<input t:template="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /><br />
 		</div>
 		@This is sync HTML template - end
 	</div>
