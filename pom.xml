@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<gwtVersion>2.0.0-ms1</gwtVersion>
+		<gwtVersion>2.0.3</gwtVersion>
 	</properties>
 
 	<inceptionYear>2008</inceptionYear>
@@ -27,7 +27,7 @@
 	<pluginRepositories>
 		<pluginRepository>
 			<id>gwt-maven</id>
-			<url> http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+			<url> http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
 		</pluginRepository>
 	</pluginRepositories>
 
