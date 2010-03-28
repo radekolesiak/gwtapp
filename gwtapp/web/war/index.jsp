@@ -94,19 +94,19 @@
 		        <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
 		    </a>
 		</p>
-		<%if ("app.gwtapp.org".equals(request.getServerName())){ %>
-		<!-- GA  -->
-		<script type="text/javascript">
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<script type="text/javascript">
-		try {
-		var pageTracker = _gat._getTracker("UA-11571468-2");
-		pageTracker._trackPageview();
-		} catch(err) {}
-		</script>
-		<!-- GA  -->
+		<%if (request.getServerName()!=null && request.getServerName().contains("gwtapp.org")){ %>
+			<!-- GA  -->
+			<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+			<script type="text/javascript">
+			try {
+			var pageTracker = _gat._getTracker("UA-11571468-2");
+			pageTracker._trackPageview();
+			} catch(err) {}
+			</script>
+			<!-- GA  -->
 		<%}%>
 	</body>
 </html>
