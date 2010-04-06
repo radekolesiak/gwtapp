@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.server;
 
-import org.gwtapp.core.client.exception.RpcException;
+import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.startapp.client.api.GwtAppService;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 

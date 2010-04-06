@@ -1,9 +1,9 @@
 package org.gwtapp.core.client.ui.form;
 
-import org.gwtapp.core.client.data.ModelData;
-import org.gwtapp.core.client.html.ui.core.HValue;
-import org.gwtapp.core.client.html.ui.core.HWidget;
-import org.gwtapp.core.client.html.ui.form.HFieldPanel;
+import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.core.rpc.html.ui.core.HValue;
+import org.gwtapp.core.rpc.html.ui.core.HWidget;
+import org.gwtapp.core.rpc.html.ui.form.HFieldPanel;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;

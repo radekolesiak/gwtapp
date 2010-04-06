@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.data.user.register.autofields;
 
-import org.gwtapp.core.client.data.AutoFieldAdapter;
+import org.gwtapp.core.rpc.data.AutoFieldAdapter;
 import org.gwtapp.startapp.client.data.user.register.UserRegister;
 
 public class PasswordAutoField extends AutoFieldAdapter<UserRegister, String> {

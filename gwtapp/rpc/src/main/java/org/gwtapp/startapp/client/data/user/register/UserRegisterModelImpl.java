@@ -2,7 +2,7 @@ package org.gwtapp.startapp.client.data.user.register;
 
 import java.util.List;
 
-import org.gwtapp.core.client.data.HashModelData;
+import org.gwtapp.core.rpc.data.HashModelData;
 
 public class UserRegisterModelImpl extends HashModelData implements
 		UserRegisterModel {

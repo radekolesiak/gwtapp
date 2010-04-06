@@ -2,7 +2,7 @@ package org.gwtapp.startapp.client.data.user.register;
 
 import java.util.List;
 
-import org.gwtapp.core.client.data.AutoField;
+import org.gwtapp.core.rpc.data.AutoField;
 import org.gwtapp.startapp.client.data.user.register.autofields.EmailAutoField;
 import org.gwtapp.startapp.client.data.user.register.autofields.LoginAutoField;
 import org.gwtapp.startapp.client.data.user.register.autofields.PasswordAutoField;

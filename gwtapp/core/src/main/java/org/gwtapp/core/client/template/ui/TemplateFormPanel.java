@@ -3,9 +3,9 @@ package org.gwtapp.core.client.template.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.data.AutoField;
-import org.gwtapp.core.client.data.ModelData;
 import org.gwtapp.core.client.template.Template;
+import org.gwtapp.core.rpc.data.AutoField;
+import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

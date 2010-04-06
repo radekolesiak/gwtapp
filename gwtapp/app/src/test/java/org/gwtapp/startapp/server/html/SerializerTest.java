@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.server.html;
 
-import org.gwtapp.core.client.html.ui.core.HPanel;
+import org.gwtapp.core.rpc.html.ui.core.HPanel;
 import org.gwtapp.core.server.html.core.HServer;
 import org.gwtapp.core.server.html.core.HServerException;
 import org.junit.Assert;

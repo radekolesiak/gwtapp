@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.data;
+package org.gwtapp.core.rpc.data;
 
 public interface HasAutoField {
 	@SuppressWarnings("unchecked")

@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui;
 
 import org.gwtapp.core.client.Utils;
-import org.gwtapp.core.client.html.core.HClient;
+import org.gwtapp.core.rpc.html.core.HClient;
 import org.gwtapp.startapp.client.HWidgets;
 import org.gwtapp.startapp.client.StartApp;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;

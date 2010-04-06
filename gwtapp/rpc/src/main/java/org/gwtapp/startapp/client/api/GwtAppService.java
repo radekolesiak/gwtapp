@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.api;
 
-import org.gwtapp.core.client.exception.RpcException;
+import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 
 import com.google.gwt.user.client.rpc.RemoteService;

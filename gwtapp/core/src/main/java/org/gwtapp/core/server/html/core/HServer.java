@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import org.apache.commons.codec.binary.Base64;
-import org.gwtapp.core.client.html.core.api.HTMLService;
+import org.gwtapp.core.rpc.html.core.api.HTMLService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.server.rpc.RPC;

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
-import org.gwtapp.core.client.exception.RpcException;
+import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.core.server.html.core.HServer;
 
 import org.apache.log4j.Logger;

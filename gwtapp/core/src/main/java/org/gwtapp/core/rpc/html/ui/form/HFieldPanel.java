@@ -1,9 +1,9 @@
-package org.gwtapp.core.client.html.ui.form;
+package org.gwtapp.core.rpc.html.ui.form;
 
-import org.gwtapp.core.client.html.ui.core.HLabel;
-import org.gwtapp.core.client.html.ui.core.HPanel;
-import org.gwtapp.core.client.html.ui.core.HValue;
-import org.gwtapp.core.client.html.ui.core.HWidget;
+import org.gwtapp.core.rpc.html.ui.core.HLabel;
+import org.gwtapp.core.rpc.html.ui.core.HPanel;
+import org.gwtapp.core.rpc.html.ui.core.HValue;
+import org.gwtapp.core.rpc.html.ui.core.HWidget;
 
 public class HFieldPanel<T> extends HPanel implements HValue<T> {
 

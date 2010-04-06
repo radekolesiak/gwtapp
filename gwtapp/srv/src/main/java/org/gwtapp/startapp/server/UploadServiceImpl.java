@@ -11,7 +11,7 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
-import org.gwtapp.core.client.exception.RpcException;
+import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.core.server.html.io.HUploadHttpServlet;
 import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
 

@@ -1,6 +1,6 @@
 package org.gwtapp.core.server.template;
 
-import org.gwtapp.core.client.data.AutoField;
+import org.gwtapp.core.rpc.data.AutoField;
 
 public class Model {
 

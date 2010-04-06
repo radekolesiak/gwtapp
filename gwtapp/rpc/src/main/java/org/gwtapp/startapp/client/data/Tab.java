@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.data;
 
-import org.gwtapp.core.client.data.AutoField;
+import org.gwtapp.core.rpc.data.AutoField;
 import org.gwtapp.startapp.client.data.autofields.UserRegisterAutoField;
 import org.gwtapp.startapp.client.data.user.register.UserRegister;
 

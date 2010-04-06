@@ -2,3 +2,4 @@
 2. add attribute "t:event" and class {Event|Virtual|VirtualEvent}Widget (or native JS) that will be able to receive events from HTML template
 3. use TemplatePanels to generate static page first and then wrap elements
 	3a or just iterate over all t:template elements after replacing them
+4. test JDO and try to remove ModelData

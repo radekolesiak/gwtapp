@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui;
 
-import org.gwtapp.core.client.html.ui.form.HFieldPanel;
-import org.gwtapp.core.client.html.ui.form.HFormPanel;
+import org.gwtapp.core.rpc.html.ui.form.HFieldPanel;
+import org.gwtapp.core.rpc.html.ui.form.HFormPanel;
 import org.gwtapp.startapp.client.data.Tab;
 import org.gwtapp.startapp.client.data.TabModel;
 import org.gwtapp.startapp.client.data.TabModelImpl;

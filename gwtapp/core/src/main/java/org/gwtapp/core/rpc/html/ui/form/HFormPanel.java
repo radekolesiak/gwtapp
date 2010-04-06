@@ -1,11 +1,11 @@
-package org.gwtapp.core.client.html.ui.form;
+package org.gwtapp.core.rpc.html.ui.form;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.data.ModelData;
-import org.gwtapp.core.client.html.ui.core.HPanel;
-import org.gwtapp.core.client.html.ui.core.HValue;
+import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.core.rpc.html.ui.core.HPanel;
+import org.gwtapp.core.rpc.html.ui.core.HValue;
 
 public class HFormPanel<T extends ModelData> extends HPanel implements
 		HValue<T> {

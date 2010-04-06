@@ -3,7 +3,7 @@ package org.gwtapp.startapp.client.data.user.register.autofields;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtapp.core.client.data.AutoFieldAdapter;
+import org.gwtapp.core.rpc.data.AutoFieldAdapter;
 import org.gwtapp.startapp.client.data.user.register.UserRegister;
 
 public class TockensAutoField extends AutoFieldAdapter<UserRegister, List<String>> {

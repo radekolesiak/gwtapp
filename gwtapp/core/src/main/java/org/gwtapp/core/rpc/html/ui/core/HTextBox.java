@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.html.ui.core;
+package org.gwtapp.core.rpc.html.ui.core;
 
 public class HTextBox extends HWidget implements IElementValue, HValue<String> {
 

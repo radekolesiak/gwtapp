@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.html.ui.core;
+package org.gwtapp.core.rpc.html.ui.core;
 
 public class HLabel extends HWidget implements ILeaf, HValue<String> {
 

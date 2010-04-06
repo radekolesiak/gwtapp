@@ -1,6 +1,6 @@
-package org.gwtapp.core.client.html.core;
+package org.gwtapp.core.rpc.html.core;
 
-import org.gwtapp.core.client.html.core.api.HTMLService;
+import org.gwtapp.core.rpc.html.core.api.HTMLService;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;

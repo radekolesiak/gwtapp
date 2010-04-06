@@ -3,10 +3,10 @@ package org.gwtapp.core.server.html.core;
 import java.util.Arrays;
 import java.util.List;
 
-import org.gwtapp.core.client.html.ui.core.HWidget;
-import org.gwtapp.core.client.html.ui.core.IContainer;
-import org.gwtapp.core.client.html.ui.core.IElementValue;
-import org.gwtapp.core.client.html.ui.core.ILeaf;
+import org.gwtapp.core.rpc.html.ui.core.HWidget;
+import org.gwtapp.core.rpc.html.ui.core.IContainer;
+import org.gwtapp.core.rpc.html.ui.core.IElementValue;
+import org.gwtapp.core.rpc.html.ui.core.ILeaf;
 
 public class HWidgetGenerator {
 

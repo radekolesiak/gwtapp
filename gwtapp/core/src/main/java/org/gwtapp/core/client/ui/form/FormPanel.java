@@ -3,8 +3,8 @@ package org.gwtapp.core.client.ui.form;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.data.ModelData;
-import org.gwtapp.core.client.html.ui.form.HFormPanel;
+import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.core.rpc.html.ui.form.HFormPanel;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;

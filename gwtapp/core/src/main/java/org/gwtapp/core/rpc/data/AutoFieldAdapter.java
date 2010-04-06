@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.data;
+package org.gwtapp.core.rpc.data;
 
 public abstract class AutoFieldAdapter<M, T> implements AutoField<M, T> {
 
