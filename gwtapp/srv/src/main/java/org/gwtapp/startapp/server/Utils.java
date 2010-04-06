@@ -7,8 +7,8 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
 public class Utils {
 

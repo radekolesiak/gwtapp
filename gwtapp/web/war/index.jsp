@@ -3,9 +3,9 @@
 <%@page import="org.gwtapp.core.server.html.core.*"%>
 <%@page import="org.gwtapp.core.rpc.html.ui.form.*"%>
 <%@page import="org.gwtapp.core.rpc.html.ui.core.*"%>
-<%@page import="org.gwtapp.startapp.client.ui.*"%>
-<%@page import="org.gwtapp.startapp.client.ui.user.register.*"%>
-<%@page import="org.gwtapp.startapp.client.data.user.register.*"%>
+<%@page import="org.gwtapp.startapp.rpc.ui.*"%>
+<%@page import="org.gwtapp.startapp.rpc.ui.user.register.*"%>
+<%@page import="org.gwtapp.startapp.rpc.data.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">

@@ -3,11 +3,12 @@ package org.gwtapp.startapp.client.ui;
 import org.gwtapp.core.client.ui.form.FieldPanel;
 import org.gwtapp.core.client.ui.form.FormPanel;
 import org.gwtapp.core.rpc.html.ui.form.HFieldPanel;
-import org.gwtapp.startapp.client.data.Tab;
-import org.gwtapp.startapp.client.data.TabModel;
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.client.ui.user.register.HUserRegisterPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
+import org.gwtapp.startapp.rpc.data.Tab;
+import org.gwtapp.startapp.rpc.data.TabModel;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.ui.HTabPanel;
+import org.gwtapp.startapp.rpc.ui.user.register.HUserRegisterPanel;
 
 public class TabPanel extends FormPanel<TabModel> {
 

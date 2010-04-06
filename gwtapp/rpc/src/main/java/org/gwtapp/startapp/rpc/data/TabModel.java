@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.client.data;
+package org.gwtapp.startapp.rpc.data;
 
 import org.gwtapp.core.rpc.data.ModelData;
 

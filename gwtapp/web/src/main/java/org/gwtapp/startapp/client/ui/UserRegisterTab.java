@@ -2,6 +2,7 @@ package org.gwtapp.startapp.client.ui;
 
 import org.gwtapp.core.rpc.html.core.HClient;
 import org.gwtapp.startapp.client.HWidgets;
+import org.gwtapp.startapp.rpc.ui.HTabPanel;
 
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.user.client.rpc.SerializationException;

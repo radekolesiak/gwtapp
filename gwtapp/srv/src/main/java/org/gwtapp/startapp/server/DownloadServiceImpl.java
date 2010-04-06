@@ -1,8 +1,8 @@
 package org.gwtapp.startapp.server;
 
 import org.gwtapp.core.server.html.io.HDownloadHttpServlet;
-import org.gwtapp.startapp.client.api.DownloadService;
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.api.DownloadService;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
 public class DownloadServiceImpl extends HDownloadHttpServlet implements

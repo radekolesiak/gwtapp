@@ -1,7 +1,7 @@
-package org.gwtapp.startapp.client.data;
+package org.gwtapp.startapp.rpc.data;
 
 import org.gwtapp.core.rpc.data.HashModelData;
-import org.gwtapp.startapp.client.data.user.register.UserRegister;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
 public class TabModelImpl extends HashModelData implements TabModel {
 

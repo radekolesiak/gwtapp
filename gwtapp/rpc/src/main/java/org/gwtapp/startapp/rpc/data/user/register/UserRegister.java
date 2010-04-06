@@ -1,12 +1,12 @@
-package org.gwtapp.startapp.client.data.user.register;
+package org.gwtapp.startapp.rpc.data.user.register;
 
 import java.util.List;
 
 import org.gwtapp.core.rpc.data.AutoField;
-import org.gwtapp.startapp.client.data.user.register.autofields.EmailAutoField;
-import org.gwtapp.startapp.client.data.user.register.autofields.LoginAutoField;
-import org.gwtapp.startapp.client.data.user.register.autofields.PasswordAutoField;
-import org.gwtapp.startapp.client.data.user.register.autofields.TockensAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.autofields.EmailAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.autofields.LoginAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.autofields.PasswordAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.autofields.TockensAutoField;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

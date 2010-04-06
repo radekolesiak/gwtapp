@@ -3,9 +3,9 @@ package org.gwtapp.startapp.client.ui;
 import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.client.template.WidgetHandler;
 import org.gwtapp.core.client.template.ui.TemplateFormPanel;
-import org.gwtapp.startapp.client.data.user.register.UserRegister;
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.client.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

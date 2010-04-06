@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.client.data.user.register;
+package org.gwtapp.startapp.rpc.data.user.register;
 
 import java.util.List;
 
