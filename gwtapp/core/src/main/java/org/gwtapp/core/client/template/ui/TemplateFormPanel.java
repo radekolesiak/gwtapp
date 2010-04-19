@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.gwtapp.core.client.template.Template;
 import org.gwtapp.core.rpc.data.AutoField;
-import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -13,7 +12,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
+public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	public final static class Style {
 		public final static String TEMPLATE_FORM_PANEL = "templateFormPanel";
@@ -87,27 +86,7 @@ public class TemplateFormPanel<T extends ModelData> extends TemplatePanel<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public T getValue() {
-		T value = super.getValue();
-		if (value != null) {
-			for (Map.Entry<String, HasValue> entry : fields.entrySet()) {
-				value.set(entry.getKey(), entry.getValue().getValue());
-			}
-		}
-		return value;
+	protected Map<String, HasValue> getFields() {
+		return fields;
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void setValue(T value, boolean fireEvents) {
-		for (Map.Entry<String, HasValue> entry : fields.entrySet()) {
-			if (value != null) {
-				entry.getValue().setValue(value.get(entry.getKey()));
-			} else {
-				entry.getValue().setValue(null);
-			}
-		}
-		super.setValue(value, fireEvents);
-	};
 }
