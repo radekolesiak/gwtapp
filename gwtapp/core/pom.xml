@@ -20,6 +20,11 @@
 	</developers>
 
 	<dependencies>
+	    <dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-template</artifactId>
+			<version>${project.version}</version>
+	    </dependency>	
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>

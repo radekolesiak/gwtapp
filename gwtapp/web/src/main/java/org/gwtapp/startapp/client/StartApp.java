@@ -2,10 +2,6 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
-import org.gwtapp.core.client.template.HttpTemplateRepository;
-import org.gwtapp.core.client.template.SyncTemplateRepository;
-import org.gwtapp.core.client.template.Template;
-import org.gwtapp.core.client.template.TemplateRepositoryHandlerAdapter;
 import org.gwtapp.startapp.client.ui.ExternalTemplatingPanel;
 import org.gwtapp.startapp.client.ui.InternalTemplatingPanel;
 import org.gwtapp.startapp.client.ui.SyncRepositoryTemplatingPanel;
@@ -18,6 +14,10 @@ import org.gwtapp.startapp.rpc.api.GwtAppService;
 import org.gwtapp.startapp.rpc.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.template.client.HttpTemplateRepository;
+import org.gwtapp.template.client.SyncTemplateRepository;
+import org.gwtapp.template.client.Template;
+import org.gwtapp.template.client.TemplateRepositoryHandlerAdapter;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;

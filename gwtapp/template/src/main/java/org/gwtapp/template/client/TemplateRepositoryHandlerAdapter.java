@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.template;
+package org.gwtapp.template.client;
 
 import com.google.gwt.core.client.GWT;
 

@@ -1,4 +1,4 @@
-package org.gwtapp.core.server.template;
+package org.gwtapp.template.server;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,7 +7,7 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.gwtapp.core.client.template.Template;
+import org.gwtapp.template.client.Template;
 
 @SuppressWarnings("serial")
 public class TemplateTag extends TagSupport {

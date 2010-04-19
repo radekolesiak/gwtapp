@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.template;
+package org.gwtapp.template.client;
 
 import java.util.HashMap;
 import java.util.Map;

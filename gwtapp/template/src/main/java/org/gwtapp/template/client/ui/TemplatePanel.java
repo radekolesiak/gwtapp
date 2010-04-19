@@ -1,12 +1,12 @@
-package org.gwtapp.core.client.template.ui;
+package org.gwtapp.template.client.ui;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.client.template.Template;
-import org.gwtapp.core.client.template.TemplateRepositoryHandler;
-import org.gwtapp.core.client.template.TemplateUtils;
-import org.gwtapp.core.client.template.WidgetHandler;
+import org.gwtapp.template.client.Template;
+import org.gwtapp.template.client.TemplateRepositoryHandler;
+import org.gwtapp.template.client.TemplateUtils;
+import org.gwtapp.template.client.WidgetHandler;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;

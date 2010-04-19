@@ -1,8 +1,6 @@
-package org.gwtapp.core.client.template;
+package org.gwtapp.template.client;
 
 import java.util.Map;
-
-import org.gwtapp.core.client.Utils;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -31,11 +29,22 @@ public class TemplateUtils {
 			}
 			regexp += "(t:template=\"" + name + "\")";
 		}
-		JavaScriptObject array = Utils.createArray();
+		JavaScriptObject array = createArray();
 		for (Map.Entry<String, ?> entry : ids.entrySet()) {
-			Utils.addToArray(array, "t:template=\"" + entry.getKey() + "\"",
-					entry.getValue() + "");
+			addToArray(array, "t:template=\"" + entry.getKey() + "\"", entry
+					.getValue()
+					+ "");
 		}
 		return replaceTemplate(template, regexp, array);
 	}
+
+	public static native JavaScriptObject createArray() /*-{
+														var array = new Array();
+														return array;
+														}-*/;
+
+	public static native void addToArray(JavaScriptObject array, String key,
+			Object o) /*-{
+						array[key] = o;
+						}-*/;
 }

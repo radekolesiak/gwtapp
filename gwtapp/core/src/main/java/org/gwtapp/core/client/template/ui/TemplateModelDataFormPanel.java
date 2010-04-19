@@ -2,12 +2,16 @@ package org.gwtapp.core.client.template.ui;
 
 import java.util.Map;
 
-import org.gwtapp.core.client.template.Template;
+import org.gwtapp.core.rpc.data.AutoField;
 import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.template.client.Template;
+import org.gwtapp.template.client.ui.TemplateFormPanel;
 
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.Widget;
 
-public class TemplateModelDataFormPanel<T extends ModelData> extends TemplateFormPanel<T> {
+public class TemplateModelDataFormPanel<T extends ModelData> extends
+		TemplateFormPanel<T> {
 
 	public TemplateModelDataFormPanel() {
 		super();
@@ -27,6 +31,11 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends TemplateFor
 		setValue(value);
 	}
 
+	public <E extends Widget & HasValue<?>> void addFieldHandler(
+			AutoField<?, ?> autofield, E field) {
+		addWidgetHandler(autofield.name(), field);
+		addField(autofield.name(), field);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
