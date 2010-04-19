@@ -25,6 +25,7 @@
 
 	<modules>
 		<module>core</module>
+		<module>template</module>
 		<module>rpc</module>
 		<module>app</module>
 		<module>srv</module>
