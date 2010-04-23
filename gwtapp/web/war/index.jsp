@@ -8,6 +8,7 @@
 <%@page import="org.gwtapp.startapp.rpc.data.user.register.*"%>
 <%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -29,7 +30,7 @@
 		<tr>
 		<th>Wrap and remove sample</th>
 		<th>HTML Templating</th>
-		<th>Wrap and download/upload sample<br /></th>
+		<th>Wrap and download/upload sample</th>
 		<th>Sample of changing a type on<br />different data model type panels</th>
 		</tr>
 		<tr>
@@ -54,14 +55,14 @@
 		%>
 		<%=gTab.getHTML()%>
 		<br />
-		Source code files that are used to download the form as a file on single HTTP request (GWT's serializable Java object -> file):
+		Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object input in and text file output"/></b>.
 		<ul>
-		<li>Remote service interface - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/rpc/src/main/java/org/gwtapp/startapp/client/api/DownloadService.java?view=markup">DownloadService.java</a></li>
+		<li>Remote service interface - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/rpc/src/main/java/org/gwtapp/startapp/client/api/DownloadService.java?view=markup">DownloadService.java</a> (input description)</li>
 		<li>Remote service implementation - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/srv/src/main/java/org/gwtapp/startapp/server/DownloadServiceImpl.java?view=markup">DownloadServiceImpl.java</a></li>
 		<li>UI to download a form - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 		<li>The web.xml file - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/WEB-INF/web.xml?view=markup">web.xml</a></li>
 		</ul>
-		Source code files that are used to upload the form from a file on single HTTP request (file -> GWT's serializable Java object):
+		Source code files that are used to upload the form from a file on single HTTP request. <b><c:out value="Text file input and Java object output in AsyncCallback<T>{...}"/></b>.
 		<ul>
 		<li>Service implementation - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/srv/src/main/java/org/gwtapp/startapp/server/UploadServiceImpl.java?view=markup">UploadServiceImpl.java</a></li>
 		<li>UI-1 to upload a form - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/UploadPanel.java?view=markup">UploadPanel.java</a></li>
