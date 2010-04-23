@@ -26,4 +26,4 @@ Templates["${repository}"]["${template}"]["tag"] = "<c:out value="${tag}" />";
 Templates["${repository}"]["${template}"]["style"] = "<c:out value="${style}"/>";
 Templates["${repository}"]["${template}"]["styleclass"] = "<c:out value="${styleclass}"/>";
 Templates["${repository}"]["${template}"]["body"] = "<c:out value="${body}" />";
---</script>
+</script>
