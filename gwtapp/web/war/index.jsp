@@ -29,7 +29,7 @@
 		<table border="border" cellspacing="5" cellpadding="15">
 		<tr>
 		<th>Wrap and remove sample</th>
-		<th>HTML Templating</th>
+		<th>HTML Templating sample</th>
 		<th>Download/upload sample</th>
 		<th>Sample of MVC between two panels with different model types.</th>
 		</tr>
