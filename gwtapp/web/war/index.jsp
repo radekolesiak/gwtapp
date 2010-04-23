@@ -31,7 +31,7 @@
 		<th>Wrap and remove sample</th>
 		<th>HTML Templating sample</th>
 		<th>Download/upload sample</th>
-		<th>Sample of MVC between two panels with different model types.</th>
+		<th>Sample of MVC between two panels with different model types</th>
 		</tr>
 		<tr>
 		<td valign="top">
