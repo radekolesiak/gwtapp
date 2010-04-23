@@ -15,14 +15,15 @@ if(!Templates["${repository}"]["${template}"]){Templates["${repository}"]["${tem
 <c:set var="style"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="style"/></jsp:include></c:set>
 <c:set var="styleclass"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="styleclass"/></jsp:include></c:set>
 <c:set var="body"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="body"/></jsp:include></c:set>
+<%-- TODO move out from the JSP scripting --%>
 <%
-getJspContext().setAttribute("tag",StringUtils.replaceChars((String)getJspContext().getAttribute("tag"),"\r\n","")) ;
-getJspContext().setAttribute("style",StringUtils.replaceChars((String)getJspContext().getAttribute("style"),"\r\n","")) ;
-getJspContext().setAttribute("styleclass",StringUtils.replaceChars((String)getJspContext().getAttribute("styleclass"),"\r\n","")) ;
-getJspContext().setAttribute("body",StringUtils.replaceChars((String)getJspContext().getAttribute("body"),"\r\n","")) ;
+getJspContext().setAttribute("tag", StringUtils.replaceChars((String)getJspContext().getAttribute("tag"),"\r\n","")) ;
+getJspContext().setAttribute("style", StringUtils.replaceChars((String)getJspContext().getAttribute("style"),"\r\n","")) ;
+getJspContext().setAttribute("styleclass", StringUtils.replaceChars((String)getJspContext().getAttribute("styleclass"),"\r\n","")) ;
+getJspContext().setAttribute("body", StringUtils.replaceChars((String)getJspContext().getAttribute("body"),"\r\n","")) ;
 %>
 Templates["${repository}"]["${template}"]["tag"] = "<c:out value="${tag}" />";
 Templates["${repository}"]["${template}"]["style"] = "<c:out value="${style}"/>";
 Templates["${repository}"]["${template}"]["styleclass"] = "<c:out value="${styleclass}"/>";
 Templates["${repository}"]["${template}"]["body"] = "<c:out value="${body}" />";
-</script>
+--</script>
