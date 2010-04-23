@@ -16,6 +16,7 @@
 
 <c:choose>
 	<c:when test="${empty templating}">
+		<%-- TODO move out from JSP scripting --%>
 		<%
 		response.addHeader(Template.Header.TAG, StringUtils.defaultString((String)jspContext.getAttribute("tag")));
 		response.addHeader(Template.Header.STYLE, StringUtils.defaultString((String)jspContext.getAttribute("style")));
