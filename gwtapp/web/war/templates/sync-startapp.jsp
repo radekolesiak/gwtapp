@@ -1,4 +1,3 @@
-<%--<%@ taglib uri="/template.tld" prefix="t"--%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@page import="org.gwtapp.startapp.rpc.data.user.register.UserRegister"%>
 <t:template tag="b" style="color:#336633;" styleclass="startapp-template">
