@@ -6,24 +6,23 @@
 <%@attribute name="repository" required="true" type="java.lang.String"%>
 <%@attribute name="template" required="true" type="java.lang.String"%>
 
+<jsp:useBean id="tag" class="org.gwtapp.template.server.CleanUp"/> 
+<jsp:useBean id="style" class="org.gwtapp.template.server.CleanUp"/> 
+<jsp:useBean id="styleclass" class="org.gwtapp.template.server.CleanUp"/> 
+<jsp:useBean id="body" class="org.gwtapp.template.server.CleanUp"/> 
+
+<c:set target="${tag}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="tag"/></jsp:include></c:set>
+<c:set target="${style}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="style"/></jsp:include></c:set>
+<c:set target="${styleclass}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="styleclass"/></jsp:include></c:set>
+<c:set target="${body}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="body"/></jsp:include></c:set>
+
 <script type="text/javascript">
 var Templates; 
 if(!Templates){Templates = new Array();}
 if(!Templates["${repository}"]){Templates["${repository}"] = new Array();}
 if(!Templates["${repository}"]["${template}"]){Templates["${repository}"]["${template}"] = new Array();}
-<c:set var="tag"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="tag"/></jsp:include></c:set>
-<c:set var="style"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="style"/></jsp:include></c:set>
-<c:set var="styleclass"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="styleclass"/></jsp:include></c:set>
-<c:set var="body"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="body"/></jsp:include></c:set>
-<%-- TODO move out from the JSP scripting --%>
-<%
-getJspContext().setAttribute("tag", StringUtils.replaceChars((String)getJspContext().getAttribute("tag"),"\r\n","")) ;
-getJspContext().setAttribute("style", StringUtils.replaceChars((String)getJspContext().getAttribute("style"),"\r\n","")) ;
-getJspContext().setAttribute("styleclass", StringUtils.replaceChars((String)getJspContext().getAttribute("styleclass"),"\r\n","")) ;
-getJspContext().setAttribute("body", StringUtils.replaceChars((String)getJspContext().getAttribute("body"),"\r\n","")) ;
-%>
-Templates["${repository}"]["${template}"]["tag"] = "<c:out value="${tag}" />";
-Templates["${repository}"]["${template}"]["style"] = "<c:out value="${style}"/>";
-Templates["${repository}"]["${template}"]["styleclass"] = "<c:out value="${styleclass}"/>";
-Templates["${repository}"]["${template}"]["body"] = "<c:out value="${body}" />";
+Templates["${repository}"]["${template}"]["tag"] = "<c:out value="${tag.text}" />";
+Templates["${repository}"]["${template}"]["style"] = "<c:out value="${style.text}"/>";
+Templates["${repository}"]["${template}"]["styleclass"] = "<c:out value="${styleclass.text}"/>";
+Templates["${repository}"]["${template}"]["body"] = "<c:out value="${body.text}" />";
 </script>
