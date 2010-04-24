@@ -1,8 +1,6 @@
 <%@tag pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@tag import="org.apache.commons.lang.StringUtils"%>
-<%@tag import="org.gwtapp.template.client.Template"%>
 <%@attribute name="tag" required="false" type="java.lang.String"%>
 <%@attribute name="style" required="false" type="java.lang.String"%>
 <%@attribute name="styleclass" required="false" type="java.lang.String"%>
@@ -16,12 +14,11 @@
 
 <c:choose>
 	<c:when test="${empty templating}">
-		<%-- TODO move out from JSP scripting --%>
-		<%
-		response.addHeader(Template.Header.TAG, StringUtils.defaultString((String)jspContext.getAttribute("tag")));
-		response.addHeader(Template.Header.STYLE, StringUtils.defaultString((String)jspContext.getAttribute("style")));
-		response.addHeader(Template.Header.STYLE_CLASS, StringUtils.defaultString((String)jspContext.getAttribute("styleclass")));
-		%>
+		<jsp:useBean id="templateHeader" class="org.gwtapp.template.server.Header" scope="request"/>
+		<c:set target="${templateHeader}" property="response" value="${response}"/>
+		<c:set target="${templateHeader}" property="tag" value="${tag}"/>
+		<c:set target="${templateHeader}" property="style" value="${style}"/>
+		<c:set target="${templateHeader}" property="styleclass" value="${styleclass}"/>
 		<jsp:doBody/>	
 	</c:when>
 	<c:otherwise>

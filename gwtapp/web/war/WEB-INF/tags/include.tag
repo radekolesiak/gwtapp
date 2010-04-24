@@ -5,10 +5,10 @@
 <%@attribute name="repository" required="true" type="java.lang.String"%>
 <%@attribute name="template" required="true" type="java.lang.String"%>
 
-<jsp:useBean id="tag" class="org.gwtapp.template.server.CleanUp"/> 
-<jsp:useBean id="style" class="org.gwtapp.template.server.CleanUp"/> 
-<jsp:useBean id="styleclass" class="org.gwtapp.template.server.CleanUp"/> 
-<jsp:useBean id="body" class="org.gwtapp.template.server.CleanUp"/> 
+<jsp:useBean id="tag" class="org.gwtapp.template.server.CleanUp" scope="request"/> 
+<jsp:useBean id="style" class="org.gwtapp.template.server.CleanUp" scope="request"/> 
+<jsp:useBean id="styleclass" class="org.gwtapp.template.server.CleanUp" scope="request"/> 
+<jsp:useBean id="body" class="org.gwtapp.template.server.CleanUp" scope="request"/> 
 
 <c:set target="${tag}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="tag"/></jsp:include></c:set>
 <c:set target="${style}" property="text"><jsp:include page="${repository}${template}"><jsp:param name="templating" value="style"/></jsp:include></c:set>
