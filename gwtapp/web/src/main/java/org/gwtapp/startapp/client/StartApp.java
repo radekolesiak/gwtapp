@@ -2,8 +2,6 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
-import org.gwtapp.startapp.client.ui.ExternalTemplatingPanel;
-import org.gwtapp.startapp.client.ui.InternalTemplatingPanel;
 import org.gwtapp.startapp.client.ui.SyncRepositoryTemplatingPanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
@@ -16,8 +14,6 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.template.client.HttpTemplateRepository;
 import org.gwtapp.template.client.SyncTemplateRepository;
-import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateRepositoryHandlerAdapter;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -65,7 +61,7 @@ public class StartApp implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		hwidgets();
-		templating();
+		template();
 	}
 
 	private void hwidgets() {
@@ -103,19 +99,7 @@ public class StartApp implements EntryPoint {
 				});
 	}
 
-	private void templating() {
-		// template 1
-		RootPanel.get(TEMPLATES_DIV).add(new InternalTemplatingPanel());
-		// template 2
+	private void template() {
 		RootPanel.get(TEMPLATES_DIV).add(new SyncRepositoryTemplatingPanel());
-		// template 3
-		templateService.load("startapp.jsp?type=external",
-				new TemplateRepositoryHandlerAdapter() {
-					@Override
-					public void onTemplate(Template template) {
-						RootPanel.get(TEMPLATES_DIV).add(
-								new ExternalTemplatingPanel(template));
-					}
-				});
 	}
 }

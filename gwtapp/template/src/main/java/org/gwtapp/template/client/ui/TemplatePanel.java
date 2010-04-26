@@ -4,11 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateRepositoryHandler;
 import org.gwtapp.template.client.TemplateUtils;
 import org.gwtapp.template.client.WidgetHandler;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -19,8 +17,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TemplatePanel<T> extends HTMLPanel implements
-		TemplateRepositoryHandler, HasValue<T>, HasName {
+public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName {
 
 	public static class Style {
 		public final static String TEMPLATE_PANEL = "templatePanel";
@@ -47,7 +44,7 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	public TemplatePanel(Template template) {
-		super(template.getTag(), "");
+		super(template.getTag(), template.getHtml());
 		this.template = template;
 		addStyleName(Style.TEMPLATE_PANEL);
 		if (template.getStyleClass() != null
@@ -99,11 +96,16 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		onTemplate(template);
+		template();
 	}
 
-	private void addWidgets() {
-		clear();
+	private boolean templated = false;
+
+	private void template() {
+		if (templated) {
+			return;
+		}
+		templated = true;
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
@@ -126,25 +128,6 @@ public class TemplatePanel<T> extends HTMLPanel implements
 	}
 
 	public void onAddWidgets() {
-	}
-
-	public void template() {
-		template(template);
-	}
-
-	public void template(Template template) {
-		this.template = template;
-		addWidgets();
-	}
-
-	@Override
-	public void onFailure(Throwable e) {
-		GWT.getUncaughtExceptionHandler().onUncaughtException(e);
-	}
-
-	@Override
-	public void onTemplate(Template template) {
-		template(template);
 	}
 
 	@Override
