@@ -28,7 +28,6 @@ public class Template {
 	}
 
 	public String getTag() {
-		System.out.println("Tag: "+tag);
 		return tag;
 	}
 
