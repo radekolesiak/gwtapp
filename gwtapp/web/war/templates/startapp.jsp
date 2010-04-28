@@ -1,18 +1,18 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
-<%@page import="org.gwtapp.startapp.rpc.data.user.register.UserRegister"%>
 <t:template tag="b" style="color:#336633;" styleclass="startapp-template">
 	<div style="background-color: #efefef;">
-		@This is HTML template - begin<br />
+		@This is HTML template - begin ${param.name}<br />		
 		<ul>
-			<li>Template - <a
-				href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a>
-			(<a href="/templates/startapp.jsp">view</a>)</li>
+			<li>Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a> (<a href="/templates/startapp.jsp">view</a>)</li>
 			<li>UI Panel 1 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/StartAppTemplatePanel.java?view=markup\">StartAppTemplatePanel.java</a></li>
 		</ul>
-		<div>
-			<input t:template="login" type="text" style="width: 250px;" class="style-t1" value="it should be replaced to the empty field" /><br /> 
-			<input t:template="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /><br />
+		<div class="tablediv">
+			<div class="rowdiv" t:template="login"></div>
+			<div class="rowdiv">
+				<div class="celldiv1">Password:</div>
+				<div class="celldiv2"><input t:template="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /></div>
+			</div>
 		</div>
 		@This is HTML template - end
 	</div>

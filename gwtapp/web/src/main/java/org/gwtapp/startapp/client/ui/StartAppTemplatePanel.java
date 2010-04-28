@@ -13,16 +13,15 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class StartAppTemplatePanel extends
-		TemplateFormPanel<UserRegisterModel> {
+public class StartAppTemplatePanel extends TemplateFormPanel<UserRegisterModel> {
 
-	private final TextBox login = new TextBox();
+	private final LoginTemplatePanel login = new LoginTemplatePanel();
 	private final TextBox password = new TextBox();
 	private final TextBox email = new TextBox();
 
 	public StartAppTemplatePanel() {
-		super(new UserRegisterModelImpl(), StartApp
-				.syncTemplateService.load("startapp.jsp"));
+		super(new UserRegisterModelImpl(), StartApp.syncTemplateService
+				.load("startapp.jsp"));
 
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
@@ -38,6 +37,8 @@ public class StartAppTemplatePanel extends
 		addWidgetHandler(UserRegister.LOGIN.name(), new WidgetHandler() {
 			@Override
 			public Widget onWidget(String id) {
+				//LoginTemplatePanel login = new LoginTemplatePanel();
+				//addField(UserRegister.LOGIN.name(), login);
 				return login;
 			}
 		});

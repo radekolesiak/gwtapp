@@ -18,6 +18,7 @@
 		</style>
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
 		<t:include repository="/templates/" template="startapp.jsp"/>
+		<t:include repository="/templates/" template="login.jsp"/>
 	</head>
 	<body>
 	    <noscript>

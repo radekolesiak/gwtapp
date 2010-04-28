@@ -1,3 +1,31 @@
 .startapp-template {
 	font-style: italic;
 }
+
+.tablediv {
+	display: table;
+	width: 230px;
+	background-color: #eee;
+	border: 1px solid #666666;
+	border-spacing: 5px; /*cellspacing:poor IE support for  this*/
+	border-collapse: separate;
+}
+
+.celldiv1 {
+	float: left; /*fix for  buggy browsers*/
+	display: table-cell;
+	width: 30%;
+	background-color: #ccc;
+}
+
+.celldiv2 {
+	float: left; /*fix for  buggy browsers*/
+	display: table-cell;
+	width: 70%;
+	background-color: #ccc;
+}
+
+.rowdiv {
+	display: table-row;
+	width: auto;
+}
