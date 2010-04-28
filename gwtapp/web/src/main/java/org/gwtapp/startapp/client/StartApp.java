@@ -2,7 +2,7 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.html.io.HRpcRequestBuilder;
 import org.gwtapp.core.client.html.io.HSubmitCompleteHandler;
-import org.gwtapp.startapp.client.ui.SyncRepositoryTemplatingPanel;
+import org.gwtapp.startapp.client.ui.StartAppTemplatePanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
@@ -100,6 +100,6 @@ public class StartApp implements EntryPoint {
 	}
 
 	private void template() {
-		RootPanel.get(TEMPLATES_DIV).add(new SyncRepositoryTemplatingPanel());
+		RootPanel.get(TEMPLATES_DIV).add(new StartAppTemplatePanel());
 	}
 }

@@ -17,7 +17,7 @@
 			@import "startapp.css";
 		</style>
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
-		<t:include repository="/templates/" template="sync-startapp.jsp"/>
+		<t:include repository="/templates/" template="startapp.jsp"/>
 	</head>
 	<body>
 	    <noscript>
@@ -29,7 +29,7 @@
 		<table border="border" cellspacing="5" cellpadding="15">
 		<tr>
 		<th>Wrap and remove sample</th>
-		<th>HTML Templating sample</th>
+		<th>HTML Templating sample<br /><small>Templates configurable outside of GWT application</small></th>
 		<th>Download/upload sample</th>
 		<th>Sample of MVC between two panels with different model types</th>
 		</tr>
@@ -71,7 +71,7 @@
 		</ul>
 		</td>
 		<td valign="top">
-		Source code files
+		Source code file
 		<ul>
 		<li>Abstract UI Panel - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/core/src/main/java/org/gwtapp/core/client/ui/DelegatedPanel.java?view=markup">DelegatedPanel</a></li>
 		</ul>
