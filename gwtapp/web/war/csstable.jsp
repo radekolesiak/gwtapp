@@ -35,12 +35,12 @@
 <body>
 	<div class="tablediv">
 		<div class="rowdiv">
-			<div class="celldiv1">cell <b>#1#1</b> of content in a table (30% width)</div>
-			<div class="celldiv2"><div style="width:100%;">cell <b>#1#2</b> of content in a table (70% width)</div></div>
+			<div class="celldiv1">cell <b>#1#1</b> of content in a table (25px width)</div>
+			<div class="celldiv2"><div style="width:100%;">cell <b>#1#2</b> of content in a table (auto width)</div></div>
 		</div>
 		<div class="rowdiv">
-			<div class="celldiv1">cell <b>#2#1</b> of content in a table (30% width)</div>
-			<div class="celldiv2">cell <b>#2#2</b> of content in a table (70% width)</div>
+			<div class="celldiv1">cell <b>#2#1</b> of content in a table (25px width)</div>
+			<div class="celldiv2">cell <b>#2#2</b> of content in a table (auto width)</div>
 		</div>
 	</div>
 </body>
