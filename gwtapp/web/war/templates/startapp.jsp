@@ -4,7 +4,7 @@
 		@This is HTML template - begin ${param.name}<br />		
 		<ul>
 			<li>Form Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a> (<a href="/templates/startapp.jsp">view</a>)</li>
-			<li>Login Row Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/login.jsp?view=markup">login.jsp</a> (<a href="/templates/login.jsp">view</a>)</li>
+			<li>Login Field Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/login.jsp?view=markup">login.jsp</a> (<a href="/templates/login.jsp">view</a>)</li>
 			<li>UI Panel 1 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/StartAppTemplatePanel.java?view=markup\">StartAppTemplatePanel.java</a></li>
 		</ul>
