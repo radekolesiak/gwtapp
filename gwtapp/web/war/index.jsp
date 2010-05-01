@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@page pageEncoding="utf-8"%>        
 <%@page import="org.gwtapp.html.server.*"%>
-<%@page import="org.gwtapp.core.rpc.html.ui.form.*"%>
-<%@page import="org.gwtapp.core.rpc.html.ui.core.*"%>
 <%@page import="org.gwtapp.startapp.rpc.ui.*"%>
 <%@page import="org.gwtapp.startapp.rpc.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.rpc.data.user.register.*"%>
