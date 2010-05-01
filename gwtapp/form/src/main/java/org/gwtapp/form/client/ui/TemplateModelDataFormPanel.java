@@ -1,4 +1,4 @@
-package org.gwtapp.core.client.template.ui;
+package org.gwtapp.form.client.ui;
 
 import java.util.Map;
 
