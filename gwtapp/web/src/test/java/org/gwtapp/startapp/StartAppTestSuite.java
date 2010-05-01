@@ -9,9 +9,8 @@ import com.google.gwt.junit.tools.GWTTestSuite;
 
 public class StartAppTestSuite extends GWTTestSuite {
 	public static Test suite() {
-		TestSuite suite = new TestSuite("Test for a StartApp Application");
+		TestSuite suite = new TestSuite("Tests for a StartApp Application");
 		suite.addTestSuite(GwtTestTemplateUtils.class);
 		return suite;
 	}
-
 }
