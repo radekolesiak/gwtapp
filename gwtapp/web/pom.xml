@@ -80,6 +80,7 @@
 							<directory>.</directory>
 							<includes>
 								<include>**/*.log</include>
+								<include>tomcat</include>
 							</includes>
 							<followSymlinks>true</followSymlinks>
 						</fileset>

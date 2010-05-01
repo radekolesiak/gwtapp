@@ -6,6 +6,20 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class TemplateUtils {
 
+	public static native String replaceParameters(String s,
+			JavaScriptObject array)/*-{
+									return s.replace(
+									/(\{\d+\})/g,  
+									function($1){
+										if($1 && array[$1]){
+											return(array[$1]);
+										} else {
+											return("");
+										}
+									}
+									)
+									}-*/;
+
 	public static native String replaceTemplate(String template, String regexp,
 			JavaScriptObject array)/*-{
 									return template.replace(
@@ -36,6 +50,14 @@ public class TemplateUtils {
 					+ "");
 		}
 		return replaceTemplate(template, regexp, array);
+	}
+
+	public static String replaceParameters(String s, String... params) {
+		JavaScriptObject array = createArray();
+		for (int i = 0; i < params.length; i++) {
+			addToArray(array, "{" + (i + 1) + "}", params[i]);
+		}
+		return replaceParameters(s, array);
 	}
 
 	public static native JavaScriptObject createArray() /*-{
