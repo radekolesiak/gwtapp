@@ -2,15 +2,15 @@ package org.gwtapp.template.client;
 
 import com.google.gwt.user.client.ui.HTML;
 
-public class SyncTemplateRepository {
+public class TemplateRepository {
 
 	private String repository;
 
-	public SyncTemplateRepository() {
+	public TemplateRepository() {
 		this("/");
 	}
 
-	public SyncTemplateRepository(String repository) {
+	public TemplateRepository(String repository) {
 		setRepository(repository);
 	}
 

@@ -12,8 +12,7 @@ import org.gwtapp.startapp.rpc.api.GwtAppService;
 import org.gwtapp.startapp.rpc.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
-import org.gwtapp.template.client.HttpTemplateRepository;
-import org.gwtapp.template.client.SyncTemplateRepository;
+import org.gwtapp.template.client.TemplateRepository;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -36,9 +35,7 @@ public class StartApp implements EntryPoint {
 		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
-	public final static HttpTemplateRepository templateService = new HttpTemplateRepository(
-			"/templates/");
-	public final static SyncTemplateRepository syncTemplateService = new SyncTemplateRepository(
+	public final static TemplateRepository syncTemplateService = new TemplateRepository(
 			"/templates/");
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
