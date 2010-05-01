@@ -25,7 +25,9 @@
 
 	<modules>
 		<module>core</module>
+		<module>html</module>
 		<module>template</module>
+		<module>form</module>
 		<module>rpc</module>
 		<module>app</module>
 		<module>srv</module>
