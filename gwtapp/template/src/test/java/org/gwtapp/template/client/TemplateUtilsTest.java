@@ -1,9 +1,9 @@
-package org.gwtapp.startapp.client;
+package org.gwtapp.template.client;
 
 import org.gwtapp.template.client.TemplateUtils;
 import org.junit.Test;
 
-public class TemplateUtilsTest extends StartAppEntryPointTest {
+public class TemplateUtilsTest extends TemplateTest {
 
 	@Test
 	public void testReplaceParameters1() {

@@ -1,6 +1,6 @@
 package org.gwtapp.startapp;
 
-import org.gwtapp.startapp.client.TemplateUtilsTest;
+import org.gwtapp.template.client.TemplateUtilsTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
