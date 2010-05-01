@@ -35,7 +35,7 @@ public class UserRegisterTabExt {
 			final UserRegisterPanel urp = new UserRegisterPanel(
 					hUserRegisterPanel);
 			root = Utils.updateToRootPanel(urp);
-			
+
 			final Button btn = new Button("Remove wrapped form");
 			btn.addClickHandler(new ClickHandler() {
 				@Override

@@ -16,7 +16,7 @@ public class Utils {
 		}
 		String id = widget.getElement().getParentElement().getAttribute("id");
 		if (id == null || id.isEmpty()) {
-			id = Math.random() + ":" + new Date().getTime();
+			id = "R" + Math.random() + ":" + new Date().getTime();
 			widget.getElement().getParentElement().setAttribute("id", id);
 		}
 		RootPanel rootPanel = RootPanel.get(id);

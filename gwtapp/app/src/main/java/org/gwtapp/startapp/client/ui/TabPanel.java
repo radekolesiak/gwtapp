@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui;
 
-import org.gwtapp.html.client.ui.form.FieldPanel;
-import org.gwtapp.html.client.ui.form.FormPanel;
+import org.gwtapp.form.client.ui.FieldPanel;
+import org.gwtapp.form.client.ui.FormPanel;
 import org.gwtapp.html.rpc.ui.form.HFieldPanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterPanel;
 import org.gwtapp.startapp.rpc.data.Tab;

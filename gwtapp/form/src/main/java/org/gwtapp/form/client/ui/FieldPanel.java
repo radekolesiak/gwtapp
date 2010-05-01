@@ -1,4 +1,4 @@
-package org.gwtapp.html.client.ui.form;
+package org.gwtapp.form.client.ui;
 
 import org.gwtapp.core.rpc.data.ModelData;
 import org.gwtapp.html.rpc.ui.HValue;

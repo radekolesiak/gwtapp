@@ -27,6 +27,11 @@
 			<artifactId>gwtapp-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-form</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!--  GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>

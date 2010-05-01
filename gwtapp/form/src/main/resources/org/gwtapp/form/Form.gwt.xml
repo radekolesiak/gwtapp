@@ -1,0 +1,4 @@
+<module>
+	<inherits name='org.gwtapp.html.HTML'/>
+	<source path='client' />
+</module>

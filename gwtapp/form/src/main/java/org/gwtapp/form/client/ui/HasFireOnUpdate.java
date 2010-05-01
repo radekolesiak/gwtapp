@@ -1,4 +1,4 @@
-package org.gwtapp.html.client.ui.form;
+package org.gwtapp.form.client.ui;
 
 public interface HasFireOnUpdate {
 	
