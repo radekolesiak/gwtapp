@@ -1,8 +1,8 @@
 package org.gwtapp.startapp.rpc.ui.user.register;
 
-import org.gwtapp.core.rpc.html.ui.core.HTextBox;
-import org.gwtapp.core.rpc.html.ui.form.HFieldPanel;
-import org.gwtapp.core.rpc.html.ui.form.HFormPanel;
+import org.gwtapp.html.rpc.ui.HTextBox;
+import org.gwtapp.html.rpc.ui.form.HFieldPanel;
+import org.gwtapp.html.rpc.ui.form.HFormPanel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;

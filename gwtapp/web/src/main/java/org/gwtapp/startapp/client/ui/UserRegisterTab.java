@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui;
 
-import org.gwtapp.core.rpc.html.core.HClient;
+import org.gwtapp.html.rpc.HClient;
 import org.gwtapp.startapp.client.HWidgets;
 import org.gwtapp.startapp.rpc.ui.HTabPanel;
 

@@ -1,17 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	
+
 	<artifactId>gwtapp-rpc</artifactId>
 	<name>gwtapp-rpc</name>
-	
+
 	<developers>
 		<developer>
 			<id>cuprum</id>
@@ -19,15 +18,15 @@
 			<email>r.olesiak@gmail.com</email>
 		</developer>
 	</developers>
-	
-	<dependencies>    
-	    <dependency>
+
+	<dependencies>
+		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-core</artifactId>
+			<artifactId>gwtapp-html</artifactId>
 			<version>${project.version}</version>
-	    </dependency>
-    </dependencies> 
-	
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -35,12 +34,15 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0</version>
 				<configuration>
-				  <source>1.6</source>
-				  <target>1.6</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>
-		    <!--  Include SOURCE in output artifact for GWT (GWT libraries must include source) -->
+		<!--
+			Include SOURCE in output artifact for GWT (GWT libraries must include
+			source)
+		-->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -48,7 +50,7 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
-		</resources>		
+		</resources>
 	</build>
 </project>
 

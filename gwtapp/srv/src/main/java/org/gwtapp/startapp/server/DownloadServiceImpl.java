@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.server;
 
-import org.gwtapp.core.server.html.io.HDownloadHttpServlet;
+import org.gwtapp.html.server.io.HDownloadHttpServlet;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
