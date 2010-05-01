@@ -9,7 +9,7 @@ public class TemplateUtils {
 	public static native String replaceParameters(String s,
 			JavaScriptObject array)/*-{
 									return s.replace(
-									/(\{\d+\})/g,  
+									/(\{[1-9]\d*\})/g,  
 									function($1){
 										if($1 && array[$1]){
 											return(array[$1]);
