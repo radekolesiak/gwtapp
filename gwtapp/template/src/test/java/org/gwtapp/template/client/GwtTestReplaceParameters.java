@@ -3,7 +3,7 @@ package org.gwtapp.template.client;
 import org.gwtapp.template.client.TemplateUtils;
 import org.junit.Test;
 
-public class GwtTestTemplateUtils extends TemplateTest {
+public class GwtTestReplaceParameters extends TemplateTest {
 
 	@Test
 	public void testReplaceParameters1() {

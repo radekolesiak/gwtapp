@@ -9,10 +9,10 @@
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/src/main/java/org/gwtapp/startapp/client/ui/StartAppTemplatePanel.java?view=markup\">StartAppTemplatePanel.java</a></li>
 		</ul>
 		<div class="tablediv">
-			<div class="rowdiv" t:template="login"></div>
+			<div class="rowdiv" t:field="login"></div>
 			<div class="rowdiv">
 				<div class="celldiv1">Password:</div>
-				<div class="celldiv2"><input t:template="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /></div>
+				<div class="celldiv2"><input t:field="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /></div>
 			</div>
 		</div>
 		@This is HTML template - end

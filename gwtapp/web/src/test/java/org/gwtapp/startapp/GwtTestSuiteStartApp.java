@@ -7,12 +7,19 @@ import junit.framework.TestSuite;
 import com.google.gwt.junit.tools.GWTTestSuite;
 
 public class GwtTestSuiteStartApp extends GWTTestSuite {
-	@SuppressWarnings("unchecked")
+	
 	public static Test suite() throws ClassNotFoundException {
 		TestSuite suite = new TestSuite("Tests for a StartApp Application");
-		Class<? extends TestCase> c = (Class<? extends TestCase>) Class
-				.forName("org.gwtapp.template.client.GwtTestTemplateUtils");
-		suite.addTestSuite(c);
+		addTest(suite, "org.gwtapp.template.client.GwtTestReplaceParameters");
+		addTest(suite, "org.gwtapp.template.client.GwtTestUtilsReplaceTemplate");
 		return suite;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void addTest(TestSuite suite, String c)
+			throws ClassNotFoundException {
+		Class<? extends TestCase> C = (Class<? extends TestCase>) Class
+				.forName(c);
+		suite.addTestSuite(C);
 	}
 }

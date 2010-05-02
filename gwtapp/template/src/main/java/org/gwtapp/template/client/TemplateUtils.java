@@ -41,11 +41,11 @@ public class TemplateUtils {
 			if (!regexp.isEmpty()) {
 				regexp += "|";
 			}
-			regexp += "(t:template=\"" + name + "\")";
+			regexp += "(t:field=\"" + name + "\")";
 		}
 		JavaScriptObject array = createArray();
 		for (Map.Entry<String, ?> entry : ids.entrySet()) {
-			addToArray(array, "t:template=\"" + entry.getKey() + "\"", entry
+			addToArray(array, "t:field=\"" + entry.getKey() + "\"", entry
 					.getValue()
 					+ "");
 		}
