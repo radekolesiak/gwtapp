@@ -116,12 +116,17 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 			String id = entry.getValue();
 			Element element = DOM.getElementById(id);
 			if (element != null) {
-				String style = element.getAttribute("class");
-				Widget widget = widgetHandlers.get(field).onWidget(id);
-				if (style != null && !style.isEmpty()) {
-					widget.addStyleName(style);
+				WidgetHandler handler = widgetHandlers.get(field);
+				if (handler != null) {
+					Widget widget = handler.onWidget(id);
+					if (widget != null) {
+						String style = element.getAttribute("class");
+						if (style != null && !style.isEmpty()) {
+							widget.addStyleName(style);
+						}
+						addAndReplaceElement(widget, id);
+					}
 				}
-				addAndReplaceElement(widget, id);
 			}
 		}
 		onAddWidgets();
