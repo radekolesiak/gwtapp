@@ -6,8 +6,6 @@ import java.util.Map;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
-import com.google.gwt.user.client.ui.Widget;
-
 public class GwtTestMessages extends TemplateTest {
 
 	@Test
@@ -22,28 +20,22 @@ public class GwtTestMessages extends TemplateTest {
 	}
 
 	private class MessagePanel extends TemplatePanel<Void> {
-		
-		TemplateMessage tm;
+
+		private final MessageWidgetHandler handler = new MessageWidgetHandler();
 
 		public MessagePanel(String html) {
 			super("div", html);
-			addWidgetHandler("msg", new WidgetHandler() {
-				@Override
-				public Widget onWidget(final String id) {
-					tm = new TemplateMessage(id);
-					return null;
-				}
-			});
+			addWidgetHandler("msg", handler);
 		}
-		
-		public TemplateMessage getTemplateMessage(){
-			return tm;
+
+		public TemplateMessage getTemplateMessage() {
+			return handler.getTemplateMessage();
 		}
 	}
 
 	@Test
 	public void testTemplateMessage() {
-		new MessagePanel("<div t:msg=\"ab:xyz; cd:012;ef:;\"></div>"){
+		new MessagePanel("<div t:msg=\"ab:xyz; cd:012;ef:;\"></div>") {
 			@Override
 			public void onAddWidgets() {
 				TemplateMessage tm = getTemplateMessage();
