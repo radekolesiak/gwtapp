@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateMessage {
 
-	private final Map<String, String> messages;
+	private final Map<String, String> patterns;
 
 	public TemplateMessage(Widget widget) {
 		this(widget.getElement());
@@ -22,17 +22,26 @@ public class TemplateMessage {
 	public TemplateMessage(Element e) {
 		String msg = e.getAttribute("t:msg");
 		if (msg == null) {
-			messages = null;
+			patterns = null;
 		} else {			
-			messages = new HashMap<String, String>();
-			TemplateUtils.parseMessages(msg, messages);
+			patterns = new HashMap<String, String>();
+			TemplateUtils.parseMessages(msg, patterns);
 		}
 	}
 
-	public String getMsg(String name) {
-		if (messages != null) {
-			return messages.get(name);
+	public String getPattern(String name) {
+		if (patterns != null) {
+			return patterns.get(name);
 		} else {
+			return null;
+		}
+	}
+	
+	public String getMessage(String name, String ...params){
+		String pattern = getPattern(name);
+		if(pattern!=null){
+			return TemplateUtils.replaceParameters(pattern, params);
+		}else{
 			return null;
 		}
 	}

@@ -34,17 +34,34 @@ public class GwtTestMessages extends TemplateTest {
 	}
 
 	@Test
-	public void testTemplateMessage() {
+	public void testTemplatePattern() {
 		new MessagePanel("<div t:msg=\"ab:xyz; cd:012;ef:;\"></div>") {
 			@Override
 			public void onAddWidgets() {
 				TemplateMessage tm = getTemplateMessage();
 				assertNotNull(tm);
-				assertNotNull(tm.getMsg("ab"));
-				assertNotNull(tm.getMsg("cd"));
-				assertNull(tm.getMsg("ef"));
-				assertEquals("xyz", tm.getMsg("ab"));
-				assertEquals("012", tm.getMsg("cd"));
+				assertNotNull(tm.getPattern("ab"));
+				assertNotNull(tm.getPattern("cd"));
+				assertNull(tm.getPattern("ef"));
+				assertEquals("xyz", tm.getPattern("ab"));
+				assertEquals("012", tm.getPattern("cd"));
+			}
+		};
+	}
+
+	@Test
+	public void testTemplateMessage() {
+		new MessagePanel(
+				"<div t:msg=\"ab:x{1}y{2}z; cd:0{1}1{2}2;ef:;\"></div>") {
+			@Override
+			public void onAddWidgets() {
+				TemplateMessage tm = getTemplateMessage();
+				assertNotNull(tm);
+				assertNotNull(tm.getPattern("ab"));
+				assertNotNull(tm.getPattern("cd"));
+				assertNull(tm.getPattern("ef"));
+				assertEquals("xAyBz", tm.getMessage("ab", "A", "B"));
+				assertEquals("0A1B2", tm.getMessage("cd", "A", "B"));
 			}
 		};
 	}
