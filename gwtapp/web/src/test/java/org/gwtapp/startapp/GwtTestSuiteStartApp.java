@@ -12,6 +12,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		TestSuite suite = new TestSuite("Tests for a StartApp Application");
 		addTest(suite, "org.gwtapp.template.client.GwtTestReplaceParameters");
 		addTest(suite, "org.gwtapp.template.client.GwtTestUtilsReplaceTemplate");
+		addTest(suite, "org.gwtapp.template.client.GwtTestMessages");
 		return suite;
 	}
 

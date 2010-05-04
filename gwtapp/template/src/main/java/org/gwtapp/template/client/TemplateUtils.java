@@ -6,6 +6,18 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class TemplateUtils {
 
+	public static native void parseMessages(String s, Map<String,String> map)/*-{
+		s.replace(
+			/([\w]+[\w\d]*)[\s]*:([^;]*);/g,  
+			function($1, $2, $3){
+				if($2 && $3){
+					map.@java.util.Map::put(Ljava/lang/Object;Ljava/lang/Object;)($2, $3);
+				}
+				return "";
+			}
+		)
+	}-*/;
+
 	public static native String replaceParameters(String s,
 			JavaScriptObject array)/*-{
 									return s.replace(
@@ -69,4 +81,9 @@ public class TemplateUtils {
 			Object o) /*-{
 						array[key] = o;
 						}-*/;
+
+	public static native Object getFormArray(JavaScriptObject array, String key) /*-{
+																					return array[key];
+																					}-*/;
+
 }
