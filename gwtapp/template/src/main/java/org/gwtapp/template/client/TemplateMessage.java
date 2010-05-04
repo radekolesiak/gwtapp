@@ -20,6 +20,7 @@ public class TemplateMessage {
 	}
 
 	public TemplateMessage(Element e) {
+		// TODO add 'msg' patterns caching to prevent of multiple parsing
 		String msg = e.getAttribute("t:msg");
 		if (msg == null) {
 			patterns = null;
