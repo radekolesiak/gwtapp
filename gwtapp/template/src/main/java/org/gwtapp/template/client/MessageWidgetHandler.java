@@ -32,4 +32,8 @@ public class MessageWidgetHandler implements WidgetHandler {
 	public TemplateMessage getTemplateMessage() {
 		return templateMessage;
 	}
+	
+	public String getMessage(String name, String... params) {
+		return getTemplateMessage().getMessage(name,params);
+	}
 }
