@@ -65,4 +65,10 @@ public class GwtTestMessages extends TemplateTest {
 			}
 		};
 	}
+
+	@Test
+	public void testDoubleTemplateMessage() {
+		testTemplateMessage();
+		testTemplateMessage();
+	}
 }

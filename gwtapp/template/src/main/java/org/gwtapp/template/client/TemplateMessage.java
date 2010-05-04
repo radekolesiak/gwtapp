@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateMessage {
 
+	private final static Map<String, Map<String, String>> cache = new HashMap<String, Map<String, String>>();
 	private final Map<String, String> patterns;
 
 	public TemplateMessage(Widget widget) {
@@ -20,14 +21,18 @@ public class TemplateMessage {
 	}
 
 	public TemplateMessage(Element e) {
-		// TODO add 'msg' patterns caching to prevent of multiple parsing
+		Map<String, String> patterns = null;
 		String msg = e.getAttribute("t:msg");
-		if (msg == null) {
-			patterns = null;
-		} else {			
-			patterns = new HashMap<String, String>();
-			TemplateUtils.parseMessages(msg, patterns);
+		if (msg != null) {
+			if (cache.containsKey(msg)) {
+				patterns = cache.get(msg);
+			} else {
+				patterns = new HashMap<String, String>();
+				TemplateUtils.parseMessages(msg, patterns);
+				cache.put(msg, patterns);
+			}
 		}
+		this.patterns = patterns;
 	}
 
 	public String getPattern(String name) {
@@ -37,13 +42,17 @@ public class TemplateMessage {
 			return null;
 		}
 	}
-	
-	public String getMessage(String name, String ...params){
+
+	public String getMessage(String name, String... params) {
 		String pattern = getPattern(name);
-		if(pattern!=null){
+		if (pattern != null) {
 			return TemplateUtils.replaceParameters(pattern, params);
-		}else{
+		} else {
 			return null;
 		}
+	}
+
+	public static void clearCache() {
+		cache.clear();
 	}
 }
