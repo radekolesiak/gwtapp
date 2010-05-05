@@ -11,6 +11,7 @@ public class TemplateMessage {
 
 	private final static Map<String, Map<String, String>> cache = new HashMap<String, Map<String, String>>();
 	private final Map<String, String> patterns;
+	private final String inner;
 
 	public TemplateMessage(Widget widget) {
 		this(widget.getElement());
@@ -22,8 +23,9 @@ public class TemplateMessage {
 
 	public TemplateMessage(Element e) {
 		Map<String, String> patterns = null;
+		String inner = null;
 		String msg = e.getAttribute("t:msg");
-		if (msg != null) {
+		if (msg != null && !msg.isEmpty()) {
 			if (cache.containsKey(msg)) {
 				patterns = cache.get(msg);
 			} else {
@@ -31,8 +33,11 @@ public class TemplateMessage {
 				TemplateUtils.parseMessages(msg, patterns);
 				cache.put(msg, patterns);
 			}
+		} else {
+			inner = e.getInnerHTML();
 		}
 		this.patterns = patterns;
+		this.inner = inner;
 	}
 
 	public String getPattern(String name) {
@@ -47,6 +52,8 @@ public class TemplateMessage {
 		String pattern = getPattern(name);
 		if (pattern != null) {
 			return TemplateUtils.replaceParameters(pattern, params);
+		} else if (inner != null) {
+			return TemplateUtils.replaceParameters(inner, params);
 		} else {
 			return null;
 		}

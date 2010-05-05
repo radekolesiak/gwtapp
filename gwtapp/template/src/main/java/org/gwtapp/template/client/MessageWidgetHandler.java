@@ -29,11 +29,15 @@ public class MessageWidgetHandler implements WidgetHandler {
 		this.templateMessage = templateMessage;
 	}
 
+	public Widget getDefaultWidget() {
+		return defaultWidget;
+	}
+
 	public TemplateMessage getTemplateMessage() {
 		return templateMessage;
 	}
-	
+
 	public String getMessage(String name, String... params) {
-		return getTemplateMessage().getMessage(name,params);
+		return getTemplateMessage().getMessage(name, params);
 	}
 }
