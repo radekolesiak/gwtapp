@@ -148,9 +148,13 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 	public void onAddWidgets() {
 	}
 
+	public boolean isTemplated() {
+		return templated;
+	}
+
 	@Override
 	public T getValue() {
-		if (templated) {
+		if (isTemplated()) {
 			return value;
 		} else {
 			return initValue;
@@ -164,7 +168,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 
 	@Override
 	public void setValue(T value, boolean fireEvents) {
-		if (templated) {
+		if (isTemplated()) {
 			this.value = value;
 		} else {
 			this.initValue = value;

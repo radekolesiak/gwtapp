@@ -1,18 +1,20 @@
 package org.gwtapp.template.client;
 
+import com.google.gwt.user.client.ui.HasHTML;
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MessageWidgetHandler<T extends Widget> implements WidgetHandler {
+public class MessageHandler<T extends Widget> implements WidgetHandler {
 
 	private TemplateMessage templateMessage = null;
 	private T widget = null;
 	private String id = null;
 
-	public MessageWidgetHandler() {
+	public MessageHandler() {
 		this(null);
 	}
 
-	public MessageWidgetHandler(T widget) {
+	public MessageHandler(T widget) {
 		this.widget = widget;
 	}
 
@@ -35,7 +37,7 @@ public class MessageWidgetHandler<T extends Widget> implements WidgetHandler {
 		return id;
 	}
 
-	public Widget getWidget() {
+	public T getWidget() {
 		return widget;
 	}
 
@@ -45,5 +47,17 @@ public class MessageWidgetHandler<T extends Widget> implements WidgetHandler {
 
 	public String getMessage(String name, String... params) {
 		return getTemplateMessage().getMessage(name, params);
+	}
+
+	public void updateWidgetMessage(String name, String... params) {
+		T widget = getWidget();
+		if (widget instanceof HasHTML || widget instanceof HasText) {
+			String msg = getMessage(name, params);
+			if (widget instanceof HasHTML) {
+				((HasHTML) widget).setHTML(msg);
+			} else if (widget instanceof HasText) {
+				((HasText) widget).setText(msg);
+			}
+		}
 	}
 }
