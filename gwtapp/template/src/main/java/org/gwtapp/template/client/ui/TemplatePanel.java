@@ -56,6 +56,14 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		}
 	}
 
+	private boolean templated = false;
+	private T initValue = null;
+
+	public TemplatePanel(Template template, T initValue) {
+		this(template);
+		setValue(initValue);
+	}
+
 	@Override
 	public String getName() {
 		return name;
@@ -99,8 +107,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		template();
 	}
 
-	private boolean templated = false;
-
 	private void template() {
 		if (templated) {
 			return;
@@ -133,6 +139,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 				}
 			}
 		}
+		if (initValue != null) {
+			setValue(initValue);
+		}
 		onAddWidgets();
 	}
 
@@ -141,7 +150,11 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 
 	@Override
 	public T getValue() {
-		return value;
+		if (templated) {
+			return value;
+		} else {
+			return initValue;
+		}
 	}
 
 	@Override
@@ -151,7 +164,11 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 
 	@Override
 	public void setValue(T value, boolean fireEvents) {
-		this.value = value;
+		if (templated) {
+			this.value = value;
+		} else {
+			this.initValue = value;
+		}
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}

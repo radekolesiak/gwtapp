@@ -1,36 +1,51 @@
 package org.gwtapp.template.client;
 
+import org.gwtapp.template.client.ui.MessageWidget;
+
 import com.google.gwt.user.client.ui.Widget;
 
 public class MessageWidgetHandler implements WidgetHandler {
 
-	private TemplateMessage templateMessage;
-	private final Widget defaultWidget;
+	private TemplateMessage templateMessage = null;
+	private Widget widget = null;
+	private String id = null;
 
 	public MessageWidgetHandler() {
 		this(null);
 	}
 
-	public MessageWidgetHandler(Widget defaultWidget) {
-		this.defaultWidget = defaultWidget;
+	public MessageWidgetHandler(Widget widget) {
+		this.widget = widget;
 	}
 
 	@Override
 	public final Widget onWidget(String id) {
+		if (this.widget == null) {
+			this.widget = onCreateDefaultWidget(id);
+		}
+		this.id = id;
 		setTemplateMessage(new TemplateMessage(id));
-		return onWidget(id, getTemplateMessage());
+		return onWidget();
 	}
 
-	public Widget onWidget(String id, TemplateMessage templateMessage) {
-		return defaultWidget;
+	protected Widget onCreateDefaultWidget(String id) {
+		return new MessageWidget(id);
+	}
+
+	public Widget onWidget() {
+		return widget;
 	}
 
 	private void setTemplateMessage(TemplateMessage templateMessage) {
 		this.templateMessage = templateMessage;
 	}
 
-	public Widget getDefaultWidget() {
-		return defaultWidget;
+	public String getId() {
+		return id;
+	}
+
+	public Widget getWidget() {
+		return widget;
 	}
 
 	public TemplateMessage getTemplateMessage() {
