@@ -32,7 +32,7 @@ public class MessageWidgetHandler implements WidgetHandler {
 		return new MessageWidget(id);
 	}
 
-	public Widget onWidget() {
+	protected Widget onWidget() {
 		return widget;
 	}
 
