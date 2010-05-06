@@ -18,16 +18,9 @@ public class MessageWidgetHandler<T extends Widget> implements WidgetHandler {
 
 	@Override
 	public final T onWidget(String id) {
-		if (this.widget == null) {
-			this.widget = onCreateDefaultWidget(id);
-		}
 		this.id = id;
 		setTemplateMessage(new TemplateMessage(id));
-		return onWidget();
-	}
-
-	protected T onCreateDefaultWidget(String id) {
-		return widget;
+		return widget = onWidget();
 	}
 
 	protected T onWidget() {
