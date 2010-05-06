@@ -1,25 +1,23 @@
 package org.gwtapp.template.client;
 
-import org.gwtapp.template.client.ui.MessageWidget;
-
 import com.google.gwt.user.client.ui.Widget;
 
-public class MessageWidgetHandler implements WidgetHandler {
+public class MessageWidgetHandler<T extends Widget> implements WidgetHandler {
 
 	private TemplateMessage templateMessage = null;
-	private Widget widget = null;
+	private T widget = null;
 	private String id = null;
 
 	public MessageWidgetHandler() {
 		this(null);
 	}
 
-	public MessageWidgetHandler(Widget widget) {
+	public MessageWidgetHandler(T widget) {
 		this.widget = widget;
 	}
 
 	@Override
-	public final Widget onWidget(String id) {
+	public final T onWidget(String id) {
 		if (this.widget == null) {
 			this.widget = onCreateDefaultWidget(id);
 		}
@@ -28,11 +26,11 @@ public class MessageWidgetHandler implements WidgetHandler {
 		return onWidget();
 	}
 
-	protected Widget onCreateDefaultWidget(String id) {
-		return new MessageWidget(id);
+	protected T onCreateDefaultWidget(String id) {
+		return widget;
 	}
 
-	protected Widget onWidget() {
+	protected T onWidget() {
 		return widget;
 	}
 
