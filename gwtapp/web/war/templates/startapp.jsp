@@ -1,6 +1,6 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:template tag="b" style="color:#336633;" styleclass="startapp-template">
-	<div style="background-color: #efefef;width:325px;">
+	<div style="background-color: #e0e0e0;width:325px;">
 		@This is HTML template - begin ${param.name}<br />		
 		<ul>
 			<li>Form Template - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/web/war/templates/startapp.jsp?view=markup">startapp.jsp</a> (<a href="/templates/startapp.jsp">view</a>)</li>

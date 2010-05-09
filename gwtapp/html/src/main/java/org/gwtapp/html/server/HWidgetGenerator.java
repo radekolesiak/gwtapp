@@ -101,7 +101,9 @@ public class HWidgetGenerator {
 			IElementValue elementValue = (IElementValue) widget;
 			createAttr(html, "value", elementValue.getElementValue());
 		}
-		html.append(c);
+		if (!"input".equalsIgnoreCase(widget.getTag())) {
+			html.append(c);
+		}
 		if (widget instanceof ILeaf) {
 			ILeaf h = (ILeaf) widget;
 			html.append(h.getLeaf());
@@ -111,8 +113,13 @@ public class HWidgetGenerator {
 				createDOM(html, child);
 			}
 		}
-		html.append(o + "/");
-		html.append(widget.getTag());
+		if (!"input".equalsIgnoreCase(widget.getTag())) {
+			html.append(o);
+		}
+		html.append("/");
+		if (!"input".equalsIgnoreCase(widget.getTag())) {
+			html.append(widget.getTag());
+		}
 		html.append(c);
 	}
 

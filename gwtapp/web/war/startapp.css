@@ -2,30 +2,32 @@
 	font-style: italic;
 }
 
-.tablediv {
+div.table {
 	display: table;
-	width: 230px;
-	background-color: #eee;
-	border: 1px solid #666666;
-	border-spacing: 5px; /*cellspacing:poor IE support for  this*/
 	border-collapse: separate;
 }
 
-.celldiv1 {
-	float: left; /*fix for  buggy browsers*/
-	display: table-cell;
-	width: 30%;
-	background-color: #ccc;
-}
-
-.celldiv2 {
-	float: left; /*fix for  buggy browsers*/
-	display: table-cell;
-	width: 70%;
-	background-color: #ccc;
-}
-
-.rowdiv {
+div.row {
 	display: table-row;
 	width: auto;
+}
+
+div.cell {
+	display: table-cell;
+	width: auto;
+}
+
+div.table.main {
+	width: 100%;
+	border: 1px solid #666666;
+	background-color: #ccc;
+	border-spacing: 4px;
+}
+
+div.table.main div.cell {
+	background-color: #eee;
+}
+
+div.table.main .header .cell{
+	text-align: center;
 }
