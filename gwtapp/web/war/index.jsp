@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,java,mvc" />
+		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,single request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,java,mvc" />
 		<title>StartApp</title>
 		<style type="text/css"> 
 			@import "startapp.css";
