@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,single request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,java,mvc" />
+		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,single request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,mvc,java,reflection" />
 		<title>StartApp</title>
 		<style type="text/css"> 
 			@import "startapp.css";
@@ -89,7 +89,7 @@
 			<div class="row">
 				<div class="cell">
 					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a><br />
-					Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a>
+					<small>Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a></small>
 				</div>
 			</div>		
 		</div>
