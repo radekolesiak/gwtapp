@@ -88,11 +88,11 @@
 			</div>
 			<div class="row">
 				<div class="cell">
-					<a href="http://sourceforge.net/projects/gwtapp/develop/">Source code</a><br />
-					<small>Radek Olesiak</small>
+					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a><br />
+					Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a>
 				</div>
 			</div>		
-		</div>		
+		</div>
 		<p>
 			<a href="http://validator.w3.org/check?uri=referer">
 				<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
