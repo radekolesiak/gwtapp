@@ -55,7 +55,18 @@ public class TemplateMessage {
 		} else if (inner != null) {
 			return TemplateUtils.replaceParameters(inner, params);
 		} else {
-			return null;
+			return "";
+		}
+	}
+
+	public String getMessage(String name, Param... params) {
+		String pattern = getPattern(name);
+		if (pattern != null) {
+			return TemplateUtils.replaceParameters(pattern, params);
+		} else if (inner != null) {
+			return TemplateUtils.replaceParameters(inner, params);
+		} else {
+			return "";
 		}
 	}
 
