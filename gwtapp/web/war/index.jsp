@@ -29,7 +29,7 @@
 		<div class="table main">
 			<div class="row header">
 				<div class="cell">Wrap and remove sample</div>
-				<div class="cell">HTML Templating sample<br /><small>Template is generated outside of GWT on server side<br />and included as JavaScript data of this page</small></div>
+				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
 				<div class="cell">Upload and download sample</div>
 				<div class="cell">Sample of MVC between two panels of different model types</div>
 			</div>
@@ -82,7 +82,6 @@
 			<div class="row">
 				<div class="cell">
 					<b>Applications that use GWTApp:</b><br />
-					<br />
 					<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 				</div>
 			</div>

@@ -15,6 +15,7 @@ div.row {
 div.cell {
 	display: table-cell;
 	width: auto;
+	padding: 5px;
 }
 
 div.table.main {
@@ -28,6 +29,6 @@ div.table.main div.cell {
 	background-color: #eee;
 }
 
-div.table.main .header .cell{
+div.table.main .header .cell {
 	text-align: center;
 }
