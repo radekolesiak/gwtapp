@@ -1,6 +1,5 @@
 package org.gwtapp.template.client;
 
-import org.gwtapp.template.client.TemplateUtils;
 import org.junit.Test;
 
 public class GwtTestReplaceParameters extends TemplateTest {
@@ -41,5 +40,23 @@ public class GwtTestReplaceParameters extends TemplateTest {
 	public void testReplaceParameters7() {
 		assertEquals("AZB", TemplateUtils.replaceParameters("A{3}B", "X", "Y",
 				"Z"));
+	}
+
+	@Test
+	public void testReplaceParametersByName1() {
+		assertEquals("AXB", TemplateUtils.replaceParameters("A{1}B", new Param(
+				"1", "X")));
+	}
+
+	@Test
+	public void testReplaceParametersByName2() {
+		assertEquals("AXB{2}", TemplateUtils.replaceParameters("A{1}B{2}", new Param(
+				"1", "X")));
+	}
+
+	@Test
+	public void testReplaceParametersByName3() {
+		assertEquals("AXB", TemplateUtils.replaceParameters("A{n-a-m-e_1}B", new Param(
+				"n-a-m-e_1", "X")));
 	}
 }

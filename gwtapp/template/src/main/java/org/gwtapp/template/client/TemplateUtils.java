@@ -6,17 +6,17 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class TemplateUtils {
 
-	public static native void parseMessages(String s, Map<String,String> map)/*-{
-		s.replace(
-			/([\w]+[\w\d]*)[\s]*:([^;]*);/g,  
-			function($1, $2, $3){
-				if($2 && $3){
-					map.@java.util.Map::put(Ljava/lang/Object;Ljava/lang/Object;)($2, $3);
-				}
-				return "";
-			}
-		)
-	}-*/;
+	public static native void parseMessages(String s, Map<String, String> map)/*-{
+																				s.replace(
+																				/([\w]+[\w\d]*)[\s]*:([^;]*);/g,  
+																				function($1, $2, $3){
+																				if($2 && $3){
+																				map.@java.util.Map::put(Ljava/lang/Object;Ljava/lang/Object;)($2, $3);
+																				}
+																				return "";
+																				}
+																				)
+																				}-*/;
 
 	public static native String replaceParameters(String s,
 			JavaScriptObject array)/*-{
@@ -27,6 +27,19 @@ public class TemplateUtils {
 											return(array[$1]);
 										} else {
 											return("");
+										}
+									}
+									)
+									}-*/;
+	public static native String replaceParametersByName(String s,
+			JavaScriptObject array)/*-{
+									return s.replace(
+									/(\{[\w-]+\})/g,  
+									function($1){
+										if($1 && array[$1]){
+											return(array[$1]);
+										} else {
+											return($1);
 										}
 									}
 									)
@@ -70,6 +83,14 @@ public class TemplateUtils {
 			addToArray(array, "{" + (i + 1) + "}", params[i]);
 		}
 		return replaceParameters(s, array);
+	}
+
+	public static String replaceParameters(String s, Param... params) {
+		JavaScriptObject array = createArray();
+		for (Param param : params) {
+			addToArray(array, "{" + param.getName() + "}", param.getValue());
+		}
+		return replaceParametersByName(s, array);
 	}
 
 	public static native JavaScriptObject createArray() /*-{
