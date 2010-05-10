@@ -7,6 +7,10 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class WrapperWidget extends Widget implements HasHTML {
 
+	public WrapperWidget() {
+		this(DOM.createDiv());
+	}
+
 	public WrapperWidget(String id) {
 		this(DOM.getElementById(id));
 	}

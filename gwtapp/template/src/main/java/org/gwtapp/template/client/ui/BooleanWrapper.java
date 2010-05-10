@@ -11,10 +11,14 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class BooleanWrapper extends WrapperWidget implements
-		HasValue<Boolean>, HasClickHandlers {
+public class BooleanWrapper extends WrapperWidget implements HasValue<Boolean>,
+		HasClickHandlers {
 
 	private final InputElement e;
+
+	public BooleanWrapper(boolean checkbox) {
+		this(checkbox ? DOM.createInputCheck() : DOM.createInputRadio(""));
+	}
 
 	public BooleanWrapper(String id) {
 		this(DOM.getElementById(id));

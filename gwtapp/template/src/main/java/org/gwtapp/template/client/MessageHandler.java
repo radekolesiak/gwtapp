@@ -9,6 +9,7 @@ public class MessageHandler<T extends Widget> implements WidgetHandler {
 	private TemplateMessage templateMessage = null;
 	private T widget = null;
 	private String id = null;
+	private T defaultWidget = null;
 
 	public MessageHandler() {
 		this(null);
@@ -38,7 +39,11 @@ public class MessageHandler<T extends Widget> implements WidgetHandler {
 	}
 
 	public T getWidget() {
-		return widget;
+		if (widget != null) {
+			return widget;
+		} else {
+			return widget = getDefaultWidget();
+		}
 	}
 
 	public TemplateMessage getTemplateMessage() {
@@ -61,7 +66,11 @@ public class MessageHandler<T extends Widget> implements WidgetHandler {
 		}
 	}
 
+	protected T getDefaultWidget() {
+		return defaultWidget;
+	}
+
 	public boolean hasWidget() {
-		return widget != null;
+		return getWidget() != null;
 	}
 }
