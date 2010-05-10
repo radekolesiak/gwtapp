@@ -60,4 +60,8 @@ public class MessageHandler<T extends Widget> implements WidgetHandler {
 			}
 		}
 	}
+
+	public boolean hasWidget() {
+		return widget != null;
+	}
 }
