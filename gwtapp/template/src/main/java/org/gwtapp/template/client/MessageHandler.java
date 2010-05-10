@@ -7,9 +7,9 @@ import com.google.gwt.user.client.ui.Widget;
 public class MessageHandler<T extends Widget> implements WidgetHandler {
 
 	private TemplateMessage templateMessage = null;
+	private T defaultWidget = null;
 	private T widget = null;
 	private String id = null;
-	private T defaultWidget = null;
 
 	public MessageHandler() {
 		this(null);
