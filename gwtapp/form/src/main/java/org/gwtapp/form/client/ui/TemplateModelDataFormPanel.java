@@ -41,7 +41,7 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@Override
 	public T getValue() {
 		T value = super.getValue();
-		if (value != null) {
+		if (isTemplated() && value != null) {
 			for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
 				value.set(entry.getKey(), entry.getValue().getValue());
 			}
@@ -52,11 +52,13 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public void setValue(T value, boolean fireEvents) {
-		for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
-			if (value != null) {
-				entry.getValue().setValue(value.get(entry.getKey()));
-			} else {
-				entry.getValue().setValue(null);
+		if (isTemplated()) {
+			for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
+				if (value != null) {
+					entry.getValue().setValue(value.get(entry.getKey()));
+				} else {
+					entry.getValue().setValue(null);
+				}
 			}
 		}
 		super.setValue(value, fireEvents);

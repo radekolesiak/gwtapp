@@ -1,23 +1,25 @@
 package org.gwtapp.startapp.client.ui;
 
+import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
 import org.gwtapp.startapp.client.StartApp;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
-import org.gwtapp.template.client.WidgetHandler;
-import org.gwtapp.template.client.ui.TemplateFormPanel;
+import org.gwtapp.template.client.MessageHandler;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.Widget;
 
-public class StartAppTemplatePanel extends TemplateFormPanel<UserRegisterModel> {
+public class StartAppTemplatePanel extends TemplateModelDataFormPanel<UserRegisterModel> {
 
-	private final LoginTemplatePanel login = new LoginTemplatePanel();
-	private final TextBox password = new TextBox();
-	private final TextBox email = new TextBox();
+	private final MessageHandler<LoginTemplatePanel> login = new MessageHandler<LoginTemplatePanel>(
+			new LoginTemplatePanel());
+	private final MessageHandler<TextBox> password = new MessageHandler<TextBox>(
+			new TextBox());
+	private final MessageHandler<TextBox> email = new MessageHandler<TextBox>(
+			new TextBox());
 
 	public StartAppTemplatePanel() {
 		super(new UserRegisterModelImpl(), StartApp.syncTemplateService
@@ -30,29 +32,17 @@ public class StartAppTemplatePanel extends TemplateFormPanel<UserRegisterModel> 
 			}
 		});
 
-		addField(UserRegister.LOGIN.name(), login);
-		addField(UserRegister.PASSWORD.name(), password);
-		addField(UserRegister.EMAIL.name(), email);
+		addField(UserRegister.LOGIN.name(), login.getWidget());
+		addField(UserRegister.PASSWORD.name(), password.getWidget());
+		addField(UserRegister.EMAIL.name(), email.getWidget());
 
-		addWidgetHandler(UserRegister.LOGIN.name(), new WidgetHandler() {
-			@Override
-			public Widget onWidget(String id) {
-				//LoginTemplatePanel login = new LoginTemplatePanel();
-				//addField(UserRegister.LOGIN.name(), login);
-				return login;
-			}
-		});
-		addWidgetHandler(UserRegister.PASSWORD.name(), new WidgetHandler() {
-			@Override
-			public Widget onWidget(String id) {
-				return password;
-			}
-		});
+		addWidgetHandler(UserRegister.LOGIN.name(), login);
+		addWidgetHandler(UserRegister.PASSWORD.name(), password);
 	}
 
 	@Override
 	public void onAddWidgets() {
-		add(email);
+		add(email.getWidget());
 	}
 
 }
