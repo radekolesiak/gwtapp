@@ -14,6 +14,7 @@
 				<div class="celldiv1">Password:</div>
 				<div class="celldiv2"><input t:field="password" type="text" style="width: 250px;" class="style-t2" value="it should be replaced to the empty field" /></div>
 			</div>
+			<div style="color:#3333bb;font-style: normal;" t:field="summary" t:msg="empty:Form is empty. Enter any value to change this message.;any:Form value is {login} {password} {email};login:login=<i>{1}</i>;password:password=<i>{1}</i>;email:email=<i>{1}</i>;"></div>
 		</div>
 		@This is HTML template - end
 	</div>
