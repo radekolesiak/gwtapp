@@ -54,10 +54,26 @@ public class MessageHandler<T extends Widget> implements WidgetHandler {
 		return getTemplateMessage().getMessage(name, params);
 	}
 
+	public String getParamMessage(String name, Param... params) {
+		return getTemplateMessage().getMessage(name, params);
+	}
+
 	public void updateWidgetMessage(String name, String... params) {
 		T widget = getWidget();
 		if (widget instanceof HasHTML || widget instanceof HasText) {
 			String msg = getMessage(name, params);
+			if (widget instanceof HasHTML) {
+				((HasHTML) widget).setHTML(msg);
+			} else if (widget instanceof HasText) {
+				((HasText) widget).setText(msg);
+			}
+		}
+	}
+
+	public void updateWidgetParamMessage(String name, Param... params) {
+		T widget = getWidget();
+		if (widget instanceof HasHTML || widget instanceof HasText) {
+			String msg = getParamMessage(name, params);
 			if (widget instanceof HasHTML) {
 				((HasHTML) widget).setHTML(msg);
 			} else if (widget instanceof HasText) {

@@ -23,22 +23,31 @@ public class TemplateUtils {
 									return s.replace(
 									/(\{[1-9]\d*\})/g,  
 									function($1){
-										if($1 && array[$1]){
-											return(array[$1]);
-										} else {
-											return("");
+										if($1){
+											if(array[$1]){
+												return(array[$1]);
+											} else {
+												return("");
+											}
+										}else{
+											return($1);
 										}
 									}
 									)
 									}-*/;
+
 	public static native String replaceParametersByName(String s,
 			JavaScriptObject array)/*-{
 									return s.replace(
 									/(\{[\w-]+\})/g,  
 									function($1){
-										if($1 && array[$1]){
-											return(array[$1]);
-										} else {
+										if($1){
+											if(array[$1]){
+												return(array[$1]);
+											} else {
+												return("");
+											}
+										}else{
 											return($1);
 										}
 									}
