@@ -81,6 +81,13 @@
 		<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 			<div class="row">
 				<div class="cell">
+					<b>Valuable articles related to GWT:</b><br />
+					<a href="http://techzone.enterra-inc.com/gwt-improving-performance/">GWT Improving performance</a><br />
+					<a href="http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with">Simpler and Speedier GWT with Server Side RPC Serialization</a><br />
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
 					<b>Applications that use GWTApp:</b><br />
 					<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
 				</div>
