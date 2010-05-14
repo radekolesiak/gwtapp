@@ -1,21 +1,25 @@
 package org.gwtapp.template.client.ui;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WrapperWidget extends Widget implements HasHTML {
+public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers {
 
-	public WrapperWidget() {
+	public WidgetWrapper() {
 		this(DOM.createDiv());
 	}
 
-	public WrapperWidget(String id) {
+	public WidgetWrapper(String id) {
 		this(DOM.getElementById(id));
 	}
 
-	public WrapperWidget(Element e) {
+	public WidgetWrapper(Element e) {
 		setElement(e);
 	}
 
@@ -37,5 +41,10 @@ public class WrapperWidget extends Widget implements HasHTML {
 	@Override
 	public void setText(String value) {
 		getElement().setInnerText(value);
+	}
+
+	@Override
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return addDomHandler(handler, ClickEvent.getType());
 	}
 }

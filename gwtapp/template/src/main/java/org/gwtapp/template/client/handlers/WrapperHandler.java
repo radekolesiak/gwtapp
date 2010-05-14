@@ -1,17 +1,17 @@
 package org.gwtapp.template.client.handlers;
 
 import org.gwtapp.template.client.MessageHandler;
-import org.gwtapp.template.client.ui.WrapperWidget;
+import org.gwtapp.template.client.ui.WidgetWrapper;
 
-public class WrapperHandler extends MessageHandler<WrapperWidget> {
+public class WrapperHandler extends MessageHandler<WidgetWrapper> {
 
 	@Override
-	protected WrapperWidget onWidget() {
-		return new WrapperWidget(getId());
+	protected WidgetWrapper onWidget() {
+		return new WidgetWrapper(getId());
 	}
 
 	@Override
-	protected WrapperWidget getDefaultWidget() {
-		return new WrapperWidget();
+	protected WidgetWrapper getDefaultWidget() {
+		return new WidgetWrapper();
 	}
 }
