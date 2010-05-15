@@ -11,7 +11,9 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
@@ -111,38 +113,49 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		if (templated) {
 			return;
 		}
-		templated = true;
-		for (String template : widgetHandlers.keySet()) {
-			ids.put(template, HTMLPanel.createUniqueId());
-		}
-		DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(template
-				.getHtml(), ids));
-		for (Map.Entry<String, String> entry : ids.entrySet()) {
-			String field = entry.getKey();
-			String id = entry.getValue();
-			Element element = DOM.getElementById(id);
-			if (element != null) {
-				WidgetHandler handler = widgetHandlers.get(field);
-				if (handler != null) {
-					Widget widget = handler.onWidget(id);
-					if (widget != null) {
-						String styleClass = element.getAttribute("class");
-						String style = element.getAttribute("style");
-						if (styleClass != null && !styleClass.isEmpty()) {
-							widget.addStyleName(styleClass);
+		try {
+			for (String template : widgetHandlers.keySet()) {
+				ids.put(template, HTMLPanel.createUniqueId());
+			}
+			DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
+					template.getHtml(), ids));
+			for (Map.Entry<String, String> entry : ids.entrySet()) {
+				String field = entry.getKey();
+				String id = entry.getValue();
+				Element element = DOM.getElementById(id);
+				if (element != null) {
+					WidgetHandler handler = widgetHandlers.get(field);
+					if (handler != null) {
+						Widget widget = handler.onWidget(id);
+						if (widget != null) {
+							String styleClass = element.getAttribute("class");
+							String style = element.getAttribute("style");
+							if (styleClass != null && !styleClass.isEmpty()) {
+								widget.addStyleName(styleClass);
+							}
+							if (style != null && !style.isEmpty()) {
+								widget.getElement()
+										.setAttribute("style", style);
+							}
+							addAndReplaceElement(widget, id);
 						}
-						if (style != null && !style.isEmpty()) {
-							widget.getElement().setAttribute("style", style);
-						}
-						addAndReplaceElement(widget, id);
 					}
 				}
 			}
+			onAddWidgets();
+			if (initValue != null) {
+				value = initValue;
+				initValue = null;
+				DeferredCommand.addCommand(new Command() {
+					@Override
+					public void execute() {
+						setValue(value);
+					}
+				});
+			}
+		} finally {
+			templated = true;
 		}
-		if (initValue != null) {
-			setValue(initValue);
-		}
-		onAddWidgets();
 	}
 
 	public void onAddWidgets() {
