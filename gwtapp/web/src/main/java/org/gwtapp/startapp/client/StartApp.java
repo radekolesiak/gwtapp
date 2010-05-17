@@ -13,7 +13,6 @@ import org.gwtapp.startapp.rpc.api.GwtAppServiceAsync;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
-import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -23,7 +22,7 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class StartApp implements EntryPoint {
+public class StartApp extends StartAppEntryPoint {
 
 	public final static GwtAppServiceAsync service = GWT
 			.create(GwtAppService.class);
@@ -52,7 +51,7 @@ public class StartApp implements EntryPoint {
 	private final static String TEMPLATES_DIV = "templates";
 
 	@Override
-	public void onModuleLoad() {
+	public void onStartAppModuleLoad() {
 		hwidgets();
 		template();
 	}
