@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui;
 
 import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
-import org.gwtapp.startapp.client.StartApp;
+import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
@@ -26,7 +26,7 @@ public class StartAppTemplatePanel extends
 			new TextBox());
 
 	public StartAppTemplatePanel() {
-		super(new UserRegisterModelImpl(), StartApp.syncTemplateService
+		super(new UserRegisterModelImpl(), StartAppEntryPoint.templates
 				.load("startapp.jsp"));
 
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {

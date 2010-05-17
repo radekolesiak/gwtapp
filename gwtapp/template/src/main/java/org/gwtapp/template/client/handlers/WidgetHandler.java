@@ -3,7 +3,7 @@ package org.gwtapp.template.client.handlers;
 import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.ui.WidgetWrapper;
 
-public class WrapperHandler extends MessageHandler<WidgetWrapper> {
+public class WidgetHandler extends MessageHandler<WidgetWrapper> {
 
 	@Override
 	protected WidgetWrapper onWidget() {

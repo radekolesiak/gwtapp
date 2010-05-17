@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MessageHandler<T extends Widget> implements WidgetHandler {
+public class MessageHandler<T extends Widget> implements TemplateHandler {
 
 	private TemplateMessage templateMessage = null;
 	private T defaultWidget = null;

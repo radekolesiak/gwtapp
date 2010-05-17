@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui;
 
-import org.gwtapp.startapp.client.StartApp;
+import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
@@ -15,7 +15,7 @@ public class LoginTemplatePanel extends TemplatePanel<String> {
 			login);
 
 	public LoginTemplatePanel() {
-		super(StartApp.syncTemplateService.load("login.jsp"));
+		super(StartAppEntryPoint.templates.load("login.jsp"));
 		addWidgetHandler("login", loginHandler);
 		login.addValueChangeHandler(new ValueChangeHandler<String>() {
 			@Override

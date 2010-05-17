@@ -2,6 +2,6 @@ package org.gwtapp.template.client;
 
 import com.google.gwt.user.client.ui.Widget;
 
-public interface WidgetHandler {
+public interface TemplateHandler {
 	Widget onWidget(String id);
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateUtils;
-import org.gwtapp.template.client.WidgetHandler;
+import org.gwtapp.template.client.TemplateHandler;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -26,7 +26,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 	}
 
 	private final Map<String, String> ids = new HashMap<String, String>();
-	private final Map<String, WidgetHandler> widgetHandlers = new HashMap<String, WidgetHandler>();
+	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
 	private Template template = new Template();
 
@@ -86,12 +86,12 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		}
 	}
 
-	public void addWidgetHandler(String name, WidgetHandler handler) {
+	public void addWidgetHandler(String name, TemplateHandler handler) {
 		widgetHandlers.put(name, handler);
 	}
 
 	public void addWidgetHandler(String name, final Widget widget) {
-		addWidgetHandler(name, new WidgetHandler() {
+		addWidgetHandler(name, new TemplateHandler() {
 			@Override
 			public Widget onWidget(String id) {
 				return widget;
@@ -124,7 +124,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 				String id = entry.getValue();
 				Element element = DOM.getElementById(id);
 				if (element != null) {
-					WidgetHandler handler = widgetHandlers.get(field);
+					TemplateHandler handler = widgetHandlers.get(field);
 					if (handler != null) {
 						Widget widget = handler.onWidget(id);
 						if (widget != null) {
