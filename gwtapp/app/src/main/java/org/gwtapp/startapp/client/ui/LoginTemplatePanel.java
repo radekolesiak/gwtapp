@@ -30,7 +30,11 @@ public class LoginTemplatePanel extends TemplatePanel<String> {
 
 	@Override
 	public String getValue() {
-		return login.getWidget().getValue();
+		if (isTemplated()) {
+			return login.getWidget().getValue();
+		} else {
+			return "";
+		}
 	}
 
 	@Override
