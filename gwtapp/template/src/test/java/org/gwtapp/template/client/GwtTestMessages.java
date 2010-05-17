@@ -3,12 +3,27 @@ package org.gwtapp.template.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gwtapp.template.client.handlers.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class GwtTestMessages extends TemplateTest {
+
+	private class MessagePanel extends TemplatePanel<Void> {
+
+		private final WidgetHandler handler = new WidgetHandler();
+
+		public MessagePanel(String html) {
+			super("div", html);
+			addWidgetHandler("test", handler);
+		}
+
+		public TemplateMessage getTemplateMessage() {
+			return handler.getTemplateMessage();
+		}
+	}
 
 	@Test
 	public void testMessagesParse() {
@@ -21,23 +36,10 @@ public class GwtTestMessages extends TemplateTest {
 		assertEquals("012", map.get("cd"));
 	}
 
-	private class MessagePanel extends TemplatePanel<Void> {
-
-		private final MessageHandler<Widget> handler = new MessageHandler<Widget>();
-
-		public MessagePanel(String html) {
-			super("div", html);
-			addWidgetHandler("msg", handler);
-		}
-
-		public TemplateMessage getTemplateMessage() {
-			return handler.getTemplateMessage();
-		}
-	}
-
 	@Test
 	public void testTemplatePattern() {
-		new MessagePanel("<div t:msg=\"ab:xyz; cd:012;ef:;\"></div>") {
+		MessagePanel mp = new MessagePanel(
+				"<div t:field=\"test\" t:msg=\"ab:xyz; cd:012;ef:;\"></div>") {
 			@Override
 			public void onAddWidgets() {
 				TemplateMessage tm = getTemplateMessage();
@@ -49,12 +51,13 @@ public class GwtTestMessages extends TemplateTest {
 				assertEquals("012", tm.getPattern("cd"));
 			}
 		};
+		RootPanel.get().add(mp);
 	}
 
 	@Test
 	public void testTemplateMessage() {
-		new MessagePanel(
-				"<div t:msg=\"ab:x{1}y{2}z; cd:0{1}1{2}2;ef:;\"></div>") {
+		MessagePanel mp = new MessagePanel(
+				"<div t:field=\"test\" t:msg=\"ab:x{1}y{2}z; cd:0{1}1{2}2;ef:;\"></div>") {
 			@Override
 			public void onAddWidgets() {
 				TemplateMessage tm = getTemplateMessage();
@@ -66,6 +69,7 @@ public class GwtTestMessages extends TemplateTest {
 				assertEquals("0A1B2", tm.getMessage("cd", "A", "B"));
 			}
 		};
+		RootPanel.get().add(mp);
 	}
 
 	@Test
