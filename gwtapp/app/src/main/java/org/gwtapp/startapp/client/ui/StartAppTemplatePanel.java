@@ -7,39 +7,25 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Param;
+import org.gwtapp.template.client.handlers.TextBoxHandler;
+import org.gwtapp.template.client.handlers.WidgetHandler;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class StartAppTemplatePanel extends
 		TemplateModelDataFormPanel<UserRegisterModel> {
 
-	private final MessageHandler<HTML> summary = new MessageHandler<HTML>(
-			new HTML());
+	private final WidgetHandler summary = new WidgetHandler();
 	private final MessageHandler<LoginTemplatePanel> login = new MessageHandler<LoginTemplatePanel>(
 			new LoginTemplatePanel());
-	private final MessageHandler<TextBox> password = new MessageHandler<TextBox>(
-			new TextBox());
-	private final MessageHandler<TextBox> email = new MessageHandler<TextBox>(
-			new TextBox());
+	private final TextBoxHandler password = new TextBoxHandler();
+	private final TextBox email = new TextBox();
 
 	public StartAppTemplatePanel() {
 		super(new UserRegisterModelImpl(), StartAppEntryPoint.templates
 				.load("startapp.jsp"));
-
-		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {
-				updateMsg(event.getValue());
-			}
-		});
-
-		addField(UserRegister.LOGIN.name(), login.getWidget());
-		addField(UserRegister.PASSWORD.name(), password.getWidget());
-		addField(UserRegister.EMAIL.name(), email.getWidget());
-
 		addWidgetHandler("summary", summary);
 		addWidgetHandler(UserRegister.LOGIN.name(), login);
 		addWidgetHandler(UserRegister.PASSWORD.name(), password);
@@ -47,7 +33,16 @@ public class StartAppTemplatePanel extends
 
 	@Override
 	public void onAddWidgets() {
-		add(email.getWidget());
+		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {
+				updateMsg(event.getValue());
+			}
+		});
+		addField(UserRegister.LOGIN.name(), login.getWidget());
+		addField(UserRegister.PASSWORD.name(), password.getWidget());
+		addField(UserRegister.EMAIL.name(), email);
+		add(email);
 	}
 
 	@Override
