@@ -43,6 +43,11 @@ public class GwtTestReplaceParameters extends TemplateTest {
 	}
 
 	@Test
+	public void testReplaceParameters8() {
+		assertEquals("AXB", TemplateUtils.replaceParameters("A{1}B{2}", "X"));
+	}
+
+	@Test
 	public void testReplaceParametersByName1() {
 		assertEquals("AXB", TemplateUtils.replaceParameters("A{1}B", new Param(
 				"1", "X")));
@@ -50,13 +55,13 @@ public class GwtTestReplaceParameters extends TemplateTest {
 
 	@Test
 	public void testReplaceParametersByName2() {
-		assertEquals("AXB{2}", TemplateUtils.replaceParameters("A{1}B{2}", new Param(
-				"1", "X")));
+		assertEquals("AXB", TemplateUtils.replaceParameters("A{1}B{2}",
+				new Param("1", "X")));
 	}
 
 	@Test
 	public void testReplaceParametersByName3() {
-		assertEquals("AXB", TemplateUtils.replaceParameters("A{n-a-m-e_1}B", new Param(
-				"n-a-m-e_1", "X")));
+		assertEquals("AXB", TemplateUtils.replaceParameters("A{n-a-m-e_1}B",
+				new Param("n-a-m-e_1", "X")));
 	}
 }
