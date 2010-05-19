@@ -47,6 +47,7 @@ public class StartApp extends StartAppEntryPoint {
 	private final Button clear = new Button("Clear");
 	private final Button download = new Button("Download");
 	private final UploadPanel upload = new UploadPanel();
+	private final Button feedback = new Button("feedback");
 
 	private final static String TEMPLATES_DIV = "templates";
 
@@ -54,6 +55,13 @@ public class StartApp extends StartAppEntryPoint {
 	public void onStartAppModuleLoad() {
 		hwidgets();
 		template();
+		RootPanel.get().add(feedback);
+		feedback.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				service.feedback("from@mail.com", "Feedback message", callback);
+			}
+		});
 	}
 
 	private void hwidgets() {

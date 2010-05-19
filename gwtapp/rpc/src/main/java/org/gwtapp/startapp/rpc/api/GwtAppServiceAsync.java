@@ -6,4 +6,5 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface GwtAppServiceAsync {
 	void register(UserRegisterModel user, AsyncCallback<Void> callback);
+	void feedback(String from, String feedback, AsyncCallback<Void> callback); 
 }

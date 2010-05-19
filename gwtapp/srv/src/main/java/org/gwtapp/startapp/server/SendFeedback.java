@@ -17,7 +17,7 @@ public class SendFeedback {
 
 	private final static Logger log = Logger.getLogger(SendFeedback.class);
 
-	public void sendFeedback(String email, String feedback) {
+	public void sendFeedback(String from, String feedback) {
 		Properties props = new Properties();
 		Session session = Session.getDefaultInstance(props, null);
 		try {
@@ -26,9 +26,11 @@ public class SendFeedback {
 					"Radek Olesiak"));
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(
 					"r.olesiak@gmail.com", "Radek Olesiak"));
-			msg.setSubject("Feedback from: " + email);
+			msg.setSubject("Feedback from: " + from);
 			msg.setText(feedback);
 			Transport.send(msg);
+			System.out.println("feedback has been sent");
+			log.debug("feedback has been sent");
 		} catch (UnsupportedEncodingException e) {
 			log.error("", e);
 		} catch (AddressException e) {

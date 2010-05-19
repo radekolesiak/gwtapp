@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="StartApp" default="rollback" basedir=".">
 	<target name="rollback">
-		<property name="appengine.home" location="${eclipse.pdebuild.home}../com.google.appengine.eclipse.sdkbundle.1.3.3_1.3.3.v201004231111/appengine-java-sdk-1.3.3.1/" />
+		<property name="appengine.home" location="${eclipse.pdebuild.home}../com.google.appengine.eclipse.sdkbundle.1.3.0_1.3.0.v200912141120/appengine-java-sdk-1.3.0/" />
 		<echo message="appengine.home = ${appengine.home}" />
 		<exec executable="${appengine.home}/bin/appcfg.cmd">
 			<arg value="rollback" />

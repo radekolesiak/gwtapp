@@ -15,4 +15,10 @@ public class GwtAppServiceImpl extends RemoteServiceServlet implements
 		System.out.println("Register GWT Servlet");
 	}
 
+	@Override
+	public void feedback(String from, String feedback) throws RpcException {
+		SendFeedback send = new SendFeedback();
+		send.sendFeedback(from, feedback);
+	}
+
 }
