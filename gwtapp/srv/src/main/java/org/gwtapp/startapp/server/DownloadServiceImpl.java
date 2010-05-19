@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.server;
 
+import org.apache.log4j.Logger;
 import org.gwtapp.html.server.io.HDownloadHttpServlet;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
@@ -7,6 +8,9 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 @SuppressWarnings("serial")
 public class DownloadServiceImpl extends HDownloadHttpServlet implements
 		DownloadService {
+
+	private final static Logger log = Logger
+			.getLogger(DownloadServiceImpl.class);
 
 	@Override
 	public void download(UserRegisterModel userRegister) {
@@ -21,7 +25,7 @@ public class DownloadServiceImpl extends HDownloadHttpServlet implements
 				getThreadLocalResponse().getOutputStream().print(content);
 			}
 		} catch (Exception e) {
-			log("", e);
+			log.debug("", e);
 		}
 	}
 

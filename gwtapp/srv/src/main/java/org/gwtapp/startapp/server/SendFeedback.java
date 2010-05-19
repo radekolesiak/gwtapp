@@ -29,8 +29,7 @@ public class SendFeedback {
 			msg.setSubject("Feedback from: " + from);
 			msg.setText(feedback);
 			Transport.send(msg);
-			System.out.println("feedback has been sent");
-			log.debug("feedback has been sent");
+			log.debug("Feedback has been sent");
 		} catch (UnsupportedEncodingException e) {
 			log.error("", e);
 		} catch (AddressException e) {

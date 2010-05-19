@@ -7,10 +7,13 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
+import org.apache.log4j.Logger;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
 public class Utils {
+
+	private final static Logger log = Logger.getLogger(Utils.class);
 
 	public final static String CONTENT_TYPE = "text/plain";
 	public final static String EXTENSION = "xcc";
@@ -32,7 +35,7 @@ public class Utils {
 			urm = (UserRegisterModel) decoder.readObject();
 			decoder.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("", e);
 		}
 		return urm;
 	}
