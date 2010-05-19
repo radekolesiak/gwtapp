@@ -5,15 +5,23 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.FormPanel;
 
 public class FormWrapper extends FormPanel {
-	
+
 	public FormWrapper() {
 	}
 
 	public FormWrapper(String id) {
-		this(DOM.getElementById(id));
+		this(id, false);
+	}
+
+	public FormWrapper(String id, boolean createIFrame) {
+		this(DOM.getElementById(id), createIFrame);
 	}
 
 	public FormWrapper(Element e) {
-		super(e);
+		this(e, false);
+	}
+
+	public FormWrapper(Element e, boolean createIFrame) {
+		super(e, createIFrame);
 	}
 }
