@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${appEngineVersion}</version>
+			<version>${gae.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -126,6 +126,9 @@
 				<groupId>net.kindleit</groupId>
 				<artifactId>maven-gae-plugin</artifactId>
 				<version>0.5.8</version>
+				<configuration>
+					<unpackVersion>${gae.version}</unpackVersion>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
