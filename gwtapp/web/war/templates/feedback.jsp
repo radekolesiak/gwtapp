@@ -1,5 +1,5 @@
 <t:template styleclass="feedback">
-	<i>Send us your feedback:</i>
+	<i>Send feedback:</i>
 	<div style="width:1px;height:7px;"></div>
 	<div>
 		<small class="label">Your e-mail:</small>
