@@ -11,6 +11,6 @@
 	</div>
 	<div t:field="send" class="send" >Send</div>
 	<div style="clear:both;"></div>
-	<small t:field="sent" style="display:none;">Thank your feedback.</small>
-	<small t:field="error" style="display:none;">There was a problem with feedback sending.</small>
+	<small t:field="sent" style="display:none;">Thank you for your feedback.</small>
+	<small t:field="error" style="display:none;">There was a problem while sending feedback.</small>
 </t:template>
