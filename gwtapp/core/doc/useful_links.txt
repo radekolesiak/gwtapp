@@ -11,3 +11,6 @@ II. HWidget:
 	Passing RPC objects via HTML page:
 	http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with
 	http://www.webtoolkit.info/javascript-base64.html , http://www.webtoolkit.info/licence.html
+	
+III. GAE Maven:
+	http://64.34.178.139/maven_gae_plugin/usage.html
