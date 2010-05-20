@@ -17,10 +17,6 @@
 			<url-pattern>*.jsp</url-pattern>
 			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
 		</jsp-property-group>
-		<jsp-property-group>
-			<url-pattern>*.tag</url-pattern>
-			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
-		</jsp-property-group>
 	</jsp-config>
 			
 	<servlet>
