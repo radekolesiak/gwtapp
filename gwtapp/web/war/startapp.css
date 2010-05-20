@@ -32,3 +32,27 @@ div.table.main div.cell {
 div.table.main .header .cell {
 	text-align: center;
 }
+
+.feedback {
+	border: 2px dotted #bbddbb;
+	width: 325px;
+	padding: 4px;
+}
+
+.feedback .label {
+	float: left;
+	width: 80px;
+}
+
+.feedback .input {
+	width: 240px;
+}
+
+.feedback .send {
+	width:45px;
+	border: 2px outset #bbddbb;
+	background-color: #bbddbb;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+}

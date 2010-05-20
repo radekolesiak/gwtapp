@@ -20,8 +20,13 @@ public class GwtAppServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	public void feedback(String from, String feedback) throws RpcException {
-		SendFeedback send = new SendFeedback();
-		send.sendFeedback(from, feedback);
+		try {
+			SendFeedback send = new SendFeedback();
+			send.sendFeedback(from, feedback);
+		} catch (Exception e) {
+			log.error("", e);
+			throw new RpcException();
+		}
 	}
 
 }

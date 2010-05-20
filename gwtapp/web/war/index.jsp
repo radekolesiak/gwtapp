@@ -18,6 +18,7 @@
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
 		<t:include repository="/templates/" template="startapp.jsp"/>
 		<t:include repository="/templates/" template="login.jsp"/>
+		<t:include repository="/templates/" template="feedback.jsp"/>
 	</head>
 	<body>
 	    <noscript>
@@ -96,6 +97,7 @@
 				<div class="cell">
 					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a><br />
 					<small>Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a></small>
+					<div id="feedbackanchor"></div>
 				</div>
 			</div>		
 		</div>
