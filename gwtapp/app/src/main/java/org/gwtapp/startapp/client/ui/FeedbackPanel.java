@@ -12,21 +12,26 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class FeedbackPanel extends TemplatePanel<Void> {
 
-	private final TextBoxHandler email = new TextBoxHandler();
-	private final TextAreaHandler message = new TextAreaHandler();
-	private final WidgetHandler send = new WidgetHandler();
-	private final WidgetHandler indicator = new WidgetHandler();
-	private final WidgetHandler sent = new WidgetHandler();
-	private final WidgetHandler error = new WidgetHandler();
+	private final TextBoxHandler// 
+	email = add("email", new TextBoxHandler());
+
+	private final TextAreaHandler//
+	message = add("message", new TextAreaHandler());
+
+	private final WidgetHandler//
+	send = add("send", new WidgetHandler());
+
+	private final WidgetHandler//
+	indicator = add("indicator", new WidgetHandler());
+
+	private final WidgetHandler//
+	sent = add("sent", new WidgetHandler());
+
+	private final WidgetHandler//
+	error = add("error", new WidgetHandler());
 
 	public FeedbackPanel() {
 		super(StartAppEntryPoint.templates.load("feedback.jsp"));
-		addWidgetHandler("email", email);
-		addWidgetHandler("message", message);
-		addWidgetHandler("send", send);
-		addWidgetHandler("indicator", indicator);
-		addWidgetHandler("sent", sent);
-		addWidgetHandler("error", error);
 	}
 
 	@Override

@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateUtils;
 import org.gwtapp.template.client.TemplateHandler;
+import org.gwtapp.template.client.TemplateUtils;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -84,6 +84,11 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 			// TODO
 			e.printStackTrace();
 		}
+	}
+
+	public <H extends TemplateHandler> H add(String name, H handler) {
+		addWidgetHandler(name, handler);
+		return handler;
 	}
 
 	public void addWidgetHandler(String name, TemplateHandler handler) {
