@@ -1,9 +1,11 @@
 package org.gwtapp.form.client.ui;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.rpc.data.AutoField;
 import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 
@@ -12,6 +14,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TemplateModelDataFormPanel<T extends ModelData> extends
 		TemplateFormPanel<T> {
+
+	private Map<String, MessageHandler<?>> fields = new HashMap<String, MessageHandler<?>>();
 
 	public TemplateModelDataFormPanel() {
 		super();
@@ -31,10 +35,34 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 		setValue(value);
 	}
 
+	public <E extends Widget & HasValue<?>> MessageHandler<E> add(
+			AutoField<?, ?> autofield, MessageHandler<E> handler) {
+		addFieldHandler(autofield, handler);
+		return handler;
+	}
+
+	public <E extends Widget & HasValue<?>> void addFieldHandler(
+			AutoField<?, ?> autofield, MessageHandler<E> handler) {
+		addWidgetHandler(autofield.name(), handler);
+		fields.put(autofield.name(), handler);
+	}
+
 	public <E extends Widget & HasValue<?>> void addFieldHandler(
 			AutoField<?, ?> autofield, E field) {
 		addWidgetHandler(autofield.name(), field);
 		addField(autofield.name(), field);
+	}
+
+	@Override
+	public final void onAddWidgets() {
+		super.onAddWidgets();
+		for (Map.Entry<String, MessageHandler<?>> entry : fields.entrySet()) {
+			addField(entry.getKey(), (HasValue<?>) entry.getValue().getWidget());
+		}
+		onAddFormWidgets();
+	}
+
+	public void onAddFormWidgets() {
 	}
 
 	@SuppressWarnings("unchecked")

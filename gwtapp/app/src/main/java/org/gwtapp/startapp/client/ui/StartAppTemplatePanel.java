@@ -12,39 +12,28 @@ import org.gwtapp.template.client.handlers.WidgetHandler;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.TextBox;
 
 public class StartAppTemplatePanel extends
 		TemplateModelDataFormPanel<UserRegisterModel> {
 
-	private final WidgetHandler// 
-	summary = add("summary", new WidgetHandler());
-
-	private final LoginHandler//
-	login = add(UserRegister.LOGIN.name(), new LoginHandler());
-
-	private final TextBoxHandler//
-	password = add(UserRegister.PASSWORD.name(), new TextBoxHandler());
-
-	private final TextBox email = new TextBox();
+	private final WidgetHandler summary = add("summary", new WidgetHandler());
 
 	public StartAppTemplatePanel() {
 		super(new UserRegisterModelImpl(), StartAppEntryPoint.templates
 				.load("startapp.jsp"));
+		add(UserRegister.LOGIN, new LoginHandler());
+		add(UserRegister.EMAIL, new TextBoxHandler());
+		add(UserRegister.PASSWORD, new TextBoxHandler());
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onAddFormWidgets() {
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {
 				updateMsg(event.getValue());
 			}
 		});
-		addField(UserRegister.LOGIN.name(), login.getWidget());
-		addField(UserRegister.PASSWORD.name(), password.getWidget());
-		addField(UserRegister.EMAIL.name(), email);
-		add(email);
 	}
 
 	@Override
