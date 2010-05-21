@@ -9,11 +9,11 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 public class LoginTemplatePanel extends TemplatePanel<String> {
 
-	private final TextBoxHandler login = new TextBoxHandler();
+	private final TextBoxHandler//
+	login = add("login", new TextBoxHandler());
 
 	public LoginTemplatePanel() {
 		super(StartAppEntryPoint.templates.load("login.jsp"));
-		addWidgetHandler("login", login);
 	}
 
 	@Override

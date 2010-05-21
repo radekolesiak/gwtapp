@@ -2,10 +2,10 @@ package org.gwtapp.startapp.client.ui;
 
 import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
+import org.gwtapp.startapp.client.handlers.LoginHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
-import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Param;
 import org.gwtapp.template.client.handlers.TextBoxHandler;
 import org.gwtapp.template.client.handlers.WidgetHandler;
@@ -17,18 +17,20 @@ import com.google.gwt.user.client.ui.TextBox;
 public class StartAppTemplatePanel extends
 		TemplateModelDataFormPanel<UserRegisterModel> {
 
-	private final WidgetHandler summary = new WidgetHandler();
-	private final MessageHandler<LoginTemplatePanel> login = new MessageHandler<LoginTemplatePanel>(
-			new LoginTemplatePanel());
-	private final TextBoxHandler password = new TextBoxHandler();
+	private final WidgetHandler// 
+	summary = add("summary", new WidgetHandler());
+
+	private final LoginHandler//
+	login = add(UserRegister.LOGIN.name(), new LoginHandler());
+
+	private final TextBoxHandler//
+	password = add(UserRegister.PASSWORD.name(), new TextBoxHandler());
+
 	private final TextBox email = new TextBox();
 
 	public StartAppTemplatePanel() {
 		super(new UserRegisterModelImpl(), StartAppEntryPoint.templates
 				.load("startapp.jsp"));
-		addWidgetHandler("summary", summary);
-		addWidgetHandler(UserRegister.LOGIN.name(), login);
-		addWidgetHandler(UserRegister.PASSWORD.name(), password);
 	}
 
 	@Override
