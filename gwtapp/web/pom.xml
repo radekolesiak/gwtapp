@@ -23,16 +23,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-app</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-srv</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
@@ -42,12 +32,22 @@
 			<artifactId>jstl</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+		<!-- StartApp -->
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-app</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-srv</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!--  GAE -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
 			<version>${gae.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.jdo</groupId>
@@ -111,7 +111,6 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<resources>
 			<resource>
@@ -128,9 +127,9 @@
 				<version>0.5.8</version>
 				<configuration>
 					<unpackVersion>${gae.version}</unpackVersion>
-                    <serverId>appengine.google.com</serverId>
-                    <!-- <sdkDir>${appengine.sdk.root}</sdkDir> -->
-                    <appDir>${basedir}/war</appDir>
+					<serverId>appengine.google.com</serverId>
+					<!-- <sdkDir>${appengine.sdk.root}</sdkDir> -->
+					<appDir>${basedir}/war</appDir>
 				</configuration>
 			</plugin>
 			<plugin>
