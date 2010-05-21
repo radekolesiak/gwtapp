@@ -18,14 +18,24 @@ public class SendFeedback {
 		Properties props = new Properties();
 		Session session = Session.getDefaultInstance(props, null);
 		Message msg = new MimeMessage(session);
-		msg
-				.setFrom(new InternetAddress("r.olesiak@gmail.com",
-						"Radek Olesiak"));
+		if (isValidEmail(from)) {
+			msg.setFrom(new InternetAddress(from, true));
+			msg.setSubject("gwtapp.org feedback");
+			log.debug("VALID EMAIL");
+		} else {
+			msg.setFrom(new InternetAddress("r.olesiak@gmail.com",
+					"Radek Olesiak"));
+			msg.setSubject("gwtapp.org feedback from: " + from);
+			log.debug("INVALID EMAIL");
+		}
+		msg.setText(feedback);
 		msg.addRecipient(Message.RecipientType.TO, new InternetAddress(
 				"r.olesiak@gmail.com", "Radek Olesiak"));
-		msg.setSubject("Feedback gwtapp.org from: " + from);
-		msg.setText(feedback);
 		Transport.send(msg);
-		log.debug("Feedback has been sent");
+		log.info("Feedback has been sent");
+	}
+
+	private boolean isValidEmail(String email) {
+		return false;
 	}
 }

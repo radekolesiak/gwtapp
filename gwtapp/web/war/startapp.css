@@ -1,3 +1,15 @@
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
 .startapp-template {
 	font-style: italic;
 }
@@ -45,14 +57,18 @@ div.table.main .header .cell {
 }
 
 .feedback .input {
-	width: 240px;
+	width: 239px;
+}
+
+.feedback .indicator {
+	
 }
 
 .feedback .send {
-	width:45px;
+	width: 45px;
+	height: 21px;
 	border: 2px outset #bbddbb;
 	background-color: #bbddbb;
-	float: right;
 	text-align: center;
 	cursor: pointer;
 }

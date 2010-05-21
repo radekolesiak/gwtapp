@@ -47,4 +47,12 @@ public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers {
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return addDomHandler(handler, ClickEvent.getType());
 	}
+
+	public void setEnabled(boolean enabled) {
+		DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
+	}
+
+	public boolean isEnabled() {
+		return !DOM.getElementPropertyBoolean(getElement(), "disabled");
+	}
 }

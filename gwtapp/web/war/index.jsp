@@ -25,8 +25,7 @@
       		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
       		</div>
-    	</noscript>
-	
+    	</noscript>	
 		<div class="table main">
 			<div class="row header">
 				<div class="cell">Wrap and remove sample</div>
@@ -95,8 +94,9 @@
 			</div>
 			<div class="row">
 				<div class="cell">
-					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a><br />
-					<small>Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a></small>
+					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code.</a>
+					<!-- Get a <a href="http://mvn.gwtapp.org/">maven repository.</a> -->
+					<small>Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></small>
 					<div id="feedbackanchor"></div>
 				</div>
 			</div>		

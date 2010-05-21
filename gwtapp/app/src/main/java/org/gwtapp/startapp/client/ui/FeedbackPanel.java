@@ -15,6 +15,7 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 	private final TextBoxHandler email = new TextBoxHandler();
 	private final TextAreaHandler message = new TextAreaHandler();
 	private final WidgetHandler send = new WidgetHandler();
+	private final WidgetHandler indicator = new WidgetHandler();
 	private final WidgetHandler sent = new WidgetHandler();
 	private final WidgetHandler error = new WidgetHandler();
 
@@ -23,6 +24,7 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 		addWidgetHandler("email", email);
 		addWidgetHandler("message", message);
 		addWidgetHandler("send", send);
+		addWidgetHandler("indicator", indicator);
 		addWidgetHandler("sent", sent);
 		addWidgetHandler("error", error);
 	}
@@ -38,19 +40,24 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 	}
 
 	private void sendFeedback() {
+		indicator.getWidget().setVisible(true);
+		send.getWidget().setEnabled(false);
 		StartAppEntryPoint.service.feedback(email.getWidget().getValue(),
 				message.getWidget().getValue(), new AsyncCallback<Void>() {
 					@Override
 					public void onSuccess(Void result) {
+						indicator.getWidget().setVisible(false);
+						send.getWidget().setEnabled(true);
 						sent.getWidget().setVisible(true);
 						error.getWidget().setVisible(false);
 					}
 
 					@Override
 					public void onFailure(Throwable e) {
+						indicator.getWidget().setVisible(false);
+						send.getWidget().setEnabled(true);
 						sent.getWidget().setVisible(false);
 						error.getWidget().setVisible(true);
-						e.printStackTrace();
 					}
 				});
 	}

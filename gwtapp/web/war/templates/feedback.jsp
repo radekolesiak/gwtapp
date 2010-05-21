@@ -9,8 +9,11 @@
 		<small class="label">Your message:</small>
 		<textarea t:field="message" class="input" ></textarea>
 	</div>
-	<div t:field="send" class="send" >Send</div>
-	<div style="clear:both;"></div>
+	<div class="right">
+		<img t:field="indicator" src="images/indicator.gif" class="indicator" style="display:none;"></img>
+		<button t:field="send" class="send" >Send</button>
+	</div>
+	<div class="clear"></div>
 	<small t:field="sent" style="display:none;">Thank you for your feedback.</small>
 	<small t:field="error" style="display:none;">There was a problem while sending feedback.</small>
 </t:template>
