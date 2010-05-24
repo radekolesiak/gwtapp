@@ -5,13 +5,13 @@ import org.gwtapp.startapp.rpc.data.Tab;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
-public class UserRegisterAutoField extends MetaFieldAdapter<Tab, UserRegister> {
+public class UserRegisterMetaField extends MetaFieldAdapter<Tab, UserRegister> {
 
-	public UserRegisterAutoField() {
+	public UserRegisterMetaField() {
 		this("userRegister");
 	}
 
-	public UserRegisterAutoField(String name) {
+	public UserRegisterMetaField(String name) {
 		super(name);
 	}
 

@@ -6,13 +6,13 @@ import java.util.List;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
-public class TockensAutoField extends MetaFieldAdapter<UserRegister, List<String>> {
+public class TockensMetaField extends MetaFieldAdapter<UserRegister, List<String>> {
 
-	public TockensAutoField() {
+	public TockensMetaField() {
 		this("tockens");
 	}
 
-	public TockensAutoField(String name) {
+	public TockensMetaField(String name) {
 		super(name);
 	}
 

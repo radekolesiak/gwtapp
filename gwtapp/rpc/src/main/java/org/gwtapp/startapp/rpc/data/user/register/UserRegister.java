@@ -3,19 +3,19 @@ package org.gwtapp.startapp.rpc.data.user.register;
 import java.util.List;
 
 import org.gwtapp.core.rpc.data.MetaField;
-import org.gwtapp.startapp.rpc.data.user.register.metafields.EmailAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.metafields.LoginAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.metafields.PasswordAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.metafields.TockensAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.EmailMetaField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.LoginMetaField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.PasswordMetaField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.TockensMetaField;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 public interface UserRegister extends IsSerializable {
 
-	public final static MetaField<UserRegister, String> LOGIN = new LoginAutoField();
-	public final static MetaField<UserRegister, String> PASSWORD = new PasswordAutoField();
-	public final static MetaField<UserRegister, String> EMAIL = new EmailAutoField();
-	public final static MetaField<UserRegister, List<String>> TOCKENS = new TockensAutoField();
+	public final static MetaField<UserRegister, String> LOGIN = new LoginMetaField();
+	public final static MetaField<UserRegister, String> PASSWORD = new PasswordMetaField();
+	public final static MetaField<UserRegister, String> EMAIL = new EmailMetaField();
+	public final static MetaField<UserRegister, List<String>> TOCKENS = new TockensMetaField();
 
 	void setLogin(String login);
 

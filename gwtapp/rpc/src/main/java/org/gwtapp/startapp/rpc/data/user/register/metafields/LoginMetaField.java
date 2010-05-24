@@ -3,13 +3,13 @@ package org.gwtapp.startapp.rpc.data.user.register.metafields;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
-public class LoginAutoField extends MetaFieldAdapter<UserRegister, String> {
+public class LoginMetaField extends MetaFieldAdapter<UserRegister, String> {
 
-	public LoginAutoField() {
+	public LoginMetaField() {
 		this("login");
 	}
 
-	public LoginAutoField(String name) {
+	public LoginMetaField(String name) {
 		super(name);
 	}
 
