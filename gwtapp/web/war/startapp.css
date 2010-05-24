@@ -61,10 +61,16 @@ div.table.main .header .cell {
 }
 
 .feedback .send {
-	width: 45px;
-	height: 21px;
-	border: 2px outset #bbddbb;
-	background-color: #bbddbb;
-	text-align: center;
-	cursor: pointer;
+}
+
+.feedback a:hover {
+	color: yellow;
+}
+
+.feedback a:link {
+	color: #bbddbb;
+}
+
+.feedback a:visited {
+	color: yellow;
 }

@@ -11,7 +11,11 @@
 	</div>
 	<div class="right">
 		<img t:field="indicator" src="images/indicator.gif" class="indicator" style="display:none;"></img>
-		<button t:field="send" class="send" >Send</button>
+		<a 	t:field="send" 
+			href="javascript:void(0);" 
+			onmouseover="document.getElementById('feedbackbtn').src='images/feedback.png'" 
+			onmouseout="document.getElementById('feedbackbtn').src='images/feedback.png'" 
+		><img id="feedbackbtn" src="images/feedback.png"></img></a>		
 	</div>
 	<div class="clear"></div>
 	<small t:field="sent" style="display:none;">Thank you for your feedback.</small>
