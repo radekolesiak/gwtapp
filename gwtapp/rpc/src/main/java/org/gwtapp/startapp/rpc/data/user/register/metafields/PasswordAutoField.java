@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.rpc.data.user.register.autofields;
+package org.gwtapp.startapp.rpc.data.user.register.metafields;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;

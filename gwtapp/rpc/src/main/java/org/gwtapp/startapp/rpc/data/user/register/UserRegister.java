@@ -3,10 +3,10 @@ package org.gwtapp.startapp.rpc.data.user.register;
 import java.util.List;
 
 import org.gwtapp.core.rpc.data.MetaField;
-import org.gwtapp.startapp.rpc.data.user.register.autofields.EmailAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.autofields.LoginAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.autofields.PasswordAutoField;
-import org.gwtapp.startapp.rpc.data.user.register.autofields.TockensAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.EmailAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.LoginAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.PasswordAutoField;
+import org.gwtapp.startapp.rpc.data.user.register.metafields.TockensAutoField;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

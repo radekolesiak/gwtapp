@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.rpc.data.user.register.autofields;
+package org.gwtapp.startapp.rpc.data.user.register.metafields;
 
 import java.util.ArrayList;
 import java.util.List;
