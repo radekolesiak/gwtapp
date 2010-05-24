@@ -1,11 +1,11 @@
 package org.gwtapp.startapp.rpc.data.autofields;
 
-import org.gwtapp.core.rpc.data.AutoFieldAdapter;
+import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.Tab;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
-public class UserRegisterAutoField extends AutoFieldAdapter<Tab, UserRegister> {
+public class UserRegisterAutoField extends MetaFieldAdapter<Tab, UserRegister> {
 
 	public UserRegisterAutoField() {
 		this("userRegister");

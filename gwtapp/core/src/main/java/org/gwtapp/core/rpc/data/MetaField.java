@@ -12,7 +12,7 @@ package org.gwtapp.core.rpc.data;
  *            The AutoField is an annotation and reflection replacement of RPC
  *            and Java Bean field's properties for RPC and ModelData data.
  */
-public interface AutoField<M, T> {
+public interface MetaField<M, T> {
 
 	/** Field's name */
 	String name();
@@ -27,5 +27,5 @@ public interface AutoField<M, T> {
 	T def();
 
 	/** Adds it self to the 'HasAutoField' object. */
-	AutoField<M, T> add(HasAutoField model);
+	MetaField<M, T> add(HasMetaField model);
 }

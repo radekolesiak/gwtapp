@@ -1,10 +1,10 @@
 package org.gwtapp.core.rpc.data;
 
-public abstract class AutoFieldAdapter<M, T> implements AutoField<M, T> {
+public abstract class MetaFieldAdapter<M, T> implements MetaField<M, T> {
 
 	private final String name;
 
-	public AutoFieldAdapter(String name) {
+	public MetaFieldAdapter(String name) {
 		this.name = name;
 	}
 
@@ -19,7 +19,7 @@ public abstract class AutoFieldAdapter<M, T> implements AutoField<M, T> {
 	}
 	
 	@Override
-	public AutoField<M, T> add(HasAutoField model){
+	public MetaField<M, T> add(HasMetaField model){
 		model.addAutoField(this);
 		return this;
 	}

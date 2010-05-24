@@ -1,9 +1,9 @@
 package org.gwtapp.startapp.rpc.data.user.register.autofields;
 
-import org.gwtapp.core.rpc.data.AutoFieldAdapter;
+import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
-public class LoginAutoField extends AutoFieldAdapter<UserRegister, String> {
+public class LoginAutoField extends MetaFieldAdapter<UserRegister, String> {
 
 	public LoginAutoField() {
 		this("login");

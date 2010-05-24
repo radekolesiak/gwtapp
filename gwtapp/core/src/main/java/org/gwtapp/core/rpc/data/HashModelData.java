@@ -6,19 +6,19 @@ import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public abstract class HashModelData extends AbstractModelData implements
-		HasAutoField {
+		HasMetaField {
 
-	private Map<String, AutoField> autofields = new HashMap<String, AutoField>();
+	private Map<String, MetaField> autofields = new HashMap<String, MetaField>();
 
 	@Override
-	public void addAutoField(AutoField field) {
+	public void addAutoField(MetaField field) {
 		autofields.put(field.name(), field);
 	}
 
 	@Override
 	public Object get(String property) {
 		if (autofields.containsKey(property)) {
-			AutoField field = autofields.get(property);
+			MetaField field = autofields.get(property);
 			return field.get(this);
 		} else {
 			throw new IllegalArgumentException("Unknown property: " + property);
@@ -28,7 +28,7 @@ public abstract class HashModelData extends AbstractModelData implements
 	@Override
 	public Object set(String property, Object value) {
 		if (autofields.containsKey(property)) {
-			AutoField field = autofields.get(property);
+			MetaField field = autofields.get(property);
 			Object oldValue = field.get(this);
 			field.set(this, value);
 			return oldValue;
@@ -47,7 +47,7 @@ public abstract class HashModelData extends AbstractModelData implements
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
 		boolean empty = true;
-		for (Map.Entry<String, AutoField> entry : autofields.entrySet()) {
+		for (Map.Entry<String, MetaField> entry : autofields.entrySet()) {
 			if (!empty) {
 				sb.append(",");
 			}

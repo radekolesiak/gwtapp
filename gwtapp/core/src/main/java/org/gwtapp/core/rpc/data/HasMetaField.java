@@ -1,6 +1,6 @@
 package org.gwtapp.core.rpc.data;
 
-public interface HasAutoField {
+public interface HasMetaField {
 	@SuppressWarnings("unchecked")
-	void addAutoField(AutoField field);
+	void addAutoField(MetaField field);
 }

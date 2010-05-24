@@ -3,7 +3,7 @@ package org.gwtapp.form.client.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.rpc.data.AutoField;
+import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Template;
@@ -36,19 +36,19 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	}
 
 	public <E extends Widget & HasValue<?>> MessageHandler<E> add(
-			AutoField<?, ?> autofield, MessageHandler<E> handler) {
+			MetaField<?, ?> autofield, MessageHandler<E> handler) {
 		addFieldHandler(autofield, handler);
 		return handler;
 	}
 
 	public <E extends Widget & HasValue<?>> void addFieldHandler(
-			AutoField<?, ?> autofield, MessageHandler<E> handler) {
+			MetaField<?, ?> autofield, MessageHandler<E> handler) {
 		addWidgetHandler(autofield.name(), handler);
 		fields.put(autofield.name(), handler);
 	}
 
 	public <E extends Widget & HasValue<?>> void addFieldHandler(
-			AutoField<?, ?> autofield, E field) {
+			MetaField<?, ?> autofield, E field) {
 		addWidgetHandler(autofield.name(), field);
 		addField(autofield.name(), field);
 	}
