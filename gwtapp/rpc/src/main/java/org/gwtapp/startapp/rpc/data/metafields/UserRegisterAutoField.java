@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.rpc.data.autofields;
+package org.gwtapp.startapp.rpc.data.metafields;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.Tab;

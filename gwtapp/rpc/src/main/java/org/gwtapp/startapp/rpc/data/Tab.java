@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.rpc.data;
 
 import org.gwtapp.core.rpc.data.MetaField;
-import org.gwtapp.startapp.rpc.data.autofields.UserRegisterAutoField;
+import org.gwtapp.startapp.rpc.data.metafields.UserRegisterAutoField;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
