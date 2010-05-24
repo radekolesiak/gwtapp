@@ -8,8 +8,8 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<artifactId>gwtapp-srv</artifactId>
-	<name>gwtapp-srv</name>
+	<artifactId>startapp-srv</artifactId>
+	<name>startapp-srv</name>
 
 	<developers>
 		<developer>
@@ -37,7 +37,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-rpc</artifactId>
+			<artifactId>startapp-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -8,8 +8,8 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<artifactId>gwtapp-web</artifactId>
-	<name>gwtapp-web</name>
+	<artifactId>startapp-web</artifactId>
+	<name>startapp-web</name>
 
 	<packaging>war</packaging>
 
@@ -35,12 +35,12 @@
 		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-app</artifactId>
+			<artifactId>startapp-app</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-srv</artifactId>
+			<artifactId>startapp-srv</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!--  GAE -->
