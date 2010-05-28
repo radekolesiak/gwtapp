@@ -1,0 +1,4 @@
+1. copying repository with history:
+	get: 		rsync -av gwtapp.svn.sourceforge.net::svn/gwtapp/* gwtapp
+	dump:		svnadmin dump gwtapp > gwtapp.dump
+	gzip:		gzip -9 gwtapp.dump
