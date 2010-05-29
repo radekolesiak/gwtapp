@@ -37,9 +37,13 @@ public class StartApp extends StartAppEntryPoint {
 
 	@Override
 	public void onStartAppModuleLoad() {
-		feedback();
-		hwidgets();
-		template();
+		try {
+			feedback();
+			hwidgets();
+			template();
+		} finally {
+			hideLoadingIndicator();
+		}
 	}
 
 	private void feedback() {
@@ -86,5 +90,12 @@ public class StartApp extends StartAppEntryPoint {
 
 	private void template() {
 		RootPanel.get(TEMPLATES_DIV).add(new StartAppTemplatePanel());
+	}
+
+	private void hideLoadingIndicator() {
+		RootPanel indicator = RootPanel.get("laodingindicator");
+		if (indicator != null) {
+			indicator.setVisible(false);
+		}
 	}
 }

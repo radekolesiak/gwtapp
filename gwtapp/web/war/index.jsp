@@ -25,7 +25,8 @@
       		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
       		</div>
-    	</noscript>	
+    	</noscript>
+    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"></img></div></div>	
 		<div class="table main">
 			<div class="row header">
 				<div class="cell">Wrap and remove sample</div>

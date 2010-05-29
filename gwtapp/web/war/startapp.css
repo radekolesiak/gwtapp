@@ -60,9 +60,6 @@ div.table.main .header .cell {
 	width: 239px;
 }
 
-.feedback .send {
-}
-
 .feedback a:hover {
 	color: yellow;
 }
@@ -73,4 +70,11 @@ div.table.main .header .cell {
 
 .feedback a:visited {
 	color: yellow;
+}
+
+#laodingindicator {
+	width: 200px;
+	margin: 20px; margin-left : auto;
+	margin-right: auto;
+	margin-left: auto;
 }
