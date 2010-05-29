@@ -26,7 +26,7 @@
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
       		</div>
     	</noscript>
-    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"></img></div></div>	
+    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"/></div></div>	
 		<div class="table main">
 			<div class="row header">
 				<div class="cell">Wrap and remove sample</div>

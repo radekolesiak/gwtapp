@@ -49,6 +49,7 @@ div.table.main .header .cell {
 	border: 2px dotted #bbddbb;
 	width: 325px;
 	padding: 4px;
+	margin-top: 5px;
 }
 
 .feedback .label {
@@ -74,7 +75,8 @@ div.table.main .header .cell {
 
 #laodingindicator {
 	width: 200px;
-	margin: 20px; margin-left : auto;
+	margin: 20px;
+	margin-left: auto;
 	margin-right: auto;
 	margin-left: auto;
 }
