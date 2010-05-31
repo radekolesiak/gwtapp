@@ -9,7 +9,8 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers {
+public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers,
+		HasEnable {
 
 	public WidgetWrapper() {
 		this(DOM.createDiv());
@@ -48,10 +49,17 @@ public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers {
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
+	@Override
 	public void setEnabled(boolean enabled) {
 		DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
+		if (enabled) {
+			removeStyleName("disabled");
+		} else {
+			addStyleName("disabled");
+		}
 	}
 
+	@Override
 	public boolean isEnabled() {
 		return !DOM.getElementPropertyBoolean(getElement(), "disabled");
 	}
