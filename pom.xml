@@ -16,7 +16,7 @@
 
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
-	<description>GwtWebApp. Demo http://gwtapp.org:8080/</description>
+	<description>GwtWebApp. Demo http://gwtapp.org/</description>
 
 	<distributionManagement>
 		<site>
