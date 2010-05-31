@@ -21,6 +21,9 @@
 		<t:include repository="/templates/" template="feedback.jsp"/>
 	</head>
 	<body>
+		<!--[if lt IE 8]>
+		<h3>Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
+		<![endif]-->
 	    <noscript>
       		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
