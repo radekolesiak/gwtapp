@@ -1,7 +1,5 @@
 package org.gwtapp.startapp.rpc.data.user.register;
 
-import java.util.List;
-
 import org.gwtapp.core.rpc.data.HashModelData;
 
 public class UserRegisterModelImpl extends HashModelData implements
@@ -10,7 +8,6 @@ public class UserRegisterModelImpl extends HashModelData implements
 	private String login = UserRegister.LOGIN.add(this).def();
 	private String email = UserRegister.EMAIL.add(this).def();
 	private String password = UserRegister.PASSWORD.add(this).def();
-	private List<String> tockens = UserRegister.TOCKENS.add(this).def();
 
 	public UserRegisterModelImpl() {
 	}
@@ -43,15 +40,5 @@ public class UserRegisterModelImpl extends HashModelData implements
 	@Override
 	public String getPassword() {
 		return password;
-	}
-
-	@Override
-	public void setTockens(List<String> tockens) {
-		this.tockens = tockens;
-	}
-
-	@Override
-	public List<String> getTockens() {
-		return tockens;
 	}
 }

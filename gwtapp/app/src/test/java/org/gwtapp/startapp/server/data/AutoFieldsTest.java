@@ -16,7 +16,6 @@ public class AutoFieldsTest {
 		Assert.assertNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
-		Assert.assertNotNull(ur.getTockens());
 		ur.setLogin(login);
 		Assert.assertNotNull(ur.getLogin());
 		Assert.assertEquals(login, ur.getLogin());
@@ -28,7 +27,6 @@ public class AutoFieldsTest {
 		Assert.assertNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
-		Assert.assertNotNull(ur.getTockens());
 		ur.setLogin(login);
 		Assert.assertNotNull(ur.get(UserRegister.LOGIN.name()));
 		Assert.assertEquals(login, ur.get(UserRegister.LOGIN.name()));
