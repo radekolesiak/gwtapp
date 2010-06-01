@@ -3,8 +3,8 @@ package org.gwtapp.html.server;
 import java.util.Arrays;
 import java.util.List;
 
-import org.gwtapp.core.server.HServer;
-import org.gwtapp.core.server.HServerException;
+import org.gwtapp.core.server.io.IOServer;
+import org.gwtapp.core.server.io.IOServerException;
 import org.gwtapp.html.rpc.ui.HWidget;
 import org.gwtapp.html.rpc.ui.IContainer;
 import org.gwtapp.html.rpc.ui.IElementValue;
@@ -35,8 +35,8 @@ public class HWidgetGenerator {
 		for (HWidget widget : widgets) {
 			setId(widget);
 			try {
-				rpc = HServer.success(widget);
-			} catch (HServerException e) {
+				rpc = IOServer.success(widget);
+			} catch (IOServerException e) {
 				throw new HWidgetGeneratorException(e);
 			}
 			createRPC(html, widget.getName(), rpc);
@@ -75,7 +75,7 @@ public class HWidgetGenerator {
 		html.append("[\"");
 		html.append(name);
 		html.append("\"]=\"");
-		html.append(HServer.encode(rpc));
+		html.append(IOServer.encode(rpc));
 		html.append("\";");
 		html.append("</script>");
 	}

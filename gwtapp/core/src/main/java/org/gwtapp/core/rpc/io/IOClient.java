@@ -1,13 +1,13 @@
 package org.gwtapp.core.rpc.io;
 
-import org.gwtapp.core.rpc.api.CoreService;
+import org.gwtapp.core.rpc.io.api.IOService;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
 import com.google.gwt.user.client.rpc.SerializationStreamWriter;
 
-public class HClient {
+public class IOClient {
 
 	/*
 	 * http://www.webtoolkit.info/javascript-base64.html
@@ -15,7 +15,7 @@ public class HClient {
 	 */
 
 	private final static SerializationStreamFactory ssf = GWT
-			.create(CoreService.class);
+			.create(IOService.class);
 
 	public static String getSerializedString(Object object)
 			throws SerializationException {

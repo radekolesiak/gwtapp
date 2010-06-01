@@ -1,16 +1,16 @@
-package org.gwtapp.core.server;
+package org.gwtapp.core.server.io;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import org.apache.commons.codec.binary.Base64;
-import org.gwtapp.core.rpc.api.CoreService;
+import org.gwtapp.core.rpc.io.api.IOService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.server.rpc.RPC;
 import com.google.gwt.user.server.rpc.RPCRequest;
 
-public class HServer {
+public class IOServer {
 
 	public static <T> T getSerializedObject(String object) {
 		RPCRequest request = RPC.decodeRequest(object);
@@ -21,39 +21,39 @@ public class HServer {
 		return null;
 	}
 
-	public static String success(IsSerializable object) throws HServerException {
+	public static String success(IsSerializable object) throws IOServerException {
 		try {
-			Method serviceMethod = CoreService.class
+			Method serviceMethod = IOService.class
 					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HServerException(e);
+			throw new IOServerException(e);
 		}
 	}
 
-	public static String success(Serializable object) throws HServerException {
+	public static String success(Serializable object) throws IOServerException {
 		try {
-			Method serviceMethod = CoreService.class
+			Method serviceMethod = IOService.class
 					.getMethod("getResponseSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HServerException(e);
+			throw new IOServerException(e);
 		}
 	}
 
-	public static String failure(Throwable object) throws HServerException {
+	public static String failure(Throwable object) throws IOServerException {
 		try {
-			Method serviceMethod = CoreService.class
+			Method serviceMethod = IOService.class
 					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
 			return RPC.encodeResponseForFailure(serviceMethod, object);
 		} catch (Exception e) {
-			throw new HServerException(e);
+			throw new IOServerException(e);
 		}
 	}
 

@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class HRequestBuilder extends RequestBuilder {
+public class IORequestBuilder extends RequestBuilder {
 
 	private final static FormPanel form = new FormPanel();
 	private final static Hidden data = new Hidden("data");
@@ -17,17 +17,16 @@ public class HRequestBuilder extends RequestBuilder {
 		RootPanel.get().add(form);
 	}
 
-	public HRequestBuilder(Method httpMethod, String url) {
+	public IORequestBuilder(Method httpMethod, String url) {
 		super(httpMethod, url);
 	}
 
-	public HRequestBuilder(String httpMethod, String url) {
+	public IORequestBuilder(String httpMethod, String url) {
 		super(httpMethod, url);
 	}
 
 	@Override
 	public Request send() throws RequestException {
-		// form.setMethod(getHTTPMethod());
 		form.setMethod("POST");
 		form.setAction(getUrl());
 		data.setValue(getRequestData());

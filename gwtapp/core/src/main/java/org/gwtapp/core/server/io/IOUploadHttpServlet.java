@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.core.rpc.exception.RpcException;
-import org.gwtapp.core.server.HServer;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class HUploadHttpServlet<T> extends HttpServlet {
+public class IOUploadHttpServlet<T> extends HttpServlet {
 
 	private static final long serialVersionUID = -5624358129917811749L;
 
@@ -21,7 +20,7 @@ public class HUploadHttpServlet<T> extends HttpServlet {
 	}
 
 	private final static Logger log = Logger
-			.getLogger(HUploadHttpServlet.class);
+			.getLogger(IOUploadHttpServlet.class);
 
 	public void doSuccess(HttpServletResponse response, T object) {
 		onResponse(response, UploadType.SUCCESSFUL, object);
@@ -39,15 +38,15 @@ public class HUploadHttpServlet<T> extends HttpServlet {
 			switch (type) {
 			case SUCCESSFUL:
 				if (object instanceof IsSerializable) {
-					buffer.append(HServer.encode(HServer
+					buffer.append(IOServer.encode(IOServer
 							.success((IsSerializable) object)));
 				} else if (object instanceof Serializable) {
-					buffer.append(HServer.encode(HServer
+					buffer.append(IOServer.encode(IOServer
 							.success((Serializable) object)));
 				}
 				break;
 			case FAILULE:
-				buffer.append(HServer.encode(HServer
+				buffer.append(IOServer.encode(IOServer
 						.failure((Throwable) object)));
 				break;
 			}

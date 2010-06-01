@@ -1,12 +1,12 @@
 package org.gwtapp.startapp.server;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.core.server.io.HDownloadHttpServlet;
+import org.gwtapp.core.server.io.IODownloadHttpServlet;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
-public class DownloadServiceImpl extends HDownloadHttpServlet implements
+public class DownloadServiceImpl extends IODownloadHttpServlet implements
 		DownloadService {
 
 	private final static Logger log = Logger

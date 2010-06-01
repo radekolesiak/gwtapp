@@ -12,7 +12,7 @@ import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.server.rpc.RPC;
 import com.google.gwt.user.server.rpc.RPCRequest;
 
-public class HDownloadHttpServlet extends HttpServlet {
+public class IODownloadHttpServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -5479713141432764292L;
 

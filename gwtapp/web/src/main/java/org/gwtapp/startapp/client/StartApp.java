@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.io.HRpcRequestBuilder;
-import org.gwtapp.core.client.io.HSubmitCompleteHandler;
+import org.gwtapp.core.client.io.IORpcRequestBuilder;
+import org.gwtapp.core.client.io.IOSubmitCompleteHandler;
 import org.gwtapp.startapp.client.ui.FeedbackPanel;
 import org.gwtapp.startapp.client.ui.StartAppTemplatePanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
@@ -24,7 +24,7 @@ public class StartApp extends StartAppEntryPoint {
 	public final static DownloadServiceAsync downloader = GWT
 			.create(DownloadService.class);
 	static {
-		HRpcRequestBuilder.updateService((ServiceDefTarget) downloader);
+		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
 	private final Button clear = new Button("Clear");
@@ -73,7 +73,7 @@ public class StartApp extends StartAppEntryPoint {
 			}
 		});
 		upload
-				.addSubmitCompleteHandler(new HSubmitCompleteHandler<UserRegisterModel>() {
+				.addSubmitCompleteHandler(new IOSubmitCompleteHandler<UserRegisterModel>() {
 					@Override
 					public void onFailure(Throwable e) {
 						Window.alert("There was a problem while uploading");

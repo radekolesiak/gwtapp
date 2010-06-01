@@ -1,18 +1,18 @@
 package org.gwtapp.core.client.io;
 
-import org.gwtapp.core.rpc.io.HClient;
+import org.gwtapp.core.rpc.io.IOClient;
 
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteHandler;
 
-public abstract class HSubmitCompleteHandler<T> implements
+public abstract class IOSubmitCompleteHandler<T> implements
 		SubmitCompleteHandler {
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public final void onSubmitComplete(SubmitCompleteEvent event) {
 		try {
-			Object result = HClient.getSerializedObject(HClient.decode(event
+			Object result = IOClient.getSerializedObject(IOClient.decode(event
 					.getResults()));
 			if (result instanceof Throwable) {
 				onFailure((Throwable) result);
