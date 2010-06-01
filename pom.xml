@@ -59,6 +59,7 @@
 
 	<modules>
 		<module>gwtapp</module>
+		<module>startapp</module>
 	</modules>
 
 </project>
