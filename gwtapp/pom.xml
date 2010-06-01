@@ -28,10 +28,6 @@
 		<module>html</module>
 		<module>template</module>
 		<module>form</module>
-		<module>rpc</module>
-		<module>app</module>
-		<module>srv</module>
-		<module>web</module>
 	</modules>
 
 	<reporting>
