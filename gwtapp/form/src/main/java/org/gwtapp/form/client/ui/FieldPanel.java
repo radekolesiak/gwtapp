@@ -1,9 +1,6 @@
 package org.gwtapp.form.client.ui;
 
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.html.rpc.ui.HValue;
-import org.gwtapp.html.rpc.ui.HWidget;
-import org.gwtapp.html.rpc.ui.form.HFieldPanel;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -45,16 +42,6 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 		add(controller);
 	}
 
-	public <E extends Widget & HasValue<T>> FieldPanel(HasValue<M> model,
-			HFieldPanel<T> panel, E controller) {
-		this(DOM.getElementById(panel.getId()), model, panel.getProperty(),
-				controller);
-		controller.addStyleName(Style.CONTROLLER);
-		// user could change this value before gwt app is loaded and HFieldPanel
-		// object should be updated
-		panel.setValue(controller.getValue());
-	}
-
 	private <E extends HasValue<T>> FieldPanel(Element element,
 			final HasValue<M> model, String property, E controller) {
 		setElement(element);
@@ -77,11 +64,6 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	protected void wrap() {
 		onAttach();
 		RootPanel.detachOnWindowClose(this);
-	}
-
-	@SuppressWarnings("unchecked")
-	public <E extends HWidget & HValue<T>> E getController() {
-		return (E) controller;
 	}
 
 	@Override

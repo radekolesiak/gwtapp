@@ -1,4 +1,4 @@
-package org.gwtapp.html.server.io;
+package org.gwtapp.core.server.io;
 
 import java.io.IOException;
 

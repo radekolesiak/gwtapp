@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.html.rpc.ui.form.HFormPanel;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -31,11 +30,6 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 
 	public FormPanel(T value) {
 		this(DOM.createDiv(), value);
-	}
-
-	public FormPanel(HFormPanel<T> panel) {
-		this(DOM.getElementById(panel.getId()), panel.getValue());
-		setName(panel.getName());
 	}
 
 	public FormPanel(Element element, T value) {

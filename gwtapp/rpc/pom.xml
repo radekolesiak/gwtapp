@@ -22,7 +22,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-html</artifactId>
+			<artifactId>gwtapp-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

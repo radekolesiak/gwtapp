@@ -1,12 +1,11 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.html.client.io.HRpcRequestBuilder;
-import org.gwtapp.html.client.io.HSubmitCompleteHandler;
+import org.gwtapp.core.client.io.HRpcRequestBuilder;
+import org.gwtapp.core.client.io.HSubmitCompleteHandler;
 import org.gwtapp.startapp.client.ui.FeedbackPanel;
 import org.gwtapp.startapp.client.ui.StartAppTemplatePanel;
 import org.gwtapp.startapp.client.ui.UploadPanel;
 import org.gwtapp.startapp.client.ui.UserRegisterTab;
-import org.gwtapp.startapp.client.ui.UserRegisterTabExt;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
@@ -54,7 +53,6 @@ public class StartApp extends StartAppEntryPoint {
 	}
 
 	private void hwidgets() {
-		new UserRegisterTabExt();
 		final UserRegisterTab urt = new UserRegisterTab();
 		urt.getTabPanel().add(clear);
 		urt.getTabPanel().add(download);

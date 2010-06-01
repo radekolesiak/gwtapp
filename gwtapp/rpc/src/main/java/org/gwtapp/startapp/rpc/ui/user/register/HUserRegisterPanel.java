@@ -1,21 +1,19 @@
 package org.gwtapp.startapp.rpc.ui.user.register;
 
-import org.gwtapp.html.rpc.ui.HTextBox;
-import org.gwtapp.html.rpc.ui.form.HFieldPanel;
-import org.gwtapp.html.rpc.ui.form.HFormPanel;
+/*-
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+*/
 
-public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
+public class HUserRegisterPanel {} /*-extends HFormPanel<UserRegisterModel> {
 
 	private HFieldPanel<String> login = new HFieldPanel<String>(
 			UserRegister.LOGIN.name(), "Login:", new HTextBox());
-
-	/*-
-	private HFieldPanel email = new HFieldPanel(UserRegister.EMAIL, "Email:", new HTextBox());
-	private HFieldPanel password = new HFieldPanel(UserRegister.PASSWORD, "Password:", new HTextBox());
-	-*/
+	private HFieldPanel email = new HFieldPanel(UserRegister.EMAIL, "Email:",
+			new HTextBox());
+	private HFieldPanel password = new HFieldPanel(UserRegister.PASSWORD,
+			"Password:", new HTextBox());
 
 	public HUserRegisterPanel() {
 		this(new UserRegisterModelImpl());
@@ -24,8 +22,8 @@ public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 	public HUserRegisterPanel(UserRegisterModel value) {
 		super(value);
 		addField(login);
-		// addField(email);
-		// addField(password);
+		addField(email);
+		addField(password);
 		setValue(value);
 	}
 
@@ -33,13 +31,12 @@ public class HUserRegisterPanel extends HFormPanel<UserRegisterModel> {
 		return login;
 	}
 
-	/*-
-	 public HFieldPanel getEmail() {
-	 return email;
-	 }
+	public HFieldPanel getEmail() {
+		return email;
+	}
 
-	 public HFieldPanel getPassword() {
-	 return password;
-	 }
-	 */
+	public HFieldPanel getPassword() {
+		return password;
+	}
 }
+*/

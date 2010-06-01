@@ -3,6 +3,8 @@ package org.gwtapp.html.server;
 import java.util.Arrays;
 import java.util.List;
 
+import org.gwtapp.core.server.HServer;
+import org.gwtapp.core.server.HServerException;
 import org.gwtapp.html.rpc.ui.HWidget;
 import org.gwtapp.html.rpc.ui.IContainer;
 import org.gwtapp.html.rpc.ui.IElementValue;

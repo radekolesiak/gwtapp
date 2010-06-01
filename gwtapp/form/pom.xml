@@ -27,7 +27,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-html</artifactId>
+			<artifactId>startapp-rpc</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

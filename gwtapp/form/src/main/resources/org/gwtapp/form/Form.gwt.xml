@@ -1,5 +1,5 @@
 <module>
+	<inherits name='org.gwtapp.core.Core'/>
 	<inherits name='org.gwtapp.template.Template'/>
-	<inherits name='org.gwtapp.html.HTML'/>
 	<source path='client' />
 </module>

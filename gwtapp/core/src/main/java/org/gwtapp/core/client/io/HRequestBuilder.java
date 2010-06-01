@@ -1,4 +1,4 @@
-package org.gwtapp.html.client.io;
+package org.gwtapp.core.client.io;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;

@@ -1,4 +1,4 @@
-package org.gwtapp.html.server;
+package org.gwtapp.core.server;
 
 @SuppressWarnings("serial")
 public class HServerException extends Exception {

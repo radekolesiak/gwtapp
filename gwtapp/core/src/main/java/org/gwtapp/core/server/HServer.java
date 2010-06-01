@@ -1,10 +1,10 @@
-package org.gwtapp.html.server;
+package org.gwtapp.core.server;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import org.apache.commons.codec.binary.Base64;
-import org.gwtapp.html.rpc.api.HTMLService;
+import org.gwtapp.core.rpc.api.CoreService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.server.rpc.RPC;
@@ -23,7 +23,7 @@ public class HServer {
 
 	public static String success(IsSerializable object) throws HServerException {
 		try {
-			Method serviceMethod = HTMLService.class
+			Method serviceMethod = CoreService.class
 					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
@@ -35,7 +35,7 @@ public class HServer {
 
 	public static String success(Serializable object) throws HServerException {
 		try {
-			Method serviceMethod = HTMLService.class
+			Method serviceMethod = CoreService.class
 					.getMethod("getResponseSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);
@@ -47,7 +47,7 @@ public class HServer {
 
 	public static String failure(Throwable object) throws HServerException {
 		try {
-			Method serviceMethod = HTMLService.class
+			Method serviceMethod = CoreService.class
 					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
 			assert (object != null);

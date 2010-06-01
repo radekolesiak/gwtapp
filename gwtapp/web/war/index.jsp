@@ -1,10 +1,8 @@
 <!doctype html>
 <%@page pageEncoding="utf-8"%>        
-<%@page import="org.gwtapp.html.server.*"%>
 <%@page import="org.gwtapp.startapp.rpc.ui.*"%>
 <%@page import="org.gwtapp.startapp.rpc.ui.user.register.*"%>
 <%@page import="org.gwtapp.startapp.rpc.data.user.register.*"%>
-<%@page import="org.gwtapp.startapp.client.HWidgets"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
@@ -22,7 +20,7 @@
 	</head>
 	<body>
 		<!--[if lt IE 8]>
-		<h3>Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
+		<h3 style="color:orange;">Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
 		<![endif]-->
 	    <noscript>
       		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
@@ -39,25 +37,11 @@
 			</div>
 			<div class="row">
 				<div class="cell">
-				<%
-					UserRegisterModel model = new UserRegisterModelImpl();
-					model.setLogin("static html field to wrap");
-					HUserRegisterPanel userRegisterPanel = new HUserRegisterPanel(model);
-					userRegisterPanel.setName(HWidgets.HUserRegisterPanel);
-					HWidgetGenerator gUserRegister = new HWidgetGenerator(HWidgets.DICTIONARY, userRegisterPanel);
-				%>
-				<%=gUserRegister.getHTML()%>
 				</div>
 				<div class="cell">
 					<div id="templates" ></div>
 				</div>
 				<div class="cell">
-					<%
-						HTabPanel tabPanel = new HTabPanel();
-						tabPanel.setName(HWidgets.HTabPanel);
-						HWidgetGenerator gTab = new HWidgetGenerator(HWidgets.DICTIONARY, tabPanel);
-					%>
-					<%=gTab.getHTML()%>
 					<br />
 					Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object in input and text file as output"/></b>.
 					<ul>

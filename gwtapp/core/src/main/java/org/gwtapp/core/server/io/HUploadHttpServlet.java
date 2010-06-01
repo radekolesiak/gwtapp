@@ -1,4 +1,4 @@
-package org.gwtapp.html.server.io;
+package org.gwtapp.core.server.io;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.core.rpc.exception.RpcException;
-import org.gwtapp.html.server.HServer;
+import org.gwtapp.core.server.HServer;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
