@@ -55,12 +55,12 @@
 							<div class="celldiv2"><input t:field="email" type="text" style="width: 250px;" class="style-t2"/></div>
 						</div>
 						<div class="clear"></div>
-						<div style="color:#3333bb;font-style: normal;" t:field="summary" t:msg="empty:Form is empty. Enter any value to change this message.;any:Form value is {login} {password} {email};login:login=<i>{1}</i>;password:password=<i>{1}</i>;email:email=<i>{1}</i>;"></div>
 						<div class="rowdiv">
 							<a 	t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"></img></a>	
 							<a 	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"></img></a>	
 							<a 	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"></img></a>	
 						</div>
+						<div class="clear"></div>
 					</div>
 					<br />
 					Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object in input and text file as output"/></b>.

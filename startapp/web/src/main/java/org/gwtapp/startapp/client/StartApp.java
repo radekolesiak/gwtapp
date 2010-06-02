@@ -1,22 +1,13 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.io.IORpcRequestBuilder;
-import org.gwtapp.core.client.io.IOSubmitCompleteHandler;
 import org.gwtapp.startapp.client.ui.FeedbackPanel;
 import org.gwtapp.startapp.client.ui.StartAppTemplatePanel;
-import org.gwtapp.startapp.client.ui.UploadPanel;
-import org.gwtapp.startapp.client.ui.UserRegisterTab;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp extends StartAppEntryPoint {
@@ -27,22 +18,66 @@ public class StartApp extends StartAppEntryPoint {
 		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
-	private final Button clear = new Button("Clear");
-	private final Button download = new Button("Download");
-	private final UploadPanel upload = new UploadPanel();
-	private final FeedbackPanel feedback = new FeedbackPanel();
-
 	private final static String TEMPLATES_DIV = "templates";
+	private final static String UPLAOD_DOWNLOAD_DIV = "ud";
+
+	private final StartAppTemplatePanel templatePanel = new StartAppTemplatePanel();
+	private final FeedbackPanel feedback = new FeedbackPanel();
 
 	@Override
 	public void onStartAppModuleLoad() {
 		try {
-			feedback();
-			hwidgets();
 			template();
+			uploadownload();
+			feedback();
 		} finally {
 			hideLoadingIndicator();
 		}
+	}
+
+	/*-
+	 private final Button clear = new Button("Clear");
+	 private final Button download = new Button("Download");
+	 private final UploadPanel upload = new UploadPanel();
+	 private final TabPanel tabPanel = new TabPanel();
+	 private void tabpanel() {
+	 tabPanel.add(clear);
+	 tabPanel.add(download);
+	 tabPanel.add(upload);
+
+	 clear.addClickHandler(new ClickHandler() {
+	 @Override
+	 public void onClick(ClickEvent event) {
+	 tabPanel.setUserRegisterModel(new UserRegisterModelImpl());
+	 }
+	 });
+	 download.addClickHandler(new ClickHandler() {
+	 @Override
+	 public void onClick(ClickEvent event) {
+	 downloader.download(tabPanel.getUserRegisterModel(), callback);
+	 }
+	 });
+	 upload
+	 .addSubmitCompleteHandler(new IOSubmitCompleteHandler<UserRegisterModel>() {
+	 @Override
+	 public void onFailure(Throwable e) {
+	 Window.alert("There was a problem while uploading");
+	 }
+
+	 @Override
+	 public void onSuccessful(UserRegisterModel result) {
+	 tabPanel.setUserRegisterModel(result);
+	 }
+	 });
+	 }
+	 */
+	
+	private void template() {
+		RootPanel.get(TEMPLATES_DIV).add(templatePanel);
+	}
+
+	private void uploadownload() {
+		RootPanel.get(UPLAOD_DOWNLOAD_DIV);
 	}
 
 	private void feedback() {
@@ -50,44 +85,6 @@ public class StartApp extends StartAppEntryPoint {
 		if (anchor != null) {
 			anchor.add(feedback);
 		}
-	}
-
-	private void hwidgets() {
-		final UserRegisterTab urt = new UserRegisterTab();
-		urt.getTabPanel().add(clear);
-		urt.getTabPanel().add(download);
-		urt.getTabPanel().add(upload);
-
-		clear.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				urt.getTabPanel().setUserRegisterModel(
-						new UserRegisterModelImpl());
-			}
-		});
-		download.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				downloader.download(urt.getTabPanel().getUserRegisterModel(),
-						callback);
-			}
-		});
-		upload
-				.addSubmitCompleteHandler(new IOSubmitCompleteHandler<UserRegisterModel>() {
-					@Override
-					public void onFailure(Throwable e) {
-						Window.alert("There was a problem while uploading");
-					}
-
-					@Override
-					public void onSuccessful(UserRegisterModel result) {
-						urt.getTabPanel().setUserRegisterModel(result);
-					}
-				});
-	}
-
-	private void template() {
-		RootPanel.get(TEMPLATES_DIV).add(new StartAppTemplatePanel());
 	}
 
 	private void hideLoadingIndicator() {
