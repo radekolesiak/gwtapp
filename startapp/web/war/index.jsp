@@ -30,18 +30,38 @@
     	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"/></div></div>	
 		<div class="table main">
 			<div class="row header">
-				<div class="cell">Wrap and remove sample</div>
 				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
 				<div class="cell">Upload and download sample</div>
 				<div class="cell">Sample of MVC between two panels of different model types</div>
 			</div>
 			<div class="row">
 				<div class="cell">
-				</div>
-				<div class="cell">
 					<div id="templates" ></div>
 				</div>
 				<div class="cell">
+					<div id="ud" >
+						<div class="rowdiv">
+							<div class="celldiv1">Login:</div>
+							<div class="celldiv2"><input t:field="login" type="text" style="width: 250px;" class="style-t2"/></div>
+						</div>
+						<div class="clear"></div>
+						<div class="rowdiv">
+							<div class="celldiv1">Password:</div>
+							<div class="celldiv2"><input t:field="password" type="text" style="width: 250px;" class="style-t2"/></div>
+						</div>
+						<div class="clear"></div>
+						<div class="rowdiv">
+							<div class="celldiv1">E-mail:</div>
+							<div class="celldiv2"><input t:field="email" type="text" style="width: 250px;" class="style-t2"/></div>
+						</div>
+						<div class="clear"></div>
+						<div style="color:#3333bb;font-style: normal;" t:field="summary" t:msg="empty:Form is empty. Enter any value to change this message.;any:Form value is {login} {password} {email};login:login=<i>{1}</i>;password:password=<i>{1}</i>;email:email=<i>{1}</i>;"></div>
+						<div class="rowdiv">
+							<a 	t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"></img></a>	
+							<a 	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"></img></a>	
+							<a 	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"></img></a>	
+						</div>
+					</div>
 					<br />
 					Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object in input and text file as output"/></b>.
 					<ul>
@@ -69,7 +89,7 @@
 		<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 			<div class="row">
 				<div class="cell">
-					<b>Valuable articles related to GWT:</b><br />
+					<b>Articles related to the GWT:</b><br />
 					<a href="http://techzone.enterra-inc.com/gwt-improving-performance/">GWT Improving performance</a><br />
 					<a href="http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with">Simpler and Speedier GWT with Server Side RPC Serialization</a><br />
 				</div>

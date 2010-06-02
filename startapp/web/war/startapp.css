@@ -61,10 +61,6 @@ div.table.main .header .cell {
 	width: 239px;
 }
 
-.feedback a:hover {
-	color: yellow;
-}
-
 .feedback a:link {
 	color: #bbddbb;
 }
@@ -73,10 +69,38 @@ div.table.main .header .cell {
 	color: yellow;
 }
 
+.feedback a:hover {
+	color: #aabb44;
+}
+
 #laodingindicator {
 	width: 200px;
 	margin: 20px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+#ud {
+	
+}
+
+#ud .rowdiv div {
+	float: left;
+}
+
+#ud .celldiv1 {
+	width: 70px;
+}
+
+#ud a:link {
+	color: #bbddbb;
+}
+
+#ud a:visited {
+	color: yellow;
+}
+
+#ud a:hover {
+	color: #aabb44;
 }
