@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.client.ui;
+package org.gwtapp.startapp.client.ui.user.register;
 
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.event.dom.client.ClickEvent;

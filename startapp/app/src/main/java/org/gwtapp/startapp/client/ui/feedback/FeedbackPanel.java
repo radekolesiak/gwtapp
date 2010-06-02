@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.client.ui;
+package org.gwtapp.startapp.client.ui.feedback;
 
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.template.client.handlers.TextAreaHandler;
