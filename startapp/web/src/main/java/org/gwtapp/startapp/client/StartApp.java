@@ -2,7 +2,7 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.io.IORpcRequestBuilder;
 import org.gwtapp.startapp.client.ui.FeedbackPanel;
-import org.gwtapp.startapp.client.ui.StartAppTemplatePanel;
+import org.gwtapp.startapp.client.ui.user.register.UserRegisterTemplatePanel;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
 
@@ -21,7 +21,7 @@ public class StartApp extends StartAppEntryPoint {
 	private final static String TEMPLATES_DIV = "templates";
 	private final static String UPLAOD_DOWNLOAD_DIV = "ud";
 
-	private final StartAppTemplatePanel templatePanel = new StartAppTemplatePanel();
+	private final UserRegisterTemplatePanel templatePanel = new UserRegisterTemplatePanel();
 	private final FeedbackPanel feedback = new FeedbackPanel();
 
 	@Override
