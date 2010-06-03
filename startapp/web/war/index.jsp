@@ -40,6 +40,7 @@
 				</div>
 				<div class="cell">
 					<div id="ud" >
+						<!-- This is upload/download form template sample BEGIN-->
 						<div class="rowdiv">
 							<div class="celldiv1">Login:</div>
 							<div class="celldiv2"><input t:field="login" type="text" style="width: 250px;" class="style-t2"/></div>
@@ -66,6 +67,7 @@
 							</div>
 						</div>
 						<div class="clear"></div>
+						<!-- This is upload/download form template sample END-->
 					</div>
 					<br />
 					Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object in input and text file as output"/></b>.
