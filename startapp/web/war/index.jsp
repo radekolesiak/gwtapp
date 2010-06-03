@@ -61,9 +61,9 @@
 							<div class="celldiv1">File:</div>
 							<div class="celldiv2">
 								<form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"></form>
-								<a 	t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"></img></a>	
-								<a 	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"></img></a>	
 								<a 	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"></img></a>	
+								<a 	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"></img></a>	
+								<a 	t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"></img></a>	
 							</div>
 						</div>
 						<div class="clear"></div>
