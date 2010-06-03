@@ -2,11 +2,15 @@ package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.io.IORpcRequestBuilder;
 import org.gwtapp.startapp.client.ui.feedback.FeedbackPanel;
+import org.gwtapp.startapp.client.ui.user.register.UploadDownloadTemplatePanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterTemplatePanel;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -18,8 +22,7 @@ public class StartApp extends StartAppEntryPoint {
 		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 
-	private final static String TEMPLATES_DIV = "templates";
-	private final static String UPLAOD_DOWNLOAD_DIV = "ud";
+	public final static String TEMPLATES_DIV = "templates";
 
 	private final UserRegisterTemplatePanel templatePanel = new UserRegisterTemplatePanel();
 	private final FeedbackPanel feedback = new FeedbackPanel();
@@ -71,13 +74,17 @@ public class StartApp extends StartAppEntryPoint {
 	 });
 	 }
 	 */
-	
+
 	private void template() {
 		RootPanel.get(TEMPLATES_DIV).add(templatePanel);
 	}
 
 	private void uploadownload() {
-		RootPanel.get(UPLAOD_DOWNLOAD_DIV);
+		// TODO refactor this in smarter way
+		String id = "ud";
+		UploadDownloadTemplatePanel panel = new UploadDownloadTemplatePanel(id);
+		DOM.getElementById(id).setInnerHTML("");
+		RootPanel.get(id).add(panel);
 	}
 
 	private void feedback() {
@@ -88,9 +95,14 @@ public class StartApp extends StartAppEntryPoint {
 	}
 
 	private void hideLoadingIndicator() {
-		RootPanel indicator = RootPanel.get("laodingindicator");
-		if (indicator != null) {
-			indicator.setVisible(false);
-		}
+		DeferredCommand.addCommand(new Command() {
+			@Override
+			public void execute() {
+				RootPanel indicator = RootPanel.get("laodingindicator");
+				if (indicator != null) {
+					indicator.setVisible(false);
+				}
+			}
+		});
 	}
 }
