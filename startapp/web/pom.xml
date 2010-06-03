@@ -25,23 +25,23 @@
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
+			<version>${taglibs.standard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-app</artifactId>
-			<version>${project.version}</version>
+			<version>${startapp.app.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-srv</artifactId>
-			<version>${project.version}</version>
+			<version>${startapp.srv.version}</version>
 		</dependency>
 		<!--  GAE -->
 		<dependency>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo2-api</artifactId>
-			<version>2.3-eb</version>
+			<version>${jdo2.api.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.transaction</groupId>
@@ -63,17 +63,17 @@
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>1.1</version>
+			<version>${javax.transaction.jta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine.orm</groupId>
 			<artifactId>datanucleus-appengine</artifactId>
-			<version>1.0.4.1</version>
+			<version>${datanucleus.appengine.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.datanucleus</groupId>
 			<artifactId>datanucleus-core</artifactId>
-			<version>1.1.5</version>
+			<version>${datanucleus.core.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.transaction</groupId>
@@ -84,13 +84,13 @@
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>datanucleus-jpa</artifactId>
-			<version>1.1.5</version>
+			<version>${datanucleus.jpa.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>geronimo-jpa_3.0_spec</artifactId>
-			<version>1.1.1</version>
+			<version>${geronimo.jpa_3.0_spec.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!--  GWT -->
@@ -124,17 +124,16 @@
 			<plugin>
 				<groupId>net.kindleit</groupId>
 				<artifactId>maven-gae-plugin</artifactId>
-				<version>0.5.8</version>
+				<version>${maven.gae.plugin.version}</version>
 				<configuration>
 					<unpackVersion>${gae.version}</unpackVersion>
 					<serverId>appengine.google.com</serverId>
-					<!-- <sdkDir>${appengine.sdk.root}</sdkDir> -->
 					<appDir>${basedir}/war</appDir>
 				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.2</version>
+				<version>${maven.clean.plugin.version}</version>
 				<configuration>
 					<filesets>
 						<fileset>
@@ -160,7 +159,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1-alpha-1</version>
+				<version>${maven.war.plugin.version}</version>
 				<configuration>
 					<webappDirectory>war</webappDirectory>
 				</configuration>
@@ -202,10 +201,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0</version>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${javac.source.version}</source>
+					<target>${javac.target.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -21,24 +21,24 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>startapp-rpc</artifactId>
+			<version>${startapp.rpc.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.2.1</version>
+			<version>${commons.fileupload.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>1.3.2</version>
+			<version>${commons.io.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
 			<version>${gae.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>startapp-rpc</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -47,9 +47,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${javac.source.version}</source>
+					<target>${javac.target.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
