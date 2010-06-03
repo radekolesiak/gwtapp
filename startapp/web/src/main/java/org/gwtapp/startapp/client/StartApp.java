@@ -16,12 +16,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class StartApp extends StartAppEntryPoint {
 
-	public final static DownloadServiceAsync downloader = GWT
-			.create(DownloadService.class);
-	static {
-		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
-	}
-
 	public final static String TEMPLATES_DIV = "templates";
 
 	private final UserRegisterTemplatePanel templatePanel = new UserRegisterTemplatePanel();
@@ -37,43 +31,6 @@ public class StartApp extends StartAppEntryPoint {
 			hideLoadingIndicator();
 		}
 	}
-
-	/*-
-	 private final Button clear = new Button("Clear");
-	 private final Button download = new Button("Download");
-	 private final UploadPanel upload = new UploadPanel();
-	 private final TabPanel tabPanel = new TabPanel();
-	 private void tabpanel() {
-	 tabPanel.add(clear);
-	 tabPanel.add(download);
-	 tabPanel.add(upload);
-
-	 clear.addClickHandler(new ClickHandler() {
-	 @Override
-	 public void onClick(ClickEvent event) {
-	 tabPanel.setUserRegisterModel(new UserRegisterModelImpl());
-	 }
-	 });
-	 download.addClickHandler(new ClickHandler() {
-	 @Override
-	 public void onClick(ClickEvent event) {
-	 downloader.download(tabPanel.getUserRegisterModel(), callback);
-	 }
-	 });
-	 upload
-	 .addSubmitCompleteHandler(new IOSubmitCompleteHandler<UserRegisterModel>() {
-	 @Override
-	 public void onFailure(Throwable e) {
-	 Window.alert("There was a problem while uploading");
-	 }
-
-	 @Override
-	 public void onSuccessful(UserRegisterModel result) {
-	 tabPanel.setUserRegisterModel(result);
-	 }
-	 });
-	 }
-	 */
 
 	private void template() {
 		RootPanel.get(TEMPLATES_DIV).add(templatePanel);

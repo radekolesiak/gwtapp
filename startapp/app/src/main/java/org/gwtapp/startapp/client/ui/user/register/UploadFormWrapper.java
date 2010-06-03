@@ -1,36 +1,40 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
+import org.gwtapp.template.client.ui.FormWrapper;
+
 import com.google.gwt.core.client.JavaScriptException;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FileUpload;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FormPanel;
 
-public class UploadFormPanel extends FormPanel {
+public class UploadFormWrapper extends FormWrapper {
 
-	public static class Style {
-		public final static String UPLOAD = "upload";
-		public final static String FILE = "file";
+	private final FileUpload fileUpload = new FileUpload();
+
+	public UploadFormWrapper() {
+		super();
+		init();
 	}
 
-	public final static String ACTION = "/gwt.startappentry/upload.rpc";
+	public UploadFormWrapper(String id) {
+		super(id, true);
+		init();
+	}
 
-	private final FlowPanel panel = new FlowPanel();
-	private final FileUpload fileUpload = new FileUpload();
-	private final FlowPanel file = new FlowPanel();
+	public UploadFormWrapper(Element e) {
+		super(e, true);
+		init();
+	}
 
-	public UploadFormPanel() {
-		addStyleName(Style.UPLOAD);
-		file.addStyleName(Style.FILE);
+	private void init() {
 		setMethod(FormPanel.METHOD_POST);
 		setEncoding(FormPanel.ENCODING_MULTIPART);
-		setAction(ACTION);
 		fileUpload.setName("GwtAppFile");
-		panel.add(fileUpload);
-		setWidget(panel);
+		setWidget(fileUpload);
 	}
-	
-	public void upload(){
+
+	public void upload() {
 		if (fileUpload.getFilename().isEmpty()) {
 			Window.alert("Please choose file.");
 		} else {
@@ -42,6 +46,6 @@ public class UploadFormPanel extends FormPanel {
 				}
 			}
 		}
-		
+
 	}
 }
