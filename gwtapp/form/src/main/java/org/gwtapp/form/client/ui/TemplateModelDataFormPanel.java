@@ -3,8 +3,8 @@ package org.gwtapp.form.client.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.rpc.data.MetaField;
-import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.core.shared.data.MetaField;
+import org.gwtapp.core.shared.data.ModelData;
 import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.ui.TemplateFormPanel;

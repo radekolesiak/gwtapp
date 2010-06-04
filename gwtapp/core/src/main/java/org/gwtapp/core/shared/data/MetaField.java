@@ -1,4 +1,4 @@
-package org.gwtapp.core.rpc.data;
+package org.gwtapp.core.shared.data;
 
 /**
  * 

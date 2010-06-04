@@ -3,7 +3,7 @@ package org.gwtapp.html.rpc.ui.form;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.core.shared.data.ModelData;
 import org.gwtapp.html.rpc.ui.HPanel;
 import org.gwtapp.html.rpc.ui.HValue;
 

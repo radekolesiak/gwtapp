@@ -1,4 +1,4 @@
-package org.gwtapp.core.rpc.data;
+package org.gwtapp.core.shared.data;
 
 public abstract class MetaFieldAdapter<M, T> implements MetaField<M, T> {
 
