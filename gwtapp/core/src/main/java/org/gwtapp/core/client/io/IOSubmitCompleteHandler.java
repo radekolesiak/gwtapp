@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.io;
 
-import org.gwtapp.core.rpc.io.IOClient;
+import org.gwtapp.core.shared.io.IOClient;
 
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteHandler;

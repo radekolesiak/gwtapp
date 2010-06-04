@@ -1,4 +1,4 @@
-package org.gwtapp.core.rpc.io;
+package org.gwtapp.core.shared.io;
 
 import org.gwtapp.core.shared.io.api.IOService;
 
