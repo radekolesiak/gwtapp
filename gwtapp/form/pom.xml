@@ -27,8 +27,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>startapp-rpc</artifactId>
-			<version>${startapp.rpc.version}</version>
+			<artifactId>gwtapp-core</artifactId>
+			<version>${gwtapp.core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
