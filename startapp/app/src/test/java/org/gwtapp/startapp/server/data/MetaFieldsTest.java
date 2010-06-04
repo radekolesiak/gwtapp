@@ -6,7 +6,7 @@ import org.gwtapp.startapp.shared.data.user.register.UserRegisterModelImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class AutoFieldsTest {
+public class MetaFieldsTest {
 
 	private final String login = "loGin";
 
