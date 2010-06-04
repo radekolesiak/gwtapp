@@ -24,8 +24,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>startapp-rpc</artifactId>
-			<version>${startapp.rpc.version}</version>
+			<artifactId>startapp-shared</artifactId>
+			<version>${startapp.shared.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
