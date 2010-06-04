@@ -1,9 +1,9 @@
-package org.gwtapp.startapp.rpc.data.metafields;
+package org.gwtapp.startapp.shared.data.metafields;
 
 import org.gwtapp.core.shared.data.MetaFieldAdapter;
-import org.gwtapp.startapp.rpc.data.Tab;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.shared.data.Tab;
+import org.gwtapp.startapp.shared.data.user.register.UserRegister;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModelImpl;
 
 public class UserRegisterMetaField extends MetaFieldAdapter<Tab, UserRegister> {
 

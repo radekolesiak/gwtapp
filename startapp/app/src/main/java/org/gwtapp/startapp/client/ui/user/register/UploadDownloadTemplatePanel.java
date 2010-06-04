@@ -4,9 +4,9 @@ import org.gwtapp.core.client.io.IOSubmitCompleteHandler;
 import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.shared.data.user.register.UserRegister;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.template.client.handlers.TextBoxHandler;
 import org.gwtapp.template.client.handlers.WidgetHandler;
 

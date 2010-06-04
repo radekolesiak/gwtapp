@@ -1,10 +1,10 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.io.IORpcRequestBuilder;
-import org.gwtapp.startapp.rpc.api.DownloadService;
-import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
-import org.gwtapp.startapp.rpc.api.GwtAppService;
-import org.gwtapp.startapp.rpc.api.GwtAppServiceAsync;
+import org.gwtapp.startapp.shared.api.DownloadService;
+import org.gwtapp.startapp.shared.api.DownloadServiceAsync;
+import org.gwtapp.startapp.shared.api.GwtAppService;
+import org.gwtapp.startapp.shared.api.GwtAppServiceAsync;
 import org.gwtapp.template.client.DOMTemplateRepository;
 import org.gwtapp.template.client.TemplateRepository;
 

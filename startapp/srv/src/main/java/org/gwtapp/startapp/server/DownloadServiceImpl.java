@@ -2,8 +2,8 @@ package org.gwtapp.startapp.server;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.core.server.io.IODownloadHttpServlet;
-import org.gwtapp.startapp.rpc.api.DownloadService;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.shared.api.DownloadService;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
 public class DownloadServiceImpl extends IODownloadHttpServlet implements

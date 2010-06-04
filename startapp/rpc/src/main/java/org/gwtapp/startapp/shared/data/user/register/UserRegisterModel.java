@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.rpc.data.user.register;
+package org.gwtapp.startapp.shared.data.user.register;
 
 import org.gwtapp.core.shared.data.ModelData;
 

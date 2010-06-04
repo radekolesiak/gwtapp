@@ -8,8 +8,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModelImpl;
 
 public class Utils {
 

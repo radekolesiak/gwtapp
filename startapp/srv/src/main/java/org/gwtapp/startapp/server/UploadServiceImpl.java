@@ -13,7 +13,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.gwtapp.core.server.io.IOUploadHttpServlet;
 import org.gwtapp.core.shared.exception.RpcException;
-import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")
 public class UploadServiceImpl extends IOUploadHttpServlet<UserRegisterModel> {
