@@ -1,6 +1,6 @@
 package org.gwtapp.core.rpc.io;
 
-import org.gwtapp.core.rpc.io.api.IOService;
+import org.gwtapp.core.shared.io.api.IOService;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.SerializationException;
