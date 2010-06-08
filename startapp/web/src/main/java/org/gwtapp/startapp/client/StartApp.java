@@ -4,8 +4,8 @@ import org.gwtapp.core.client.io.IORpcRequestBuilder;
 import org.gwtapp.startapp.client.ui.feedback.FeedbackPanel;
 import org.gwtapp.startapp.client.ui.user.register.UploadDownloadTemplatePanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterTemplatePanel;
-import org.gwtapp.startapp.shared.api.DownloadService;
-import org.gwtapp.startapp.shared.api.DownloadServiceAsync;
+import org.gwtapp.startapp.rpc.api.DownloadService;
+import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;

@@ -1,7 +1,7 @@
-package org.gwtapp.startapp.shared.api;
+package org.gwtapp.startapp.rpc.api;
 
 import org.gwtapp.core.shared.exception.RpcException;
-import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;

@@ -2,9 +2,9 @@ package org.gwtapp.startapp.client.ui.user.register;
 
 import org.gwtapp.form.client.ui.FieldPanel;
 import org.gwtapp.form.client.ui.FormPanel;
-import org.gwtapp.startapp.shared.data.user.register.UserRegister;
-import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
-import org.gwtapp.startapp.shared.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
 import com.google.gwt.user.client.ui.TextBox;
 

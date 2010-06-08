@@ -1,7 +1,7 @@
-package org.gwtapp.startapp.shared.data.user.register.metafields;
+package org.gwtapp.startapp.rpc.data.user.register.metafields;
 
 import org.gwtapp.core.shared.data.MetaFieldAdapter;
-import org.gwtapp.startapp.shared.data.user.register.UserRegister;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
 public class EmailMetaField extends MetaFieldAdapter<UserRegister, String> {
 

@@ -1,8 +1,8 @@
-package org.gwtapp.startapp.shared.data;
+package org.gwtapp.startapp.rpc.data;
 
 import org.gwtapp.core.shared.data.MetaField;
-import org.gwtapp.startapp.shared.data.metafields.UserRegisterMetaField;
-import org.gwtapp.startapp.shared.data.user.register.UserRegister;
+import org.gwtapp.startapp.rpc.data.metafields.UserRegisterMetaField;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

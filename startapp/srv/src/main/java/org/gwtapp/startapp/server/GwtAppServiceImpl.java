@@ -2,8 +2,8 @@ package org.gwtapp.startapp.server;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.core.shared.exception.RpcException;
-import org.gwtapp.startapp.shared.api.GwtAppService;
-import org.gwtapp.startapp.shared.data.user.register.UserRegisterModel;
+import org.gwtapp.startapp.rpc.api.GwtAppService;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

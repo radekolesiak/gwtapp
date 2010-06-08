@@ -1,6 +1,5 @@
 <!doctype html>
 <%@page pageEncoding="utf-8"%>
-<%@page import="org.gwtapp.startapp.shared.data.user.register.*"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
