@@ -16,7 +16,7 @@
 		<gwtapp.html.version>1.0.0</gwtapp.html.version>
 		<gwtapp.template.version>1.0.0</gwtapp.template.version>
 		<startapp.app.version>1.0.0</startapp.app.version>
-		<startapp.shared.version>1.0.0</startapp.shared.version>
+		<startapp.rpc.version>1.0.0</startapp.rpc.version>
 		<startapp.srv.version>1.0.0</startapp.srv.version>
 		<startapp.web.version>1.0.0</startapp.web.version>
 		<gwt.version>2.0.3</gwt.version>

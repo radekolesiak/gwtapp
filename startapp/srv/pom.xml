@@ -22,8 +22,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>startapp-shared</artifactId>
-			<version>${startapp.shared.version}</version>
+			<artifactId>startapp-rpc</artifactId>
+			<version>${startapp.rpc.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>
