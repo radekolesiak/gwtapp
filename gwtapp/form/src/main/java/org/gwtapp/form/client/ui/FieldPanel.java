@@ -1,6 +1,6 @@
 package org.gwtapp.form.client.ui;
 
-import org.gwtapp.core.shared.data.ModelData;
+import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;

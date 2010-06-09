@@ -1,4 +1,4 @@
-package org.gwtapp.core.shared.exception;
+package org.gwtapp.core.rpc.exception;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

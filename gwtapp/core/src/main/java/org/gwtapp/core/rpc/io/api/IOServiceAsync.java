@@ -1,4 +1,4 @@
-package org.gwtapp.core.shared.io.api;
+package org.gwtapp.core.rpc.io.api;
 
 import java.io.Serializable;
 

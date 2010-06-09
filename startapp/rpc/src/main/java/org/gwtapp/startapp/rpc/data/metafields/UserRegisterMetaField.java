@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.rpc.data.metafields;
 
-import org.gwtapp.core.shared.data.MetaFieldAdapter;
+import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.startapp.rpc.data.Tab;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;

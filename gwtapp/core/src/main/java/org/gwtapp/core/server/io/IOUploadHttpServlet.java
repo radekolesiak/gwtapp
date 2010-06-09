@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.core.shared.exception.RpcException;
+import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

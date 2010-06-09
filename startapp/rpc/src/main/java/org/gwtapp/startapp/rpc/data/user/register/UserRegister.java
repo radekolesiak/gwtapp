@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.rpc.data.user.register;
 
-import org.gwtapp.core.shared.data.MetaField;
+import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.startapp.rpc.data.user.register.metafields.EmailMetaField;
 import org.gwtapp.startapp.rpc.data.user.register.metafields.LoginMetaField;
 import org.gwtapp.startapp.rpc.data.user.register.metafields.PasswordMetaField;

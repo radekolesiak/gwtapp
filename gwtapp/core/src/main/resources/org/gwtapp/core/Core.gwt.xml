@@ -3,5 +3,5 @@
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name="com.google.gwt.http.HTTP" />
 	<source path='client' />
-	<source path='shared' />
+	<source path='rpc' />
 </module>

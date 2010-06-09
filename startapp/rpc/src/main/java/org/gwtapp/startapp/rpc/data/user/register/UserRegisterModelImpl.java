@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.rpc.data.user.register;
 
-import org.gwtapp.core.shared.data.HashModelData;
+import org.gwtapp.core.rpc.data.HashModelData;
 
 public class UserRegisterModelImpl extends HashModelData implements
 		UserRegisterModel {
