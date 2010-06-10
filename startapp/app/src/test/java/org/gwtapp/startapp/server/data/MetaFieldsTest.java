@@ -13,7 +13,7 @@ public class MetaFieldsTest {
 	@Test
 	public void BeanTest() {
 		UserRegister ur = new UserRegisterModelImpl();
-		Assert.assertNull(ur.getLogin());
+		Assert.assertNotNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
 		ur.setLogin(login);
@@ -24,7 +24,7 @@ public class MetaFieldsTest {
 	@Test
 	public void ModelDataTest() {
 		UserRegisterModel ur = new UserRegisterModelImpl();
-		Assert.assertNull(ur.getLogin());
+		Assert.assertNotNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
 		ur.setLogin(login);
