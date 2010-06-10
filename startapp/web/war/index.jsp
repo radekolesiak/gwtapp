@@ -44,7 +44,7 @@
 			<div class="row header">
 				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
 				<div class="cell">Upload and download sample</div>
-				<div class="cell">Transformation of two different model types in UI panel to keep strong typing in MVC</div>
+				<div class="cell">Transformation of two different model types<br /> in UI panel to keep strong typing in MVC</div>
 			</div>
 			<div class="row">
 				<div class="cell">
