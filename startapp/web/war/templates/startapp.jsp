@@ -7,11 +7,13 @@
 			<li>UI Panel 1 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/user/register/UserRegisterTemplatePanel.java?view=markup">UserRegisterTemplatePanel.java</a></li>
 			<li>UserRegister Model - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/UserRegister.java?view=markup">UserRegister.java</a>
-			<ul>
-				<li>Login MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/LoginMetaField.java?view=markup">LoginMetaField.java</a></li>
-				<li>Password MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/PasswordMetaField.java?view=markup">PasswordMetaField.java</a></li>
-				<li>Email MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/EmailMetaField.java?view=markup">EmailMetaField.java</a></li>
-			</ul>
+			<small>
+				<ul>
+					<li>Login MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/LoginMetaField.java?view=markup">LoginMetaField.java</a></li>
+					<li>Password MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/PasswordMetaField.java?view=markup">PasswordMetaField.java</a></li>
+					<li>Email MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/EmailMetaField.java?view=markup">EmailMetaField.java</a></li>
+				</ul>
+			</small>
 			</li>
 		</ul>
 		<div class="tablediv">
