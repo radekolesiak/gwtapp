@@ -26,6 +26,21 @@
     	</noscript>
     	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"/></div></div>	
 		<div class="table main">
+			<div class="row">
+				<div class="cell">
+    				<div style="width:600px;margin-left:auto;margin-right:auto;">
+    					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
+	    				<ul>
+							<li>HTML templating and messaging at runtime without application recompiling.</li>
+							<li>MetaField to auto bind and simulate annotation of RPC data fields.</li>
+							<li>Strong typing in MVC.</li>
+							<li>Modular structure in Maven.</li>
+						</ul>
+    				</div>
+    			</div>
+    		</div> 
+    	</div> 
+		<div class="table main">
 			<div class="row header">
 				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
 				<div class="cell">Upload and download sample</div>
@@ -57,10 +72,11 @@
 						<div class="rowdiv">
 							<div class="celldiv1">File:</div>
 							<div class="celldiv2">
-								<form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"></form>
-								<a 	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"/></a>	
-								<a 	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a>	
-								<a 	t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"/></a>	
+								<div class="left" style="margin-right:10px;"><a	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"/></a></div>
+								<div class="left" style="margin-right:10px;"><a	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a></div>	
+								<div class="left"><form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"></form></div>
+								<div class="left"><a t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"/></a></div>
+								<div class="clear"></div>
 							</div>
 						</div>
 						<div class="clear"></div>
