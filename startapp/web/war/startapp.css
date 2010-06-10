@@ -45,6 +45,10 @@ div.table.main .header .cell {
 	text-align: center;
 }
 
+.templatePanel .celldiv1 {
+	width: 80px;
+}
+	
 .feedback {
 	border: 2px dotted #bbddbb;
 	width: 325px;
