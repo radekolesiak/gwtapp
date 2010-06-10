@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class MetaFieldsTest {
 
-	private final String login = "loGin";
+	private final String email = "emailGin";
 
 	@Test
 	public void BeanTest() {
@@ -16,9 +16,9 @@ public class MetaFieldsTest {
 		Assert.assertNotNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
-		ur.setLogin(login);
-		Assert.assertNotNull(ur.getLogin());
-		Assert.assertEquals(login, ur.getLogin());
+		ur.setEmail(email);
+		Assert.assertNotNull(ur.getEmail());
+		Assert.assertEquals(email, ur.getEmail());
 	}
 
 	@Test
@@ -27,8 +27,8 @@ public class MetaFieldsTest {
 		Assert.assertNotNull(ur.getLogin());
 		Assert.assertNull(ur.getPassword());
 		Assert.assertNull(ur.getEmail());
-		ur.setLogin(login);
-		Assert.assertNotNull(ur.get(UserRegister.LOGIN.name()));
-		Assert.assertEquals(login, ur.get(UserRegister.LOGIN.name()));
+		ur.setEmail(email);
+		Assert.assertNotNull(ur.get(UserRegister.EMAIL.name()));
+		Assert.assertEquals(email, ur.get(UserRegister.EMAIL.name()));
 	}
 }
