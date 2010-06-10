@@ -22,5 +22,10 @@ public class LoginMetaField extends MetaFieldAdapter<UserRegister, String> {
 	public void set(UserRegister model, Object value) {
 		model.setLogin((String) value);
 	}
+	
+	@Override
+	public String def() {
+		return "Login Default Value";
+	}
 
 }
