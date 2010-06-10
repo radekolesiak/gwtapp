@@ -7,6 +7,7 @@
 			<li>UI Panel 1 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/web/src/main/java/org/gwtapp/startapp/client/StartApp.java?view=markup">StartApp.java</a></li>
 			<li>UI Panel 2 - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/user/register/UserRegisterTemplatePanel.java?view=markup">UserRegisterTemplatePanel.java</a></li>
 			<li>UserRegister Model - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/UserRegister.java?view=markup">UserRegister.java</a>
+			<li>UserRegister Bean - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/UserRegisterModelImpl.java?view=markup">UserRegisterModelImpl.java</a>
 			<small>
 				<ul>
 					<li>Login MetaField - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/data/user/register/metafields/LoginMetaField.java?view=markup">LoginMetaField.java</a></li>
