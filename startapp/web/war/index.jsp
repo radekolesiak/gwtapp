@@ -28,10 +28,10 @@
 		<div class="table main">
 			<div class="row">
 				<div class="cell">
-    				<div style="width:600px;margin-left:auto;margin-right:auto;">
+    				<div style="width:620px;margin-left:auto;margin-right:auto;">
     					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
 	    				<ul>
-							<li>HTML templating and messaging at runtime without application recompiling.</li>
+							<li>Declarative HTML templating and internationalization at runtime without application recompiling.</li>
 							<li>MetaField to auto bind and simulate annotation of RPC data fields.</li>
 							<li>Strong typing in MVC.</li>
 							<li>Modular structure in Maven.</li>
