@@ -14,13 +14,13 @@ public class PasswordMetaField extends MetaFieldAdapter<UserRegister, String> {
 	}
 
 	@Override
-	public Object get(UserRegister model) {
+	public String get(UserRegister model) {
 		return model.getPassword();
 	}
 
 	@Override
-	public void set(UserRegister model, Object value) {
-		model.setPassword((String) value);
+	public void set(UserRegister model, String value) {
+		model.setPassword(value);
 	}
 
 }

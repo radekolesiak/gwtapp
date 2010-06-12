@@ -14,13 +14,13 @@ public class EmailMetaField extends MetaFieldAdapter<UserRegister, String> {
 	}
 
 	@Override
-	public Object get(UserRegister model) {
+	public String get(UserRegister model) {
 		return model.getEmail();
 	}
 
 	@Override
-	public void set(UserRegister model, Object value) {
-		model.setEmail((String) value);
+	public void set(UserRegister model, String value) {
+		model.setEmail(value);
 	}
 
 }

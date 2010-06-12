@@ -14,13 +14,13 @@ public class LoginMetaField extends MetaFieldAdapter<UserRegister, String> {
 	}
 
 	@Override
-	public Object get(UserRegister model) {
+	public String get(UserRegister model) {
 		return model.getLogin();
 	}
 
 	@Override
-	public void set(UserRegister model, Object value) {
-		model.setLogin((String) value);
+	public void set(UserRegister model, String value) {
+		model.setLogin(value);
 	}
 	
 	@Override

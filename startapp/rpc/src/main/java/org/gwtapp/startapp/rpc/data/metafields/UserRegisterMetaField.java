@@ -16,12 +16,12 @@ public class UserRegisterMetaField extends MetaFieldAdapter<Tab, UserRegister> {
 	}
 
 	@Override
-	public Object get(Tab model) {
+	public UserRegister get(Tab model) {
 		return model.getUserRegister();
 	}
 
 	@Override
-	public void set(Tab model, Object value) {
+	public void set(Tab model, UserRegister value) {
 		model.setUserRegister(((UserRegister) value));
 	}
 

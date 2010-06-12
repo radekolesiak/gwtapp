@@ -18,10 +18,10 @@ public interface MetaField<M, T> {
 	String name();
 
 	/** Sets a value to the model's setter. */
-	void set(M model, Object value);
+	void set(M model, T value);
 
 	/** Gets a value from the model's getter. */
-	Object get(M model);
+	T get(M model);
 
 	/** Default field's value. */
 	T def();
