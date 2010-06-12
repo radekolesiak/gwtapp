@@ -28,13 +28,14 @@
 		<div class="table main">
 			<div class="row">
 				<div class="cell">
-    				<div style="width:620px;margin-left:auto;margin-right:auto;">
+    				<div style="width:680px;margin-left:auto;margin-right:auto;">
     					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
 	    				<ul>
 							<li>Declarative HTML templating and internationalization at runtime without application recompiling.</li>
-							<li>MetaField to auto bind and simulate annotation of RPC data fields.</li>
-							<li>Strong typing in MVC.</li>
+							<li>MetaField for auto bind and simulate annotation of RPC data fields.</li>
+							<li>Strong typing in MVC including Java generics.</li>
 							<li>Modular structure in Maven.</li>
+							<li>Passing serialized RPC data into HTML main page for no delay access of initial data <i>(planning)</i>.</li>
 						</ul>
     				</div>
     			</div>
@@ -43,8 +44,8 @@
 		<div class="table main">
 			<div class="row header">
 				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
-				<div class="cell">Upload and download sample</div>
-				<div class="cell">Transformation of two different model types<br /> in UI panel to keep strong typing in MVC</div>
+				<div class="cell">Upload and download sample<br /><small><c:out value="Converting a file from/to RPC Java object at single HTTP request-response"></c:out></small></div>
+				<div class="cell">Transformation of two models with different types in UI panel to keep strong typing in MVC</div>
 			</div>
 			<div class="row">
 				<div class="cell">
@@ -85,6 +86,7 @@
 					<br />
 					Source code files that are used to download the form as a file on single HTTP request. <b><c:out value="Java object in input and text file as output"/></b>.
 					<ul>
+					<li>A download HTML template embedded in the main page- <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/web/war/index.jsp?view=markup">index.jsp</a></li>
 					<li>Remote service interface - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/rpc/src/main/java/org/gwtapp/startapp/rpc/api/DownloadService.java?view=markup">DownloadService.java</a></li>
 					<li>Remote service implementation - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/srv/src/main/java/org/gwtapp/startapp/server/DownloadServiceImpl.java?view=markup">DownloadServiceImpl.java</a></li>
 					<li>UI to download a form - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/user/register/UploadDownloadTemplatePanel.java?view=markup">UploadDownloadTemplatePanel.java</a></li>
@@ -92,6 +94,7 @@
 					</ul>
 					Source code files that are used to upload the form from a file on single HTTP request. <b><c:out value="Text file as input and Java object in output by AsyncCallback<T>"/></b> .
 					<ul>
+					<li>An upload HTML template embedded in the main page- <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/web/war/index.jsp?view=markup">index.jsp</a></li>
 					<li>Service implementation - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/srv/src/main/java/org/gwtapp/startapp/server/UploadServiceImpl.java?view=markup">UploadServiceImpl.java</a></li>
 					<li>UI-1 to upload a form - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/user/register/UploadDownloadTemplatePanel.java?view=markup">UploadDownloadTemplatePanel.java</a></li>
 					<li>UI-2 to upload a form - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/user/register/UploadFormWrapper.java?view=markup">UploadFormWrapper.java</a></li>
