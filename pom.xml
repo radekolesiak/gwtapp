@@ -6,19 +6,19 @@
 	<groupId>org.gwtapp</groupId>
 	<artifactId>gwtapp-base</artifactId>
 	<name>gwtapp-base</name>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<!--  dependencies -->
-		<gwtapp.core.version>1.0.0</gwtapp.core.version>
-		<gwtapp.form.version>1.0.0</gwtapp.form.version>
-		<gwtapp.html.version>1.0.0</gwtapp.html.version>
-		<gwtapp.template.version>1.0.0</gwtapp.template.version>
-		<startapp.app.version>1.0.0</startapp.app.version>
-		<startapp.rpc.version>1.0.0</startapp.rpc.version>
-		<startapp.srv.version>1.0.0</startapp.srv.version>
-		<startapp.web.version>1.0.0</startapp.web.version>
+		<gwtapp.core.version>1.1.0</gwtapp.core.version>
+		<gwtapp.form.version>1.1.0</gwtapp.form.version>
+		<gwtapp.html.version>1.1.0</gwtapp.html.version>
+		<gwtapp.template.version>1.1.0</gwtapp.template.version>
+		<startapp.app.version>1.1.0</startapp.app.version>
+		<startapp.rpc.version>1.1.0</startapp.rpc.version>
+		<startapp.srv.version>1.1.0</startapp.srv.version>
+		<startapp.web.version>1.1.0</startapp.web.version>
 		<gwt.version>2.1.0.M1</gwt.version>
 		<gae.version>1.3.4</gae.version>
 		<commons.lang.version>2.4</commons.lang.version>
