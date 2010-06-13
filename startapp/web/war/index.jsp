@@ -126,7 +126,9 @@
 			<div class="row">
 				<div class="cell">
 					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code.</a>
-					<!-- Get a <a href="http://mvn.gwtapp.org/">maven repository.</a> -->
+					<br />					
+					Get a maven repository <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a> 
+					<br />
 					<small>Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></small>
 					<div id="feedbackanchor"></div>
 				</div>
