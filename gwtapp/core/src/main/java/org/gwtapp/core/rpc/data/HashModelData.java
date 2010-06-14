@@ -11,7 +11,7 @@ public abstract class HashModelData extends AbstractModelData implements
 	private Map<String, MetaField> autofields = new HashMap<String, MetaField>();
 
 	@Override
-	public void addAutoField(MetaField field) {
+	public void addMetaField(MetaField field) {
 		autofields.put(field.name(), field);
 	}
 

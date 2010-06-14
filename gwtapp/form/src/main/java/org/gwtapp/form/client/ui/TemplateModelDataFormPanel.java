@@ -36,8 +36,8 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	}
 
 	public <E extends Widget & HasValue<?>> MessageHandler<E> add(
-			MetaField<?, ?> autofield, MessageHandler<E> handler) {
-		addFieldHandler(autofield, handler);
+			MetaField<?, ?> metafield, MessageHandler<E> handler) {
+		addFieldHandler(metafield, handler);
 		return handler;
 	}
 
@@ -69,6 +69,7 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@Override
 	public T getValue() {
 		T value = super.getValue();
+		// TODO this one should be cached by HasValueChangeHandlers and local variable, it's faster.
 		if (isTemplated() && value != null) {
 			for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
 				value.set(entry.getKey(), entry.getValue().getValue());
@@ -81,6 +82,7 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		if (isTemplated()) {
+			// TODO test if this loop should executed by the DeferredCommand
 			for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
 				if (value != null) {
 					entry.getValue().setValue(value.get(entry.getKey()));

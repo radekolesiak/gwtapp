@@ -20,7 +20,7 @@ public abstract class MetaFieldAdapter<M, T> implements MetaField<M, T> {
 	
 	@Override
 	public MetaField<M, T> add(HasMetaField model){
-		model.addAutoField(this);
+		model.addMetaField(this);
 		return this;
 	}
 }
