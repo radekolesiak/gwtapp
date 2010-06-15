@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%@page pageEncoding="utf-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,single request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,mvc,java,reflection" />
@@ -24,7 +24,7 @@
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
       		</div>
     	</noscript>
-    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif"/></div></div>	
+    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif" alt=""/></div></div>	
 		<div class="table main">
 			<div class="row">
 				<div class="cell">
@@ -52,7 +52,7 @@
 					<div id="templates" ></div>
 				</div>
 				<div class="cell">
-					<div id="ud" >
+					<div id="ud"  xmlns:audio="http://purl.org/media/audio#">
 						<!-- This is upload/download form template sample BEGIN-->
 						<div class="rowdiv">
 							<div class="celldiv1">Login:</div>
@@ -75,7 +75,7 @@
 							<div class="celldiv2">
 								<div class="left" style="margin-right:10px;"><a	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"/></a></div>
 								<div class="left" style="margin-right:10px;"><a	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a></div>	
-								<div class="left"><form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"></form></div>
+								<div class="left"><form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"><div></div></form></div>
 								<div class="left"><a t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"/></a></div>
 								<div class="clear"></div>
 							</div>
