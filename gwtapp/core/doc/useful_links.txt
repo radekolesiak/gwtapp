@@ -17,3 +17,6 @@ III. GAE Maven:
 	http://www.kindleit.net/maven_gae_plugin/examples/passwordPrompt.html
 	http://64.34.178.139/maven_gae_plugin/usage.html
 	
+IV. Custom DTD:
+	http://www.alistapart.com/articles/customdtd/
+	

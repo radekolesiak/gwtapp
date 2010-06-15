@@ -1,4 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+[
+  <!ATTLIST input t:field CDATA #IMPLIED>
+  <!ATTLIST a t:field CDATA #IMPLIED>
+  <!ATTLIST form t:field CDATA #IMPLIED>
+]
+>
 <%@page pageEncoding="utf-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -142,7 +150,6 @@
 		        <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
 		    </a>
 		    <br />
-		    <small>Ignore <b>t:field</b> for now, XSD will be soon.</small>
 		</p>
 		<%if (request.getServerName()!=null && request.getServerName().contains("gwtapp.org")){ %>
 			<!-- GA  -->
