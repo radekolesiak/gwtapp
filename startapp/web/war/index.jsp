@@ -1,12 +1,4 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.1//EN" 
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
-[
-  <!ATTLIST input t:field CDATA #IMPLIED>
-  <!ATTLIST a t:field CDATA #IMPLIED>
-  <!ATTLIST form t:field CDATA #IMPLIED>
-]
->
+<!DOCTYPE html SYSTEM "http://web.gwtapp.org/dtd/gwtapp.dtd">   
 <%@page pageEncoding="utf-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

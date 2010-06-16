@@ -19,4 +19,5 @@ III. GAE Maven:
 	
 IV. Custom DTD:
 	http://www.alistapart.com/articles/customdtd/
+	http://htmlhelp.com/tools/validator/customdtd.html
 	
