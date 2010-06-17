@@ -14,6 +14,16 @@
 		<t:include repository="/templates/" template="startapp.jsp"/>
 		<t:include repository="/templates/" template="login.jsp"/>
 		<t:include repository="/templates/" template="feedback.jsp"/>
+		<jsp:useBean id="sampleModel" class="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl"/>
+		<c:set target="${sampleModel}" property="login" value="Sample Login Value"/>
+		<c:set target="${sampleModel}" property="email" value="Sample Email Value"/>
+		<c:set target="${sampleModel}" property="password" value="Sample Password Value"/>
+		<jsp:useBean id="userregister" class="org.gwtapp.html.server.HtmlRpcBean"/>
+		<c:set target="${userregister}" property="value" value="${sampleModel}"/>
+		<script>
+			var RpcValues = new Array();
+			RpcValues["userregister"] = "${userregister.value}";
+		</script>
 	</head>
 	<body>
 		<!--[if lt IE 8]>

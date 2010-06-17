@@ -32,6 +32,11 @@
 			<artifactId>gwtapp-form</artifactId>
 			<version>${gwtapp.form.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-html</artifactId>
+			<version>${gwtapp.html.version}</version>
+		</dependency>
 		<!--  GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>

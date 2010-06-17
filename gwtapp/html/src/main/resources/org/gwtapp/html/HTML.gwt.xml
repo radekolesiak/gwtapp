@@ -1,5 +1,6 @@
 <module>
 	<inherits name='org.gwtapp.core.Core'/>
+	<inherits name='org.gwtapp.io.IO'/>
 	<source path='client' />
 	<source path='rpc' />
 </module>
