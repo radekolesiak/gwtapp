@@ -3,12 +3,12 @@ package org.gwtapp.html.server;
 import java.util.Arrays;
 import java.util.List;
 
-import org.gwtapp.core.server.io.IOServer;
-import org.gwtapp.core.server.io.IOServerException;
 import org.gwtapp.html.rpc.ui.HWidget;
 import org.gwtapp.html.rpc.ui.IContainer;
 import org.gwtapp.html.rpc.ui.IElementValue;
 import org.gwtapp.html.rpc.ui.ILeaf;
+import org.gwtapp.io.server.IOServer;
+import org.gwtapp.io.server.IOServerException;
 
 public class HWidgetGenerator {
 

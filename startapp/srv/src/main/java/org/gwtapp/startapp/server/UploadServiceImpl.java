@@ -12,7 +12,7 @@ import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
-import org.gwtapp.core.server.io.IOUploadHttpServlet;
+import org.gwtapp.io.server.IOUploadHttpServlet;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 @SuppressWarnings("serial")

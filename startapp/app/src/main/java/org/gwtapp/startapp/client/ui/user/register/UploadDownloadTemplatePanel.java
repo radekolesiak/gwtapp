@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.core.client.io.IOSubmitCompleteHandler;
 import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
+import org.gwtapp.io.client.IOSubmitCompleteHandler;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;

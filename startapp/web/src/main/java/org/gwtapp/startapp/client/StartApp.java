@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.io.IORpcRequestBuilder;
+import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.startapp.client.ui.feedback.FeedbackPanel;
 import org.gwtapp.startapp.client.ui.user.register.UploadDownloadTemplatePanel;
 import org.gwtapp.startapp.client.ui.user.register.UserRegisterTemplatePanel;
