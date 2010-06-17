@@ -25,6 +25,7 @@
 
 	<modules>
 		<module>core</module>
+		<module>io</module>
 		<module>html</module>
 		<module>template</module>
 		<module>form</module>
