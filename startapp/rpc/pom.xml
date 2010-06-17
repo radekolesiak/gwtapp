@@ -25,6 +25,11 @@
 			<artifactId>gwtapp-core</artifactId>
 			<version>${gwtapp.core.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.io.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
