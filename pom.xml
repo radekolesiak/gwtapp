@@ -14,7 +14,6 @@
 		<gwtapp.core.version>1.1.0</gwtapp.core.version>
 		<gwtapp.io.version>1.1.0</gwtapp.io.version>
 		<gwtapp.form.version>1.1.0</gwtapp.form.version>
-		<gwtapp.html.version>1.1.0</gwtapp.html.version>
 		<gwtapp.template.version>1.1.0</gwtapp.template.version>
 		<startapp.app.version>1.1.0</startapp.app.version>
 		<startapp.rpc.version>1.1.0</startapp.rpc.version>

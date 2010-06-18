@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.server;
 
-import org.gwtapp.html.server.HtmlRpcBean;
+import org.gwtapp.io.server.IOHtmlRpcSerializer;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 
@@ -9,7 +9,7 @@ public class UserRegisterBean implements UserRegister {
 	private final UserRegisterModelImpl model = new UserRegisterModelImpl();
 
 	public String getAsHtmlRpc() {
-		HtmlRpcBean bean = new HtmlRpcBean();
+		IOHtmlRpcSerializer bean = new IOHtmlRpcSerializer();
 		bean.setValue(model);
 		return bean.getValue();
 	}

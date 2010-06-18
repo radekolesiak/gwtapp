@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.html.rpc.HtmlRpcService;
+import org.gwtapp.io.client.IOHtmlRpcDeserializer;
 import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
@@ -29,7 +29,7 @@ public class StartAppEntryPoint implements EntryPoint {
 		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
 	
-	public final static HtmlRpcService htmlRpc = new HtmlRpcService();
+	public final static IOHtmlRpcDeserializer htmlRpc = new IOHtmlRpcDeserializer();
 
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 		@Override

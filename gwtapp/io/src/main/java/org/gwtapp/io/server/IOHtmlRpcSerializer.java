@@ -1,16 +1,14 @@
-package org.gwtapp.html.server;
+package org.gwtapp.io.server;
 
 import java.io.Serializable;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.io.server.IOServer;
-import org.gwtapp.io.server.IOServerException;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-public class HtmlRpcBean {
+public class IOHtmlRpcSerializer {
 
-	private final static Logger log = Logger.getLogger(HtmlRpcBean.class);
+	private final static Logger log = Logger.getLogger(IOHtmlRpcSerializer.class);
 
 	private Object value = null;
 

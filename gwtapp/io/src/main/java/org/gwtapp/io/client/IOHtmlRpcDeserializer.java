@@ -1,20 +1,19 @@
-package org.gwtapp.html.rpc;
+package org.gwtapp.io.client;
 
-import org.gwtapp.io.rpc.IOClient;
 
 import com.google.gwt.i18n.client.Dictionary;
 
-public class HtmlRpcService {
+public class IOHtmlRpcDeserializer {
 
 	public final static String DICTIONARY = "RpcValues";
 
 	private final Dictionary values;
 
-	public HtmlRpcService() {
+	public IOHtmlRpcDeserializer() {
 		this(DICTIONARY);
 	}
 
-	public HtmlRpcService(String dictionary) {
+	public IOHtmlRpcDeserializer(String dictionary) {
 		Dictionary values;
 		try {
 			values = Dictionary.getDictionary(dictionary);

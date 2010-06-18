@@ -1,4 +1,4 @@
-package org.gwtapp.io.rpc;
+package org.gwtapp.io.client;
 
 import org.gwtapp.io.rpc.api.IOService;
 
