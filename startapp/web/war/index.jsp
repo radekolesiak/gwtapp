@@ -47,7 +47,7 @@
 							<li>MetaField for auto bind and simulate annotation of RPC data fields.</li>
 							<li>Strong typing in MVC including Java generics.</li>
 							<li>Modular structure in Maven.</li>
-							<li>Passing serialized RPC data into HTML main page for no delay access of initial data <i>(planning)</i>.</li>
+							<li>Passing serialized RPC data into HTML main page for no delay access of initial data.</li>
 						</ul>
     				</div>
     			</div>
