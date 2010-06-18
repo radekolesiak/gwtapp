@@ -1,1 +1,1 @@
-appcfg update war
+mvn gae:unpack gae:deploy
