@@ -20,11 +20,11 @@
 	</jsp-config>
 			
 	<servlet>
-		<servlet-name>GwtApp</servlet-name>
-		<servlet-class>org.gwtapp.startapp.server.GwtAppServiceImpl</servlet-class>
+		<servlet-name>StartApp</servlet-name>
+		<servlet-class>org.gwtapp.startapp.server.StartAppServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>GwtApp</servlet-name>
+		<servlet-name>StartApp</servlet-name>
 		<url-pattern>/gwt.startappentry/gwtapp.rpc</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

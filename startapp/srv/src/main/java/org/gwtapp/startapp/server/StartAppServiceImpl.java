@@ -8,10 +8,10 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
-public class GwtAppServiceImpl extends RemoteServiceServlet implements
+public class StartAppServiceImpl extends RemoteServiceServlet implements
 		GwtAppService {
 
-	private final static Logger log = Logger.getLogger(GwtAppServiceImpl.class);
+	private final static Logger log = Logger.getLogger(StartAppServiceImpl.class);
 
 	@Override
 	public void register(UserRegisterModel user) throws RpcException {
