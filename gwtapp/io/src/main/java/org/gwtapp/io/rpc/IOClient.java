@@ -25,7 +25,7 @@ public class IOClient {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> T getSerializedObject(String serialized)
+	public static <T> T getDeserializedObject(String serialized)
 			throws SerializationException {
 		return (T) ssf.createStreamReader(serialized).readObject();
 	}

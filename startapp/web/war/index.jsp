@@ -10,19 +10,21 @@
 		<style type="text/css"> 
 			@import "startapp.css";
 		</style>
+		
+		<!-- StartApp GWT application -->
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
 		<t:include repository="/templates/" template="startapp.jsp"/>
 		<t:include repository="/templates/" template="login.jsp"/>
 		<t:include repository="/templates/" template="feedback.jsp"/>
-		<jsp:useBean id="sampleModel" class="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl"/>
-		<c:set target="${sampleModel}" property="login" value="Sample Login Value"/>
-		<c:set target="${sampleModel}" property="email" value="Sample Email Value"/>
-		<c:set target="${sampleModel}" property="password" value="Sample Password Value"/>
-		<jsp:useBean id="userregister" class="org.gwtapp.html.server.HtmlRpcBean"/>
-		<c:set target="${userregister}" property="value" value="${sampleModel}"/>
+		
+		<!-- UserRegister model serialized into this HTML page -->		
+		<jsp:useBean id="userregister" class="org.gwtapp.startapp.server.UserRegisterBean"/>
+		<c:set target="${userregister}" property="login" value="Sample Login Value"/>
+		<c:set target="${userregister}" property="email" value="Sample Email Value"/>
+		<c:set target="${userregister}" property="password" value="Sample Password Value"/>
 		<script>
 			var RpcValues = new Array();
-			RpcValues["userregister"] = "${userregister.value}";
+			RpcValues["userregister"] = "${userregister.asHtmlRpc}";
 		</script>
 	</head>
 	<body>

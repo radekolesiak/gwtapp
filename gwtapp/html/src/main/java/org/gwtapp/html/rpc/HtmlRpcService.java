@@ -26,9 +26,9 @@ public class HtmlRpcService {
 
 	public Object getValue(String valueName) {
 		try {
-			if (values != null) {
-				String value = values.get(valueName);
-				return IOClient.getSerializedObject(IOClient.decode(value));
+			String value = values.get(valueName);
+			if (values != null && value != null) {
+				return IOClient.getDeserializedObject(IOClient.decode(value));
 			}
 		} catch (Exception e) {
 		}
