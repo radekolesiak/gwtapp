@@ -64,7 +64,7 @@
 					<div id="templates" ></div>
 				</div>
 				<div class="cell">
-					<div id="ud"  xmlns:audio="http://purl.org/media/audio#">
+					<div id="ud">
 						<!-- This is upload/download form template sample BEGIN-->
 						<div class="rowdiv">
 							<div class="celldiv1">Login:</div>
@@ -87,7 +87,11 @@
 							<div class="celldiv2">
 								<div class="left" style="margin-right:10px;"><a	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"/></a></div>
 								<div class="left" style="margin-right:10px;"><a	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a></div>	
-								<div class="left"><form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload"><div></div></form></div>
+								<div class="left">
+									<form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload">
+										<input t:field="upload-file" type="file" name="StartAppFile"></input>
+									</form>
+								</div>
 								<div class="left"><a t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"/></a></div>
 								<div class="clear"></div>
 							</div>

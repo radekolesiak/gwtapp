@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.FormPanel;
 
 public class UploadFormWrapper extends FormWrapper {
 
-	private final FileUpload fileUpload = new FileUpload();
+	private FileUpload fileUpload;
 
 	public UploadFormWrapper() {
 		super();
@@ -28,24 +28,33 @@ public class UploadFormWrapper extends FormWrapper {
 	}
 
 	private void init() {
+		// Force form parameters:
 		setMethod(FormPanel.METHOD_POST);
 		setEncoding(FormPanel.ENCODING_MULTIPART);
-		fileUpload.setName("GwtAppFile");
-		setWidget(fileUpload);
 	}
 
 	public void upload() {
-		if (fileUpload.getFilename().isEmpty()) {
-			Window.alert("Please choose file.");
-		} else {
-			if (Window.confirm("Load this form?")) {
-				try {
-					submit();
-				} catch (JavaScriptException e) {
-					Window.alert("Please choose existing file.");
+		FileUpload fileUpload = getFileUpload();
+		if (fileUpload != null) {
+			if (fileUpload.getFilename().isEmpty()) {
+				Window.alert("Please choose file.");
+			} else {
+				if (Window.confirm("Load this form?")) {
+					try {
+						submit();
+					} catch (JavaScriptException e) {
+						Window.alert("Please choose existing file.");
+					}
 				}
 			}
 		}
+	}
 
+	public void setFileUpload(FileUpload fileUpload) {
+		this.fileUpload = fileUpload;
+	}
+
+	public FileUpload getFileUpload() {
+		return fileUpload;
 	}
 }

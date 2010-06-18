@@ -7,6 +7,7 @@ import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
+import org.gwtapp.template.client.handlers.FileUploadHandler;
 import org.gwtapp.template.client.handlers.TextBoxHandler;
 import org.gwtapp.template.client.handlers.WidgetHandler;
 
@@ -19,13 +20,16 @@ public class UploadDownloadTemplatePanel extends
 
 	private final UploadFormHandler//
 	uploadForm = add("upload-form", new UploadFormHandler());
-	
+
+	private final FileUploadHandler//
+	fileUpload = add("upload-file", new FileUploadHandler());
+
 	private final WidgetHandler//
 	uploadBtn = add("upload-btn", new WidgetHandler());
-	
+
 	private final WidgetHandler//
 	downloadBtn = add("download-btn", new WidgetHandler());
-	
+
 	private final WidgetHandler//
 	clearBtn = add("clear-btn", new WidgetHandler());
 
@@ -58,6 +62,7 @@ public class UploadDownloadTemplatePanel extends
 				uploadForm.getWidget().upload();
 			}
 		});
+		uploadForm.getWidget().setFileUpload(fileUpload.getWidget());
 		uploadForm.getWidget().addSubmitCompleteHandler(
 				new IOSubmitCompleteHandler<UserRegisterModel>() {
 					@Override
