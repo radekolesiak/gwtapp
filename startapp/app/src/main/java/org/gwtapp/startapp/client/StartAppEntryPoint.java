@@ -4,9 +4,9 @@ import org.gwtapp.io.client.IOHtmlRpcDeserializer;
 import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
-import org.gwtapp.startapp.rpc.api.GwtAppService;
-import org.gwtapp.startapp.rpc.api.GwtAppServiceAsync;
-import org.gwtapp.template.client.DOMTemplateRepository;
+import org.gwtapp.startapp.rpc.api.StartAppService;
+import org.gwtapp.startapp.rpc.api.StartAppServiceAsync;
+import org.gwtapp.template.client.HtmlRepository;
 import org.gwtapp.template.client.TemplateRepository;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -16,21 +16,26 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 public class StartAppEntryPoint implements EntryPoint {
 
-	public final static GwtAppServiceAsync service = GWT
-			.create(GwtAppService.class);
+	/** StartApp service **/
+	public final static StartAppServiceAsync service = GWT
+			.create(StartAppService.class);
 
-	public final static TemplateRepository templates = new TemplateRepository(
-			"/templates/");
-	public final static DOMTemplateRepository domTemplates = new DOMTemplateRepository();
-
+	/** Download service **/
 	public final static DownloadServiceAsync downloader = GWT
 			.create(DownloadService.class);
 	static {
 		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
 	}
-	
-	public final static IOHtmlRpcDeserializer htmlRpc = new IOHtmlRpcDeserializer();
 
+	/** HTML templates repositories **/
+	public final static HtmlRepository html = new HtmlRepository();
+	public final static TemplateRepository templates = new TemplateRepository(
+			"/templates/");
+
+	/** HTML RPC deserializer */
+	public final static IOHtmlRpcDeserializer rpc = new IOHtmlRpcDeserializer();
+
+	/** Void async callback **/
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
 		@Override
 		public void onFailure(Throwable caught) {

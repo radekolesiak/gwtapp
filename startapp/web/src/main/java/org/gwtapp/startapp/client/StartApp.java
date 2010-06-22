@@ -6,7 +6,6 @@ import org.gwtapp.startapp.client.ui.user.register.UserRegisterTemplatePanel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -33,13 +32,9 @@ public class StartApp extends StartAppEntryPoint {
 	}
 
 	private void uploadownload() {
-		UserRegisterModel value = (UserRegisterModel)htmlRpc.getValue("userregister");
-		// TODO refactor this in smarter way
-		String id = "ud";
-		UploadDownloadTemplatePanel panel = new UploadDownloadTemplatePanel(id);
-		DOM.getElementById(id).setInnerHTML("");		
-		RootPanel.get(id).add(panel);
-		panel.setValue(value);
+		String rpcName = "userregister";
+		UserRegisterModel value = (UserRegisterModel) rpc.getValue(rpcName);
+		new UploadDownloadTemplatePanel(value, "ud");
 	}
 
 	private void feedback() {

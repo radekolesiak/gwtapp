@@ -7,7 +7,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("gwtapp.rpc")
-public interface GwtAppService extends RemoteService {
+public interface StartAppService extends RemoteService {
 	void register(UserRegisterModel user) throws RpcException;
 	void feedback(String from, String feedback) throws RpcException;
 }

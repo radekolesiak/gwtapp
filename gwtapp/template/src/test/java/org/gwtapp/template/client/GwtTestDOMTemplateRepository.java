@@ -9,7 +9,7 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 
 	@Test
 	public void testGetEmptyTemplate() {
-		DOMTemplateRepository repository = new DOMTemplateRepository();
+		HtmlRepository repository = new HtmlRepository();
 		Template template = repository.load("t");
 		assertNotNull(template);
 		assertEquals("div", template.getTag());
@@ -29,7 +29,7 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 				new HTMLPanel("<" + tag + " id=\"" + id + "\" style=\"" + style
 						+ "\" class=\"" + styleClass + "\">" + html + "</"
 						+ tag + ">"));
-		DOMTemplateRepository repository = new DOMTemplateRepository();
+		HtmlRepository repository = new HtmlRepository();
 		Template template = repository.load(id);
 		assertNotNull(template);
 		assertEquals(tag, template.getTag());

@@ -2,10 +2,12 @@ package org.gwtapp.template.client;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
-public class DOMTemplateRepository {
+public class HtmlRepository {
 
-	public DOMTemplateRepository() {
+	public HtmlRepository() {
 	}
 
 	public Template load(String name) {
@@ -32,5 +34,11 @@ public class DOMTemplateRepository {
 
 	private Template getDefaultTemplate() {
 		return new Template("div", "", "", "");
+	}
+
+	public <T extends Widget> T attach(String id, T widget) {
+		DOM.getElementById(id).setInnerHTML("");
+		RootPanel.get(id).add(widget);
+		return widget;
 	}
 }

@@ -34,11 +34,15 @@ public class UploadDownloadTemplatePanel extends
 	clearBtn = add("clear-btn", new WidgetHandler());
 
 	public UploadDownloadTemplatePanel(String id) {
-		super(new UserRegisterModelImpl(), StartAppEntryPoint.domTemplates
-				.load(id));
+		this(new UserRegisterModelImpl(), id);
+	}
+
+	public UploadDownloadTemplatePanel(UserRegisterModel model, String id) {
+		super(model, StartAppEntryPoint.html.load(id));
 		add(UserRegister.LOGIN, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());
 		add(UserRegister.EMAIL, new TextBoxHandler());
+		StartAppEntryPoint.html.attach(id, this);
 	}
 
 	@Override
