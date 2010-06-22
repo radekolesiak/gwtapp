@@ -49,7 +49,7 @@ public class UploadDownloadTemplatePanel extends
 		clearBtn.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				setValue(new UserRegisterModelImpl(), true);
+				setValue(getEmptyModel(), true);
 			}
 		});
 		downloadBtn.getWidget().addClickHandler(new ClickHandler() {
@@ -78,5 +78,13 @@ public class UploadDownloadTemplatePanel extends
 						setValue(result, true);
 					}
 				});
+	}
+
+	private UserRegisterModel getEmptyModel() {
+		UserRegisterModelImpl model = new UserRegisterModelImpl();
+		for (String property : model.getPropertyNames()) {
+			model.set(property, null);
+		}
+		return model;
 	}
 }
