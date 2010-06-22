@@ -37,8 +37,17 @@ public class HtmlRepository {
 	}
 
 	public <T extends Widget> T attach(String id, T widget) {
-		DOM.getElementById(id).setInnerHTML("");
-		RootPanel.get(id).add(widget);
+		Element e = DOM.getElementById(id);
+		if (e != null) {
+			e.setInnerHTML("");
+			RootPanel.get(id).add(widget);
+		}
 		return widget;
+	}
+
+	public Template loadAttach(String id, Widget widget) {
+		Template template = getTemplate(id);
+		attach(id, widget);
+		return template;
 	}
 }
