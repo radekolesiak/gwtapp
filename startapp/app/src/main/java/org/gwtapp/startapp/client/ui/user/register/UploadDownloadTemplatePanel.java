@@ -42,7 +42,6 @@ public class UploadDownloadTemplatePanel extends
 		add(UserRegister.LOGIN, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());
 		add(UserRegister.EMAIL, new TextBoxHandler());
-		StartAppEntryPoint.html.attach(id, this);
 	}
 
 	@Override

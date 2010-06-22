@@ -17,6 +17,7 @@ import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName {
@@ -45,7 +46,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		this(new Template(tag, "", "", html));
 	}
 
-	public TemplatePanel(Template template) {
+	public TemplatePanel(final Template template) {
 		super(template.getTag(), template.getHtml());
 		this.template = template;
 		addStyleName(Style.TEMPLATE_PANEL);
@@ -55,6 +56,14 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		}
 		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
 			getElement().setAttribute("style", template.getStyle());
+		}
+		if (template.getAttachTo() != null) {
+			DeferredCommand.addCommand(new Command() {
+				@Override
+				public void execute() {
+					attachTo(template.getAttachTo());
+				}
+			});
 		}
 	}
 
@@ -201,5 +210,15 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 			ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	};
+
+	public void attachTo(String id) {
+		if (id != null) {
+			Element e = DOM.getElementById(id);
+			if (e != null) {
+				e.setInnerHTML("");
+				RootPanel.get(id).add(this);
+			}
+		}
+	}
 
 }

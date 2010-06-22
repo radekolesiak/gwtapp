@@ -2,8 +2,6 @@ package org.gwtapp.template.client;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class HtmlRepository {
 
@@ -20,34 +18,20 @@ public class HtmlRepository {
 
 	private Template getTemplate(String name) {
 		Element e = DOM.getElementById(name);
+		Template template = new Template();
 		if (e != null) {
-			Template template = new Template();
 			template.setHtml(e.getInnerHTML());
 			template.setTag(e.getTagName());
 			template.setStyle(e.getAttribute("style"));
 			template.setStyleClass(e.getClassName());
-			return template;
+			template.setAttachTo(name);
 		} else {
-			return getDefaultTemplate();
+			template = getDefaultTemplate();
 		}
+		return template;
 	}
 
 	private Template getDefaultTemplate() {
 		return new Template("div", "", "", "");
-	}
-
-	public <T extends Widget> T attach(String id, T widget) {
-		Element e = DOM.getElementById(id);
-		if (e != null) {
-			e.setInnerHTML("");
-			RootPanel.get(id).add(widget);
-		}
-		return widget;
-	}
-
-	public Template loadAttach(String id, Widget widget) {
-		Template template = getTemplate(id);
-		attach(id, widget);
-		return template;
 	}
 }
