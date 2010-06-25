@@ -3,7 +3,7 @@ package org.gwtapp.io.server;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
-import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.gwtapp.io.rpc.api.IOService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -58,7 +58,6 @@ public class IOServer {
 	}
 
 	public static String encode(String s) {
-		return new String(Base64.encodeBase64(s.getBytes()));
+		return StringEscapeUtils.escapeHtml(s);
 	}
-
 }
