@@ -12,7 +12,8 @@
 		</style>
 		
 		<!-- StartApp GWT application -->
-		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?rand=<%=Math.random()%>"></script>
+		<jsp:useBean id="ae" class="org.gwtapp.startapp.server.AppEngineBean"/>
+		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?t=${ae.deployVersion}"></script>
 		<t:include repository="/templates/" template="startapp.jsp"/>
 		<t:include repository="/templates/" template="login.jsp"/>
 		<t:include repository="/templates/" template="feedback.jsp"/>
