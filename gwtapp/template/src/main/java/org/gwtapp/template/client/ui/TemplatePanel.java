@@ -31,6 +31,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 
 	private Template template = new Template();
 
+	private String pattern = "t:field";
 	private String name;
 	private T value;
 
@@ -132,7 +133,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 				ids.put(template, HTMLPanel.createUniqueId());
 			}
 			DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
-					template.getHtml(), ids));
+					getPattern(), template.getHtml(), ids));
 			for (Map.Entry<String, String> entry : ids.entrySet()) {
 				String field = entry.getKey();
 				String id = entry.getValue();
@@ -219,6 +220,14 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 				RootPanel.get(id).add(this);
 			}
 		}
+	}
+
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
+
+	public String getPattern() {
+		return pattern;
 	}
 
 }

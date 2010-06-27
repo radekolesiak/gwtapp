@@ -68,18 +68,18 @@ public class TemplateUtils {
 									)
 									}-*/;
 
-	public static String replaceTemplate(String template,
+	public static String replaceTemplate(String pattern, String template,
 			Map<String, String> ids) {
 		String regexp = "";
 		for (String name : ids.keySet()) {
 			if (!regexp.isEmpty()) {
 				regexp += "|";
 			}
-			regexp += "(t:field=\"" + name + "\")";
+			regexp += "(" + pattern + "=\"" + name + "\")";
 		}
 		JavaScriptObject array = createArray();
 		for (Map.Entry<String, ?> entry : ids.entrySet()) {
-			addToArray(array, "t:field=\"" + entry.getKey() + "\"", entry
+			addToArray(array, pattern + "=\"" + entry.getKey() + "\"", entry
 					.getValue()
 					+ "");
 		}
