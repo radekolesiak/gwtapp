@@ -23,7 +23,7 @@
 		<c:set target="${userregister}" property="login" value="Sample Login Value"/>
 		<c:set target="${userregister}" property="email" value="Sample Email Value"/>
 		<c:set target="${userregister}" property="password" value="Sample Password Value"/>
-		<script>
+		<script type="text/javascript">
 			var RpcValues = new Array();
 			RpcValues["userregister"] = "${userregister.asHtmlRpc}";
 		</script>
@@ -90,7 +90,9 @@
 								<div class="left" style="margin-right:10px;"><a	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a></div>	
 								<div class="left">
 									<form t:field="upload-form" action="/gwt.startappentry/upload.rpc" class="upload">
-										<input t:field="upload-file" type="file" name="StartAppFile"></input>
+										<fieldset>
+											<input t:field="upload-file" type="file" name="StartAppFile"/>
+										</fieldset>
 									</form>
 								</div>
 								<div class="left"><a t:field="upload-btn" href="javascript:void(0);"><img id="upload-btn" src="images/upload.png" alt="Upload"/></a></div>
