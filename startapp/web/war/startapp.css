@@ -6,8 +6,18 @@
 	float: left;
 }
 
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .clear {
 	clear: both;
+}
+
+.menu {
+	margin-top: 5px;
+	margin-bottom: 0px;
 }
 
 .startapp-template {
@@ -48,7 +58,7 @@ div.table.main .header .cell {
 .templatePanel .celldiv1 {
 	width: 80px;
 }
-	
+
 .feedback {
 	border: 2px dotted #bbddbb;
 	width: 325px;
@@ -82,7 +92,6 @@ div.table.main .header .cell {
 	margin: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-left: auto;
 }
 
 #ud {

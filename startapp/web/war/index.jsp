@@ -37,7 +37,7 @@
         		Your web browser must have JavaScript enabled in order for this application to display correctly.
       		</div>
     	</noscript>
-    	<div id="laodingindicator"><div >Loading application ... <img src="images/indicator.gif" alt=""/></div></div>	
+    	<div id="laodingindicator"><div>Loading application ... <img src="images/indicator.gif" alt=""/></div></div>	
 		<div class="table main">
 			<div class="row">
 				<div class="cell">
@@ -54,11 +54,12 @@
     			</div>
     		</div> 
     	</div> 
+    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 		<div class="table main">
 			<div class="row header">
-				<div class="cell">HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
-				<div class="cell">Upload and download sample<br /><small><c:out value="Converting a file from/to RPC Java object at single HTTP request-response"></c:out></small></div>
-				<div class="cell">Transformation of two models with different types in UI panel to keep strong typing in MVC</div>
+				<div class="cell">Sample of HTML Templating sample<br /><small>Template is generated on server side outside of GWT<br />and included as JavaScript data of this page</small></div>
+				<div class="cell">Sample of upload and download sample<br /><small><c:out value="Converting a file from/to RPC Java object at single HTTP request-response"></c:out></small></div>
+				<div class="cell">Sample of transformation of two different type models at UI panel and keep strong typing in MVC</div>
 			</div>
 			<div class="row">
 				<div class="cell">
@@ -128,30 +129,43 @@
 				</div>
 			</div>
 		</div>
+    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 		<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 			<div class="row">
 				<div class="cell">
-					<b>Articles related to the GWT:</b><br />
-					<a href="http://techzone.enterra-inc.com/gwt-improving-performance/">GWT Improving performance</a><br />
-					<a href="http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with">Simpler and Speedier GWT with Server Side RPC Serialization</a><br />
-				</div>
-			</div>
-			<div class="row">
-				<div class="cell">
-					<b>Applications that use GWTApp:</b><br />
-					<a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a><br />
-				</div>
-			</div>
-			<div class="row">
-				<div class="cell">
-					Get a <a href="http://sourceforge.net/projects/gwtapp/develop/">source code.</a>
-					<br />					
-					Maven repository <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a> 
-					<br />
-					<small>Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></small>
-					<div id="feedbackanchor"></div>
+					<b>GWT App code repositories:</b>
+					<ul>
+						<li>Subversion repository of <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a></li>
+						<li>Maven repository on <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a></li>
+					</ul> 
 				</div>
 			</div>		
+			<div class="row">
+				<div class="cell">
+					<b>Applications that use GWTApp:</b>
+					<ul>
+						<li><a href="http://ccalc-web.appspot.com/">FIFO Currency Calculator</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<b>Articles related to the GWT:</b>
+					<ul>
+						<li><a href="http://techzone.enterra-inc.com/gwt-improving-performance/">GWT Improving performance</a></li>
+						<li><a href="http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with">Simpler and Speedier GWT with Server Side RPC Serialization</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
+		<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
+			<div class="row">
+				<div class="cell">		
+					<div id="feedbackanchor"></div>
+					<div><small>Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></small></div>
+				</div>
+			</div>
 		</div>
 		<p>
 			<a href="http://validator.w3.org/check?uri=referer">
@@ -160,7 +174,6 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer">
 		        <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
 		    </a>
-		    <br />
 		</p>
 		<%if (request.getServerName()!=null && request.getServerName().contains("gwtapp.org")){ %>
 			<!-- GA  -->

@@ -2,7 +2,7 @@
 	<i>Send feedback:</i>
 	<div style="width:1px;height:7px;"></div>
 	<div>
-		<small class="label">Your e-mail:</small>
+		<small class="label">Your email:</small>
 		<input t:field="email" type="text" class="input" />
 	</div>
 	<div>
