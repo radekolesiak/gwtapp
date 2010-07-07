@@ -14,7 +14,7 @@
 
 <c:choose>
 	<c:when test="${empty templating}">
-		<jsp:useBean id="templateHeader" class="org.gwtapp.template.server.Header"/>
+		<jsp:useBean id="templateHeader" class="org.gwtapp.template.server.HeaderBean"/>
 		<c:set target="${templateHeader}" property="response" value="${response}"/>
 		<c:set target="${templateHeader}" property="tag" value="${tag}"/>
 		<c:set target="${templateHeader}" property="style" value="${style}"/>

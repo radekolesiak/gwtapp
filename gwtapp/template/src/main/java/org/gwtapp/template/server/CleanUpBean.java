@@ -2,7 +2,7 @@ package org.gwtapp.template.server;
 
 import org.apache.commons.lang.StringUtils;
 
-public class CleanUp {
+public class CleanUpBean {
 
 	private String text;
 

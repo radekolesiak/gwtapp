@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.gwtapp.template.client.Template;
 
-public class Header {
+public class HeaderBean {
 
 	private HttpServletResponse response;
 
