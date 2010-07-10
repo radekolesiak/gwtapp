@@ -298,3 +298,18 @@
 <!ATTLIST input t:field CDATA #IMPLIED>
 <!ATTLIST a t:field CDATA #IMPLIED>
 <!ATTLIST form t:field CDATA #IMPLIED>
+
+<!ENTITY % iframe.content  "( #PCDATA | %Flow.mix; )*" >
+<!ENTITY % iframe.qname  "iframe" >
+<!ELEMENT %iframe.qname;  %iframe.content; >
+<!ATTLIST %iframe.qname;
+      %Core.attrib;
+      longdesc     %URI.datatype;           #IMPLIED
+      src          %URI.datatype;           #IMPLIED
+      frameborder  ( 1 | 0 )                '1'
+      marginwidth  %Pixels.datatype;        #IMPLIED
+      marginheight %Pixels.datatype;        #IMPLIED
+      scrolling    ( yes | no | auto )      'auto'
+      height       %Length.datatype;        #IMPLIED
+      width        %Length.datatype;        #IMPLIED
+>

@@ -20,4 +20,7 @@ III. GAE Maven:
 IV. Custom DTD:
 	http://www.alistapart.com/articles/customdtd/
 	http://htmlhelp.com/tools/validator/customdtd.html
+	http://www.w3.org/TR/xhtml-modularization/abstract_modules.html
+	http://www.w3.org/TR/xhtml-modularization/dtd_module_defs.html
+	http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_XHTML-1.0-Frameset
 	
