@@ -60,17 +60,17 @@
 					<div class="table main">
 						<div class="row header">
 							<div class="cell">
-								Sample of HTML Templating sample<br />
+								Sample of HTML Templating sample.<br />
 								<small>Template is generated on server side outside of GWT<br />
-								and included as JavaScript data of this page</small>
+								and included as JavaScript data of this page.</small>
 							</div>
 							<div class="cell">
-								Sample of upload and download sample<br />
-								<small>- Converting a file from/to RPC Java object at single HTTP request-response</small><br />
-								<small>- HTML template embedded in the main page</small>
+								Sample of upload and download sample.<br />
+								<small>Converting a file from/to RPC Java object at single HTTP request-response.</small><br />
+								<small>HTML template embedded in the main page.</small>
 							</div>
 							<div class="cell">
-								Sample of transformation of two different type models at UI panel and keep strong typing in MVC
+								Sample of transformation of two different type models at UI panel and keep strong typing in MVC.
 							</div>
 						</div>
 						<div class="row">
