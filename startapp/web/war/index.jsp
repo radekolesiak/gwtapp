@@ -8,7 +8,7 @@
 		<style type="text/css"> 
 			@import "startapp.css";
 		</style>
-		
+		<meta name="google-site-verification" content="MQgpkCJ4iFxqkOgblvs97GQ0z95dpCep6IuF_lFScaM" />
 		<!-- StartApp GWT application -->
 		<jsp:useBean id="ae" class="org.gwtapp.startapp.server.AppEngineBean"/>
 		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?t=${ae.deployVersion}"></script>
