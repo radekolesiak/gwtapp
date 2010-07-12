@@ -14,10 +14,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.DeferredCommand;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName {
@@ -29,11 +27,14 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 	private final Map<String, String> ids = new HashMap<String, String>();
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
-	private Template template = new Template();
+	private Template template = null;
 
 	private String pattern = "t:field";
 	private String name;
 	private T value;
+
+	private boolean templated = false;
+	private T initValue = null;
 
 	public TemplatePanel() {
 		this("div");
@@ -58,18 +59,17 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
 			getElement().setAttribute("style", template.getStyle());
 		}
-		if (template.getAttachTo() != null) {
-			DeferredCommand.addCommand(new Command() {
-				@Override
-				public void execute() {
-					attachTo(template.getAttachTo());
-				}
-			});
-		}
 	}
 
-	private boolean templated = false;
-	private T initValue = null;
+	public TemplatePanel(Element embedded) {
+		super(embedded);
+		template = null; // mark panel as embeddable
+	}
+
+	public TemplatePanel(Element embedded, T initValue) {
+		this(embedded);
+		setValue(initValue);
+	}
 
 	public TemplatePanel(Template template, T initValue) {
 		this(template);
@@ -132,8 +132,13 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 			for (String template : widgetHandlers.keySet()) {
 				ids.put(template, HTMLPanel.createUniqueId());
 			}
-			DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
-					getPattern(), template.getHtml(), ids));
+			if (template != null) {
+				DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
+						getPattern(), template.getHtml(), ids));
+			} else {
+				DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
+						getPattern(), DOM.getInnerHTML(getElement()), ids));
+			}
 			for (Map.Entry<String, String> entry : ids.entrySet()) {
 				String field = entry.getKey();
 				String id = entry.getValue();
@@ -211,16 +216,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName 
 			ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	};
-
-	public void attachTo(String id) {
-		if (id != null) {
-			Element e = DOM.getElementById(id);
-			if (e != null) {
-				e.setInnerHTML("");
-				RootPanel.get(id).add(this);
-			}
-		}
-	}
 
 	public void setPattern(String pattern) {
 		this.pattern = pattern;

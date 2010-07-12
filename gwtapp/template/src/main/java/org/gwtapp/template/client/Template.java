@@ -12,7 +12,6 @@ public class Template {
 	private String style = "";
 	private String styleClass = "";
 	private String html = "";
-	private String attachTo = null;
 
 	public Template() {
 	}
@@ -54,13 +53,5 @@ public class Template {
 
 	public String getStyleClass() {
 		return styleClass;
-	}
-
-	public void setAttachTo(String attachTo) {
-		this.attachTo = attachTo;
-	}
-
-	public String getAttachTo() {
-		return attachTo;
 	}
 }

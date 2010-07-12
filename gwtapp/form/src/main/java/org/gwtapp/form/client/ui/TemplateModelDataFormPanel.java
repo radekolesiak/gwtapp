@@ -9,6 +9,7 @@ import org.gwtapp.template.client.MessageHandler;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,6 +24,15 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 
 	public TemplateModelDataFormPanel(Template template) {
 		super(template);
+	}
+
+	public TemplateModelDataFormPanel(Element embedded) {
+		super(embedded);
+	}
+
+	public TemplateModelDataFormPanel(T value, Element embedded) {
+		super(embedded);
+		setValue(value);
 	}
 
 	public TemplateModelDataFormPanel(T value) {
@@ -69,7 +79,8 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@Override
 	public T getValue() {
 		T value = super.getValue();
-		// TODO this one should be cached by HasValueChangeHandlers and local variable, it's faster.
+		// TODO this one should be cached by HasValueChangeHandlers and local
+		// variable, it's faster.
 		if (isTemplated() && value != null) {
 			for (Map.Entry<String, HasValue> entry : getFields().entrySet()) {
 				value.set(entry.getKey(), entry.getValue().getValue());

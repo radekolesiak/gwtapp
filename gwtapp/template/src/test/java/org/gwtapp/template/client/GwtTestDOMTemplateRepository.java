@@ -2,6 +2,7 @@ package org.gwtapp.template.client;
 
 import org.junit.Test;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -10,12 +11,12 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 	@Test
 	public void testGetEmptyTemplate() {
 		HtmlRepository repository = new HtmlRepository();
-		Template template = repository.load("t");
+		Element template = repository.load("t");
 		assertNotNull(template);
-		assertEquals("div", template.getTag());
-		assertEquals("", template.getHtml());
-		assertEquals("", template.getStyle());
-		assertEquals("", template.getStyleClass());
+		assertEquals("DIV", template.getTagName());
+		assertEquals("", template.getInnerHTML());
+		assertEquals("", template.getAttribute("style"));
+		assertEquals("", template.getClassName());
 	}
 
 	@Test
@@ -30,11 +31,11 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 						+ "\" class=\"" + styleClass + "\">" + html + "</"
 						+ tag + ">"));
 		HtmlRepository repository = new HtmlRepository();
-		Template template = repository.load(id);
+		Element template = repository.load(id);
 		assertNotNull(template);
-		assertEquals(tag, template.getTag());
-		assertEquals(html, template.getHtml());
-		assertEquals(style, template.getStyle());
-		assertEquals(styleClass, template.getStyleClass());
+		assertEquals(tag, template.getTagName());
+		assertEquals(html, template.getInnerHTML());
+		assertEquals(style, template.getAttribute("style"));
+		assertEquals(styleClass, template.getClassName());
 	}
 }

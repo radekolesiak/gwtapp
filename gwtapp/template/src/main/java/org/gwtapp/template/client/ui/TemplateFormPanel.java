@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasName;
@@ -31,14 +32,24 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		addStyleName(Style.TEMPLATE_FORM_PANEL);
 	}
 
+	public TemplateFormPanel(Element embedded) {
+		super(embedded);
+		addStyleName(Style.TEMPLATE_FORM_PANEL);
+	}
+
+	public TemplateFormPanel(T value, Element embedded) {
+		super(embedded, value);
+		addStyleName(Style.TEMPLATE_FORM_PANEL);
+	}
+
 	public TemplateFormPanel(T value) {
 		this();
 		setValue(value);
 	}
 
 	public TemplateFormPanel(T value, Template template) {
-		this(template);
-		setValue(value);
+		super(template, value);
+		addStyleName(Style.TEMPLATE_FORM_PANEL);
 	}
 
 	public <E extends HasValue<?> & HasName> void addField(E field) {

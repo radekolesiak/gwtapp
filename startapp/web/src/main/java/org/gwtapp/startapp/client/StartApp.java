@@ -34,7 +34,7 @@ public class StartApp extends StartAppEntryPoint {
 	private void uploadownload() {
 		String rpcName = "userregister";
 		UserRegisterModel value = (UserRegisterModel) rpc.getValue(rpcName);
-		new UploadDownloadTemplatePanel(value, "ud");
+		new UploadDownloadTemplatePanel(value, "ud").attach();
 	}
 
 	private void feedback() {

@@ -1,14 +1,15 @@
 package org.gwtapp.template.client;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 
 public class HtmlRepository {
 
 	public HtmlRepository() {
 	}
 
-	public Template load(String name) {
+	public Element load(String name) {
 		try {
 			return getTemplate(name);
 		} catch (Throwable e) {
@@ -16,22 +17,15 @@ public class HtmlRepository {
 		}
 	}
 
-	private Template getTemplate(String name) {
-		Element e = DOM.getElementById(name);
-		Template template = new Template();
-		if (e != null) {
-			template.setHtml(e.getInnerHTML());
-			template.setTag(e.getTagName());
-			template.setStyle(e.getAttribute("style"));
-			template.setStyleClass(e.getClassName());
-			template.setAttachTo(name);
-		} else {
+	private Element getTemplate(String name) {
+		Element template = DOM.getElementById(name);
+		if (template == null) {
 			template = getDefaultTemplate();
 		}
 		return template;
 	}
 
-	private Template getDefaultTemplate() {
-		return new Template("div", "", "", "");
+	private Element getDefaultTemplate() {
+		return Document.get().createDivElement();
 	}
 }
