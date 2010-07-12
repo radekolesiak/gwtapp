@@ -43,6 +43,7 @@
 			    					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
 				    				<ul>
 										<li>Declarative HTML templating and internationalization at runtime without application recompiling.</li>
+										<li>SEO support by means of GWT HTML templating embeddable into main page.</li>
 										<li>MetaField to simulate Java annotation and auto bind of RPC data fields.</li>
 										<li>Strong typing in MVC including Java generics.</li>
 										<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
