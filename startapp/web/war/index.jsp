@@ -61,8 +61,8 @@
 						<div class="row header">
 							<div class="cell">
 								Sample of HTML Templating sample.<br />
-								<small>Template is generated on server side outside of GWT<br />
-								and included as JavaScript data of this page.</small>
+								<small>The template is generated on the server side<br />
+								and included as a JavaScript data at this page.</small>
 							</div>
 							<div class="cell">
 								Sample of upload and download sample.<br />
