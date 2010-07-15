@@ -62,15 +62,15 @@
 							<div class="cell">
 								Sample of HTML Templating sample.<br />
 								<small>The template is generated on the server side<br />
-								and included as a JavaScript data at this page.</small>
+								and included as a JavaScript data for this page.</small>
 							</div>
 							<div class="cell">
 								Sample of upload and download sample.<br />
-								<small>Converting a file from/to RPC Java object at single HTTP request-response.</small><br />
-								<small>HTML template embedded in the main page.</small>
+								<small>It converts a file from/to RPC Java object at a single HTTP request-response.</small><br />
+								<small>The template is embedded in the main page as a HTML code.</small>
 							</div>
 							<div class="cell">
-								Sample of transformation of two different type models at UI panel and keep strong typing in MVC.
+								Sample of transformation of two different type models at UI panel with strong typing in MVC.
 							</div>
 						</div>
 						<div class="row">
