@@ -7,7 +7,7 @@ I. Runtime compiling, interfaces binding:
 
 	http://openjpa.apache.org/builds/1.2.1/apache-openjpa-1.2.1/docs/manual/manual.html#ref_guide_pc_interfaces
 	
-II. HWidget:
+II. GWTApp HTML module:
 	Passing RPC objects via HTML page:
 	http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with
 	http://www.webtoolkit.info/javascript-base64.html , http://www.webtoolkit.info/licence.html
@@ -23,4 +23,7 @@ IV. Custom DTD:
 	http://www.w3.org/TR/xhtml-modularization/abstract_modules.html
 	http://www.w3.org/TR/xhtml-modularization/dtd_module_defs.html
 	http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_XHTML-1.0-Frameset
+	
+V. Guice:
+	http://code.google.com/p/google-guice/wiki/GettingStarted
 	
