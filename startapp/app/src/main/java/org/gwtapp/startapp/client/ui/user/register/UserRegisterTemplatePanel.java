@@ -19,8 +19,8 @@ public class UserRegisterTemplatePanel extends
 	private final WidgetHandler summary = add("summary", new WidgetHandler());
 
 	public UserRegisterTemplatePanel() {
-		super(new UserRegisterModelImpl(), StartAppEntryPoint.templates
-				.load("startapp.jsp"));
+		super(StartAppEntryPoint.templates.load("startapp.jsp"),
+				new UserRegisterModelImpl());
 		add(UserRegister.LOGIN, new LoginHandler());
 		add(UserRegister.EMAIL, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());

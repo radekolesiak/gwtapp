@@ -18,10 +18,6 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 
 	private Map<String, MessageHandler<?>> fields = new HashMap<String, MessageHandler<?>>();
 
-	public TemplateModelDataFormPanel() {
-		super();
-	}
-
 	public TemplateModelDataFormPanel(Template template) {
 		super(template);
 	}
@@ -30,19 +26,12 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 		super(embedded);
 	}
 
-	public TemplateModelDataFormPanel(T value, Element embedded) {
-		super(embedded);
-		setValue(value);
+	public TemplateModelDataFormPanel(Element embedded, T value) {
+		super(embedded, value);
 	}
 
-	public TemplateModelDataFormPanel(T value) {
-		this();
-		setValue(value);
-	}
-
-	public TemplateModelDataFormPanel(T value, Template template) {
-		this(template);
-		setValue(value);
+	public TemplateModelDataFormPanel(Template template, T value) {
+		super(template, value);
 	}
 
 	public <E extends Widget & HasValue<?>> MessageHandler<E> add(

@@ -23,32 +23,27 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("unchecked")
 	private final Map<String, ValueChangeHandler> handlers = new HashMap<String, ValueChangeHandler>();
 
-	public TemplateFormPanel() {
-		addStyleName(Style.TEMPLATE_FORM_PANEL);
-	}
-
 	public TemplateFormPanel(Template template) {
 		super(template);
-		addStyleName(Style.TEMPLATE_FORM_PANEL);
+		init();
 	}
 
 	public TemplateFormPanel(Element embedded) {
 		super(embedded);
-		addStyleName(Style.TEMPLATE_FORM_PANEL);
+		init();
 	}
 
-	public TemplateFormPanel(T value, Element embedded) {
+	public TemplateFormPanel(Element embedded, T value) {
 		super(embedded, value);
-		addStyleName(Style.TEMPLATE_FORM_PANEL);
+		init();
 	}
 
-	public TemplateFormPanel(T value) {
-		this();
-		setValue(value);
-	}
-
-	public TemplateFormPanel(T value, Template template) {
+	public TemplateFormPanel(Template template, T value) {
 		super(template, value);
+		init();
+	}
+
+	private void init() {
 		addStyleName(Style.TEMPLATE_FORM_PANEL);
 	}
 

@@ -38,7 +38,7 @@ public class UploadDownloadTemplatePanel extends
 	}
 
 	public UploadDownloadTemplatePanel(UserRegisterModel model, String id) {
-		super(model, StartAppEntryPoint.html.load(id));
+		super(StartAppEntryPoint.html.load(id), model);
 		add(UserRegister.LOGIN, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());
 		add(UserRegister.EMAIL, new TextBoxHandler());
