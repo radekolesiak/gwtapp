@@ -13,7 +13,6 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ContainerPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		HasName, HasValue<T>, IsFieldPanel<T>, HasFireOnUpdate {

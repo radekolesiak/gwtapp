@@ -47,12 +47,13 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		addStyleName(Style.TEMPLATE_FORM_PANEL);
 	}
 
-	public <E extends HasValue<?> & HasName> void addField(E field) {
+	public <E extends HasValue<?> & HasName> E addField(E field) {
 		addField(field.getName(), field);
+		return field;
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addField(String name, HasValue<?> field) {
+	public HasValue<?> addField(String name, HasValue<?> field) {
 		assert name != null;
 		ValueChangeHandler handler = new ValueChangeHandler() {
 			@Override
@@ -63,12 +64,14 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		field.addValueChangeHandler(handler);
 		fields.put(name, field);
 		handlers.put(name, handler);
+		return field;
 	}
 
-	public <E extends Widget & HasValue<?>> void addFieldHandler(String name,
+	public <E extends Widget & HasValue<?>> E addFieldHandler(String name,
 			E field) {
 		addWidgetHandler(name, field);
 		addField(name, field);
+		return field;
 	}
 
 	public <E extends HasValue<?> & HasName> void removeField(E field) {
