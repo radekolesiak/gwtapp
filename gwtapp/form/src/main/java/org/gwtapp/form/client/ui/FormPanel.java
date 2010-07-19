@@ -38,15 +38,10 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 		this.value = value;
 	}
 
-	protected void wrap() {
-		onAttach();
-		RootPanel.detachOnWindowClose(this);
-	}
-
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
-		assert field.getProperty() != null;
-		fields.put(field.getProperty(), field);
+		assert field.getName() != null;
+		fields.put(field.getName(), field);
 		if (!field.isAttached()) {
 			add(field);
 		}
@@ -54,8 +49,8 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 
 	@Override
 	public <X> void removeField(FieldPanel<T, X> field) {
-		assert field.getProperty() != null;
-		fields.remove(field.getProperty());
+		assert field.getName() != null;
+		fields.remove(field.getName());
 		remove(field);
 	}
 

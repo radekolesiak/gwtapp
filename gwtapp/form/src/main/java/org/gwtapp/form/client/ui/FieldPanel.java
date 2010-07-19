@@ -24,17 +24,16 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	}
 
 	private String name;
-	private String property;
 	private HasValue<T> controller;
 
 	public <E extends Widget & HasValue<T>> FieldPanel(final HasValue<M> model,
-			String property, String label, E controller) {
-		this(DOM.createDiv(), model, property, label, controller);
+			String name, String label, E controller) {
+		this(DOM.createDiv(), model, name, label, controller);
 	}
 
 	public <E extends Widget & HasValue<T>> FieldPanel(Element element,
-			final HasValue<M> model, String property, String label, E controller) {
-		this(element, model, property, controller);
+			final HasValue<M> model, String name, String label, E controller) {
+		this(element, model, name, controller);
 		Label labelPanel = new Label(label);
 		labelPanel.addStyleName(Style.LABEL);
 		controller.addStyleName(Style.CONTROLLER);
@@ -43,12 +42,12 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 	}
 
 	private <E extends HasValue<T>> FieldPanel(Element element,
-			final HasValue<M> model, String property, E controller) {
+			final HasValue<M> model, String name, E controller) {
 		setElement(element);
 		addStyleName(Style.FIELD_PANEL);
-		addStyleName(Style.FIELD_PANEL + "-" + property);
+		addStyleName(Style.FIELD_PANEL + "-" + name);
 		this.controller = controller;
-		setProperty(property);
+		setName(name);
 		controller.addValueChangeHandler(new ValueChangeHandler<T>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<T> event) {
@@ -96,13 +95,4 @@ public class FieldPanel<M extends ModelData, T> extends ContainerPanel
 			ValueChangeHandler<T> handler) {
 		return controller.addValueChangeHandler(handler);
 	}
-
-	public void setProperty(String property) {
-		this.property = property;
-	}
-
-	public String getProperty() {
-		return property;
-	}
-
 }
