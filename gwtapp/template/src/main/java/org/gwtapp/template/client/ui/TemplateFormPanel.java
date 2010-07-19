@@ -53,6 +53,7 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	@SuppressWarnings("unchecked")
 	public void addField(String name, HasValue<?> field) {
+		assert name != null;
 		ValueChangeHandler handler = new ValueChangeHandler() {
 			@Override
 			public void onValueChange(ValueChangeEvent event) {
@@ -75,13 +76,15 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	}
 
 	public void removeField(String name) {
+		assert name != null;
 		handlers.remove(name);
 		fields.remove(name);
 	}
 
 	@SuppressWarnings("unchecked")
-	public HasValue getField(String fieldName) {
-		return fields.get(fieldName);
+	public HasValue getField(String name) {
+		assert name != null;
+		return fields.get(name);
 	}
 
 	@SuppressWarnings("unchecked")

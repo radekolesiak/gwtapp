@@ -42,6 +42,7 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 
 	public <E extends Widget & HasValue<?>> void addFieldHandler(
 			MetaField<?, ?> autofield, MessageHandler<E> handler) {
+		assert autofield.name() != null;
 		addWidgetHandler(autofield.name(), handler);
 		fields.put(autofield.name(), handler);
 	}

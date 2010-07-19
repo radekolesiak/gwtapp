@@ -12,6 +12,7 @@ public abstract class HashModelData extends AbstractModelData implements
 
 	@Override
 	public void addMetaField(MetaField field) {
+		assert field.name() != null;
 		autofields.put(field.name(), field);
 	}
 

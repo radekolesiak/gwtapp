@@ -107,6 +107,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	public void addWidgetHandler(String name, TemplateHandler handler) {
+		assert name != null;
 		widgetHandlers.put(name, handler);
 	}
 
@@ -120,6 +121,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	public void removeWidgetHandler(String name) {
+		assert name != null;
 		widgetHandlers.remove(name);
 	}
 

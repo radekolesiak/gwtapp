@@ -45,6 +45,7 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 
 	@Override
 	public <X> void addField(FieldPanel<T, X> field) {
+		assert field.getProperty() != null;
 		fields.put(field.getProperty(), field);
 		if (!field.isAttached()) {
 			add(field);
@@ -53,6 +54,7 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 
 	@Override
 	public <X> void removeField(FieldPanel<T, X> field) {
+		assert field.getProperty() != null;
 		fields.remove(field.getProperty());
 		remove(field);
 	}
@@ -60,6 +62,7 @@ public class FormPanel<T extends ModelData> extends ContainerPanel implements
 	@SuppressWarnings("unchecked")
 	@Override
 	public <X> FieldPanel<T, X> getField(String fieldName) {
+		assert fieldName != null;
 		return fields.get(fieldName);
 	}
 
