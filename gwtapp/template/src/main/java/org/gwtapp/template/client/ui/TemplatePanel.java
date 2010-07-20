@@ -11,7 +11,10 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -23,7 +26,7 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
-		HasName, HasChangeHandlers {
+		HasName, HasChangeHandlers, HasClickHandlers {
 
 	public static class Style {
 		public final static String TEMPLATE_PANEL = "templatePanel";
@@ -241,4 +244,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return addHandler(handler, ChangeEvent.getType());
 	}
 
+	@Override
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return addDomHandler(handler, ClickEvent.getType());
+	}
 }
