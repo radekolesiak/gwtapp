@@ -27,7 +27,6 @@ public class IOClient {
 	}
 
 	public static String decode(String t) {
-		return new HTML(t).getHTML();
+		return new HTML(t).getText();
 	}
-
 }
