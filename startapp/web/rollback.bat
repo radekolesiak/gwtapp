@@ -1,1 +1,1 @@
-mvn gae:rollback
+mvn gae:unpack gae:rollback
