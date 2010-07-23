@@ -173,18 +173,14 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 				}
 			}
 			onAddWidgets();
-			if (initValue != null) {
-				value = initValue;
-				initValue = null;
-				DeferredCommand.addCommand(new Command() {
-					@Override
-					public void execute() {
-						setValue(value);
-					}
-				});
-			}
 		} finally {
-			templated = true;
+			try {
+				if (getInitValue() != null) {
+					setInitValue();
+				}
+			} finally {
+				templated = true;
+			}
 		}
 	}
 
@@ -197,10 +193,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	@Override
 	public T getValue() {
-		if (isTemplated()) {
+		if (getInitValue() == null) {
 			return value;
 		} else {
-			return initValue;
+			return getInitValue();
 		}
 	}
 
@@ -212,12 +208,13 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		if (isTemplated()) {
+			setInitValue(null);
 			this.value = value;
+			if (fireEvents) {
+				ValueChangeEvent.fire(this, value);
+			}
 		} else {
-			this.initValue = value;
-		}
-		if (fireEvents) {
-			ValueChangeEvent.fire(this, value);
+			setInitValue(value);
 		}
 	}
 
@@ -247,5 +244,30 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	@Override
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return addDomHandler(handler, ClickEvent.getType());
+	}
+
+	private void setInitValue() {
+		DeferredCommand.addCommand(new Command() {
+			@Override
+			public void execute() {
+				setDeferredInitValue();
+			}
+		});
+	}
+
+	private void setDeferredInitValue() {
+		if (getInitValue() != null) {
+			T localvalue = getInitValue();
+			setInitValue(null);
+			setValue(localvalue);
+		}
+	}
+
+	private void setInitValue(T initValue) {
+		this.initValue = initValue;
+	}
+
+	private T getInitValue() {
+		return initValue;
 	}
 }
