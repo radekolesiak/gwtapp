@@ -37,7 +37,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private Template template = null;
 
+	private boolean initValueByDeferredCommand = false;
 	private String pattern = "t:field";
+
 	private String name;
 	private T value;
 
@@ -174,12 +176,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 			}
 			onAddWidgets();
 		} finally {
-			try {
-				if (getInitValue() != null) {
-					setInitValue();
-				}
-			} finally {
-				templated = true;
+			templated = true;
+			if (getInitValue() != null) {
+				setInitValue();
 			}
 		}
 	}
@@ -246,16 +245,28 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
-	private void setInitValue() {
-		DeferredCommand.addCommand(new Command() {
-			@Override
-			public void execute() {
-				setDeferredInitValue();
-			}
-		});
+	public void setInitValueByDeferredCommand(boolean initValueByDeferredCommand) {
+		this.initValueByDeferredCommand = initValueByDeferredCommand;
 	}
 
-	private void setDeferredInitValue() {
+	public boolean isInitValueByDeferredCommand() {
+		return initValueByDeferredCommand;
+	}
+
+	private void setInitValue() {
+		if (isInitValueByDeferredCommand()) {
+			DeferredCommand.addCommand(new Command() {
+				@Override
+				public void execute() {
+					onDeferredInitValue();
+				}
+			});
+		} else {
+			onDeferredInitValue();
+		}
+	}
+
+	private void onDeferredInitValue() {
 		if (getInitValue() != null) {
 			T localvalue = getInitValue();
 			setInitValue(null);
