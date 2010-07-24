@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.template.client.MessageHandler;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 
@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplateModelDataFormPanel<T extends ModelData> extends
 		TemplateFormPanel<T> {
 
-	private Map<String, MessageHandler<?>> fields = new HashMap<String, MessageHandler<?>>();
+	private Map<String, UiHandler<?>> fields = new HashMap<String, UiHandler<?>>();
 
 	public TemplateModelDataFormPanel(Template template) {
 		super(template);
@@ -34,14 +34,14 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 		super(template, value);
 	}
 
-	public <E extends Widget & HasValue<?>> MessageHandler<E> add(
-			MetaField<?, ?> metafield, MessageHandler<E> handler) {
+	public <E extends Widget & HasValue<?>> UiHandler<E> add(
+			MetaField<?, ?> metafield, UiHandler<E> handler) {
 		addFieldHandler(metafield, handler);
 		return handler;
 	}
 
 	public <E extends Widget & HasValue<?>> void addFieldHandler(
-			MetaField<?, ?> autofield, MessageHandler<E> handler) {
+			MetaField<?, ?> autofield, UiHandler<E> handler) {
 		assert autofield.name() != null;
 		addWidgetHandler(autofield.name(), handler);
 		fields.put(autofield.name(), handler);
@@ -56,7 +56,7 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 	@Override
 	public final void onAddWidgets() {
 		super.onAddWidgets();
-		for (Map.Entry<String, MessageHandler<?>> entry : fields.entrySet()) {
+		for (Map.Entry<String, UiHandler<?>> entry : fields.entrySet()) {
 			addField(entry.getKey(), (HasValue<?>) entry.getValue().getWidget());
 		}
 		onAddFormWidgets();

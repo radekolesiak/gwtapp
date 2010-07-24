@@ -1,9 +1,9 @@
 package org.gwtapp.template.client.handlers;
 
-import org.gwtapp.template.client.MessageHandler;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.ui.ButtonWrapper;
 
-public class ButtonHandler extends MessageHandler<ButtonWrapper> {
+public class ButtonHandler extends UiHandler<ButtonWrapper> {
 	@Override
 	protected ButtonWrapper onWidget() {
 		return new ButtonWrapper(getId());

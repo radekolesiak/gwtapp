@@ -1,9 +1,9 @@
 package org.gwtapp.template.client.handlers;
 
-import org.gwtapp.template.client.MessageHandler;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.ui.BooleanWrapper;
 
-public class BooleanHandler extends MessageHandler<BooleanWrapper> {
+public class BooleanHandler extends UiHandler<BooleanWrapper> {
 
 	private final boolean checkbox;
 

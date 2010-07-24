@@ -1,9 +1,9 @@
 package org.gwtapp.template.client.handlers;
 
-import org.gwtapp.template.client.MessageHandler;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.ui.WidgetWrapper;
 
-public class WidgetHandler extends MessageHandler<WidgetWrapper> {
+public class WidgetHandler extends UiHandler<WidgetWrapper> {
 
 	@Override
 	protected WidgetWrapper onWidget() {

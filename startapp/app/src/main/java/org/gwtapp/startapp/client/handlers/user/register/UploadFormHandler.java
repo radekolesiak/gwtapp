@@ -1,9 +1,9 @@
 package org.gwtapp.startapp.client.handlers.user.register;
 
 import org.gwtapp.startapp.client.ui.user.register.UploadFormWrapper;
-import org.gwtapp.template.client.MessageHandler;
+import org.gwtapp.template.client.UiHandler;
 
-public class UploadFormHandler extends MessageHandler<UploadFormWrapper> {
+public class UploadFormHandler extends UiHandler<UploadFormWrapper> {
 
 	public UploadFormHandler() {
 		super(new UploadFormWrapper());

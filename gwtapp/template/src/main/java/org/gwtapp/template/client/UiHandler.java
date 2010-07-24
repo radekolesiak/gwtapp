@@ -4,18 +4,18 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MessageHandler<T extends Widget> implements TemplateHandler {
+public class UiHandler<T extends Widget> implements TemplateHandler {
 
 	private TemplateMessage templateMessage = null;
 	private T defaultWidget = null;
 	private T widget = null;
 	private String id = null;
 
-	public MessageHandler() {
+	public UiHandler() {
 		this(null);
 	}
 
-	public MessageHandler(T widget) {
+	public UiHandler(T widget) {
 		this.widget = widget;
 	}
 
