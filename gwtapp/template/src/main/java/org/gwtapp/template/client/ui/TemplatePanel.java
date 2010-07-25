@@ -5,7 +5,8 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
-import org.gwtapp.template.client.TemplateUtils;
+import org.gwtapp.template.client.callbacks.TFieldUniversalCallback;
+import org.gwtapp.template.client.callbacks.TemplatePanelCallback;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -19,7 +20,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
@@ -32,10 +32,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		public final static String TEMPLATE_PANEL = "templatePanel";
 	}
 
-	private final Map<String, String> ids = new HashMap<String, String>();
+	private final TemplatePanelCallback callback;
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
-
-	private Template template = null;
 
 	private boolean initValueByDeferredCommand = false;
 	private String pattern = "t:field";
@@ -60,7 +58,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public TemplatePanel(final Template template) {
 		super(template.getTag(), template.getHtml());
-		this.template = template;
+		callback = new TFieldUniversalCallback(template);
 		addStyleName(Style.TEMPLATE_PANEL);
 		if (template.getStyleClass() != null
 				&& !template.getStyleClass().isEmpty()) {
@@ -73,7 +71,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public TemplatePanel(Element embedded) {
 		super(embedded);
-		template = null; // mark panel as embeddable
+		callback = new TFieldUniversalCallback();
 	}
 
 	public TemplatePanel(Element embedded, T initValue) {
@@ -141,39 +139,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 			return;
 		}
 		try {
-			for (String template : widgetHandlers.keySet()) {
-				ids.put(template, HTMLPanel.createUniqueId());
-			}
-			if (template != null) {
-				DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
-						getPattern(), template.getHtml(), ids));
-			} else {
-				DOM.setInnerHTML(getElement(), TemplateUtils.replaceTemplate(
-						getPattern(), DOM.getInnerHTML(getElement()), ids));
-			}
-			for (Map.Entry<String, String> entry : ids.entrySet()) {
-				String field = entry.getKey();
-				String id = entry.getValue();
-				Element element = DOM.getElementById(id);
-				if (element != null) {
-					TemplateHandler handler = widgetHandlers.get(field);
-					if (handler != null) {
-						Widget widget = handler.onWidget(id);
-						if (widget != null) {
-							String styleClass = element.getAttribute("class");
-							String style = element.getAttribute("style");
-							if (styleClass != null && !styleClass.isEmpty()) {
-								widget.addStyleName(styleClass);
-							}
-							if (style != null && !style.isEmpty()) {
-								widget.getElement()
-										.setAttribute("style", style);
-							}
-							addAndReplaceElement(widget, id);
-						}
-					}
-				}
-			}
+			callback.template(this, widgetHandlers);
 			onAddWidgets();
 		} finally {
 			templated = true;
