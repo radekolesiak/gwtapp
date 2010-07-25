@@ -7,9 +7,9 @@ import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
-import org.gwtapp.template.client.handlers.FileUploadHandler;
-import org.gwtapp.template.client.handlers.TextBoxHandler;
-import org.gwtapp.template.client.handlers.WidgetHandler;
+import org.gwtapp.template.client.handler.FileUploadHandler;
+import org.gwtapp.template.client.handler.TextBoxHandler;
+import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

@@ -1,4 +1,4 @@
-package org.gwtapp.template.client.callbacks;
+package org.gwtapp.template.client.callback;
 
 import java.util.HashMap;
 import java.util.Map;

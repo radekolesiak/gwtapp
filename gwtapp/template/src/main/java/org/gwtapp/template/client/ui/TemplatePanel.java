@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
-import org.gwtapp.template.client.callbacks.TFieldCallback;
+import org.gwtapp.template.client.callback.TFieldCallback;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;

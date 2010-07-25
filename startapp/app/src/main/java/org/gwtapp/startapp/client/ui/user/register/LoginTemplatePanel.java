@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
 import org.gwtapp.startapp.client.StartAppEntryPoint;
-import org.gwtapp.template.client.handlers.TextBoxHandler;
+import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;

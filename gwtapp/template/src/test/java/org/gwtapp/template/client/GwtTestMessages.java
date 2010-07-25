@@ -3,7 +3,7 @@ package org.gwtapp.template.client;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.template.client.handlers.WidgetHandler;
+import org.gwtapp.template.client.handler.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
 package org.gwtapp.startapp.client.ui.feedback;
 
 import org.gwtapp.startapp.client.StartAppEntryPoint;
-import org.gwtapp.template.client.handlers.TextAreaHandler;
-import org.gwtapp.template.client.handlers.TextBoxHandler;
-import org.gwtapp.template.client.handlers.WidgetHandler;
+import org.gwtapp.template.client.handler.TextAreaHandler;
+import org.gwtapp.template.client.handler.TextBoxHandler;
+import org.gwtapp.template.client.handler.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ClickEvent;

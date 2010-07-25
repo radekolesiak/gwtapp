@@ -7,8 +7,8 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.template.client.Param;
-import org.gwtapp.template.client.handlers.TextBoxHandler;
-import org.gwtapp.template.client.handlers.WidgetHandler;
+import org.gwtapp.template.client.handler.TextBoxHandler;
+import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
