@@ -48,7 +48,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
 	private boolean initValueByDeferredCommand = false;
-	private String pattern = "t:field";
 
 	private String name;
 	private T value;
@@ -200,14 +199,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 			ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	};
-
-	public void setPattern(String pattern) {
-		this.pattern = pattern;
-	}
-
-	public String getPattern() {
-		return pattern;
-	}
 
 	public void fireChangeEvent() {
 		ChangeEvent.fireNativeEvent(Document.get().createChangeEvent(), this);

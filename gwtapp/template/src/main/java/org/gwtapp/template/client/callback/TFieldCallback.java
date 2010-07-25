@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class TFieldCallback implements TemplatePanel.Callback {
 
 	private final Template template;
+	private String pattern = "t:field";
 
 	public TFieldCallback() {
 		this(null);
@@ -23,6 +24,14 @@ public class TFieldCallback implements TemplatePanel.Callback {
 
 	public TFieldCallback(Template template) {
 		this.template = template;
+	}
+
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
+
+	public String getPattern() {
+		return pattern;
 	}
 
 	@Override
@@ -34,11 +43,10 @@ public class TFieldCallback implements TemplatePanel.Callback {
 		}
 		if (template != null) {
 			DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
-					owner.getPattern(), template.getHtml(), ids));
+					getPattern(), template.getHtml(), ids));
 		} else {
 			DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
-					owner.getPattern(), DOM.getInnerHTML(owner.getElement()),
-					ids));
+					getPattern(), DOM.getInnerHTML(owner.getElement()), ids));
 		}
 		for (Map.Entry<String, String> entry : ids.entrySet()) {
 			String field = entry.getKey();
