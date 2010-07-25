@@ -1,5 +1,10 @@
 package org.gwtapp.template.client;
 
+import java.util.Map;
+
+import org.gwtapp.template.client.callbacks.TFieldUniversalCallback;
+import org.gwtapp.template.client.ui.TemplatePanel;
+
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
@@ -9,12 +14,32 @@ public class HtmlRepository {
 	public HtmlRepository() {
 	}
 
-	public Element load(String name) {
+	public TemplatePanel.ElementCallback load(String name) {
+		return loadTField(name);
+	}
+
+	private TemplatePanel.ElementCallback loadTField(String name) {
 		try {
-			return getTemplate(name);
+			return load(getTemplate(name), new TFieldUniversalCallback());
 		} catch (Throwable e) {
-			return getDefaultTemplate();
+			return load(getDefaultTemplate(), new TFieldUniversalCallback());
 		}
+	}
+
+	private TemplatePanel.ElementCallback load(final Element element,
+			final TFieldUniversalCallback callback) {
+		return new TemplatePanel.ElementCallback() {
+			@Override
+			public Element getElement() {
+				return element;
+			}
+
+			@Override
+			public void template(TemplatePanel<?> owner,
+					Map<String, TemplateHandler> widgetHandlers) {
+				callback.template(owner, widgetHandlers);
+			}
+		};
 	}
 
 	private Element getTemplate(String name) {

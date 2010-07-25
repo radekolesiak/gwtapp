@@ -1,8 +1,8 @@
 package org.gwtapp.template.client;
 
+import org.gwtapp.template.client.ui.TemplatePanel.ElementCallback;
 import org.junit.Test;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -11,12 +11,13 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 	@Test
 	public void testGetEmptyTemplate() {
 		HtmlRepository repository = new HtmlRepository();
-		Element template = repository.load("t");
-		assertNotNull(template);
-		assertEquals("DIV", template.getTagName());
-		assertEquals("", template.getInnerHTML());
-		assertEquals("", template.getAttribute("style"));
-		assertEquals("", template.getClassName());
+		ElementCallback callback = repository.load("t");
+		assertNotNull(callback);
+		assertNotNull(callback.getElement());
+		assertEquals("DIV", callback.getElement().getTagName());
+		assertEquals("", callback.getElement().getInnerHTML());
+		assertEquals("", callback.getElement().getAttribute("style"));
+		assertEquals("", callback.getElement().getClassName());
 	}
 
 	@Test
@@ -31,11 +32,12 @@ public class GwtTestDOMTemplateRepository extends TemplateTest {
 						+ "\" class=\"" + styleClass + "\">" + html + "</"
 						+ tag + ">"));
 		HtmlRepository repository = new HtmlRepository();
-		Element template = repository.load(id);
-		assertNotNull(template);
-		assertEquals(tag, template.getTagName());
-		assertEquals(html, template.getInnerHTML());
-		assertEquals(style, template.getAttribute("style"));
-		assertEquals(styleClass, template.getClassName());
+		ElementCallback callback = repository.load(id);
+		assertNotNull(callback);
+		assertNotNull(callback.getElement());
+		assertEquals(tag, callback.getElement().getTagName());
+		assertEquals(html, callback.getElement().getInnerHTML());
+		assertEquals(style, callback.getElement().getAttribute("style"));
+		assertEquals(styleClass, callback.getElement().getClassName());
 	}
 }

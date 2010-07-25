@@ -13,7 +13,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TFieldUniversalCallback implements TemplatePanelCallback {
+public class TFieldUniversalCallback implements TemplatePanel.Callback {
 
 	private final Template template;
 

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasName;
@@ -28,13 +27,13 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		init();
 	}
 
-	public TemplateFormPanel(Element embedded) {
-		super(embedded);
+	public TemplateFormPanel(ElementCallback callback) {
+		super(callback);
 		init();
 	}
 
-	public TemplateFormPanel(Element embedded, T value) {
-		super(embedded, value);
+	public TemplateFormPanel(ElementCallback callback, T value) {
+		super(callback, value);
 		init();
 	}
 

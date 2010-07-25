@@ -6,7 +6,6 @@ import java.util.Map;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.callbacks.TFieldUniversalCallback;
-import org.gwtapp.template.client.callbacks.TemplatePanelCallback;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -28,11 +27,24 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		HasName, HasChangeHandlers, HasClickHandlers {
 
+	public static interface Callback {
+		void template(TemplatePanel<?> owner,
+				Map<String, TemplateHandler> widgetHandlers);
+	}
+
+	public static interface TemplateCallback extends Callback {
+		Template getTemplate();
+	}
+
+	public static interface ElementCallback extends Callback {
+		Element getElement();
+	}
+
 	public static class Style {
 		public final static String TEMPLATE_PANEL = "templatePanel";
 	}
 
-	private final TemplatePanelCallback callback;
+	private final Callback callback;
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
 	private boolean initValueByDeferredCommand = false;
@@ -69,18 +81,18 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		}
 	}
 
-	public TemplatePanel(Element embedded) {
-		super(embedded);
-		callback = new TFieldUniversalCallback();
-	}
-
-	public TemplatePanel(Element embedded, T initValue) {
-		this(embedded);
+	public TemplatePanel(Template template, T initValue) {
+		this(template);
 		setValue(initValue);
 	}
 
-	public TemplatePanel(Template template, T initValue) {
-		this(template);
+	public TemplatePanel(ElementCallback callback) {
+		super(callback.getElement());
+		this.callback = callback;
+	}
+
+	public TemplatePanel(ElementCallback callback, T initValue) {
+		this(callback);
 		setValue(initValue);
 	}
 

@@ -5,11 +5,10 @@ import java.util.Map;
 
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.Template;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -22,12 +21,12 @@ public class TemplateModelDataFormPanel<T extends ModelData> extends
 		super(template);
 	}
 
-	public TemplateModelDataFormPanel(Element embedded) {
-		super(embedded);
+	public TemplateModelDataFormPanel(ElementCallback callback) {
+		super(callback);
 	}
 
-	public TemplateModelDataFormPanel(Element embedded, T value) {
-		super(embedded, value);
+	public TemplateModelDataFormPanel(ElementCallback callback, T value) {
+		super(callback, value);
 	}
 
 	public TemplateModelDataFormPanel(Template template, T value) {
