@@ -11,11 +11,31 @@ import com.google.gwt.user.client.DOM;
 
 public class HtmlRepository {
 
+	public static enum Type {
+		TFIELD, ID;
+	}
+
+	private final Type defaultType;
+
 	public HtmlRepository() {
+		this(Type.TFIELD);
+	}
+
+	public HtmlRepository(Type defaultType) {
+		this.defaultType = defaultType;
 	}
 
 	public TemplatePanel.ElementCallback load(String name) {
-		return loadTField(name);
+		return load(name, defaultType);
+	}
+
+	public TemplatePanel.ElementCallback load(String name, Type type) {
+		switch (type) {
+		case TFIELD:
+			return loadTField(name);
+		default:
+			return null;
+		}
 	}
 
 	private TemplatePanel.ElementCallback loadTField(String name) {
