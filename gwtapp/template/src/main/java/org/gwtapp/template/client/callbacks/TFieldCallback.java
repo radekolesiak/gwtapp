@@ -13,15 +13,15 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TFieldUniversalCallback implements TemplatePanel.Callback {
+public class TFieldCallback implements TemplatePanel.Callback {
 
 	private final Template template;
 
-	public TFieldUniversalCallback() {
+	public TFieldCallback() {
 		this(null);
 	}
 
-	public TFieldUniversalCallback(Template template) {
+	public TFieldCallback(Template template) {
 		this.template = template;
 	}
 

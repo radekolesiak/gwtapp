@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
-import org.gwtapp.template.client.callbacks.TFieldUniversalCallback;
+import org.gwtapp.template.client.callbacks.TFieldCallback;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -70,7 +70,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public TemplatePanel(final Template template) {
 		super(template.getTag(), template.getHtml());
-		callback = new TFieldUniversalCallback(template);
+		callback = new TFieldCallback(template);
 		addStyleName(Style.TEMPLATE_PANEL);
 		if (template.getStyleClass() != null
 				&& !template.getStyleClass().isEmpty()) {

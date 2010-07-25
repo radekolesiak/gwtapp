@@ -2,7 +2,7 @@ package org.gwtapp.template.client;
 
 import java.util.Map;
 
-import org.gwtapp.template.client.callbacks.TFieldUniversalCallback;
+import org.gwtapp.template.client.callbacks.TFieldCallback;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.dom.client.Document;
@@ -20,14 +20,14 @@ public class HtmlRepository {
 
 	private TemplatePanel.ElementCallback loadTField(String name) {
 		try {
-			return load(getTemplate(name), new TFieldUniversalCallback());
+			return load(getTemplate(name), new TFieldCallback());
 		} catch (Throwable e) {
-			return load(getDefaultTemplate(), new TFieldUniversalCallback());
+			return load(getDefaultTemplate(), new TFieldCallback());
 		}
 	}
 
 	private TemplatePanel.ElementCallback load(final Element element,
-			final TFieldUniversalCallback callback) {
+			final TFieldCallback callback) {
 		return new TemplatePanel.ElementCallback() {
 			@Override
 			public Element getElement() {
