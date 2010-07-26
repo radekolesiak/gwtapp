@@ -46,6 +46,7 @@ public class HtmlRepository {
 		}
 	}
 
+	// Delegate callback
 	private TemplatePanel.ElementCallback load(final Element element,
 			final TemplatePanel.Callback callback) {
 		return new TemplatePanel.ElementCallback() {
