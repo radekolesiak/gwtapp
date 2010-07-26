@@ -96,26 +96,17 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	@Override
 	public void add(Widget w) {
-		try {
-			add(w, getElement());
-		} catch (Throwable e) {
-			// TODO
-			e.printStackTrace();
-		}
+		add(w, getElement());
 	}
 
 	public <H extends TemplateHandler> H add(String name, H handler) {
-		addWidgetHandler(name, handler);
+		assert name != null;
+		widgetHandlers.put(name, handler);
 		return handler;
 	}
 
-	public void addWidgetHandler(String name, TemplateHandler handler) {
-		assert name != null;
-		widgetHandlers.put(name, handler);
-	}
-
-	public void addWidgetHandler(String name, final Widget widget) {
-		addWidgetHandler(name, new TemplateHandler() {
+	public void add(String name, final Widget widget) {
+		add(name, new TemplateHandler() {
 			@Override
 			public Widget onWidget(String id) {
 				return widget;
@@ -123,7 +114,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		});
 	}
 
-	public void removeWidgetHandler(String name) {
+	public void remove(String name) {
 		assert name != null;
 		widgetHandlers.remove(name);
 	}

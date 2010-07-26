@@ -32,7 +32,7 @@ public class GwtTestMessages extends TemplateTest {
 					callback.template(owner, widgetHandlers);
 				}
 			});
-			addWidgetHandler("test", handler);
+			add("test", handler);
 		}
 
 		public TemplateMessage getTemplateMessage() {

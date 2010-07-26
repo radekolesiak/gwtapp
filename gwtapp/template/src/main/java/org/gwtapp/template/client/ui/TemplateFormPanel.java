@@ -66,7 +66,7 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	public <E extends Widget & HasValue<?>> E addFieldHandler(String name,
 			E field) {
-		addWidgetHandler(name, field);
+		add(name, field);
 		addField(name, field);
 		return field;
 	}
