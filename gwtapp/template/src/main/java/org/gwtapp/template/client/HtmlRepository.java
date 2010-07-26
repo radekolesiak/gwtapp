@@ -47,7 +47,7 @@ public class HtmlRepository {
 	}
 
 	private TemplatePanel.ElementCallback load(final Element element,
-			final TFieldCallback callback) {
+			final TemplatePanel.Callback callback) {
 		return new TemplatePanel.ElementCallback() {
 			@Override
 			public Element getElement() {
