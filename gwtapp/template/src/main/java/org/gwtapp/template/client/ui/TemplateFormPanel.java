@@ -3,8 +3,6 @@ package org.gwtapp.template.client.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.template.client.Template;
-
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasName;
@@ -22,8 +20,13 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("unchecked")
 	private final Map<String, ValueChangeHandler> handlers = new HashMap<String, ValueChangeHandler>();
 
-	public TemplateFormPanel(Template template) {
-		super(template);
+	public TemplateFormPanel(TemplateCallback callback) {
+		super(callback);
+		init();
+	}
+
+	public TemplateFormPanel(TemplateCallback callback, T value) {
+		super(callback, value);
 		init();
 	}
 
@@ -34,11 +37,6 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	public TemplateFormPanel(ElementCallback callback, T value) {
 		super(callback, value);
-		init();
-	}
-
-	public TemplateFormPanel(Template template, T value) {
-		super(template, value);
 		init();
 	}
 

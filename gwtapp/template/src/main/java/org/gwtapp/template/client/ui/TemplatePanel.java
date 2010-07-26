@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
-import org.gwtapp.template.client.callback.TFieldCallback;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -55,33 +54,23 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private boolean templated = false;
 	private T initValue = null;
 
-	public TemplatePanel() {
-		this("div");
-	}
-
-	public TemplatePanel(String tag) {
-		this(tag, "");
-	}
-
-	public TemplatePanel(String tag, String html) {
-		this(new Template(tag, "", "", html));
-	}
-
-	public TemplatePanel(final Template template) {
-		super(template.getTag(), template.getHtml());
-		callback = new TFieldCallback(template);
+	public TemplatePanel(TemplateCallback callback) {
+		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
+		this.callback = callback;
 		addStyleName(Style.TEMPLATE_PANEL);
-		if (template.getStyleClass() != null
-				&& !template.getStyleClass().isEmpty()) {
-			addStyleName(template.getStyleClass());
+		if (callback.getTemplate().getStyleClass() != null
+				&& !callback.getTemplate().getStyleClass().isEmpty()) {
+			addStyleName(callback.getTemplate().getStyleClass());
 		}
-		if (template.getStyle() != null && !template.getStyle().isEmpty()) {
-			getElement().setAttribute("style", template.getStyle());
+		if (callback.getTemplate().getStyle() != null
+				&& !callback.getTemplate().getStyle().isEmpty()) {
+			getElement().setAttribute("style",
+					callback.getTemplate().getStyle());
 		}
 	}
 
-	public TemplatePanel(Template template, T initValue) {
-		this(template);
+	public TemplatePanel(TemplateCallback callback, T initValue) {
+		this(callback);
 		setValue(initValue);
 	}
 
