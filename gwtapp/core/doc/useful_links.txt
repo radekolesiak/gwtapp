@@ -27,6 +27,6 @@ IV. Custom DTD:
 V. Guice:
 	http://code.google.com/p/google-guice/wiki/GettingStarted
 	
-VI. MVC/MVP:
+VI. MVC/MVP/PAC:
 	http://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
-	
+	http://www.ctrl-shift-b.com/2007/08/interactive-application-architecture/ - includes PAC pattern
