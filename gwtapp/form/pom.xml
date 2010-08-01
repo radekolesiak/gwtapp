@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.gwtapp</groupId>
 		<artifactId>gwtapp</artifactId>
-		<version>1.1.0</version>
+		<version>1.2.0</version>
 	</parent>
 
 	<artifactId>gwtapp-form</artifactId>
@@ -23,12 +23,12 @@
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-template</artifactId>
-			<version>${gwtapp.template.version}</version>
+			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-core</artifactId>
-			<version>${gwtapp.core.version}</version>
+			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.gwtapp</groupId>
 		<artifactId>startapp</artifactId>
-		<version>1.1.0</version>
+		<version>1.2.0</version>
 	</parent>
 
 	<artifactId>startapp-srv</artifactId>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-rpc</artifactId>
-			<version>${startapp.rpc.version}</version>
+			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>
