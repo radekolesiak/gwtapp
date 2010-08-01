@@ -1,5 +1,7 @@
 package org.gwtapp.startapp.server;
 
+import java.util.Random;
+
 import org.apache.log4j.Logger;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.startapp.rpc.api.StartAppService;
@@ -11,11 +13,19 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class StartAppServiceImpl extends RemoteServiceServlet implements
 		StartAppService {
 
-	private final static Logger log = Logger.getLogger(StartAppServiceImpl.class);
+	private final static Logger log = Logger
+			.getLogger(StartAppServiceImpl.class);
+
+	private final static Random R = new Random();
 
 	@Override
-	public void register(UserRegisterModel user) throws RpcException {
+	public Long register(UserRegisterModel user) throws RpcException {
 		log.debug("Register GWT Servlet");
+		if (user != null) {
+			return (long) R.nextInt();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -28,5 +38,4 @@ public class StartAppServiceImpl extends RemoteServiceServlet implements
 			throw new RpcException();
 		}
 	}
-
 }

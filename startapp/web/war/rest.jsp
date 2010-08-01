@@ -11,14 +11,19 @@
 </java> 
 </c:set>
 
-<form method="post" action="/rest/startapp">
+Submit returns ID or null if input argument is null.<br />
+<br />
+<form method="post" action="/rest/startapp" style="border: 1px solid gray">
+<pre>
+<c:out value="${userregisterFull}"></c:out>
+</pre>
 <input type="hidden" name="method" value="register"></input>
 <input type="hidden" name="arg" value="<c:out value="${userregisterFull}"></c:out>"></input>
 <input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
 <input type="submit" value="Submit Full Model"></input>
 </form>
 
-<form method="post" action="/rest/startapp">
+<form method="post" action="/rest/startapp" style="border: 1px solid gray">
 <input type="hidden" name="method" value="register"></input>
 <input type="hidden" name="arg" value="NULL"></input>
 <input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
