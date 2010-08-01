@@ -21,6 +21,16 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons.logging.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>${commons.lang.version}</version>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4">
 	<display-name>GWT</display-name>
-	
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
@@ -18,10 +18,24 @@
 			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
-			
+
+	<listener>
+		<listener-class>org.gwtapp.startapp.server.rest.RestServletConfig
+		</listener-class>
+	</listener>	
+	<filter>
+		<filter-name>Rest</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Rest</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>StartApp</servlet-name>
-		<servlet-class>org.gwtapp.startapp.server.StartAppServiceImpl</servlet-class>
+		<servlet-class>org.gwtapp.startapp.server.StartAppServiceImpl
+		</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>StartApp</servlet-name>
@@ -38,7 +52,8 @@
 	</servlet>
 	<servlet>
 		<servlet-name>Upload</servlet-name>
-		<servlet-class>org.gwtapp.startapp.server.UploadServiceImpl</servlet-class>
+		<servlet-class>org.gwtapp.startapp.server.UploadServiceImpl
+		</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Upload</servlet-name>
