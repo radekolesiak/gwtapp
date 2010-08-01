@@ -17,12 +17,12 @@ public class RestUtils {
 		return decode(str.getBytes());
 	}
 
-	public static Object[] decode(byte[] array) {
-		Object[] args = null;
+	public static Object decode(byte[] array) {
+		Object args = null;
 		try {
 			XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(
 					new ByteArrayInputStream(array)));
-			args = (Object[]) decoder.readObject();
+			args = decoder.readObject();
 			decoder.close();
 		} catch (Exception e) {
 			log.error("", e);
@@ -30,10 +30,10 @@ public class RestUtils {
 		return args;
 	}
 
-	public static byte[] encode(Object book) {
+	public static byte[] encode(Object object) {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(output));
-		encoder.writeObject(book);
+		encoder.writeObject(object);
 		encoder.close();
 		return output.toByteArray();
 	}

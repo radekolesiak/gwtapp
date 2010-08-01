@@ -12,7 +12,6 @@ public class RestServletConfig extends GuiceServletContextListener {
 		return Guice.createInjector(new ServletModule(){
 			@Override
 			protected void configureServlets() {
-				System.out.println("GUICE");
 				serve("/rest/startapp").with(StartAppRestServiceImpl.class);
 			}			
 		});
