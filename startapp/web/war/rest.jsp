@@ -13,22 +13,33 @@
  </object> 
 </java> 
 </c:set>
-
-<form method="post" action="/rest/startapp" style="border: 1px solid gray">
+<c:set var="userregisterFullForm" >
+&nbsp;The result is <i>ID</i>.
+<form method="post" action="/rest/startapp">
+	<input type="hidden" name="method" value="register"></input>
+	<input type="hidden" name="arg" value="<c:out value="${userregisterFull}"></c:out>"></input>
+	<input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
+	<input type="submit" value="Submit Model"></input>
+</form>
+</c:set>
+<div  style="border: 1px solid gray;padding:5px;">
+Argument value (not XML escaped):
 <pre>
 <c:out value="${userregisterFull}"></c:out>
 </pre>
-<input type="hidden" name="method" value="register"></input>
-<input type="hidden" name="arg" value="<c:out value="${userregisterFull}"></c:out>"></input>
-<input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
-<input type="submit" value="Submit Full Model"></input>
-Submit returns ID.
-</form>
+HTML form:
+<pre>
+<c:out value="${userregisterFullForm}"></c:out>
+</pre>
+<div style="border: 1px solid gray;padding:5px;width:150px;">${userregisterFullForm}</div>
+</div>
 <br />
-<form method="post" action="/rest/startapp" style="border: 1px solid gray">
-<input type="hidden" name="method" value="register"></input>
-<input type="hidden" name="arg" value="NULL"></input>
-<input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
-<input type="submit" value="Submit Null Value"></input>
-Submit returns null for null argument.
-</form>
+<div style="border: 1px solid gray;padding:5px;">
+	The result is <i>null</i>
+	<form method="post" action="/rest/startapp">
+	<input type="hidden" name="method" value="register"></input>
+	<input type="hidden" name="arg" value="NULL"></input>
+	<input type="hidden" name="type" value="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel"></input>
+	<input type="submit" value="Submit Null"></input>
+	</form>
+</div>
