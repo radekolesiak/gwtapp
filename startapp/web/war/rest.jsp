@@ -1,6 +1,8 @@
 <br />
 <a href="index.jsp">Main page</a><br />
 <br />
+Notice: More advanced solutions may hide a Java packages names.<br />
+<br />
 <c:set var="userregisterFull" >
 <java class="java.beans.XMLDecoder"> 
  <object class="org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl"> 
