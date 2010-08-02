@@ -22,7 +22,7 @@ public class StartAppServiceImpl extends RemoteServiceServlet implements
 	public Long register(UserRegisterModel user) throws RpcException {
 		log.debug("Register GWT Servlet");
 		if (user != null) {
-			return (long) R.nextInt();
+			return Math.abs((long) R.nextInt());
 		} else {
 			return null;
 		}
