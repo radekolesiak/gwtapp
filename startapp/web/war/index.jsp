@@ -47,7 +47,7 @@
 										<li>MetaField to simulate Java annotation and auto bind of RPC data fields.</li>
 										<li>Strong typing in MVC including Java generics.</li>
 										<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
-										<li>Very simple GWT RPC servlets to REST one-to-one mapping (<a href="rest.jsp">sample</a>).</li>
+										<li>Very simple one-to-one mapping of GWT RPC servlets to <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services">RESTful</a>. The <a href="rest.jsp">sample</a>.</li>
 										<li>Modular structure in Maven.</li>
 									</ul>
 			    				</div>
