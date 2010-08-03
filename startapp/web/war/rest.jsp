@@ -16,7 +16,7 @@ Notice: More advanced solutions may hide a Java packages names.<br />
 </java> 
 </c:set>
 <c:set var="userregisterFullForm" >
-&nbsp;The result is <i>ID</i>.
+&nbsp;The result is <i>ID</i> in XML.
 <form method="post" action="/rest/startapp">
 	<input type="hidden" name="method" value="register"></input>
 	<input type="hidden" name="arg" value="<c:out value="${userregisterFull}"></c:out>"></input>
@@ -37,7 +37,7 @@ HTML form:
 </div>
 <br />
 <div style="border: 1px solid gray;padding:5px;">
-	The result is <i>null</i>
+	The result is <i>null</i> in XML
 	<form method="post" action="/rest/startapp">
 	<input type="hidden" name="method" value="register"></input>
 	<input type="hidden" name="arg" value="NULL"></input>
