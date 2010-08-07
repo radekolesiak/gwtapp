@@ -145,22 +145,33 @@
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
-							<div class="cell" style="text-align: center;"><b>Module unit structure</b></div>
-							<div class="cell" style="text-align: center;"><b>Modules dependencies structure by unit</b></div>
-							<div class="cell" style="text-align: center;"><b>Modules dependencies structure by layer</b></div>
+							<div class="cell" style="text-align: center;"><b>Module unit and its layers dependencies structure</b></div>
+							<div class="cell" style="text-align: center;"><b>Modules dependencies structure</b></div>
 						</div>
 						<div class="row">
-							<div class="cell">
-								<div style="padding:10px 0 0 15px;"><t:swf src="images/svg/modules.swf" ></t:swf></div>
-								<ul>
-									<li>rpc - shared layer (RPC data and service)</li>
-									<li>src - server side layer</li>
-									<li>app - client UI side layer</li>
-									<li>web - HTML web content layer</li>
-								</ul>
+							<div class="cell" style="vertical-align: top;">
+								<div class="left" style="padding:10px 0 0 15px;"><t:swf src="images/svg/modules.swf" width="270px" height="270px"></t:swf></div>
+								<div class="left">
+									<ul>
+										<li>web - HTML web content layer</li>
+										<li>app - client UI side layer</li>
+										<li>srv - server side layer</li>
+										<li>rpc - shared RPC data and services layer</li>
+									</ul>
+								</div>
+								<div class="clear"></div>
 							</div>
-							<div class="cell">
-								<div style="padding:10px 0 0 15px;"><t:swf src="images/svg/dependencies.swf" ></t:swf></div>
+							<div class="cell" style="vertical-align: top;">
+								<div class="left" style="padding:10px 0 0 15px;"><t:swf src="images/svg/dependencies.swf" width="500px" height="235px"></t:swf></div>
+								<div class="left">
+									<ul>
+										<li>any <i>rpc</i> layer can use only its dependent <i>rpc</i> layers</li>
+										<li>any <i>app</i> layer can use only its dependent <i>rpc</i> and <i>app</i> layers</li>
+										<li>any <i>srv</i> layer can use only its dependent <i>rpc</i> and <i>srv</i> layers</li>
+										<li>any <i>web</i> layer can use its dependent <i>rpc</i>, <i>app</i>, <i>srv</i> and <i>web</i> (excluding <i>/war/</i> folder) layers</li>
+									</ul>
+								</div>
+								<div class="clear"></div>
 							</div>
 						</div>
 					</div>
