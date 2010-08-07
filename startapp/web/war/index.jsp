@@ -209,11 +209,17 @@
 						<div class="row">
 							<div class="cell">		
 								<div id="feedbackanchor"></div>
+							</div>
+						</div>
+					</div>
+			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
+					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
+						<div class="row">
+							<div class="cell">		
 								<div style="padding:10px 0 10px 0">Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></div>
 							</div>
 						</div>
 					</div>
-					<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<t:w3org></t:w3org>
 				</div>
 				<div class="cell"><t:amazon></t:amazon></div>
