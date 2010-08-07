@@ -145,6 +145,28 @@
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
+							<div class="cell" style="text-align: center;"><b>Module unit structure</b></div>
+							<div class="cell" style="text-align: center;"><b>Modules dependencies structure by unit</b></div>
+							<div class="cell" style="text-align: center;"><b>Modules dependencies structure by layer</b></div>
+						</div>
+						<div class="row">
+							<div class="cell">
+								<div style="padding:10px 0 0 15px;"><t:swf src="images/svg/modules.swf" ></t:swf></div>
+								<ul>
+									<li>rpc - shared layer (RPC data and service)</li>
+									<li>src - server side layer</li>
+									<li>app - client UI side layer</li>
+									<li>web - HTML web content layer</li>
+								</ul>
+							</div>
+							<div class="cell">
+								<div style="padding:10px 0 0 15px;"><t:swf src="images/svg/dependencies.swf" ></t:swf></div>
+							</div>
+						</div>
+					</div>
+			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
+					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
+						<div class="row">
 							<div class="cell">
 								<b>GWT App code repositories:</b>
 								<ul>
@@ -186,7 +208,6 @@
 				<div class="cell"><t:amazon></t:amazon></div>
 			</div>
 		</div>
-		<div><div>Structure of web module unit:</div><t:swf src="images/svg/modules.swf" ></t:swf></div>
 		<t:ga></t:ga>
 	</body>
 </html>
