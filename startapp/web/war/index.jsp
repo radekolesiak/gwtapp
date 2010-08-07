@@ -186,6 +186,7 @@
 				<div class="cell"><t:amazon></t:amazon></div>
 			</div>
 		</div>
+		<t:swf src="images/svg/modules.swf"></t:swf>
 		<t:ga></t:ga>
 	</body>
 </html>
