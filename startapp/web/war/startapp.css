@@ -38,6 +38,7 @@ div.cell {
 	display: table-cell;
 	width: auto;
 	padding: 5px;
+	vertical-align: top;
 }
 
 div.table.main {

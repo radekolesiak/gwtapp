@@ -149,7 +149,7 @@
 							<div class="cell" style="text-align: center;"><b>Modules dependencies structure</b></div>
 						</div>
 						<div class="row">
-							<div class="cell" style="vertical-align: top;">
+							<div class="cell">
 								<div class="left" style="padding:10px 0 0 15px;"><t:swf src="images/svg/modules.swf" width="270px" height="270px"></t:swf></div>
 								<div class="left">
 									<ul>
@@ -161,7 +161,7 @@
 								</div>
 								<div class="clear"></div>
 							</div>
-							<div class="cell" style="vertical-align: top;">
+							<div class="cell">
 								<div class="left" style="padding:10px 0 0 15px;"><t:swf src="images/svg/dependencies.swf" width="500px" height="235px"></t:swf></div>
 								<div class="left">
 									<ul>
