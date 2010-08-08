@@ -14,6 +14,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		HasValue<X> {
 
+	// cached value
+	private X value = null;
+
 	private boolean embeddable = false;
 
 	public DelegatedPanel() {
@@ -33,9 +36,6 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 	}
 
 	public abstract HasValue<Y> getDelegated();
-
-	// cached value
-	private X value = null;
 
 	public abstract X convertToX(Y value);
 
