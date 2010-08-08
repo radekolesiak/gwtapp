@@ -50,7 +50,7 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 	 *         delegated value only when needed (e.g. TextBox takes a lot of
 	 *         milliseconds to update its DOM input value)
 	 */
-	public boolean isDelegateToUpdate(X oldValue, X newValue) {
+	public boolean isDelegatedToUpdate(X oldValue, X newValue) {
 		return true;
 	}
 
@@ -66,9 +66,12 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 
 	@Override
 	public void setValue(X value, boolean fireEvents) {
-		boolean isDelegateToUpdate = isDelegateToUpdate(getValue(), value);
+		setValue(value, fireEvents, isDelegatedToUpdate(getValue(), value));
+	};
+
+	public void setValue(X value, boolean fireEvents, boolean updateDelegatedPanel) {
 		this.value = value;
-		if (isDelegateToUpdate) {
+		if (updateDelegatedPanel) {
 			getDelegated().setValue(convertToY(value));
 		}
 		if (fireEvents) {
@@ -94,8 +97,8 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 			public void onValueChange(ValueChangeEvent<Y> event) {
 				final HandlerRegistration hr = addHandler(handler,
 						ValueChangeEvent.getType());
-				DelegatedPanel.this
-						.setValue(convertToX(event.getValue()), true);
+				DelegatedPanel.this.setValue(convertToX(event.getValue()),
+						true, false);
 				DeferredCommand.addCommand(new Command() {
 					@Override
 					public void execute() {

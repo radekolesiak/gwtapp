@@ -12,12 +12,12 @@ import com.google.gwt.user.client.ui.TextBox;
 public class DoubleBox extends DelegatedPanel<Double, String> {
 
 	private final static double eps = 1e-3;
-	
+
 	private final TextBox tb = new TextBox();
 	private final HTML state = new HTML();
 	private final HTML thisHandlerState = new HTML();
 	private final HTML delegatedHandlerState = new HTML();
-	
+
 	private int thisCount = 0;
 	private int delegatedCount = 0;
 
@@ -37,8 +37,8 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 		tb.addValueChangeHandler(new ValueChangeHandler<String>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) {
-				delegatedHandlerState.setText("String("
-						+ (++delegatedCount) + "): " + event.getValue());
+				delegatedHandlerState.setText("String(" + (++delegatedCount)
+						+ "): " + event.getValue());
 			}
 		});
 	}
@@ -50,7 +50,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 
 	@Override
 	public Double convertToX(String value) {
-		Double doubleValue = getValue();
+		Double doubleValue = null;
 		try {
 			doubleValue = Double.parseDouble(value);
 			state.setText("OK: " + doubleValue);
@@ -66,7 +66,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 	}
 
 	@Override
-	public boolean isDelegateToUpdate(Double oldValue, Double newValue) {
+	public boolean isDelegatedToUpdate(Double oldValue, Double newValue) {
 		if (oldValue == null ^ newValue == null) {
 			return true;
 		} else if (oldValue == null && newValue == null) {

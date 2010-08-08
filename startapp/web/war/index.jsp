@@ -134,9 +134,12 @@
 								</ul>
 							</div>
 							<div class="cell">
-								Input box of Double data type: 
 								<div style="padding:7px;">
-									<div id="delegated"></div>
+									<div class="left">Double data type input box:&nbsp;</div> 
+									<div class="left">
+										<div id="delegated"></div>
+									</div>
+									<div class="clear"></div>
 								</div>
 								Source code file
 								<ul>
