@@ -201,6 +201,18 @@
 									<li><a href="http://techzone.enterra-inc.com/gwt-improving-performance/">GWT Improving performance</a></li>
 									<li><a href="http://www.techhui.com/profiles/blogs/simpler-and-speedier-gwt-with">Simpler and Speedier GWT with Server Side RPC Serialization</a></li>
 								</ul>
+								<b>GWT features and benefits:</b>
+								<ul>
+									<li>Java language</li>
+									<li>RPC api, data structures and exceptions in Java shared on client and server sides</li>
+									<li>Debugging</li>
+									<li>JUnit testing</li>
+									<li>Cross browser optimal and obfuscated JavaScript code</li>
+									<li>Code splitting</li>
+									<li>UI widgets quite similar to Swing MVC</li>
+									<li>Availability to IDE-s like Eclipse, IDEA</li>
+									<li>Easy and reliable code refactorization</li>
+								</ul> 
 							</div>
 						</div>
 					</div>
