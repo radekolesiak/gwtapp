@@ -27,33 +27,33 @@
 		</script>
 	</head>
 	<body>
-					<!--[if lt IE 8]>
-					<h3 style="color:orange;">Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
-					<![endif]-->
-				    <noscript>
-			      		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-			        		Your web browser must have JavaScript enabled in order for this application to display correctly.
-			      		</div>
-			    	</noscript>
-			    	<div id="laodingindicator"><div>Loading application ... <img src="images/indicator.gif" alt=""/></div></div>	
-					<div class="table main">
-						<div class="row">
-							<div class="cell">
-			    				<div style="width:680px;margin-left:auto;margin-right:auto;">
-			    					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
-				    				<ul>
-										<li>Declarative HTML templating and internationalization at runtime without application recompiling.</li>
-										<li>SEO support by means of GWT HTML templating embeddable in the main page.</li>
-										<li>MetaField to simulate Java annotation and RPC data fields auto binding.</li>
-										<li>Strong typing in MVC including Java generics.</li>
-										<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
-										<!-- <li>Very simple one-to-one mapping of GWT RPC servlets to REST. The <a href="rest.jsp">sample</a>.</li> -->
-										<li>Modular structure in Maven.</li>
-									</ul>
-			    				</div>
-			    			</div>
-			    		</div> 
-			    	</div> 
+		<!--[if lt IE 8]>
+		<h3 style="color:orange;">Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
+		<![endif]-->
+	    <noscript>
+      		<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        		Your web browser must have JavaScript enabled in order for this application to display correctly.
+      		</div>
+    	</noscript>
+    	<div id="laodingindicator"><div>Loading application ... <img src="images/indicator.gif" alt=""/></div></div>	
+		<div class="table main">
+			<div class="row">
+				<div class="cell">
+    				<div style="width:680px;margin-left:auto;margin-right:auto;">
+    					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features like:</div>
+	    				<ul>
+							<li>Declarative HTML templating and internationalization at runtime without application recompiling.</li>
+							<li>SEO support by means of GWT HTML templating embeddable in the main page.</li>
+							<li>MetaField to simulate Java annotation and RPC data fields auto binding.</li>
+							<li>Strong typing in MVC including Java generics.</li>
+							<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
+							<!-- <li>Very simple one-to-one mapping of GWT RPC servlets to REST. The <a href="rest.jsp">sample</a>.</li> -->
+							<li>Modular structure in Maven.</li>
+						</ul>
+    				</div>
+    			</div>
+    		</div> 
+    	</div> 
 		<div class="table">
 			<div class="row">
 				<div class="cell">
