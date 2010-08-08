@@ -24,14 +24,14 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		embeddable = true;
 		setElement(element);
 	}
-	
+
 	public void attach() {
 		if (embeddable && !isAttached()) {
 			onAttach();
 			RootPanel.detachOnWindowClose(this);
 		}
 	}
-	
+
 	public abstract HasValue<Y> getDelegated();
 
 	// cached value
@@ -41,6 +41,15 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 
 	public abstract Y convertToY(X value);
 
+	/**
+	 * 
+	 * @param oldValue
+	 * @param newValue
+	 * @return <b>true</b> if <i>oldValue</i> and <i>newValue</i> are different
+	 *         on custom metric e.g. two different numbers, texts to update
+	 *         delegated value only when needed (e.g. TextBox takes a lot of
+	 *         milliseconds to update its DOM input value)
+	 */
 	public boolean isDelegateToUpdate(X oldValue, X newValue) {
 		return true;
 	}

@@ -30,7 +30,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 		addValueChangeHandler(new ValueChangeHandler<Double>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Double> event) {
-				thisHandlerState.setText("Double(" + (++thisCount) + "):"
+				thisHandlerState.setText("Double(" + (++thisCount) + "): "
 						+ event.getValue());
 			}
 		});
@@ -38,7 +38,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) {
 				delegatedHandlerState.setText("String("
-						+ (++delegatedCount) + "):" + event.getValue());
+						+ (++delegatedCount) + "): " + event.getValue());
 			}
 		});
 	}
