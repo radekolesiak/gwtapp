@@ -69,28 +69,28 @@ public class StartApp extends StartAppEntryPoint {
 		private final static double eps = 1e-3;
 		private final TextBox tb = new TextBox();
 		private final HTML state = new HTML();
-		private final HTML delegatedHandlerState = new HTML();
 		private final HTML thisHandlerState = new HTML();
-		private int delegatedCount = 0;
+		private final HTML delegatedHandlerState = new HTML();
 		private int thisCount = 0;
+		private int delegatedCount = 0;
 
 		public A() {
 			add(tb);
 			add(state);
 			add(delegatedHandlerState);
 			add(thisHandlerState);
-			tb.addValueChangeHandler(new ValueChangeHandler<String>() {
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) {
-					delegatedHandlerState.setText("String("
-							+ (++delegatedCount) + "):" + event.getValue());
-				}
-			});
 			addValueChangeHandler(new ValueChangeHandler<Double>() {
 				@Override
 				public void onValueChange(ValueChangeEvent<Double> event) {
 					thisHandlerState.setText("Double(" + (++thisCount) + "):"
 							+ event.getValue());
+				}
+			});
+			tb.addValueChangeHandler(new ValueChangeHandler<String>() {
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) {
+					delegatedHandlerState.setText("String("
+							+ (++delegatedCount) + "):" + event.getValue());
 				}
 			});
 		}
@@ -102,14 +102,14 @@ public class StartApp extends StartAppEntryPoint {
 
 		@Override
 		public Double convertToX(String value) {
-			Double x = getValue();
+			Double doubleValue = null;
 			try {
-				x = Double.parseDouble(value);
-				state.setText("OK: " + x);
+				doubleValue = Double.parseDouble(value);
+				state.setText("OK: " + doubleValue);
 			} catch (Exception e) {
 				state.setText("Invalid value: " + value);
 			}
-			return x;
+			return doubleValue;
 		}
 
 		@Override
