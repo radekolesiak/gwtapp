@@ -207,7 +207,7 @@
 									<li>RPC api, data structures and exceptions in Java shared on client and server sides</li>
 									<li>Debugging</li>
 									<li>JUnit testing</li>
-									<li>Cross browser optimal and obfuscated JavaScript code</li>
+									<li>Cross browser, optimal and obfuscated JavaScript code</li>
 									<li>Code splitting</li>
 									<li>UI widgets quite similar to Swing MVC</li>
 									<li>Availability to IDE-s like Eclipse, IDEA</li>
