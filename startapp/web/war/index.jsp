@@ -98,7 +98,7 @@
 									<div class="clear"></div>
 									<br />
 									<div class="rowdiv">
-										<div class="celldiv1">File:</div>
+										<div class="celldiv1">Form:</div>
 										<div class="celldiv2">
 											<div class="left" style="margin-right:10px;"><a	t:field="clear-btn" href="javascript:void(0);"><img id="clear-btn" src="images/clear.png" alt="Clear form"/></a></div>
 											<div class="left" style="margin-right:10px;"><a	t:field="download-btn" href="javascript:void(0);"><img id="download-btn" src="images/download.png" alt="Download"/></a></div>	
