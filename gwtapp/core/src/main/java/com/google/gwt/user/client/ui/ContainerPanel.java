@@ -4,11 +4,6 @@ package com.google.gwt.user.client.ui;
 public class ContainerPanel extends ComplexPanel {
 	
 	@Override
-	protected void setParent(Widget parent) {
-		super.setParent(parent);
-	}
-	
-	@Override
 	public void add(Widget w) {
 		add(w, getElement());
 	}
@@ -20,5 +15,4 @@ public class ContainerPanel extends ComplexPanel {
 			add(w);
 		}
 	}
-
 }
