@@ -28,18 +28,18 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		setElement(element);
 	}
 
+	public abstract HasValue<Y> getDelegated();
+
+	public abstract X convertToX(Y value);
+
+	public abstract Y convertToY(X value);
+
 	public void attach() {
 		if (embeddable && !isAttached()) {
 			onAttach();
 			RootPanel.detachOnWindowClose(this);
 		}
 	}
-
-	public abstract HasValue<Y> getDelegated();
-
-	public abstract X convertToX(Y value);
-
-	public abstract Y convertToY(X value);
 
 	/**
 	 * 
