@@ -13,7 +13,8 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 
 	private final static double eps = 1e-3;
 
-	private final TextBox tb = new TextBox();
+	private final TextBox delegated = new TextBox();
+	
 	private final HTML state = new HTML();
 	private final HTML thisHandlerState = new HTML();
 	private final HTML delegatedHandlerState = new HTML();
@@ -23,7 +24,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 
 	public DoubleBox(String id) {
 		super(DOM.getElementById(id));
-		add(tb);
+		add(delegated);
 		add(state);
 		add(delegatedHandlerState);
 		add(thisHandlerState);
@@ -34,7 +35,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 						+ event.getValue());
 			}
 		});
-		tb.addValueChangeHandler(new ValueChangeHandler<String>() {
+		delegated.addValueChangeHandler(new ValueChangeHandler<String>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) {
 				delegatedHandlerState.setText("String(" + (++delegatedCount)
@@ -45,7 +46,7 @@ public class DoubleBox extends DelegatedPanel<Double, String> {
 
 	@Override
 	public HasValue<String> getDelegated() {
-		return tb;
+		return delegated;
 	}
 
 	@Override
