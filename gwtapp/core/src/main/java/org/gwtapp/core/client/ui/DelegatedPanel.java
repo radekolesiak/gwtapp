@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
-		HasValue<X> {
+		HasDelegatedPanel<X, Y> {
 
 	// cached value
 	private X value = null;
@@ -27,12 +27,6 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		embeddable = true;
 		setElement(element);
 	}
-
-	public abstract HasValue<Y> getDelegated();
-
-	public abstract X convertToX(Y value);
-
-	public abstract Y convertToY(X value);
 
 	public void attach() {
 		if (embeddable && !isAttached()) {
@@ -50,6 +44,7 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 	 *         delegated value only when needed (e.g. TextBox takes a lot of
 	 *         milliseconds to update its DOM input value)
 	 */
+	@Override
 	public boolean isDelegatedToUpdate(X oldValue, X newValue) {
 		return true;
 	}
@@ -69,7 +64,9 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		setValue(value, fireEvents, isDelegatedToUpdate(getValue(), value));
 	};
 
-	public void setValue(X value, boolean fireEvents, boolean updateDelegatedPanel) {
+	@Override
+	public void setValue(X value, boolean fireEvents,
+			boolean updateDelegatedPanel) {
 		this.value = value;
 		if (updateDelegatedPanel) {
 			getDelegated().setValue(convertToY(value));
