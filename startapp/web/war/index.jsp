@@ -141,7 +141,7 @@
 									</div>
 									<div class="clear"></div>
 								</div>
-								Source code file
+								Source code files:
 								<ul>
 								<li>UI abstract delegated panel - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/core/src/main/java/org/gwtapp/core/client/ui/DelegatedPanel.java?view=markup">DelegatedPanel</a></li>
 								<li>UI input box of Double type - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/startapp/app/src/main/java/org/gwtapp/startapp/client/ui/delegated/DoubleBox.java?view=markup">DoubleBox</a></li>
