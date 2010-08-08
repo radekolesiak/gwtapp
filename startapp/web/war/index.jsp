@@ -210,7 +210,7 @@
 									<li>Cross browser, optimal and obfuscated JavaScript code generator</li>
 									<li>Code splitting</li>
 									<li>UI widgets quite similar to Swing MVC</li>
-									<li>Availability to IDE-s like Eclipse, IDEA</li>
+									<li>Availability to IDE like Eclipse, IDEA</li>
 									<li>Easy and reliable code refactorization</li>
 								</ul> 
 							</div>
