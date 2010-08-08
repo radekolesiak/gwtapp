@@ -1,4 +1,3 @@
-<!DOCTYPE html SYSTEM "http://web.gwtapp.org/dtd/gwtapp.dtd">   
 <%@page pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="">
 	<head>
@@ -145,8 +144,8 @@
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
-							<div class="cell" style="text-align: center;"><b>Module unit and its layers dependencies structure</b></div>
-							<div class="cell" style="text-align: center;"><b>Modules dependencies structure</b></div>
+							<div class="cell" style="text-align: center;"><b>Module unit and its layers dependency structure</b></div>
+							<div class="cell" style="text-align: center;"><b>Modules dependency structure</b></div>
 						</div>
 						<div class="row">
 							<div class="cell">
