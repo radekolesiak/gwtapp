@@ -134,6 +134,9 @@
 								</ul>
 							</div>
 							<div class="cell">
+								<div>
+									<div id="delegated"></div>
+								</div>
 								Source code file
 								<ul>
 								<li>UI Panel - <a href="http://gwtapp.svn.sourceforge.net/viewvc/gwtapp/trunk/gwtapp/core/src/main/java/org/gwtapp/core/client/ui/DelegatedPanel.java?view=markup">DelegatedPanel</a></li>

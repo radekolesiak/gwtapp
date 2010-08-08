@@ -9,6 +9,7 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasValue;
@@ -24,8 +25,7 @@ public class StartApp extends StartAppEntryPoint {
 
 	@Override
 	public void onStartAppModuleLoad() {
-		A a = new A();
-		RootPanel.get().add(a);
+		new A().attach();
 		try {
 			template();
 			uploadownload();
@@ -67,14 +67,17 @@ public class StartApp extends StartAppEntryPoint {
 	class A extends DelegatedPanel<Double, String> {
 
 		private final static double eps = 1e-3;
+		
 		private final TextBox tb = new TextBox();
 		private final HTML state = new HTML();
 		private final HTML thisHandlerState = new HTML();
 		private final HTML delegatedHandlerState = new HTML();
+		
 		private int thisCount = 0;
 		private int delegatedCount = 0;
 
 		public A() {
+			super(DOM.getElementById("delegated"));
 			add(tb);
 			add(state);
 			add(delegatedHandlerState);
@@ -102,7 +105,7 @@ public class StartApp extends StartAppEntryPoint {
 
 		@Override
 		public Double convertToX(String value) {
-			Double doubleValue = null;
+			Double doubleValue = getValue();
 			try {
 				doubleValue = Double.parseDouble(value);
 				state.setText("OK: " + doubleValue);

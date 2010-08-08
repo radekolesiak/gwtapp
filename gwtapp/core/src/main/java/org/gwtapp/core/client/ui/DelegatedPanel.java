@@ -9,16 +9,27 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.ContainerPanel;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		HasValue<X> {
+
+	private boolean embeddable = false;
 
 	public DelegatedPanel() {
 		this(DOM.createDiv());
 	}
 
 	public DelegatedPanel(Element element) {
+		embeddable = true;
 		setElement(element);
+	}
+	
+	public void attach() {
+		if (embeddable && !isAttached()) {
+			onAttach();
+			RootPanel.detachOnWindowClose(this);
+		}
 	}
 	
 	public abstract HasValue<Y> getDelegated();
