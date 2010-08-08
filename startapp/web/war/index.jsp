@@ -165,9 +165,9 @@
 								<div class="left" style="padding:10px 0 0 15px;"><t:swf src="images/svg/dependencies.swf" width="500px" height="235px"></t:swf></div>
 								<div class="left">
 									<ul>
-										<li>any <i>rpc</i> layer can use its dependent <i>rpc</i> only layers</li>
-										<li>any <i>app</i> layer can use its dependent <i>rpc</i> and <i>app</i> only layers</li>
-										<li>any <i>srv</i> layer can use its dependent <i>rpc</i> and <i>srv</i> only layers</li>
+										<li>any <i>rpc</i> layer can use its dependent <i>rpc</i> layers only</li>
+										<li>any <i>app</i> layer can use its dependent <i>rpc</i> and <i>app</i> layers only</li>
+										<li>any <i>srv</i> layer can use its dependent <i>rpc</i> and <i>srv</i> layers only</li>
 										<li>any <i>web</i> layer can use its dependent <i>rpc</i>, <i>app</i>, <i>srv</i> and <i>web</i> (excluding <i>/war/</i> folder) layers</li>
 									</ul>
 								</div>
