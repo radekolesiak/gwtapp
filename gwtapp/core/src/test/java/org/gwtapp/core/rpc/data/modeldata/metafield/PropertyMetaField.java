@@ -1,4 +1,4 @@
-package org.gwtapp.core.rpc.data.metafieldmodeldata;
+package org.gwtapp.core.rpc.data.modeldata.metafield;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 
