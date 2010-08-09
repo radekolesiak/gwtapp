@@ -10,27 +10,52 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class GwtTestDelegatedPanel extends CoreTest {
 
+	class CountTextBox extends TextBox {
+
+		public int countSet = 0;
+		public int countGet = 0;
+
+		@Override
+		public String getValue() {
+			countGet++;
+			return super.getValue();
+		}
+
+		@Override
+		public void setValue(String value) {
+			setValue(value, false);
+		}
+
+		@Override
+		public void setValue(String value, boolean fireEvents) {
+			countSet++;
+			super.setValue(value, fireEvents);
+		}
+	}
+
 	class DoubleBox extends DelegatedPanel<Double, String> {
 
-		private final static double eps = 1e-3;
+		public final static double eps = 1e-3;
 
-		public final TextBox delegated = new TextBox();
+		public final CountTextBox delegated = new CountTextBox();
 
-		public int thisCount = 0;
-		public int delegatedCount = 0;
+		public int countThisValueChangeHandler = 0;
+		public int countDelegatedValueChangeHandler = 0;
+		public int countSet = 0;
+		public int countget = 0;
 
 		public DoubleBox() {
 			add(delegated);
 			addValueChangeHandler(new ValueChangeHandler<Double>() {
 				@Override
 				public void onValueChange(ValueChangeEvent<Double> event) {
-					++thisCount;
+					++countThisValueChangeHandler;
 				}
 			});
 			delegated.addValueChangeHandler(new ValueChangeHandler<String>() {
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) {
-					++delegatedCount;
+					++countDelegatedValueChangeHandler;
 				}
 			});
 		}
@@ -54,7 +79,6 @@ public class GwtTestDelegatedPanel extends CoreTest {
 		public String convertToY(Double value) {
 			return "" + value;
 		}
-		
 
 		@Override
 		public boolean isDelegatedToUpdate(Double oldValue, Double newValue) {
@@ -65,17 +89,32 @@ public class GwtTestDelegatedPanel extends CoreTest {
 			} else {
 				return Math.abs(oldValue - newValue) > eps;
 			}
-		}		
+		}
 	}
 
 	@Test
-	public void testNullValue() {
-		DoubleBox db = new DoubleBox();
+	public void testNullValueA() {
+		DoubleBox db = new DoubleBox() {
+			@Override
+			public boolean isDelegatedToUpdate(Double oldValue, Double newValue) {
+				return true;
+			}
+		};
 		assertNull(db.getValue());
 		assertEquals("", db.delegated.getValue());
 		db.setValue(null);
 		assertNull(db.getValue());
 		assertEquals("null", db.delegated.getValue());
+	}
+
+	@Test
+	public void testNullValueB() {
+		DoubleBox db = new DoubleBox();
+		assertNull(db.getValue());
+		assertEquals("", db.delegated.getValue());
+		db.setValue(null);
+		assertNull(db.getValue());
+		assertEquals("", db.delegated.getValue());
 	}
 
 	@Test
@@ -98,5 +137,25 @@ public class GwtTestDelegatedPanel extends CoreTest {
 		db.setValue(value2);
 		assertEquals(value2, db.getValue());
 		assertEquals("" + value2, db.delegated.getValue());
+	}
+
+	@Test
+	public void testDelegatedIsToUpdate() {
+		DoubleBox db = new DoubleBox();
+		double value1 = 1.11;
+		db.setValue(value1);
+		double value2 = 2.22;
+		db.setValue(value2);
+		assertEquals(2, db.delegated.countSet);
+	}
+
+	@Test
+	public void testDelegatedIsNotToUpdate() {
+		DoubleBox db = new DoubleBox();
+		double value1 = 1.11;
+		db.setValue(value1);
+		double value2 = value1 + DoubleBox.eps / 2.0;
+		db.setValue(value2);
+		assertEquals(1, db.delegated.countSet);
 	}
 }
