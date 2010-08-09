@@ -11,7 +11,11 @@ public class CleanUpBean {
 	}
 
 	public String getText() {
-		return StringUtils.replaceChars(StringUtils.trimToEmpty(text), "\r\n",
-				"");
+		if (text == null) {
+			return null;
+		} else {
+			return StringUtils.replaceChars(StringUtils.trimToEmpty(text),
+					"\r\n", "");
+		}
 	}
 }
