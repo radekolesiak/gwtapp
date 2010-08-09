@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.Assert;
+import org.gwtapp.template.client.Template;
 
 public class HeaderBeanServlet extends HttpServlet {
 
@@ -23,11 +23,9 @@ public class HeaderBeanServlet extends HttpServlet {
 
 		HeaderBean header = new HeaderBean();
 		header.setResponse(response);
-
-		String test = request.getParameter("test");
-		if ("empty".equalsIgnoreCase(test)) {
-			testEmpty(header);
-		}
+		header.setTag(request.getParameter(Template.Header.TAG));
+		header.setStyle(request.getParameter(Template.Header.STYLE));
+		header.setStyleclass(request.getParameter(Template.Header.STYLE_CLASS));
 	}
 
 	void writeSelectMessage(String color, PrintWriter pw) throws IOException {
@@ -39,6 +37,4 @@ public class HeaderBeanServlet extends HttpServlet {
 		req.getSession().setAttribute("color", color);
 	}
 
-	private void testEmpty(HeaderBean header) {
-	}
 }
