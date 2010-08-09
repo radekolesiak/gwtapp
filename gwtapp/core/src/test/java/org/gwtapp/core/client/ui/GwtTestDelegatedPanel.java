@@ -1,6 +1,6 @@
 package org.gwtapp.core.client.ui;
 
-import org.gwtapp.core.client.CoreTest;
+import org.gwtapp.core.client.GWTTestCore;
 import org.gwtapp.core.client.Value;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-public class GwtTestDelegatedPanel extends CoreTest {
+public class GwtTestDelegatedPanel extends GWTTestCore {
 
 	class CountTextBox extends TextBox {
 
