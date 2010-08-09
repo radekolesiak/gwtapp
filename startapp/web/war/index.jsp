@@ -175,7 +175,7 @@
 										<li>any <i>rpc</i> layer can use its dependent <i>rpc</i> layers only</li>
 										<li>any <i>app</i> layer can use its dependent <i>rpc</i> and <i>app</i> layers only</li>
 										<li>any <i>srv</i> layer can use its dependent <i>rpc</i> and <i>srv</i> layers only</li>
-										<li>any <i>web</i> layer can use its dependent <i>rpc</i>, <i>app</i>, <i>srv</i> and <i>web</i> (excluding <i>/war/</i> folder) layers</li>
+										<li>any <i>web</i> layer can use its dependent <i>rpc</i>, <i>app</i>, <i>srv</i> and <i>web</i> (excluding folder <i>/war/</i>) layers</li>
 									</ul>
 								</div>
 								<div class="clear"></div>
