@@ -33,6 +33,7 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 		});
 	}
 
+	@Override
 	public void setEnabled(boolean enabled) {
 		e.setDisabled(!enabled);
 		if (enabled) {
