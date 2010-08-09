@@ -64,6 +64,35 @@ public class HeaderBeanTest {
 		Assert.assertEquals("", getStyleclass(response));
 	}
 
+	@Test
+	public void testHeaderBeanStyleABC() throws IOException, SAXException {
+		request.setParameter(Template.Header.STYLE, "abc");
+		WebResponse response = client.getResponse(request);
+		Assert.assertEquals("", getTag(response));
+		Assert.assertEquals("abc", getStyle(response));
+		Assert.assertEquals("", getStyleclass(response));
+	}
+
+	@Test
+	public void testHeaderBeanStyleclassXYZ() throws IOException, SAXException {
+		request.setParameter(Template.Header.STYLE_CLASS, "xyz");
+		WebResponse response = client.getResponse(request);
+		Assert.assertEquals("", getTag(response));
+		Assert.assertEquals("", getStyle(response));
+		Assert.assertEquals("xyz", getStyleclass(response));
+	}
+
+	@Test
+	public void testHeaderBeanFull() throws IOException, SAXException {
+		request.setParameter(Template.Header.TAG, "div");
+		request.setParameter(Template.Header.STYLE, "abc");
+		request.setParameter(Template.Header.STYLE_CLASS, "xyz");
+		WebResponse response = client.getResponse(request);
+		Assert.assertEquals("div", getTag(response));
+		Assert.assertEquals("abc", getStyle(response));
+		Assert.assertEquals("xyz", getStyleclass(response));
+	}
+
 	private String getTag(WebResponse response) {
 		return response.getHeaderField(Template.Header.TAG);
 	}
