@@ -1,11 +1,16 @@
 package org.gwtapp.core.client.ui;
 
 import org.gwtapp.core.client.CoreTest;
+import org.gwtapp.core.client.Value;
 import org.junit.Test;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class GwtTestDelegatedPanel extends CoreTest {
@@ -157,5 +162,69 @@ public class GwtTestDelegatedPanel extends CoreTest {
 		double value2 = value1 + DoubleBox.eps / 2.0;
 		db.setValue(value2);
 		assertEquals(1, db.delegated.countSet);
+	}
+
+	@Test
+	public void testValueHandlerOnValidInput() {
+		final Value<Boolean> handled = new Value<Boolean>(false);
+		final Value<Double> value = new Value<Double>();
+		DoubleBox db = new DoubleBox();
+		db.addValueChangeHandler(new ValueChangeHandler<Double>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Double> event) {
+				handled.set(true);
+				value.set(event.getValue());
+			}
+		});
+		db.delegated.setValue("1.11", true);
+		assertTrue(handled.get());
+		assertEquals(1.11, value.get());
+		assertEquals(1.11, db.getValue());
+		assertEquals("1.11", db.delegated.getValue());
+	}
+
+	@Test
+	public void testValueHandlerOnInvalidInput() {
+		final Value<Boolean> handled = new Value<Boolean>(false);
+		final Value<Double> value = new Value<Double>(3.0);
+		DoubleBox db = new DoubleBox();
+		db.addValueChangeHandler(new ValueChangeHandler<Double>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Double> event) {
+				handled.set(true);
+				value.set(event.getValue());
+			}
+		});
+		db.delegated.setValue("xyz", true);
+		assertTrue(handled.get());
+		assertEquals(null, value.get());
+		assertEquals(null, db.getValue());
+		assertEquals("xyz", db.delegated.getValue());
+	}
+
+	@Test
+	public void testValueChangeHandlerEvent() {
+		final Value<Boolean> handled = new Value<Boolean>(false);
+		final Value<Double> value = new Value<Double>();
+		DoubleBox db = new DoubleBox();
+		RootPanel.get().add(db);
+		db.addValueChangeHandler(new ValueChangeHandler<Double>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Double> event) {
+				handled.set(true);
+				value.set(event.getValue());
+			}
+		});
+		db.delegated.setValue("1.11");
+		assertFalse(handled.get());
+		assertEquals(null, value.get());
+		assertEquals(null, db.getValue());
+		assertEquals("1.11", db.delegated.getValue());
+		NativeEvent event = Document.get().createChangeEvent();
+		DomEvent.fireNativeEvent(event, db.delegated);
+		assertTrue(handled.get());
+		assertEquals(1.11, value.get());
+		assertEquals(1.11, db.getValue());
+		assertEquals("1.11", db.delegated.getValue());
 	}
 }
