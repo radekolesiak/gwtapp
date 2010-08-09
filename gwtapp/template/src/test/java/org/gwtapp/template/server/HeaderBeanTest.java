@@ -1,13 +1,8 @@
 package org.gwtapp.template.server;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.gwtapp.template.client.Template;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -20,13 +15,14 @@ import com.meterware.servletunit.ServletUnitClient;
 
 public class HeaderBeanTest {
 
+	private final static String URL = "http://gwtapp.org/myServlet";
+
 	@Test
-	public void testHeaderBean() throws IOException, SAXException {
+	public void testHeaderBeanServlet() throws IOException, SAXException {
 		ServletRunner runner = new ServletRunner();
 		ServletUnitClient client = runner.newClient();
-		runner.registerServlet("myServlet", StatefulServlet.class.getName());
-		WebRequest request = new PostMethodWebRequest(
-				"http://test.meterware.com/myServlet");
+		runner.registerServlet("myServlet", HeaderBeanServlet.class.getName());
+		WebRequest request = new PostMethodWebRequest(URL);
 		request.setParameter("color", "red");
 		WebResponse response = client.getResponse(request);
 		Assert.assertNotNull("No response received", response);
@@ -34,9 +30,19 @@ public class HeaderBeanTest {
 				.getContentType());
 		Assert.assertEquals("requested resource", "You selected red", response
 				.getText());
+	}
 
-		// HttpServletResponse response=new HttpServletResponse();
-		HeaderBean header = new HeaderBean();
-		// Assert.assertNull(header.)
+	@Test
+	public void testHeaderBeanEmpty() throws IOException, SAXException {
+		ServletRunner runner = new ServletRunner();
+		ServletUnitClient client = runner.newClient();
+		runner.registerServlet("myServlet", HeaderBeanServlet.class.getName());
+		WebRequest request = new PostMethodWebRequest(URL);
+		WebResponse response = client.getResponse(request);
+
+		request.setParameter("test", "empty");
+		Assert.assertNull(response.getHeaderField(Template.Header.TAG));
+		Assert.assertNull(response.getHeaderField(Template.Header.STYLE));
+		Assert.assertNull(response.getHeaderField(Template.Header.STYLE_CLASS));
 	}
 }
