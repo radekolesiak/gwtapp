@@ -150,12 +150,38 @@ public class GwtTestTemplatePanel extends TemplateTest {
 	}
 
 	@Test
+	public void testAddWidgetEmptyName() {
+		TemplatePanel<String> panel = new TemplatePanel<String>(
+				new CustomTemplateCallback());
+		FlowPanel widget = new FlowPanel();
+		assertFalse(widget.isAttached());
+		try {
+			panel.add("", widget);
+			assertFalse(true);
+		} catch (AssertionError e) {
+		}
+	}
+
+	@Test
+	public void testAddWidgetNullName() {
+		TemplatePanel<String> panel = new TemplatePanel<String>(
+				new CustomTemplateCallback());
+		FlowPanel widget = new FlowPanel();
+		assertFalse(widget.isAttached());
+		try {
+			panel.add(null, widget);
+			assertFalse(true);
+		} catch (AssertionError e) {
+		}
+	}
+
+	@Test
 	public void testAddHandler() {
 		TemplatePanel<String> panel = new TemplatePanel<String>(
 				new CustomTemplateCallback());
 		final FlowPanel widget = new FlowPanel();
 		assertFalse(widget.isAttached());
-		panel.add("w", new TemplateHandler(){
+		panel.add("w", new TemplateHandler() {
 			@Override
 			public Widget onWidget(String id) {
 				return widget;

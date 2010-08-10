@@ -6,6 +6,8 @@ import org.gwtapp.template.client.ui.TemplateFormPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
+import com.google.gwt.user.client.ui.TextBox;
+
 public class GwtTestTemplateFormPanel extends TemplateTest {
 
 	private class CustomTemplateCallback implements
@@ -36,9 +38,22 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 	}
 
 	@Test
-	public void test() {
+	public void testInitState() {
 		TemplateFormPanel<Void> panel = new TemplateFormPanel<Void>(
 				new CustomTemplateCallback());
 		assertEquals("template-panel template-form-panel", panel.getStyleName());
+	}
+
+	@Test
+	public void testAddFieldWidgetNullName() {
+		TemplateFormPanel<Void> panel = new TemplateFormPanel<Void>(
+				new CustomTemplateCallback());
+		TextBox widget = new TextBox();
+		assertEquals("", widget.getName());
+		try {
+			panel.addField(widget);
+			assertFalse(true);
+		} catch (AssertionError e) {
+		}
 	}
 }
