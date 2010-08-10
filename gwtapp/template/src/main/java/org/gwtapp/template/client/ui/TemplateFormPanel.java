@@ -71,16 +71,6 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		return field;
 	}
 
-	public <E extends HasValue<?> & HasName> void removeField(E field) {
-		removeField(field.getName());
-	}
-
-	public void removeField(String name) {
-		assert name != null;
-		handlers.remove(name);
-		fields.remove(name);
-	}
-
 	@SuppressWarnings("unchecked")
 	public HasValue getField(String name) {
 		assert name != null;
