@@ -18,6 +18,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 				"org.gwtapp.template.client.GwtTestDOMTemplateRepository");
 		addTest(suite, "org.gwtapp.template.client.GwtTestWidgetWrapper");
 		addTest(suite, "org.gwtapp.template.client.GwtTestBooleanWrapper");
+		addTest(suite, "org.gwtapp.template.client.GwtTestTemplatePanel");
 		return suite;
 	}
 
