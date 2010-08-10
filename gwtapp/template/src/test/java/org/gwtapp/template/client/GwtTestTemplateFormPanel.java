@@ -37,16 +37,29 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 		}
 	}
 
-	@Test
-	public void testInitState() {
-		TemplateFormPanel<Void> panel = new TemplateFormPanel<Void>(
-				new CustomTemplateCallback());
-		assertEquals("template-panel template-form-panel", panel.getStyleName());
+	private class TemplateFormPanelTest<T> extends TemplateFormPanel<T> {
+		public TemplateFormPanelTest(TemplateCallback callback) {
+			super(callback);
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public Map getFields() {
+			return super.getFields();
+		}
 	}
 
 	@Test
-	public void testAddFieldWidgetNullName() {
-		TemplateFormPanel<Void> panel = new TemplateFormPanel<Void>(
+	public void testInitState() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		assertEquals("template-panel template-form-panel", panel.getStyleName());
+		assertNotNull(panel.getFields());
+	}
+
+	@Test
+	public void testAddFieldWidgetEmptyName() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
 				new CustomTemplateCallback());
 		TextBox widget = new TextBox();
 		assertEquals("", widget.getName());
@@ -55,5 +68,46 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 			assertFalse(true);
 		} catch (AssertionError e) {
 		}
+		try {
+			panel.addField("", widget);
+			assertFalse(true);
+		} catch (AssertionError e) {
+		}
+	}
+
+	@Test
+	public void testAddFieldWidgetNullName() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		TextBox widget = new TextBox();
+		assertEquals("", widget.getName());
+		try {
+			panel.addField(null, widget);
+			assertFalse(true);
+		} catch (AssertionError e) {
+		}
+	}
+
+	@Test
+	public void testAddFieldToCollection() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		TextBox a = new TextBox();
+		TextBox b = new TextBox();
+		TextBox c = new TextBox();
+		panel.addField("a", a);
+		panel.addField("b", b);
+		panel.addField("c", c);
+		assertNotNull(panel.getFields());
+		assertEquals(3, panel.getFields().size());
+		assertTrue(panel.getFields().containsKey("a"));
+		assertTrue(panel.getFields().containsKey("b"));
+		assertTrue(panel.getFields().containsKey("c"));
+		assertEquals(a, panel.getFields().get("a"));
+		assertEquals(b, panel.getFields().get("b"));
+		assertEquals(c, panel.getFields().get("c"));
+		assertEquals(a, panel.getField("a"));
+		assertEquals(b, panel.getField("b"));
+		assertEquals(c, panel.getField("c"));
 	}
 }
