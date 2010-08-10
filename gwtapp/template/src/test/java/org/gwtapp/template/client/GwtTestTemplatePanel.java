@@ -9,7 +9,9 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class GwtTestTemplatePanel extends TemplateTest {
 
@@ -34,6 +36,9 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		@Override
 		public void template(TemplatePanel<?> owner,
 				Map<String, TemplateHandler> widgetHandlers) {
+			for (TemplateHandler handler : widgetHandlers.values()) {
+				owner.add(handler.onWidget(null));
+			}
 		}
 	}
 
@@ -130,5 +135,34 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertTrue(panel.isInitValueByDeferredCommand());
 		panel.setInitValueByDeferredCommand(false);
 		assertFalse(panel.isInitValueByDeferredCommand());
+	}
+
+	@Test
+	public void testAddWidget() {
+		TemplatePanel<String> panel = new TemplatePanel<String>(
+				new CustomTemplateCallback());
+		FlowPanel widget = new FlowPanel();
+		assertFalse(widget.isAttached());
+		panel.add("w", widget);
+		assertFalse(widget.isAttached());
+		RootPanel.get().add(panel);
+		assertTrue(widget.isAttached());
+	}
+
+	@Test
+	public void testAddHandler() {
+		TemplatePanel<String> panel = new TemplatePanel<String>(
+				new CustomTemplateCallback());
+		final FlowPanel widget = new FlowPanel();
+		assertFalse(widget.isAttached());
+		panel.add("w", new TemplateHandler(){
+			@Override
+			public Widget onWidget(String id) {
+				return widget;
+			}
+		});
+		assertFalse(widget.isAttached());
+		RootPanel.get().add(panel);
+		assertTrue(widget.isAttached());
 	}
 }

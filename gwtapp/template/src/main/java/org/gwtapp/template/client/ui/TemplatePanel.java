@@ -114,11 +114,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		});
 	}
 
-	public void remove(String name) {
-		assert name != null;
-		widgetHandlers.remove(name);
-	}
-
 	@Override
 	protected void onAttach() {
 		super.onAttach();
