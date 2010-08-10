@@ -40,7 +40,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	public static class Style {
-		public final static String TEMPLATE_PANEL = "templatePanel";
+		public final static String TEMPLATE_PANEL = "template-panel";
 	}
 
 	private final Callback callback;

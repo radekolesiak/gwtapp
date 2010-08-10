@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	public final static class Style {
-		public final static String TEMPLATE_FORM_PANEL = "templateFormPanel";
+		public final static String TEMPLATE_FORM_PANEL = "template-form-panel";
 	}
 
 	@SuppressWarnings("unchecked")

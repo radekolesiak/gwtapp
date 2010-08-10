@@ -50,7 +50,7 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertFalse(panel.isTemplated());
 		assertTrue(panel.isVisible());
 		assertEquals("div", panel.getElement().getTagName().toLowerCase());
-		assertEquals("templatePanel", panel.getStyleName());
+		assertEquals("template-panel", panel.getStyleName());
 		assertEquals("", panel.getElement().getInnerHTML());
 		assertNull(panel.getName());
 		assertFalse(panel.isInitValueByDeferredCommand());
@@ -66,7 +66,7 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertTrue(panel.isVisible());
 		assertEquals("span", panel.getElement().getTagName().toLowerCase());
 		assertEquals("aa", panel.getElement().getAttribute("style"));
-		assertEquals("templatePanel bb", panel.getStyleName());
+		assertEquals("template-panel bb", panel.getStyleName());
 		assertEquals("xyz", panel.getElement().getInnerHTML());
 		assertNull(panel.getName());
 		assertFalse(panel.isInitValueByDeferredCommand());
