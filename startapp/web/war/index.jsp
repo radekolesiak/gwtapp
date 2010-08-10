@@ -60,12 +60,12 @@
 					<div class="table main">
 						<div class="row header">
 							<div class="cell">
-								Sample of HTML Templating sample.<br />
+								Sample of HTML Templating.<br />
 								<small>The template is generated on the server side<br />
 								and included as a JavaScript data for this page.</small>
 							</div>
 							<div class="cell">
-								Sample of upload and download sample.<br />
+								Sample of upload and download a form.<br />
 								<small>It converts a file from/to RPC Java object at a single HTTP request-response.</small><br />
 								<small>The template is embedded in the main page as a HTML code.</small>
 							</div>
