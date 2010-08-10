@@ -6,6 +6,7 @@ import org.gwtapp.template.client.ui.TemplateFormPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class GwtTestTemplateFormPanel extends TemplateTest {
@@ -109,5 +110,70 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 		assertEquals(a, panel.getField("a"));
 		assertEquals(b, panel.getField("b"));
 		assertEquals(c, panel.getField("c"));
+	}
+
+	@Test
+	public void testAddFieldHandlerToCollection() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		TextBox a = new TextBox();
+		TextBox b = new TextBox();
+		TextBox c = new TextBox();
+		panel.addFieldHandler("a", a);
+		panel.addFieldHandler("b", b);
+		panel.addFieldHandler("c", c);
+		assertNotNull(panel.getFields());
+		assertEquals(3, panel.getFields().size());
+		assertTrue(panel.getFields().containsKey("a"));
+		assertTrue(panel.getFields().containsKey("b"));
+		assertTrue(panel.getFields().containsKey("c"));
+		assertEquals(a, panel.getFields().get("a"));
+		assertEquals(b, panel.getFields().get("b"));
+		assertEquals(c, panel.getFields().get("c"));
+		assertEquals(a, panel.getField("a"));
+		assertEquals(b, panel.getField("b"));
+		assertEquals(c, panel.getField("c"));
+	}
+
+	@Test
+	public void testAddFieldNotAttached() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		TextBox a = new TextBox();
+		TextBox b = new TextBox();
+		TextBox c = new TextBox();
+		panel.addField("a", a);
+		panel.addField("b", b);
+		panel.addField("c", c);
+		assertFalse(panel.isAttached());
+		assertFalse(a.isAttached());
+		assertFalse(b.isAttached());
+		assertFalse(c.isAttached());
+		RootPanel.get().add(panel);
+		assertTrue(panel.isAttached());
+		assertFalse(a.isAttached());
+		assertFalse(b.isAttached());
+		assertFalse(c.isAttached());
+	}
+
+	@Test
+	public void testAddFieldAttached() {
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		TextBox a = new TextBox();
+		TextBox b = new TextBox();
+		TextBox c = new TextBox();
+		panel.addFieldHandler("a", a);
+		panel.addFieldHandler("b", b);
+		panel.addFieldHandler("c", c);
+		assertFalse(panel.isAttached());
+		assertFalse(a.isAttached());
+		assertFalse(b.isAttached());
+		assertFalse(c.isAttached());
+		RootPanel.get().add(panel);
+		assertTrue(panel.isAttached());
+		assertTrue(a.isAttached());
+		assertTrue(b.isAttached());
+		assertTrue(c.isAttached());
 	}
 }
