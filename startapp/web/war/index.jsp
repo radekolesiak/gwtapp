@@ -70,7 +70,7 @@
 								<small>The template is embedded in the main page as a HTML code.</small>
 							</div>
 							<div class="cell">
-								Sample of transformation of two different type models at UI panel with strong typing in MVC.
+								Sample of transformation of two different type models for UI panel with strong typing in MVC.
 							</div>
 						</div>
 						<div class="row">
