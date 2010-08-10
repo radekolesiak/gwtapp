@@ -41,6 +41,7 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertEquals("div", panel.getElement().getTagName().toLowerCase());
 		assertEquals("templatePanel", panel.getStyleName());
 		assertEquals("", panel.getElement().getInnerHTML());
+		assertNull(panel.getName());
 	}
 
 	@Test
@@ -55,5 +56,21 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertEquals("aa", panel.getElement().getAttribute("style"));
 		assertEquals("templatePanel bb", panel.getStyleName());
 		assertEquals("xyz", panel.getElement().getInnerHTML());
+		assertNull(panel.getName());
+	}
+
+	@Test
+	public void testNameAttribute() {
+		TemplatePanel<Void> p1 = new TemplatePanel<Void>(
+				new CustomTemplateCallback());
+		TemplatePanel<Void> p2 = new TemplatePanel<Void>(
+				new CustomTemplateCallback(new Template("span", "aa", "bb",
+						"xyz")));
+		assertNull(p1.getName());
+		assertNull(p2.getName());
+		p1.setName("abc");
+		p2.setName("xyz");
+		assertEquals("abc", p1.getName());
+		assertEquals("xyz", p2.getName());
 	}
 }
