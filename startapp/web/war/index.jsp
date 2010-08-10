@@ -139,7 +139,12 @@
 									<div class="left">
 										<div id="delegated"></div>
 									</div>
-									<div class="clear"></div>
+									<div class="clear">
+										<br />
+										<c:out value="The TextBox implements HasValue<String>"></c:out><br />
+										<c:out value="The DoubleBox implements HasValue<Double>"></c:out><br />
+										<br />
+									</div>
 								</div>
 								Source code files:
 								<ul>
