@@ -9,7 +9,7 @@ public class GwtTestTemplatePanel extends TemplateTest {
 
 	private class CustomTemplateCallback implements
 			TemplatePanel.TemplateCallback {
-		
+
 		private final Template template;
 
 		public CustomTemplateCallback() {
@@ -38,17 +38,22 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertFalse(panel.isAttached());
 		assertFalse(panel.isTemplated());
 		assertTrue(panel.isVisible());
+		assertEquals("div", panel.getElement().getTagName().toLowerCase());
+		assertEquals("templatePanel", panel.getStyleName());
+		assertEquals("", panel.getElement().getInnerHTML());
 	}
 
 	@Test
 	public void testInitStateByTemplate() {
 		TemplatePanel<Void> panel = new TemplatePanel<Void>(
-				new CustomTemplateCallback(new Template("span","aa","bb","")));
+				new CustomTemplateCallback(new Template("span", "aa", "bb",
+						"xyz")));
 		assertFalse(panel.isAttached());
 		assertFalse(panel.isTemplated());
 		assertTrue(panel.isVisible());
-		assertEquals("span",panel.getElement().getTagName().toLowerCase());
-		assertTrue(panel.getElement().getAttribute("style").toLowerCase().contains("aa"));
-		assertTrue(panel.getStyleName().toLowerCase().contains("bb"));
+		assertEquals("span", panel.getElement().getTagName().toLowerCase());
+		assertEquals("aa", panel.getElement().getAttribute("style"));
+		assertEquals("templatePanel bb", panel.getStyleName());
+		assertEquals("xyz", panel.getElement().getInnerHTML());
 	}
 }
