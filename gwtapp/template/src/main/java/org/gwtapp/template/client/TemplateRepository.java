@@ -38,6 +38,10 @@ public class TemplateRepository {
 		return repository;
 	}
 
+	public Type getDefaultType(){
+		return defaultType;
+	}
+	
 	public TemplatePanel.TemplateCallback load(String name) {
 		return load(name, defaultType);
 	}
