@@ -36,7 +36,9 @@ public class HTMLPanel extends ComplexPanel {
 	public void attach() {
 		if (embeddable && !isAttached()) {
 			onAttach();
-			RootPanel.detachOnWindowClose(this);
+			if (!RootPanel.isInDetachList(this)) {
+				RootPanel.detachOnWindowClose(this);
+			}
 		}
 	}
 

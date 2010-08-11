@@ -3,7 +3,6 @@ package org.gwtapp.template.client.callback;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.TemplateUtils;
 import org.gwtapp.template.client.ui.HTMLPanel;
@@ -15,15 +14,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TFieldCallback implements TemplatePanel.Callback {
 
-	private final Template template;
 	private String pattern = "t:field";
 
 	public TFieldCallback() {
-		this(null);
-	}
-
-	public TFieldCallback(Template template) {
-		this.template = template;
 	}
 
 	public void setPattern(String pattern) {
@@ -41,13 +34,8 @@ public class TFieldCallback implements TemplatePanel.Callback {
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
-		if (template != null) {
-			DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
-					getPattern(), template.getHtml(), ids));
-		} else {
-			DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
-					getPattern(), DOM.getInnerHTML(owner.getElement()), ids));
-		}
+		DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
+				getPattern(), DOM.getInnerHTML(owner.getElement()), ids));
 		for (Map.Entry<String, String> entry : ids.entrySet()) {
 			String field = entry.getKey();
 			String id = entry.getValue();
