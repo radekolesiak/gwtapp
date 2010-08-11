@@ -6,7 +6,7 @@ import org.junit.Test;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class GwtTestHtmlTemplateRepository extends TemplateTest {
+public class GwtTestHtmlRepository extends TemplateTest {
 
 	@Test
 	public void testGetEmptyTemplate() {

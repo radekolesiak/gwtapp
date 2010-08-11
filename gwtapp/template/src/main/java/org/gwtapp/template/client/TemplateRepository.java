@@ -10,7 +10,8 @@ import com.google.gwt.user.client.ui.HTML;
 public class TemplateRepository {
 
 	public static enum Type {
-		TFIELD, ID;
+		TFIELD, // by 't:field' attribute 
+		ID;		// by 'id' attribute (not supported yet)
 	}
 
 	private final Type defaultType;
