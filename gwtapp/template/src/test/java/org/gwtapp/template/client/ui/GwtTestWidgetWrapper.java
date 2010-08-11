@@ -1,5 +1,6 @@
-package org.gwtapp.template.client;
+package org.gwtapp.template.client.ui;
 
+import org.gwtapp.template.client.TemplateTest;
 import org.gwtapp.template.client.ui.WidgetWrapper;
 import org.junit.Test;
 

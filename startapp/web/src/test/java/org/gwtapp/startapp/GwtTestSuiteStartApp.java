@@ -16,10 +16,10 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		addTest(suite, "org.gwtapp.template.client.GwtTestMessages");
 		addTest(suite,
 				"org.gwtapp.template.client.GwtTestDOMTemplateRepository");
-		addTest(suite, "org.gwtapp.template.client.GwtTestWidgetWrapper");
-		addTest(suite, "org.gwtapp.template.client.GwtTestBooleanWrapper");
-		addTest(suite, "org.gwtapp.template.client.GwtTestTemplatePanel");
-		addTest(suite, "org.gwtapp.template.client.GwtTestTemplateFormPanel");
+		addTest(suite, "org.gwtapp.template.client.ui.GwtTestWidgetWrapper");
+		addTest(suite, "org.gwtapp.template.client.ui.GwtTestBooleanWrapper");
+		addTest(suite, "org.gwtapp.template.client.ui.GwtTestTemplatePanel");
+		addTest(suite, "org.gwtapp.template.client.ui.GwtTestTemplateFormPanel");
 		return suite;
 	}
 
