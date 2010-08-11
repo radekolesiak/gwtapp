@@ -1,3 +1,4 @@
+<!DOCTYPE html SYSTEM "http://web.gwtapp.org/dtd/gwtapp.dtd"> 
 <%@page pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="">
 	<head>
