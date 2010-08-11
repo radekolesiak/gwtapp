@@ -18,7 +18,7 @@ public class GwtTestMessages extends TemplateTest {
 
 		public MessagePanel(final String html) {
 			super(new TemplateCallback() {
-				
+
 				private final TFieldCallback callback = new TFieldCallback();
 
 				@Override
@@ -38,6 +38,13 @@ public class GwtTestMessages extends TemplateTest {
 		public TemplateMessage getTemplateMessage() {
 			return handler.getTemplateMessage();
 		}
+	}
+
+	@Test
+	public void testTemplateHeaderInitState() {
+		assertEquals("Template-Tag", Template.Header.TAG);
+		assertEquals("Template-Style", Template.Header.STYLE);
+		assertEquals("Template-Style-Class", Template.Header.STYLE_CLASS);
 	}
 
 	@Test
@@ -126,7 +133,7 @@ public class GwtTestMessages extends TemplateTest {
 	 RootPanel.get().add(mp);
 	 }
 	 */
-	 
+
 	@Test
 	public void testDoubleTemplateMessage() {
 		testTemplateMessage();
