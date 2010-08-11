@@ -11,24 +11,24 @@ import org.gwtapp.template.client.ui.TemplateFormPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TemplateModelDataFormPanel<T extends ModelData> extends
+public class TemplateModelPanel<T extends ModelData> extends
 		TemplateFormPanel<T> {
 
 	private Map<String, UiHandler<?>> fields = new HashMap<String, UiHandler<?>>();
 
-	public TemplateModelDataFormPanel(TemplateCallback callback) {
+	public TemplateModelPanel(TemplateCallback callback) {
 		super(callback);
 	}
 
-	public TemplateModelDataFormPanel(TemplateCallback callback, T value) {
+	public TemplateModelPanel(TemplateCallback callback, T value) {
 		super(callback, value);
 	}
 
-	public TemplateModelDataFormPanel(ElementCallback callback) {
+	public TemplateModelPanel(ElementCallback callback) {
 		super(callback);
 	}
 
-	public TemplateModelDataFormPanel(ElementCallback callback, T value) {
+	public TemplateModelPanel(ElementCallback callback, T value) {
 		super(callback, value);
 	}
 

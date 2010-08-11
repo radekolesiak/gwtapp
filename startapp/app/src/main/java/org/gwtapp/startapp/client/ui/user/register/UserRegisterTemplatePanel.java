@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
+import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.client.handlers.user.register.LoginHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
@@ -14,7 +14,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 public class UserRegisterTemplatePanel extends
-		TemplateModelDataFormPanel<UserRegisterModel> {
+		TemplateModelPanel<UserRegisterModel> {
 
 	private final WidgetHandler summary = add("summary", new WidgetHandler());
 

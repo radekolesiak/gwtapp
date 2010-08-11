@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.form.client.ui.TemplateModelDataFormPanel;
+import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.io.client.IOSubmitCompleteHandler;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
@@ -16,7 +16,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 
 public class UploadDownloadTemplatePanel extends
-		TemplateModelDataFormPanel<UserRegisterModel> {
+		TemplateModelPanel<UserRegisterModel> {
 
 	private final UploadFormHandler//
 	uploadForm = add("upload-form", new UploadFormHandler());
