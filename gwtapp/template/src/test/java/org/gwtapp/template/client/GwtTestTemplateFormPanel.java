@@ -6,6 +6,8 @@ import org.gwtapp.template.client.ui.TemplateFormPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -175,5 +177,35 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 		assertTrue(a.isAttached());
 		assertTrue(b.isAttached());
 		assertTrue(c.isAttached());
+	}
+	
+
+	@Test
+	public void testValueChangeHandler(){
+		final Value<Boolean> handled = new Value<Boolean>(false);
+		TemplateFormPanelTest<Void> panel = new TemplateFormPanelTest<Void>(
+				new CustomTemplateCallback());
+		RootPanel.get().add(panel);
+		TextBox a = new TextBox();
+		TextBox b = new TextBox();
+		TextBox c = new TextBox();
+		panel.addFieldHandler("a", a);
+		panel.addFieldHandler("b", b);
+		panel.addFieldHandler("c", c);
+		panel.addValueChangeHandler(new ValueChangeHandler<Void>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Void> event) {
+				handled.set(true);
+			}
+		});
+		handled.set(false);
+		a.setValue("test", true);
+		assertTrue(handled.get());
+		handled.set(false);
+		b.setValue("test", true);
+		assertTrue(handled.get());
+		handled.set(false);
+		c.setValue("test", true);
+		assertTrue(handled.get());
 	}
 }
