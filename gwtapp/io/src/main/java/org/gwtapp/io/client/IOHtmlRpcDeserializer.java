@@ -27,7 +27,7 @@ public class IOHtmlRpcDeserializer {
 		try {
 			String value = values.get(valueName);
 			if (values != null && value != null) {
-				return IOClient.getDeserializedObject(IOClient.decode(value));
+				return IOClient.deserialize(IOClient.decode(value));
 			}
 		} catch (Exception e) {
 		}

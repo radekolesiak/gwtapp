@@ -11,7 +11,7 @@ public abstract class IOSubmitCompleteHandler<T> implements
 	@Override
 	public final void onSubmitComplete(SubmitCompleteEvent event) {
 		try {
-			Object result = IOClient.getDeserializedObject(IOClient.decode(event
+			Object result = IOClient.deserialize(IOClient.decode(event
 					.getResults()));
 			if (result instanceof Throwable) {
 				onFailure((Throwable) result);
