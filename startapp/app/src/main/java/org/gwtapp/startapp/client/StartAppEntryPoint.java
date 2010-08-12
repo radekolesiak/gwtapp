@@ -6,6 +6,7 @@ import org.gwtapp.startapp.rpc.api.DownloadService;
 import org.gwtapp.startapp.rpc.api.DownloadServiceAsync;
 import org.gwtapp.startapp.rpc.api.StartAppService;
 import org.gwtapp.startapp.rpc.api.StartAppServiceAsync;
+import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.template.client.HtmlRepository;
 import org.gwtapp.template.client.TemplateRepository;
 
@@ -33,7 +34,7 @@ public class StartAppEntryPoint implements EntryPoint {
 			"/templates/");
 
 	/** HTML RPC deserializer */
-	public final static IOHtmlRpcDeserializer rpc = new IOHtmlRpcDeserializer();
+	public final static IOHtmlRpcDeserializer<UserRegisterModel> rpc = new IOHtmlRpcDeserializer<UserRegisterModel>();
 
 	/** Void async callback **/
 	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
