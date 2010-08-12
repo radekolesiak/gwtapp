@@ -8,20 +8,11 @@ import org.gwtapp.io.rpc.api.IOService;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.google.gwt.user.server.rpc.RPC;
-import com.google.gwt.user.server.rpc.RPCRequest;
 
 public class IOServer {
 
-	public static <T> T getSerializedObject(String object) {
-		RPCRequest request = RPC.decodeRequest(object);
-		if (request != null && request.getParameters() != null
-				&& request.getParameters().length > 0) {
-			System.out.println(request.getParameters()[0]);
-		}
-		return null;
-	}
-
-	public static String success(IsSerializable object) throws IOServerException {
+	public static String success(IsSerializable object)
+			throws IOServerException {
 		try {
 			Method serviceMethod = IOService.class
 					.getMethod("getResponseIsSerializable");
