@@ -2,6 +2,7 @@ package org.gwtapp.form.client.ui;
 
 import java.util.Map;
 
+import org.gwtapp.core.client.Value;
 import org.gwtapp.core.client.ui.DelegatedPanel;
 import org.gwtapp.core.rpc.data.HashModelData;
 import org.gwtapp.core.rpc.data.MetaField;
@@ -10,21 +11,22 @@ import org.gwtapp.form.client.FormTest;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.UiHandler;
-import org.gwtapp.template.client.ui.TemplateFormPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class GwtTestTemplateModelPanel extends FormTest {
 
-	class DoubleBox extends DelegatedPanel<Double, String> {
+	class LongBox extends DelegatedPanel<Long, String> {
 
 		public final TextBox delegated = new TextBox();
 
-		public DoubleBox() {
+		public LongBox() {
 			add(delegated);
 		}
 
@@ -34,17 +36,17 @@ public class GwtTestTemplateModelPanel extends FormTest {
 		}
 
 		@Override
-		public Double convertToX(String value) {
-			Double doubleValue = null;
+		public Long convertToX(String value) {
+			Long longValue = null;
 			try {
-				doubleValue = Double.parseDouble(value);
+				longValue = Long.parseLong(value);
 			} catch (Exception e) {
 			}
-			return doubleValue;
+			return longValue;
 		}
 
 		@Override
-		public String convertToY(Double value) {
+		public String convertToY(Long value) {
 			return "" + value;
 		}
 	}
@@ -73,18 +75,6 @@ public class GwtTestTemplateModelPanel extends FormTest {
 			for (TemplateHandler handler : widgetHandlers.values()) {
 				owner.add(handler.onWidget(null));
 			}
-		}
-	}
-
-	private static class TemplateFormPanelTest<T> extends TemplateFormPanel<T> {
-		public TemplateFormPanelTest(TemplateCallback callback) {
-			super(callback);
-		}
-
-		@SuppressWarnings("unchecked")
-		@Override
-		public Map getFields() {
-			return super.getFields();
 		}
 	}
 
@@ -156,7 +146,7 @@ public class GwtTestTemplateModelPanel extends FormTest {
 				new CustomTemplateCallback());
 		assertNull(panel.getValue());
 		UiHandler<TextBox> a = new UiHandler<TextBox>(new TextBox());
-		UiHandler<DoubleBox> b = new UiHandler<DoubleBox>(new DoubleBox());
+		UiHandler<LongBox> b = new UiHandler<LongBox>(new LongBox());
 		TestModel model = new TestModel();
 		panel.add(TestModel.A, a);
 		panel.add(TestModel.B, b);
@@ -169,5 +159,57 @@ public class GwtTestTemplateModelPanel extends FormTest {
 		assertTrue(panel.isAttached());
 		assertTrue(a.getWidget().isAttached());
 		assertTrue(b.getWidget().isAttached());
+	}
+
+	@Test
+	public void testValueChangeHandlers() {
+		TemplateModelPanel<TestModel> panel = new TemplateModelPanel<TestModel>(
+				new CustomTemplateCallback());
+		UiHandler<TextBox> a = new UiHandler<TextBox>(new TextBox());
+		UiHandler<LongBox> b = new UiHandler<LongBox>(new LongBox());
+		TestModel model = new TestModel();
+		panel.add(TestModel.A, a);
+		panel.add(TestModel.B, b);
+		assertNull(panel.getValue());
+		panel.setValue(model);
+		assertEquals(model, panel.getValue());
+		RootPanel.get().add(panel);
+		final Value<Integer> handled = new Value<Integer>(0);
+		panel.addValueChangeHandler(new ValueChangeHandler<TestModel>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<TestModel> event) {
+				handled.set(handled.get() + 1);
+			}
+		});
+		{
+			panel.setValue(model, true);
+			assertEquals(new Integer(1), handled.get());
+		}
+		{
+			a.getWidget().setValue("012", true);
+			assertEquals(new Integer(2), handled.get());
+			assertEquals("012", panel.getValue().getA());
+		}
+		{
+			a.getWidget().setValue("012", true);
+			assertEquals(new Integer(2), handled.get());
+			assertEquals("012", panel.getValue().getA());
+		}
+		{
+			a.getWidget().setValue("011", true);
+			assertEquals(new Integer(3), handled.get());
+			assertEquals("011", panel.getValue().getA());
+		}
+		{
+			b.getWidget().delegated.setValue("1117", true);
+			assertEquals(new Integer(4), handled.get());
+			assertEquals(new Long(1117L), panel.getValue().getB());
+		}
+		{
+			b.getWidget().setValue(11117L, true);
+			assertEquals(new Integer(5), handled.get());
+			assertEquals(new Long(11117L), panel.getValue().getB());
+		}
+
 	}
 }
