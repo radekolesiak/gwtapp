@@ -24,17 +24,19 @@ public class TemplateMessage {
 	public TemplateMessage(Element e) {
 		Map<String, String> patterns = null;
 		String inner = null;
-		String msg = e.getAttribute("t:msg");
-		if (msg != null && !msg.isEmpty()) {
-			if (cache.containsKey(msg)) {
-				patterns = cache.get(msg);
+		if (e != null) {
+			String msg = e.getAttribute("t:msg");
+			if (msg != null && !msg.isEmpty()) {
+				if (cache.containsKey(msg)) {
+					patterns = cache.get(msg);
+				} else {
+					patterns = new HashMap<String, String>();
+					TemplateUtils.parseMessages(msg, patterns);
+					cache.put(msg, patterns);
+				}
 			} else {
-				patterns = new HashMap<String, String>();
-				TemplateUtils.parseMessages(msg, patterns);
-				cache.put(msg, patterns);
+				inner = e.getInnerHTML();
 			}
-		} else {
-			inner = e.getInnerHTML();
 		}
 		this.patterns = patterns;
 		this.inner = inner;
