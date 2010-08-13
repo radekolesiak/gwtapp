@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.client;
 
+import org.gwtapp.core.client.AsyncCallbackAdapter;
 import org.gwtapp.io.client.IOHtmlRpcDeserializer;
 import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.startapp.rpc.api.DownloadService;
@@ -12,7 +13,6 @@ import org.gwtapp.template.client.TemplateRepository;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 public class StartAppEntryPoint implements EntryPoint {
@@ -37,16 +37,7 @@ public class StartAppEntryPoint implements EntryPoint {
 	public final static IOHtmlRpcDeserializer<UserRegisterModel> rpc = new IOHtmlRpcDeserializer<UserRegisterModel>();
 
 	/** Void async callback **/
-	public final static AsyncCallback<Void> callback = new AsyncCallback<Void>() {
-		@Override
-		public void onFailure(Throwable caught) {
-			caught.printStackTrace();
-		}
-
-		@Override
-		public void onSuccess(Void result) {
-		}
-	};
+	public final static AsyncCallbackAdapter<Void> callback = new AsyncCallbackAdapter<Void>();
 
 	@Override
 	public final void onModuleLoad() {

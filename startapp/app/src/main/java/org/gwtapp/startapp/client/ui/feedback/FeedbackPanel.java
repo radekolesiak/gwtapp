@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.client.ui.feedback;
 
+import org.gwtapp.core.client.AsyncCallbackAdapter;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.template.client.handler.TextAreaHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -8,7 +9,6 @@ import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class FeedbackPanel extends TemplatePanel<Void> {
 
@@ -48,9 +48,9 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 		indicator.getWidget().setVisible(true);
 		send.getWidget().setEnabled(false);
 		StartAppEntryPoint.service.feedback(email.getWidget().getValue(),
-				message.getWidget().getValue(), new AsyncCallback<Void>() {
+				message.getWidget().getValue(), new AsyncCallbackAdapter<Void>() {
 					@Override
-					public void onSuccess(Void result) {
+					public void onSuccessCallback(Void result) {
 						indicator.getWidget().setVisible(false);
 						send.getWidget().setEnabled(true);
 						sent.getWidget().setVisible(true);
@@ -58,7 +58,7 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 					}
 
 					@Override
-					public void onFailure(Throwable e) {
+					public void onFailureCallback(Throwable e) {
 						indicator.getWidget().setVisible(false);
 						send.getWidget().setEnabled(true);
 						sent.getWidget().setVisible(false);
