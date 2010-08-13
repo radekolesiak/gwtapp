@@ -115,5 +115,16 @@ public class TemplateUtils {
 	public static native Object getFormArray(JavaScriptObject array, String key) /*-{
 																					return array[key];
 																					}-*/;
+	
+
+	public static boolean equals(Object a, Object b) {
+		if (a == b) {
+			return true;
+		} else if (a == null) {
+			return false;
+		} else {
+			return a.equals(b);
+		}
+	}
 
 }

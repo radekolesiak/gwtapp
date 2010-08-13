@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.HasValue;
 public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 
 	private final InputElement e;
+	private boolean value;
 
 	public BooleanWrapper(boolean checkbox) {
 		this(checkbox ? DOM.createInputCheck() : DOM.createInputRadio(""));
@@ -25,9 +26,11 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 	public BooleanWrapper(Element e) {
 		super(e);
 		this.e = InputElement.as(e);
+		this.value = isDefaultChecked();
 		addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				value = isChecked();
 				ValueChangeEvent.fire(BooleanWrapper.this, getValue());
 			}
 		});
@@ -45,11 +48,7 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 
 	@Override
 	public Boolean getValue() {
-		if (isAttached()) {
-			return e.isChecked();
-		} else {
-			return e.isDefaultChecked();
-		}
+		return value;
 	}
 
 	@Override
@@ -62,8 +61,8 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 		if (value == null) {
 			throw new IllegalArgumentException("value must not be null");
 		}
-		e.setChecked(value);
-		e.setDefaultChecked(value);
+		this.value = value;
+		setChecked(value);
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}
@@ -73,5 +72,19 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 	public HandlerRegistration addValueChangeHandler(
 			ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
+	}
+
+	public boolean isDefaultChecked() {
+		return e.isDefaultChecked();
+	}
+
+	protected boolean isChecked() {
+		return e.isChecked();
+	}
+
+	protected void setChecked(boolean checked) {
+		if (checked != value) {
+			e.setChecked(checked);
+		}
 	}
 }
