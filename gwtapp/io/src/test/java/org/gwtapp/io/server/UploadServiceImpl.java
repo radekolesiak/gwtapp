@@ -1,46 +1,29 @@
 package org.gwtapp.io.server;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 @SuppressWarnings("serial")
-public class UploadServiceImpl extends IOUploadHttpServlet<String> {
-
-	public final static int MAX_SIZE = 1024 * 1024;
+public class UploadServiceImpl extends IOUploadHttpServlet<Long> {
 
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			if (ServletFileUpload.isMultipartContent(request)) {
-				ServletFileUpload upload = new ServletFileUpload();
-				upload.setSizeMax(MAX_SIZE);
-				FileItemIterator it = upload.getItemIterator(request);
-				if (it.hasNext()) {
-					FileItemStream item = it.next();
-					InputStream input = item.openStream();
-					try {
-						if (!item.isFormField()) {
-							doSuccess(response, IOUtils.toString(input));
-							return;
-						}
-					} finally {
-						IOUtils.closeQuietly(input);
-					}
-				}
-				doFailure(response, new RpcException());
+			Long value = null;
+			String param = request.getParameter("value");
+			if (!StringUtils.isEmpty(param)) {
+				value = Long.parseLong(param);
 			}
+			doSuccess(response, value);
 		} catch (Exception e) {
+			e.printStackTrace();
 			doFailure(response, new RpcException());
 		}
 	}

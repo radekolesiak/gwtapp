@@ -2,6 +2,6 @@
 	<inherits name='org.gwtapp.io.IO' />
 	<source path='client' />
 	<source path='rpc' />
-	<servlet path='/download.rpc' class='org.gwtapp.io.server.DownloadServiceImpl' />
+  	<servlet path='/download.rpc' class='org.gwtapp.io.server.DownloadServiceImpl' /> 	
 	<servlet path='/upload.rpc' class='org.gwtapp.io.server.UploadServiceImpl' />
 </module>

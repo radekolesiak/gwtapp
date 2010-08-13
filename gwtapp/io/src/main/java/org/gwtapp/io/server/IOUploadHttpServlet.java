@@ -22,17 +22,17 @@ public class IOUploadHttpServlet<T> extends HttpServlet {
 	private final static Logger log = Logger
 			.getLogger(IOUploadHttpServlet.class);
 
-	public void doSuccess(HttpServletResponse response, T object) {
-		onResponse(response, UploadType.SUCCESSFUL, object);
+	public void doSuccess(HttpServletResponse httpResponse, T value) {
+		onResponse(httpResponse, UploadType.SUCCESSFUL, value);
 	}
 
-	public void doFailure(HttpServletResponse response, RpcException object) {
-		onResponse(response, UploadType.FAILULE, object);
+	public void doFailure(HttpServletResponse httpResponse, RpcException value) {
+		onResponse(httpResponse, UploadType.FAILULE, value);
 	}
 
-	protected void onResponse(HttpServletResponse response, UploadType type,
+	protected void onResponse(HttpServletResponse httpResponse, UploadType type,
 			Object object) {
-		response.setContentType("text/html");
+		httpResponse.setContentType("text/html");
 		StringBuffer buffer = new StringBuffer();
 		try {
 			switch (type) {
@@ -54,7 +54,7 @@ public class IOUploadHttpServlet<T> extends HttpServlet {
 			log.error("", e);
 		}
 		try {
-			response.getOutputStream().write(buffer.toString().getBytes());
+			httpResponse.getOutputStream().write(buffer.toString().getBytes());
 		} catch (IOException e) {
 			log.error("", e);
 		}

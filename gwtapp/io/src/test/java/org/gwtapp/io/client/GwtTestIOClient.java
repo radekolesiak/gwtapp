@@ -8,9 +8,11 @@ import org.junit.Test;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.TimeoutException;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.Hidden;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class GwtTestIOClient extends IOTest {
-
 	@Test
 	public void testDecode() {
 		assertEquals("a&b", IOClient.decode("a&b"));
@@ -41,5 +43,28 @@ public class GwtTestIOClient extends IOTest {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
 		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
 		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+	}
+
+	@Test
+	public void testUploadLong() {
+		final Long value = 123L;
+		FormPanel form = new FormPanel();
+		form.setAction("/org.gwtapp.io.IOTest.JUnit/upload.rpc");
+		form.setMethod(FormPanel.METHOD_POST);
+		form.add(new Hidden("value", "" + value));
+		RootPanel.get().add(form);
+		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
+			@Override
+			public void onSuccessful(Long result) {
+				finishTest();
+				assertEquals(value, result);
+			}
+
+			@Override
+			public void onFailure(Throwable e) {
+			}
+		});
+		form.submit();
+		delayTestFinish(500);
 	}
 }
