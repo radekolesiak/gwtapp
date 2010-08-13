@@ -1,7 +1,6 @@
 package org.gwtapp.io.client;
 
 import org.gwtapp.core.client.AsyncCallbackAdapter;
-import org.gwtapp.core.client.Value;
 import org.gwtapp.io.rpc.DownloadService;
 import org.gwtapp.io.rpc.DownloadServiceAsync;
 import org.junit.Test;
@@ -27,10 +26,7 @@ public class GwtTestIOClient extends IOTest {
 	@Test
 	public void testDownloadText() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
-		//final Value<Boolean> handled = new Value<Boolean>(false);
 		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
 		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
-		// delayTestFinish(500);
-		// assertTrue(handled.get());
 	}
 }
