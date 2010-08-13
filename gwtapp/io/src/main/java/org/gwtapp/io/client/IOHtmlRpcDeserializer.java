@@ -3,7 +3,7 @@ package org.gwtapp.io.client;
 
 import com.google.gwt.i18n.client.Dictionary;
 
-public class IOHtmlRpcDeserializer<T> {
+public class IOHtmlRpcDeserializer {
 
 	public final static String DICTIONARY = "RpcValues";
 
@@ -23,7 +23,7 @@ public class IOHtmlRpcDeserializer<T> {
 		this.values = values;
 	}
 
-	public T getValue(String valueName) {
+	public Object getValue(String valueName) {
 		try {
 			String value = values.get(valueName);
 			if (values != null && value != null) {
