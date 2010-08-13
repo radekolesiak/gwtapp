@@ -61,8 +61,10 @@ public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
 		if (value == null) {
 			throw new IllegalArgumentException("value must not be null");
 		}
-		this.value = value;
-		setChecked(value);
+		if (this.value != value) {
+			setChecked(value);
+			this.value = value;
+		}
 		if (fireEvents) {
 			ValueChangeEvent.fire(this, value);
 		}
