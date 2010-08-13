@@ -17,7 +17,6 @@ public class IOServer {
 			Method serviceMethod = IOService.class
 					.getMethod("getResponseIsSerializable");
 			assert (serviceMethod != null);
-			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
 			throw new IOServerException(e);
@@ -29,7 +28,6 @@ public class IOServer {
 			Method serviceMethod = IOService.class
 					.getMethod("getResponseSerializable");
 			assert (serviceMethod != null);
-			assert (object != null);
 			return RPC.encodeResponseForSuccess(serviceMethod, object);
 		} catch (Exception e) {
 			throw new IOServerException(e);

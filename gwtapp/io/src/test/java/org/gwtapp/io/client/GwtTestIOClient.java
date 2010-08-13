@@ -46,7 +46,7 @@ public class GwtTestIOClient extends IOTest {
 	}
 
 	@Test
-	public void testUploadLong() {
+	public void testUploadValidLong() {
 		final Long value = 123L;
 		FormPanel form = new FormPanel();
 		form.setAction("/org.gwtapp.io.IOTest.JUnit/upload.rpc");
@@ -62,6 +62,49 @@ public class GwtTestIOClient extends IOTest {
 
 			@Override
 			public void onFailure(Throwable e) {
+			}
+		});
+		form.submit();
+		delayTestFinish(500);
+	}
+
+	@Test
+	public void testUploadEmptyLong() {
+		FormPanel form = new FormPanel();
+		form.setAction("/org.gwtapp.io.IOTest.JUnit/upload.rpc");
+		form.setMethod(FormPanel.METHOD_POST);
+		form.add(new Hidden("value", ""));
+		RootPanel.get().add(form);
+		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
+			@Override
+			public void onSuccessful(Long result) {
+				finishTest();
+				assertNull(result);
+			}
+
+			@Override
+			public void onFailure(Throwable e) {
+			}
+		});
+		form.submit();
+		delayTestFinish(500);
+	}
+
+	@Test
+	public void testUploadInvalidValidLong() {
+		FormPanel form = new FormPanel();
+		form.setAction("/org.gwtapp.io.IOTest.JUnit/upload.rpc");
+		form.setMethod(FormPanel.METHOD_POST);
+		form.add(new Hidden("value", "123xyz"));
+		RootPanel.get().add(form);
+		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
+			@Override
+			public void onSuccessful(Long result) {
+			}
+
+			@Override
+			public void onFailure(Throwable e) {
+				finishTest();
 			}
 		});
 		form.submit();

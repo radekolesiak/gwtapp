@@ -30,14 +30,14 @@ public class IOUploadHttpServlet<T> extends HttpServlet {
 		onResponse(httpResponse, UploadType.FAILULE, value);
 	}
 
-	protected void onResponse(HttpServletResponse httpResponse, UploadType type,
-			Object object) {
+	protected void onResponse(HttpServletResponse httpResponse,
+			UploadType type, Object object) {
 		httpResponse.setContentType("text/html");
 		StringBuffer buffer = new StringBuffer();
 		try {
 			switch (type) {
 			case SUCCESSFUL:
-				if (object instanceof IsSerializable) {
+				if (object == null || object instanceof IsSerializable) {
 					buffer.append(IOServer.encode(IOServer
 							.success((IsSerializable) object)));
 				} else if (object instanceof Serializable) {
