@@ -18,13 +18,26 @@ public class GwtTestIOClient extends IOTest {
 	}
 
 	@Test(expected = TimeoutException.class)
-	public void testDownloadTextNoServiceUpdate() {
+	public void testDownloadTextNoServiceUpdate1() {
+		DownloadServiceAsync service = GWT.create(DownloadService.class);
+		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+	}
+
+	@Test(expected = TimeoutException.class)
+	public void testDownloadTextNoServiceUpdate2() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
 		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
 	}
 
 	@Test
-	public void testDownloadText() {
+	public void testDownloadText1() {
+		DownloadServiceAsync service = GWT.create(DownloadService.class);
+		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
+		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+	}
+
+	@Test
+	public void testDownloadText2() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
 		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
 		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
