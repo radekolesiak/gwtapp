@@ -6,6 +6,6 @@ public abstract class IOTest extends GWTTestCase {
 
 	@Override
 	public String getModuleName() {
-		return "org.gwtapp.io.IO";
+		return "org.gwtapp.io.IOTest";
 	}
 }
