@@ -1,6 +1,5 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.AsyncCallbackAdapter;
 import org.gwtapp.io.client.IOHtmlRpcDeserializer;
 import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.startapp.rpc.api.DownloadService;

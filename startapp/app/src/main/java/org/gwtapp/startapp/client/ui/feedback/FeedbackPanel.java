@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client.ui.feedback;
 
-import org.gwtapp.core.client.AsyncCallbackAdapter;
+import org.gwtapp.startapp.client.AsyncCallbackAdapter;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.template.client.handler.TextAreaHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;

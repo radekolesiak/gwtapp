@@ -1,6 +1,6 @@
 package org.gwtapp.io.client;
 
-import org.gwtapp.core.client.AsyncCallbackAdapter;
+import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.io.rpc.DownloadService;
 import org.gwtapp.io.rpc.DownloadServiceAsync;
 import org.junit.Test;
@@ -22,27 +22,27 @@ public class GwtTestIOClient extends IOTest {
 	@Test(expected = TimeoutException.class)
 	public void testDownloadTextNoServiceUpdate1() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
-		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+		service.dowloadText("aaa", new SimpleAsyncCallback<Void>());
 	}
 
 	@Test(expected = TimeoutException.class)
 	public void testDownloadTextNoServiceUpdate2() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
-		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+		service.dowloadText("aaa", new SimpleAsyncCallback<Void>());
 	}
 
 	@Test
 	public void testDownloadText1() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
 		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
-		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+		service.dowloadText("aaa", new SimpleAsyncCallback<Void>());
 	}
 
 	@Test
 	public void testDownloadText2() {
 		DownloadServiceAsync service = GWT.create(DownloadService.class);
 		IORpcRequestBuilder.updateService((ServiceDefTarget) service);
-		service.dowloadText("aaa", new AsyncCallbackAdapter<Void>());
+		service.dowloadText("aaa", new SimpleAsyncCallback<Void>());
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package org.gwtapp.core.client;
+package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.rpc.exception.RpcException;
 
