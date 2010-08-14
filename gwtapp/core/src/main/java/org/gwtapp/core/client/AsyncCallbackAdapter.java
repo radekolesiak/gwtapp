@@ -21,7 +21,7 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 		message(e, SERVER_ERROR);
 	}
 
-	public static void onInternalError(Throwable e) {
+	protected void onInternalError(Throwable e) {
 		message(e, SERVER_ERROR);
 	}
 
