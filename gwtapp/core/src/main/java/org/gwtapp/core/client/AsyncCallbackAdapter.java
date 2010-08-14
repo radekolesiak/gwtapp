@@ -13,18 +13,6 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 	public AsyncCallbackAdapter() {
 	}
 
-	private static void message(Throwable e, String message) {
-		Window.alert(e + " " + message);
-	}
-
-	protected void onRpcError(RpcException e) {
-		message(e, SERVER_ERROR);
-	}
-
-	protected void onInternalError(Throwable e) {
-		message(e, SERVER_ERROR);
-	}
-
 	public void onCommonBefore() {
 	}
 
@@ -87,5 +75,17 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 	}
 
 	public void onSuccessCallback(T result) {
+	}
+
+	protected void onRpcError(RpcException e) {
+		message(e, SERVER_ERROR);
+	}
+
+	protected void onInternalError(Throwable e) {
+		message(e, SERVER_ERROR);
+	}
+
+	private static void message(Throwable e, String message) {
+		Window.alert(e + " " + message);
 	}
 }
