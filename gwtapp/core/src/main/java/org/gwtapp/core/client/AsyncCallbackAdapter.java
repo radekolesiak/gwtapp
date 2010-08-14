@@ -10,8 +10,6 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 
 	public static final String SERVER_ERROR = "There was a problem accessing your website. Check that you are connected to the Internet.";
 
-	public static final String NOT_SIGNED_IN_ERROR = "You are not signed in. Please click 'Ok' to return to the sign in page.";
-
 	public AsyncCallbackAdapter() {
 	}
 
