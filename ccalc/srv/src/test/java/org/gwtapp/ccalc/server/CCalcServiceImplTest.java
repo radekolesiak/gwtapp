@@ -27,6 +27,8 @@ public class CCalcServiceImplTest extends RemoteServiceServlet implements
 			user.setEmail(login + "@email.com");
 			user.setName("Name: " + login);
 			return user;
+		} else if ("xyz".equals(login)) {
+			return null;
 		} else {
 			return null;
 		}
