@@ -1,6 +1,7 @@
 package org.gwtapp.ccalc.client.api;
 
 import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.client.data.user.User;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -10,4 +11,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface CCalcService extends RemoteService {
 
 	void backup(Book book) throws RpcException;
+	
+	User getUser(String login) throws RpcException;
 }
