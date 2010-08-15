@@ -21,6 +21,30 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>${derby.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-all</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-persistence</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-persistence-jdbc</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-io</artifactId>
 			<version>${gwtapp.version}</version>
