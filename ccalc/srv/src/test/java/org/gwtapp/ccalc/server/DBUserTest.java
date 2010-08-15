@@ -23,13 +23,13 @@ public class DBUserTest {
 	}
 
 	@Test
-	public void init() {
+	public void testInit() {
 		Assert.assertNotNull(emf);
 		Assert.assertNotNull(em);
 	}
 
 	@Test
-	public void createUser() {
+	public void testCreateUser() {
 		User user = new User();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
