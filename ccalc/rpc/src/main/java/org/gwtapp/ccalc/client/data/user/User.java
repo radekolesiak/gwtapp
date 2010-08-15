@@ -1,23 +1,29 @@
 package org.gwtapp.ccalc.client.data.user;
 
+import java.io.Serializable;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+@Entity(name = "ccalc-user")
+public class User implements Serializable {
 
-@Entity
-public class User implements IsSerializable {
+	private static final long serialVersionUID = 2672857431181845032L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Basic
 	private String login;
 
+	@Basic
 	private String email;
 
+	@Basic
 	private String name;
 
 	public User() {
