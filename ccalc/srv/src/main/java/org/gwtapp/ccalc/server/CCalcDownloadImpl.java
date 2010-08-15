@@ -3,7 +3,7 @@ package org.gwtapp.ccalc.server;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcDownloadService;
-import org.gwtapp.ccalc.client.data.Book;
+import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.io.server.IODownloadHttpServlet;
 
 

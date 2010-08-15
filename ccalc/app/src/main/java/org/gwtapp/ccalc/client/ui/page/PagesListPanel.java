@@ -5,11 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.data.Calculation;
-import org.gwtapp.ccalc.client.data.Currency;
-import org.gwtapp.ccalc.client.data.Operation;
-import org.gwtapp.ccalc.client.data.Page;
-import org.gwtapp.ccalc.client.data.PageImpl;
+import org.gwtapp.ccalc.client.data.book.Calculation;
+import org.gwtapp.ccalc.client.data.book.Currency;
+import org.gwtapp.ccalc.client.data.book.Operation;
+import org.gwtapp.ccalc.client.data.book.Page;
+import org.gwtapp.ccalc.client.data.book.PageImpl;
 import org.gwtapp.ccalc.client.proc.calculator.Calculator;
 import org.gwtapp.ccalc.client.ui.DisclosurePanel;
 import org.gwtapp.ccalc.client.ui.calculations.CalculationsItemFormPanel;

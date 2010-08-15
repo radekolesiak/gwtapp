@@ -1,9 +1,9 @@
 package org.gwtapp.ccalc.client.ui.book;
 
 import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.data.Book;
-import org.gwtapp.ccalc.client.data.BookImpl;
-import org.gwtapp.ccalc.client.data.Currency;
+import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.client.data.book.BookImpl;
+import org.gwtapp.ccalc.client.data.book.Currency;
 import org.gwtapp.ccalc.client.ui.page.PagesListPanel;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.UiHandler;

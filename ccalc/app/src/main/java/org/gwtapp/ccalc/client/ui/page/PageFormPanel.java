@@ -3,11 +3,11 @@ package org.gwtapp.ccalc.client.ui.page;
 import java.util.List;
 
 import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.data.Calculation;
-import org.gwtapp.ccalc.client.data.CalculationImpl;
-import org.gwtapp.ccalc.client.data.Operation;
-import org.gwtapp.ccalc.client.data.Page;
-import org.gwtapp.ccalc.client.data.PageImpl;
+import org.gwtapp.ccalc.client.data.book.Calculation;
+import org.gwtapp.ccalc.client.data.book.CalculationImpl;
+import org.gwtapp.ccalc.client.data.book.Operation;
+import org.gwtapp.ccalc.client.data.book.Page;
+import org.gwtapp.ccalc.client.data.book.PageImpl;
 import org.gwtapp.ccalc.client.ui.calculations.CalculationsHeaderFormPanel;
 import org.gwtapp.ccalc.client.ui.calculations.CalculationsItemFormPanel;
 import org.gwtapp.ccalc.client.ui.calculations.CalculationsListFormPanel;

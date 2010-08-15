@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcService;
-import org.gwtapp.ccalc.client.data.Book;
+import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;

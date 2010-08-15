@@ -7,11 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.gwtapp.ccalc.client.data.Calculation;
-import org.gwtapp.ccalc.client.data.CalculationImpl;
-import org.gwtapp.ccalc.client.data.Currency;
-import org.gwtapp.ccalc.client.data.Operation;
-import org.gwtapp.ccalc.client.data.OperationImpl;
+import org.gwtapp.ccalc.client.data.book.Calculation;
+import org.gwtapp.ccalc.client.data.book.CalculationImpl;
+import org.gwtapp.ccalc.client.data.book.Currency;
+import org.gwtapp.ccalc.client.data.book.Operation;
+import org.gwtapp.ccalc.client.data.book.OperationImpl;
 
 
 public class Calculator {

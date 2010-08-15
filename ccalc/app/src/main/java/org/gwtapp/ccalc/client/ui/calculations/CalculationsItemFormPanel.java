@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.data.Calculation;
-import org.gwtapp.ccalc.client.data.CalculationImpl;
-import org.gwtapp.ccalc.client.data.Currency;
-import org.gwtapp.ccalc.client.data.Operation;
-import org.gwtapp.ccalc.client.data.OperationImpl;
-import org.gwtapp.ccalc.client.data.metafields.calculation.FifoMetaField;
+import org.gwtapp.ccalc.client.data.book.Calculation;
+import org.gwtapp.ccalc.client.data.book.CalculationImpl;
+import org.gwtapp.ccalc.client.data.book.Currency;
+import org.gwtapp.ccalc.client.data.book.Operation;
+import org.gwtapp.ccalc.client.data.book.OperationImpl;
+import org.gwtapp.ccalc.client.data.book.metafields.calculation.FifoMetaField;
 import org.gwtapp.ccalc.client.handler.fields.ExchangeLabelHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
