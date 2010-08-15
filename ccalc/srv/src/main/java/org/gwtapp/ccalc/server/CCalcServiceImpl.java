@@ -14,6 +14,7 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.client.data.user.User;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -80,5 +81,10 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public User getUser(String login) throws RpcException {
+		return null;
 	}
 }
