@@ -1,0 +1,17 @@
++ pages
++ open/save no store on server
++ mail backup
++ sum column/row
++ base currency
++ precision 2 places for calculated results
++ non input column (set as read-only for the present) to make as text label
++ on http://ccalc-web.appspot.com/ redirect to https://ccalc-web.appspot.com/
+-+ css
+- hide Component column for the present
+-+ speed up UI<->model getValue(), setValue() and calculations
+- fire value for Value, Exchange and Currency columns only
+-+ validation
+- Polish characters
+- internationalization
+- mail backup attachment
+- exceptions logger (mailing)

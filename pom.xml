@@ -94,7 +94,7 @@
 	<modules>
 		<module>gwtapp</module>
 		<module>startapp</module>
-<!--		<module>startapp</module>-->
+		<module>ccalc</module>
 	</modules>
 
 </project>
