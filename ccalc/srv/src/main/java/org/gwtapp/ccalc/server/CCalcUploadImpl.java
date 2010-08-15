@@ -17,7 +17,6 @@ import org.gwtapp.ccalc.client.data.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.io.server.IOUploadHttpServlet;
 
-
 @SuppressWarnings("serial")
 public class CCalcUploadImpl extends IOUploadHttpServlet<Book> {
 
@@ -38,7 +37,7 @@ public class CCalcUploadImpl extends IOUploadHttpServlet<Book> {
 					InputStream input = item.openStream();
 					try {
 						if (!item.isFormField()) {
-							String xml = new String(IOUtils.toByteArray(input));
+							String xml = getXML(item);
 							xml = StringEscapeUtils.unescapeJava(xml);
 							Book book = Utils.decode(xml.getBytes());
 							if (book != null) {
@@ -60,5 +59,10 @@ public class CCalcUploadImpl extends IOUploadHttpServlet<Book> {
 			log.error("error", e);
 			doFailure(response, new RpcException());
 		}
+	}
+
+	protected String getXML(FileItemStream item) throws IOException {
+		InputStream input = item.openStream();
+		return new String(IOUtils.toByteArray(input));
 	}
 }
