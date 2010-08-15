@@ -79,12 +79,6 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 		if ("radek@olesiak.biz".equals(recipient)) {
 			return true;
 		}
-		if ("radek@imdapi.com".equals(recipient)) {
-			return true;
-		}
-		if ("mariola@olesiak.biz".equals(recipient)) {
-			return true;
-		}
 		return false;
 	}
 }
