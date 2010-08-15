@@ -18,11 +18,17 @@ public class CCalcServiceImplTest extends RemoteServiceServlet implements
 
 	@Override
 	public User getUser(String login) throws RpcException {
-		User user = new User();
-		user.setId(1L);
-		user.setLogin(login);
-		user.setEmail(login + "@email.com");
-		user.setName("Name: " + login);
-		return user;
+		if (login == null) {
+			throw new RpcException();
+		} else if ("aba".equals(login)) {
+			User user = new User();
+			user.setId(1L);
+			user.setLogin(login);
+			user.setEmail(login + "@email.com");
+			user.setName("Name: " + login);
+			return user;
+		} else {
+			return null;
+		}
 	}
 }
