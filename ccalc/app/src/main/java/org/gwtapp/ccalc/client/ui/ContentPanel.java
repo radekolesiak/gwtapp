@@ -35,6 +35,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 			@Override
 			public void onClick(ClickEvent event) {
 				Book value = bookPanel.getWidget().getValue();
+				value.setCurrentVersion(Book.CURRENT_VERSION.def());
 				CCalc.backup(value);
 				CCalc.downloader.download(value, CCalc
 						.getAsyncCallback(new SimpleAsyncCallback<Void>()));

@@ -6,9 +6,8 @@ import java.util.List;
 
 import org.gwtapp.core.rpc.data.HashModelData;
 
+@SuppressWarnings("serial")
 public class BookImpl extends HashModelData implements Book, Serializable {
-
-	private static final long serialVersionUID = 3229335339311649797L;
 
 	private String name = NAME.add(this).def();
 	private String description = DESCRIPTION.add(this).def();
@@ -16,6 +15,7 @@ public class BookImpl extends HashModelData implements Book, Serializable {
 	private Currency baseCurrency = BASE_CURRENCY.add(this).def();
 	private Currency defaultCurrency = DEFAULT_CURRENCY.add(this).def();
 	private List<Page> pages = PAGES.add(this).def();
+	private String currentVersion = CURRENT_VERSION.add(this).def();
 
 	@Override
 	public void setName(String name) {
@@ -77,15 +77,25 @@ public class BookImpl extends HashModelData implements Book, Serializable {
 		this.defaultCurrency = defaultCurrency;
 	}
 
+	@Override
+	public void setCurrentVersion(String currentVersion) {
+		this.currentVersion = currentVersion;
+	}
+
+	@Override
+	public String getCurrentVersion() {
+		return currentVersion;
+	}
+
 	public static Book createDefault() {
 		Book book = new BookImpl();
 		book.setName("Book");
 		{
 			Page page = new PageImpl();
 			page.setName(new Date() + "");
-			//page.getOperations().add(new OperationImpl());
-			//page.getOperations().add(new OperationImpl());
-			//page.getOperations().add(new OperationImpl());
+			// page.getOperations().add(new OperationImpl());
+			// page.getOperations().add(new OperationImpl());
+			// page.getOperations().add(new OperationImpl());
 			book.getPages().add(page);
 		}
 		return book;

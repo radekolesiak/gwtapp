@@ -9,6 +9,7 @@ import org.gwtapp.ccalc.client.data.metafields.book.DescriptionMetaField;
 import org.gwtapp.ccalc.client.data.metafields.book.MailMetaField;
 import org.gwtapp.ccalc.client.data.metafields.book.NameMetaField;
 import org.gwtapp.ccalc.client.data.metafields.book.PagesMetaField;
+import org.gwtapp.ccalc.client.data.metafields.book.CurrentVersionMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -21,6 +22,7 @@ public interface Book extends ModelData, IsSerializable, Serializable {
 	public final static BaseCurrencyMetaField BASE_CURRENCY = new BaseCurrencyMetaField();
 	public final static DefaultCurrencyMetaField DEFAULT_CURRENCY = new DefaultCurrencyMetaField();
 	public final static PagesMetaField PAGES = new PagesMetaField();
+	public final static CurrentVersionMetaField CURRENT_VERSION = new CurrentVersionMetaField();
 
 	void setName(String name);
 
@@ -37,12 +39,16 @@ public interface Book extends ModelData, IsSerializable, Serializable {
 	void setBaseCurrency(Currency baseCurrency);
 
 	Currency getBaseCurrency();
-	
+
 	void setDefaultCurrency(Currency defaultCurrency);
 
-	Currency getDefaultCurrency();	
+	Currency getDefaultCurrency();
 
 	void setPages(List<Page> pages);
 
 	List<Page> getPages();
+
+	void setCurrentVersion(String currentVersion);
+
+	String getCurrentVersion();
 }
