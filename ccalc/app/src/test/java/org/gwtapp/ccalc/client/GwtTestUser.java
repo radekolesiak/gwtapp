@@ -10,7 +10,12 @@ public class GwtTestUser extends CCalcTest {
 	public void testUserService() {
 		CCalc.service.getUser("aba", new SimpleAsyncCallback<User>() {
 			@Override
-			public void onSuccess(User result) {
+			public void onSuccess(User user) {
+				assertNotNull(user);
+				assertEquals(new Long(1L),user.getId());
+				assertEquals("aba",user.getLogin());
+				assertEquals("aba@email.com",user.getEmail());
+				assertEquals("Name: aba",user.getName());
 				finishTest();
 			}
 		});
