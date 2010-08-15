@@ -22,7 +22,7 @@ public class CCalc {
 	public final static TemplateRepository templateService = new TemplateRepository(
 			"/templates/");
 
-	private final static CCalcServiceAsync service = GWT
+	public final static CCalcServiceAsync service = GWT
 			.create(CCalcService.class);
 
 	public final static CCalcDownloadServiceAsync downloader = GWT
