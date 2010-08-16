@@ -12,4 +12,6 @@ public interface CCalcServiceAsync {
 	void backup(Book book, AsyncCallback<Void> callback);
 
 	void getUser(String login, AsyncCallback<User> callback);
+
+	void addUser(User user, AsyncCallback<Long> callback);
 }

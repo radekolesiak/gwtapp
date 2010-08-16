@@ -11,6 +11,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface CCalcService extends RemoteService {
 
 	void backup(Book book) throws RpcException;
-	
+
 	User getUser(String login) throws RpcException;
+
+	long addUser(User user) throws RpcException;
 }

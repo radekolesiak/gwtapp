@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<!-- Tests with preinited states -->
+	<!-- Tests with preinited states. More like experimental tests. -->
 	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
 	<inherits name='org.gwtapp.ccalc.CCalc' />
 </module>
