@@ -19,10 +19,11 @@ public class CCalcServiceTestImpl extends RemoteServiceServlet implements
 	private static EntityManager em;
 
 	static {
-		//emf = Persistence.createEntityManagerFactory("derbyPU");
-		//em = emf.createEntityManager();
+		emf = Persistence.createEntityManagerFactory("derbyPU");
+		em = emf.createEntityManager();
+		initDB();
 	}
-
+	
 	@Override
 	public void backup(Book book) throws RpcException {
 
@@ -44,5 +45,10 @@ public class CCalcServiceTestImpl extends RemoteServiceServlet implements
 		} else {
 			return null;
 		}
+	}
+
+
+	private static void initDB(){
+		
 	}
 }
