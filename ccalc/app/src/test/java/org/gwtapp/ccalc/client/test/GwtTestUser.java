@@ -56,7 +56,7 @@ public class GwtTestUser extends CCalcTest {
 			@Override
 			public void onSuccess(User user) {
 				assertNotNull(user);
-				assertEquals(new Long(1L), user.getId());
+				assertNotNull(user.getId());
 				assertEquals("012", user.getLogin());
 				assertEquals("012@012.com", user.getEmail());
 				assertEquals("Zero One Two", user.getName());

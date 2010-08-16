@@ -36,8 +36,6 @@ public class DBUserTest extends CCalcTest {
 	@Test(expected = RollbackException.class)
 	public void testCreateUserDouble() {
 		em.persist(new User("b", "b", "b"));
-		tx.commit();
-		tx.begin();
 		em.persist(new User("b", "b", "b"));
 		tx.commit();
 	}
