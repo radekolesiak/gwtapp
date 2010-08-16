@@ -27,12 +27,12 @@ public abstract class CCalcTest {
 		tx = em.getTransaction();
 		tx.begin();
 	}
-	
-
 
 	@After
 	public void closeTx() {
-		tx.commit();
+		if (tx.isActive()) {
+			tx.commit();
+		}
 	}
 
 	@AfterClass

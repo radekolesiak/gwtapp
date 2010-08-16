@@ -3,15 +3,13 @@ package org.gwtapp.ccalc.client.data.user;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity(name = "CCalcUser")
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "login", "email" }) })
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 2672857431181845032L;
@@ -21,9 +19,11 @@ public class User implements Serializable {
 	private Long id;
 
 	@Basic
+	@Column(nullable = false, unique = true)
 	private String login;
 
 	@Basic
+	@Column(nullable = false, unique = true)
 	private String email;
 
 	@Basic

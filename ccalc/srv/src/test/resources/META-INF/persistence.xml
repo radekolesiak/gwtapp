@@ -10,7 +10,7 @@
 			<property name="openjpa.ConnectionURL" value="jdbc:derby:target/derbyDB;create=true" />
 			<property name="openjpa.ConnectionUserName" value="app" />
 			<property name="openjpa.ConnectionPassword" value="app" />
-			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" />
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(SchemaAction='add,deleteTableContents')" />
 			<property name="openjpa.Log" value="DefaultLevel=WARN,SQL=TRACE" />
 		</properties>
 	</persistence-unit>
