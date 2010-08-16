@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "ccalc-user")
+@Entity(name = "CCalcUser")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 2672857431181845032L;

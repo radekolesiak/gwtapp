@@ -48,4 +48,33 @@ public class GwtTestUser extends CCalcTest {
 		});
 		delayTestFinish(250);
 	}
+
+	@Test
+	public void testUserDB() {
+		CCalc.service.getUser("012", new SimpleAsyncCallback<User>() {
+			@Override
+			public void onSuccess(User user) {
+				assertNotNull(user);
+				assertEquals(new Long(1L), user.getId());
+				assertEquals("012", user.getLogin());
+				assertEquals("012@012.com", user.getEmail());
+				assertEquals("Zero One Two", user.getName());
+				finishTest();
+			}
+		});
+		delayTestFinish(250);
+	}
+
+	@Test
+	public void testUserServiceNotFound() {
+		CCalc.service.getUser("qwerty", new SimpleAsyncCallback<User>() {
+			@Override
+			public void onFailure(Throwable e) {
+				assertTrue(e instanceof RpcException);
+				finishTest();
+			}
+		});
+		delayTestFinish(250);
+	}
+
 }

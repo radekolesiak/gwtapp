@@ -1,34 +1,24 @@
 package org.gwtapp.ccalc.server.test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
+
+import javax.persistence.Query;
 
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.ccalc.client.data.user.User;
 import org.gwtapp.core.rpc.exception.RpcException;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
 @SuppressWarnings("serial")
-public class CCalcServiceTestImpl extends RemoteServiceServlet implements
+public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 		CCalcService {
 
-	private static EntityManagerFactory emf;
-	private static EntityManager em;
-
-	static {
-		emf = Persistence.createEntityManagerFactory("derbyPU");
-		em = emf.createEntityManager();
-		initDB();
-	}
-	
 	@Override
 	public void backup(Book book) throws RpcException {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public User getUser(String login) throws RpcException {
 		if (login == null) {
@@ -43,12 +33,15 @@ public class CCalcServiceTestImpl extends RemoteServiceServlet implements
 		} else if ("xyz".equals(login)) {
 			return null;
 		} else {
-			return null;
+			Query query = getEntityManager().createQuery(
+					"SELECT u FROM CCalcUser u WHERE u.login = ?1");
+			query.setParameter(1, login);
+			List<User> users = query.getResultList();
+			if (users.isEmpty()) {
+				throw new RpcException();
+			} else {
+				return users.get(0);
+			}
 		}
-	}
-
-
-	private static void initDB(){
-		
 	}
 }
