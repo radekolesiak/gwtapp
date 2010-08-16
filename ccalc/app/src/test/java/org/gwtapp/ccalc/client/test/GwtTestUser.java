@@ -1,5 +1,7 @@
-package org.gwtapp.ccalc.client;
+package org.gwtapp.ccalc.client.test;
 
+import org.gwtapp.ccalc.client.CCalc;
+import org.gwtapp.ccalc.client.CCalcTest;
 import org.gwtapp.ccalc.client.data.user.User;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.rpc.exception.RpcException;

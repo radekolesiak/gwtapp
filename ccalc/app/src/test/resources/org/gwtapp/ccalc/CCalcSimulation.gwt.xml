@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
+	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.simulation.CCalcServiceTestImpl' />
 	<inherits name='org.gwtapp.ccalc.CCalc' />
 </module>

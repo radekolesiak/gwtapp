@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.server;
+package org.gwtapp.ccalc.server.test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
