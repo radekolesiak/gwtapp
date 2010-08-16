@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
+	<!-- Tests without preinited states. It's full user simulation. -->
 	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.simulation.CCalcServiceTestImpl' />
 	<inherits name='org.gwtapp.ccalc.CCalc' />
 </module>
