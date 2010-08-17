@@ -64,9 +64,9 @@
 			<version>${commons.io.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gwtapp.ccalc</groupId>
-			<artifactId>ccalc-rpc</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-rpc</artifactId>
+			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>

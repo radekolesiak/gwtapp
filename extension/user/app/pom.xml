@@ -23,8 +23,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.gwtapp.ccalc</groupId>
-			<artifactId>ccalc-rpc</artifactId>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-rpc</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>

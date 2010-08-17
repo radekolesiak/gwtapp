@@ -26,6 +26,11 @@
 			<version>${openjpa.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-rpc</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-core</artifactId>
 			<version>${gwtapp.version}</version>

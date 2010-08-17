@@ -42,6 +42,11 @@
 			<artifactId>extension-widget</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-app</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
 		<!--  GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
