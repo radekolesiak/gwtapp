@@ -24,5 +24,6 @@
 	</licenses>
 
 	<modules>
+		<module>widgets</module>
 	</modules>
 </project>

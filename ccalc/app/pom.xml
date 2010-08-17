@@ -39,7 +39,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-widgets</artifactId>
+			<artifactId>extension-widgets</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<!--  GWT deps -->

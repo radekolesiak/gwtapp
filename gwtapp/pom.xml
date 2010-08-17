@@ -28,7 +28,6 @@
 		<module>io</module>		
 		<module>template</module>
 		<module>form</module>
-		<module>widgets</module>
 		<module>rest</module>
 	</modules>
 
