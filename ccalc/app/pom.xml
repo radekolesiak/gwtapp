@@ -38,8 +38,8 @@
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>extension-widgets</artifactId>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-widget</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<!--  GWT deps -->

@@ -9,9 +9,9 @@
 		<version>1.2.0</version>
 	</parent>
 
-	<groupId>org.gwtapp</groupId>
-	<artifactId>extensions</artifactId>
-	<name>extensions</name>
+	<groupId>org.gwtapp.extension</groupId>
+	<artifactId>extension</artifactId>
+	<name>extension</name>
 
 	<packaging>pom</packaging>
 
@@ -24,6 +24,6 @@
 	</licenses>
 
 	<modules>
-		<module>widgets</module>
+		<module>widget</module>
 	</modules>
 </project>
