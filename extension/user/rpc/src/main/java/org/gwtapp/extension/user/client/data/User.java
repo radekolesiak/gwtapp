@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.client.data.user;
+package org.gwtapp.extension.user.client.data;
 
 import java.io.Serializable;
 

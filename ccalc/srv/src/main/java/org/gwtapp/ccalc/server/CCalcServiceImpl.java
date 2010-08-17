@@ -15,11 +15,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
-import org.gwtapp.ccalc.client.data.user.User;
-import org.gwtapp.ccalc.client.data.user.exception.UserValidationException;
-import org.gwtapp.ccalc.client.data.user.exception.UserValidationException.Email;
-import org.gwtapp.ccalc.client.data.user.exception.UserValidationException.Login;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

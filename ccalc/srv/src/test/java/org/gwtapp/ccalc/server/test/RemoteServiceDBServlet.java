@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.gwtapp.ccalc.client.data.user.User;
+import org.gwtapp.extension.user.client.data.User;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

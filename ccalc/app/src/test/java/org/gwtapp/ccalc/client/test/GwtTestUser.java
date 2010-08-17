@@ -2,10 +2,10 @@ package org.gwtapp.ccalc.client.test;
 
 import org.gwtapp.ccalc.client.CCalc;
 import org.gwtapp.ccalc.client.CCalcTest;
-import org.gwtapp.ccalc.client.data.user.User;
-import org.gwtapp.ccalc.client.data.user.exception.UserValidationException;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.junit.Test;
 
 public class GwtTestUser extends CCalcTest {

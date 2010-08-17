@@ -1,7 +1,7 @@
 package org.gwtapp.ccalc.client.api;
 
 import org.gwtapp.ccalc.client.data.book.Book;
-import org.gwtapp.ccalc.client.data.user.User;
+import org.gwtapp.extension.user.client.data.User;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;

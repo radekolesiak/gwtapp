@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.client.data.user.exception;
+package org.gwtapp.extension.user.client.data.exception;
 
 import org.gwtapp.core.rpc.exception.RpcException;
 

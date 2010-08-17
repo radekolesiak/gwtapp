@@ -2,7 +2,7 @@ package org.gwtapp.ccalc.server.test;
 
 import javax.persistence.RollbackException;
 
-import org.gwtapp.ccalc.client.data.user.User;
+import org.gwtapp.extension.user.client.data.User;
 import org.junit.Assert;
 import org.junit.Test;
 
