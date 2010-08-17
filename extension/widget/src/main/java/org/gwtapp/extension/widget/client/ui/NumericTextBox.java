@@ -1,4 +1,4 @@
-package org.gwtapp.extension.widgets.client.ui;
+package org.gwtapp.extension.widget.client.ui;
 
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;

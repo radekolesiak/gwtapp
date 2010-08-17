@@ -1,4 +1,4 @@
-package org.gwtapp.extension.widgets.client.ui;
+package org.gwtapp.extension.widget.client.ui;
 
 import java.util.Date;
 

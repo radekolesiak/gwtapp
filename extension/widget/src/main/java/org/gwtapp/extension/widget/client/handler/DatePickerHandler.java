@@ -1,6 +1,6 @@
-package org.gwtapp.extension.widgets.client.handler;
+package org.gwtapp.extension.widget.client.handler;
 
-import org.gwtapp.extension.widgets.client.ui.DatePickerPanel;
+import org.gwtapp.extension.widget.client.ui.DatePickerPanel;
 import org.gwtapp.template.client.UiHandler;
 
 

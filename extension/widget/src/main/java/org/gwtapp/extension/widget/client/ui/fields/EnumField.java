@@ -1,4 +1,4 @@
-package org.gwtapp.extension.widgets.client.ui.fields;
+package org.gwtapp.extension.widget.client.ui.fields;
 
 import org.gwtapp.core.rpc.data.HasLabelModel;
 

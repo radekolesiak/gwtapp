@@ -1,6 +1,6 @@
-package org.gwtapp.extension.widgets.client.ui.fields;
+package org.gwtapp.extension.widget.client.ui.fields;
 
-import org.gwtapp.extension.widgets.client.ui.ValuePanel;
+import org.gwtapp.extension.widget.client.ui.ValuePanel;
 
 public class LabelField<T> extends ValuePanel<T> {
 

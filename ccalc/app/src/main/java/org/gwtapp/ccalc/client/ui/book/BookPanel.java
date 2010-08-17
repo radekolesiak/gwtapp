@@ -5,7 +5,7 @@ import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.ccalc.client.data.book.BookImpl;
 import org.gwtapp.ccalc.client.data.book.Currency;
 import org.gwtapp.ccalc.client.ui.page.PagesListPanel;
-import org.gwtapp.extension.widgets.client.ui.fields.EnumField;
+import org.gwtapp.extension.widget.client.ui.fields.EnumField;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;

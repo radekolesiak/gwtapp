@@ -1,4 +1,4 @@
-package org.gwtapp.extension.widgets.client.ui;
+package org.gwtapp.extension.widget.client.ui;
 
 public class DoubleNumericTextBox extends NumericTextBox<Double> {
 

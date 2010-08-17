@@ -1,6 +1,6 @@
-package org.gwtapp.extension.widgets.client.ui.fields;
+package org.gwtapp.extension.widget.client.ui.fields;
 
-import org.gwtapp.extension.widgets.client.ui.NumericTextBox;
+import org.gwtapp.extension.widget.client.ui.NumericTextBox;
 
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusHandler;
