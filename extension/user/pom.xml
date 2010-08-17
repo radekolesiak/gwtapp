@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.gwtapp</groupId>
-		<artifactId>gwtapp-base</artifactId>
+		<groupId>org.gwtapp.extension</groupId>
+		<artifactId>extension</artifactId>
 		<version>1.2.0</version>
 	</parent>
 
 	<groupId>org.gwtapp.extension</groupId>
-	<artifactId>extension</artifactId>
-	<name>extension</name>
+	<artifactId>extension-user</artifactId>
+	<name>extension-user</name>
 
 	<packaging>pom</packaging>
 
@@ -24,7 +24,8 @@
 	</licenses>
 
 	<modules>
-		<module>widget</module>
-		<module>user</module>
+		<module>rpc</module>
+		<module>srv</module>
+		<module>app</module>
 	</modules>
 </project>
