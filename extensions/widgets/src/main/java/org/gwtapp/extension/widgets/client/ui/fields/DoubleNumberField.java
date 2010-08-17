@@ -1,6 +1,6 @@
-package org.gwtapp.widgets.client.ui.fields;
+package org.gwtapp.extension.widgets.client.ui.fields;
 
-import org.gwtapp.widgets.client.ui.DoubleNumericTextBox;
+import org.gwtapp.extension.widgets.client.ui.DoubleNumericTextBox;
 
 public class DoubleNumberField extends NumberField<Double>{
 

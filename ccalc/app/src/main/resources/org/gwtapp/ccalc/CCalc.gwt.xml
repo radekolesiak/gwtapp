@@ -2,5 +2,5 @@
 <module>
 	<inherits name='org.gwtapp.io.IO' />
 	<inherits name='org.gwtapp.form.Form' />
-	<inherits name='org.gwtapp.widgets.Widgets' />
+	<inherits name='org.gwtapp.extension.widgets.Widgets' />
 </module>

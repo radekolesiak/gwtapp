@@ -1,7 +1,7 @@
-package org.gwtapp.widgets.client.handler.fields;
+package org.gwtapp.extension.widgets.client.handler.fields;
 
+import org.gwtapp.extension.widgets.client.ui.fields.LabelField;
 import org.gwtapp.template.client.UiHandler;
-import org.gwtapp.widgets.client.ui.fields.LabelField;
 
 
 public class LabelHandler<T> extends UiHandler<LabelField<T>> {

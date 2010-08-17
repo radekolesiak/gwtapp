@@ -3,8 +3,8 @@ package org.gwtapp.ccalc.client.ui.calculations;
 import org.gwtapp.ccalc.client.CCalc;
 import org.gwtapp.ccalc.client.data.book.Calculation;
 import org.gwtapp.ccalc.client.proc.calculator.Calculator;
+import org.gwtapp.extension.widgets.client.handler.fields.LabelHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
-import org.gwtapp.widgets.client.handler.fields.LabelHandler;
 
 
 public class CalculationsSummaryRowPanel extends

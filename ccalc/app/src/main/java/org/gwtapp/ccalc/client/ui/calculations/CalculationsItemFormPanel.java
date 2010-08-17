@@ -11,13 +11,13 @@ import org.gwtapp.ccalc.client.data.book.Operation;
 import org.gwtapp.ccalc.client.data.book.OperationImpl;
 import org.gwtapp.ccalc.client.data.book.metafields.calculation.FifoMetaField;
 import org.gwtapp.ccalc.client.handler.fields.ExchangeLabelHandler;
+import org.gwtapp.extension.widgets.client.handler.DatePickerHandler;
+import org.gwtapp.extension.widgets.client.handler.fields.DoubleNumberHandler;
+import org.gwtapp.extension.widgets.client.handler.fields.EnumHandler;
+import org.gwtapp.extension.widgets.client.handler.fields.LabelHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
-import org.gwtapp.widgets.client.handler.DatePickerHandler;
-import org.gwtapp.widgets.client.handler.fields.DoubleNumberHandler;
-import org.gwtapp.widgets.client.handler.fields.EnumHandler;
-import org.gwtapp.widgets.client.handler.fields.LabelHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

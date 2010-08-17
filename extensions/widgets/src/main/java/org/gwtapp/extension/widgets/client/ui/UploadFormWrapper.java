@@ -1,4 +1,4 @@
-package org.gwtapp.widgets.client.ui;
+package org.gwtapp.extension.widgets.client.ui;
 
 import org.gwtapp.template.client.ui.FormWrapper;
 

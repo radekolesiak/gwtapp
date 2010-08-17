@@ -1,7 +1,7 @@
 package org.gwtapp.ccalc.client.ui.fields;
 
 import org.gwtapp.ccalc.client.proc.calculator.Calculator;
-import org.gwtapp.widgets.client.ui.fields.LabelField;
+import org.gwtapp.extension.widgets.client.ui.fields.LabelField;
 
 
 public class ExchangeLabelField extends LabelField<Double> {

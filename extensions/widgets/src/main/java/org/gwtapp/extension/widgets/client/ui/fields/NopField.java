@@ -1,4 +1,4 @@
-package org.gwtapp.widgets.client.ui.fields;
+package org.gwtapp.extension.widgets.client.ui.fields;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

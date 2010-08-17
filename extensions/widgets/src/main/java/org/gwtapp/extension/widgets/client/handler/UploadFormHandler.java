@@ -1,7 +1,7 @@
-package org.gwtapp.widgets.client.handler;
+package org.gwtapp.extension.widgets.client.handler;
 
+import org.gwtapp.extension.widgets.client.ui.UploadFormWrapper;
 import org.gwtapp.template.client.UiHandler;
-import org.gwtapp.widgets.client.ui.UploadFormWrapper;
 
 
 public class UploadFormHandler extends UiHandler<UploadFormWrapper> {

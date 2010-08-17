@@ -2,11 +2,11 @@ package org.gwtapp.ccalc.client.ui.book;
 
 import org.gwtapp.ccalc.client.CCalc;
 import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.extension.widgets.client.handler.UploadFormHandler;
 import org.gwtapp.io.client.IOSubmitCompleteHandler;
 import org.gwtapp.template.client.handler.FileUploadHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
-import org.gwtapp.widgets.client.handler.UploadFormHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
