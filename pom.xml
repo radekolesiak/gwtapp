@@ -97,6 +97,7 @@
 
 	<modules>
 		<module>gwtapp</module>
+		<module>extensions</module>
 		<module>startapp</module>
 		<module>ccalc</module>
 	</modules>
