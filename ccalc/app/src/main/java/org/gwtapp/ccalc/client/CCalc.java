@@ -9,6 +9,8 @@ import org.gwtapp.ccalc.client.data.book.Currency;
 import org.gwtapp.ccalc.client.ui.CCalcPanel;
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
+import org.gwtapp.extension.user.client.api.UserService;
+import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.io.client.IORpcRequestBuilder;
 import org.gwtapp.template.client.TemplateRepository;
 
@@ -22,8 +24,11 @@ public class CCalc {
 	public final static TemplateRepository templateService = new TemplateRepository(
 			"/templates/");
 
-	public final static CCalcServiceAsync service = GWT
+	public final static CCalcServiceAsync ccalc = GWT
 			.create(CCalcService.class);
+
+	public final static UserServiceAsync user = GWT
+			.create(UserService.class);
 
 	public final static CCalcDownloadServiceAsync downloader = GWT
 			.create(CCalcDownloadService.class);
@@ -32,7 +37,7 @@ public class CCalc {
 	}
 
 	public static void backup(Book book) {
-		service.backup(book, CCalc
+		ccalc.backup(book, CCalc
 				.getAsyncCallback(new SimpleAsyncCallback<Void>()));
 	}
 

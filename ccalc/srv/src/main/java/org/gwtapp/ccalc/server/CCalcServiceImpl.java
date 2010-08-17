@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
@@ -26,7 +27,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class CCalcServiceImpl extends RemoteServiceServlet implements
-		CCalcService {
+		CCalcService, UserService {
 
 	private final static Logger log = Logger.getLogger(CCalcServiceImpl.class);
 

@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
@@ -15,7 +16,7 @@ import org.gwtapp.extension.user.client.data.exception.UserValidationException.L
 
 @SuppressWarnings("serial")
 public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
-		CCalcService {
+		CCalcService, UserService {
 
 	@Override
 	public void backup(Book book) throws RpcException {

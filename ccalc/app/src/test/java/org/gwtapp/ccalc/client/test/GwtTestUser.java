@@ -12,7 +12,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserService() {
-		CCalc.service.getUser("aba", new SimpleAsyncCallback<User>() {
+		CCalc.user.getUser("aba", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNotNull(user);
@@ -28,7 +28,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceNullResult() {
-		CCalc.service.getUser("xyz", new SimpleAsyncCallback<User>() {
+		CCalc.user.getUser("xyz", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNull(user);
@@ -40,7 +40,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceRpcException() {
-		CCalc.service.getUser(null, new SimpleAsyncCallback<User>() {
+		CCalc.user.getUser(null, new SimpleAsyncCallback<User>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -52,7 +52,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserDB() {
-		CCalc.service.getUser("012", new SimpleAsyncCallback<User>() {
+		CCalc.user.getUser("012", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNotNull(user);
@@ -68,7 +68,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceNotFound() {
-		CCalc.service.getUser("qwerty", new SimpleAsyncCallback<User>() {
+		CCalc.user.getUser("qwerty", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -80,7 +80,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
-		CCalc.service.addUser(new User("aba", "", ""),
+		CCalc.user.addUser(new User("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -99,7 +99,7 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
-		CCalc.service.addUser(new User("xyz", "", ""),
+		CCalc.user.addUser(new User("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
