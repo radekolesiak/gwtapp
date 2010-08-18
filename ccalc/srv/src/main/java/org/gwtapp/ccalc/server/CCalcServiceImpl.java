@@ -11,23 +11,15 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.client.api.CCalcService;
 import org.gwtapp.ccalc.client.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
-import org.gwtapp.extension.user.client.api.UserService;
-import org.gwtapp.extension.user.client.data.User;
-import org.gwtapp.extension.user.client.data.exception.UserValidationException;
-import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
-import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class CCalcServiceImpl extends RemoteServiceServlet implements
-		CCalcService, UserService {
+		CCalcService {
 
 	private final static Logger log = Logger.getLogger(CCalcServiceImpl.class);
 
@@ -88,31 +80,5 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public User getUser(String login) throws RpcException {
-		throw new NotImplementedException();
-	}
-
-	@Override
-	public long addUser(User user) throws RpcException {
-		if (true)
-			throw new NotImplementedException();
-		UserValidationException validation = new UserValidationException();
-		if (StringUtils.isEmpty(user.getLogin())) {
-			validation.setLogin(Login.INVALID);
-		} else if (user.getLogin().matches("[A-Z]+")) {
-			validation.setLogin(Login.NOT_LOWER_CASE);
-		} else if (!user.getLogin().matches("[a-z]+")) {
-			validation.setLogin(Login.NOT_LETTERS_ONLY);
-		} else if (user.getLogin().length() < 3) {
-			validation.setLogin(Login.TOO_SHORT);
-		}
-		if (validation.getLogin() != Login.VALID
-				|| validation.getEmail() != Email.VALID) {
-			throw validation;
-		}
-		return -1;
 	}
 }
