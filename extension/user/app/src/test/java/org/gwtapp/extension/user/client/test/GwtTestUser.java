@@ -1,18 +1,22 @@
-package org.gwtapp.ccalc.client.test;
+package org.gwtapp.extension.user.client.test;
 
-import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.CCalcTest;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.UserTestCase;
+import org.gwtapp.extension.user.client.api.UserService;
+import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.junit.Test;
 
-public class GwtTestUser extends CCalcTest {
+import com.google.gwt.core.client.GWT;
+
+public class GwtTestUser extends UserTestCase {
 
 	@Test
 	public void testUserService() {
-		CCalc.user.getUser("aba", new SimpleAsyncCallback<User>() {
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.getUser("aba", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNotNull(user);
@@ -28,7 +32,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceNullResult() {
-		CCalc.user.getUser("xyz", new SimpleAsyncCallback<User>() {
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.getUser("xyz", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNull(user);
@@ -40,7 +45,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceRpcException() {
-		CCalc.user.getUser(null, new SimpleAsyncCallback<User>() {
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.getUser(null, new SimpleAsyncCallback<User>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -52,7 +58,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserDB() {
-		CCalc.user.getUser("012", new SimpleAsyncCallback<User>() {
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.getUser("012", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onSuccess(User user) {
 				assertNotNull(user);
@@ -68,7 +75,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testUserServiceNotFound() {
-		CCalc.user.getUser("qwerty", new SimpleAsyncCallback<User>() {
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.getUser("qwerty", new SimpleAsyncCallback<User>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -80,7 +88,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
-		CCalc.user.addUser(new User("aba", "", ""),
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.addUser(new User("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -99,7 +108,8 @@ public class GwtTestUser extends CCalcTest {
 
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
-		CCalc.user.addUser(new User("xyz", "", ""),
+		UserServiceAsync user = GWT.create(UserService.class);
+		user.addUser(new User("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {

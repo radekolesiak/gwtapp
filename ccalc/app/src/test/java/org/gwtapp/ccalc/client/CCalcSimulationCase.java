@@ -2,9 +2,9 @@ package org.gwtapp.ccalc.client;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
-public abstract class CCalcTest extends GWTTestCase {
+public abstract class CCalcSimulationCase extends GWTTestCase {
 	@Override
 	public String getModuleName() {
-		return "org.gwtapp.ccalc.CCalcTest";
+		return "org.gwtapp.ccalc.CCalcSimulation";
 	}
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<!-- Tests with preinited states. More like experimental tests. -->
+	<servlet path='/extension.user.rpc' class='org.gwtapp.extension.user.server.test.UserServiceTestImpl' />
+	<inherits name='org.gwtapp.extension.user.User' />
+	<source path='client' />
+	<source path='rpc' />
+</module>
