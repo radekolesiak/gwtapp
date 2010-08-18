@@ -2,7 +2,7 @@
 <module>
 	<!-- Tests with preinited states. More like experimental tests. -->
 	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
-	<servlet path='/extension.user.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
+	<servlet path='/extension.user.rpc' class='org.gwtapp.extension.user.server.test.UserServiceTestImpl' />
 	<inherits name='org.gwtapp.ccalc.CCalc' />
 	<source path='client' />
 	<source path='rpc' />
