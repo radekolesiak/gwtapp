@@ -12,8 +12,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.ccalc.client.api.CCalcService;
-import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.rpc.api.CCalcService;
+import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;

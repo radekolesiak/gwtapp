@@ -1,8 +1,8 @@
 package org.gwtapp.ccalc.client.ui.calculations;
 
 import org.gwtapp.ccalc.client.CCalc;
-import org.gwtapp.ccalc.client.data.book.Calculation;
-import org.gwtapp.ccalc.client.proc.calculator.Calculator;
+import org.gwtapp.ccalc.rpc.data.book.Calculation;
+import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
 import org.gwtapp.extension.widget.client.handler.fields.LabelHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 

@@ -8,8 +8,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import org.apache.log4j.Logger;
-import org.gwtapp.ccalc.client.data.book.Book;
-import org.gwtapp.ccalc.client.data.book.BookImpl;
+import org.gwtapp.ccalc.rpc.data.book.Book;
+import org.gwtapp.ccalc.rpc.data.book.BookImpl;
 
 
 public class Utils {

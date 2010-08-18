@@ -1,7 +1,7 @@
 package org.gwtapp.ccalc.server.test;
 
-import org.gwtapp.ccalc.client.api.CCalcService;
-import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.rpc.api.CCalcService;
+import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 

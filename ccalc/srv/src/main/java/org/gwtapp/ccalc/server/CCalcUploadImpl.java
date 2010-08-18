@@ -13,7 +13,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
-import org.gwtapp.ccalc.client.data.book.Book;
+import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.io.server.IOUploadHttpServlet;
 

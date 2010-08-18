@@ -1,12 +1,12 @@
 package org.gwtapp.ccalc.client;
 
-import org.gwtapp.ccalc.client.api.CCalcDownloadService;
-import org.gwtapp.ccalc.client.api.CCalcDownloadServiceAsync;
-import org.gwtapp.ccalc.client.api.CCalcService;
-import org.gwtapp.ccalc.client.api.CCalcServiceAsync;
-import org.gwtapp.ccalc.client.data.book.Book;
-import org.gwtapp.ccalc.client.data.book.Currency;
 import org.gwtapp.ccalc.client.ui.CCalcPanel;
+import org.gwtapp.ccalc.rpc.api.CCalcDownloadService;
+import org.gwtapp.ccalc.rpc.api.CCalcDownloadServiceAsync;
+import org.gwtapp.ccalc.rpc.api.CCalcService;
+import org.gwtapp.ccalc.rpc.api.CCalcServiceAsync;
+import org.gwtapp.ccalc.rpc.data.book.Book;
+import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.UserService;
