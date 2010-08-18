@@ -4,4 +4,6 @@
 	<servlet path='/ccalc.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
 	<servlet path='/extension.user.rpc' class='org.gwtapp.ccalc.server.test.CCalcServiceTestImpl' />
 	<inherits name='org.gwtapp.ccalc.CCalc' />
+	<source path='client' />
+	<source path='rpc' />
 </module>
