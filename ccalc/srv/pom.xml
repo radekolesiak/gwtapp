@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.gwtapp.ccalc</groupId>
 		<artifactId>ccalc</artifactId>
-		<version>1.2.0</version>
+		<version>1.0</version>
 	</parent>
 
 	<artifactId>ccalc-srv</artifactId>
@@ -20,6 +20,21 @@
 	</developers>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.gwtapp.ccalc</groupId>
+			<artifactId>ccalc-rpc</artifactId>
+			<version>${imd.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-srv</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
@@ -44,11 +59,6 @@
 			<version>${openjpa.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-io</artifactId>
-			<version>${gwtapp.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
 			<version>${gae.version}</version>
@@ -62,16 +72,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons.io.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-user-srv</artifactId>
-			<version>${gwtapp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp.ccalc</groupId>
-			<artifactId>ccalc-rpc</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.gwtapp.ccalc</groupId>
 		<artifactId>ccalc</artifactId>
-		<version>1.2.0</version>
+		<version>1.0</version>
 	</parent>
 
 	<artifactId>ccalc-app</artifactId>
@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>org.gwtapp.ccalc</groupId>
 			<artifactId>ccalc-rpc</artifactId>
-			<version>${gwtapp.version}</version>
+			<version>${imd.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
