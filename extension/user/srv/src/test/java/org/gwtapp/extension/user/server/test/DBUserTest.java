@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.server.test;
+package org.gwtapp.extension.user.server.test;
 
 import javax.persistence.RollbackException;
 
@@ -6,7 +6,7 @@ import org.gwtapp.extension.user.client.data.User;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DBUserTest extends CCalcTest {
+public class DBUserTest extends UserInit {
 
 	@Test
 	public void testInit() {

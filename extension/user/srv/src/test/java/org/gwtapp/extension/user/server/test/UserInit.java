@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.server.test;
+package org.gwtapp.extension.user.server.test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-public abstract class CCalcTest {
+public abstract class UserInit {
 
 	protected static EntityManagerFactory emf;
 	protected static EntityManager em;
