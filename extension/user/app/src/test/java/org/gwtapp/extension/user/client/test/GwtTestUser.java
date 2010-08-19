@@ -7,6 +7,7 @@ import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
+import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.junit.Test;
@@ -91,7 +92,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new User("aba", "", ""),
+		user.addUser(new ReCaptchaUser("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -111,7 +112,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new User("xyz", "", ""),
+		user.addUser(new ReCaptchaUser("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {

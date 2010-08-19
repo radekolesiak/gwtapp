@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.UserService;
+import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
@@ -45,7 +46,7 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 	}
 
 	@Override
-	public long addUser(User user) throws RpcException {
+	public long addUser(ReCaptchaUser user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if ("aba".equalsIgnoreCase(user.getLogin())) {
 			validation.setLogin(Login.ALREADY_EXISTS);

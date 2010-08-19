@@ -1,4 +1,4 @@
-package org.gwtapp.extension.user.server;
+package org.gwtapp.extension.user.server.service;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -9,15 +9,11 @@ import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
+import org.gwtapp.extension.user.server.stub.UserAddStub;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-public class UserServiceImpl extends RemoteServiceServlet implements
-		UserService {
+public class UserServiceImpl implements UserService, UserAddStub {
 
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
-
-	private static final long serialVersionUID = -7438675123588513834L;
 
 	@Override
 	public User getUser(String login) throws RpcException {
@@ -25,7 +21,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		throw new NotImplementedException();
 	}
 
-	//@Override
+	@Override
 	public long addUser(User user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(user.getLogin())) {
