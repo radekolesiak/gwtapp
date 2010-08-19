@@ -26,11 +26,6 @@
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa-persistence</artifactId>
-			<version>${openjpa.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
