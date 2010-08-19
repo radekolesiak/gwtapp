@@ -25,7 +25,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		throw new NotImplementedException();
 	}
 
-	@Override
+	//@Override
 	public long addUser(User user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(user.getLogin())) {

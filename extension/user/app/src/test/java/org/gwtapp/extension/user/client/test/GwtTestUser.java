@@ -3,6 +3,8 @@ package org.gwtapp.extension.user.client.test;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.UserTestCase;
+import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
+import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.extension.user.client.data.User;
@@ -88,7 +90,7 @@ public class GwtTestUser extends UserTestCase {
 
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
-		UserServiceAsync user = GWT.create(UserService.class);
+		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
 		user.addUser(new User("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
@@ -108,7 +110,7 @@ public class GwtTestUser extends UserTestCase {
 
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
-		UserServiceAsync user = GWT.create(UserService.class);
+		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
 		user.addUser(new User("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override

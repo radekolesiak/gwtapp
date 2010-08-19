@@ -6,6 +6,7 @@ import javax.persistence.Query;
 
 import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
@@ -14,7 +15,7 @@ import org.gwtapp.extension.user.client.data.exception.UserValidationException.L
 
 @SuppressWarnings("serial")
 public class UserServiceTestImpl extends RemoteServiceDBServlet implements
-		UserService {
+		UserService, ReCaptchaUserService {
 
 	@SuppressWarnings("unchecked")
 	@Override

@@ -6,7 +6,7 @@ import org.gwtapp.extension.user.client.data.User;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("extension.user.rpc")
-public interface UserService extends RemoteService {
-	User getUser(String login) throws RpcException;
+@RemoteServiceRelativePath("extension.recaptchauser.rpc")
+public interface ReCaptchaUserService extends RemoteService {
+	long addUser(User user) throws RpcException;
 }
