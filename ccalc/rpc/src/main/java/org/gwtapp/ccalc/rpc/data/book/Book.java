@@ -3,13 +3,13 @@ package org.gwtapp.ccalc.rpc.data.book;
 import java.io.Serializable;
 import java.util.List;
 
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.BaseCurrencyMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.CurrentVersionMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.DefaultCurrencyMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.DescriptionMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.MailMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.NameMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.book.PagesMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.BaseCurrencyMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.CurrentVersionMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.DefaultCurrencyMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.DescriptionMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.MailMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.NameMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.book.PagesMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;

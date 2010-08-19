@@ -3,11 +3,11 @@ package org.gwtapp.ccalc.rpc.data.book;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.gwtapp.ccalc.rpc.data.book.metafields.operation.CurrencyMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.operation.DateMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.operation.ExchangeMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.operation.NameMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.operation.ValueMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.CurrencyMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.DateMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.ExchangeMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.NameMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.ValueMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;

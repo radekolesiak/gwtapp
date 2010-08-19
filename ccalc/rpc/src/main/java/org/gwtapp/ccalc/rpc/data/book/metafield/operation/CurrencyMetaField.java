@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.operation;
+package org.gwtapp.ccalc.rpc.data.book.metafield.operation;
 
 import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.ccalc.rpc.data.book.Operation;

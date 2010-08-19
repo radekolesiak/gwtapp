@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.summarypage;
+package org.gwtapp.ccalc.rpc.data.book.metafield.summarypage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,29 +8,30 @@ import org.gwtapp.ccalc.rpc.data.book.SummaryPage;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 
 
-public class CalculationsMetaField extends
+public class SummaryMetaField extends
 		MetaFieldAdapter<SummaryPage, List<Calculation>> {
 
-	public CalculationsMetaField() {
-		this("calculations");
+	public SummaryMetaField() {
+		this("summary");
 	}
 
-	public CalculationsMetaField(String name) {
+	public SummaryMetaField(String name) {
 		super(name);
 	}
 
 	@Override
 	public List<Calculation> get(SummaryPage model) {
-		return model.getCalculations();
+		return model.getSummary();
 	}
 
 	@Override
 	public void set(SummaryPage model, List<Calculation> value) {
-		model.setCalculations((List<Calculation>) value);
+		model.setSummary((List<Calculation>) value);
 	}
 
 	@Override
 	public List<Calculation> def() {
 		return new ArrayList<Calculation>();
 	}
+
 }

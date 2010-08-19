@@ -3,9 +3,9 @@ package org.gwtapp.ccalc.rpc.data.book;
 import java.io.Serializable;
 import java.util.List;
 
-import org.gwtapp.ccalc.rpc.data.book.metafields.summarypage.CalculationsMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.summarypage.IdMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.summarypage.SummaryMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.summarypage.CalculationsMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.summarypage.IdMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.summarypage.SummaryMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;

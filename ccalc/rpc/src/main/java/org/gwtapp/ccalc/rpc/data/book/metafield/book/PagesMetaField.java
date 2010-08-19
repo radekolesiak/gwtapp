@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.book;
+package org.gwtapp.ccalc.rpc.data.book.metafield.book;
 
 import java.util.ArrayList;
 import java.util.List;

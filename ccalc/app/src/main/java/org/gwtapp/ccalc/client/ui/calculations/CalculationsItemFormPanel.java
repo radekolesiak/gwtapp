@@ -10,7 +10,7 @@ import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.FifoMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
 import org.gwtapp.extension.widget.client.handler.DatePickerHandler;
 import org.gwtapp.extension.widget.client.handler.fields.DoubleNumberHandler;
 import org.gwtapp.extension.widget.client.handler.fields.EnumHandler;

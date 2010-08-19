@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.operation;
+package org.gwtapp.ccalc.rpc.data.book.metafield.operation;
 
 import java.util.Date;
 

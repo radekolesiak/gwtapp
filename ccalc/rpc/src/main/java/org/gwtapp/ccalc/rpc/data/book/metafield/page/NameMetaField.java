@@ -1,4 +1,4 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.page;
+package org.gwtapp.ccalc.rpc.data.book.metafield.page;
 
 import org.gwtapp.ccalc.rpc.data.book.Page;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;

@@ -2,11 +2,11 @@ package org.gwtapp.ccalc.rpc.data.book;
 
 import java.io.Serializable;
 
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.ComponentMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.CostMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.FifoBaseMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.FifoMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.calculation.IncomeMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.ComponentMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.CostMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoBaseMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.IncomeMetaField;
 
 
 public interface Calculation extends Operation, Serializable {

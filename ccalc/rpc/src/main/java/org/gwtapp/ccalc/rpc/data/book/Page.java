@@ -3,8 +3,8 @@ package org.gwtapp.ccalc.rpc.data.book;
 import java.io.Serializable;
 import java.util.List;
 
-import org.gwtapp.ccalc.rpc.data.book.metafields.page.NameMetaField;
-import org.gwtapp.ccalc.rpc.data.book.metafields.page.OperationsMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.page.NameMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.page.OperationsMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 
 import com.google.gwt.user.client.rpc.IsSerializable;

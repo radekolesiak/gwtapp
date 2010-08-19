@@ -1,27 +1,27 @@
-package org.gwtapp.ccalc.rpc.data.book.metafields.book;
+package org.gwtapp.ccalc.rpc.data.book.metafield.book;
 
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 
 
-public class MailMetaField extends MetaFieldAdapter<Book, String> {
+public class NameMetaField extends MetaFieldAdapter<Book, String> {
 
-	public MailMetaField() {
-		this("mail");
+	public NameMetaField() {
+		this("name");
 	}
 
-	public MailMetaField(String name) {
+	public NameMetaField(String name) {
 		super(name);
 	}
 
 	@Override
 	public String get(Book model) {
-		return model.getMail();
+		return model.getName();
 	}
 
 	@Override
 	public void set(Book model, String value) {
-		model.setMail((String) value);
+		model.setName((String) value);
 	}
 	
 	@Override
