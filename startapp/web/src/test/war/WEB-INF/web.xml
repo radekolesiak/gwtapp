@@ -6,4 +6,15 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 	</welcome-file-list>
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.html</url-pattern>
+			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
+		</jsp-property-group>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>

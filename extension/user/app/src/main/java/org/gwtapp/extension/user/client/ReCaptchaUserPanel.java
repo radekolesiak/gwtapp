@@ -18,7 +18,6 @@ public class ReCaptchaUserPanel extends TemplateModelPanel<ReCaptchaUser> {
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
 		add(ReCaptchaUser.NAME, new TextBoxHandler());
 		add("reCaptchaContainer", reCaptcha);
-		JavaScriptObject.createFunction();
 	}
 
 	@Override
