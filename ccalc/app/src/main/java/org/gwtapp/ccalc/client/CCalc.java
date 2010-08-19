@@ -9,6 +9,7 @@ import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
+import org.gwtapp.extension.user.client.ReCaptchaUserPanel;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.io.client.IORpcRequestBuilder;
@@ -27,8 +28,7 @@ public class CCalc {
 	public final static CCalcServiceAsync ccalc = GWT
 			.create(CCalcService.class);
 
-	public final static UserServiceAsync user = GWT
-			.create(UserService.class);
+	public final static UserServiceAsync user = GWT.create(UserService.class);
 
 	public final static CCalcDownloadServiceAsync downloader = GWT
 			.create(CCalcDownloadService.class);
@@ -46,6 +46,8 @@ public class CCalc {
 
 	public static Currency defaultCurrency = Book.DEFAULT_CURRENCY.def();
 
+	private static AsyncCallbackInjector injector = null;
+
 	public static <T> AsyncCallback<T> getAsyncCallback(
 			AsyncCallback<T> callback) {
 		if (injector == null) {
@@ -55,10 +57,11 @@ public class CCalc {
 		}
 	}
 
-	private static AsyncCallbackInjector injector = null;
-
 	public static void doAppLoad(AsyncCallbackInjector injector) {
 		CCalc.injector = injector;
 		RootPanel.get(APPLICATION_DIV).add(new CCalcPanel());
+		RootPanel.get().add(
+				new ReCaptchaUserPanel(templateService
+						.load("user/ReCaptchaUserPanel.jsp")));
 	}
 }
