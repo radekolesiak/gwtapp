@@ -11,6 +11,7 @@ public class ReCaptchaUserServiceImpl implements ReCaptchaUserService {
 
 	@Override
 	public long addUser(ReCaptchaUser user) throws RpcException {
+		// TODO verify reCaptcha first
 		return userAddService.addUser(user);
 	}
 }

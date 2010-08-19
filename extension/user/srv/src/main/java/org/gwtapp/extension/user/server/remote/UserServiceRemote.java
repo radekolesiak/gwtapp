@@ -17,5 +17,4 @@ public class UserServiceRemote extends RemoteServiceServlet implements
 	public User getUser(String login) throws RpcException {
 		return userService.getUser(login);
 	}
-
 }
