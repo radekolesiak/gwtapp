@@ -7,10 +7,6 @@
         <version>1.2.0</version>
     </parent>
     <artifactId>startapp-web</artifactId>
-    <properties>
-        <gwt.version>1.7.0</gwt.version>
-        <runTarget>welcomeGWT.html</runTarget>
-    </properties>
     <name>startapp-web</name>
     <packaging>war</packaging>
     <developers>
@@ -21,16 +17,6 @@
         </developer>
     </developers>
     <dependencies>
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>${taglibs.standard.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
         <!-- StartApp -->
         <dependency>
             <groupId>org.gwtapp</groupId>
@@ -41,6 +27,23 @@
             <groupId>org.gwtapp</groupId>
             <artifactId>startapp-srv</artifactId>
             <version>${gwtapp.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-app</artifactId>
+			<version>${gwtapp.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <!--  JSTL -->
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>${taglibs.standard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
         <!--  GAE -->
         <dependency>

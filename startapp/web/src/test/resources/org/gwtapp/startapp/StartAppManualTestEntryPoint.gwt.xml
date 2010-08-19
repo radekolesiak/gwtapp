@@ -1,4 +1,7 @@
 <module rename-to="gwt.startappmanualtestentry">
-	<inherits name='org.gwtapp.startapp.StartApp' />
+	<inherits name="com.google.gwt.junit.JUnit"/>
+	<inherits name='org.gwtapp.extension.user.User' />
 	<entry-point class='org.gwtapp.startapp.client.StartAppManualTestEntryPoint' />
+	<source path='client' />
+	<source path='rpc' />
 </module>
