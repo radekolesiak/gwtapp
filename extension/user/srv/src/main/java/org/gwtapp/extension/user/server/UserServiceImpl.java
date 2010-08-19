@@ -2,14 +2,13 @@ package org.gwtapp.extension.user.server;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

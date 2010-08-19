@@ -9,25 +9,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "CCalcUser")
-public class User implements Serializable {
+import org.gwtapp.core.rpc.data.HashModelData;
+import org.gwtapp.extension.user.client.data.metafield.EmailMetaField;
+import org.gwtapp.extension.user.client.data.metafield.IdMetaField;
+import org.gwtapp.extension.user.client.data.metafield.LoginMetaField;
+import org.gwtapp.extension.user.client.data.metafield.NameMetaField;
 
-	private static final long serialVersionUID = 2672857431181845032L;
+@SuppressWarnings("serial")
+@Entity(name = "CCalcUser")
+public class User extends HashModelData implements Serializable {
+
+	public final static IdMetaField ID = new IdMetaField();
+	public final static LoginMetaField LOGIN = new LoginMetaField();
+	public final static EmailMetaField EMAIL = new EmailMetaField();
+	public final static NameMetaField NAME = new NameMetaField();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id = ID.add(this).def();
 
 	@Basic
 	@Column(nullable = false, unique = true)
-	private String login;
+	private String login = LOGIN.add(this).def();
 
 	@Basic
 	@Column(nullable = false, unique = true)
-	private String email;
+	private String email = EMAIL.add(this).def();
 
 	@Basic
-	private String name;
+	private String name = NAME.add(this).def();
 
 	public User() {
 	}
