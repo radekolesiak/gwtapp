@@ -21,9 +21,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javaee-api.version}</version>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-persistence</artifactId>
+			<version>${openjpa.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
