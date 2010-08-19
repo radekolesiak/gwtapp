@@ -34,6 +34,7 @@ public class ReCaptchaUserPanel extends TemplateModelPanel<ReCaptchaUser> {
 	}
 
 	protected void onReCaptchaLoaded() {
+		fireChangeEvent();
 	}
 
 	protected native void showReCaptcha(Element element,
