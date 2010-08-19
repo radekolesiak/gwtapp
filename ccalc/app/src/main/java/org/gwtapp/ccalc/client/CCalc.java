@@ -9,7 +9,6 @@ import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
-import org.gwtapp.extension.user.client.ReCaptchaUserPanel;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.io.client.IORpcRequestBuilder;
@@ -60,8 +59,5 @@ public class CCalc {
 	public static void doAppLoad(AsyncCallbackInjector injector) {
 		CCalc.injector = injector;
 		RootPanel.get(APPLICATION_DIV).add(new CCalcPanel());
-		RootPanel.get().add(
-				new ReCaptchaUserPanel(templateService
-						.load("user/ReCaptchaUserPanel.jsp")));
 	}
 }
