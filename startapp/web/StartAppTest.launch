@@ -41,4 +41,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.gwtapp.startapp.GwtTestSuiteStartApp"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="startapp-web"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512M"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:startapp-web}\target"/>
 </launchConfiguration>
