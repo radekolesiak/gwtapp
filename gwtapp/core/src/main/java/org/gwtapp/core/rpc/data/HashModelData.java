@@ -4,10 +4,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Transient;
+
 @SuppressWarnings("unchecked")
 public abstract class HashModelData extends AbstractModelData implements
 		HasMetaField {
 
+	@Transient
 	private Map<String, MetaField> autofields = new HashMap<String, MetaField>();
 
 	@Override
