@@ -218,6 +218,7 @@
 								<ul>
 									<li>Java language</li>
 									<li>RPC api, data structures and exceptions in Java shared on client and server sides</li>
+									<li>GIN Dependency Injection</li>
 									<li>Debugging</li>
 									<li>JUnit testing</li>
 									<li>Cross browser, optimal and obfuscated JavaScript code generator</li>
