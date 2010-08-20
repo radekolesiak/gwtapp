@@ -21,6 +21,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.googlecode.gwt.inject</groupId>
+			<artifactId>gin</artifactId>
+			<version>${gin.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa-persistence</artifactId>
 			<version>${openjpa.version}</version>

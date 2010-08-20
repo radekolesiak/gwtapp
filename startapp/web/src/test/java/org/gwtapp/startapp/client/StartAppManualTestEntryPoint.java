@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.extension.user.client.ReCaptchaUserRegisterPanel;
+import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.template.client.TemplateRepository;
 
@@ -20,27 +20,39 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 
 	@Override
 	public final void onModuleLoad() {
+		GIN gin = GWT.create(GIN.class);
+		GWT.log("" + gin.getAdapters().getService().get());
 		RootPanel.get().add(new Label("GWT Manual Testing"));
-		ReCaptchaUserRegisterPanel reCaptcha = new ReCaptchaUserRegisterPanel(template
-				.load("user/ReCaptchaUserPanel.jsp"));
+		ReCaptchaUserRegisterServicePanel reCaptcha = new ReCaptchaUserRegisterServicePanel(
+				template.load("user/ReCaptchaUserPanel.jsp"));
 		RootPanel.get().add(reCaptcha);
 		reCaptcha.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
-				RootPanel.get().add(new Label("ChangeEvent: reCaptcha has been loaded"));
+				RootPanel.get().add(
+						new Label("ChangeEvent: reCaptcha has been loaded"));
 			}
 		});
-		reCaptcha.addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<ReCaptchaUser> value) {
-				GWT.log("userRegister-login: "+value.getValue().getLogin());
-				GWT.log("userRegister-email: "+value.getValue().getEmail());
-				GWT.log("userRegister-name: "+value.getValue().getName());
-				GWT.log("userRegister-password: "+value.getValue().getPassword());
-				GWT.log("userRegister-password-verify: "+value.getValue().getPasswordVerify());
-				GWT.log("userRegister-response: "+value.getValue().getResponse());
-				GWT.log("userRegister-challenge: "+value.getValue().getChallenge());
-			}
-		});
+		reCaptcha
+				.addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
+					@Override
+					public void onValueChange(
+							ValueChangeEvent<ReCaptchaUser> value) {
+						GWT.log("userRegister-login: "
+								+ value.getValue().getLogin());
+						GWT.log("userRegister-email: "
+								+ value.getValue().getEmail());
+						GWT.log("userRegister-name: "
+								+ value.getValue().getName());
+						GWT.log("userRegister-password: "
+								+ value.getValue().getPassword());
+						GWT.log("userRegister-password-verify: "
+								+ value.getValue().getPasswordVerify());
+						GWT.log("userRegister-response: "
+								+ value.getValue().getResponse());
+						GWT.log("userRegister-challenge: "
+								+ value.getValue().getChallenge());
+					}
+				});
 	}
 }
