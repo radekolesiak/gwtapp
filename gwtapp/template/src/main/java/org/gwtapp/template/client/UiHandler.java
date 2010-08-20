@@ -51,11 +51,19 @@ public class UiHandler<T extends Widget> implements TemplateHandler {
 	}
 
 	public String getMessage(String name, String... params) {
-		return getTemplateMessage().getMessage(name, params);
+		if (getTemplateMessage() != null) {
+			return getTemplateMessage().getMessage(name, params);
+		} else {
+			return "";
+		}
 	}
 
 	public String getParamMessage(String name, Param... params) {
-		return getTemplateMessage().getMessage(name, params);
+		if (getTemplateMessage() != null) {
+			return getTemplateMessage().getMessage(name, params);
+		} else {
+			return "";
+		}
 	}
 
 	public void updateWidgetMessage(String name, String... params) {

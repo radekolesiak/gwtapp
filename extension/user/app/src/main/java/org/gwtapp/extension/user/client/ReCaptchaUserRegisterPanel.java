@@ -8,9 +8,11 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Element;
 
-public class ReCaptchaUserRegisterPanel extends TemplateModelPanel<ReCaptchaUser> {
+public class ReCaptchaUserRegisterPanel extends
+		TemplateModelPanel<ReCaptchaUser> {
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
+	private final WidgetHandler register = new WidgetHandler();
 
 	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
 		super(callback);
@@ -18,6 +20,7 @@ public class ReCaptchaUserRegisterPanel extends TemplateModelPanel<ReCaptchaUser
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
 		add(ReCaptchaUser.NAME, new TextBoxHandler());
 		add("reCaptchaContainer", reCaptcha);
+		add("register", register);
 	}
 
 	@Override
@@ -33,6 +36,10 @@ public class ReCaptchaUserRegisterPanel extends TemplateModelPanel<ReCaptchaUser
 	}
 
 	protected void onReCaptchaLoaded() {
+		String reCaptchaStyle = register.getMessage("reCaptchaStyle");
+		if (!reCaptchaStyle.isEmpty()) {
+			addStyleName(reCaptchaStyle);
+		}
 		fireChangeEvent();
 	}
 
@@ -41,10 +48,9 @@ public class ReCaptchaUserRegisterPanel extends TemplateModelPanel<ReCaptchaUser
 										$wnd.showReCaptcha(element, callback);
 										}-*/;
 
-	protected native JavaScriptObject createCallback(
-			ReCaptchaCallback callback)/*-{
-												return function(){
-												callback.@org.gwtapp.extension.user.client.ReCaptchaCallback::onCallback()();										
-												}
-												}-*/;
+	protected native JavaScriptObject createCallback(ReCaptchaCallback callback)/*-{
+																						return function(){
+																						callback.@org.gwtapp.extension.user.client.ReCaptchaCallback::onCallback()();										
+																						}
+																						}-*/;
 }

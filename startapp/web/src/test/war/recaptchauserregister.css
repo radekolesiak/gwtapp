@@ -1,0 +1,9 @@
+.recaptcha-user-panel .register {
+	display:none;
+	border: none;
+}
+
+.recaptcha-user-panel.recaptcha-loaded .register {
+	display:block;
+	border: green solid 3px;
+}
