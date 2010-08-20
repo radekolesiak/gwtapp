@@ -20,6 +20,8 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("unchecked")
 	private final Map<String, ValueChangeHandler> handlers = new HashMap<String, ValueChangeHandler>();
 
+	private boolean autoValueChangeFire = true;
+
 	public TemplateFormPanel(TemplateCallback callback) {
 		super(callback);
 		init();
@@ -51,11 +53,14 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 
 	@SuppressWarnings("unchecked")
 	public HasValue<?> addField(String name, HasValue<?> field) {
-		assert name != null && !name.isEmpty();;
+		assert name != null && !name.isEmpty();
+		;
 		ValueChangeHandler handler = new ValueChangeHandler() {
 			@Override
 			public void onValueChange(ValueChangeEvent event) {
-				ValueChangeEvent.fire(TemplateFormPanel.this, getValue());
+				if (isAutoValueChangeFire()) {
+					fireValueChangeEvent();
+				}
 			}
 		};
 		field.addValueChangeHandler(handler);
@@ -80,5 +85,13 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("unchecked")
 	protected Map<String, HasValue> getFields() {
 		return fields;
+	}
+
+	public void setAutoValueChangeFire(boolean autoValueChangeFire) {
+		this.autoValueChangeFire = autoValueChangeFire;
+	}
+
+	public boolean isAutoValueChangeFire() {
+		return autoValueChangeFire;
 	}
 }

@@ -19,6 +19,7 @@ public class ReCaptchaUserRegisterPanel extends
 
 	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
 		super(callback, new ReCaptchaUser());
+		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.LOGIN, new TextBoxHandler());
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
 		add(ReCaptchaUser.NAME, new TextBoxHandler());
