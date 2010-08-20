@@ -5,5 +5,5 @@ import com.google.gwt.inject.client.Ginjector;
 
 @GinModules(ClientModule.class)
 public interface GIN extends Ginjector {
-	Adapters getAdapters();
+	AsyncCallbackGinjector getAdapters();
 }

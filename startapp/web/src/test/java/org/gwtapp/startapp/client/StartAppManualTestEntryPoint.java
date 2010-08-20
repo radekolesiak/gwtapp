@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.client;
 
+import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.template.client.TemplateRepository;
@@ -21,7 +22,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 	@Override
 	public final void onModuleLoad() {
 		GIN gin = GWT.create(GIN.class);
-		GWT.log("" + gin.getAdapters().getService().get());
+		GWT.log("" + gin.getAdapters().create(new SimpleAsyncCallback<Long>()));
 		RootPanel.get().add(new Label("GWT Manual Testing"));
 		ReCaptchaUserRegisterServicePanel reCaptcha = new ReCaptchaUserRegisterServicePanel(
 				template.load("user/ReCaptchaUserPanel.jsp"));
