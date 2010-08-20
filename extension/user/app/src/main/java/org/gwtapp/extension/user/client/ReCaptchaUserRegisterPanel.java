@@ -14,7 +14,6 @@ public class ReCaptchaUserRegisterPanel extends
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
-	private final PasswordTextBoxHandler passwordVerify = new PasswordTextBoxHandler();
 
 	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
 		super(callback);
@@ -22,7 +21,7 @@ public class ReCaptchaUserRegisterPanel extends
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
 		add(ReCaptchaUser.NAME, new TextBoxHandler());
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());
-		add("password-verify", passwordVerify);
+		add(ReCaptchaUser.PASSWORD_VERIFY, new PasswordTextBoxHandler());
 		add("reCaptchaContainer", reCaptcha);
 		add("register", register);
 	}
