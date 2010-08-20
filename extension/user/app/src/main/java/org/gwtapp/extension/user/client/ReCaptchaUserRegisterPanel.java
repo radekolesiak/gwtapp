@@ -49,8 +49,8 @@ public class ReCaptchaUserRegisterPanel extends
 										}-*/;
 
 	protected native JavaScriptObject createCallback(ReCaptchaCallback callback)/*-{
-																						return function(){
-																						callback.@org.gwtapp.extension.user.client.ReCaptchaCallback::onCallback()();										
-																						}
-																						}-*/;
+																				return function(){
+																				callback.@org.gwtapp.extension.user.client.ReCaptchaCallback::onCallback()();										
+																				}
+																				}-*/;
 }
