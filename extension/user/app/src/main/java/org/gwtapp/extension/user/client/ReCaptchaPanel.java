@@ -3,7 +3,7 @@ package org.gwtapp.extension.user.client;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.user.client.DOM;
 
-public class ReCaptcha {
+public class ReCaptchaPanel {
 
 	public native final static void reload()/*-{
 											$wnd.Recaptcha.reload();
