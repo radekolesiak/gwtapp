@@ -1,12 +1,16 @@
 package org.gwtapp.extension.user.client.data;
 
-import org.gwtapp.extension.user.client.data.metafield.ReCaptchaMetaField;
+import org.gwtapp.extension.user.client.data.metafield.ChallengeMetaField;
+import org.gwtapp.extension.user.client.data.metafield.ResponseMetaField;
 
 @SuppressWarnings("serial")
-public class ReCaptchaUser extends UserPassword {
+public class ReCaptchaUser extends UserPassword implements ReCaptcha {
 
-	public final static ReCaptchaMetaField RECAPTCHA = new ReCaptchaMetaField();
-	public final static ReCaptchaMetaField CHALLENGE = new ReCaptchaMetaField();
+	public final static ResponseMetaField RESPONSE = new ResponseMetaField();
+	public final static ChallengeMetaField CHALLENGE = new ChallengeMetaField();
+
+	private String response = RESPONSE.add(this).def();
+	private String challenge = CHALLENGE.add(this).def();
 
 	public ReCaptchaUser() {
 	}
@@ -15,21 +19,22 @@ public class ReCaptchaUser extends UserPassword {
 		super(login, email, name);
 	}
 
-	private String reCaptcha = RECAPTCHA.add(this).def();
-	private String challenge = CHALLENGE.add(this).def();
-
-	public void setReCaptcha(String reCaptcha) {
-		this.reCaptcha = reCaptcha;
+	@Override
+	public void setResponse(String response) {
+		this.response = response;
 	}
 
-	public String getReCaptcha() {
-		return reCaptcha;
+	@Override
+	public String getResponse() {
+		return response;
 	}
 
+	@Override
 	public void setChallenge(String challenge) {
 		this.challenge = challenge;
 	}
 
+	@Override
 	public String getChallenge() {
 		return challenge;
 	}

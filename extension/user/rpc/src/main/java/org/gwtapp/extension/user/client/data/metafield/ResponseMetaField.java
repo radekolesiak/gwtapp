@@ -3,19 +3,19 @@ package org.gwtapp.extension.user.client.data.metafield;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 
-public class ReCaptchaMetaField extends MetaFieldAdapter<ReCaptchaUser, String> {
+public class ResponseMetaField extends MetaFieldAdapter<ReCaptchaUser, String> {
 
-	public ReCaptchaMetaField() {
-		super("recaptcha");
+	public ResponseMetaField() {
+		super("response");
 	}
 
 	@Override
 	public String get(ReCaptchaUser model) {
-		return model.getReCaptcha();
+		return model.getResponse();
 	}
 
 	@Override
 	public void set(ReCaptchaUser model, String value) {
-		model.setReCaptcha(value);
+		model.setResponse(value);
 	}
 }

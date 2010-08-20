@@ -7,6 +7,8 @@ import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
 
 public class ReCaptchaUserRegisterPanel extends
@@ -35,7 +37,21 @@ public class ReCaptchaUserRegisterPanel extends
 				onReCaptchaLoaded();
 			}
 		};
+		register.getWidget().addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				fireValueChangeEvent();
+			}
+		});
 		showReCaptcha(element, createCallback(callback));
+	}
+
+	@Override
+	public ReCaptchaUser getValue() {
+		ReCaptchaUser value = super.getValue();
+		value.setResponse(ReCaptchaPanel.getResponse());
+		value.setChallenge(ReCaptchaPanel.getChallenge());
+		return value;
 	}
 
 	protected void onReCaptchaLoaded() {

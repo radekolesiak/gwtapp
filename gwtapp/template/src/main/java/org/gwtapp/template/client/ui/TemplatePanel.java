@@ -179,6 +179,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		ChangeEvent.fireNativeEvent(Document.get().createChangeEvent(), this);
 	}
 
+	public void fireValueChangeEvent() {
+		ValueChangeEvent.fire(this, getValue());
+	}
+
 	@Override
 	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
 		return addHandler(handler, ChangeEvent.getType());
