@@ -1,5 +1,6 @@
 package org.gwtapp.extension.user.client;
 
+import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
@@ -7,6 +8,7 @@ import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.inject.Inject;
 
 public class ReCaptchaUserRegisterServicePanel extends
 		ReCaptchaUserRegisterPanel {
@@ -14,8 +16,18 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
-	public ReCaptchaUserRegisterServicePanel(TemplateCallback callback) {
-		super(callback);
+	public static interface Injection {
+		TemplateCallback getTemplateCallback();
+
+		AsyncCallbackInjector getAsyncCallbackInjector();
+	}
+
+	private final AsyncCallbackInjector injector;
+
+	@Inject
+	public ReCaptchaUserRegisterServicePanel(Injection injection) {
+		super(injection.getTemplateCallback());
+		this.injector = injection.getAsyncCallbackInjector();
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {

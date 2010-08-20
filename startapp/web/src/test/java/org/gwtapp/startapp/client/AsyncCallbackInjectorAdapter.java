@@ -12,6 +12,10 @@ public class AsyncCallbackInjectorAdapter implements AsyncCallbackInjector {
 			public void onSuccessCallback(T result) {
 				callback.onSuccess(result);
 			};
+			@Override
+			public void onFailureCallback(Throwable caught) throws Throwable {
+				callback.onFailure(caught);
+			}
 		};
 	}
 }
