@@ -1,13 +1,10 @@
 package org.gwtapp.extension.user.client.data;
 
-import org.gwtapp.extension.user.client.data.metafield.PasswordMetaField;
-import org.gwtapp.extension.user.client.data.metafield.PasswordVerifyMetaField;
-
 @SuppressWarnings("serial")
-public class UserPasswordImpl extends UserImpl {
+public class UserPasswordImpl extends UserImpl implements UserPassword {
 
-	public final static PasswordMetaField PASSWORD = new PasswordMetaField();
-	public final static PasswordVerifyMetaField PASSWORD_VERIFY = new PasswordVerifyMetaField();
+	private String password = PASSWORD.add(this).def();
+	private String passwordVerify = PASSWORD_VERIFY.add(this).def();
 
 	public UserPasswordImpl() {
 	}
@@ -16,21 +13,22 @@ public class UserPasswordImpl extends UserImpl {
 		super(login, email, name);
 	}
 
-	private String password = PASSWORD.add(this).def();
-	private String passwordVerify = PASSWORD_VERIFY.add(this).def();
-
+	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}
 
+	@Override
 	public void setPasswordVerify(String passwordVerify) {
 		this.passwordVerify = passwordVerify;
 	}
 
+	@Override
 	public String getPasswordVerify() {
 		return passwordVerify;
 	}

@@ -1,8 +1,8 @@
 package org.gwtapp.extension.user.client.data;
 
-
 @SuppressWarnings("serial")
-public class ReCaptchaUserImpl extends UserPasswordImpl implements ReCaptcha {
+public class ReCaptchaUserImpl extends UserPasswordImpl implements
+		ReCaptchaUser {
 
 	private String response = RESPONSE.add(this).def();
 	private String challenge = CHALLENGE.add(this).def();

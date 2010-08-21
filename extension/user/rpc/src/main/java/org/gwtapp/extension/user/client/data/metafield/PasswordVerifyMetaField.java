@@ -1,22 +1,22 @@
 package org.gwtapp.extension.user.client.data.metafield;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
-import org.gwtapp.extension.user.client.data.UserPasswordImpl;
+import org.gwtapp.extension.user.client.data.UserPassword;
 
 public class PasswordVerifyMetaField extends
-		MetaFieldAdapter<UserPasswordImpl, String> {
+		MetaFieldAdapter<UserPassword, String> {
 
 	public PasswordVerifyMetaField() {
 		super("password-verify");
 	}
 
 	@Override
-	public String get(UserPasswordImpl model) {
+	public String get(UserPassword model) {
 		return model.getPasswordVerify();
 	}
 
 	@Override
-	public void set(UserPasswordImpl model, String value) {
+	public void set(UserPassword model, String value) {
 		model.setPasswordVerify(value);
 	}
 }

@@ -1,21 +1,21 @@
 package org.gwtapp.extension.user.client.data.metafield;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
-import org.gwtapp.extension.user.client.data.UserImpl;
+import org.gwtapp.extension.user.client.data.User;
 
-public class LoginMetaField extends MetaFieldAdapter<UserImpl, String> {
+public class LoginMetaField extends MetaFieldAdapter<User, String> {
 
 	public LoginMetaField() {
 		super("login");
 	}
 
 	@Override
-	public String get(UserImpl model) {
+	public String get(User model) {
 		return model.getLogin();
 	}
 
 	@Override
-	public void set(UserImpl model, String value) {
+	public void set(User model, String value) {
 		model.setLogin(value);
 	}
 }

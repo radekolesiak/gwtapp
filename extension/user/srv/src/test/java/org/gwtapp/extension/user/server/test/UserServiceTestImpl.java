@@ -8,7 +8,8 @@ import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.UserService;
-import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
+import org.gwtapp.extension.user.client.data.ReCaptchaUser;
+import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
@@ -20,11 +21,11 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public UserImpl getUser(String login) throws RpcException {
+	public User getUser(String login) throws RpcException {
 		if (login == null) {
 			throw new RpcException();
 		} else if ("aba".equals(login)) {
-			UserImpl user = new UserImpl();
+			User user = new UserImpl();
 			user.setId(1L);
 			user.setLogin(login);
 			user.setEmail(login + "@email.com");
@@ -46,7 +47,7 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 	}
 
 	@Override
-	public long addUser(ReCaptchaUserImpl user) throws RpcException {
+	public long addUser(ReCaptchaUser user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if ("aba".equalsIgnoreCase(user.getLogin())) {
 			validation.setLogin(Login.ALREADY_EXISTS);

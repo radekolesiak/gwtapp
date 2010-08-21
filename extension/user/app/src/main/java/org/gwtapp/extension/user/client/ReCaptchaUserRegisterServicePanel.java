@@ -4,7 +4,7 @@ import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
-import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
+import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -29,15 +29,16 @@ public class ReCaptchaUserRegisterServicePanel extends
 	public ReCaptchaUserRegisterServicePanel(Injection injection) {
 		super(injection.getTemplateCallback());
 		this.injector = injection.getAsyncCallbackInjector();
-		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUserImpl>() {
+		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
-			public void onValueChange(ValueChangeEvent<ReCaptchaUserImpl> event) {
+			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {
 				doUserRegister(event.getValue());
 			}
 		});
 	}
 
-	private void doUserRegister(ReCaptchaUserImpl user) {
-		injector.create(new SimpleAsyncCallback<Long>()).onFailure(new NullPointerException());
+	private void doUserRegister(ReCaptchaUser user) {
+		injector.create(new SimpleAsyncCallback<Long>()).onFailure(
+				new NullPointerException());
 	}
 }

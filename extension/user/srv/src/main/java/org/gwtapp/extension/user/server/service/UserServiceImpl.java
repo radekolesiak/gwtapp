@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.UserService;
-import org.gwtapp.extension.user.client.data.UserImpl;
+import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
@@ -16,13 +16,13 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
 	@Override
-	public UserImpl getUser(String login) throws RpcException {
+	public User getUser(String login) throws RpcException {
 		log.warn("Not implemented");
 		throw new NotImplementedException();
 	}
 
 	@Override
-	public long addUser(UserImpl user) throws RpcException {
+	public long addUser(User user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(user.getLogin())) {
 			validation.setLogin(Login.INVALID);
