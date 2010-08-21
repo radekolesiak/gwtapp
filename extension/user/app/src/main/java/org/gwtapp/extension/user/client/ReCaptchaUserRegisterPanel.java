@@ -12,7 +12,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
 
 public class ReCaptchaUserRegisterPanel extends
-		TemplateModelPanel<ReCaptchaUserImpl> {
+		TemplateModelPanel<ReCaptchaUser> {
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();

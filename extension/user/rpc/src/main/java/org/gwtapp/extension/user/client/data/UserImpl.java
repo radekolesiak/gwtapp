@@ -1,7 +1,5 @@
 package org.gwtapp.extension.user.client.data;
 
-import java.io.Serializable;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,19 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.gwtapp.core.rpc.data.HashModelData;
-import org.gwtapp.extension.user.client.data.metafield.EmailMetaField;
-import org.gwtapp.extension.user.client.data.metafield.IdMetaField;
-import org.gwtapp.extension.user.client.data.metafield.LoginMetaField;
-import org.gwtapp.extension.user.client.data.metafield.NameMetaField;
 
 @SuppressWarnings("serial")
 @Entity(name = "CCalcUser")
-public class UserImpl extends HashModelData implements Serializable {
-
-	public final static IdMetaField ID = new IdMetaField();
-	public final static LoginMetaField LOGIN = new LoginMetaField();
-	public final static EmailMetaField EMAIL = new EmailMetaField();
-	public final static NameMetaField NAME = new NameMetaField();
+public class UserImpl extends HashModelData implements User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,34 +37,42 @@ public class UserImpl extends HashModelData implements Serializable {
 		setName(name);
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	@Override
 	public String getLogin() {
 		return login;
 	}
 
+	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	@Override
 	public String getEmail() {
 		return email;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
