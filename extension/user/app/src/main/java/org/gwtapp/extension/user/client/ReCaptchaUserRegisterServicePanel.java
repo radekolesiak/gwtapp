@@ -28,8 +28,9 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(ReCaptchaUser user) {
-		// TODO move these exception samples as JUnit tests in gwtapp-core module
-		getInjector().create(new SimpleAsyncCallback<Long>() {
+		// TODO move these exception samples as JUnit tests in gwtapp-core
+		// module
+		create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT
@@ -37,7 +38,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 				throw new IllegalStateException(e);
 			}
 		}).onFailure(new NullPointerException());
-		getInjector().create(new SimpleAsyncCallback<Long>() {
+		create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT

@@ -20,6 +20,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DeferredCommand;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
@@ -59,7 +60,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private T initValue;
 
 	@Inject
-	private AsyncCallbackInjector injector;
+	private AsyncCallbackInjector asyncCallbackInjector;
 
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
@@ -237,7 +238,11 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return initValue;
 	}
 
-	public AsyncCallbackInjector getInjector() {
-		return injector;
+	public AsyncCallbackInjector getAsyncCallbackInjector() {
+		return asyncCallbackInjector;
+	}
+	
+	public <T> AsyncCallback<T> create(final AsyncCallback<T> callback){
+		return getAsyncCallbackInjector().create(callback);
 	}
 }
