@@ -1,7 +1,6 @@
 package org.gwtapp.extension.user.client;
 
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
-import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.PasswordTextBoxHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -11,6 +10,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
+import com.google.inject.Inject;
 
 public class ReCaptchaUserRegisterPanel extends
 		TemplateModelPanel<ReCaptchaUser> {
@@ -18,8 +18,10 @@ public class ReCaptchaUserRegisterPanel extends
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
 
-	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
-		super(callback, new ReCaptchaUserImpl());
+	@Inject
+	public ReCaptchaUserRegisterPanel(TemplateCallback callback,
+			ReCaptchaUser value) {
+		super(callback, value);
 		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.LOGIN, new TextBoxHandler());
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
