@@ -21,7 +21,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 	public final static GinjectorService gin = GWT
 			.create(GinjectorService.class);
 	static {
-		AsyncCallbackGinjectorSingleton.injector = gin;
+		AsyncCallbackGinjectorSingleton.setInjector(gin);
 	}
 
 	@Override

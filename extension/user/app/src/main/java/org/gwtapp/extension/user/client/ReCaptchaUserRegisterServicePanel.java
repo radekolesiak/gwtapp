@@ -30,8 +30,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(ReCaptchaUser user) {
-		AsyncCallbackGinjectorSingleton.injector.getAsyncCallbackInjector()
-				.create(new SimpleAsyncCallback<Long>()).onFailure(
-						new NullPointerException());
+		AsyncCallbackGinjectorSingleton.create(new SimpleAsyncCallback<Long>())
+				.onFailure(new NullPointerException());
 	}
 }
