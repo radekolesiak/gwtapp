@@ -241,8 +241,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	public AsyncCallbackInjector getAsyncCallbackInjector() {
 		return asyncCallbackInjector;
 	}
-	
-	public <T> AsyncCallback<T> create(final AsyncCallback<T> callback){
+
+	public <Q> AsyncCallback<Q> create(AsyncCallback<Q> callback) {
 		return getAsyncCallbackInjector().create(callback);
 	}
 }
