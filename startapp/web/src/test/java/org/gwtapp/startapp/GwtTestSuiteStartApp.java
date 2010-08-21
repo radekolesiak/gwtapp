@@ -11,6 +11,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 	public static Test suite() throws ClassNotFoundException {
 		TestSuite suite = new TestSuite("Tests for a StartApp Application");
 		addTest(suite, "org.gwtapp.core.client.ui.GwtTestDelegatedPanel");
+		addTest(suite, "org.gwtapp.core.client.di.GwtTestAsyncCallbackInjector");
 		addTest(suite, "org.gwtapp.template.client.GwtTestReplaceParameters");
 		addTest(suite, "org.gwtapp.template.client.GwtTestUtilsReplaceTemplate");
 		addTest(suite, "org.gwtapp.template.client.GwtTestMessages");
