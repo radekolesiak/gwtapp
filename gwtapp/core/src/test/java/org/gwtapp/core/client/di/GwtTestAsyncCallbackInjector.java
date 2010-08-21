@@ -2,6 +2,7 @@ package org.gwtapp.core.client.di;
 
 import org.gwtapp.core.client.GWTTestCore;
 import org.gwtapp.core.client.SimpleAsyncCallback;
+import org.gwtapp.core.rpc.exception.RpcException;
 import org.junit.Test;
 
 import com.google.gwt.core.client.GWT;
@@ -33,5 +34,29 @@ public class GwtTestAsyncCallbackInjector extends GWTTestCore {
 		assertNotNull(callback);
 		delayTestFinish(250);
 		callback.onFailure(new IllegalStateException());
+	}
+
+	@Test
+	public void testThrownException() {
+		GinjectorService gin = GWT.create(GinjectorService.class);
+		SomeClass some = gin.getSomeClass();
+		AsyncCallbackAdapter<String> callback = (AsyncCallbackAdapter<String>) some.getInjector().create(
+				new SimpleAsyncCallback<String>() {
+					@Override
+					public void onFailure(Throwable e) {
+						assertEquals(IllegalStateException.class, e.getClass());
+						throw new RpcException();
+					}
+				});
+		assertNotNull(callback);
+		callback.setOwner(this);
+		callback.setExpectedTest(true);
+		callback.setExcpectedException(RpcException.class);
+		delayTestFinish(250);
+		callback.onFailure(new IllegalStateException());
+	}
+	
+	public void doFinishTest(){
+		finishTest();
 	}
 }
