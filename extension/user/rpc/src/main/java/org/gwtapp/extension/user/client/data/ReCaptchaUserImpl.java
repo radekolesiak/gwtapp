@@ -1,21 +1,16 @@
 package org.gwtapp.extension.user.client.data;
 
-import org.gwtapp.extension.user.client.data.metafield.ChallengeMetaField;
-import org.gwtapp.extension.user.client.data.metafield.ResponseMetaField;
 
 @SuppressWarnings("serial")
-public class ReCaptchaUser extends UserPassword implements ReCaptcha {
-
-	public final static ResponseMetaField RESPONSE = new ResponseMetaField();
-	public final static ChallengeMetaField CHALLENGE = new ChallengeMetaField();
+public class ReCaptchaUserImpl extends UserPasswordImpl implements ReCaptcha {
 
 	private String response = RESPONSE.add(this).def();
 	private String challenge = CHALLENGE.add(this).def();
 
-	public ReCaptchaUser() {
+	public ReCaptchaUserImpl() {
 	}
 
-	public ReCaptchaUser(String login, String email, String name) {
+	public ReCaptchaUserImpl(String login, String email, String name) {
 		super(login, email, name);
 	}
 

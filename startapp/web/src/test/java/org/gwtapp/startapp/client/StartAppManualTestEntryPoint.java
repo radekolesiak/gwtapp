@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
-import org.gwtapp.extension.user.client.data.ReCaptchaUser;
+import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
 import org.gwtapp.template.client.TemplateRepository;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -33,10 +33,10 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 			}
 		});
 		reCaptcha
-				.addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
+				.addValueChangeHandler(new ValueChangeHandler<ReCaptchaUserImpl>() {
 					@Override
 					public void onValueChange(
-							ValueChangeEvent<ReCaptchaUser> value) {
+							ValueChangeEvent<ReCaptchaUserImpl> value) {
 						GWT.log("userRegister-login: "
 								+ value.getValue().getLogin());
 						GWT.log("userRegister-email: "

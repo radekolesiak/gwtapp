@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.UserImpl;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -42,6 +42,6 @@ public abstract class RemoteServiceDBServlet extends RemoteServiceServlet {
 
 	private static void initDB() {
 		getEntityManager().persist(
-				new User("012", "012@012.com", "Zero One Two"));
+				new UserImpl("012", "012@012.com", "Zero One Two"));
 	}
 }

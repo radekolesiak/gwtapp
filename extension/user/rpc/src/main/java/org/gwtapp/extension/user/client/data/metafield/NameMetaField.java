@@ -1,21 +1,21 @@
 package org.gwtapp.extension.user.client.data.metafield;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
-import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.UserImpl;
 
-public class NameMetaField extends MetaFieldAdapter<User, String> {
+public class NameMetaField extends MetaFieldAdapter<UserImpl, String> {
 
 	public NameMetaField() {
 		super("name");
 	}
 
 	@Override
-	public String get(User model) {
+	public String get(UserImpl model) {
 		return model.getName();
 	}
 
 	@Override
-	public void set(User model, String value) {
+	public void set(UserImpl model, String value) {
 		model.setName(value);
 	}
 }

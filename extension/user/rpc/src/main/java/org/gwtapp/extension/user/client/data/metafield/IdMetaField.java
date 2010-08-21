@@ -1,21 +1,21 @@
 package org.gwtapp.extension.user.client.data.metafield;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
-import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.UserImpl;
 
-public class IdMetaField extends MetaFieldAdapter<User, Long> {
+public class IdMetaField extends MetaFieldAdapter<UserImpl, Long> {
 
 	public IdMetaField() {
 		super("id");
 	}
 
 	@Override
-	public Long get(User model) {
+	public Long get(UserImpl model) {
 		return model.getId();
 	}
 
 	@Override
-	public void set(User model, Long value) {
+	public void set(UserImpl model, Long value) {
 		model.setId(value);
 	}
 }

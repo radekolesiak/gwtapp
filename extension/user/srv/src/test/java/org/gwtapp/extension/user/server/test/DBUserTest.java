@@ -2,7 +2,7 @@ package org.gwtapp.extension.user.server.test;
 
 import javax.persistence.RollbackException;
 
-import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.UserImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class DBUserTest extends UserInit {
 
 	@Test(expected = RollbackException.class)
 	public void testCreateEmptyUser() {
-		User user = new User();
+		UserImpl user = new UserImpl();
 		Assert.assertNull(user.getLogin());
 		Assert.assertNull(user.getEmail());
 		Assert.assertNull(user.getName());
@@ -26,7 +26,7 @@ public class DBUserTest extends UserInit {
 
 	@Test
 	public void testCreateUser() {
-		User user = new User("a", "a", "a");
+		UserImpl user = new UserImpl("a", "a", "a");
 		Assert.assertNotNull(user.getLogin());
 		Assert.assertNotNull(user.getEmail());
 		Assert.assertNotNull(user.getName());
@@ -35,8 +35,8 @@ public class DBUserTest extends UserInit {
 
 	@Test(expected = RollbackException.class)
 	public void testCreateUserDouble() {
-		em.persist(new User("b", "b", "b"));
-		em.persist(new User("b", "b", "b"));
+		em.persist(new UserImpl("b", "b", "b"));
+		em.persist(new UserImpl("b", "b", "b"));
 		tx.commit();
 	}
 }

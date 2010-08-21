@@ -17,7 +17,7 @@ import org.gwtapp.extension.user.client.data.metafield.NameMetaField;
 
 @SuppressWarnings("serial")
 @Entity(name = "CCalcUser")
-public class User extends HashModelData implements Serializable {
+public class UserImpl extends HashModelData implements Serializable {
 
 	public final static IdMetaField ID = new IdMetaField();
 	public final static LoginMetaField LOGIN = new LoginMetaField();
@@ -39,10 +39,10 @@ public class User extends HashModelData implements Serializable {
 	@Basic
 	private String name = NAME.add(this).def();
 
-	public User() {
+	public UserImpl() {
 	}
 
-	public User(String login, String email, String name) {
+	public UserImpl(String login, String email, String name) {
 		setLogin(login);
 		setEmail(email);
 		setName(name);

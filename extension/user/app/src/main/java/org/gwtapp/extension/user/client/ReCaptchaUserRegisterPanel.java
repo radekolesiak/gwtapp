@@ -1,6 +1,6 @@
 package org.gwtapp.extension.user.client;
 
-import org.gwtapp.extension.user.client.data.ReCaptchaUser;
+import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.PasswordTextBoxHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -12,19 +12,19 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
 
 public class ReCaptchaUserRegisterPanel extends
-		TemplateModelPanel<ReCaptchaUser> {
+		TemplateModelPanel<ReCaptchaUserImpl> {
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
 
 	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
-		super(callback, new ReCaptchaUser());
+		super(callback, new ReCaptchaUserImpl());
 		setAutoValueChangeFire(false);
-		add(ReCaptchaUser.LOGIN, new TextBoxHandler());
-		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
-		add(ReCaptchaUser.NAME, new TextBoxHandler());
-		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());
-		add(ReCaptchaUser.PASSWORD_VERIFY, new PasswordTextBoxHandler());
+		add(ReCaptchaUserImpl.LOGIN, new TextBoxHandler());
+		add(ReCaptchaUserImpl.EMAIL, new TextBoxHandler());
+		add(ReCaptchaUserImpl.NAME, new TextBoxHandler());
+		add(ReCaptchaUserImpl.PASSWORD, new PasswordTextBoxHandler());
+		add(ReCaptchaUserImpl.PASSWORD_VERIFY, new PasswordTextBoxHandler());
 		add("reCaptchaContainer", reCaptcha);
 		add("register", register);
 	}
@@ -48,8 +48,8 @@ public class ReCaptchaUserRegisterPanel extends
 	}
 
 	@Override
-	public ReCaptchaUser getValue() {
-		ReCaptchaUser value = super.getValue();
+	public ReCaptchaUserImpl getValue() {
+		ReCaptchaUserImpl value = super.getValue();
 		value.setResponse(ReCaptchaPanel.getResponse());
 		value.setChallenge(ReCaptchaPanel.getChallenge());
 		return value;

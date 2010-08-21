@@ -4,15 +4,15 @@ import org.gwtapp.extension.user.client.data.metafield.PasswordMetaField;
 import org.gwtapp.extension.user.client.data.metafield.PasswordVerifyMetaField;
 
 @SuppressWarnings("serial")
-public class UserPassword extends User {
+public class UserPasswordImpl extends UserImpl {
 
 	public final static PasswordMetaField PASSWORD = new PasswordMetaField();
 	public final static PasswordVerifyMetaField PASSWORD_VERIFY = new PasswordVerifyMetaField();
 
-	public UserPassword() {
+	public UserPasswordImpl() {
 	}
 
-	public UserPassword(String login, String email, String name) {
+	public UserPasswordImpl(String login, String email, String name) {
 		super(login, email, name);
 	}
 

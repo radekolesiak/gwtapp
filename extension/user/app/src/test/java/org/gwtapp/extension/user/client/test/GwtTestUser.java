@@ -7,8 +7,8 @@ import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
-import org.gwtapp.extension.user.client.data.ReCaptchaUser;
-import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
+import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.junit.Test;
 
@@ -19,9 +19,9 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testUserService() {
 		UserServiceAsync user = GWT.create(UserService.class);
-		user.getUser("aba", new SimpleAsyncCallback<User>() {
+		user.getUser("aba", new SimpleAsyncCallback<UserImpl>() {
 			@Override
-			public void onSuccess(User user) {
+			public void onSuccess(UserImpl user) {
 				assertNotNull(user);
 				assertEquals(new Long(1L), user.getId());
 				assertEquals("aba", user.getLogin());
@@ -36,9 +36,9 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testUserServiceNullResult() {
 		UserServiceAsync user = GWT.create(UserService.class);
-		user.getUser("xyz", new SimpleAsyncCallback<User>() {
+		user.getUser("xyz", new SimpleAsyncCallback<UserImpl>() {
 			@Override
-			public void onSuccess(User user) {
+			public void onSuccess(UserImpl user) {
 				assertNull(user);
 				finishTest();
 			}
@@ -49,7 +49,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testUserServiceRpcException() {
 		UserServiceAsync user = GWT.create(UserService.class);
-		user.getUser(null, new SimpleAsyncCallback<User>() {
+		user.getUser(null, new SimpleAsyncCallback<UserImpl>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -62,9 +62,9 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testUserDB() {
 		UserServiceAsync user = GWT.create(UserService.class);
-		user.getUser("012", new SimpleAsyncCallback<User>() {
+		user.getUser("012", new SimpleAsyncCallback<UserImpl>() {
 			@Override
-			public void onSuccess(User user) {
+			public void onSuccess(UserImpl user) {
 				assertNotNull(user);
 				assertNotNull(user.getId());
 				assertEquals("012", user.getLogin());
@@ -79,7 +79,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testUserServiceNotFound() {
 		UserServiceAsync user = GWT.create(UserService.class);
-		user.getUser("qwerty", new SimpleAsyncCallback<User>() {
+		user.getUser("qwerty", new SimpleAsyncCallback<UserImpl>() {
 			@Override
 			public void onFailure(Throwable e) {
 				assertTrue(e instanceof RpcException);
@@ -92,7 +92,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new ReCaptchaUser("aba", "", ""),
+		user.addUser(new ReCaptchaUserImpl("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -112,7 +112,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new ReCaptchaUser("xyz", "", ""),
+		user.addUser(new ReCaptchaUserImpl("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
