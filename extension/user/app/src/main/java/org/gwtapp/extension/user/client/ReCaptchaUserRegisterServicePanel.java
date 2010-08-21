@@ -1,6 +1,5 @@
 package org.gwtapp.extension.user.client;
 
-import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
@@ -17,13 +16,9 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
-	private final AsyncCallbackInjector injector;
-
 	@Inject
-	public ReCaptchaUserRegisterServicePanel(TemplateCallback callback,
-			ReCaptchaUser value, AsyncCallbackInjector injector) {
-		super(callback, value);
-		this.injector = injector;
+	public ReCaptchaUserRegisterServicePanel(TemplateCallback callback) {
+		super(callback);
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {
@@ -33,8 +28,8 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(ReCaptchaUser user) {
-		// TODO move these sample as JUnit tests in gwtapp-core module
-		injector.create(new SimpleAsyncCallback<Long>() {
+		// TODO move these exception samples as JUnit tests in gwtapp-core module
+		getInjector().create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT
@@ -42,7 +37,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 				throw new IllegalStateException(e);
 			}
 		}).onFailure(new NullPointerException());
-		injector.create(new SimpleAsyncCallback<Long>() {
+		getInjector().create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT

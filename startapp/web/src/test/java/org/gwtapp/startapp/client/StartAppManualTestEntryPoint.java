@@ -17,6 +17,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 
 	public final static TemplateRepository template = new TemplateRepository(
 			"/templates/");
+	
 	public final static GinjectorService gin = GWT
 			.create(GinjectorService.class);
 
@@ -38,6 +39,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 					@Override
 					public void onValueChange(
 							ValueChangeEvent<ReCaptchaUser> value) {
+						GWT.log(value.getValue().getClass().getName());
 						GWT.log("userRegister-login: "
 								+ value.getValue().getLogin());
 						GWT.log("userRegister-email: "

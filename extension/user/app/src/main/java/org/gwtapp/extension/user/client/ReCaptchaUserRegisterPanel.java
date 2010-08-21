@@ -19,9 +19,8 @@ public class ReCaptchaUserRegisterPanel extends
 	private final WidgetHandler register = new WidgetHandler();
 
 	@Inject
-	public ReCaptchaUserRegisterPanel(TemplateCallback callback,
-			ReCaptchaUser value) {
-		super(callback, value);
+	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
+		super(callback);
 		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.LOGIN, new TextBoxHandler());
 		add(ReCaptchaUser.EMAIL, new TextBoxHandler());

@@ -3,6 +3,7 @@ package org.gwtapp.template.client.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 
@@ -22,6 +23,7 @@ import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		HasName, HasChangeHandlers, HasClickHandlers {
@@ -52,7 +54,12 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private T value;
 
 	private boolean templated = false;
-	private T initValue = null;
+
+	@Inject
+	private T initValue;
+
+	@Inject
+	private AsyncCallbackInjector injector;
 
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
@@ -228,5 +235,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private T getInitValue() {
 		return initValue;
+	}
+
+	public AsyncCallbackInjector getInjector() {
+		return injector;
 	}
 }
