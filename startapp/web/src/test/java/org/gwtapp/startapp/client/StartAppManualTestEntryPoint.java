@@ -1,6 +1,6 @@
 package org.gwtapp.startapp.client;
 
-import org.gwtapp.core.client.AsyncCallbackGinjectorSingleton;
+import org.gwtapp.core.client.AsyncCallbackSingleton;
 import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.template.client.TemplateRepository;
@@ -21,7 +21,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 	public final static GinjectorService gin = GWT
 			.create(GinjectorService.class);
 	static {
-		AsyncCallbackGinjectorSingleton.setInjector(gin);
+		AsyncCallbackSingleton.setInjector(gin.getAsyncCallbackInjector());
 	}
 
 	@Override
