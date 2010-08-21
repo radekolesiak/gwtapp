@@ -1,7 +1,6 @@
 package org.gwtapp.extension.user.client;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
-import org.gwtapp.core.client.AsyncCallbackSingleton;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
@@ -34,8 +33,8 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(ReCaptchaUser user) {
-		// TODO move these sample as JUnit tests
-		AsyncCallbackSingleton.create(new SimpleAsyncCallback<Long>() {
+		// TODO move these sample as JUnit tests in gwtapp-core module
+		injector.create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT
@@ -43,26 +42,11 @@ public class ReCaptchaUserRegisterServicePanel extends
 				throw new IllegalStateException(e);
 			}
 		}).onFailure(new NullPointerException());
-		AsyncCallbackSingleton.create(new SimpleAsyncCallback<Long>() {
+		injector.create(new SimpleAsyncCallback<Long>() {
 			@Override
 			public void onFailure(Throwable e) {
 				GWT
 						.log("ReCaptchaUserRegisterServicePanel::doUserRegister() AsyncCallback failure B");
-			}
-		}).onFailure(new NullPointerException());
-		injector.create(new SimpleAsyncCallback<Long>() {
-			@Override
-			public void onFailure(Throwable e) {
-				GWT
-						.log("ReCaptchaUserRegisterServicePanel::doUserRegister() AsyncCallback failure C");
-				throw new IllegalStateException(e);
-			}
-		}).onFailure(new NullPointerException());
-		injector.create(new SimpleAsyncCallback<Long>() {
-			@Override
-			public void onFailure(Throwable e) {
-				GWT
-						.log("ReCaptchaUserRegisterServicePanel::doUserRegister() AsyncCallback failure D");
 			}
 		}).onFailure(new NullPointerException());
 	}
