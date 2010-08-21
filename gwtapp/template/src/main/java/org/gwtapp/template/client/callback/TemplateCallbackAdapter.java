@@ -1,4 +1,4 @@
-package org.gwtapp.startapp.client;
+package org.gwtapp.template.client.callback;
 
 import java.util.Map;
 
@@ -7,10 +7,13 @@ import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.gwtapp.template.client.ui.TemplatePanel.TemplateCallback;
 
-public class ReCaptchaUserRegisterCallback implements TemplateCallback {
+public class TemplateCallbackAdapter implements TemplateCallback {
 
-	TemplateCallback callback = StartAppManualTestEntryPoint.template
-			.load("user/ReCaptchaUserPanel.jsp");
+	private final TemplateCallback callback;
+
+	public TemplateCallbackAdapter(TemplateCallback callback) {
+		this.callback = callback;
+	}
 
 	@Override
 	public Template getTemplate() {
