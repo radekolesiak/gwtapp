@@ -22,7 +22,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(TemplateCallback callback,
-			AsyncCallbackInjector injector, ReCaptchaUser value) {
+			ReCaptchaUser value, AsyncCallbackInjector injector) {
 		super(callback, value);
 		this.injector = injector;
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
