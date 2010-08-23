@@ -8,15 +8,19 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class ReCaptchaUserRegisterServicePanel extends
 		ReCaptchaUserRegisterPanel {
+
+	public static final String BIND_NAME = "ReCaptchaUserRegisterServicePanel";
 
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
 	@Inject
-	public ReCaptchaUserRegisterServicePanel(TemplateCallback callback) {
+	public ReCaptchaUserRegisterServicePanel(
+			@Named(BIND_NAME) TemplateCallback callback) {
 		super(callback);
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
