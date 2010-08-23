@@ -15,7 +15,7 @@
 		<ccalc.version>1.0</ccalc.version>
 		<gwt.version>2.0.4</gwt.version>
 		<com.google.gwt.version>2.0.4</com.google.gwt.version>
-		<gae.version>1.3.5</gae.version>
+		<gae.version>1.3.6</gae.version>
 		<gin.version>1.0</gin.version>
 		<guice.version>2.0</guice.version>
 		<openjpa.version>2.0.0</openjpa.version>
@@ -47,12 +47,6 @@
 		<!-- config -->
 		<javac.source.version>1.6</javac.source.version>
 		<javac.target.version>1.6</javac.target.version>
-		<!-- gwt -->
-		<gwt.outputstyle>OBF</gwt.outputstyle>
-		<gwt.modulesuffix />
-		<maven.test.skip>false</maven.test.skip>
-		<gwt.inplace>false</gwt.inplace>
-		<gwt.soyc>false</gwt.soyc>
 	</properties>
 
 	<inceptionYear>2008</inceptionYear>
@@ -82,28 +76,23 @@
 
 	<repositories>
 		<repository>
+			<id>atlassian</id>
+			<url>http://maven.atlassian.com/repository/public</url>
+		</repository>
+		<repository>
 			<id>maven-gae-plugin-repo</id>
 			<name>maven-gae-plugin repository</name>
 			<url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
-		</repository>
-		<repository>
-			<id>atlassian</id>
-			<url>http://maven.atlassian.com/repository/public</url>
 		</repository>
 		<repository>
 			<id>jboss-maven</id>
 			<url>http://repository.jboss.org/maven2</url>
 		</repository>
 		<repository>
-			<id>gwt-2.1.0-m1</id>
-			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M1/gwt/maven</url>
-		</repository>
-		<repository>
 			<id>objectify-appengine</id>
 			<url>http://objectify-appengine.googlecode.com/svn/maven</url>
 		</repository>
 	</repositories>
-
 	<build>
 		<outputDirectory>${basedir}/war/WEB-INF/classes</outputDirectory>
 		<!-- Common plugin configuration for all children -->
