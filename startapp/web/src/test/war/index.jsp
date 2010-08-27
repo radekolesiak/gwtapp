@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <t:include repository="/templates/" template="user/ReCaptchaUserPanel.jsp"/>
+<t:include repository="/templates/" template="user/UserPanel.jsp"/>
 <title>StartApp Manual Testing</title>
 <style type="text/css"> 
 @import "recaptchauserregister.css";

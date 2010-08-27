@@ -2,6 +2,7 @@ package org.gwtapp.extension.user.client;
 
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.handler.PasswordTextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 
@@ -10,22 +11,24 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class ReCaptchaUserRegisterPanel extends
 		TemplateModelPanel<ReCaptchaUser> {
+
+	public static final String BIND_NAME = "ReCaptchaUserRegisterServicePanel";
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
 
 	@Inject
-	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
+	public ReCaptchaUserRegisterPanel(
+			@Named(BIND_NAME) TemplateCallback callback, UserPanel userPanel) {
 		super(callback);
 		setAutoValueChangeFire(false);
-//		add(User.LOGIN, new TextBoxHandler());
-	//	add(User.EMAIL, new TextBoxHandler());
-		//add(User.NAME, new TextBoxHandler());
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());
 		add(ReCaptchaUser.PASSWORD_VERIFY, new PasswordTextBoxHandler());
+		add(ReCaptchaUser.USER, new UiHandler<UserPanel>(userPanel));
 		add("reCaptchaContainer", reCaptcha);
 		add("register", register);
 	}

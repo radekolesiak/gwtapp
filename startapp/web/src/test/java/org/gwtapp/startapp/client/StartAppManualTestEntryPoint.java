@@ -17,7 +17,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 
 	public final static TemplateRepository template = new TemplateRepository(
 			"/templates/");
-	
+
 	public final static GinjectorService gin = GWT
 			.create(GinjectorService.class);
 
@@ -26,6 +26,7 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 		RootPanel.get().add(new Label("GWT Manual Testing"));
 		ReCaptchaUserRegisterServicePanel reCaptcha = gin
 				.getReCaptchaUserRegisterServicePanel();
+		assert reCaptcha != null;
 		RootPanel.get().add(reCaptcha);
 		reCaptcha.addChangeHandler(new ChangeHandler() {
 			@Override

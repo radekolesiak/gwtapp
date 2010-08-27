@@ -13,15 +13,13 @@ import com.google.inject.name.Named;
 public class ReCaptchaUserRegisterServicePanel extends
 		ReCaptchaUserRegisterPanel {
 
-	public static final String BIND_NAME = "ReCaptchaUserRegisterServicePanel";
-
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(
-			@Named(BIND_NAME) TemplateCallback callback) {
-		super(callback);
+			@Named(BIND_NAME) TemplateCallback callback, UserPanel userPanel) {
+		super(callback, userPanel);
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {

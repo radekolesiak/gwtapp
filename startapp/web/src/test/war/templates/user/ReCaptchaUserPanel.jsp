@@ -1,7 +1,5 @@
 <t:template styleclass="recaptcha-user-panel">
-<div>Login: <input type="text" t:field="login"></input></div>
-<div>Email: <input type="text" t:field="email"></input></div>
-<div>Name: <input type="text" t:field="name"></input></div>
+<div t:field="user"></div>
 <div>Password: <input type="password" t:field="password"></input></div>
 <div>Password (verify): <input type="password" t:field="password-verify"></input></div>
 <div t:field="reCaptchaContainer"></div>
