@@ -1,5 +1,6 @@
 package org.gwtapp.extension.user.client;
 
+import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
@@ -29,5 +30,6 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(ReCaptchaUser user) {
+		service.addUser(user, create(new SimpleAsyncCallback<Long>()));
 	}
 }

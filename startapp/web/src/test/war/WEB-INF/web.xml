@@ -17,4 +17,13 @@
 			<include-prelude>/WEB-INF/prelude.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+
+	<servlet>
+		<servlet-name>recaptchauser</servlet-name>
+		<servlet-class>org.gwtapp.extension.user.server.remote.ReCaptchaUserRemote</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>recaptchauser</servlet-name>
+		<url-pattern>/gwt.startappmanualtestentry/extension.recaptchauser.rpc</url-pattern>
+	</servlet-mapping>
 </web-app>

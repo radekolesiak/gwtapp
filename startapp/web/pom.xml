@@ -35,6 +35,12 @@
 			<version>${gwtapp.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-user-srv</artifactId>
+			<version>${gwtapp.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<!--  JSTL -->
 		<dependency>
 			<groupId>taglibs</groupId>
