@@ -14,16 +14,16 @@ package org.gwtapp.core.rpc.data;
  */
 public interface MetaField<M, T> {
 
-	/** Field's name */
+	/** Field name */
 	String name();
 
-	/** Sets a value to the model's setter. */
+	/** Sets a value to the model setter. */
 	void set(M model, T value);
 
-	/** Gets a value from the model's getter. */
+	/** Gets a value from the model getter. */
 	T get(M model);
 
-	/** Default field's value. */
+	/** Default field value. */
 	T def();
 
 	/** Adds it self to the 'HasAutoField' object. */

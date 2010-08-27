@@ -3,7 +3,6 @@ package org.gwtapp.extension.user.client;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.PasswordTextBoxHandler;
-import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -22,9 +21,9 @@ public class ReCaptchaUserRegisterPanel extends
 	public ReCaptchaUserRegisterPanel(TemplateCallback callback) {
 		super(callback);
 		setAutoValueChangeFire(false);
-		add(ReCaptchaUser.LOGIN, new TextBoxHandler());
-		add(ReCaptchaUser.EMAIL, new TextBoxHandler());
-		add(ReCaptchaUser.NAME, new TextBoxHandler());
+//		add(User.LOGIN, new TextBoxHandler());
+	//	add(User.EMAIL, new TextBoxHandler());
+		//add(User.NAME, new TextBoxHandler());
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());
 		add(ReCaptchaUser.PASSWORD_VERIFY, new PasswordTextBoxHandler());
 		add("reCaptchaContainer", reCaptcha);

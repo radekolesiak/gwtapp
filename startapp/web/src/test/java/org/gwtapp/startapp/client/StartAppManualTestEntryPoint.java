@@ -41,11 +41,11 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 							ValueChangeEvent<ReCaptchaUser> value) {
 						GWT.log(value.getValue().getClass().getName());
 						GWT.log("userRegister-login: "
-								+ value.getValue().getLogin());
+								+ value.getValue().getUser().getLogin());
 						GWT.log("userRegister-email: "
-								+ value.getValue().getEmail());
+								+ value.getValue().getUser().getEmail());
 						GWT.log("userRegister-name: "
-								+ value.getValue().getName());
+								+ value.getValue().getUser().getName());
 						GWT.log("userRegister-password: "
 								+ value.getValue().getPassword());
 						GWT.log("userRegister-password-verify: "

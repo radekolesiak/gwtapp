@@ -4,6 +4,7 @@ package org.gwtapp.extension.user.client.data;
 public class ReCaptchaUserImpl extends UserPasswordImpl implements
 		ReCaptchaUser {
 
+	private String passwordVerify = PASSWORD_VERIFY.add(this).def();
 	private String response = RESPONSE.add(this).def();
 	private String challenge = CHALLENGE.add(this).def();
 
@@ -32,5 +33,15 @@ public class ReCaptchaUserImpl extends UserPasswordImpl implements
 	@Override
 	public String getChallenge() {
 		return challenge;
+	}
+
+	@Override
+	public void setPasswordVerify(String passwordVerify) {
+		this.passwordVerify = passwordVerify;
+	}
+
+	@Override
+	public String getPasswordVerify() {
+		return passwordVerify;
 	}
 }

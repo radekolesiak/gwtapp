@@ -1,4 +1,4 @@
-package org.gwtapp.extension.user.client.data.metafield;
+package org.gwtapp.extension.user.client.data.metafield.recaptcha;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;

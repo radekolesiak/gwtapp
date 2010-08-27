@@ -6,6 +6,7 @@ import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.data.User;
+import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
@@ -22,15 +23,15 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	}
 
 	@Override
-	public long addUser(User user) throws RpcException {
+	public long addUser(UserPassword user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
-		if (StringUtils.isEmpty(user.getLogin())) {
+		if (StringUtils.isEmpty(user.getUser().getLogin())) {
 			validation.setLogin(Login.INVALID);
-		} else if (user.getLogin().matches("[A-Z]+")) {
+		} else if (user.getUser().getLogin().matches("[A-Z]+")) {
 			validation.setLogin(Login.NOT_LOWER_CASE);
-		} else if (!user.getLogin().matches("[a-z]+")) {
+		} else if (!user.getUser().getLogin().matches("[a-z]+")) {
 			validation.setLogin(Login.NOT_LETTERS_ONLY);
-		} else if (user.getLogin().length() < 3) {
+		} else if (user.getUser().getLogin().length() < 3) {
 			validation.setLogin(Login.TOO_SHORT);
 		}
 		if (validation.getLogin() != Login.VALID

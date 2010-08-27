@@ -1,22 +1,22 @@
-package org.gwtapp.extension.user.client.data.metafield;
+package org.gwtapp.extension.user.client.data.metafield.recaptcha;
 
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
-import org.gwtapp.extension.user.client.data.UserPassword;
+import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 
 public class PasswordVerifyMetaField extends
-		MetaFieldAdapter<UserPassword, String> {
+		MetaFieldAdapter<ReCaptchaUser, String> {
 
 	public PasswordVerifyMetaField() {
 		super("password-verify");
 	}
 
 	@Override
-	public String get(UserPassword model) {
+	public String get(ReCaptchaUser model) {
 		return model.getPasswordVerify();
 	}
 
 	@Override
-	public void set(UserPassword model, String value) {
+	public void set(ReCaptchaUser model, String value) {
 		model.setPasswordVerify(value);
 	}
 }

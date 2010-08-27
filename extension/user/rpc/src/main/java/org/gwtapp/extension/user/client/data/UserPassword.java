@@ -1,18 +1,27 @@
 package org.gwtapp.extension.user.client.data;
 
-import org.gwtapp.extension.user.client.data.metafield.PasswordMetaField;
-import org.gwtapp.extension.user.client.data.metafield.PasswordVerifyMetaField;
+import java.io.Serializable;
 
-public interface UserPassword extends User {
+import org.gwtapp.core.rpc.data.ModelData;
+import org.gwtapp.extension.user.client.data.metafield.password.IdMetaField;
+import org.gwtapp.extension.user.client.data.metafield.password.PasswordMetaField;
+import org.gwtapp.extension.user.client.data.metafield.password.UserMetaField;
 
+public interface UserPassword extends ModelData, Serializable {
+
+	public final static IdMetaField ID = new IdMetaField();
 	public final static PasswordMetaField PASSWORD = new PasswordMetaField();
-	public final static PasswordVerifyMetaField PASSWORD_VERIFY = new PasswordVerifyMetaField();
+	public final static UserMetaField USER = new UserMetaField();
+
+	void setId(Long id);
+
+	Long getId();
 
 	void setPassword(String password);
 
 	String getPassword();
 
-	void setPasswordVerify(String passwordVerify);
+	void setUser(User user);
 
-	String getPasswordVerify();
+	User getUser();
 }

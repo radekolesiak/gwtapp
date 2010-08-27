@@ -3,10 +3,10 @@ package org.gwtapp.extension.user.client.data;
 import java.io.Serializable;
 
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.extension.user.client.data.metafield.EmailMetaField;
-import org.gwtapp.extension.user.client.data.metafield.IdMetaField;
-import org.gwtapp.extension.user.client.data.metafield.LoginMetaField;
-import org.gwtapp.extension.user.client.data.metafield.NameMetaField;
+import org.gwtapp.extension.user.client.data.metafield.user.EmailMetaField;
+import org.gwtapp.extension.user.client.data.metafield.user.IdMetaField;
+import org.gwtapp.extension.user.client.data.metafield.user.LoginMetaField;
+import org.gwtapp.extension.user.client.data.metafield.user.NameMetaField;
 
 public interface User extends ModelData, Serializable {
 

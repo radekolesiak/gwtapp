@@ -1,7 +1,7 @@
 package org.gwtapp.extension.user.client.data;
 
-import org.gwtapp.extension.user.client.data.metafield.ChallengeMetaField;
-import org.gwtapp.extension.user.client.data.metafield.ResponseMetaField;
+import org.gwtapp.extension.user.client.data.metafield.recaptcha.ChallengeMetaField;
+import org.gwtapp.extension.user.client.data.metafield.recaptcha.ResponseMetaField;
 
 public interface ReCaptcha {
 

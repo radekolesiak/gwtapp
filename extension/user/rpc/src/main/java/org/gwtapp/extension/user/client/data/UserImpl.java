@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import org.gwtapp.core.rpc.data.HashModelData;
 
 @SuppressWarnings("serial")
-@Entity(name = "CCalcUser")
+@Entity(name = "UserEntity")
 public class UserImpl extends HashModelData implements User {
 
 	@Id

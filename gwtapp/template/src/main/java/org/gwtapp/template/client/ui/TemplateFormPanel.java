@@ -54,7 +54,6 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("unchecked")
 	public HasValue<?> addField(String name, HasValue<?> field) {
 		assert name != null && !name.isEmpty();
-		;
 		ValueChangeHandler handler = new ValueChangeHandler() {
 			@Override
 			public void onValueChange(ValueChangeEvent event) {
