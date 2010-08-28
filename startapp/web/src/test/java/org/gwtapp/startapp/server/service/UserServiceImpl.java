@@ -1,7 +1,6 @@
 package org.gwtapp.startapp.server.service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -15,11 +14,15 @@ import org.gwtapp.extension.user.client.data.exception.UserValidationException.E
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
 import org.gwtapp.extension.user.server.stub.UserAddStub;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
+@Singleton
 public class UserServiceImpl implements UserService, UserAddStub {
 
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
-	@PersistenceContext(unitName = "derbyPU")
+	@Inject
 	private EntityManager em;
 
 	@Override
@@ -30,6 +33,7 @@ public class UserServiceImpl implements UserService, UserAddStub {
 
 	@Override
 	public long addUser(UserPassword user) throws RpcException {
+		System.out.println(em);
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(user.getUser().getLogin())) {
 			validation.setLogin(Login.INVALID);
