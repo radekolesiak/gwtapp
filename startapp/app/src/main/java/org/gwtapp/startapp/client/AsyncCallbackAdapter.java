@@ -86,6 +86,7 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 	}
 
 	private static void message(Throwable e, String message) {
+		e.printStackTrace();
 		Window.alert("AsyncCallbackAdapter: " + e + " " + message);
 	}
 }

@@ -1,7 +1,8 @@
 package org.gwtapp.startapp.server.service;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.RollbackException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -16,7 +17,9 @@ import org.gwtapp.extension.user.client.data.exception.UserValidationException.L
 import org.gwtapp.extension.user.server.stub.UserAddStub;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.Singleton;
+import com.wideplay.warp.persist.Transactional;
 
 @Singleton
 public class UserServiceImpl implements UserService, UserAddStub {
@@ -24,7 +27,7 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
 	@Inject
-	private EntityManager em;
+	Provider<EntityManager> em;
 
 	@Override
 	public User getUser(String login) throws RpcException {
@@ -44,22 +47,32 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		} else if (up.getUser().getLogin().length() < 3) {
 			validation.setLogin(Login.TOO_SHORT);
 		}
+		valid(validation);
+		try {
+			persistUser(up.getUser());
+		} catch (RollbackException e) {
+			if (e.getCause() instanceof EntityExistsException) {
+				// TODO determine which ones already exist
+				validation.setLogin(Login.ALREADY_EXISTS);
+				validation.setEmail(Email.ALREADY_EXISTS);
+				valid(validation);
+			} else {
+				throw e;
+			}
+		}
+		log.debug("persisted id=" + up.getUser().getId());
+		return up.getUser().getId();
+	}
+
+	@Transactional
+	protected void persistUser(User user) {
+		em.get().persist(user);
+	}
+
+	private void valid(UserValidationException validation) {
 		if (validation.getLogin() != Login.VALID
 				|| validation.getEmail() != Email.VALID) {
 			throw validation;
 		}
-		EntityTransaction tx = null;
-		try {
-			tx = em.getTransaction();
-			tx.begin();
-			em.persist(up.getUser());
-			tx.commit();
-		} catch (RuntimeException e) {
-			log.error("", e);
-			tx.rollback();
-			throw e;
-		}
-		log.debug("persisted id=" + up.getUser().getId());
-		return up.getUser().getId();
 	}
 }

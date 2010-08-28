@@ -41,7 +41,12 @@
 			<version>${gwtapp.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!--  JSTL -->
+		<dependency>
+			<groupId>com.wideplay.warp</groupId>
+			<artifactId>warp-persist</artifactId>
+			<version>${warp.version}</version>
+		</dependency>
+		<!-- JSTL -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
@@ -52,7 +57,7 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		<!--  GAE -->
+		<!-- GAE -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
@@ -102,7 +107,7 @@
 			<version>${geronimo.jpa_3.0_spec.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!--  GWT -->
+		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
