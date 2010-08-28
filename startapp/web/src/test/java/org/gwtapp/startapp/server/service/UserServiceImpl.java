@@ -1,6 +1,7 @@
 package org.gwtapp.startapp.server.service;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -47,13 +48,18 @@ public class UserServiceImpl implements UserService, UserAddStub {
 				|| validation.getEmail() != Email.VALID) {
 			throw validation;
 		}
+		EntityTransaction tx = null;
 		try {
+			tx = em.getTransaction();
+			tx.begin();
 			em.persist(up.getUser());
+			tx.commit();
 		} catch (RuntimeException e) {
 			log.error("", e);
+			tx.rollback();
 			throw e;
 		}
-		log.debug("persisted id="+up.getUser().getId());
+		log.debug("persisted id=" + up.getUser().getId());
 		return up.getUser().getId();
 	}
 }
