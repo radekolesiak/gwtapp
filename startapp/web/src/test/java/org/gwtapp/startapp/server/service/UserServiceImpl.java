@@ -32,23 +32,28 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	}
 
 	@Override
-	public long addUser(UserPassword user) throws RpcException {
-		System.out.println(em);
+	public long addUser(UserPassword up) throws RpcException {
 		UserValidationException validation = new UserValidationException();
-		if (StringUtils.isEmpty(user.getUser().getLogin())) {
+		if (StringUtils.isEmpty(up.getUser().getLogin())) {
 			validation.setLogin(Login.INVALID);
-		} else if (user.getUser().getLogin().matches("[A-Z]+")) {
+		} else if (up.getUser().getLogin().matches("[A-Z]+")) {
 			validation.setLogin(Login.NOT_LOWER_CASE);
-		} else if (!user.getUser().getLogin().matches("[a-z]+")) {
+		} else if (!up.getUser().getLogin().matches("[a-z]+")) {
 			validation.setLogin(Login.NOT_LETTERS_ONLY);
-		} else if (user.getUser().getLogin().length() < 3) {
+		} else if (up.getUser().getLogin().length() < 3) {
 			validation.setLogin(Login.TOO_SHORT);
 		}
 		if (validation.getLogin() != Login.VALID
 				|| validation.getEmail() != Email.VALID) {
 			throw validation;
 		}
-		log.warn("Not implemented");
-		throw new NotImplementedException();
+		try {
+			em.persist(up.getUser());
+		} catch (RuntimeException e) {
+			log.error("", e);
+			throw e;
+		}
+		log.debug("persisted id="+up.getUser().getId());
+		return up.getUser().getId();
 	}
 }
