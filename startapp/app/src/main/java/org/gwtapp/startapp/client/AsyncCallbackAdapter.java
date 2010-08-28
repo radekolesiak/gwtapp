@@ -1,6 +1,7 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.core.rpc.exception.ValidationException;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -46,6 +47,7 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 			try {
 				try {
 					throw e;
+				} catch (ValidationException f) {
 				} catch (RpcException f) {
 					onRpcError(f);
 				}

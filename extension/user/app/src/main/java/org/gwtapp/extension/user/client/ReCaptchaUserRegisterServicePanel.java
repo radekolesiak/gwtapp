@@ -1,13 +1,15 @@
 package org.gwtapp.extension.user.client;
 
-import org.gwtapp.core.client.SimpleAsyncCallback;
+import org.gwtapp.core.client.ValidationAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -29,7 +31,20 @@ public class ReCaptchaUserRegisterServicePanel extends
 		});
 	}
 
-	private void doUserRegister(ReCaptchaUser user) {
-		service.addUser(user, create(new SimpleAsyncCallback<Long>()));
+	private void doUserRegister(final ReCaptchaUser user) {
+		service.addUser(
+				user,
+				create(new ValidationAsyncCallback<Long, UserValidationException>() {
+					@Override
+					public void onSuccess(Long result) {
+						user.setId(result);
+						Window.alert("SUCCESS: User has been added");
+					}
+
+					@Override
+					public void onValidation(UserValidationException validation) {
+						Window.alert("VALIDATION: " + validation);
+					}
+				}));
 	}
 }

@@ -1,11 +1,11 @@
 package org.gwtapp.extension.user.client.data.exception;
 
-import org.gwtapp.core.rpc.exception.RpcException;
+import org.gwtapp.core.rpc.exception.ValidationException;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 @SuppressWarnings("serial")
-public class UserValidationException extends RpcException {
+public class UserValidationException extends ValidationException {
 
 	public final static String EMAIL_REGEXP = ".+@.+\\.[a-z]+";
 	public final static String ANY_UPPER_CASE_REGEXP = "[A-Z]+";
