@@ -1,4 +1,7 @@
-package org.gwtapp.extension.user.server.service;
+package org.gwtapp.startapp.server.service;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -15,6 +18,9 @@ import org.gwtapp.extension.user.server.stub.UserAddStub;
 public class UserServiceImpl implements UserService, UserAddStub {
 
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
+
+	@PersistenceContext(unitName = "derbyPU")
+	private EntityManager em;
 
 	@Override
 	public User getUser(String login) throws RpcException {
