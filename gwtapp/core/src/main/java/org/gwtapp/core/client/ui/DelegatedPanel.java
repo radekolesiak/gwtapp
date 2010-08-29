@@ -14,9 +14,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 		HasDelegatedPanel<X, Y> {
 
-	// cached value
-	private X value = null;
-
 	private boolean embeddable = false;
 
 	public DelegatedPanel() {
@@ -51,7 +48,7 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 
 	@Override
 	public X getValue() {
-		return value;
+		return convertToX(getDelegated().getValue());
 	}
 
 	@Override
@@ -67,7 +64,6 @@ public abstract class DelegatedPanel<X, Y> extends ContainerPanel implements
 	@Override
 	public void setValue(X value, boolean fireEvents,
 			boolean updateDelegatedPanel) {
-		this.value = value;
 		if (updateDelegatedPanel) {
 			getDelegated().setValue(convertToY(value));
 		}
