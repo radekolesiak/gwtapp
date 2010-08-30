@@ -2,8 +2,6 @@ package org.gwtapp.extension.widget.client.ui.template;
 
 import java.util.List;
 
-import org.gwtapp.core.rpc.data.IndexedItem;
-
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -14,8 +12,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.Inject;
 
-public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
-		implements HasValue<T> {
+public class ListPanel<T> extends HorizontalPanel implements HasValue<T> {
 
 	public static class Style {
 		public final static String FIELD = "field";
@@ -46,8 +43,9 @@ public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 
 	private void selectTo(T value) {
 		if (value != null) {
-			for (int i = 0; i < listBox.getItemCount(); i++) {
-				if (listBox.getValue(i).equals(value.getIndex() + "")) {
+			for (int i = 0; i < items.size(); i++) {
+				T item = items.get(i);
+				if (value == item || value.equals(item)) {
 					listBox.setSelectedIndex(i);
 					break;
 				}
@@ -85,8 +83,8 @@ public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 	public void setItems(List<T> items) {
 		this.items = items;
 		listBox.clear();
-		for (T item : items) {
-			listBox.addItem(item.getLabel(), item.getIndex() + "");
+		for (int i = 0; i < items.size(); i++) {
+			listBox.addItem(items.get(i) + "", i + "");
 		}
 		if (!items.isEmpty()) {
 			setValue(items.get(0));

@@ -6,22 +6,25 @@ import java.util.Map;
 
 import javax.persistence.Transient;
 
-@SuppressWarnings("unchecked")
 public abstract class HashModelData extends AbstractModelData implements
 		HasMetaField {
 
+	@SuppressWarnings("rawtypes")
 	@Transient
 	private Map<String, MetaField> autofields = new HashMap<String, MetaField>();
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void addMetaField(MetaField field) {
 		assert field.name() != null && !field.name().isEmpty();
 		autofields.put(field.name(), field);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object get(String property) {
 		if (autofields.containsKey(property)) {
+			@SuppressWarnings("rawtypes")
 			MetaField field = autofields.get(property);
 			return field.get(this);
 		} else {
@@ -29,9 +32,11 @@ public abstract class HashModelData extends AbstractModelData implements
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object set(String property, Object value) {
 		if (autofields.containsKey(property)) {
+			@SuppressWarnings("rawtypes")
 			MetaField field = autofields.get(property);
 			Object oldValue = field.get(this);
 			field.set(this, value);
@@ -46,6 +51,7 @@ public abstract class HashModelData extends AbstractModelData implements
 		return autofields.keySet();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();

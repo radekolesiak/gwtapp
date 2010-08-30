@@ -1,6 +1,6 @@
 package org.gwtapp.core.rpc.data;
 
 public interface HasMetaField {
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	void addMetaField(MetaField field);
 }
