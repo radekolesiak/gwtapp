@@ -183,7 +183,6 @@
 							<includes>
 								<include>gwt.*</include>
 								<include>WEB-INF/classes</include>
-								<include>WEB-INF/lib</include>
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
