@@ -215,10 +215,12 @@ public class GwtTestDelegatedPanel extends GWTTestCore {
 				value.set(event.getValue());
 			}
 		});
+		assertEquals(null, value.get());
+		assertEquals(null, db.getValue());
 		db.delegated.setValue("1.11");
 		assertFalse(handled.get());
 		assertEquals(null, value.get());
-		assertEquals(null, db.getValue());
+		assertEquals(1.11, db.getValue());
 		assertEquals("1.11", db.delegated.getValue());
 		NativeEvent event = Document.get().createChangeEvent();
 		DomEvent.fireNativeEvent(event, db.delegated);
