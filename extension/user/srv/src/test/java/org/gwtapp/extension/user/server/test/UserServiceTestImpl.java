@@ -35,7 +35,7 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 			return null;
 		} else {
 			Query query = getEntityManager().createQuery(
-					"SELECT u FROM CCalcUser u WHERE u.login = ?1");
+					"SELECT u FROM UserEntity u WHERE u.login = ?1");
 			query.setParameter(1, login);
 			List<UserImpl> users = query.getResultList();
 			if (users.isEmpty()) {
