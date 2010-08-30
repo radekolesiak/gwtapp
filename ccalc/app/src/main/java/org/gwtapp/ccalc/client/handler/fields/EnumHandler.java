@@ -1,7 +1,7 @@
-package org.gwtapp.extension.widget.client.handler.fields;
+package org.gwtapp.ccalc.client.handler.fields;
 
+import org.gwtapp.ccalc.client.ui.fields.EnumField;
 import org.gwtapp.core.rpc.data.HasLabelModel;
-import org.gwtapp.extension.widget.client.ui.fields.EnumField;
 import org.gwtapp.template.client.UiHandler;
 
 

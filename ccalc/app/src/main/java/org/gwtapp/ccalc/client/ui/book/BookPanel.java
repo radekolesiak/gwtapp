@@ -1,11 +1,11 @@
 package org.gwtapp.ccalc.client.ui.book;
 
 import org.gwtapp.ccalc.client.CCalc;
+import org.gwtapp.ccalc.client.ui.fields.EnumField;
 import org.gwtapp.ccalc.client.ui.page.PagesListPanel;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.BookImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
-import org.gwtapp.extension.widget.client.ui.fields.EnumField;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
