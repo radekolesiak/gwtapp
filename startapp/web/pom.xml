@@ -107,6 +107,12 @@
 			<version>${geronimo.jpa_3.0_spec.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-all</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -172,6 +178,15 @@
 							</includes>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
+						<fileset>
+							<directory>src/test/war</directory>
+							<includes>
+								<include>gwt.*</include>
+								<include>WEB-INF/classes</include>
+								<include>WEB-INF/lib</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
@@ -217,6 +232,25 @@
 					<source>${javac.source.version}</source>
 					<target>${javac.target.version}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/test/war/WEB-INF/lib</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
