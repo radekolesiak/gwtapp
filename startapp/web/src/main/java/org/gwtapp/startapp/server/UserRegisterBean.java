@@ -8,6 +8,9 @@ public class UserRegisterBean implements UserRegister {
 	
 	private final UserRegisterModelImpl model = new UserRegisterModelImpl();
 
+	public UserRegisterBean() {
+	}
+	
 	public String getAsHtmlRpc() {
 		IOHtmlRpcSerializer bean = new IOHtmlRpcSerializer();
 		bean.setValue(model);

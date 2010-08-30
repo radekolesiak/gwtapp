@@ -6,6 +6,9 @@ import com.google.appengine.api.utils.SystemProperty;
 
 public class AppEngineBean {
 
+	public AppEngineBean() {
+	}
+	
 	public String getDeployVersion() {
 		String version = SystemProperty.applicationVersion.get();
 		if (StringUtils.isEmpty(version)) {
