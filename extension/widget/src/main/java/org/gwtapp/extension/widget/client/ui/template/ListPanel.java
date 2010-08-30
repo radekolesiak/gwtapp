@@ -11,8 +11,8 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.inject.Inject;
 
 public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 		implements HasValue<T> {
@@ -20,29 +20,20 @@ public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 	public static class Style {
 		public final static String FIELD = "field";
 		public final static String LIST_FIELD = "listField";
-		public final static String LABEL = "label";
 		public final static String LIST_BOX = "listBox";
 	}
 
-	private final Label label = new Label();
-	private final ListBox listBox = new ListBox();
+	@Inject
+	private ListBox listBox = new ListBox();
 
+	private List<T> items;
 	private T value;
 
-	public ListPanel(List<T> items) {
-		this("", items);
-	}
-
-	public ListPanel(String title, final List<T> items) {
+	@Inject
+	public ListPanel() {
 		addStyleName(Style.FIELD);
 		addStyleName(Style.LIST_FIELD);
-		label.addStyleName(Style.LABEL);
 		listBox.addStyleName(Style.LIST_BOX);
-
-		label.setText(title);
-		for (T item : items) {
-			listBox.addItem(item.getLabel(), item.getIndex() + "");
-		}
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
@@ -50,10 +41,6 @@ public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 				setValue(items.get(selected), true);
 			}
 		});
-		if (!items.isEmpty()) {
-			setValue(items.get(0));
-		}
-		add(label);
 		add(listBox);
 	}
 
@@ -95,4 +82,18 @@ public class ListPanel<T extends IndexedItem<?>> extends HorizontalPanel
 		return addHandler(handler, ValueChangeEvent.getType());
 	}
 
+	public void setItems(List<T> items) {
+		this.items = items;
+		listBox.clear();
+		for (T item : items) {
+			listBox.addItem(item.getLabel(), item.getIndex() + "");
+		}
+		if (!items.isEmpty()) {
+			setValue(items.get(0));
+		}
+	}
+
+	public List<T> getItems() {
+		return items;
+	}
 }
