@@ -19,9 +19,6 @@ import com.google.inject.Inject;
 public class ReCaptchaUserRegisterPanel extends
 		TemplateModelPanel<ReCaptchaUser> {
 
-	private final WidgetHandler reCaptcha = new WidgetHandler();
-	private final WidgetHandler register = new WidgetHandler();
-
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
 	public static @interface ATemplateCallback {
@@ -31,6 +28,9 @@ public class ReCaptchaUserRegisterPanel extends
 	@BindingAnnotation
 	public static @interface AUserPanel {
 	}
+
+	private final WidgetHandler reCaptcha = new WidgetHandler();
+	private final WidgetHandler register = new WidgetHandler();
 
 	@Inject
 	public ReCaptchaUserRegisterPanel(
