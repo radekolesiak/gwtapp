@@ -26,6 +26,7 @@ public class ReCaptchaUserRegisterPanel extends
 	@BindingAnnotation
 	public static @interface ATemplateCallback {
 	}
+
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
 	public static @interface AUserPanel {

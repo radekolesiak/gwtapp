@@ -16,6 +16,7 @@ import org.gwtapp.startapp.client.test.ListTestPanel;
 import org.gwtapp.template.client.ui.TemplatePanel.TemplateCallback;
 
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.TypeLiteral;
 
 public class ClientModule extends AbstractGinModule {
@@ -26,13 +27,19 @@ public class ClientModule extends AbstractGinModule {
 		bind(User.class).to(UserImpl.class);
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
+		bind(UserPanel.class).annotatedWith(
+				ReCaptchaUserRegisterPanel.AUserPanel.class)
+				.to(UserPanel.class);
+		bind(ListBox.class).annotatedWith(ListPanel.AListBox.class).to(
+				ListBox.class);
+		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
+		}).annotatedWith(ListPanel.AFormatter.class).to(
+				ListTestPanel.Formatter.class);
 		bind(TemplateCallback.class).annotatedWith(
 				ReCaptchaUserRegisterPanel.ATemplateCallback.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
 		bind(TemplateCallback.class).annotatedWith(
 				UserPanel.ATemplateCallback.class).to(
 				UserPanelTemplateCallback.class);
-		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
-		}).to(ListTestPanel.Formatter.class);
 	}
 }
