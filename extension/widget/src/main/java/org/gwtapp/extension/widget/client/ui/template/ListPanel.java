@@ -1,5 +1,7 @@
 package org.gwtapp.extension.widget.client.ui.template;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 import org.gwtapp.extension.widget.client.ui.ValuePanel;
@@ -7,10 +9,16 @@ import org.gwtapp.extension.widget.client.ui.ValuePanel;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
 
 // TODO extend by TemplatePanel<T>
 public class ListPanel<T> extends ValuePanel<T> {
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
+	public static @interface PanelAnnotation {
+	}
 
 	public static interface Formatter<T> {
 		String format(ListPanel<T> owner, T item, int index);
@@ -34,7 +42,8 @@ public class ListPanel<T> extends ValuePanel<T> {
 	}
 
 	@Inject
-	public ListPanel(final ListBox listBox, Formatter<T> formatter) {
+	public ListPanel(final ListBox listBox,
+			Formatter<T> formatter) {
 		this.listBox = listBox;
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {

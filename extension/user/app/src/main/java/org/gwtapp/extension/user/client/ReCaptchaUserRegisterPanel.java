@@ -24,12 +24,12 @@ public class ReCaptchaUserRegisterPanel extends
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface Template {
+	public static @interface PanelAnnotation {
 	}
 
 	@Inject
-	public ReCaptchaUserRegisterPanel(@Template TemplateCallback callback,
-			UserPanel userPanel) {
+	public ReCaptchaUserRegisterPanel(
+			@PanelAnnotation TemplateCallback callback, UserPanel userPanel) {
 		super(callback);
 		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());

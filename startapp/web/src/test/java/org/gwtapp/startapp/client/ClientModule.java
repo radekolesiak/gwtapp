@@ -10,8 +10,8 @@ import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.widget.client.ui.template.ListPanel;
-import org.gwtapp.startapp.client.panel.UserPanelBinder;
 import org.gwtapp.startapp.client.template.ReCaptchaUserRegisterTemplateCallback;
+import org.gwtapp.startapp.client.template.UserPanelTemplateCallback;
 import org.gwtapp.startapp.client.test.ListTestPanel;
 import org.gwtapp.template.client.ui.TemplatePanel.TemplateCallback;
 
@@ -23,13 +23,15 @@ public class ClientModule extends AbstractGinModule {
 	protected void configure() {
 		bind(AsyncCallbackInjector.class)
 				.to(AsyncCallbackInjectorAdapter.class);
-		bind(UserPanel.class).to(UserPanelBinder.class);
 		bind(User.class).to(UserImpl.class);
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 		bind(TemplateCallback.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.Template.class).to(
+				ReCaptchaUserRegisterPanel.PanelAnnotation.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
+		bind(TemplateCallback.class).annotatedWith(
+				UserPanel.PanelAnnotation.class).to(
+				UserPanelTemplateCallback.class);
 		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
 		}).to(ListTestPanel.Formatter.class);
 	}
