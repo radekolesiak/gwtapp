@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.inject.Provider;
 
 public class ListTestPanel extends FlowPanel {
 
@@ -37,21 +38,23 @@ public class ListTestPanel extends FlowPanel {
 		}
 	}
 
-	private final List<Item> items = new ArrayList<Item>();
-	{
-		items.add(new Item("ab", "AB"));
-		items.add(new Item("01", ")!"));
-		items.add(new Item("23", "@#"));
-		items.add(new Item("xyz", "XYZ"));
-		items.add(new Item("+-*/", "=_*?"));
+	public static class ItemsProvider implements Provider<List<Item>> {
+		public List<Item> get() {
+			List<Item> items = new ArrayList<Item>();
+			items.add(new Item("ab", "AB"));
+			items.add(new Item("01", ")!"));
+			items.add(new Item("23", "@#"));
+			items.add(new Item("xyz", "XYZ"));
+			items.add(new Item("+-*/", "=_*?"));
+			return items;
+		}
 	}
 
-	private final ListPanel<Item> listPanel;
+	private final ListPanel<Item> listPanel = StartAppManualTestEntryPoint.gin
+			.getListPanel();
 	private final SimplePanel status = new SimplePanel();
 
 	public ListTestPanel() {
-		listPanel = StartAppManualTestEntryPoint.gin.getListPanel();
-		listPanel.setItems(items);
 		listPanel.addValueChangeHandler(new ValueChangeHandler<Item>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Item> event) {
@@ -60,7 +63,7 @@ public class ListTestPanel extends FlowPanel {
 			}
 		});
 		add(listPanel);
-		for (final Item item : items) {
+		for (final Item item : listPanel.getItems()) {
 			Button btn = new Button("Set item: {" + "name=" + item.name + " "
 					+ "surname=" + item.surname + "}");
 			btn.addClickHandler(new ClickHandler() {

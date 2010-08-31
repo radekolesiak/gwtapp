@@ -2,6 +2,7 @@ package org.gwtapp.extension.widget.client.ui.template;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtapp.extension.widget.client.ui.ValuePanel;
@@ -25,6 +26,11 @@ public class ListPanel<T> extends ValuePanel<T> {
 	public static @interface AFormatter {
 	}
 
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
+	public static @interface AItems {
+	}
+
 	public static interface Formatter<T> {
 		String format(ListPanel<T> owner, T item, int index);
 	}
@@ -43,19 +49,19 @@ public class ListPanel<T> extends ValuePanel<T> {
 	private final ListBox listBox;
 
 	public ListPanel() {
-		this(new ListBox(), new DefaultFormatter<T>());
+		this(new ListBox(), new DefaultFormatter<T>(), new ArrayList<T>());
 	}
 
 	@Inject
 	public ListPanel(final @AListBox ListBox listBox,
-			@AFormatter Formatter<T> formatter) {
+			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
 		this.listBox = listBox;
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
 				int selected = listBox.getSelectedIndex();
-				setValue(items.get(selected), true);
+				setValue(ListPanel.this.items.get(selected), true);
 			}
 		});
 		add(listBox);
