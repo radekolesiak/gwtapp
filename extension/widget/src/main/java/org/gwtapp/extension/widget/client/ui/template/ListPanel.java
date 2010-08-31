@@ -52,26 +52,6 @@ public class ListPanel<T> extends ValuePanel<T> {
 		add(listBox);
 	}
 
-	private void selectTo(T value) {
-		if (value != null) {
-			for (int i = 0; i < items.size(); i++) {
-				T item = items.get(i);
-				if (value == item || value.equals(item)) {
-					listBox.setSelectedIndex(i);
-					break;
-				}
-			}
-		} else {
-			listBox.setSelectedIndex(-1);
-		}
-	}
-
-	@Override
-	public void setValue(T value, boolean fireEvents) {
-		selectTo(value);
-		super.setValue(value, fireEvents);
-	}
-
 	public void setItems(List<T> items) {
 		this.items = items;
 		listBox.clear();
@@ -86,5 +66,25 @@ public class ListPanel<T> extends ValuePanel<T> {
 
 	public List<T> getItems() {
 		return items;
+	}
+
+	@Override
+	public void setValue(T value, boolean fireEvents) {
+		selectTo(value);
+		super.setValue(value, fireEvents);
+	}
+
+	private void selectTo(T value) {
+		if (value != null) {
+			for (int i = 0; i < items.size(); i++) {
+				T item = items.get(i);
+				if (value == item || value.equals(item)) {
+					listBox.setSelectedIndex(i);
+					break;
+				}
+			}
+		} else {
+			listBox.setSelectedIndex(-1);
+		}
 	}
 }
