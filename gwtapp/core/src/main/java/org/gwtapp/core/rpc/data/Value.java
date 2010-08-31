@@ -1,4 +1,4 @@
-package org.gwtapp.core.client;
+package org.gwtapp.core.rpc.data;
 
 public class Value<T> {
 

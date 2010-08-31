@@ -1,7 +1,7 @@
 package org.gwtapp.core.client.ui;
 
 import org.gwtapp.core.client.GWTTestCore;
-import org.gwtapp.core.client.Value;
+import org.gwtapp.core.rpc.data.Value;
 import org.junit.Test;
 
 import com.google.gwt.dom.client.Document;

@@ -19,6 +19,11 @@ public class ListPanel<T> extends TemplatePanel<T> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
+	public static @interface AFieldName {
+	}
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
 	public static @interface ATemplateCallback {
 	}
 
@@ -55,16 +60,17 @@ public class ListPanel<T> extends TemplatePanel<T> {
 	private final UiHandler<ListBox> listBox;
 
 	public ListPanel() {
-		this(new SimpleTemplateCallback(), new ListBox(),
+		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
 				new DefaultFormatter<T>(), new ArrayList<T>());
 	}
 
 	@Inject
 	public ListPanel(@ATemplateCallback TemplateCallback callback,
 			final @AListBox ListBox listBox,
+			@AFieldName String widgetName,
 			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
 		super(callback);
-		this.listBox = add("listBox", new UiHandler<ListBox>(listBox));
+		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
@@ -79,17 +85,24 @@ public class ListPanel<T> extends TemplatePanel<T> {
 	}
 
 	public void setItems(final List<T> items) {
+		setItems(items, -1);
+	}
+
+	public void setItems(final List<T> items, int selected) {
 		this.items = items;
 		listBox.getWidget().clear();
+		T selectedItem = null;
 		if (items != null) {
 			for (int i = 0; i < items.size(); i++) {
-				String label = formatter.format(this, items.get(i), i);
+				T item = items.get(i);
+				if (i == selected) {
+					selectedItem = item;
+				}
+				String label = formatter.format(this, item, i);
 				listBox.getWidget().addItem(label, i + "");
 			}
-			if (!items.isEmpty()) {
-				setValue(items.get(0));
-			}
 		}
+		setValue(selectedItem);
 	}
 
 	public List<T> getItems() {

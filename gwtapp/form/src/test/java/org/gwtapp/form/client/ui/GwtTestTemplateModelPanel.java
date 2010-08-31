@@ -2,11 +2,11 @@ package org.gwtapp.form.client.ui;
 
 import java.util.Map;
 
-import org.gwtapp.core.client.Value;
 import org.gwtapp.core.client.ui.DelegatedPanel;
 import org.gwtapp.core.rpc.data.HashModelData;
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
+import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.form.client.FormTest;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;

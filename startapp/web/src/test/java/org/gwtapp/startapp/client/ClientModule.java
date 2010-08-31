@@ -3,6 +3,7 @@ package org.gwtapp.startapp.client;
 import java.util.List;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
+import org.gwtapp.core.rpc.data.ProviderAdapter;
 import org.gwtapp.extension.user.client.ReCaptchaUserRegisterPanel;
 import org.gwtapp.extension.user.client.UserPanel;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
@@ -24,6 +25,13 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.TypeLiteral;
 
 public class ClientModule extends AbstractGinModule {
+
+	public static class ListPanelFieldName extends ProviderAdapter<String> {
+		public ListPanelFieldName() {
+			super("MyListBoxField");
+		}
+	}
+
 	@Override
 	protected void configure() {
 		bind(AsyncCallbackInjector.class)
@@ -39,6 +47,9 @@ public class ClientModule extends AbstractGinModule {
 
 		bind(ListBox.class).annotatedWith(ListPanel.AListBox.class).to(
 				ListBox.class);
+
+		bind(String.class).annotatedWith(ListPanel.AFieldName.class)
+				.toProvider(ListPanelFieldName.class);
 
 		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
 		}).annotatedWith(ListPanel.AFormatter.class).to(

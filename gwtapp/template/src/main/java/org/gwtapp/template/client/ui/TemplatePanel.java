@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
+import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 
@@ -56,8 +57,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private boolean templated = false;
 
+	private Value<T> initValue = null;
+
 	@Inject
-	private T initValue;
+	private T injectInitValue = null;
 
 	@Inject
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -231,11 +234,15 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	private void setInitValue(T initValue) {
-		this.initValue = initValue;
+		this.initValue = new Value<T>(initValue);
 	}
 
 	private T getInitValue() {
-		return initValue;
+		if (initValue != null) {
+			return initValue.get();
+		} else {
+			return injectInitValue;
+		}
 	}
 
 	public AsyncCallbackInjector getAsyncCallbackInjector() {
