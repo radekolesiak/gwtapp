@@ -2,17 +2,15 @@ package org.gwtapp.extension.widget.client.ui.template;
 
 import java.util.List;
 
+import org.gwtapp.extension.widget.client.ui.ValuePanel;
+
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.Inject;
 
-public class ListPanel<T> extends HorizontalPanel implements HasValue<T> {
+// TODO extend by TemplatePanel<T>
+public class ListPanel<T> extends ValuePanel<T> {
 
 	public static class Style {
 		public final static String FIELD = "field";
@@ -20,11 +18,24 @@ public class ListPanel<T> extends HorizontalPanel implements HasValue<T> {
 		public final static String LIST_BOX = "listBox";
 	}
 
+	public static interface Formatter<T> {
+		String format(ListPanel<T> owner, T item, int index);
+	}
+
+	public static class DefaultFormatter<T> implements Formatter<T> {
+		@Override
+		public String format(ListPanel<T> owner, T item, int index) {
+			return "" + item;
+		}
+	};
+
+	@Inject
+	private Formatter<T> formatter = new DefaultFormatter<T>();
+
 	@Inject
 	private ListBox listBox = new ListBox();
 
 	private List<T> items;
-	private T value;
 
 	@Inject
 	public ListPanel() {
@@ -56,35 +67,17 @@ public class ListPanel<T> extends HorizontalPanel implements HasValue<T> {
 	}
 
 	@Override
-	public T getValue() {
-		return value;
-	}
-
-	@Override
-	public void setValue(T value) {
-		setValue(value, false);
-	}
-
-	@Override
 	public void setValue(T value, boolean fireEvents) {
-		this.value = value;
 		selectTo(value);
-		if (fireEvents) {
-			ValueChangeEvent.fire(this, value);
-		}
-	}
-
-	@Override
-	public HandlerRegistration addValueChangeHandler(
-			ValueChangeHandler<T> handler) {
-		return addHandler(handler, ValueChangeEvent.getType());
+		super.setValue(value, fireEvents);
 	}
 
 	public void setItems(List<T> items) {
 		this.items = items;
 		listBox.clear();
 		for (int i = 0; i < items.size(); i++) {
-			listBox.addItem(items.get(i) + "", i + "");
+			String label = formatter.format(this, items.get(i), i);
+			listBox.addItem(label, i + "");
 		}
 		if (!items.isEmpty()) {
 			setValue(items.get(0));
