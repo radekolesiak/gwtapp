@@ -9,11 +9,14 @@ import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.UserPasswordImpl;
+import org.gwtapp.extension.widget.client.ui.template.ListPanel;
 import org.gwtapp.startapp.client.panel.UserPanelBinder;
 import org.gwtapp.startapp.client.template.ReCaptchaUserRegisterTemplateCallback;
+import org.gwtapp.startapp.client.test.ListTestPanel;
 import org.gwtapp.template.client.ui.TemplatePanel.TemplateCallback;
 
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
 public class ClientModule extends AbstractGinModule {
@@ -28,5 +31,7 @@ public class ClientModule extends AbstractGinModule {
 		bind(TemplateCallback.class).annotatedWith(
 				Names.named(ReCaptchaUserRegisterServicePanel.BIND_NAME)).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
+		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
+		}).to(ListTestPanel.Formatter.class);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtapp.extension.widget.client.ui.template.ListPanel;
+import org.gwtapp.startapp.client.StartAppManualTestEntryPoint;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -16,7 +17,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 public class ListTestPanel extends FlowPanel {
 
-	class Item {
+	public static class Item {
 		public Item() {
 		}
 
@@ -29,7 +30,7 @@ public class ListTestPanel extends FlowPanel {
 		public String surname;
 	}
 
-	class Formatter implements ListPanel.Formatter<Item> {
+	public static class Formatter implements ListPanel.Formatter<Item> {
 		@Override
 		public String format(ListPanel<Item> owner, Item item, int index) {
 			return "Name: " + item.name + "; Surname: " + item.surname;
@@ -45,11 +46,11 @@ public class ListTestPanel extends FlowPanel {
 		items.add(new Item("+-*/", "=_*?"));
 	}
 
-	private final ListPanel<Item> listPanel = new ListPanel<Item>();
+	private final ListPanel<Item> listPanel;
 	private final SimplePanel status = new SimplePanel();
 
 	public ListTestPanel() {
-		listPanel.setFormatter(new Formatter());
+		listPanel = StartAppManualTestEntryPoint.gin.getListPanel();
 		listPanel.setItems(items);
 		listPanel.addValueChangeHandler(new ValueChangeHandler<Item>() {
 			@Override

@@ -29,16 +29,20 @@ public class ListPanel<T> extends ValuePanel<T> {
 		}
 	};
 
-	@Inject
-	private Formatter<T> formatter = new DefaultFormatter<T>();
-
-	@Inject
-	private ListBox listBox = new ListBox();
+	private Formatter<T> formatter;
 
 	private List<T> items;
 
-	@Inject
+	private final ListBox listBox;
+
 	public ListPanel() {
+		this(new ListBox(), new DefaultFormatter<T>());
+	}
+
+	@Inject
+	public ListPanel(final ListBox listBox, Formatter<T> formatter) {
+		this.listBox = listBox;
+		this.formatter = formatter;
 		addStyleName(Style.FIELD);
 		addStyleName(Style.LIST_FIELD);
 		listBox.addStyleName(Style.LIST_BOX);
@@ -50,17 +54,22 @@ public class ListPanel<T> extends ValuePanel<T> {
 			}
 		});
 		add(listBox);
+		if (items != null) {
+			setItems(items);
+		}
 	}
 
-	public void setItems(List<T> items) {
+	public void setItems(final List<T> items) {
 		this.items = items;
 		listBox.clear();
-		for (int i = 0; i < items.size(); i++) {
-			String label = formatter.format(this, items.get(i), i);
-			listBox.addItem(label, i + "");
-		}
-		if (!items.isEmpty()) {
-			setValue(items.get(0));
+		if (items != null) {
+			for (int i = 0; i < items.size(); i++) {
+				String label = formatter.format(this, items.get(i), i);
+				listBox.addItem(label, i + "");
+			}
+			if (!items.isEmpty()) {
+				setValue(items.get(0));
+			}
 		}
 	}
 
@@ -74,6 +83,7 @@ public class ListPanel<T> extends ValuePanel<T> {
 
 	public void setFormatter(Formatter<T> formatter) {
 		this.formatter = formatter;
+		setItems(getItems());
 	}
 
 	public int getSelectedIndex() {
