@@ -5,7 +5,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtapp.extension.widget.client.ui.ValuePanel;
+import org.gwtapp.template.client.callback.SimpleTemplateCallback;
+import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -13,8 +14,12 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
 
-// TODO extend by TemplatePanel<T>
-public class ListPanel<T> extends ValuePanel<T> {
+public class ListPanel<T> extends TemplatePanel<T> {
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
+	public static @interface ATemplateCallback {
+	}
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
@@ -49,12 +54,15 @@ public class ListPanel<T> extends ValuePanel<T> {
 	private final ListBox listBox;
 
 	public ListPanel() {
-		this(new ListBox(), new DefaultFormatter<T>(), new ArrayList<T>());
+		this(new SimpleTemplateCallback(), new ListBox(),
+				new DefaultFormatter<T>(), new ArrayList<T>());
 	}
 
 	@Inject
-	public ListPanel(final @AListBox ListBox listBox,
+	public ListPanel(@ATemplateCallback TemplateCallback callback,
+			final @AListBox ListBox listBox,
 			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
+		super(callback);
 		this.listBox = listBox;
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {
