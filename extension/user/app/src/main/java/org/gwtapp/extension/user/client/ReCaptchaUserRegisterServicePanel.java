@@ -20,7 +20,8 @@ public class ReCaptchaUserRegisterServicePanel extends
 
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(
-			@PanelAnnotation TemplateCallback callback, UserPanel userPanel) {
+			@ATemplateCallback TemplateCallback callback,
+			@AUserPanel UserPanel userPanel) {
 		super(callback, userPanel);
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override

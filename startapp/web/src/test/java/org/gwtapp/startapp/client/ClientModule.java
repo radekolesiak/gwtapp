@@ -27,10 +27,10 @@ public class ClientModule extends AbstractGinModule {
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 		bind(TemplateCallback.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.PanelAnnotation.class).to(
+				ReCaptchaUserRegisterPanel.ATemplateCallback.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
 		bind(TemplateCallback.class).annotatedWith(
-				UserPanel.PanelAnnotation.class).to(
+				UserPanel.ATemplateCallback.class).to(
 				UserPanelTemplateCallback.class);
 		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
 		}).to(ListTestPanel.Formatter.class);

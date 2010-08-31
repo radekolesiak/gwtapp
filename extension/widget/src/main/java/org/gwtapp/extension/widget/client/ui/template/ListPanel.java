@@ -17,7 +17,12 @@ public class ListPanel<T> extends ValuePanel<T> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface PanelAnnotation {
+	public static @interface AListBox {
+	}
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
+	public static @interface AFormatter {
 	}
 
 	public static interface Formatter<T> {
@@ -42,8 +47,8 @@ public class ListPanel<T> extends ValuePanel<T> {
 	}
 
 	@Inject
-	public ListPanel(final ListBox listBox,
-			Formatter<T> formatter) {
+	public ListPanel(final @AListBox ListBox listBox,
+			@AFormatter Formatter<T> formatter) {
 		this.listBox = listBox;
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {
