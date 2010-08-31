@@ -3,7 +3,7 @@ package org.gwtapp.startapp.client;
 import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
 import org.gwtapp.extension.user.client.UserPanel;
 import org.gwtapp.extension.widget.client.ui.template.ListPanel;
-import org.gwtapp.startapp.client.test.ListTestPanel;
+import org.gwtapp.startapp.client.test.ListPanelTestManual;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
@@ -12,5 +12,5 @@ import com.google.gwt.inject.client.Ginjector;
 public interface GinjectorService extends Ginjector {
 	UserPanel getUserPanel();
 	ReCaptchaUserRegisterServicePanel getReCaptchaUserRegisterServicePanel();
-	ListPanel<ListTestPanel.Item> getListPanel();
+	ListPanel<ListPanelTestManual.Item> getListPanel();
 }

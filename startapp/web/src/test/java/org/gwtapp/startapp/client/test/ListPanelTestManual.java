@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Provider;
 
-public class ListTestPanel extends FlowPanel {
+public class ListPanelTestManual extends FlowPanel {
 
 	public static class Item {
 		public Item() {
@@ -50,16 +50,21 @@ public class ListTestPanel extends FlowPanel {
 		}
 	}
 
-	private final ListPanel<Item> listPanel = StartAppManualTestEntryPoint.gin
-			.getListPanel();
-	private final SimplePanel status = new SimplePanel();
+	public ListPanelTestManual() {
+		ListPanel<Item> listPanel = new ListPanel<Item>();
+		listPanel.setFormatter(new Formatter());
+		listPanel.setItems(new ItemsProvider().get());
+		addListPanel(StartAppManualTestEntryPoint.gin.getListPanel());
+		addListPanel(listPanel);
+	}
 
-	public ListTestPanel() {
+	private void addListPanel(final ListPanel<Item> listPanel) {
+		final SimplePanel status = new SimplePanel();
 		listPanel.addValueChangeHandler(new ValueChangeHandler<Item>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Item> event) {
 				status.setWidget(new Label("value change event: "
-						+ renderSelected(event.getValue())));
+						+ renderSelected(listPanel, event.getValue())));
 			}
 		});
 		add(listPanel);
@@ -80,7 +85,7 @@ public class ListTestPanel extends FlowPanel {
 			@Override
 			public void onClick(ClickEvent event) {
 				status.setWidget(new Label("selected value: "
-						+ renderSelected(listPanel.getValue())));
+						+ renderSelected(listPanel, listPanel.getValue())));
 			}
 		});
 		Button empty = new Button("Unselect");
@@ -95,7 +100,7 @@ public class ListTestPanel extends FlowPanel {
 		add(status);
 	}
 
-	private String renderSelected(Item item) {
+	private String renderSelected(ListPanel<Item> listPanel, Item item) {
 		if (item != null) {
 			return "index=" + listPanel.getSelectedIndex() + " value={"
 					+ "name=" + item.name + " " + "surname=" + item.surname

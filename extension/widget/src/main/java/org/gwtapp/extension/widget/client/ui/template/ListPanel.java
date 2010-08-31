@@ -5,6 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.ui.TemplatePanel;
@@ -60,14 +61,14 @@ public class ListPanel<T> extends TemplatePanel<T> {
 	private final UiHandler<ListBox> listBox;
 
 	public ListPanel() {
-		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
+		this(new SimpleTemplateCallback(new Template("div", "", "list-panel",
+				"<div t:field=\"listBox\"></div>")), new ListBox(), "listBox",
 				new DefaultFormatter<T>(), new ArrayList<T>());
 	}
 
 	@Inject
 	public ListPanel(@ATemplateCallback TemplateCallback callback,
-			final @AListBox ListBox listBox,
-			@AFieldName String widgetName,
+			final @AListBox ListBox listBox, @AFieldName String widgetName,
 			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
 		super(callback);
 		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));

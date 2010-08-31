@@ -12,8 +12,8 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 
-public class ReCaptchaTestPanel extends FlowPanel {
-	public ReCaptchaTestPanel() {
+public class ReCaptchaPanelTestManual extends FlowPanel {
+	public ReCaptchaPanelTestManual() {
 		ReCaptchaUserRegisterServicePanel reCaptcha = StartAppManualTestEntryPoint.gin
 				.getReCaptchaUserRegisterServicePanel();
 		assert reCaptcha != null;
