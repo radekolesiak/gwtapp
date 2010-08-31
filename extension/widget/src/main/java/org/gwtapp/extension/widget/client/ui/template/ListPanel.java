@@ -12,12 +12,6 @@ import com.google.inject.Inject;
 // TODO extend by TemplatePanel<T>
 public class ListPanel<T> extends ValuePanel<T> {
 
-	public static class Style {
-		public final static String FIELD = "field";
-		public final static String LIST_FIELD = "listField";
-		public final static String LIST_BOX = "listBox";
-	}
-
 	public static interface Formatter<T> {
 		String format(ListPanel<T> owner, T item, int index);
 	}
@@ -43,9 +37,6 @@ public class ListPanel<T> extends ValuePanel<T> {
 	public ListPanel(final ListBox listBox, Formatter<T> formatter) {
 		this.listBox = listBox;
 		this.formatter = formatter;
-		addStyleName(Style.FIELD);
-		addStyleName(Style.LIST_FIELD);
-		listBox.addStyleName(Style.LIST_BOX);
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
