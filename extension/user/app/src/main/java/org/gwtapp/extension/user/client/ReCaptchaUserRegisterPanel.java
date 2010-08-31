@@ -1,5 +1,8 @@
 package org.gwtapp.extension.user.client;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.UiHandler;
@@ -10,20 +13,23 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
+import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 public class ReCaptchaUserRegisterPanel extends
 		TemplateModelPanel<ReCaptchaUser> {
 
-	public static final String BIND_NAME = "ReCaptchaUserRegisterServicePanel";
-
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
 
+	@Retention(RetentionPolicy.RUNTIME)
+	@BindingAnnotation
+	public static @interface Template {
+	}
+
 	@Inject
-	public ReCaptchaUserRegisterPanel(
-			@Named(BIND_NAME) TemplateCallback callback, UserPanel userPanel) {
+	public ReCaptchaUserRegisterPanel(@Template TemplateCallback callback,
+			UserPanel userPanel) {
 		super(callback);
 		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());

@@ -11,7 +11,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 public class ReCaptchaUserRegisterServicePanel extends
 		ReCaptchaUserRegisterPanel {
@@ -21,7 +20,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(
-			@Named(BIND_NAME) TemplateCallback callback, UserPanel userPanel) {
+			@Template TemplateCallback callback, UserPanel userPanel) {
 		super(callback, userPanel);
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override

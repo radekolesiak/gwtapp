@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
-import org.gwtapp.extension.user.client.ReCaptchaUserRegisterServicePanel;
+import org.gwtapp.extension.user.client.ReCaptchaUserRegisterPanel;
 import org.gwtapp.extension.user.client.UserPanel;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
@@ -17,7 +17,6 @@ import org.gwtapp.template.client.ui.TemplatePanel.TemplateCallback;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
 
 public class ClientModule extends AbstractGinModule {
 	@Override
@@ -29,7 +28,7 @@ public class ClientModule extends AbstractGinModule {
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 		bind(TemplateCallback.class).annotatedWith(
-				Names.named(ReCaptchaUserRegisterServicePanel.BIND_NAME)).to(
+				ReCaptchaUserRegisterPanel.Template.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
 		bind(new TypeLiteral<ListPanel.Formatter<ListTestPanel.Item>>() {
 		}).to(ListTestPanel.Formatter.class);
