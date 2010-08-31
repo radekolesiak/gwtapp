@@ -11,7 +11,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class ReCaptchaTestPanel extends FlowPanel {
 	public ReCaptchaTestPanel() {
@@ -22,8 +21,7 @@ public class ReCaptchaTestPanel extends FlowPanel {
 		reCaptcha.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
-				RootPanel.get().add(
-						new Label("ChangeEvent: reCaptcha has been loaded"));
+				add(new Label("ChangeEvent: reCaptcha has been loaded"));
 			}
 		});
 		reCaptcha

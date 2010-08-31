@@ -1,5 +1,6 @@
 package org.gwtapp.startapp.client;
 
+import org.gwtapp.startapp.client.test.ListTestPanel;
 import org.gwtapp.startapp.client.test.ReCaptchaTestPanel;
 import org.gwtapp.template.client.TemplateRepository;
 
@@ -20,5 +21,6 @@ public class StartAppManualTestEntryPoint implements EntryPoint {
 	public final void onModuleLoad() {
 		RootPanel.get().add(new Label("GWT Manual Testing"));
 		RootPanel.get().add(new ReCaptchaTestPanel());
+		RootPanel.get().add(new ListTestPanel());
 	}
 }

@@ -68,6 +68,18 @@ public class ListPanel<T> extends ValuePanel<T> {
 		return items;
 	}
 
+	public Formatter<T> getFormatter() {
+		return formatter;
+	}
+
+	public void setFormatter(Formatter<T> formatter) {
+		this.formatter = formatter;
+	}
+
+	public int getSelectedIndex() {
+		return listBox.getSelectedIndex();
+	}
+
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		selectTo(value);
