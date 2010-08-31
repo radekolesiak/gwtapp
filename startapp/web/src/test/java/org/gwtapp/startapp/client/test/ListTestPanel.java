@@ -75,15 +75,23 @@ public class ListTestPanel extends FlowPanel {
 			});
 			add(btn);
 		}
-		Button btn = new Button("Get selected");
-		btn.addClickHandler(new ClickHandler() {
+		Button select = new Button("Get selected");
+		select.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				status.setWidget(new Label("selected value: "
 						+ renderSelected(listPanel.getValue())));
 			}
 		});
-		add(btn);
+		Button empty = new Button("Unselect");
+		empty.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				listPanel.setValue(null, true);
+			}
+		});
+		add(select);
+		add(empty);
 		add(status);
 	}
 

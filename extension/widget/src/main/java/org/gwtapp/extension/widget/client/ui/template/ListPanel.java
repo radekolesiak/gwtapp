@@ -5,6 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
@@ -51,7 +52,7 @@ public class ListPanel<T> extends TemplatePanel<T> {
 
 	private List<T> items;
 
-	private final ListBox listBox;
+	private final UiHandler<ListBox> listBox;
 
 	public ListPanel() {
 		this(new SimpleTemplateCallback(), new ListBox(),
@@ -63,7 +64,7 @@ public class ListPanel<T> extends TemplatePanel<T> {
 			final @AListBox ListBox listBox,
 			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
 		super(callback);
-		this.listBox = listBox;
+		this.listBox = add("listBox", new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
@@ -72,7 +73,6 @@ public class ListPanel<T> extends TemplatePanel<T> {
 				setValue(ListPanel.this.items.get(selected), true);
 			}
 		});
-		add(listBox);
 		if (items != null) {
 			setItems(items);
 		}
@@ -80,11 +80,11 @@ public class ListPanel<T> extends TemplatePanel<T> {
 
 	public void setItems(final List<T> items) {
 		this.items = items;
-		listBox.clear();
+		listBox.getWidget().clear();
 		if (items != null) {
 			for (int i = 0; i < items.size(); i++) {
 				String label = formatter.format(this, items.get(i), i);
-				listBox.addItem(label, i + "");
+				listBox.getWidget().addItem(label, i + "");
 			}
 			if (!items.isEmpty()) {
 				setValue(items.get(0));
@@ -106,7 +106,7 @@ public class ListPanel<T> extends TemplatePanel<T> {
 	}
 
 	public int getSelectedIndex() {
-		return listBox.getSelectedIndex();
+		return listBox.getWidget().getSelectedIndex();
 	}
 
 	@Override
@@ -120,12 +120,12 @@ public class ListPanel<T> extends TemplatePanel<T> {
 			for (int i = 0; i < items.size(); i++) {
 				T item = items.get(i);
 				if (value == item || value.equals(item)) {
-					listBox.setSelectedIndex(i);
+					listBox.getWidget().setSelectedIndex(i);
 					break;
 				}
 			}
 		} else {
-			listBox.setSelectedIndex(-1);
+			listBox.getWidget().setSelectedIndex(-1);
 		}
 	}
 }
