@@ -147,7 +147,7 @@ public class ListPanel<T> extends TemplatePanel<T> {
 		super.setValue(value, fireEvents);
 	}
 
-	private void selectTo(T value) {
+	protected void selectTo(T value) {
 		if (value != null) {
 			for (int i = 0; i < items.size(); i++) {
 				T item = items.get(i);
