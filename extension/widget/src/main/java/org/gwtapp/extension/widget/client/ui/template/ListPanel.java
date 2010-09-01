@@ -5,7 +5,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.ui.TemplatePanel;
@@ -60,19 +59,27 @@ public class ListPanel<T> extends TemplatePanel<T> {
 
 	private final UiHandler<ListBox> listBox;
 
+	private boolean fixedTemplate;
+
 	public ListPanel() {
-		this(new SimpleTemplateCallback(new Template("div", "", "list-panel",
-				"<select t:field=\"listBox\"></select>")), new ListBox(), "listBox",
-				new DefaultFormatter<T>(), new ArrayList<T>());
+		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
+				new DefaultFormatter<T>(), new ArrayList<T>(), true);
 	}
 
 	@Inject
 	public ListPanel(@ATemplateCallback TemplateCallback callback,
 			final @AListBox ListBox listBox, @AFieldName String widgetName,
 			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
+		this(callback, listBox, widgetName, formatter, items, false);
+	}
+
+	protected ListPanel(TemplateCallback callback, final ListBox listBox,
+			String widgetName, Formatter<T> formatter, List<T> items,
+			boolean fixedTemplate) {
 		super(callback);
 		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
+		this.fixedTemplate = fixedTemplate;
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
@@ -83,6 +90,17 @@ public class ListPanel<T> extends TemplatePanel<T> {
 		if (items != null) {
 			setItems(items);
 		}
+	}
+
+	@Override
+	public final void onAddWidgets() {
+		if (fixedTemplate) {
+			add(listBox.getWidget());
+		}
+		onAddListPanelWidgets();
+	}
+
+	public void onAddListPanelWidgets(){		
 	}
 
 	public void setItems(final List<T> items) {
