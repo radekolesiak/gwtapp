@@ -62,7 +62,7 @@ public class ListPanel<T> extends TemplatePanel<T> {
 
 	public ListPanel() {
 		this(new SimpleTemplateCallback(new Template("div", "", "list-panel",
-				"<div t:field=\"listBox\"></div>")), new ListBox(), "listBox",
+				"<select t:field=\"listBox\"></select>")), new ListBox(), "listBox",
 				new DefaultFormatter<T>(), new ArrayList<T>());
 	}
 
