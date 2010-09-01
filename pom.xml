@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<!--  dependencies -->
+		<!-- dependencies -->
 		<gwtapp.version>1.2.0</gwtapp.version>
 		<ccalc.version>1.0</ccalc.version>
 		<gwt.version>2.0.4</gwt.version>
@@ -20,6 +20,7 @@
 		<guice.version>2.0</guice.version>
 		<openjpa.version>2.0.0</openjpa.version>
 		<derby.version>10.6.1.0</derby.version>
+		<warp.version>2.0-SNAPSHOT</warp.version>
 		<commons.lang.version>2.4</commons.lang.version>
 		<commons.httpclient.version>3.0.1</commons.httpclient.version>
 		<commons.logging.version>1.0</commons.logging.version>
@@ -38,6 +39,7 @@
 		<geronimo.jpa_3.0_spec.version>1.1.1</geronimo.jpa_3.0_spec.version>
 		<httpunit.version>1.7</httpunit.version>
 		<rhino.version>1.7R2</rhino.version>
+		<cobertura.version>2.4</cobertura.version>
 		<!-- plugins -->
 		<maven.compiler.plugin.version>2.0</maven.compiler.plugin.version>
 		<maven.surefire.plugin.version>2.5</maven.surefire.plugin.version>
@@ -59,6 +61,7 @@
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
+
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -92,7 +95,22 @@
 			<id>objectify-appengine</id>
 			<url>http://objectify-appengine.googlecode.com/svn/maven</url>
 		</repository>
+		<repository>
+			<id>warp-persist-neodatis</id>
+			<name>warp-persist-neodatis</name>
+			<url>http://warp-persist-neodatis.googlecode.com/svn/trunk/repo/</url>
+		</repository>
 	</repositories>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<modules>
 		<module>gwtapp</module>
