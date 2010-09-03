@@ -52,10 +52,12 @@ public class ValidationCssGenerator {
 		return c.getAnnotation(ValidationField.class).value();
 	}
 
-	public String getCssForMatcher(String matcher) {
+	public String getCssForMatcher(String... matchers) {
 		StringBuilder s = new StringBuilder();
-		for (Class<?> c : getAnnotatedSubclasses()) {
-			getCssForMatcherAndEnum(s, matcher, c);
+		for (String matcher : matchers) {
+			for (Class<?> c : getAnnotatedSubclasses()) {
+				getCssForMatcherAndEnum(s, matcher, c);
+			}
 		}
 		return s.toString();
 	}
