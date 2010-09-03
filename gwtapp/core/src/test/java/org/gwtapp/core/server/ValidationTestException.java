@@ -14,4 +14,9 @@ public class ValidationTestException extends ValidationException {
 	public static enum Login implements IsSerializable {
 		VALID, INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}
+
+	@ValidationField("email")
+	public static enum Email implements IsSerializable {
+		VALID, INVALID, ALREADY_EXISTS
+	}	
 }

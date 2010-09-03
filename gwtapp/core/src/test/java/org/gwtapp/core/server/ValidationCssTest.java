@@ -23,13 +23,15 @@ public class ValidationCssTest {
 		Assert.assertTrue(annotations[0] instanceof Validation);
 		Class<?>[] classes = ValidationTestException.class.getClasses();
 		Assert.assertNotNull(classes);
-		Assert.assertEquals(2, classes.length);
-		Assert.assertEquals(ValidationTestException.Login.class, classes[0]);
-		Assert.assertEquals(ValidationTestException.Field.class, classes[1]);
+		Assert.assertEquals(3, classes.length);
+		Assert.assertEquals(ValidationTestException.Login.class, classes[1]);
+		Assert.assertEquals(ValidationTestException.Email.class, classes[0]);
+		Assert.assertEquals(ValidationTestException.Field.class, classes[2]);
 		Assert.assertNotNull(ValidationTestException.Login.class
 				.getAnnotation(ValidationField.class));
 		Assert.assertNotNull(classes[0].getAnnotation(ValidationField.class));
-		Object[] enums = classes[0].getEnumConstants();
+		Assert.assertNotNull(classes[1].getAnnotation(ValidationField.class));
+		Object[] enums = classes[1].getEnumConstants();
 		Assert.assertNotNull(enums);
 		Assert.assertEquals(6, enums.length);
 		Assert.assertEquals("VALID", ((Enum<?>) enums[0]).name());
@@ -41,7 +43,7 @@ public class ValidationCssTest {
 		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
-		Assert.assertEquals(1, classes.size());
+		Assert.assertEquals(2, classes.size());
 	}
 
 	@Test
@@ -50,8 +52,8 @@ public class ValidationCssTest {
 		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
-		Assert.assertEquals(1, classes.size());
-		List<Enum<?>> constants = generator.getEnumConstants(classes.get(0));
+		Assert.assertEquals(2, classes.size());
+		List<Enum<?>> constants = generator.getEnumConstants(classes.get(1));
 		Assert.assertNotNull(constants);
 		Assert.assertEquals(6, constants.size());
 		for (int i = 0; i < constants.size(); i++) {
@@ -74,7 +76,7 @@ public class ValidationCssTest {
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
 		Assert.assertEquals("login",
-				generator.getValidationFieldName(classes.get(0)));
+				generator.getValidationFieldName(classes.get(1)));
 	}
 
 	@Test
@@ -82,11 +84,11 @@ public class ValidationCssTest {
 		ValidationCssGenerator generator = new ValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
-		List<Enum<?>> constants = generator.getEnumConstants(classes.get(0));
+		List<Enum<?>> constants = generator.getEnumConstants(classes.get(1));
 		{
 			StringBuilder s = new StringBuilder();
 			generator.getCssForMatcherAndEnumConstant(s, "aba",
-					generator.getValidationFieldName(classes.get(0)),
+					generator.getValidationFieldName(classes.get(1)),
 					constants.get(0));
 			Assert.assertEquals(
 					".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n",
@@ -95,7 +97,7 @@ public class ValidationCssTest {
 		{
 			StringBuilder s = new StringBuilder();
 			generator.getCssForMatcherAndEnumConstant(s, "aba",
-					generator.getValidationFieldName(classes.get(0)),
+					generator.getValidationFieldName(classes.get(1)),
 					constants.get(1));
 			Assert.assertEquals(
 					".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n",
@@ -109,7 +111,7 @@ public class ValidationCssTest {
 		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		StringBuilder s = new StringBuilder();
-		generator.getCssForMatcherAndEnum(s, "aba", classes.get(0));
+		generator.getCssForMatcherAndEnum(s, "aba", classes.get(1));
 		Assert.assertEquals(
 				".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n"
 						+ ".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n"
