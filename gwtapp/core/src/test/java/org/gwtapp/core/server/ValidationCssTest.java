@@ -76,4 +76,30 @@ public class ValidationCssTest {
 		Assert.assertEquals("login",
 				generator.getValidationFieldName(classes.get(0)));
 	}
+
+	@Test
+	public void testFieldCssGenerator() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		List<Class<?>> classes = generator.getAnnotatedSubclasses();
+		List<Enum<?>> constants = generator.getEnumConstants(classes.get(0));
+		{
+			StringBuilder s = new StringBuilder();
+			generator.getCssForMatcherAndField(s, "aba",
+					generator.getValidationFieldName(classes.get(0)),
+					constants.get(0));
+			Assert.assertEquals(
+					".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n",
+					s.toString().toLowerCase());
+		}
+		{
+			StringBuilder s = new StringBuilder();
+			generator.getCssForMatcherAndField(s, "aba",
+					generator.getValidationFieldName(classes.get(0)),
+					constants.get(1));
+			Assert.assertEquals(
+					".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n",
+					s.toString().toLowerCase());
+		}
+	}
 }

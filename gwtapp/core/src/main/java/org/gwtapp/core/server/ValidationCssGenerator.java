@@ -3,10 +3,10 @@ package org.gwtapp.core.server;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+import org.gwtapp.core.rpc.exception.Validation;
 import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.core.rpc.exception.ValidationField;
-import org.gwtapp.core.rpc.exception.Validation;
-
 
 public class ValidationCssGenerator {
 
@@ -54,5 +54,33 @@ public class ValidationCssGenerator {
 
 	public String getCssForMatcher(String matcher) {
 		return "";
+	}
+
+	public void getCssForMatcherAndField(StringBuilder s, String matcher,
+			String fieldName, Enum<?> field) {
+		appendMatcher(s, matcher);
+		appendMatcher(s, getValidationName());
+		{
+			s.append(".validation-");
+			s.append(fieldName);
+			s.append("-");
+			s.append(field.name());
+		}
+		s.append(" ");
+		{
+			s.append(".validation.");
+			s.append(fieldName);
+			s.append("-");
+			s.append(field.name());
+		}
+		s.append(" { display: block; }\n");
+	}
+
+	private void appendMatcher(StringBuilder s, String matcher) {
+		if (!StringUtils.isEmpty(matcher)) {
+			s.append(".");
+			s.append(matcher);
+			s.append(" ");
+		}
 	}
 }
