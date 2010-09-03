@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.core.rpc.exception.ValidationField;
+import org.gwtapp.core.rpc.exception.Validation;
+
 
 public class ValidationCssGenerator {
 
@@ -40,5 +42,17 @@ public class ValidationCssGenerator {
 			list.add((Enum<?>) o);
 		}
 		return list;
+	}
+
+	public String getValidationName() {
+		return validationClass.getAnnotation(Validation.class).value();
+	}
+
+	public String getValidationFieldName(Class<?> c) {
+		return c.getAnnotation(ValidationField.class).value();
+	}
+
+	public String getCssForMatcher(String matcher) {
+		return "";
 	}
 }

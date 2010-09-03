@@ -59,4 +59,21 @@ public class ValidationCssTest {
 					constants.get(i));
 		}
 	}
+
+	@Test
+	public void testValidationName() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		Assert.assertEquals("user-validation", generator.getValidationName());
+	}
+
+	@Test
+	public void testValidationFieldName() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		List<Class<?>> classes = generator.getAnnotatedSubclasses();
+		Assert.assertNotNull(classes);
+		Assert.assertEquals("login",
+				generator.getValidationFieldName(classes.get(0)));
+	}
 }
