@@ -21,7 +21,7 @@ public class UserPanel extends TemplateModelPanel<User> implements
 	public static @interface ATemplateCallback {
 	}
 
-	private final WidgetHandler validationLoginInvalid = new WidgetHandler();
+	private final WidgetHandler validator = new WidgetHandler();
 
 	@Inject
 	public UserPanel(@ATemplateCallback TemplateCallback callback) {
@@ -29,17 +29,17 @@ public class UserPanel extends TemplateModelPanel<User> implements
 		add(User.LOGIN, new TextBoxHandler());
 		add(User.EMAIL, new TextBoxHandler());
 		add(User.NAME, new TextBoxHandler());
-		add("validation-login-invalid", validationLoginInvalid);
+		add("validator", validator);
 	}
 
 	@Override
 	public void setValidation(UserValidationException validation) {
 		clearValidation();
-		validationLoginInvalid.getWidget().addStyleName("validation-enabled");
+		validator.getWidget().addStyleName(validation.getStyleName());
 	}
 
 	@Override
 	public void clearValidation() {
-		validationLoginInvalid.getWidget().removeStyleName("validation-enabled");
+		validator.getWidget().setStyleName("");
 	}
 }

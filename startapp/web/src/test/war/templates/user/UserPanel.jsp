@@ -1,8 +1,9 @@
 <t:template styleclass="user-panel">
-<div>Login: <input type="text" t:field="login"></input></div>
-<div>
-<div class="validation" t:field="validation-login-invalid">Invalid Login</div>
+<div t:field="validator">
+	<div>Login: <input type="text" t:field="login"></input></div>
+	<div class="validation login-invalid">Invalid Login</div>
+	<div class="validation login-too-short">Too Short Login</div>
+	<div>Email: <input type="text" t:field="email"></input></div>
+	<div>Name: <input type="text" t:field="name"></input></div>
 </div>
-<div>Email: <input type="text" t:field="email"></input></div>
-<div>Name: <input type="text" t:field="name"></input></div>
 </t:template>

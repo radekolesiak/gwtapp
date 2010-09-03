@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.persistence.Transient;
 
-public abstract class HashModelData extends AbstractModelData implements
+public class HashModelData extends AbstractModelData implements
 		HasMetaField {
 
 	@SuppressWarnings("rawtypes")

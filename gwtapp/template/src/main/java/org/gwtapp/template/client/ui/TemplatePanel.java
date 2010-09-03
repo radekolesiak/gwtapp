@@ -110,6 +110,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		add(w, getElement());
 	}
 
+	public <H extends TemplateHandler & HasName> H add(H handler) {
+		return add(handler.getName(), handler);
+	}
+
 	public <H extends TemplateHandler> H add(String name, H handler) {
 		assert name != null && !name.isEmpty();
 		widgetHandlers.put(name, handler);

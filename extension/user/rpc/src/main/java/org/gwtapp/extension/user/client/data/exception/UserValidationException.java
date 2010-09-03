@@ -37,4 +37,13 @@ public class UserValidationException extends ValidationException {
 	public Email getEmail() {
 		return email;
 	}
+
+	@Override
+	public String getStyleName() {
+		String style = "";
+		style += getStyleName("login", getLogin());
+		style += " ";
+		style += getStyleName("email", getEmail());
+		return style.toLowerCase();
+	}
 }
