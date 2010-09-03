@@ -21,7 +21,6 @@ public class ValidationCssServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		ValidationCssBean generator = new ValidationCssBean();
 		generator.setValidator(UserValidationException.class);
-		generator.setMatchers(new String[] { "user-panel" });
 		IOUtils.write(generator.getCSS(), response.getOutputStream());
 	}
 }
