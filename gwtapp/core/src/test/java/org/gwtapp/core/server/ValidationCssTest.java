@@ -43,4 +43,20 @@ public class ValidationCssTest {
 		Assert.assertNotNull(classes);
 		Assert.assertEquals(1, classes.size());
 	}
+
+	@Test
+	public void testValidationCssGeneratorGetEnumConstants() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		List<Class<?>> classes = generator.getAnnotatedSubclasses();
+		Assert.assertNotNull(classes);
+		Assert.assertEquals(1, classes.size());
+		List<Enum<?>> constants = generator.getEnumConstants(classes.get(0));
+		Assert.assertNotNull(constants);
+		Assert.assertEquals(6, constants.size());
+		for (int i = 0; i < constants.size(); i++) {
+			Assert.assertEquals(ValidationTestException.Login.values()[i],
+					constants.get(i));
+		}
+	}
 }

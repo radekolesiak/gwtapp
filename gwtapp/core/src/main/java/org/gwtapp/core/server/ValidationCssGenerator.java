@@ -26,9 +26,18 @@ public class ValidationCssGenerator {
 		List<Class<?>> list = new ArrayList<Class<?>>();
 		Class<?>[] classes = getValidationClass().getClasses();
 		for (Class<?> c : classes) {
-			if (c.getAnnotation(ValidationField.class) != null) {
+			if (c.isEnum() && c.getAnnotation(ValidationField.class) != null) {
 				list.add(c);
 			}
+		}
+		return list;
+	}
+
+	public List<Enum<?>> getEnumConstants(Class<?> c) {
+		List<Enum<?>> list = new ArrayList<Enum<?>>();
+		Object[] constants = c.getEnumConstants();
+		for (Object o : constants) {
+			list.add((Enum<?>) o);
 		}
 		return list;
 	}
