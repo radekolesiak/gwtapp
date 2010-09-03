@@ -1,0 +1,11 @@
+.validation {
+	display: none;
+}
+
+.validation.validation-enabled {
+	display: block;
+}
+
+.validation .validation-enabled {
+	display: block;
+}

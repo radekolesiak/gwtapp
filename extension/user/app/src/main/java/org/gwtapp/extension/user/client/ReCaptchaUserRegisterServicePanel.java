@@ -18,11 +18,14 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
+	private final UserPanel userPanel;
+
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(
 			@ATemplateCallback TemplateCallback callback,
 			@AUserPanel UserPanel userPanel) {
 		super(callback, userPanel);
+		this.userPanel = userPanel;
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {
@@ -38,13 +41,18 @@ public class ReCaptchaUserRegisterServicePanel extends
 					@Override
 					public void onSuccess(Long result) {
 						user.setId(result);
+						setValidation(null);
 						Window.alert("SUCCESS: User has been added");
 					}
 
 					@Override
 					public void onValidation(UserValidationException validation) {
-						Window.alert("VALIDATION: " + validation);
+						userPanel.setValidation(validation);
 					}
 				}));
+	}
+
+	public void setValidation(UserValidationException validation) {
+
 	}
 }

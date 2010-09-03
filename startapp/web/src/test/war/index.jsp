@@ -8,6 +8,7 @@
 <title>StartApp Manual Testing</title>
 <style type="text/css"> 
 @import "recaptchauserregister.css";
+@import "startapp.css";
 </style>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script type="text/javascript">
