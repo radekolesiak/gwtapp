@@ -10,6 +10,10 @@
 	display: block;
 }
 
+.user-panel .validation-login-already-exists .validation.login-already-exists {
+	display: block;
+}
+
 .user-panel .validation-email-invalid .validation.email-invalid {
 	display: block;
 }

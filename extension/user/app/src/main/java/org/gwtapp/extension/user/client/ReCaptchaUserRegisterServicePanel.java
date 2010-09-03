@@ -41,7 +41,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 					@Override
 					public void onSuccess(Long result) {
 						user.setId(result);
-						setValidation(null);
+						userPanel.clearValidation();
 						Window.alert("SUCCESS: User has been added");
 					}
 
@@ -50,9 +50,5 @@ public class ReCaptchaUserRegisterServicePanel extends
 						userPanel.setValidation(validation);
 					}
 				}));
-	}
-
-	public void setValidation(UserValidationException validation) {
-
 	}
 }
