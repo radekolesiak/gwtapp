@@ -2,14 +2,14 @@
 	display: none;
 }
 
-.validation-login-invalid .login-invalid {
+.user-panel .validation-login-invalid .validation.login-invalid {
 	display: block;
 }
 
-.validation-login-too-short .login-too-short {
+.user-panel .validation-login-too-short .validation.login-too-short {
 	display: block;
 }
 
-.validation-email-invalid .email-invalid {
+.user-panel .validation-email-invalid .validation.email-invalid {
 	display: block;
 }
