@@ -9,7 +9,7 @@ import org.gwtapp.core.rpc.exception.ValidationField;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 @SuppressWarnings("serial")
-@Validation
+@Validation("user-validation")
 public class UserValidationException extends ValidationException {
 
 	public final static String EMAIL_REGEXP = ".+@.+\\.[a-z]+";
