@@ -38,7 +38,7 @@ public class ValidationException extends RpcException {
 		return s;
 	}
 
-	// TODO try replace by deferred binding and annotation
+	// TODO try replace by deferred binding and already existing annotation
 	public List<Field> getFields() {
 		return new ArrayList<Field>();
 	}
