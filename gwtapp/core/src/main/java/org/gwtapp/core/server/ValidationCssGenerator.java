@@ -56,22 +56,30 @@ public class ValidationCssGenerator {
 		return "";
 	}
 
-	public void getCssForMatcherAndField(StringBuilder s, String matcher,
-			String fieldName, Enum<?> field) {
+	public void getCssForMatcherAndEnum(StringBuilder s, String matcher,
+			Class<?> c) {
+		String fieldName = getValidationFieldName(c);
+		for (Enum<?> field : getEnumConstants(c)) {
+			getCssForMatcherAndEnumConstant(s, matcher, fieldName, field);
+		}
+	}
+
+	public void getCssForMatcherAndEnumConstant(StringBuilder s,
+			String matcher, String fieldName, Enum<?> field) {
 		appendMatcher(s, matcher);
 		appendMatcher(s, getValidationName());
 		{
 			s.append(".validation-");
 			s.append(fieldName);
 			s.append("-");
-			s.append(field.name());
+			s.append(getEnumConstantName(field));
 		}
 		s.append(" ");
 		{
 			s.append(".validation.");
 			s.append(fieldName);
 			s.append("-");
-			s.append(field.name());
+			s.append(getEnumConstantName(field));
 		}
 		s.append(" { display: block; }\n");
 	}
@@ -82,5 +90,9 @@ public class ValidationCssGenerator {
 			s.append(matcher);
 			s.append(" ");
 		}
+	}
+	
+	private String getEnumConstantName(Enum<?> field){
+		return field.name().replaceAll("_", "-").toLowerCase();
 	}
 }

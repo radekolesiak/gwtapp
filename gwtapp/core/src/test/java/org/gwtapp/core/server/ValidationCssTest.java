@@ -78,28 +78,45 @@ public class ValidationCssTest {
 	}
 
 	@Test
-	public void testFieldCssGenerator() {
+	public void testEnumConstantFieldCssGenerator() {
 		ValidationCssGenerator generator = new ValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		List<Enum<?>> constants = generator.getEnumConstants(classes.get(0));
 		{
 			StringBuilder s = new StringBuilder();
-			generator.getCssForMatcherAndField(s, "aba",
+			generator.getCssForMatcherAndEnumConstant(s, "aba",
 					generator.getValidationFieldName(classes.get(0)),
 					constants.get(0));
 			Assert.assertEquals(
 					".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n",
-					s.toString().toLowerCase());
+					s.toString());
 		}
 		{
 			StringBuilder s = new StringBuilder();
-			generator.getCssForMatcherAndField(s, "aba",
+			generator.getCssForMatcherAndEnumConstant(s, "aba",
 					generator.getValidationFieldName(classes.get(0)),
 					constants.get(1));
 			Assert.assertEquals(
 					".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n",
-					s.toString().toLowerCase());
+					s.toString());
 		}
+	}
+
+	@Test
+	public void testEnumCssGenerator() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		List<Class<?>> classes = generator.getAnnotatedSubclasses();
+		StringBuilder s = new StringBuilder();
+		generator.getCssForMatcherAndEnum(s, "aba", classes.get(0));
+		Assert.assertEquals(
+				".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".aba .user-validation .validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".aba .user-validation .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".aba .user-validation .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".aba .user-validation .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+				s.toString());
 	}
 }
