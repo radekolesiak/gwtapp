@@ -1,5 +1,7 @@
 package org.gwtapp.extension.user.client.data.exception;
 
+import java.util.List;
+
 import org.gwtapp.core.rpc.exception.ValidationException;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -39,11 +41,10 @@ public class UserValidationException extends ValidationException {
 	}
 
 	@Override
-	public String getStyleName() {
-		String style = "";
-		style += getStyleName("login", getLogin());
-		style += " ";
-		style += getStyleName("email", getEmail());
-		return style.toLowerCase();
+	public List<Field> getFields() {
+		List<Field> fields = super.getFields();
+		fields.add(new Field("login", getLogin()));
+		fields.add(new Field("email", getEmail()));
+		return fields;
 	}
 }
