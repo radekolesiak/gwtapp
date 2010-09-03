@@ -10,7 +10,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 @Validation
 public class ValidationTestException extends ValidationException {
 	
-	@ValidationField
+	@ValidationField("login")
 	public static enum Login implements IsSerializable {
 		VALID, INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}

@@ -16,12 +16,12 @@ public class UserValidationException extends ValidationException {
 	public final static String ANY_UPPER_CASE_REGEXP = "[A-Z]+";
 	public final static String ONLY_LETTERS_REGEXP = "[a-z]+";
 
-	@ValidationField
+	@ValidationField("login")
 	public static enum Login implements IsSerializable {
 		VALID, INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}
 
-	@ValidationField
+	@ValidationField("email")
 	public static enum Email implements IsSerializable {
 		VALID, INVALID, ALREADY_EXISTS
 	}

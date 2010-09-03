@@ -1,6 +1,7 @@
 package org.gwtapp.core.server;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 
 import org.gwtapp.core.rpc.exception.Validation;
 import org.gwtapp.core.rpc.exception.ValidationField;
@@ -32,5 +33,14 @@ public class ValidationCssTest {
 		Assert.assertNotNull(enums);
 		Assert.assertEquals(6, enums.length);
 		Assert.assertEquals("VALID", ((Enum<?>) enums[0]).name());
+	}
+
+	@Test
+	public void testValidationCssGeneratorGetAnnotatedClasses() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		List<Class<?>> classes = generator.getAnnotatedSubclasses();
+		Assert.assertNotNull(classes);
+		Assert.assertEquals(1, classes.size());
 	}
 }
