@@ -9,6 +9,7 @@ import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.user.server.remote.ReCaptchaUserRemote;
 import org.gwtapp.extension.user.server.stub.UserAddStub;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
+import org.gwtapp.startapp.server.servlet.ValidationCssServlet;
 
 import com.google.inject.servlet.ServletModule;
 import com.wideplay.warp.jpa.JpaUnit;
@@ -34,6 +35,7 @@ public class StartAppModule extends ServletModule {
 	private void setupServlets() {
 		serve("/gwt.startappmanualtestentry/extension.recaptchauser.rpc").with(
 				ReCaptchaUserRemote.class);
+		serve("/validation.css").with(ValidationCssServlet.class);
 	}
 
 	private void setupServices() {

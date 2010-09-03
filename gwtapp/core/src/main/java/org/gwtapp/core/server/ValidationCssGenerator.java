@@ -54,9 +54,15 @@ public class ValidationCssGenerator {
 
 	public String getCssForMatcher(String... matchers) {
 		StringBuilder s = new StringBuilder();
-		for (String matcher : matchers) {
+		if (matchers != null && matchers.length > 0) {
+			for (String matcher : matchers) {
+				for (Class<?> c : getAnnotatedSubclasses()) {
+					getCssForMatcherAndEnum(s, matcher, c);
+				}
+			}
+		} else {
 			for (Class<?> c : getAnnotatedSubclasses()) {
-				getCssForMatcherAndEnum(s, matcher, c);
+				getCssForMatcherAndEnum(s, "", c);
 			}
 		}
 		return s.toString();

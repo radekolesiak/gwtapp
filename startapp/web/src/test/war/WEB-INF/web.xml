@@ -28,5 +28,5 @@
 	<filter-mapping>
 		<filter-name>GuiceFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>	
+	</filter-mapping>
 </web-app>
