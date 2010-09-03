@@ -121,4 +121,21 @@ public class ValidationCssTest {
 						+ ".aba .user-validation .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				s.toString());
 	}
+
+	@Test
+	public void testCssGenerator() {
+		ValidationCssGenerator generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		Assert.assertEquals(
+				".aba .user-validation .validation-email-valid .validation.email-valid { display: block; }\n"
+						+ ".aba .user-validation .validation-email-invalid .validation.email-invalid { display: block; }\n"
+						+ ".aba .user-validation .validation-email-already-exists .validation.email-already-exists { display: block; }\n"
+						+ ".aba .user-validation .validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".aba .user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".aba .user-validation .validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".aba .user-validation .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".aba .user-validation .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".aba .user-validation .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+				generator.getCssForMatcher("aba"));
+	}
 }

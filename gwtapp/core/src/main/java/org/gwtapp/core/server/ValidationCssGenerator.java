@@ -53,7 +53,11 @@ public class ValidationCssGenerator {
 	}
 
 	public String getCssForMatcher(String matcher) {
-		return "";
+		StringBuilder s = new StringBuilder();
+		for (Class<?> c : getAnnotatedSubclasses()) {
+			getCssForMatcherAndEnum(s, matcher, c);
+		}
+		return s.toString();
 	}
 
 	public void getCssForMatcherAndEnum(StringBuilder s, String matcher,
@@ -91,8 +95,8 @@ public class ValidationCssGenerator {
 			s.append(" ");
 		}
 	}
-	
-	private String getEnumConstantName(Enum<?> field){
+
+	private String getEnumConstantName(Enum<?> field) {
 		return field.name().replaceAll("_", "-").toLowerCase();
 	}
 }
