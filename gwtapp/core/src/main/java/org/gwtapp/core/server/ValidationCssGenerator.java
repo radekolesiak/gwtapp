@@ -63,23 +63,26 @@ public class ValidationCssGenerator {
 
 	public void getCssForEnumConstant(StringBuilder s, String fieldName,
 			Enum<?> field) {
-		{
-			s.append(".validation-");
-			s.append(fieldName);
-			s.append("-");
-			s.append(getEnumConstantName(field));
-		}
-		s.append(" ");
-		{
-			s.append(".validation.");
-			s.append(fieldName);
-			s.append("-");
-			s.append(getEnumConstantName(field));
-		}
-		s.append(" { display: block; }\n");
+		String enumFieldName = getEnumFieldName(s, fieldName, field);
+		appendStyle(s, ".validation", "-", enumFieldName, "", "display: block;");
+		appendStyle(s, ".validation", ".", enumFieldName, "", "display: block;");
 	}
 
-	// public void appendStyle(StringBuilder s, String )
+	public void appendStyle(StringBuilder s, String prefix, String separator,
+			String enumFieldName, String sufix, String style) {
+		s.append(prefix);
+		s.append(separator);
+		s.append(enumFieldName);
+		s.append(sufix);
+		s.append("{");
+		s.append(style);
+		s.append("}\n");
+	}
+
+	private String getEnumFieldName(StringBuilder s, String fieldName,
+			Enum<?> field) {
+		return fieldName + "-" + getEnumConstantName(field);
+	}
 
 	private String getEnumConstantName(Enum<?> field) {
 		return field.name().replaceAll("_", "-").toLowerCase();
