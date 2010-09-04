@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.server.ValidationCssBean;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 
@@ -20,7 +21,14 @@ public class ValidationCssServlet extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		ValidationCssBean generator = new ValidationCssBean();
-		generator.setValidator(UserValidationException.class);
+		generator.setValidationClass(UserValidationException.class);
+		generator.setPrefix(getParam(request, "prefix"));
+		generator.setSeparator(getParam(request, "separator"));
+		generator.setStyle(getParam(request, "style"));
 		IOUtils.write(generator.getCSS(), response.getOutputStream());
+	}
+
+	private String getParam(HttpServletRequest request, String name) {
+		return StringUtils.defaultString(request.getParameter(name));
 	}
 }

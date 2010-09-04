@@ -129,6 +129,6 @@ public class ValidationCssTest {
 				+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
 				+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
 				+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
-				generator.getCss());
+				generator.getCSS());
 	}
 }

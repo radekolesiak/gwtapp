@@ -9,7 +9,7 @@
 <style type="text/css"> 
 @import "recaptchauserregister.css";
 @import "startapp.css";
-@import "/validation.css";
+@import "/validation.css?separator=.validation.&style=display:block;";
 </style>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script type="text/javascript">

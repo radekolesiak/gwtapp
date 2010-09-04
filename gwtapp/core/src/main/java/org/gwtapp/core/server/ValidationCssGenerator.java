@@ -6,7 +6,7 @@ import java.util.List;
 import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.core.rpc.exception.ValidationField;
 
-public class ValidationCssGenerator {
+public class ValidationCssGenerator implements ValidationCss {
 
 	private Class<? extends ValidationException> validationClass;
 	private String prefix = "";
@@ -16,35 +16,43 @@ public class ValidationCssGenerator {
 	public ValidationCssGenerator() {
 	}
 
+	@Override
 	public void setValidationClass(
 			Class<? extends ValidationException> validationClass) {
 		this.validationClass = validationClass;
 	}
 
+	@Override
 	public Class<? extends ValidationException> getValidationClass() {
 		return validationClass;
 	}
 
+	@Override
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
 
+	@Override
 	public String getPrefix() {
 		return prefix;
 	}
 
+	@Override
 	public void setSeparator(String separator) {
 		this.separator = separator;
 	}
 
+	@Override
 	public String getSeparator() {
 		return separator;
 	}
 
+	@Override
 	public void setStyle(String style) {
 		this.style = style;
 	}
 
+	@Override
 	public String getStyle() {
 		return style;
 	}
@@ -73,7 +81,8 @@ public class ValidationCssGenerator {
 		return c.getAnnotation(ValidationField.class).value();
 	}
 
-	public String getCss() {
+	@Override
+	public String getCSS() {
 		StringBuilder s = new StringBuilder();
 		for (Class<?> c : getAnnotatedSubclasses()) {
 			getCssForEnum(s, c);
