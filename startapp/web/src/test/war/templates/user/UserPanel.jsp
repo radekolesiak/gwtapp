@@ -5,8 +5,8 @@
 		<div class="validation login-invalid">Invalid Login</div>
 		<div class="validation login-too-short">Too Short Login</div>
 		<div class="validation login-already-exists">Already Exists Login</div>
-		<div class="validation login-not-letters-only">Letters only is allowed</div>
-		<div class="validation login-not-lower-case">On lower case is allowed</div>
+		<div class="validation login-not-letters-only">Letters are allowed only</div>
+		<div class="validation login-not-lower-case">Lower case is allowed only</div>
 	</div>
 	<div class="validation-group email">
 		<div>Email: <input type="text" t:field="email"></input></div>
