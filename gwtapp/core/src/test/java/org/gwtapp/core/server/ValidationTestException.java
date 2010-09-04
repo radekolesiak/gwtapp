@@ -7,7 +7,7 @@ import org.gwtapp.core.rpc.exception.ValidationField;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 @SuppressWarnings("serial")
-@Validation("user-validation")
+@Validation
 public class ValidationTestException extends ValidationException {
 	
 	@ValidationField("login")

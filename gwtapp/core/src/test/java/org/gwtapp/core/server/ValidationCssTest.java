@@ -63,13 +63,6 @@ public class ValidationCssTest {
 	}
 
 	@Test
-	public void testValidationName() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
-		Assert.assertEquals("user-validation", generator.getValidationName());
-	}
-
-	@Test
 	public void testValidationFieldName() {
 		ValidationCssGenerator generator = new ValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
@@ -91,7 +84,7 @@ public class ValidationCssTest {
 					generator.getValidationFieldName(classes.get(1)),
 					constants.get(0));
 			Assert.assertEquals(
-					".user-validation .validation-login-valid .validation.login-valid { display: block; }\n",
+					".validation-login-valid .validation.login-valid { display: block; }\n",
 					s.toString());
 		}
 		{
@@ -100,7 +93,7 @@ public class ValidationCssTest {
 					generator.getValidationFieldName(classes.get(1)),
 					constants.get(1));
 			Assert.assertEquals(
-					".user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n",
+					".validation-login-invalid .validation.login-invalid { display: block; }\n",
 					s.toString());
 		}
 	}
@@ -113,12 +106,12 @@ public class ValidationCssTest {
 		StringBuilder s = new StringBuilder();
 		generator.getCssForEnum(s, classes.get(1));
 		Assert.assertEquals(
-				".user-validation .validation-login-valid .validation.login-valid { display: block; }\n"
-						+ ".user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n"
-						+ ".user-validation .validation-login-too-short .validation.login-too-short { display: block; }\n"
-						+ ".user-validation .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
-						+ ".user-validation .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
-						+ ".user-validation .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+				".validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				s.toString());
 	}
 
@@ -127,15 +120,15 @@ public class ValidationCssTest {
 		ValidationCssGenerator generator = new ValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
 		Assert.assertEquals(
-				".user-validation .validation-email-valid .validation.email-valid { display: block; }\n"
-						+ ".user-validation .validation-email-invalid .validation.email-invalid { display: block; }\n"
-						+ ".user-validation .validation-email-already-exists .validation.email-already-exists { display: block; }\n"
-						+ ".user-validation .validation-login-valid .validation.login-valid { display: block; }\n"
-						+ ".user-validation .validation-login-invalid .validation.login-invalid { display: block; }\n"
-						+ ".user-validation .validation-login-too-short .validation.login-too-short { display: block; }\n"
-						+ ".user-validation .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
-						+ ".user-validation .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
-						+ ".user-validation .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+				".validation-email-valid .validation.email-valid { display: block; }\n"
+						+ ".validation-email-invalid .validation.email-invalid { display: block; }\n"
+						+ ".validation-email-already-exists .validation.email-already-exists { display: block; }\n"
+						+ ".validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				generator.getCss());
 	}
 }

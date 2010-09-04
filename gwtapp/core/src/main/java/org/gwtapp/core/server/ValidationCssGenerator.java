@@ -3,8 +3,6 @@ package org.gwtapp.core.server;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
-import org.gwtapp.core.rpc.exception.Validation;
 import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.core.rpc.exception.ValidationField;
 
@@ -44,10 +42,6 @@ public class ValidationCssGenerator {
 		return list;
 	}
 
-	public String getValidationName() {
-		return validationClass.getAnnotation(Validation.class).value();
-	}
-
 	public String getValidationFieldName(Class<?> c) {
 		return c.getAnnotation(ValidationField.class).value();
 	}
@@ -69,7 +63,6 @@ public class ValidationCssGenerator {
 
 	public void getCssForEnumConstant(StringBuilder s, String fieldName,
 			Enum<?> field) {
-		appendMatcher(s, getValidationName());
 		{
 			s.append(".validation-");
 			s.append(fieldName);
@@ -86,15 +79,10 @@ public class ValidationCssGenerator {
 		s.append(" { display: block; }\n");
 	}
 
-	private void appendMatcher(StringBuilder s, String matcher) {
-		if (!StringUtils.isEmpty(matcher)) {
-			s.append(".");
-			s.append(matcher);
-			s.append(" ");
-		}
-	}
+	// public void appendStyle(StringBuilder s, String )
 
 	private String getEnumConstantName(Enum<?> field) {
 		return field.name().replaceAll("_", "-").toLowerCase();
 	}
+
 }
