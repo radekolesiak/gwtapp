@@ -1,7 +1,5 @@
 package org.gwtapp.extension.user.client.data.exception;
 
-import java.util.List;
-
 import org.gwtapp.core.rpc.exception.Validation;
 import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.core.rpc.exception.ValidationField;
@@ -29,30 +27,11 @@ public class UserValidationException extends ValidationException {
 		INVALID, ALREADY_EXISTS
 	}
 
-	private Login login;
-	private Email email;
-
 	public void setLogin(Login login) {
-		this.login = login;
-	}
-
-	public Login getLogin() {
-		return login;
+		set(LOGIN, login);
 	}
 
 	public void setEmail(Email email) {
-		this.email = email;
-	}
-
-	public Email getEmail() {
-		return email;
-	}
-
-	@Override
-	public List<Field> getFields() {
-		List<Field> fields = super.getFields();
-		fields.add(new Field(LOGIN, getLogin()));
-		fields.add(new Field(EMAIL, getEmail()));
-		return fields;
+		set(EMAIL, email);
 	}
 }

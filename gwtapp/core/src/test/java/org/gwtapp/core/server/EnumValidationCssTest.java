@@ -35,10 +35,9 @@ public class EnumValidationCssTest {
 		Assert.assertTrue(annotations[0] instanceof Validation);
 		Class<?>[] classes = ValidationTestException.class.getClasses();
 		Assert.assertNotNull(classes);
-		Assert.assertEquals(3, classes.length);
+		Assert.assertEquals(2, classes.length);
 		Assert.assertEquals(ValidationTestException.Login.class, classes[1]);
 		Assert.assertEquals(ValidationTestException.Email.class, classes[0]);
-		Assert.assertEquals(ValidationTestException.Field.class, classes[2]);
 		Assert.assertNotNull(ValidationTestException.Login.class
 				.getAnnotation(ValidationField.class));
 		Assert.assertNotNull(classes[0].getAnnotation(ValidationField.class));
@@ -88,7 +87,7 @@ public class EnumValidationCssTest {
 					generator.getValidationFieldValue(classes.get(1)),
 					constants.get(0));
 			Assert.assertEquals(
-					 ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n",
+					".user-panel .validation-login-valid .validation.login-valid { display: block; }\n",
 					s.toString());
 		}
 		{
@@ -97,7 +96,7 @@ public class EnumValidationCssTest {
 					generator.getValidationFieldValue(classes.get(1)),
 					constants.get(1));
 			Assert.assertEquals(
-					 ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n",
+					".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n",
 					s.toString());
 		}
 	}
@@ -107,28 +106,30 @@ public class EnumValidationCssTest {
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		StringBuilder s = new StringBuilder();
 		generator.getCssForEnum(s, classes.get(1));
-		Assert.assertEquals(""//
-				+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
-				+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
-				+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
-				+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
-				+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
-				+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+		Assert.assertEquals(
+				""//
+						+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				s.toString());
 	}
 
 	@Test
 	public void testCssGenerator() {
-		Assert.assertEquals(""//
-				+ ".user-panel .validation-email-valid .validation.email-valid { display: block; }\n"
-				+ ".user-panel .validation-email-invalid .validation.email-invalid { display: block; }\n"
-				+ ".user-panel .validation-email-already-exists .validation.email-already-exists { display: block; }\n"
-				+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
-				+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
-				+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
-				+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
-				+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
-				+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+		Assert.assertEquals(
+				""//
+						+ ".user-panel .validation-email-valid .validation.email-valid { display: block; }\n"
+						+ ".user-panel .validation-email-invalid .validation.email-invalid { display: block; }\n"
+						+ ".user-panel .validation-email-already-exists .validation.email-already-exists { display: block; }\n"
+						+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
+						+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
+						+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
+						+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+						+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+						+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				generator.getCSS());
 	}
 }

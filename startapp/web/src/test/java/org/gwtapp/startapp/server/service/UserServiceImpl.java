@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		if (StringUtils.isEmpty(up.getUser().getEmail())) {
 			validation.setEmail(Email.INVALID);
 		}
-		valid(validation);
+		validation.validate();
 		try {
 			persistUser(up.getUser());
 		} catch (RollbackException e) {
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService, UserAddStub {
 				// TODO determine which one already exist
 				validation.setLogin(Login.ALREADY_EXISTS);
 				validation.setEmail(Email.ALREADY_EXISTS);
-				valid(validation);
+				validation.validate();
 			} else {
 				throw e;
 			}
@@ -72,9 +72,4 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		em.get().persist(user);
 	}
 
-	private void valid(UserValidationException validation) {
-		if (validation.getLogin() != null || validation.getEmail() != null) {
-			throw validation;
-		}
-	}
 }

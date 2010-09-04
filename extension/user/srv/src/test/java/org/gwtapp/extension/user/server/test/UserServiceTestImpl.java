@@ -72,9 +72,7 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 				.matches(UserValidationException.EMAIL_REGEXP)) {
 			validation.setEmail(Email.INVALID);
 		}
-		if (validation.getLogin() != null || validation.getEmail() != null) {
-			throw validation;
-		}
+		validation.validate();
 		return 0;
 	}
 }
