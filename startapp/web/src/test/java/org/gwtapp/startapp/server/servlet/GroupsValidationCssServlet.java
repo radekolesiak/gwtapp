@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.gwtapp.core.server.EnumsValidationCssGenerator;
+import org.gwtapp.core.server.GroupsValidationCssGenerator;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 
 import com.google.inject.Singleton;
 
 @SuppressWarnings("serial")
 @Singleton
-public class EnumsValidationCssServlet extends HttpServlet {
+public class GroupsValidationCssServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		EnumsValidationCssGenerator generator = new EnumsValidationCssGenerator();
+		GroupsValidationCssGenerator generator = new GroupsValidationCssGenerator();
 		generator.setValidationClass(UserValidationException.class);
 		generator.setPrefix(getParam(request, "prefix"));
 		generator.setSeparator(getParam(request, "separator"));
