@@ -4,11 +4,11 @@ import java.util.Collection;
 
 public interface ModelData {
 
-	Object get(String property);
+	<X> X get(String property);
 
-	Object set(String property, Object value);
+	<X> X set(String property, X value);
 
-	Object remove(String property);
+	<X> X  remove(String property);
 
 	Collection<String> getPropertyNames();
 }

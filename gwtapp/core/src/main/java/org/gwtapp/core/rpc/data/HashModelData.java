@@ -6,8 +6,7 @@ import java.util.Map;
 
 import javax.persistence.Transient;
 
-public class HashModelData extends AbstractModelData implements
-		HasMetaField {
+public class HashModelData extends AbstractModelData implements HasMetaField {
 
 	@SuppressWarnings("rawtypes")
 	@Transient
@@ -20,25 +19,23 @@ public class HashModelData extends AbstractModelData implements
 		autofields.put(field.name(), field);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public Object get(String property) {
+	public <X> X get(String property) {
 		if (autofields.containsKey(property)) {
-			@SuppressWarnings("rawtypes")
 			MetaField field = autofields.get(property);
-			return field.get(this);
+			return (X) field.get(this);
 		} else {
 			throw new IllegalArgumentException("Unknown property: " + property);
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public Object set(String property, Object value) {
+	public <X> X set(String property, X value) {
 		if (autofields.containsKey(property)) {
-			@SuppressWarnings("rawtypes")
 			MetaField field = autofields.get(property);
-			Object oldValue = field.get(this);
+			X oldValue = (X) field.get(this);
 			field.set(this, value);
 			return oldValue;
 		} else {

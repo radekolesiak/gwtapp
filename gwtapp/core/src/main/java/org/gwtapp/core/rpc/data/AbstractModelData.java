@@ -3,8 +3,8 @@ package org.gwtapp.core.rpc.data;
 public abstract class AbstractModelData implements ModelData {
 
 	@Override
-	public Object remove(String property) {
-		return set(property, null);
+	public <X> X remove(String property) {
+		return set(property, (X) null);
 	}
 
 	private boolean equalsAB(Object a, Object b) {
