@@ -21,16 +21,16 @@ public class UserValidationException extends ValidationException {
 
 	@ValidationField(LOGIN)
 	public static enum Login implements IsSerializable {
-		VALID, INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
+		INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}
 
 	@ValidationField(EMAIL)
 	public static enum Email implements IsSerializable {
-		VALID, INVALID, ALREADY_EXISTS
+		INVALID, ALREADY_EXISTS
 	}
 
-	private Login login = Login.VALID;
-	private Email email = Email.VALID;
+	private Login login;
+	private Email email;
 
 	public void setLogin(Login login) {
 		this.login = login;

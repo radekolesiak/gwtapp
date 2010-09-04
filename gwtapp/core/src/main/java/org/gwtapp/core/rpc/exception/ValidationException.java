@@ -34,8 +34,10 @@ public class ValidationException extends RpcException {
 	public String getStyleClass() {
 		String s = "";
 		for (Field field : getFields()) {
-			s += getStyleClass(field);
-			s += " ";
+			if (field.getValue() != null) {
+				s += getStyleClass(field);
+				s += " ";
+			}
 		}
 		return s;
 	}

@@ -55,11 +55,11 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 			validation.setLogin(Login.ALREADY_EXISTS);
 		} else if (StringUtils.isEmpty(user.getUser().getLogin())) {
 			validation.setLogin(Login.INVALID);
-		} else if (user.getUser().getLogin().matches(
-				UserValidationException.ANY_UPPER_CASE_REGEXP)) {
+		} else if (user.getUser().getLogin()
+				.matches(UserValidationException.ANY_UPPER_CASE_REGEXP)) {
 			validation.setLogin(Login.NOT_LOWER_CASE);
-		} else if (!user.getUser().getLogin().matches(
-				UserValidationException.ONLY_LETTERS_REGEXP)) {
+		} else if (!user.getUser().getLogin()
+				.matches(UserValidationException.ONLY_LETTERS_REGEXP)) {
 			validation.setLogin(Login.NOT_LETTERS_ONLY);
 		} else if (user.getUser().getLogin().length() < 3) {
 			validation.setLogin(Login.TOO_SHORT);
@@ -68,12 +68,11 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 			validation.setEmail(Email.ALREADY_EXISTS);
 		} else if (StringUtils.isEmpty(user.getUser().getEmail())) {
 			validation.setEmail(Email.INVALID);
-		} else if (!user.getUser().getEmail().matches(
-				UserValidationException.EMAIL_REGEXP)) {
+		} else if (!user.getUser().getEmail()
+				.matches(UserValidationException.EMAIL_REGEXP)) {
 			validation.setEmail(Email.INVALID);
 		}
-		if (validation.getLogin() != Login.VALID
-				|| validation.getEmail() != Email.VALID) {
+		if (validation.getLogin() != null || validation.getEmail() != null) {
 			throw validation;
 		}
 		return 0;

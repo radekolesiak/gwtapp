@@ -47,12 +47,15 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		} else if (up.getUser().getLogin().length() < 3) {
 			validation.setLogin(Login.TOO_SHORT);
 		}
+		if (StringUtils.isEmpty(up.getUser().getEmail())) {
+			validation.setEmail(Email.INVALID);
+		}
 		valid(validation);
 		try {
 			persistUser(up.getUser());
 		} catch (RollbackException e) {
 			if (e.getCause() instanceof EntityExistsException) {
-				// TODO determine which ones already exist
+				// TODO determine which one already exist
 				validation.setLogin(Login.ALREADY_EXISTS);
 				validation.setEmail(Email.ALREADY_EXISTS);
 				valid(validation);
@@ -70,8 +73,7 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	}
 
 	private void valid(UserValidationException validation) {
-		if (validation.getLogin() != Login.VALID
-				|| validation.getEmail() != Email.VALID) {
+		if (validation.getLogin() != null || validation.getEmail() != null) {
 			throw validation;
 		}
 	}
