@@ -1,8 +1,8 @@
 package org.gwtapp.core.server;
 
-public class ValidationCssGenerator extends ValidationCssGeneratorBase {
+public class EnumsValidationCssGenerator extends ValidationCssGeneratorBase {
 
-	public ValidationCssGenerator() {
+	public EnumsValidationCssGenerator() {
 	}
 
 	@Override

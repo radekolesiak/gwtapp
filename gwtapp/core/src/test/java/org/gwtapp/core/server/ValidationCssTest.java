@@ -11,11 +11,11 @@ import org.junit.Test;
 
 public class ValidationCssTest {
 
-	private ValidationCssGenerator generator;
+	private EnumsValidationCssGenerator generator;
 
 	@Before
 	public void tearUp() {
-		generator = new ValidationCssGenerator();
+		generator = new EnumsValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
 		generator.setPrefix(".user-panel");
 		generator.setSeparator(".validation.");

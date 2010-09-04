@@ -7,9 +7,9 @@
 <t:include repository="/templates/" template="ListPanel.jsp"/>
 <title>StartApp Manual Testing</title>
 <style type="text/css"> 
-@import "recaptchauserregister.css";
-@import "startapp.css";
-@import "/validation.css?separator=.validation.&style=display:block;";
+@import "/css/recaptchauserregister.css";
+@import "/css/startapp.css";
+@import "/css/validation-by-enum.css?separator=.validation.&style=display:block;";
 </style>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script type="text/javascript">

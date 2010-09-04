@@ -9,7 +9,7 @@ import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.user.server.remote.ReCaptchaUserRemote;
 import org.gwtapp.extension.user.server.stub.UserAddStub;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
-import org.gwtapp.startapp.server.servlet.ValidationCssServlet;
+import org.gwtapp.startapp.server.servlet.EnumsValidationCssServlet;
 
 import com.google.inject.servlet.ServletModule;
 import com.wideplay.warp.jpa.JpaUnit;
@@ -35,7 +35,8 @@ public class StartAppModule extends ServletModule {
 	private void setupServlets() {
 		serve("/gwt.startappmanualtestentry/extension.recaptchauser.rpc").with(
 				ReCaptchaUserRemote.class);
-		serve("/validation.css").with(ValidationCssServlet.class);
+		serve("/css/validation-by-enum.css").with(EnumsValidationCssServlet.class);
+		serve("/css/validation-by-group.css").with(EnumsValidationCssServlet.class);
 	}
 
 	private void setupServices() {
