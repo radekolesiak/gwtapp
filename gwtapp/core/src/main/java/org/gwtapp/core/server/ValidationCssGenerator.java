@@ -1,12 +1,9 @@
 package org.gwtapp.core.server;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.gwtapp.core.rpc.exception.ValidationException;
-import org.gwtapp.core.rpc.exception.ValidationField;
 
-public class ValidationCssGenerator implements ValidationCss {
+public class ValidationCssGenerator extends ValidationCssGeneratorBase
+		implements ValidationCss {
 
 	private Class<? extends ValidationException> validationClass;
 	private String prefix = "";
@@ -57,30 +54,6 @@ public class ValidationCssGenerator implements ValidationCss {
 		return style;
 	}
 
-	public List<Class<?>> getAnnotatedSubclasses() {
-		List<Class<?>> list = new ArrayList<Class<?>>();
-		Class<?>[] classes = getValidationClass().getClasses();
-		for (Class<?> c : classes) {
-			if (c.isEnum() && c.getAnnotation(ValidationField.class) != null) {
-				list.add(c);
-			}
-		}
-		return list;
-	}
-
-	public List<Enum<?>> getEnumConstants(Class<?> c) {
-		List<Enum<?>> list = new ArrayList<Enum<?>>();
-		Object[] constants = c.getEnumConstants();
-		for (Object o : constants) {
-			list.add((Enum<?>) o);
-		}
-		return list;
-	}
-
-	public String getValidationFieldName(Class<?> c) {
-		return c.getAnnotation(ValidationField.class).value();
-	}
-
 	@Override
 	public String getCSS() {
 		StringBuilder s = new StringBuilder();
@@ -91,7 +64,7 @@ public class ValidationCssGenerator implements ValidationCss {
 	}
 
 	public void getCssForEnum(StringBuilder s, Class<?> c) {
-		String fieldName = getValidationFieldName(c);
+		String fieldName = getValidationFieldValue(c);
 		for (Enum<?> field : getEnumConstants(c)) {
 			getCssForEnumConstant(s, fieldName, field);
 		}
@@ -128,5 +101,4 @@ public class ValidationCssGenerator implements ValidationCss {
 	private String getEnumConstantName(Enum<?> field) {
 		return field.name().replaceAll("_", "-").toLowerCase();
 	}
-
 }

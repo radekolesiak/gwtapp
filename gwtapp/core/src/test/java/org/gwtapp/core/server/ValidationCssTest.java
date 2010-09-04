@@ -75,7 +75,7 @@ public class ValidationCssTest {
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
 		Assert.assertEquals("login",
-				generator.getValidationFieldName(classes.get(1)));
+				generator.getValidationFieldValue(classes.get(1)));
 	}
 
 	@Test
@@ -85,7 +85,7 @@ public class ValidationCssTest {
 		{
 			StringBuilder s = new StringBuilder();
 			generator.getCssForEnumConstant(s,
-					generator.getValidationFieldName(classes.get(1)),
+					generator.getValidationFieldValue(classes.get(1)),
 					constants.get(0));
 			Assert.assertEquals(
 					 ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n",
@@ -94,7 +94,7 @@ public class ValidationCssTest {
 		{
 			StringBuilder s = new StringBuilder();
 			generator.getCssForEnumConstant(s,
-					generator.getValidationFieldName(classes.get(1)),
+					generator.getValidationFieldValue(classes.get(1)),
 					constants.get(1));
 			Assert.assertEquals(
 					 ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n",
