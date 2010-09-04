@@ -52,33 +52,23 @@ public class ValidationCssGenerator {
 		return c.getAnnotation(ValidationField.class).value();
 	}
 
-	public String getCssForMatcher(String... matchers) {
+	public String getCss() {
 		StringBuilder s = new StringBuilder();
-		if (matchers != null && matchers.length > 0) {
-			for (String matcher : matchers) {
-				for (Class<?> c : getAnnotatedSubclasses()) {
-					getCssForMatcherAndEnum(s, matcher, c);
-				}
-			}
-		} else {
-			for (Class<?> c : getAnnotatedSubclasses()) {
-				getCssForMatcherAndEnum(s, "", c);
-			}
+		for (Class<?> c : getAnnotatedSubclasses()) {
+			getCssForEnum(s, c);
 		}
 		return s.toString();
 	}
 
-	public void getCssForMatcherAndEnum(StringBuilder s, String matcher,
-			Class<?> c) {
+	public void getCssForEnum(StringBuilder s, Class<?> c) {
 		String fieldName = getValidationFieldName(c);
 		for (Enum<?> field : getEnumConstants(c)) {
-			getCssForMatcherAndEnumConstant(s, matcher, fieldName, field);
+			getCssForEnumConstant(s, fieldName, field);
 		}
 	}
 
-	public void getCssForMatcherAndEnumConstant(StringBuilder s,
-			String matcher, String fieldName, Enum<?> field) {
-		appendMatcher(s, matcher);
+	public void getCssForEnumConstant(StringBuilder s, String fieldName,
+			Enum<?> field) {
 		appendMatcher(s, getValidationName());
 		{
 			s.append(".validation-");

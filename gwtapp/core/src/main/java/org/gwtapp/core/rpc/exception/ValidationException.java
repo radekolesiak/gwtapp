@@ -39,6 +39,7 @@ public class ValidationException extends RpcException {
 	}
 
 	// TODO try replace by deferred binding and already existing annotation
+	// try by removing this method and binding getStyleName() method
 	public List<Field> getFields() {
 		return new ArrayList<Field>();
 	}
