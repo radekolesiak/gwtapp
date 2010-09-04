@@ -1,20 +1,24 @@
 package org.gwtapp.core.server;
 
-public class GroupsValidationCssGenerator extends ValidationCssGeneratorBase {
+public class GroupValidationCssGenerator extends ValidationCssGeneratorBase {
 
-	public GroupsValidationCssGenerator() {
+	public GroupValidationCssGenerator() {
 	}
 
 	@Override
 	public String getCSS() {
 		StringBuilder s = new StringBuilder();
 		for (Class<?> c : getAnnotatedSubclasses()) {
-			getCssForName(s, getValidationFieldValue(c));
+			getCssForGroup(s, c);
 		}
 		return s.toString();
 	}
 
-	private void getCssForName(StringBuilder s, String fieldName) {
+	public void getCssForGroup(StringBuilder s, Class<?> c) {
+		getCssForFieldName(s, getValidationFieldValue(c));
+	}
+
+	private void getCssForFieldName(StringBuilder s, String fieldName) {
 		appendStyleClass(s, getPrefix(), getSeparator(), fieldName);
 		appendStyle(s, getStyle());
 	}

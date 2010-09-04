@@ -9,13 +9,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ValidationCssTest {
+public class EnumValidationCssTest {
 
-	private EnumsValidationCssGenerator generator;
+	private EnumValidationCssGenerator generator;
 
 	@Before
 	public void tearUp() {
-		generator = new EnumsValidationCssGenerator();
+		generator = new EnumValidationCssGenerator();
 		generator.setValidationClass(ValidationTestException.class);
 		generator.setPrefix(".user-panel");
 		generator.setSeparator(".validation.");
