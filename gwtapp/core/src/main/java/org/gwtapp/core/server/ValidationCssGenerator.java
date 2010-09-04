@@ -1,57 +1,8 @@
 package org.gwtapp.core.server;
 
-import org.gwtapp.core.rpc.exception.ValidationException;
-
-public class ValidationCssGenerator extends ValidationCssGeneratorBase
-		implements ValidationCss {
-
-	private Class<? extends ValidationException> validationClass;
-	private String prefix = "";
-	private String separator = "";
-	private String style = "";
+public class ValidationCssGenerator extends ValidationCssGeneratorBase {
 
 	public ValidationCssGenerator() {
-	}
-
-	@Override
-	public void setValidationClass(
-			Class<? extends ValidationException> validationClass) {
-		this.validationClass = validationClass;
-	}
-
-	@Override
-	public Class<? extends ValidationException> getValidationClass() {
-		return validationClass;
-	}
-
-	@Override
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
-
-	@Override
-	public String getPrefix() {
-		return prefix;
-	}
-
-	@Override
-	public void setSeparator(String separator) {
-		this.separator = separator;
-	}
-
-	@Override
-	public String getSeparator() {
-		return separator;
-	}
-
-	@Override
-	public void setStyle(String style) {
-		this.style = style;
-	}
-
-	@Override
-	public String getStyle() {
-		return style;
 	}
 
 	@Override
