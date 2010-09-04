@@ -30,3 +30,6 @@ V. Guice:
 VI. MVC/MVP/PAC:
 	http://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
 	http://www.ctrl-shift-b.com/2007/08/interactive-application-architecture/ - includes PAC pattern
+	
+VII. JSON RPC and JSNI
+	http://eggsylife.co.uk/2010/04/22/gwt-2-jsonp-and-javascript-overlays-with-jsonprequestbuilder/
