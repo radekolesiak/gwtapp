@@ -19,20 +19,20 @@ public class ValidationException extends RpcException {
 		}
 	}
 
-	public String getStyleName(Field field) {
+	public String getStyleClass(Field field) {
 		return ("validation-" + field.getName() + "-" + field.getValue().name()
 				.replaceAll("_", "-")).toLowerCase();
 	}
 
-	public String getStyleName(String name, Enum<?> e) {
+	public String getStyleClass(String name, Enum<?> e) {
 		return ("validation-" + name + "-" + e.name().replaceAll("_", "-"))
 				.toLowerCase();
 	}
 
-	public String getStyleName() {
+	public String getStyleClass() {
 		String s = "";
 		for (Field field : getFields()) {
-			s += getStyleName(field);
+			s += getStyleClass(field);
 			s += " ";
 		}
 		return s;

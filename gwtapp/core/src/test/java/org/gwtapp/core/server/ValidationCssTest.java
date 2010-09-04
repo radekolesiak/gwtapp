@@ -6,9 +6,21 @@ import java.util.List;
 import org.gwtapp.core.rpc.exception.Validation;
 import org.gwtapp.core.rpc.exception.ValidationField;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ValidationCssTest {
+
+	private ValidationCssGenerator generator;
+
+	@Before
+	public void tearUp() {
+		generator = new ValidationCssGenerator();
+		generator.setValidationClass(ValidationTestException.class);
+		generator.setPrefix(".user-panel");
+		generator.setSeparator(".validation.");
+		generator.setStyle("display: block;");
+	}
 
 	@Test
 	public void testAnnotation() throws InstantiationException,
@@ -39,8 +51,6 @@ public class ValidationCssTest {
 
 	@Test
 	public void testValidationCssGeneratorGetAnnotatedClasses() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
 		Assert.assertEquals(2, classes.size());
@@ -48,8 +58,6 @@ public class ValidationCssTest {
 
 	@Test
 	public void testValidationCssGeneratorGetEnumConstants() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
 		Assert.assertEquals(2, classes.size());
@@ -64,8 +72,6 @@ public class ValidationCssTest {
 
 	@Test
 	public void testValidationFieldName() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		Assert.assertNotNull(classes);
 		Assert.assertEquals("login",
@@ -74,8 +80,6 @@ public class ValidationCssTest {
 
 	@Test
 	public void testEnumConstantFieldCssGenerator() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		List<Enum<?>> constants = generator.getEnumConstants(classes.get(1));
 		{
@@ -83,9 +87,8 @@ public class ValidationCssTest {
 			generator.getCssForEnumConstant(s,
 					generator.getValidationFieldName(classes.get(1)),
 					constants.get(0));
-			Assert.assertEquals(""//
-					+ ".validation-login-valid{display: block;}\n"
-					+ ".validation.login-valid{display: block;}\n",
+			Assert.assertEquals(
+					 ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n",
 					s.toString());
 		}
 		{
@@ -93,59 +96,39 @@ public class ValidationCssTest {
 			generator.getCssForEnumConstant(s,
 					generator.getValidationFieldName(classes.get(1)),
 					constants.get(1));
-			Assert.assertEquals(""//
-					+ ".validation-login-invalid{display: block;}\n"
-					+ ".validation.login-invalid{display: block;}\n",
+			Assert.assertEquals(
+					 ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n",
 					s.toString());
 		}
 	}
 
 	@Test
 	public void testEnumCssGenerator() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		List<Class<?>> classes = generator.getAnnotatedSubclasses();
 		StringBuilder s = new StringBuilder();
 		generator.getCssForEnum(s, classes.get(1));
 		Assert.assertEquals(""//
-				+ ".validation-login-valid{display: block;}\n"
-				+ ".validation.login-valid{display: block;}\n"
-				+ ".validation-login-invalid{display: block;}\n"
-				+ ".validation.login-invalid{display: block;}\n"
-				+ ".validation-login-too-short{display: block;}\n"
-				+ ".validation.login-too-short{display: block;}\n"
-				+ ".validation-login-not-letters-only{display: block;}\n"
-				+ ".validation.login-not-letters-only{display: block;}\n"
-				+ ".validation-login-not-lower-case{display: block;}\n"
-				+ ".validation.login-not-lower-case{display: block;}\n"
-				+ ".validation-login-already-exists{display: block;}\n"
-				+ ".validation.login-already-exists{display: block;}\n",
+				+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
+				+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
+				+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
+				+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+				+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+				+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				s.toString());
 	}
 
 	@Test
 	public void testCssGenerator() {
-		ValidationCssGenerator generator = new ValidationCssGenerator();
-		generator.setValidationClass(ValidationTestException.class);
 		Assert.assertEquals(""//
-				+ ".validation-email-valid{display: block;}\n"
-				+ ".validation.email-valid{display: block;}\n"
-				+ ".validation-email-invalid{display: block;}\n"
-				+ ".validation.email-invalid{display: block;}\n"
-				+ ".validation-email-already-exists{display: block;}\n"
-				+ ".validation.email-already-exists{display: block;}\n"
-				+ ".validation-login-valid{display: block;}\n"
-				+ ".validation.login-valid{display: block;}\n"
-				+ ".validation-login-invalid{display: block;}\n"
-				+ ".validation.login-invalid{display: block;}\n"
-				+ ".validation-login-too-short{display: block;}\n"
-				+ ".validation.login-too-short{display: block;}\n"
-				+ ".validation-login-not-letters-only{display: block;}\n"
-				+ ".validation.login-not-letters-only{display: block;}\n"
-				+ ".validation-login-not-lower-case{display: block;}\n"
-				+ ".validation.login-not-lower-case{display: block;}\n"
-				+ ".validation-login-already-exists{display: block;}\n"
-				+ ".validation.login-already-exists{display: block;}\n",
+				+ ".user-panel .validation-email-valid .validation.email-valid { display: block; }\n"
+				+ ".user-panel .validation-email-invalid .validation.email-invalid { display: block; }\n"
+				+ ".user-panel .validation-email-already-exists .validation.email-already-exists { display: block; }\n"
+				+ ".user-panel .validation-login-valid .validation.login-valid { display: block; }\n"
+				+ ".user-panel .validation-login-invalid .validation.login-invalid { display: block; }\n"
+				+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
+				+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
+				+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
+				+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
 				generator.getCss());
 	}
 }

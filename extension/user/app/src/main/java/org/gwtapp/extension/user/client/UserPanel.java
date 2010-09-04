@@ -35,7 +35,7 @@ public class UserPanel extends TemplateModelPanel<User> implements
 	@Override
 	public void setValidation(UserValidationException validation) {
 		clearValidation();
-		validator.getWidget().addStyleName(validation.getStyleName());
+		validator.getWidget().addStyleName(validation.getStyleClass());
 	}
 
 	@Override
