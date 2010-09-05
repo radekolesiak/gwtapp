@@ -9,7 +9,7 @@
 <style type="text/css"> 
 @import "/css/recaptchauserregister.css";
 @import "/css/startapp.css";
-@import "/css/validation-by-group.css?separator=.validation-group.&style=background-color:orange;";
+@import "/css/validation-by-group.css?separator=.validation-group.&style=background-color:orange;border:2px solid red;margin:1px;";
 @import "/css/validation-by-enum.css?separator=.validation.&style=display:block;";
 </style>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
