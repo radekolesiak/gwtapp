@@ -1,5 +1,6 @@
 package org.gwtapp.template.client.handler;
 
+import java.util.List;
 import java.util.Map;
 
 import org.gwtapp.core.client.ui.HasValidation;
@@ -18,11 +19,15 @@ public class ValidationHandler<T extends ValidationException> extends
 
 	public String getStyleClass(ValidationException validation) {
 		String s = "";
-		for (Map.Entry<String, Enum<?>> field : validation.getFields()
+		for (Map.Entry<String, List<Enum<?>>> list : validation.getFields()
 				.entrySet()) {
-			if (field.getValue() != null) {
-				s += getStyleClass(field.getKey(), field.getValue());
-				s += " ";
+			if (list != null && list.getValue() != null) {
+				for (Enum<?> field : list.getValue()) {
+					if (field != null) {
+						s += getStyleClass(list.getKey(), field);
+						s += " ";
+					}
+				}
 			}
 		}
 		return s;

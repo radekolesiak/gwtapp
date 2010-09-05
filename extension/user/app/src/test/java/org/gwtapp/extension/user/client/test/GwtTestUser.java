@@ -101,7 +101,7 @@ public class GwtTestUser extends UserTestCase {
 						assertEquals(
 								UserValidationException.Login.ALREADY_EXISTS,
 								validation.get(UserValidationException.LOGIN));
-						assertEquals(UserValidationException.Email.INVALID,
+						assertEquals(UserValidationException.Email.EMPTY,
 								validation.get(UserValidationException.EMAIL));
 						finishTest();
 					}
@@ -121,7 +121,7 @@ public class GwtTestUser extends UserTestCase {
 						assertEquals(
 								UserValidationException.Login.ALREADY_EXISTS,
 								validation.get(UserValidationException.LOGIN));
-						assertEquals(UserValidationException.Email.INVALID,
+						assertEquals(UserValidationException.Email.EMPTY,
 								validation.get(UserValidationException.EMAIL));
 						finishTest();
 					}

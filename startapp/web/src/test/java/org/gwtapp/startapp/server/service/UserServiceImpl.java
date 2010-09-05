@@ -39,16 +39,20 @@ public class UserServiceImpl implements UserService, UserAddStub {
 	public long addUser(UserPassword up) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(up.getUser().getLogin())) {
-			validation.setLogin(Login.INVALID);
-		} else if (up.getUser().getLogin().matches("[A-Z]+")) {
-			validation.setLogin(Login.NOT_LOWER_CASE);
-		} else if (!up.getUser().getLogin().matches("[a-z]+")) {
-			validation.setLogin(Login.NOT_LETTERS_ONLY);
-		} else if (up.getUser().getLogin().length() < 3) {
-			validation.setLogin(Login.TOO_SHORT);
+			validation.addLogin(Login.EMPTY);
+		} else {
+			if (up.getUser().getLogin().matches("[A-Z]+")) {
+				validation.addLogin(Login.NOT_LOWER_CASE);
+			}
+			if (!up.getUser().getLogin().matches("[a-z]+")) {
+				validation.addLogin(Login.NOT_LETTERS_ONLY);
+			}
+			if (up.getUser().getLogin().length() < 3) {
+				validation.addLogin(Login.TOO_SHORT);
+			}
 		}
 		if (StringUtils.isEmpty(up.getUser().getEmail())) {
-			validation.setEmail(Email.INVALID);
+			validation.addEmail(Email.EMPTY);
 		}
 		validation.validate();
 		try {
@@ -56,8 +60,8 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		} catch (RollbackException e) {
 			if (e.getCause() instanceof EntityExistsException) {
 				// TODO determine which one already exist
-				validation.setLogin(Login.ALREADY_EXISTS);
-				validation.setEmail(Email.ALREADY_EXISTS);
+				validation.addLogin(Login.ALREADY_EXISTS);
+				validation.addEmail(Email.ALREADY_EXISTS);
 				validation.validate();
 			} else {
 				throw e;

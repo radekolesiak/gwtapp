@@ -1,30 +1,33 @@
 package org.gwtapp.core.rpc.exception;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
 public class ValidationException extends RpcException {
 
-	private Map<String, Enum<?>> fields = new HashMap<String, Enum<?>>();
+	private Map<String, List<Enum<?>>> fields = new HashMap<String, List<Enum<?>>>();
 
-	public void set(String name, Enum<?> value) {
-		fields.put(name, value);
+	public void add(String name, Enum<?> value) {
+		if (!fields.containsKey(name)) {
+			fields.put(name, new ArrayList<Enum<?>>());
+		}
+		fields.get(name).add(value);
 	}
 
-	public Enum<?> get(String name) {
+	public List<Enum<?>> get(String name) {
 		return fields.get(name);
 	}
 
-	public Map<String, Enum<?>> getFields() {
-		return new HashMap<String, Enum<?>>(fields);
+	public Map<String, List<Enum<?>>> getFields() {
+		return new HashMap<String, List<Enum<?>>>(fields);
 	}
 
 	public void validate() throws ValidationException {
-		for (Enum<?> value : fields.values()) {
-			if (value != null) {
-				throw this;
-			}
+		if (!fields.isEmpty()) {
+			throw this;
 		}
 	}
 }

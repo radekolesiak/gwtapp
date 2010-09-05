@@ -50,27 +50,27 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 	public long addUser(ReCaptchaUser user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if ("aba".equalsIgnoreCase(user.getUser().getLogin())) {
-			validation.setLogin(Login.ALREADY_EXISTS);
+			validation.addLogin(Login.ALREADY_EXISTS);
 		} else if ("xyz".equalsIgnoreCase(user.getUser().getLogin())) {
-			validation.setLogin(Login.ALREADY_EXISTS);
+			validation.addLogin(Login.ALREADY_EXISTS);
 		} else if (StringUtils.isEmpty(user.getUser().getLogin())) {
-			validation.setLogin(Login.INVALID);
+			validation.addLogin(Login.EMPTY);
 		} else if (user.getUser().getLogin()
 				.matches(UserValidationException.ANY_UPPER_CASE_REGEXP)) {
-			validation.setLogin(Login.NOT_LOWER_CASE);
+			validation.addLogin(Login.NOT_LOWER_CASE);
 		} else if (!user.getUser().getLogin()
 				.matches(UserValidationException.ONLY_LETTERS_REGEXP)) {
-			validation.setLogin(Login.NOT_LETTERS_ONLY);
+			validation.addLogin(Login.NOT_LETTERS_ONLY);
 		} else if (user.getUser().getLogin().length() < 3) {
-			validation.setLogin(Login.TOO_SHORT);
+			validation.addLogin(Login.TOO_SHORT);
 		}
 		if ("aba@email.com".equalsIgnoreCase(user.getUser().getEmail())) {
-			validation.setEmail(Email.ALREADY_EXISTS);
+			validation.addEmail(Email.ALREADY_EXISTS);
 		} else if (StringUtils.isEmpty(user.getUser().getEmail())) {
-			validation.setEmail(Email.INVALID);
+			validation.addEmail(Email.EMPTY);
 		} else if (!user.getUser().getEmail()
 				.matches(UserValidationException.EMAIL_REGEXP)) {
-			validation.setEmail(Email.INVALID);
+			validation.addEmail(Email.EMPTY);
 		}
 		validation.validate();
 		return 0;

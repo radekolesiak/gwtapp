@@ -19,19 +19,19 @@ public class UserValidationException extends ValidationException {
 
 	@ValidationField(LOGIN)
 	public static enum Login implements IsSerializable {
-		INVALID, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
+		EMPTY, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}
 
 	@ValidationField(EMAIL)
 	public static enum Email implements IsSerializable {
-		INVALID, ALREADY_EXISTS
+		EMPTY, ALREADY_EXISTS
 	}
 
-	public void setLogin(Login login) {
-		set(LOGIN, login);
+	public void addLogin(Login login) {
+		add(LOGIN, login);
 	}
 
-	public void setEmail(Email email) {
-		set(EMAIL, email);
+	public void addEmail(Email email) {
+		add(EMAIL, email);
 	}
 }
