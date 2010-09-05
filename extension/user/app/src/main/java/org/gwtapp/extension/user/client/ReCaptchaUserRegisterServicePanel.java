@@ -41,13 +41,13 @@ public class ReCaptchaUserRegisterServicePanel extends
 					@Override
 					public void onSuccess(Long result) {
 						user.setId(result);
-						userPanel.clearValidation();
+						userPanel.getValidator().clearValidation();
 						Window.alert("SUCCESS: User has been added");
 					}
 
 					@Override
 					public void onValidation(UserValidationException validation) {
-						userPanel.setValidation(validation);
+						userPanel.getValidator().setValidation(validation);
 					}
 				}));
 	}

@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.rpc.data.Value;
+import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
+import org.gwtapp.template.client.handler.ValidationHandler;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -50,6 +52,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private final Callback callback;
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
+	private ValidationHandler<ValidationException> validator = new ValidationHandler<ValidationException>();
+
 	private boolean initValueByDeferredCommand = false;
 
 	private String name;
@@ -78,6 +82,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 			getElement().setAttribute("style",
 					callback.getTemplate().getStyle());
 		}
+		init();
 	}
 
 	public TemplatePanel(TemplateCallback callback, T initValue) {
@@ -88,11 +93,16 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	public TemplatePanel(ElementCallback callback) {
 		super(callback.getElement());
 		this.callback = callback;
+		init();
 	}
 
 	public TemplatePanel(ElementCallback callback, T initValue) {
 		this(callback);
 		setValue(initValue);
+	}
+
+	private void init() {
+		add("validator", validator);
 	}
 
 	@Override
@@ -255,5 +265,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public <Q> AsyncCallback<Q> create(AsyncCallback<Q> callback) {
 		return getAsyncCallbackInjector().create(callback);
+	}
+
+	public ValidationHandler<ValidationException> getValidator() {
+		return validator;
 	}
 }

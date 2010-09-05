@@ -63,7 +63,7 @@ public class TemplateModelPanel<T extends ModelData> extends
 	public void onAddFormWidgets() {
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public T getValue() {
 		T value = super.getValue();
@@ -75,7 +75,7 @@ public class TemplateModelPanel<T extends ModelData> extends
 		return value;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void setValue(T value, boolean fireEvents) {
 		if (isTemplated()) {
