@@ -2,12 +2,11 @@ package org.gwtapp.core.client.di;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-@SuppressWarnings("unchecked")
 public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 
 	private GwtTestAsyncCallbackInjector owner;
 	private boolean expectedTest = false;
-	private Class excpectedException = null;
+	private Class<?> excpectedException = null;
 
 	@Override
 	public final void onSuccess(T result) {
@@ -20,8 +19,8 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 			try {
 				onFailureCallback(e);
 			} catch (Throwable f) {
-				GwtTestAsyncCallbackInjector.assertEquals(excpectedException, f
-						.getClass());
+				GwtTestAsyncCallbackInjector.assertEquals(excpectedException,
+						f.getClass());
 				owner.doFinishTest();
 			}
 		} else {
@@ -43,11 +42,11 @@ public class AsyncCallbackAdapter<T> implements AsyncCallback<T> {
 		return expectedTest;
 	}
 
-	public void setExcpectedException(Class excpectedException) {
+	public void setExcpectedException(Class<?> excpectedException) {
 		this.excpectedException = excpectedException;
 	}
 
-	public Class getExcpectedException() {
+	public Class<?> getExcpectedException() {
 		return excpectedException;
 	}
 

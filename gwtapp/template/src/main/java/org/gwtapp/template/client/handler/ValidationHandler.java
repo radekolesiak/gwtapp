@@ -3,8 +3,8 @@ package org.gwtapp.template.client.handler;
 import java.util.List;
 import java.util.Map;
 
-import org.gwtapp.core.client.ui.HasValidation;
-import org.gwtapp.core.rpc.exception.ValidationException;
+import org.gwtapp.validation.client.HasValidation;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 public class ValidationHandler<T extends ValidationException> extends
 		WidgetHandler implements HasValidation<T> {

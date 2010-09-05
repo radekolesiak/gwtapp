@@ -1,10 +1,10 @@
-package org.gwtapp.core.server;
+package org.gwtapp.validation.server;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtapp.core.rpc.exception.ValidationException;
-import org.gwtapp.core.rpc.exception.ValidationField;
+import org.gwtapp.validation.rpc.exception.ValidationException;
+import org.gwtapp.validation.rpc.exception.ValidationField;
 
 public abstract class ValidationCssGeneratorBase implements ValidationCss {
 

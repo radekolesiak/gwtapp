@@ -1,6 +1,6 @@
-package org.gwtapp.core.server;
+package org.gwtapp.validation.server;
 
-import org.gwtapp.core.rpc.exception.ValidationException;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 interface ValidationCss {
 

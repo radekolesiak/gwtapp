@@ -1,7 +1,7 @@
 package org.gwtapp.startapp.client;
 
 import org.gwtapp.core.rpc.exception.RpcException;
-import org.gwtapp.core.rpc.exception.ValidationException;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;

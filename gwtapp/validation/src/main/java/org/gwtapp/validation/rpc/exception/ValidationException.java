@@ -1,9 +1,11 @@
-package org.gwtapp.core.rpc.exception;
+package org.gwtapp.validation.rpc.exception;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.gwtapp.core.rpc.exception.RpcException;
 
 @SuppressWarnings("serial")
 public class ValidationException extends RpcException {

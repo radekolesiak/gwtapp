@@ -1,6 +1,6 @@
-package org.gwtapp.core.client.ui;
+package org.gwtapp.validation.client;
 
-import org.gwtapp.core.rpc.exception.ValidationException;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 public interface HasValidation<V extends ValidationException> {
 	

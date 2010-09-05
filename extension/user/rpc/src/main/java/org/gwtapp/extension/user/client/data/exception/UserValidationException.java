@@ -1,8 +1,8 @@
 package org.gwtapp.extension.user.client.data.exception;
 
-import org.gwtapp.core.rpc.exception.Validation;
-import org.gwtapp.core.rpc.exception.ValidationException;
-import org.gwtapp.core.rpc.exception.ValidationField;
+import org.gwtapp.validation.rpc.exception.Validation;
+import org.gwtapp.validation.rpc.exception.ValidationException;
+import org.gwtapp.validation.rpc.exception.ValidationField;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

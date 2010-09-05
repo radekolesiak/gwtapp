@@ -18,7 +18,6 @@ public class MetaFieldModelDataTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	public void testPropertyMetaFieldImplementsMetaField() {
 		PropertyMetaField pmf = new PropertyMetaField();
 		Assert.assertTrue(pmf instanceof MetaField);

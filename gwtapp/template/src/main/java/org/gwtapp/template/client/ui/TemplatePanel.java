@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.rpc.data.Value;
-import org.gwtapp.core.rpc.exception.ValidationException;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.handler.ValidationHandler;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;

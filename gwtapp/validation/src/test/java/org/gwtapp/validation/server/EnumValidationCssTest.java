@@ -1,10 +1,11 @@
-package org.gwtapp.core.server;
+package org.gwtapp.validation.server;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 
-import org.gwtapp.core.rpc.exception.Validation;
-import org.gwtapp.core.rpc.exception.ValidationField;
+import org.gwtapp.validation.rpc.exception.Validation;
+import org.gwtapp.validation.rpc.exception.ValidationField;
+import org.gwtapp.validation.server.EnumValidationCssGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

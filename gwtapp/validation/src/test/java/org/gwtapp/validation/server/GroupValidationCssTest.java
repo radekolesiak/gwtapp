@@ -1,7 +1,8 @@
-package org.gwtapp.core.server;
+package org.gwtapp.validation.server;
 
 import java.util.List;
 
+import org.gwtapp.validation.server.GroupValidationCssGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

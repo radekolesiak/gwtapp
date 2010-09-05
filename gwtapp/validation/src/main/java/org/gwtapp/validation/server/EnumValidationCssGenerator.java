@@ -1,4 +1,4 @@
-package org.gwtapp.core.server;
+package org.gwtapp.validation.server;
 
 public class EnumValidationCssGenerator extends ValidationCssGeneratorBase {
 

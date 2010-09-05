@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<inherits name='org.gwtapp.core.Core'/>
-	<inherits name='org.gwtapp.validation.Validation'/>
 	<source path='client' />
+	<source path='rpc' />
 </module>

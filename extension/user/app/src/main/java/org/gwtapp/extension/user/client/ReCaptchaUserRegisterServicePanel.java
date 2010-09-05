@@ -1,10 +1,10 @@
 package org.gwtapp.extension.user.client;
 
-import org.gwtapp.core.client.ValidationAsyncCallback;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
+import org.gwtapp.validation.client.ValidationAsyncCallback;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
