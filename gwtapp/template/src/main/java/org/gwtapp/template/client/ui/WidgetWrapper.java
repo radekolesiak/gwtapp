@@ -21,7 +21,11 @@ public class WidgetWrapper extends Widget implements HasHTML, HasClickHandlers,
 	}
 
 	public WidgetWrapper(Element e) {
-		setElement(e);
+		if (e != null) {
+			setElement(e);
+		} else {
+			setElement(DOM.createDiv());
+		}
 	}
 
 	@Override
