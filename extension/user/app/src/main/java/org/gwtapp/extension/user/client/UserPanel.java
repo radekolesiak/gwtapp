@@ -8,7 +8,7 @@ import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
-import org.gwtapp.template.client.handler.WidgetHandler;
+import org.gwtapp.template.client.handler.ValidationHandler;
 
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
@@ -21,7 +21,7 @@ public class UserPanel extends TemplateModelPanel<User> implements
 	public static @interface ATemplateCallback {
 	}
 
-	private final WidgetHandler validator = new WidgetHandler();
+	private final ValidationHandler<UserValidationException> validator = new ValidationHandler<UserValidationException>();
 
 	@Inject
 	public UserPanel(@ATemplateCallback TemplateCallback callback) {
@@ -34,12 +34,11 @@ public class UserPanel extends TemplateModelPanel<User> implements
 
 	@Override
 	public void setValidation(UserValidationException validation) {
-		clearValidation();
-		validator.getWidget().addStyleName(validation.getStyleClass());
+		validator.setValidation(validation);
 	}
 
 	@Override
 	public void clearValidation() {
-		validator.getWidget().setStyleName("");
+		validator.clearValidation();
 	}
 }
