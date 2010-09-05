@@ -100,9 +100,11 @@ public class GwtTestUser extends UserTestCase {
 						UserValidationException validation = (UserValidationException) e;
 						assertEquals(
 								UserValidationException.Login.ALREADY_EXISTS,
-								validation.get(UserValidationException.LOGIN));
+								validation.get(UserValidationException.LOGIN)
+										.get(0));
 						assertEquals(UserValidationException.Email.EMPTY,
-								validation.get(UserValidationException.EMAIL));
+								validation.get(UserValidationException.EMAIL)
+										.get(0));
 						finishTest();
 					}
 				});
@@ -120,9 +122,11 @@ public class GwtTestUser extends UserTestCase {
 						UserValidationException validation = (UserValidationException) e;
 						assertEquals(
 								UserValidationException.Login.ALREADY_EXISTS,
-								validation.get(UserValidationException.LOGIN));
+								validation.get(UserValidationException.LOGIN)
+										.get(0));
 						assertEquals(UserValidationException.Email.EMPTY,
-								validation.get(UserValidationException.EMAIL));
+								validation.get(UserValidationException.EMAIL)
+										.get(0));
 						finishTest();
 					}
 				});
