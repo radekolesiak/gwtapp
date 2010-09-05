@@ -15,9 +15,10 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		public final static String TEMPLATE_FORM_PANEL = "template-form-panel";
 	}
 
-	@SuppressWarnings("unchecked")
+
+	@SuppressWarnings("rawtypes")
 	private final Map<String, HasValue> fields = new HashMap<String, HasValue>();
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private final Map<String, ValueChangeHandler> handlers = new HashMap<String, ValueChangeHandler>();
 
 	private boolean autoValueChangeFire = true;
@@ -51,7 +52,7 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		return field;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public HasValue<?> addField(String name, HasValue<?> field) {
 		assert name != null && !name.isEmpty();
 		ValueChangeHandler handler = new ValueChangeHandler() {
@@ -75,13 +76,13 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		return field;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public HasValue getField(String name) {
 		assert name != null && !name.isEmpty();
 		return fields.get(name);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected Map<String, HasValue> getFields() {
 		return fields;
 	}

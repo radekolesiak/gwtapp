@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
@@ -49,9 +50,9 @@ public class GwtTestTemplateFormPanel extends TemplateTest {
 			super(callback);
 		}
 
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		@Override
-		public Map getFields() {
+		public Map<String, HasValue> getFields() {
 			return super.getFields();
 		}
 	}
