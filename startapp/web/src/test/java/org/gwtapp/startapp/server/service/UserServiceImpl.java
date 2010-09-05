@@ -41,10 +41,12 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		if (StringUtils.isEmpty(up.getUser().getLogin())) {
 			validation.addLogin(Login.EMPTY);
 		} else {
-			if (up.getUser().getLogin().matches("[A-Z]+")) {
+			if (up.getUser().getLogin()
+					.matches(UserValidationException.ANY_UPPER_CASE_REGEXP)) {
 				validation.addLogin(Login.NOT_LOWER_CASE);
 			}
-			if (!up.getUser().getLogin().matches("[a-z]+")) {
+			if (!up.getUser().getLogin()
+					.matches(UserValidationException.ONLY_LETTERS_REGEXP)) {
 				validation.addLogin(Login.NOT_LETTERS_ONLY);
 			}
 			if (up.getUser().getLogin().length() < 3) {
@@ -53,6 +55,9 @@ public class UserServiceImpl implements UserService, UserAddStub {
 		}
 		if (StringUtils.isEmpty(up.getUser().getEmail())) {
 			validation.addEmail(Email.EMPTY);
+		} else if (!up.getUser().getEmail()
+				.matches(UserValidationException.EMAIL_REGEXP)) {
+			validation.addEmail(Email.INVALID);
 		}
 		validation.validate();
 		try {

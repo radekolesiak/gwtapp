@@ -11,6 +11,7 @@
 	<div class="validation-group email">
 		<div>Email: <input type="text" t:field="email"></input></div>
 		<div class="validation email-empty">Empty e-mail</div>
+		<div class="validation email-invalid">Invalid e-mail</div>
 		<div class="validation email-already-exists">Already Exists Email</div>
 	</div>
 	<div>Name: <input type="text" t:field="name"></input></div>
