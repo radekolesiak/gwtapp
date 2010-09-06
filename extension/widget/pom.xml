@@ -22,6 +22,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-form</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-template</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
