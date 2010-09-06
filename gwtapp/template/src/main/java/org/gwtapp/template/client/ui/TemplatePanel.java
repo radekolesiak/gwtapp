@@ -27,7 +27,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		HasName, HasChangeHandlers, HasClickHandlers {
@@ -50,6 +49,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	private final Callback callback;
+	
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
 	private ValidationHandler<ValidationException> validator = new ValidationHandler<ValidationException>();
@@ -57,16 +57,15 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private boolean initValueByDeferredCommand = false;
 
 	private String name;
+	
 	private T value;
 
 	private boolean templated = false;
 
 	private Value<T> initValue = null;
 
-	@Inject
 	private T injectInitValue = null;
 
-	@Inject
 	private AsyncCallbackInjector asyncCallbackInjector;
 
 	public TemplatePanel(TemplateCallback callback) {
@@ -259,12 +258,22 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		}
 	}
 
+	public void setAsyncCallbackInjector(
+			AsyncCallbackInjector asyncCallbackInjector) {
+		this.asyncCallbackInjector = asyncCallbackInjector;
+	}
+
 	public AsyncCallbackInjector getAsyncCallbackInjector() {
 		return asyncCallbackInjector;
 	}
 
 	public <Q> AsyncCallback<Q> create(AsyncCallback<Q> callback) {
-		return getAsyncCallbackInjector().create(callback);
+		AsyncCallbackInjector injector = getAsyncCallbackInjector();
+		if (injector != null) {
+			return injector.create(callback);
+		} else {
+			return callback;
+		}
 	}
 
 	public ValidationHandler<ValidationException> getValidator() {
