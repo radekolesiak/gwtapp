@@ -41,14 +41,6 @@ public class ClientModule extends AbstractGinModule {
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 
-		bind(ReCaptchaUser.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
-				ReCaptchaUserImpl.class);
-
-		bind(UserPanel.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
-				UserPanel.class);
-
 		bind(ListBox.class).annotatedWith(ListPanel.AListBox.class).to(
 				ListBox.class);
 
@@ -64,15 +56,26 @@ public class ClientModule extends AbstractGinModule {
 				ListPanelTestManual.ItemsProvider.class);
 
 		bind(TemplateCallback.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
-				ReCaptchaUserRegisterTemplateCallback.class);
-
-		bind(TemplateCallback.class).annotatedWith(
 				UserPanel.ATemplateCallback.class).to(
 				UserPanelTemplateCallback.class);
 
 		bind(TemplateCallback.class).annotatedWith(
 				ListPanel.ATemplateCallback.class).to(
 				ListPanelTemplateCallback.class);
+		
+		bindReCaptchaUserRegister();
+	}
+
+	private void bindReCaptchaUserRegister() {
+		bind(ReCaptchaUser.class).annotatedWith(
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
+				ReCaptchaUserImpl.class);
+		bind(UserPanel.class).annotatedWith(
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
+				UserPanel.class);
+		bind(TemplateCallback.class).annotatedWith(
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
+				ReCaptchaUserRegisterTemplateCallback.class);
+
 	}
 }
