@@ -21,26 +21,31 @@ public class ReCaptchaUserRegisterPanel extends
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface ATemplateCallback {
+	public static @interface ProviderAnnotation {
 	}
 
-	@Retention(RetentionPolicy.RUNTIME)
-	@BindingAnnotation
-	public static @interface AUserPanel {
+	public static class Provider {
+		@Inject
+		@ProviderAnnotation
+		public TemplateCallback callback;
+		@Inject
+		@ProviderAnnotation
+		public UserPanel userPanel;
+		@Inject
+		@ProviderAnnotation
+		public ReCaptchaUser value;
 	}
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
 
 	@Inject
-	public ReCaptchaUserRegisterPanel(
-			@ATemplateCallback TemplateCallback callback,
-			@AUserPanel UserPanel userPanel) {
-		super(callback);
+	public ReCaptchaUserRegisterPanel(Provider provider) {
+		super(provider.callback, provider.value);
 		setAutoValueChangeFire(false);
 		add(ReCaptchaUser.PASSWORD, new PasswordTextBoxHandler());
 		add(ReCaptchaUser.PASSWORD_VERIFY, new PasswordTextBoxHandler());
-		add(ReCaptchaUser.USER, new UiHandler<UserPanel>(userPanel));
+		add(ReCaptchaUser.USER, new UiHandler<UserPanel>(provider.userPanel));
 		add("reCaptchaContainer", reCaptcha);
 		add("register", register);
 	}

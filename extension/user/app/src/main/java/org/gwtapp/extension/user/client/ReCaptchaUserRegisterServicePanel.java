@@ -21,11 +21,9 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private final UserPanel userPanel;
 
 	@Inject
-	public ReCaptchaUserRegisterServicePanel(
-			@ATemplateCallback TemplateCallback callback,
-			@AUserPanel UserPanel userPanel) {
-		super(callback, userPanel);
-		this.userPanel = userPanel;
+	public ReCaptchaUserRegisterServicePanel(Provider provider) {
+		super(provider);
+		this.userPanel = provider.userPanel;
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {

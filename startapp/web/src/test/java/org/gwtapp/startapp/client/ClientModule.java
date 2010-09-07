@@ -41,9 +41,13 @@ public class ClientModule extends AbstractGinModule {
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 
+		bind(ReCaptchaUser.class).annotatedWith(
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
+				ReCaptchaUserImpl.class);
+
 		bind(UserPanel.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.AUserPanel.class)
-				.to(UserPanel.class);
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
+				UserPanel.class);
 
 		bind(ListBox.class).annotatedWith(ListPanel.AListBox.class).to(
 				ListBox.class);
@@ -60,7 +64,7 @@ public class ClientModule extends AbstractGinModule {
 				ListPanelTestManual.ItemsProvider.class);
 
 		bind(TemplateCallback.class).annotatedWith(
-				ReCaptchaUserRegisterPanel.ATemplateCallback.class).to(
+				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
 
 		bind(TemplateCallback.class).annotatedWith(
