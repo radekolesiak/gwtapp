@@ -76,6 +76,5 @@ public class ClientModule extends AbstractGinModule {
 		bind(TemplateCallback.class).annotatedWith(
 				ReCaptchaUserRegisterPanel.ProviderAnnotation.class).to(
 				ReCaptchaUserRegisterTemplateCallback.class);
-
 	}
 }
