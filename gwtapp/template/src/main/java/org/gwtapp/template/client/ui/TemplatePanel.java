@@ -25,6 +25,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		HasName, HasChangeHandlers, HasClickHandlers {
@@ -62,7 +63,13 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private T injectInitValue = null;
 
-	private AsyncCallbackInjector asyncCallbackInjector;
+	@Inject(optional = true)
+	private AsyncCallbackInjector asyncCallbackInjector = new AsyncCallbackInjector(){
+		@Override
+		public <X> AsyncCallback<X> create(AsyncCallback<X> callback) {
+			return callback;
+		}
+	};
 
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
