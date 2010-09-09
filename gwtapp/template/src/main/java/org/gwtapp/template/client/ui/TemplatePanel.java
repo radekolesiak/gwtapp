@@ -21,8 +21,6 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
@@ -49,15 +47,13 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	private final Callback callback;
-	
+
 	private final Map<String, TemplateHandler> widgetHandlers = new HashMap<String, TemplateHandler>();
 
 	private ValidationHandler<ValidationException> validator = new ValidationHandler<ValidationException>();
 
-	private boolean initValueByDeferredCommand = false;
-
 	private String name;
-	
+
 	private T value;
 
 	private boolean templated = false;
@@ -217,28 +213,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
-	public void setInitValueByDeferredCommand(boolean initValueByDeferredCommand) {
-		this.initValueByDeferredCommand = initValueByDeferredCommand;
-	}
-
-	public boolean isInitValueByDeferredCommand() {
-		return initValueByDeferredCommand;
-	}
-
 	private void setInitValue() {
-		if (isInitValueByDeferredCommand()) {
-			DeferredCommand.addCommand(new Command() {
-				@Override
-				public void execute() {
-					onDeferredInitValue();
-				}
-			});
-		} else {
-			onDeferredInitValue();
-		}
-	}
-
-	private void onDeferredInitValue() {
 		if (getInitValue() != null) {
 			T localvalue = getInitValue();
 			setInitValue(null);

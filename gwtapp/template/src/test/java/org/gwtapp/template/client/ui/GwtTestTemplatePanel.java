@@ -6,7 +6,6 @@ import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.TemplateTest;
 import org.gwtapp.template.client.Value;
-import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -57,7 +56,6 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertEquals("template-panel", panel.getStyleName());
 		assertEquals("", panel.getElement().getInnerHTML());
 		assertNull(panel.getName());
-		assertFalse(panel.isInitValueByDeferredCommand());
 	}
 
 	@Test
@@ -73,7 +71,6 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		assertEquals("template-panel bb", panel.getStyleName());
 		assertEquals("xyz", panel.getElement().getInnerHTML());
 		assertNull(panel.getName());
-		assertFalse(panel.isInitValueByDeferredCommand());
 	}
 
 	@Test
@@ -128,17 +125,6 @@ public class GwtTestTemplatePanel extends TemplateTest {
 		});
 		panel.fireChangeEvent();
 		assertTrue(handled.get());
-	}
-
-	@Test
-	public void testIsInitValueByDeferredCommand() {
-		TemplatePanel<String> panel = new TemplatePanel<String>(
-				new CustomTemplateCallback());
-		assertFalse(panel.isInitValueByDeferredCommand());
-		panel.setInitValueByDeferredCommand(true);
-		assertTrue(panel.isInitValueByDeferredCommand());
-		panel.setInitValueByDeferredCommand(false);
-		assertFalse(panel.isInitValueByDeferredCommand());
 	}
 
 	@Test
