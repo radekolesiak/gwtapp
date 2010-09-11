@@ -13,25 +13,27 @@ import com.google.inject.Inject;
 
 @SuppressWarnings("serial")
 public class CCalcServiceImpl extends RemoteServiceServlet implements
-		CCalcService {
+		CCalcService, HasBackup, HasCurrencyRatio {
 
 	@Inject
-	private CCalcService delegated;
+	private HasBackup backupService;
+	@Inject
+	private HasCurrencyRatio currencyRatioService;
 
 	@Override
 	public void backup(Book book) throws RpcException {
-		getDelegated().backup(book);
+		if (backupService != null) {
+			backupService.backup(book);
+		} else {
+			// throw new NotImplementedException();
+		}
 	}
 
 	@Override
 	public Double getRatio(Date date, Currency from, Currency to)
 			throws RpcException {
-		return getDelegated().getRatio(date, from, to);
-	}
-
-	protected CCalcService getDelegated() {
-		if (delegated != null) {
-			return delegated;
+		if (currencyRatioService != null) {
+			return currencyRatioService.getRatio(date, from, to);
 		} else {
 			throw new NotImplementedException();
 		}
