@@ -16,22 +16,22 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 		CCalcService {
 
 	@Inject
-	CCalcService delegated;
+	private CCalcService delegated;
 
 	@Override
 	public void backup(Book book) throws RpcException {
-		if (delegated != null) {
-			delegated.backup(book);
-		} else {
-			throw new NotImplementedException();
-		}
+		getDelegated().backup(book);
 	}
 
 	@Override
 	public Double getRatio(Date date, Currency from, Currency to)
 			throws RpcException {
+		return getDelegated().getRatio(date, from, to);
+	}
+
+	protected CCalcService getDelegated() {
 		if (delegated != null) {
-			return delegated.getRatio(date, from, to);
+			return delegated;
 		} else {
 			throw new NotImplementedException();
 		}
