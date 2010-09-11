@@ -21,11 +21,13 @@ public abstract class AbstractGwtTestCCalcService extends GWTTestCase {
 					public void onSuccess(Double result) {
 						finishTest();
 						assertEquals(new Double(0.8244), result);
-					}@Override
+					}
+
+					@Override
 					public void onFailure(Throwable e) {
 						e.printStackTrace();
 					}
 				});
-		delayTestFinish(250);
+		delayTestFinish(2500);
 	}
 }
