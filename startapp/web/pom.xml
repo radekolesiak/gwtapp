@@ -30,6 +30,12 @@
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.wideplay.warp</groupId>
+			<artifactId>warp-persist</artifactId>
+			<version>${warp.version}</version>
+		</dependency>
+		<!-- Test -->
+		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
@@ -42,9 +48,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.wideplay.warp</groupId>
-			<artifactId>warp-persist</artifactId>
-			<version>${warp.version}</version>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>${derby.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-all</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- JSTL -->
 		<dependency>

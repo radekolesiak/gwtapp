@@ -34,9 +34,11 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 		} else if ("xyz".equals(login)) {
 			return null;
 		} else {
-			Query query = getEntityManager().createQuery(
-					"SELECT u FROM UserEntity u WHERE u.login = ?1");
-			query.setParameter(1, login);
+			String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
+			q = q.replace(":login", "'" + login + "'");
+			Query query = getEntityManager().createQuery(q);
+			query.setMaxResults(1);
+			// query.setParameter("login", login); // TODO why doesn't work now?
 			List<UserImpl> users = query.getResultList();
 			if (users.isEmpty()) {
 				throw new RpcException();

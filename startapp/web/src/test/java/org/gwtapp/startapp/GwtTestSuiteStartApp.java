@@ -10,6 +10,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 
 	public static Test suite() throws ClassNotFoundException {
 		TestSuite suite = new TestSuite("Tests for a StartApp Application");
+		addTest(suite, "org.gwtapp.extension.user.client.test.GwtTestUser");
 		addTest(suite, "org.gwtapp.core.client.ui.GwtTestDelegatedPanel");
 		addTest(suite, "org.gwtapp.core.client.di.GwtTestAsyncCallbackInjector");
 		addTest(suite, "org.gwtapp.template.client.GwtTestReplaceParameters");
@@ -25,7 +26,6 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		addTest(suite, "org.gwtapp.template.client.callback.GwtTestTFieldCallback");
 		addTest(suite, "org.gwtapp.form.client.ui.GwtTestTemplateModelPanel");
 		addTest(suite, "org.gwtapp.io.client.GwtTestIOClient");		
-		addTest(suite, "org.gwtapp.extension.user.client.test.GwtTestUser");
 		return suite;
 	}
 
