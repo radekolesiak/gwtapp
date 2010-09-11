@@ -25,6 +25,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		addTest(suite, "org.gwtapp.template.client.callback.GwtTestTFieldCallback");
 		addTest(suite, "org.gwtapp.form.client.ui.GwtTestTemplateModelPanel");
 		addTest(suite, "org.gwtapp.io.client.GwtTestIOClient");		
+		addTest(suite, "org.gwtapp.extension.user.client.test.GwtTestUser");
 		return suite;
 	}
 
