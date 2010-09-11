@@ -28,8 +28,7 @@ public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 		return getService().getRatio(date, from, to);
 	}
 
-	private CCalcService getService() {
-		System.out.println("DELEGATED: " + delegated);
+	protected CCalcService getService() {
 		if (delegated == null) {
 			throw new NotImplementedException();
 		} else {

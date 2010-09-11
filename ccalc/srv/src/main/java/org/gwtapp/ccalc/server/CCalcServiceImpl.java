@@ -25,7 +25,7 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 		if (backupService != null) {
 			backupService.backup(book);
 		} else {
-			// throw new NotImplementedException();
+			throw new NotImplementedException();
 		}
 	}
 
