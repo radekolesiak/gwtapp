@@ -29,6 +29,7 @@ public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 	}
 
 	private CCalcService getService() {
+		System.out.println("DELEGATED: " + delegated);
 		if (delegated == null) {
 			throw new NotImplementedException();
 		} else {
