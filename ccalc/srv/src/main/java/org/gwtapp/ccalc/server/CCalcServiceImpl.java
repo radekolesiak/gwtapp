@@ -1,5 +1,6 @@
 package org.gwtapp.ccalc.server;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,6 +15,8 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.log4j.Logger;
 import org.gwtapp.ccalc.rpc.api.CCalcService;
 import org.gwtapp.ccalc.rpc.data.book.Book;
+import org.gwtapp.ccalc.rpc.data.book.Currency;
+import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -80,5 +83,11 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Double getRatio(Date date, Currency from, Currency to)
+			throws RpcException {
+		throw new NotImplementedException();
 	}
 }
