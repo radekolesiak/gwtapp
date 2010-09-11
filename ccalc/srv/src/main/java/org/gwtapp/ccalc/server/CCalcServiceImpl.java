@@ -25,7 +25,6 @@ public class CCalcServiceImpl extends RemoteServiceServlet implements
 		} else {
 			throw new NotImplementedException();
 		}
-
 	}
 
 	@Override
