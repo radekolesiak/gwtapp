@@ -8,18 +8,31 @@ import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.core.rpc.exception.NotImplementedException;
 import org.gwtapp.core.rpc.exception.RpcException;
 
+import com.google.inject.Inject;
+
 @SuppressWarnings("serial")
 public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 		CCalcService {
 
+	@Inject
+	CCalcService delegated;
+
 	@Override
 	public void backup(Book book) throws RpcException {
-		throw new NotImplementedException();
+		getService().backup(book);
 	}
 
 	@Override
 	public Double getRatio(Date date, Currency from, Currency to)
 			throws RpcException {
-		throw new NotImplementedException();
+		return getService().getRatio(date, from, to);
+	}
+
+	private CCalcService getService() {
+		if (delegated == null) {
+			throw new NotImplementedException();
+		} else {
+			return delegated;
+		}
 	}
 }
