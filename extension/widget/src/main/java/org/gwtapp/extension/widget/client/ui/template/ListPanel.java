@@ -20,27 +20,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface AFieldName {
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@BindingAnnotation
-	public static @interface ATemplateCallback {
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@BindingAnnotation
-	public static @interface AListBox {
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@BindingAnnotation
-	public static @interface AFormatter {
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@BindingAnnotation
-	public static @interface AItems {
+	public static @interface ProviderAnnotation {
 	}
 
 	public static interface Formatter<T> {
@@ -53,6 +33,24 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 			return "" + item;
 		}
 	};
+
+	public static class Provider<T> {
+		@Inject
+		@ProviderAnnotation
+		public TemplateCallback callback;
+		@Inject
+		@ProviderAnnotation
+		public ListBox listBox;
+		@Inject
+		@ProviderAnnotation
+		public String widgetName;
+		@Inject
+		@ProviderAnnotation
+		public Formatter<T> formatter;
+		@Inject
+		@ProviderAnnotation
+		public List<T> items;
+	}
 
 	private Formatter<T> formatter;
 
@@ -68,10 +66,9 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 	}
 
 	@Inject
-	public ListPanel(@ATemplateCallback TemplateCallback callback,
-			final @AListBox ListBox listBox, @AFieldName String widgetName,
-			@AFormatter Formatter<T> formatter, @AItems List<T> items) {
-		this(callback, listBox, widgetName, formatter, items, false);
+	public ListPanel(Provider<T> provider) {
+		this(provider.callback, provider.listBox, provider.widgetName,
+				provider.formatter, provider.items, false);
 	}
 
 	protected ListPanel(TemplateCallback callback, final ListBox listBox,
