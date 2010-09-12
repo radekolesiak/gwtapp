@@ -23,7 +23,6 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
 
 public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 
@@ -91,19 +90,28 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		ratio.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				Date date = getField(Calculation.DATE).getValue();
-				Currency from = getField(Calculation.CURRENCY).getValue();
-				if (date != null && from != null) {
-					CCalc.getRatio(date, from,
-							new SimpleAsyncCallback<Double>() {
-								@Override
-								public void onSuccess(Double result) {
-									Window.alert("" + result);
-								}
-							});
-				}
+				fetchRatio();
 			}
 		});
+	}
+
+	private void fetchRatio() {
+		Date date = getField(Calculation.DATE).getValue();
+		Currency from = getField(Calculation.CURRENCY).getValue();
+		if (date != null && from != null) {
+			CCalc.getRatio(date, from, new SimpleAsyncCallback<Double>() {
+				@Override
+				public void onSuccess(Double result) {
+					setCurrencyRatio(result);
+				}
+			});
+		}
+	}
+
+	private void setCurrencyRatio(Double ratio) {
+		if (ratio != null) {
+			getField(Calculation.EXCHANGE).setValue(ratio);
+		}
 	}
 
 	public void setComponentValue(Double value) {
