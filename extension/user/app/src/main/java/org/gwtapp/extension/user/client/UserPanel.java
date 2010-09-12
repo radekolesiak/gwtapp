@@ -14,11 +14,11 @@ public class UserPanel extends TemplateModelPanel<User> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface ATemplateCallback {
+	public static @interface Bind {
 	}
 
 	@Inject
-	public UserPanel(@ATemplateCallback TemplateCallback callback) {
+	public UserPanel(@Bind TemplateCallback callback) {
 		super(callback);
 		add(User.LOGIN, new TextBoxHandler());
 		add(User.EMAIL, new TextBoxHandler());

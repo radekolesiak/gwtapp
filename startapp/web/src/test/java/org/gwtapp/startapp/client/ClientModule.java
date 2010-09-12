@@ -56,7 +56,7 @@ public class ClientModule extends AbstractGinModule {
 				ListPanelTestManual.ItemsProvider.class);
 
 		bind(TemplateCallback.class).annotatedWith(
-				UserPanel.ATemplateCallback.class).to(
+				UserPanel.Bind.class).to(
 				UserPanelTemplateCallback.class);
 
 		bind(TemplateCallback.class).annotatedWith(
