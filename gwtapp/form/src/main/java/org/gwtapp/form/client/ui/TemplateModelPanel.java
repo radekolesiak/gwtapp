@@ -63,6 +63,11 @@ public class TemplateModelPanel<T extends ModelData> extends
 	public void onAddFormWidgets() {
 	}
 
+	@SuppressWarnings("unchecked")
+	public <X> HasValue<X> getField(MetaField<?, ? extends X> metafield) {
+		return (HasValue<X>) getField(metafield.name());
+	}
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public T getValue() {
