@@ -10,8 +10,10 @@ import org.gwtapp.core.rpc.exception.RpcException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @SuppressWarnings("serial")
+@Singleton
 public class CCalcServiceImpl extends RemoteServiceServlet implements
 		CCalcService, HasBackup, HasCurrencyRatio {
 

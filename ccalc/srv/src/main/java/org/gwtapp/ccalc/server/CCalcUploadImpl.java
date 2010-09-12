@@ -17,7 +17,10 @@ import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.io.server.IOUploadHttpServlet;
 
+import com.google.inject.Singleton;
+
 @SuppressWarnings("serial")
+@Singleton
 public class CCalcUploadImpl extends IOUploadHttpServlet<Book> {
 
 	private final static Logger log = Logger.getLogger(CCalcUploadImpl.class);

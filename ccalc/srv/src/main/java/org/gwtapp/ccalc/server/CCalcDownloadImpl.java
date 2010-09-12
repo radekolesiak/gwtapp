@@ -6,7 +6,9 @@ import org.gwtapp.ccalc.rpc.api.CCalcDownloadService;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.io.server.IODownloadHttpServlet;
 
+import com.google.inject.Singleton;
 
+@Singleton
 public class CCalcDownloadImpl extends IODownloadHttpServlet implements
 		CCalcDownloadService {
 
