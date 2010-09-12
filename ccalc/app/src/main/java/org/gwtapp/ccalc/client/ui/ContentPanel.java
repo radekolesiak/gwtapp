@@ -69,15 +69,5 @@ public class ContentPanel extends TemplatePanel<Book> {
 				CCalc.backup(bookPanel.getWidget().getValue());
 			}
 		};
-		// updateScheduleRepeating(); // TODO
 	}
-	/*-
-	 private void updateScheduleRepeating() {
-	 String scheduleRepeating = backup.getMessage("scheduleRepeating");
-	 try {
-	 timer.scheduleRepeating(Integer.parseInt(scheduleRepeating));
-	 } catch (Exception e) {
-	 Debug.HANDLER.onUncaughtException(e);
-	 }
-	 }*/
 }

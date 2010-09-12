@@ -14,7 +14,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Window;
 
-public class CCalcPanel extends TemplatePanel<Void> {
+public class CCalcPanel extends TemplatePanel<Book> {
 
 	private final WidgetHandler newButton = //
 	new WidgetHandler();
@@ -49,5 +49,10 @@ public class CCalcPanel extends TemplatePanel<Void> {
 				}
 			}
 		});
+	}
+
+	@Override
+	public Book getValue() {
+		return contentPanel.getWidget().getValue();
 	}
 }

@@ -1,5 +1,7 @@
 package org.gwtapp.ccalc.client;
 
+import java.util.Date;
+
 import org.gwtapp.ccalc.client.ui.CCalcPanel;
 import org.gwtapp.ccalc.rpc.api.CCalcDownloadService;
 import org.gwtapp.ccalc.rpc.api.CCalcDownloadServiceAsync;
@@ -36,14 +38,15 @@ public class CCalc {
 	}
 
 	public static void backup(Book book) {
-		ccalc.backup(book, CCalc
-				.getAsyncCallback(new SimpleAsyncCallback<Void>()));
+		ccalc.backup(book,
+				CCalc.getAsyncCallback(new SimpleAsyncCallback<Void>()));
 	}
 
 	public final static String APPLICATION_DIV = "application";
 	public final static String PAGE_DIV = "page";
 
 	public static Currency defaultCurrency = Book.DEFAULT_CURRENCY.def();
+	private static CCalcPanel panel = null;
 
 	private static AsyncCallbackInjector injector = null;
 
@@ -58,6 +61,13 @@ public class CCalc {
 
 	public static void doAppLoad(AsyncCallbackInjector injector) {
 		CCalc.injector = injector;
-		RootPanel.get(APPLICATION_DIV).add(new CCalcPanel());
+		CCalc.panel = new CCalcPanel();
+		RootPanel.get(APPLICATION_DIV).add(panel);
+	}
+
+	public static void getRatio(Date date, Currency from,
+			AsyncCallback<Double> callback) {
+		Currency to = panel.getValue().getBaseCurrency();
+		CCalc.ccalc.getRatio(date, from, to, callback);
 	}
 }

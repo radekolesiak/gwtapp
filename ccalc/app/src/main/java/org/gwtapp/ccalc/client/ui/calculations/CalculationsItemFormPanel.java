@@ -93,9 +93,8 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 			public void onClick(ClickEvent event) {
 				Date date = getField(Calculation.DATE).getValue();
 				Currency from = getField(Calculation.CURRENCY).getValue();
-				Currency to = Currency.PLN;
-				if (date != null && from != null && to != null) {
-					CCalc.ccalc.getRatio(date, from, to,
+				if (date != null && from != null) {
+					CCalc.getRatio(date, from,
 							new SimpleAsyncCallback<Double>() {
 								@Override
 								public void onSuccess(Double result) {
