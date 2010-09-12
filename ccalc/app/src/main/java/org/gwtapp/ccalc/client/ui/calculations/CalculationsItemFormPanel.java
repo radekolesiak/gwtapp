@@ -1,6 +1,7 @@
 package org.gwtapp.ccalc.client.ui.calculations;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.gwtapp.ccalc.client.CCalc;
@@ -14,6 +15,7 @@ import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
 import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
+import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.widget.client.handler.DatePickerHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -21,9 +23,9 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 
-public class CalculationsItemFormPanel extends
-		TemplateModelPanel<Operation> {
+public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 
 	public static enum State {
 		NONE, ADD, REMOVE;
@@ -42,6 +44,7 @@ public class CalculationsItemFormPanel extends
 	private final LabelHandler<Double> component = new LabelHandler<Double>();
 	private final WidgetHandler add = new WidgetHandler();
 	private final WidgetHandler remove = new WidgetHandler();
+	private final WidgetHandler ratio = new WidgetHandler();
 
 	private State state = State.NONE;
 
@@ -63,6 +66,7 @@ public class CalculationsItemFormPanel extends
 		add(Calculation.COST, new LabelHandler<Double>());
 		add("add", add);
 		add("remove", remove);
+		add("ratio", ratio);
 	}
 
 	@Override
@@ -83,6 +87,24 @@ public class CalculationsItemFormPanel extends
 		if (componentValue != null) {
 			setComponentValue(componentValue);
 		}
+
+		ratio.getWidget().addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				Date date = getField(Calculation.DATE).getValue();
+				Currency from = getField(Calculation.CURRENCY).getValue();
+				Currency to = Currency.PLN;
+				if (date != null && from != null && to != null) {
+					CCalc.ccalc.getRatio(date, from, to,
+							new SimpleAsyncCallback<Double>() {
+								@Override
+								public void onSuccess(Double result) {
+									Window.alert("" + result);
+								}
+							});
+				}
+			}
+		});
 	}
 
 	public void setComponentValue(Double value) {
