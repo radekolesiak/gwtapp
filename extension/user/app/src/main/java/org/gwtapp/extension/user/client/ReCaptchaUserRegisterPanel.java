@@ -21,18 +21,18 @@ public class ReCaptchaUserRegisterPanel extends
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface ProviderAnnotation {
+	public static @interface Bind {
 	}
 
 	public static class Provider {
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public TemplateCallback callback;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public UserPanel userPanel;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public ReCaptchaUser value;
 	}
 

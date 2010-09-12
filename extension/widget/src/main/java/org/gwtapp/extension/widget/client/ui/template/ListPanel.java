@@ -20,7 +20,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
-	public static @interface ProviderAnnotation {
+	public static @interface Bind {
 	}
 
 	public static interface Formatter<T> {
@@ -36,19 +36,19 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	public static class Provider<T> {
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public TemplateCallback callback;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public ListBox listBox;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public String widgetName;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public Formatter<T> formatter;
 		@Inject
-		@ProviderAnnotation
+		@Bind
 		public List<T> items;
 	}
 
