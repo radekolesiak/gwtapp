@@ -46,8 +46,8 @@ public class CCalc {
 	public static Currency defaultCurrency = Book.DEFAULT_CURRENCY.def();
 	private static CCalcPanel panel = null;
 
-	public CCalc() {
-		CCalc.panel = new CCalcPanel();
+	public CCalc(CCalcGinjector ginjector) {
+		CCalc.panel = ginjector.getCCalcPanel();
 		RootPanel.get(APPLICATION_DIV).add(panel);
 	}
 
