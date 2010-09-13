@@ -19,8 +19,8 @@ public abstract class AbstractGwtTestCCalcService extends GWTTestCase {
 		service.getRatio(new Date(1284109200000L), Currency.EUR, Currency.GBP,
 				new SimpleAsyncCallback<Double>() {
 					public void onSuccess(Double result) {
+						assertEquals(new Double(0.8266), result);
 						finishTest();
-						assertEquals(new Double(0.8244), result);
 					}
 
 					@Override
@@ -28,6 +28,6 @@ public abstract class AbstractGwtTestCCalcService extends GWTTestCase {
 						e.printStackTrace();
 					}
 				});
-		delayTestFinish(2500);
+		delayTestFinish(3500);
 	}
 }
