@@ -42,6 +42,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 
 	@Override
 	public void onAddWidgets() {
+		onBackupLabel();
 		submit.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
@@ -70,6 +71,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 	@Override
 	public void setValue(Book value, boolean fireEvents) {
 		setVisible(true);
+		onBackupLabel();
 		bookPanel.getWidget().setValue(value, fireEvents);
 	}
 
