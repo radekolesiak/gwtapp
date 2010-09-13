@@ -9,7 +9,6 @@ import org.gwtapp.ccalc.rpc.api.CCalcService;
 import org.gwtapp.ccalc.rpc.api.CCalcServiceAsync;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
-import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
@@ -38,8 +37,7 @@ public class CCalc {
 	}
 
 	public static void backup(Book book) {
-		ccalc.backup(book,
-				CCalc.getAsyncCallback(new SimpleAsyncCallback<Void>()));
+		ccalc.backup(book, new SimpleAsyncCallback<Void>());
 	}
 
 	public final static String APPLICATION_DIV = "application";
@@ -48,19 +46,7 @@ public class CCalc {
 	public static Currency defaultCurrency = Book.DEFAULT_CURRENCY.def();
 	private static CCalcPanel panel = null;
 
-	private static AsyncCallbackInjector injector = null;
-
-	public static <T> AsyncCallback<T> getAsyncCallback(
-			AsyncCallback<T> callback) {
-		if (injector == null) {
-			return callback;
-		} else {
-			return injector.create(callback);
-		}
-	}
-
-	public static void doAppLoad(AsyncCallbackInjector injector) {
-		CCalc.injector = injector;
+	public CCalc() {
 		CCalc.panel = new CCalcPanel();
 		RootPanel.get(APPLICATION_DIV).add(panel);
 	}

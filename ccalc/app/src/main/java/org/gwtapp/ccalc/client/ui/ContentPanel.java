@@ -37,8 +37,8 @@ public class ContentPanel extends TemplatePanel<Book> {
 				Book value = bookPanel.getWidget().getValue();
 				value.setCurrentVersion(Book.CURRENT_VERSION.def());
 				CCalc.backup(value);
-				CCalc.downloader.download(value, CCalc
-						.getAsyncCallback(new SimpleAsyncCallback<Void>()));
+				CCalc.downloader.download(value,
+						create(new SimpleAsyncCallback<Void>()));
 			}
 		});
 		backup.getWidget().addClickHandler(new ClickHandler() {
