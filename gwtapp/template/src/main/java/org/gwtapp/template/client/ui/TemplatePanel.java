@@ -64,12 +64,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private T injectInitValue = null;
 
 	@Inject(optional = true)
-	private AsyncCallbackInjector asyncCallbackInjector = new AsyncCallbackInjector(){
-		@Override
-		public <X> AsyncCallback<X> create(AsyncCallback<X> callback) {
-			return callback;
-		}
-	};
+	private AsyncCallbackInjector asyncCallbackInjector;
 
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());

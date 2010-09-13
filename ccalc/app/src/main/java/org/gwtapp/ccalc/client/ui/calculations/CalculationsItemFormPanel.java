@@ -99,12 +99,13 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		Date date = getField(Calculation.DATE).getValue();
 		Currency from = getField(Calculation.CURRENCY).getValue();
 		if (date != null && from != null) {
-			CCalc.getRatio(date, from, new SimpleAsyncCallback<Double>() {
-				@Override
-				public void onSuccess(Double result) {
-					setCurrencyRatio(result);
-				}
-			});
+			CCalc.getRatio(date, from,
+					create(new SimpleAsyncCallback<Double>() {
+						@Override
+						public void onSuccess(Double result) {
+							setCurrencyRatio(result);
+						}
+					}));
 		}
 	}
 
