@@ -50,7 +50,8 @@ public class PageFormPanel extends TemplateModelPanel<Page> implements
 
 		@Override
 		public TemplateFormPanel<? extends Operation> createRowFormPanel(int row) {
-			final CalculationsItemFormPanel rowPanel = new CalculationsItemFormPanel();
+			final CalculationsItemFormPanel rowPanel = CCalc.getGinjector()
+					.getCalculationsItemFormPanel();
 			rowPanel.addChangeHandler(new ChangeHandler() {
 				@Override
 				public void onChange(ChangeEvent event) {

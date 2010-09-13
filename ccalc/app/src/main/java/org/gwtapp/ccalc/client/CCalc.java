@@ -44,16 +44,23 @@ public class CCalc {
 	public final static String PAGE_DIV = "page";
 
 	public static Currency defaultCurrency = Book.DEFAULT_CURRENCY.def();
+
+	private static CCalcGinjector ginjector = null;
 	private static CCalcPanel panel = null;
 
-	public CCalc(CCalcGinjector ginjector) {
-		CCalc.panel = ginjector.getCCalcPanel();
-		RootPanel.get(APPLICATION_DIV).add(panel);
+	public static CCalcGinjector getGinjector() {
+		return ginjector;
 	}
 
 	public static void getRatio(Date date, Currency from,
 			AsyncCallback<Double> callback) {
 		Currency to = panel.getValue().getBaseCurrency();
 		CCalc.ccalc.getRatio(date, from, to, callback);
+	}
+
+	public static void doLoadCCalc(CCalcGinjector ginjector) {
+		CCalc.ginjector = ginjector;
+		CCalc.panel = ginjector.getCCalcPanel();
+		RootPanel.get(APPLICATION_DIV).add(panel);
 	}
 }
