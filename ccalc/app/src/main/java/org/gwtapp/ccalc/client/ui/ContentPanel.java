@@ -56,7 +56,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 		backup.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				onBackupLabel();
+				onBackupInProgress();
 				CCalc.ccalc.backup(bookPanel.getWidget().getValue(),
 						create(create(backupCallback)));
 			}
@@ -85,5 +85,9 @@ public class ContentPanel extends TemplatePanel<Book> {
 
 	protected void onBackupLabel() {
 		backupLabel.getWidget().setHTML(backupLabel.getMessage("label"));
+	}
+
+	protected void onBackupInProgress() {
+		backupLabel.getWidget().setHTML(backupLabel.getMessage("inprogress"));
 	}
 }
