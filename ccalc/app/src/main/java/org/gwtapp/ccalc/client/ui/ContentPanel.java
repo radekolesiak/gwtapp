@@ -21,7 +21,6 @@ public class ContentPanel extends TemplatePanel<Book> {
 	private final WidgetHandler submit = new WidgetHandler();
 	private final WidgetHandler backup = new WidgetHandler();
 	private final WidgetHandler backupLabel = new WidgetHandler();
-	private final WidgetHandler backupInProgress = new WidgetHandler();
 	private final UiHandler<BookPanel> bookPanel = //
 	new UiHandler<BookPanel>(new BookPanel());
 
@@ -38,7 +37,6 @@ public class ContentPanel extends TemplatePanel<Book> {
 		add("backupLabel", backupLabel);
 		add("submitButton", submit);
 		add("bookPanel", bookPanel);
-		add("backupInProgress", backupInProgress);
 		setVisible(false);
 	}
 
@@ -78,7 +76,6 @@ public class ContentPanel extends TemplatePanel<Book> {
 	}
 
 	protected void onBackupSuccess() {
-		backupInProgress.getWidget().setVisible(false);
 		String format = backupLabel.getMessage("format");
 		String date = DateTimeFormat.getFormat(format).format(new Date());
 		Param param = new Param("date", date);
@@ -87,12 +84,10 @@ public class ContentPanel extends TemplatePanel<Book> {
 	}
 
 	protected void onBackupLabel() {
-		backupInProgress.getWidget().setVisible(false);
 		backupLabel.getWidget().setHTML(backupLabel.getMessage("label"));
 	}
 
 	protected void onBackupInProgress() {
-		backupInProgress.getWidget().setVisible(true);
 		backupLabel.getWidget().setHTML(backupLabel.getMessage("inprogress"));
 	}
 }
