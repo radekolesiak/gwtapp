@@ -18,7 +18,7 @@ public abstract class UserInit {
 
 	@BeforeClass
 	public static void setUp() {
-		emf = Persistence.createEntityManagerFactory("derbyPU");
+		emf = Persistence.createEntityManagerFactory("derby-extension-user");
 		em = emf.createEntityManager();
 	}
 
