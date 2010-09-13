@@ -74,7 +74,7 @@ public class UploadDownloadTemplatePanel extends
 					}
 
 					@Override
-					public void onSuccessful(UserRegisterModel result) {
+					public void onSuccess(UserRegisterModel result) {
 						setValue(result, true);
 					}
 				});

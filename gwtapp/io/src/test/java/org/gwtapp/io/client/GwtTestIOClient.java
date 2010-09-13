@@ -55,7 +55,7 @@ public class GwtTestIOClient extends IOTest {
 		RootPanel.get().add(form);
 		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
 			@Override
-			public void onSuccessful(Long result) {
+			public void onSuccess(Long result) {
 				finishTest();
 				assertEquals(value, result);
 			}
@@ -77,7 +77,7 @@ public class GwtTestIOClient extends IOTest {
 		RootPanel.get().add(form);
 		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
 			@Override
-			public void onSuccessful(Long result) {
+			public void onSuccess(Long result) {
 				finishTest();
 				assertNull(result);
 			}
@@ -99,7 +99,7 @@ public class GwtTestIOClient extends IOTest {
 		RootPanel.get().add(form);
 		form.addSubmitCompleteHandler(new IOSubmitCompleteHandler<Long>() {
 			@Override
-			public void onSuccessful(Long result) {
+			public void onSuccess(Long result) {
 			}
 
 			@Override

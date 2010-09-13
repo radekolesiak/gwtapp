@@ -1,12 +1,11 @@
 package org.gwtapp.io.client;
 
-
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteHandler;
 
 public abstract class IOSubmitCompleteHandler<T> implements
-		SubmitCompleteHandler {
-
+		SubmitCompleteHandler, AsyncCallback<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public final void onSubmitComplete(SubmitCompleteEvent event) {
@@ -16,14 +15,10 @@ public abstract class IOSubmitCompleteHandler<T> implements
 			if (result instanceof Throwable) {
 				onFailure((Throwable) result);
 			} else {
-				onSuccessful((T) result);
+				onSuccess((T) result);
 			}
 		} catch (Throwable e) {
 			onFailure(e);
 		}
 	}
-
-	public abstract void onSuccessful(T result);
-
-	public abstract void onFailure(Throwable e);
 }

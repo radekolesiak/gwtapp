@@ -42,7 +42,7 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 					}
 
 					@Override
-					public void onSuccessful(Book result) {
+					public void onSuccess(Book result) {
 						setValue(result, true);
 					}
 				});
