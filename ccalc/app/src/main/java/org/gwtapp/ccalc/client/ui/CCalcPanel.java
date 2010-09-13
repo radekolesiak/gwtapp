@@ -23,7 +23,7 @@ public class CCalcPanel extends TemplatePanel<Book> {
 	new UiHandler<BookUploadPanel>(new BookUploadPanel());
 
 	private final UiHandler<ContentPanel> contentPanel = //
-	new UiHandler<ContentPanel>(new ContentPanel());
+	new UiHandler<ContentPanel>(CCalc.getGinjector().getContentPanel());
 
 	public CCalcPanel() {
 		super(CCalc.templateService.load("CCalcPanel.jsp"));

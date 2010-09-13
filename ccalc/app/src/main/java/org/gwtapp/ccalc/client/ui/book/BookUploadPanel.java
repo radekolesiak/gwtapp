@@ -38,7 +38,7 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 				new IOSubmitCompleteHandler<Book>() {
 					@Override
 					public void onFailure(Throwable e) {
-						Window.alert("There was a problem with uploading");
+						Window.alert("There was a problem while uploading");
 					}
 
 					@Override

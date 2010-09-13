@@ -9,7 +9,6 @@ import org.gwtapp.ccalc.rpc.api.CCalcService;
 import org.gwtapp.ccalc.rpc.api.CCalcServiceAsync;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
-import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.extension.user.client.api.UserService;
 import org.gwtapp.extension.user.client.api.UserServiceAsync;
 import org.gwtapp.io.client.IORpcRequestBuilder;
@@ -34,10 +33,6 @@ public class CCalc {
 			.create(CCalcDownloadService.class);
 	static {
 		IORpcRequestBuilder.updateService((ServiceDefTarget) downloader);
-	}
-
-	public static void backup(Book book) {
-		ccalc.backup(book, new SimpleAsyncCallback<Void>());
 	}
 
 	public final static String APPLICATION_DIV = "application";

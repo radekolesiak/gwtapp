@@ -33,7 +33,8 @@ public class ContentPanel extends TemplatePanel<Book> {
 			public void onClick(ClickEvent event) {
 				Book value = bookPanel.getWidget().getValue();
 				value.setCurrentVersion(Book.CURRENT_VERSION.def());
-				CCalc.backup(value);
+				CCalc.ccalc.backup(value,
+						create(new SimpleAsyncCallback<Void>()));
 				CCalc.downloader.download(value,
 						create(new SimpleAsyncCallback<Void>()));
 			}
@@ -41,7 +42,8 @@ public class ContentPanel extends TemplatePanel<Book> {
 		backup.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				CCalc.backup(bookPanel.getWidget().getValue());
+				CCalc.ccalc.backup(bookPanel.getWidget().getValue(),
+						create(new SimpleAsyncCallback<Void>()));
 			}
 		});
 	}
