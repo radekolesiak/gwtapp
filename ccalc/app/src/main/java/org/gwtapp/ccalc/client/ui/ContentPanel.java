@@ -10,7 +10,6 @@ import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 
 public class ContentPanel extends TemplatePanel<Book> {
 
@@ -18,8 +17,6 @@ public class ContentPanel extends TemplatePanel<Book> {
 	private final WidgetHandler backup = new WidgetHandler();
 	private final UiHandler<BookPanel> bookPanel = //
 	new UiHandler<BookPanel>(new BookPanel());
-
-	private Timer timer;
 
 	public ContentPanel() {
 		super(CCalc.templateService.load("ContentPanel.jsp"));
@@ -44,9 +41,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 		backup.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				if (timer != null) {
-					timer.run();
-				}
+				CCalc.backup(bookPanel.getWidget().getValue());
 			}
 		});
 	}
@@ -60,14 +55,5 @@ public class ContentPanel extends TemplatePanel<Book> {
 	public void setValue(Book value, boolean fireEvents) {
 		setVisible(true);
 		bookPanel.getWidget().setValue(value, fireEvents);
-		if (timer != null) {
-			timer.cancel();
-		}
-		timer = new Timer() {
-			@Override
-			public void run() {
-				CCalc.backup(bookPanel.getWidget().getValue());
-			}
-		};
 	}
 }
