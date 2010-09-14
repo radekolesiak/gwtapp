@@ -36,16 +36,74 @@
 		</dependency>
 		<!-- Test -->
 		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-core</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-form</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-rest</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-template</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-validation</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-user-srv</artifactId>
 			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp.ccalc</groupId>
+			<artifactId>ccalc-srv</artifactId>
+			<version>${ccalc.version}</version>
+			<scope>test</scope>
+			<classifier>tests</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp.ccalc</groupId>
+			<artifactId>ccalc-app</artifactId>
+			<version>${ccalc.version}</version>
+			<scope>test</scope>
+			<classifier>tests</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
