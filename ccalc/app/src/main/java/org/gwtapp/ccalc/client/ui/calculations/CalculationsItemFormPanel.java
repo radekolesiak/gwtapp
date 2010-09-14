@@ -111,7 +111,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 
 	private void setCurrencyRatio(Double ratio) {
 		if (ratio != null) {
-			getField(Calculation.EXCHANGE).setValue(ratio);
+			getField(Calculation.EXCHANGE).setValue(ratio, true);
 		}
 	}
 
