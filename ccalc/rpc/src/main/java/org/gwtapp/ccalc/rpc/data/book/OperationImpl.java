@@ -16,6 +16,18 @@ public class OperationImpl extends HashModelData implements Operation,
 	private Double exchange = EXCHANGE.add(this).def();
 	private Currency currency = CURRENCY.add(this).def();
 
+	public OperationImpl() {
+	}
+
+	public OperationImpl(String name, Date date, Double value, Double exchange,
+			Currency cyrrency) {
+		setName(name);
+		setDate(date);
+		setValue(value);
+		setExchange(exchange);
+		setCurrency(currency);
+	}
+
 	@Override
 	public void setName(String name) {
 		this.name = name;
