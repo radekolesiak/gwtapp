@@ -13,7 +13,6 @@ import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
 
-
 public class Calculator {
 
 	private final static List<String> FIELDS = new ArrayList<String>();
@@ -73,12 +72,13 @@ public class Calculator {
 
 	public static class Edge {
 		public int x, y;
-		public double v;
+		public double v, r;
 
-		public Edge(int x, int y, double v) {
+		public Edge(int x, int y, double v, double r) {
 			this.x = x;
 			this.y = y;
 			this.v = v;
+			this.r = r;
 		}
 	}
 
@@ -136,20 +136,30 @@ public class Calculator {
 		List<Point> plus = new ArrayList<Point>();
 		List<Point> minus = new ArrayList<Point>();
 		if (currency != baseCurrency) {
+			double SP = 0.0;
+			double SM = 0.0;
 			for (int i = 0; i < calculations.size(); i++) {
 				Calculation calculation = calculations.get(i);
 				if (calculation.getValue() != null
 						&& calculation.getCurrency() == currency) {
 					Double value = r(calculation.getValue());
 					Double signum = Math.signum(value);
-					if (value < 0 && signum < 0) {
-						minus.add(new Point(i, -value));
-					} else if (value >= 0 && signum > 0) {
+					if (value >= 0 && signum > 0) {
+						SP += +value;
 						plus.add(new Point(i, value));
+					} else if (value < 0 && signum < 0) {
+						SM += -value;
+						minus.add(new Point(i, -value));
 					}
 				}
 			}
-			Map<Integer, Double> averages = new HashMap<Integer, Double>();
+			double D = r(SP - SM);
+			if (D < 0) {
+				// add virtual point
+				plus.add(new Point(plus.size(), -D));
+			}
+			double sp = 0.0;
+			double sm = 0.0;
 			while (!plus.isEmpty() && !minus.isEmpty()) {
 				while (!plus.isEmpty() && plus.get(0).v <= 0) {
 					plus.remove(0);
@@ -158,120 +168,26 @@ public class Calculator {
 					minus.remove(0);
 				}
 				if (!plus.isEmpty() && !minus.isEmpty()) {
+					sp += plus.get(0).v;
+					sm += minus.get(0).v;
 					double v = r(Math.min(plus.get(0).v, minus.get(0).v));
 					plus.get(0).v = r(plus.get(0).v - v);
 					minus.get(0).v = r(minus.get(0).v - v);
-					edges.get(currency).add(
-							new Edge(plus.get(0).i, minus.get(0).i, v));
-					calculations.get(plus.get(0).i).setFifo(currency,
-							plus.get(0).v);
-
-					// calculating of an average exchange
-					if (!averages.containsKey(minus.get(0).i)) {
-						averages.put(minus.get(0).i, 0.0);
+					double r = 0.0;
+					if (r(sp - sm) >= 0) {
+						r = +calculations.get(plus.get(0).i).getExchange();
+					} else {
+						r = -calculations.get(minus.get(0).i).getExchange();
 					}
-					Double value = calculations.get(minus.get(0).i).getValue();
-					Double exchange = calculations.get(plus.get(0).i)
-							.getExchange();
-					Double average = averages.get(minus.get(0).i);
-					if (exchange == null) {
-						exchange = 0.0;
-					}
-					average *= value;
-					average += v * exchange;
-					average /= value;
-					calculations.get(minus.get(0).i).setFifo(currency, average);
-					averages.put(minus.get(0).i, average);
+					Edge edge = new Edge(plus.get(0).i, minus.get(0).i, v, r);
+					edges.get(currency).add(edge);
 				}
 			}
-			while (!plus.isEmpty()) {
-				calculations.get(plus.get(0).i)
-						.setFifo(currency, plus.get(0).v);
-				plus.remove(0);
+			if (!plus.isEmpty() || minus.isEmpty()) {
+				throw new IllegalStateException("(PM) Calculator is wrong!");
 			}
-		}
-		// calculate fifoValue
-		for (int i = 0; i < calculations.size(); i++) {
-			Calculation calculation = calculations.get(i);
-			if (calculation.getCurrency() != currency) {
-				continue;
-			}
-			{
-				Double value = calculation.getValue();
-				if (value != null) {
-					Double signum = Math.signum(value);
-					if (value >= 0 && signum > 0) {
-						Double fifoValue = null;
-						if (currency == baseCurrency) {
-							fifoValue = value;
-						} else {
-							if (calculation.getExchange() != null) {
-								fifoValue = value * calculation.getExchange();
-							}
-						}
-						calculation.setFifoBase(fifoValue);
-					}
-					if (value <= 0 && signum < 0) {
-						Double fifoValue = null;
-						if (currency == baseCurrency) {
-							fifoValue = value;
-						} else {
-							if (calculation.getFifo(currency) != null) {
-								fifoValue = value
-										* -calculation.getFifo(currency);
-							}
-						}
-						calculation.setFifoBase(fifoValue);
-					}
-				}
-			}
-			{
-				Double value = null;
-				value = calculation.getValue();
-				if (value != null) {
-					Double signum = Math.signum(value);
-					if (value >= 0 && signum > 0) {
-						Double incomeValue = null;
-						if (currency == baseCurrency) {
-							incomeValue = value;
-						} else {
-							if (calculation.getExchange() != null) {
-								incomeValue = value * calculation.getExchange();
-							}
-						}
-						calculation.setIncome(incomeValue);
-					} else if (value <= 0 && signum < 0) {
-						Double costValue = null;
-						value = -value;
-						if (currency == baseCurrency) {
-							costValue = value;
-						} else {
-							if (calculation.getExchange() != null) {
-								costValue = value * calculation.getExchange();
-							}
-						}
-						calculation.setCost(costValue);
-					}
-				}
-			}
+			System.out.println(currency + ": " + plus.isEmpty() + " "
+					+ minus.isEmpty());
 		}
 	}
-
-	/*-
-	public List<Edge> getComponents(Currency currency, int row, boolean edgeX) {
-		List<Edge> components = new ArrayList<Edge>();
-		for (Edge edge : edges.get(currency)) {
-			if (edgeX) {
-				if (edge.x == row) {
-					components.add(edge);
-				}
-			} else {
-				if (edge.y == row) {
-					components.add(edge);
-				}
-			}
-		}
-		return components;
-	}
-	 */
 }

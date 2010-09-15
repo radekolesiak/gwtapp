@@ -70,7 +70,7 @@ public class CalculationTest {
 		operations.add(getOperation(-100.0, 4.0, Currency.USD));
 		// operations.add(getOperation(200.0, 2.0, Currency.USD));
 		operations.add(getOperation(-200.0, 2.0, Currency.USD));
-		Calculator2 calculator = new Calculator2(Currency.PLN, operations);
+		Calculator calculator = new Calculator(Currency.PLN, operations);
 		List<Calculation> calculations = calculator.getCalculations();
 		Assert.assertNotNull(calculations);
 		// Assert.assertEquals(6, calculations.size());
