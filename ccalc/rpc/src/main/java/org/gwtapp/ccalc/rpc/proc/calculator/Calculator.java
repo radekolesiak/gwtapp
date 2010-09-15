@@ -73,12 +73,14 @@ public class Calculator {
 	public static class Edge {
 		public int x, y;
 		public double v, r;
+		public boolean d;
 
-		public Edge(int x, int y, double v, double r) {
+		public Edge(int x, int y, double v, double r, boolean d) {
 			this.x = x;
 			this.y = y;
 			this.v = v;
 			this.r = r;
+			this.d = d;
 		}
 	}
 
@@ -174,12 +176,13 @@ public class Calculator {
 					plus.get(0).v = r(plus.get(0).v - v);
 					minus.get(0).v = r(minus.get(0).v - v);
 					double r = 0.0;
-					if (r(sp - sm) >= 0) {
-						r = +calculations.get(plus.get(0).i).getExchange();
+					boolean d = r(sp - sm) >= 0;
+					if (d) {
+						r = calculations.get(plus.get(0).i).getExchange();
 					} else {
-						r = -calculations.get(minus.get(0).i).getExchange();
+						r = calculations.get(minus.get(0).i).getExchange();
 					}
-					Edge edge = new Edge(plus.get(0).i, minus.get(0).i, v, r);
+					Edge edge = new Edge(plus.get(0).i, minus.get(0).i, v, r, d);
 					edges.get(currency).add(edge);
 				}
 			}
