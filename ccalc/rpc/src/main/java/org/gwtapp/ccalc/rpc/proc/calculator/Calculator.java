@@ -156,19 +156,15 @@ public class Calculator {
 				plus.remove(0);
 			}
 			while (!plus.isEmpty() && plus.get(0).i < m.i && r(m.v) > 0) {
-				while (!plus.isEmpty() && r(plus.get(0).v) <= 0) {
-					plus.remove(0);
-					continue;
-				}
-				if (plus.isEmpty() || plus.get(0).i > m.i) {
-					break;
-				}
 				Point p = plus.get(0);
 				double v = Math.min(p.v, m.v);
 				p.v -= v;
 				m.v -= v;
 				double r = calculations.get(p.i).getExchange();
 				edges.add(new Edge(p.i, m.i, v, r));
+				if (r(p.v) <= 0) {
+					plus.remove(0);
+				}
 			}
 			if (r(m.v) > 0) {
 				double r = calculations.get(m.i).getExchange();
