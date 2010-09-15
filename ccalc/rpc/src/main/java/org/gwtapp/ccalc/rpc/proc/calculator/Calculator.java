@@ -65,14 +65,12 @@ public class Calculator {
 	public static class Edge {
 		public int x, y;
 		public double v, r;
-		public boolean d;
 
-		public Edge(int x, int y, double v, double r, boolean d) {
+		public Edge(int x, int y, double v, double r) {
 			this.x = x;
 			this.y = y;
 			this.v = v;
 			this.r = r;
-			this.d = d;
 		}
 	}
 
@@ -149,6 +147,34 @@ public class Calculator {
 
 	public void calculateEdges(Currency currency, List<Point> plus,
 			List<Point> minus) {
+		List<Edge> edges = new ArrayList<Edge>();
+		for (Point m : minus) {
+			if (r(m.v) <= 0) {
+				continue;
+			}
+			while (!plus.isEmpty() && r(plus.get(0).v) <= 0) {
+				plus.remove(0);
+			}
+			while (!plus.isEmpty() && plus.get(0).i < m.i && r(m.v) > 0) {
+				while (!plus.isEmpty() && r(plus.get(0).v) <= 0) {
+					plus.remove(0);
+					continue;
+				}
+				if (plus.isEmpty() || plus.get(0).i > m.i) {
+					break;
+				}
+				Point p = plus.get(0);
+				double v = Math.min(p.v, m.v);
+				p.v -= v;
+				m.v -= v;
+				double r = calculations.get(p.i).getExchange();
+				edges.add(new Edge(p.i, m.i, v, r));
+			}
+			if (r(m.v) > 0) {
+				double r = calculations.get(m.i).getExchange();
+				edges.add(new Edge(m.i, m.i, m.v, r));
+				m.v = 0.0;
+			}
+		}
 	}
-
 }

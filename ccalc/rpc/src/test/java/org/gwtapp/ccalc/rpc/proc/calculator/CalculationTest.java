@@ -69,7 +69,7 @@ public class CalculationTest {
 		operations.add(getOperation(-150.0, 4.0, Currency.USD));
 		operations.add(getOperation(-100.0, 4.0, Currency.USD));
 		operations.add(getOperation(200.0, 2.0, Currency.USD));
-		operations.add(getOperation(-200.0, 5.0, Currency.USD));
+		operations.add(getOperation(-300.0, 5.0, Currency.USD));
 		operations.add(getOperation(-100.0, 4.0, Currency.USD));
 		operations.add(getOperation(-50.0, 3.0, Currency.USD));
 		Calculator calculator = new Calculator(Currency.PLN, operations);
