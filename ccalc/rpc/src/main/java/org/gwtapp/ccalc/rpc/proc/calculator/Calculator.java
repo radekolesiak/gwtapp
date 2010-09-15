@@ -186,7 +186,7 @@ public class Calculator {
 					edges.get(currency).add(edge);
 				}
 			}
-			if (!plus.isEmpty() || minus.isEmpty()) {
+			if (!plus.isEmpty() || !minus.isEmpty()) {
 				throw new IllegalStateException("(PM) Calculator is wrong!");
 			}
 			System.out.println(currency + ": " + plus.isEmpty() + " "
