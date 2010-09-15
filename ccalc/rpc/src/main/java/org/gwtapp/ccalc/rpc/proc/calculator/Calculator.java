@@ -2,8 +2,11 @@ package org.gwtapp.ccalc.rpc.proc.calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
@@ -141,11 +144,12 @@ public class Calculator {
 					}
 				}
 			}
-			calculateEdges(currency, plus, minus);
+			List<Edge> edges = calculateEdges(currency, plus, minus);
+			Collection<Point> ratio = calculateAverageRatio(edges);
 		}
 	}
 
-	public void calculateEdges(Currency currency, List<Point> plus,
+	private List<Edge> calculateEdges(Currency currency, List<Point> plus,
 			List<Point> minus) {
 		List<Edge> edges = new ArrayList<Edge>();
 		for (Point m : minus) {
@@ -172,5 +176,26 @@ public class Calculator {
 				m.v = 0.0;
 			}
 		}
+		return edges;
+	}
+
+	private Collection<Point> calculateAverageRatio(List<Edge> edges) {
+		Map<Integer, Point> value = new HashMap<Integer, Point>();
+		Map<Integer, Point> fifo = new HashMap<Integer, Point>();
+		Map<Integer, Point> ratio = new HashMap<Integer, Point>();
+		for (Edge edge : edges) {
+			value.put(edge.y, new Point(edge.y, 0.0));
+			fifo.put(edge.y, new Point(edge.y, 0.0));
+			ratio.put(edge.y, new Point(edge.y, 0.0));
+		}
+		for (Edge edge : edges) {
+			value.get(edge.y).v += edge.v * edge.r;
+			fifo.get(edge.y).v += edge.v;
+		}
+		for (Map.Entry<Integer, Point> r : ratio.entrySet()) {
+			int i = r.getKey();
+			r.getValue().v = value.get(i).v / fifo.get(i).v;
+		}
+		return ratio.values();
 	}
 }
