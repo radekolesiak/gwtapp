@@ -2,10 +2,8 @@ package org.gwtapp.ccalc.rpc.proc.calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
@@ -23,12 +21,6 @@ public class Calculator {
 
 	private final List<Calculation> calculations = new ArrayList<Calculation>();
 	private final List<Calculation> summaries = new ArrayList<Calculation>();
-	private final Map<Currency, List<Edge>> edges = new HashMap<Currency, List<Edge>>();
-	{
-		for (Currency currency : Currency.values()) {
-			edges.put(currency, new ArrayList<Edge>());
-		}
-	}
 
 	private final Currency baseCurrency;
 	private final List<Integer> summariesPoints;
@@ -86,7 +78,7 @@ public class Calculator {
 
 	public void calculate() {
 		for (Currency currency : Currency.values()) {
-			calculate(currency);
+			calculatePoints(currency);
 		}
 		calculateSummary();
 	}
@@ -134,10 +126,11 @@ public class Calculator {
 		return c;
 	}
 
-	private void calculate(Currency currency) {
-		List<Point> plus = new ArrayList<Point>();
-		List<Point> minus = new ArrayList<Point>();
+	private void calculatePoints(Currency currency) {
+		// calculate points
 		if (currency != baseCurrency) {
+			List<Point> plus = new ArrayList<Point>();
+			List<Point> minus = new ArrayList<Point>();
 			double SP = 0.0;
 			double SM = 0.0;
 			for (int i = 0; i < calculations.size(); i++) {
@@ -160,37 +153,46 @@ public class Calculator {
 				// add virtual point
 				plus.add(new Point(plus.size(), -D));
 			}
-			double sp = 0.0;
-			double sm = 0.0;
-			while (!plus.isEmpty() && !minus.isEmpty()) {
-				while (!plus.isEmpty() && plus.get(0).v <= 0) {
-					plus.remove(0);
-				}
-				while (!minus.isEmpty() && minus.get(0).v <= 0) {
-					minus.remove(0);
-				}
-				if (!plus.isEmpty() && !minus.isEmpty()) {
-					sp += plus.get(0).v;
-					sm += minus.get(0).v;
-					double v = r(Math.min(plus.get(0).v, minus.get(0).v));
-					plus.get(0).v = r(plus.get(0).v - v);
-					minus.get(0).v = r(minus.get(0).v - v);
-					double r = 0.0;
-					boolean d = r(sp - sm) >= 0;
-					if (d) {
-						r = calculations.get(plus.get(0).i).getExchange();
-					} else {
-						r = calculations.get(minus.get(0).i).getExchange();
-					}
-					Edge edge = new Edge(plus.get(0).i, minus.get(0).i, v, r, d);
-					edges.get(currency).add(edge);
-				}
-			}
-			if (!plus.isEmpty() || !minus.isEmpty()) {
-				throw new IllegalStateException("(PM) Calculator is wrong!");
-			}
-			System.out.println(currency + ": " + plus.isEmpty() + " "
-					+ minus.isEmpty());
+			calculateEdges(currency, plus, minus);
 		}
+	}
+
+	public void calculateEdges(Currency currency, List<Point> plus,
+			List<Point> minus) {
+		List<Edge> edges = new ArrayList<Edge>();
+		double sp = 0.0;
+		double sm = 0.0;
+		while (!plus.isEmpty() && !minus.isEmpty()) {
+			while (!plus.isEmpty() && plus.get(0).v <= 0) {
+				plus.remove(0);
+			}
+			while (!minus.isEmpty() && minus.get(0).v <= 0) {
+				minus.remove(0);
+			}
+			if (!plus.isEmpty() && !minus.isEmpty()) {
+				sp += plus.get(0).v;
+				sm += minus.get(0).v;
+				double v = r(Math.min(plus.get(0).v, minus.get(0).v));
+				plus.get(0).v = r(plus.get(0).v - v);
+				minus.get(0).v = r(minus.get(0).v - v);
+				double r = 0.0;
+				boolean d = r(sp - sm) >= 0;
+				if (d) {
+					r = calculations.get(plus.get(0).i).getExchange();
+				} else {
+					r = calculations.get(minus.get(0).i).getExchange();
+				}
+				Edge edge = new Edge(plus.get(0).i, minus.get(0).i, v, r, d);
+				edges.add(edge);
+			}
+		}
+		if (!plus.isEmpty() || !minus.isEmpty()) {
+			throw new IllegalStateException("(PM) Calculator is wrong!");
+		}
+		groupEdges(edges);
+	}
+
+	private void groupEdges(List<Edge> edges) {
+
 	}
 }
