@@ -2,8 +2,10 @@ package org.gwtapp.ccalc.rpc.proc.calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
@@ -189,10 +191,16 @@ public class Calculator {
 		if (!plus.isEmpty() || !minus.isEmpty()) {
 			throw new IllegalStateException("(PM) Calculator is wrong!");
 		}
-		groupEdges(edges);
+		groupEdges(plus, minus, edges);
 	}
 
-	private void groupEdges(List<Edge> edges) {
-
+	private void groupEdges(List<Point> plus, List<Point> minus,
+			List<Edge> edges) {
+		Map<Integer, Double> plusGroup = new HashMap<Integer, Double>();
+		Map<Integer, Double> minusGroup = new HashMap<Integer, Double>();
+		for (int i = 0; i < Math.max(plus.size(), minus.size()); i++) {
+			plusGroup.put(i, 0.0);
+			minusGroup.put(i, 0.0);
+		}
 	}
 }
