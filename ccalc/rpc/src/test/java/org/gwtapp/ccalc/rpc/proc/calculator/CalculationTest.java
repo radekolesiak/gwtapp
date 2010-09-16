@@ -75,7 +75,7 @@ public class CalculationTest {
 		Calculator calculator = new Calculator(Currency.PLN, operations);
 		List<Calculation> calculations = calculator.getCalculations();
 		Assert.assertNotNull(calculations);
-		// Assert.assertEquals(6, calculations.size());
+		Assert.assertEquals(8, calculations.size());
 		{
 			Calculation c = calculations.get(0);
 			Assert.assertEquals(new Double(100.0), c.getIncome());
