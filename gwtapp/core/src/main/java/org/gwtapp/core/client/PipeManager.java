@@ -46,6 +46,10 @@ public class PipeManager {
 		connected = false;
 	}
 
+	public boolean isConnected() {
+		return connected;
+	}
+
 	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value) {
 		fireValueChange(c, value, null);
 	}
