@@ -77,10 +77,18 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		for (Currency currency : Currency.values()) {
-			calculatePoints(currency);
+		try {
+			for (Currency currency : Currency.values()) {
+				if (currency == baseCurrency) {
+					calculateBaseCurrency();
+				} else {
+					calculatePoints(currency);
+				}
+			}
+			calculateSummary();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		calculateSummary();
 	}
 
 	private void calculateSummary() {
@@ -119,11 +127,17 @@ public class Calculator {
 		return Math.round(v * 1e4) / 1e4;
 	}
 
-	public static Calculation r(Calculation c) {
-		c.setFifoBase(r(c.getFifoBase()));
-		c.setIncome(r(c.getIncome()));
-		c.setCost(r(c.getCost()));
-		return c;
+	private void calculateBaseCurrency() {
+		for (Calculation c : calculations) {
+			if (c.getCurrency() == baseCurrency) {
+				c.setFifoBase(c.getValue());
+				if (r(c.getValue()) >= 0.0) {
+					c.setIncome(+c.getValue());
+				} else {
+					c.setCost(-c.getValue());
+				}
+			}
+		}
 	}
 
 	private void calculatePoints(Currency currency) {
@@ -133,6 +147,7 @@ public class Calculator {
 			for (int i = 0; i < calculations.size(); i++) {
 				Calculation calculation = calculations.get(i);
 				if (calculation.getValue() != null
+						&& calculation.getExchange() != null
 						&& calculation.getCurrency() == currency) {
 					Double value = r(calculation.getValue());
 					Double signum = Math.signum(value);
@@ -160,13 +175,7 @@ public class Calculator {
 		for (Point p : plus.values()) {
 			Calculation c = calculations.get(p.i);
 			Double v = null;
-			if (currency == baseCurrency) {
-				v = c.getValue();
-			} else {
-				if (c.getExchange() != null) {
-					v = c.getValue() * c.getExchange();
-				}
-			}
+			v = c.getValue() * c.getExchange();
 			c.setFifo(currency, c.getValue() - p.v);
 			c.setFifoBase(v);
 			c.setIncome(v);
@@ -238,5 +247,12 @@ public class Calculator {
 			r.getValue().v = value.get(i).v / fifo.get(i).v;
 		}
 		return ratio;
+	}
+
+	private static Calculation r(Calculation c) {
+		c.setFifoBase(r(c.getFifoBase()));
+		c.setIncome(r(c.getIncome()));
+		c.setCost(r(c.getCost()));
+		return c;
 	}
 }
