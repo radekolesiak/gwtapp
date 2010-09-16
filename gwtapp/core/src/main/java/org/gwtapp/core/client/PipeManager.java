@@ -9,9 +9,9 @@ import java.util.Set;
 
 import org.gwtapp.core.rpc.data.Value;
 
-public class PipesManager {
+public class PipeManager {
 
-	private final static Set<PipesManager> managers = new HashSet<PipesManager>();
+	private final static Set<PipeManager> managers = new HashSet<PipeManager>();
 	private final static Map<Class<?>, Value<?>> models = new HashMap<Class<?>, Value<?>>();
 
 	private final Map<Class<?>, List<Pipe<?>>> pipes = new HashMap<Class<?>, List<Pipe<?>>>();
@@ -70,13 +70,13 @@ public class PipesManager {
 	}
 
 	public static <T> void setValue(Class<Pipe<T>> c, T value, Pipe<T> skip) {
-		for (PipesManager manager : managers) {
+		for (PipeManager manager : managers) {
 			manager.fireValueChange(c, value, skip);
 		}
 	}
 
-	public static <T> void setValue(Class<Pipe<T>> c, T value, PipesManager skip) {
-		for (PipesManager manager : managers) {
+	public static <T> void setValue(Class<Pipe<T>> c, T value, PipeManager skip) {
+		for (PipeManager manager : managers) {
 			if (manager != skip) {
 				manager.fireValueChange(c, value);
 			}
@@ -84,7 +84,7 @@ public class PipesManager {
 	}
 
 	public static <T> void setBroadcastValue(Class<Pipe<T>> c, T value) {
-		setValue(c, value, (PipesManager) null);
+		setValue(c, value, (PipeManager) null);
 	}
 
 	public static <T> T getValue(Class<Pipe<T>> c) {
