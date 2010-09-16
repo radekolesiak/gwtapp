@@ -18,7 +18,7 @@ public class PipeManager {
 
 	private boolean connected = false;
 
-	public <T> void addPipe(final Class<Pipe<T>> c, final Pipe<T> pipe) {
+	public <T> void addPipe(final Class<? extends Pipe<T>> c, final Pipe<T> pipe) {
 		if (!pipes.containsKey(c)) {
 			pipes.put(c, new ArrayList<Pipe<?>>());
 		}
@@ -28,7 +28,7 @@ public class PipeManager {
 		pipes.get(c).add(pipe);
 	}
 
-	public <T> void removePipe(Class<Pipe<T>> c, Pipe<T> pipe) {
+	public <T> void removePipe(Class<? extends Pipe<T>> c, Pipe<T> pipe) {
 		if (pipes.containsKey(c)) {
 			pipes.get(c).remove(pipe);
 		}
@@ -46,12 +46,13 @@ public class PipeManager {
 		connected = false;
 	}
 
-	public <T> void fireValueChange(Class<Pipe<T>> c, T value) {
+	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value) {
 		fireValueChange(c, value, null);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> void fireValueChange(Class<Pipe<T>> c, T value, Pipe<T> skip) {
+	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value,
+			Pipe<T> skip) {
 		Value<T> model = (Value<T>) models.get(c);
 		if (model != null) {
 			model.set(value);
@@ -65,17 +66,19 @@ public class PipeManager {
 		}
 	}
 
-	public <T> void setValue(Class<Pipe<T>> c, T value) {
+	public <T> void setValue(Class<? extends Pipe<T>> c, T value) {
 		setValue(c, value, this);
 	}
 
-	public static <T> void setValue(Class<Pipe<T>> c, T value, Pipe<T> skip) {
+	public static <T> void setValue(Class<? extends Pipe<T>> c, T value,
+			Pipe<T> skip) {
 		for (PipeManager manager : managers) {
 			manager.fireValueChange(c, value, skip);
 		}
 	}
 
-	public static <T> void setValue(Class<Pipe<T>> c, T value, PipeManager skip) {
+	public static <T> void setValue(Class<? extends Pipe<T>> c, T value,
+			PipeManager skip) {
 		for (PipeManager manager : managers) {
 			if (manager != skip) {
 				manager.fireValueChange(c, value);
@@ -83,11 +86,11 @@ public class PipeManager {
 		}
 	}
 
-	public static <T> void setBroadcastValue(Class<Pipe<T>> c, T value) {
+	public static <T> void setBroadcastValue(Class<? extends Pipe<T>> c, T value) {
 		setValue(c, value, (PipeManager) null);
 	}
 
-	public static <T> T getValue(Class<Pipe<T>> c) {
+	public static <T> T getValue(Class<? extends Pipe<T>> c) {
 		@SuppressWarnings("unchecked")
 		Value<T> model = (Value<T>) models.get(c);
 		if (model != null) {
