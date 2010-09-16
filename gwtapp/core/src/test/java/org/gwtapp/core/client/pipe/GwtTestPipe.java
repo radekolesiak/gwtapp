@@ -86,30 +86,98 @@ public class GwtTestPipe extends GWTTestCore {
 		m1.addPipe(TestPipe.class, p1);
 		m2.addPipe(TestPipe.class, p2);
 		{
-			assertNull(PipeManager.getValue(TestPipe.class));
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
 			m1.setValue(TestPipe.class, true);
-			assertNull(PipeManager.getValue(TestPipe.class));
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
 			m2.setValue(TestPipe.class, false);
-			assertNull(PipeManager.getValue(TestPipe.class));
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 		m1.connect();
 		m2.connect();
 		{
-			assertNull(PipeManager.getValue(TestPipe.class));
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
 			m1.setValue(TestPipe.class, true);
-			assertTrue(PipeManager.getValue(TestPipe.class));
+			assertTrue(PipeManager.getBroadcastValue(TestPipe.class));
 			m2.setValue(TestPipe.class, false);
-			assertFalse(PipeManager.getValue(TestPipe.class));
+			assertFalse(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 		m2.disconnect();
 		{
 			m1.setValue(TestPipe.class, null);
-			assertFalse(PipeManager.getValue(TestPipe.class));
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 		m2.connect();
 		{
 			m1.setValue(TestPipe.class, true);
-			assertTrue(PipeManager.getValue(TestPipe.class));
+			assertTrue(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 	}
+
+	@Test
+	public void testPipeSetter() {
+		PipeManager.resetAll();
+		assertNull(PipeManager.getBroadcastValue(TestPipe.class));
+		PipeManager.setBroadcastValue(TestPipe.class, true);
+		assertTrue(PipeManager.getBroadcastValue(TestPipe.class));
+		PipeManager.setBroadcastValue(TestPipe.class, false);
+		assertFalse(PipeManager.getBroadcastValue(TestPipe.class));
+	}
+
+/*-
+	@Test
+	public void testPipeSetterHandlers() {
+		PipeManager.resetAll();
+		final Value<Boolean> v1 = new Value<Boolean>();
+		final Value<Boolean> v2 = new Value<Boolean>();
+		PipeManager m1 = new PipeManager();
+		PipeManager m2 = new PipeManager();
+		PipeHandler<Boolean> h1 = new PipeHandler<Boolean>() {
+			@Override
+			public void onChangeValue(Boolean value) {
+				v1.set(value);
+			}
+		};
+		PipeHandler<Boolean> h2 = new PipeHandler<Boolean>() {
+			@Override
+			public void onChangeValue(Boolean value) {
+				v2.set(value);
+			}
+		};
+		TestPipe p1 = new TestPipe(h1);
+		TestPipe p2 = new TestPipe(h2);
+		m1.addPipe(TestPipe.class, p1);
+		m2.addPipe(TestPipe.class, p2);
+		{
+			assertNull(v1.get());
+			assertNull(v2.get());
+			m1.setValue(TestPipe.class, true);
+			assertNull(v1.get());
+			assertNull(v2.get());
+			m2.setValue(TestPipe.class, false);
+			assertNull(v1.get());
+			assertNull(v2.get());
+		}
+		m1.connect();
+		m2.connect();
+		{
+			m1.setValue(TestPipe.class, true);
+			assertNull(v1.get());
+			assertTrue(v2.get());
+			m2.setValue(TestPipe.class, false);
+			assertFalse(v1.get());
+			assertTrue(v2.get());
+		}
+		m2.disconnect();
+		{
+			m1.setValue(TestPipe.class, false);
+			assertFalse(v1.get());
+			assertTrue(v2.get());
+		}
+		m2.connect();
+		{
+			m1.setValue(TestPipe.class, false);
+			assertFalse(v1.get());
+			assertFalse(v1.get());
+		}
+	}*/
 }

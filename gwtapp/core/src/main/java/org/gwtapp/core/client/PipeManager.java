@@ -51,61 +51,74 @@ public class PipeManager {
 	}
 
 	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value) {
-		fireValueChange(c, value, null);
+		if (isConnected()) {
+			fireValueChange(c, value, null);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value,
 			Pipe<T> skip) {
-		Value<T> model = (Value<T>) models.get(c);
-		if (model != null) {
-			model.set(value);
-		}
-		if (pipes.get(c) != null) {
-			for (Pipe<?> pipe : pipes.get(c)) {
-				if (pipe != skip) {
-					((Pipe<T>) pipe).fireValueChange(value);
+		if (isConnected()) {
+			getModel(c).set(value);
+			if (pipes.get(c) != null) {
+				for (Pipe<?> pipe : pipes.get(c)) {
+					if (pipe != skip) {
+						((Pipe<T>) pipe).fireValueChange(value);
+					}
 				}
 			}
 		}
 	}
 
 	public <T> void setValue(Class<? extends Pipe<T>> c, T value) {
-		setValue(c, value, this);
-	}
-
-	public static <T> void setValue(Class<? extends Pipe<T>> c, T value,
-			Pipe<T> skip) {
-		for (PipeManager manager : managers) {
-			manager.fireValueChange(c, value, skip);
+		if (isConnected()) {
+			setValue(c, value, this);
 		}
 	}
 
-	public static <T> void setValue(Class<? extends Pipe<T>> c, T value,
+	public <T> void setValue(Class<? extends Pipe<T>> c, T value,
 			PipeManager skip) {
-		for (PipeManager manager : managers) {
-			if (manager != skip) {
-				manager.fireValueChange(c, value);
+		if (isConnected()) {
+			getModel(c).set(value);
+			for (PipeManager manager : managers) {
+				if (manager != skip) {
+					manager.fireValueChange(c, value);
+				}
+			}
+		}
+	}
+
+	public <T> void setValue(Class<? extends Pipe<T>> c, T value, Pipe<T> skip) {
+		if (isConnected()) {
+			for (PipeManager manager : managers) {
+				manager.fireValueChange(c, value, skip);
 			}
 		}
 	}
 
 	public static <T> void setBroadcastValue(Class<? extends Pipe<T>> c, T value) {
-		setValue(c, value, (PipeManager) null);
+		getModel(c).set(value);
+		for (PipeManager manager : managers) {
+			manager.fireValueChange(c, value);
+		}
 	}
 
-	public static <T> T getValue(Class<? extends Pipe<T>> c) {
-		@SuppressWarnings("unchecked")
-		Value<T> model = (Value<T>) models.get(c);
-		if (model != null) {
-			return model.get();
-		} else {
-			return null;
-		}
+	public static <T> T getBroadcastValue(Class<? extends Pipe<T>> c) {
+		Value<T> model = getModel(c);
+		return model.get();
 	}
 
 	public static void resetAll() {
 		managers.clear();
 		models.clear();
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T> Value<T> getModel(Class<?> c) {
+		if (!models.containsKey(c)) {
+			models.put(c, new Value<T>());
+		}
+		return (Value<T>) models.get(c);
 	}
 }
