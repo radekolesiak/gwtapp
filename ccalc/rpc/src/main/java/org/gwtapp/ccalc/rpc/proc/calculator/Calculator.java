@@ -77,18 +77,14 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		try {
-			for (Currency currency : Currency.values()) {
-				if (currency == baseCurrency) {
-					calculateBaseCurrency();
-				} else {
-					calculatePoints(currency);
-				}
+		for (Currency currency : Currency.values()) {
+			if (currency == baseCurrency) {
+				calculateBaseCurrency();
+			} else {
+				calculatePoints(currency);
 			}
-			calculateSummary();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		calculateSummary();
 	}
 
 	private void calculateSummary() {
