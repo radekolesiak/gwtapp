@@ -1,4 +1,4 @@
-package org.gwtapp.core.client;
+package org.gwtapp.core.client.pipe;
 
 import java.util.ArrayList;
 import java.util.List;

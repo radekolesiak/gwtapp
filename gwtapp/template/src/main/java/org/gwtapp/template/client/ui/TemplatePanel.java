@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
-import org.gwtapp.core.client.PipeManager;
+import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;

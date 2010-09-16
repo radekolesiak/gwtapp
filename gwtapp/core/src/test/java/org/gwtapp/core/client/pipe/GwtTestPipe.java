@@ -1,9 +1,6 @@
 package org.gwtapp.core.client.pipe;
 
 import org.gwtapp.core.client.GWTTestCore;
-import org.gwtapp.core.client.Pipe;
-import org.gwtapp.core.client.PipeHandler;
-import org.gwtapp.core.client.PipeManager;
 import org.gwtapp.core.rpc.data.Value;
 import org.junit.Test;
 
