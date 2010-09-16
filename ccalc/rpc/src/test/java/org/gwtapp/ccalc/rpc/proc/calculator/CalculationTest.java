@@ -104,6 +104,34 @@ public class CalculationTest {
 			Assert.assertEquals(new Double(-5.5), c.getFifo(Currency.USD));
 			Assert.assertEquals(new Double(-550), c.getFifoBase());
 		}
+		{
+			Calculation c = calculations.get(4);
+			Assert.assertEquals(null, c.getCost());
+			Assert.assertEquals(new Double(400.0), c.getIncome());
+			Assert.assertEquals(new Double(0.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(400.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(5);
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(1500.0), c.getCost());
+			Assert.assertEquals(new Double(-3.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-900.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(6);
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(400.0), c.getCost());
+			Assert.assertEquals(new Double(-4.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-400.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(7);
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(150.0), c.getCost());
+			Assert.assertEquals(new Double(-3.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-150.0), c.getFifoBase());
+		}
 	}
 
 	private Operation getOperation(Double value, Double ratio, Currency currency) {
