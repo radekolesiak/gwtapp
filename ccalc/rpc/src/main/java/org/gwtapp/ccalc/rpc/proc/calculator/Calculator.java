@@ -149,8 +149,28 @@ public class Calculator {
 	}
 
 	private void setCalculations(Currency currency, List<Edge> edges) {
-		Map<Integer, Point> fifo = calculateFifo(edges);
+		Map<Integer, Point> plus = calculateFifo(edges);
 		Map<Integer, Point> ratio = calculateAverageRatio(edges);
+		for (Point r : ratio.values()) {
+			Calculation c = calculations.get(r.i);
+			c.setFifo(currency, -r.v);
+			c.setFifoBase(c.getValue() * r.v);
+			c.setCost(-c.getValue() * c.getExchange());
+		}
+		for (Point p : plus.values()) {
+			Calculation c = calculations.get(p.i);
+			Double v = null;
+			if (currency == baseCurrency) {
+				v = c.getValue();
+			} else {
+				if (c.getExchange() != null) {
+					v = c.getValue() * c.getExchange();
+				}
+			}
+			c.setFifo(currency, c.getValue() - p.v);
+			c.setFifoBase(v);
+			c.setIncome(v);
+		}
 	}
 
 	private List<Edge> calculateEdges(Currency currency, List<Point> plus,
