@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
-import org.gwtapp.core.client.PipesManager;
+import org.gwtapp.core.client.PipeManager;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
@@ -64,7 +64,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private T injectInitValue = null;
 
-	private final PipesManager pipesManager = new PipesManager();
+	private final PipeManager pipesManager = new PipeManager();
 
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -260,7 +260,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return validator;
 	}
 
-	public PipesManager getPipesManager() {
+	public PipeManager getPipesManager() {
 		return pipesManager;
 	}
 }
