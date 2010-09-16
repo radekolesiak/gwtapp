@@ -15,7 +15,8 @@ public class PipesManager {
 	private final static Map<Class<?>, Value<?>> models = new HashMap<Class<?>, Value<?>>();
 
 	private final Map<Class<?>, List<Pipe<?>>> pipes = new HashMap<Class<?>, List<Pipe<?>>>();
-	private final Map<Pipe<?>, PipeHandler<?>> handlers = new HashMap<Pipe<?>, PipeHandler<?>>();
+	// private final Map<Pipe<?>, PipeHandler<?>> handlers = new
+	// HashMap<Pipe<?>, PipeHandler<?>>();
 
 	private boolean connected = false;
 
@@ -27,6 +28,7 @@ public class PipesManager {
 			models.put(c, new Value<T>());
 		}
 		pipes.get(c).add(pipe);
+		/*-
 		PipeHandler<T> handler = new PipeHandler<T>() {
 			@Override
 			public void onChangeValue(T value) {
@@ -35,15 +37,17 @@ public class PipesManager {
 		};
 		pipe.addHandler(handler);
 		handlers.put(pipe, handler);
+		 */
 	}
 
 	public <T> void removePipe(Class<Pipe<T>> c, Pipe<T> pipe) {
 		if (pipes.containsKey(c)) {
+			/*-
 			@SuppressWarnings("unchecked")
 			PipeHandler<T> handler = (PipeHandler<T>) handlers.get(pipe);
 			if (handler != null) {
 				pipe.removeHandler(handler);
-			}
+			}*/
 			pipes.get(c).remove(pipe);
 		}
 	}

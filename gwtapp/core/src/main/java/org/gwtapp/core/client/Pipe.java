@@ -1,10 +1,23 @@
 package org.gwtapp.core.client;
 
-public interface Pipe<T> {
-	
-	void fireValueChange(T value);
-	
-	void addHandler(PipeHandler<T> handler);
-	
-	void removeHandler(PipeHandler<T> handler);
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pipe<T> {
+
+	private final List<PipeHandler<T>> handlers = new ArrayList<PipeHandler<T>>();
+
+	public void fireValueChange(T value) {
+		for (PipeHandler<T> handler : handlers) {
+			handler.onChangeValue(value);
+		}
+	}
+
+	public void addHandler(PipeHandler<T> handler) {
+		handlers.add(handler);
+	}
+
+	public void removeHandler(PipeHandler<T> handler) {
+		handlers.remove(handler);
+	}
 }
