@@ -205,7 +205,17 @@ public class Calculator {
 				m.v = 0.0;
 			}
 		}
+		calculateResidualPlus(currency, plus);
 		return edges;
+	}
+
+	private void calculateResidualPlus(Currency currency, List<Point> plus) {
+		for (Point p : plus) {
+			Calculation c = calculations.get(p.i);
+			c.setFifo(currency, p.v);
+			c.setFifoBase(p.v);
+			c.setIncome(p.v);
+		}
 	}
 
 	private Map<Integer, Point> calculateFifo(List<Edge> edges) {
