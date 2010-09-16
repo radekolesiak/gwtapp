@@ -134,6 +134,113 @@ public class CalculationTest {
 		}
 	}
 
+	@Test
+	public void testResidualPlus() {
+		List<Operation> operations = new ArrayList<Operation>();
+		operations.add(getOperation(100.0, 1.0, Currency.USD));
+		operations.add(getOperation(100.0, 7.0, Currency.USD));
+		operations.add(getOperation(-100.0, 4.0, Currency.USD));
+		Calculator calculator = new Calculator(Currency.PLN, operations);
+		List<Calculation> calculations = calculator.getCalculations();
+		Assert.assertNotNull(calculations);
+		Assert.assertEquals(3, calculations.size());
+		{
+			Calculation c = calculations.get(0);
+			Assert.assertEquals(new Double(100.0), c.getIncome());
+			Assert.assertEquals(null, c.getCost());
+			Assert.assertEquals(new Double(0.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(100.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(1);
+			Assert.assertEquals(new Double(700.0), c.getIncome());
+			Assert.assertEquals(null, c.getCost());
+			Assert.assertEquals(new Double(100.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(700.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(2);
+			Assert.assertEquals(new Double(400.0), c.getCost());
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(-1.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-100.0), c.getFifoBase());
+		}
+	}
+
+	@Test
+	public void testSummaryDeltaPositive() {
+		List<Operation> operations = new ArrayList<Operation>();
+		operations.add(getOperation(100.0, 10.0, Currency.USD));
+		operations.add(getOperation(-100.0, 15.0, Currency.USD));
+		Calculator calculator = new Calculator(Currency.PLN, operations);
+		List<Calculation> calculations = calculator.getCalculations();
+		List<Calculation> summaries = calculator.getSummaries();
+		Assert.assertNotNull(calculations);
+		Assert.assertEquals(2, calculations.size());
+		Assert.assertNotNull(summaries);
+		Assert.assertEquals(1, summaries.size());
+		{
+			Calculation c = calculations.get(0);
+			Assert.assertEquals(new Double(1000.0), c.getIncome());
+			Assert.assertEquals(null, c.getCost());
+			Assert.assertEquals(new Double(0.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(1000.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(1);
+			Assert.assertEquals(new Double(1500.0), c.getCost());
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(-10.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-1000.0), c.getFifoBase());
+		}
+		{
+			Calculation c = summaries.get(0);
+			Assert.assertEquals(new Double(1000.0), c.getIncome());
+			Assert.assertEquals(new Double(1500.0), c.getCost());
+			Assert.assertEquals(null, c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(0.0), c.getFifoBase());
+		}
+		double diff = Calculator.calculateDiff(summaries.get(0));
+		Assert.assertEquals(new Double(500.0), new Double(diff));
+	}
+
+	@Test
+	public void testSummaryDeltaNegative() {
+		List<Operation> operations = new ArrayList<Operation>();
+		operations.add(getOperation(100.0, 10.0, Currency.USD));
+		operations.add(getOperation(-100.0, 5.0, Currency.USD));
+		Calculator calculator = new Calculator(Currency.PLN, operations);
+		List<Calculation> calculations = calculator.getCalculations();
+		List<Calculation> summaries = calculator.getSummaries();
+		Assert.assertNotNull(calculations);
+		Assert.assertEquals(2, calculations.size());
+		Assert.assertNotNull(summaries);
+		Assert.assertEquals(1, summaries.size());
+		{
+			Calculation c = calculations.get(0);
+			Assert.assertEquals(new Double(1000.0), c.getIncome());
+			Assert.assertEquals(null, c.getCost());
+			Assert.assertEquals(new Double(0.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(1000.0), c.getFifoBase());
+		}
+		{
+			Calculation c = calculations.get(1);
+			Assert.assertEquals(new Double(500.0), c.getCost());
+			Assert.assertEquals(null, c.getIncome());
+			Assert.assertEquals(new Double(-10.0), c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(-1000.0), c.getFifoBase());
+		}
+		{
+			Calculation c = summaries.get(0);
+			Assert.assertEquals(new Double(1000.0), c.getIncome());
+			Assert.assertEquals(new Double(500.0), c.getCost());
+			Assert.assertEquals(null, c.getFifo(Currency.USD));
+			Assert.assertEquals(new Double(0.0), c.getFifoBase());
+		}
+		double diff = Calculator.calculateDiff(summaries.get(0));
+		Assert.assertEquals(new Double(-500.0), new Double(diff));
+	}
+
 	private Operation getOperation(Double value, Double ratio, Currency currency) {
 		return new OperationImpl(null, null, value, ratio, currency);
 	}

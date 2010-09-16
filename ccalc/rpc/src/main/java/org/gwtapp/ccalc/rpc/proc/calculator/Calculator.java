@@ -123,6 +123,24 @@ public class Calculator {
 		return Math.round(v * 1e4) / 1e4;
 	}
 
+	public static double calculateDiff(Calculation summary){
+		Double fifo = summary.getFifoBase();
+		Double income = summary.getIncome();
+		Double cost = summary.getCost();
+		double diff = 0.0;
+		if (fifo == null) {
+			fifo = 0.0;
+		}
+		if (cost == null) {
+			cost = 0.0;
+		}
+		if (income == null) {
+			income = 0.0;
+		}
+		diff = r(fifo - (income - cost));
+		return diff;
+		
+	}
 	private void calculateBaseCurrency() {
 		for (Calculation c : calculations) {
 			if (c.getCurrency() == baseCurrency) {
@@ -212,9 +230,10 @@ public class Calculator {
 	private void calculateResidualPlus(Currency currency, List<Point> plus) {
 		for (Point p : plus) {
 			Calculation c = calculations.get(p.i);
+			double r = calculations.get(p.i).getExchange();
 			c.setFifo(currency, p.v);
-			c.setFifoBase(p.v);
-			c.setIncome(p.v);
+			c.setFifoBase(p.v * r);
+			c.setIncome(p.v * r);
 		}
 	}
 

@@ -6,7 +6,6 @@ import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 
-
 public class CalculationsSummaryRowPanel extends
 		TemplateModelPanel<Calculation> {
 
@@ -24,26 +23,8 @@ public class CalculationsSummaryRowPanel extends
 	@Override
 	public void setValue(Calculation value, boolean fireEvents) {
 		if (isTemplated()) {
-			diff.getWidget().setValue(calculateDiff(value));
+			diff.getWidget().setValue(Calculator.calculateDiff(value));
 		}
 		super.setValue(value, fireEvents);
-	}
-
-	private double calculateDiff(Calculation value) {
-		Double fifo = value.getFifoBase();
-		Double income = value.getIncome();
-		Double cost = value.getCost();
-		double diff = 0.0;
-		if (fifo == null) {
-			fifo = 0.0;
-		}
-		if (cost == null) {
-			cost = 0.0;
-		}
-		if (income == null) {
-			income = 0.0;
-		}
-		diff = Calculator.r(fifo - (income - cost));
-		return diff;
 	}
 }
