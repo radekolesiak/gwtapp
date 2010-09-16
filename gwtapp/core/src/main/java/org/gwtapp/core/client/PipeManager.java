@@ -103,4 +103,9 @@ public class PipeManager {
 			return null;
 		}
 	}
+
+	public static void resetAll() {
+		managers.clear();
+		models.clear();
+	}
 }

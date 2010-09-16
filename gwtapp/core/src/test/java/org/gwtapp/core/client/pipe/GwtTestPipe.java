@@ -5,14 +5,24 @@ import org.gwtapp.core.client.Pipe;
 import org.gwtapp.core.client.PipeHandler;
 import org.gwtapp.core.client.PipeManager;
 import org.gwtapp.core.rpc.data.Value;
+import org.junit.Before;
 import org.junit.Test;
 
 public class GwtTestPipe extends GWTTestCore {
 
 	public static class TestPipe extends Pipe<Boolean> {
+
+		public TestPipe() {
+		}
+
 		public TestPipe(PipeHandler<Boolean> handler) {
 			super(handler);
 		}
+	}
+
+	@Before
+	public void before() {
+		PipeManager.resetAll();
 	}
 
 	@Test
@@ -61,13 +71,48 @@ public class GwtTestPipe extends GWTTestCore {
 		{
 			m1.setValue(TestPipe.class, false);
 			assertFalse(v1.get());
-			assertTrue(v2.get());			
+			assertTrue(v2.get());
 		}
 		m2.connect();
 		{
 			m1.setValue(TestPipe.class, false);
 			assertFalse(v1.get());
 			assertFalse(v1.get());
+		}
+	}
+
+	@Test
+	public void testPipeGetter() {
+		PipeManager m1 = new PipeManager();
+		PipeManager m2 = new PipeManager();
+		TestPipe p1 = new TestPipe();
+		TestPipe p2 = new TestPipe();
+		m1.addPipe(TestPipe.class, p1);
+		m2.addPipe(TestPipe.class, p2);
+		{
+			assertNull(PipeManager.getValue(TestPipe.class));
+			m1.setValue(TestPipe.class, true);
+			assertTrue(PipeManager.getValue(TestPipe.class));
+			m2.setValue(TestPipe.class, false);
+			assertFalse(PipeManager.getValue(TestPipe.class));
+		}
+		m1.connect();
+		m2.connect();
+		{
+			m1.setValue(TestPipe.class, true);
+			assertTrue(PipeManager.getValue(TestPipe.class));
+			m2.setValue(TestPipe.class, false);
+			assertFalse(PipeManager.getValue(TestPipe.class));
+		}
+		m2.disconnect();
+		{
+			m1.setValue(TestPipe.class, null);
+			assertNull(PipeManager.getValue(TestPipe.class));
+		}
+		m2.connect();
+		{
+			m1.setValue(TestPipe.class, false);
+			assertFalse(PipeManager.getValue(TestPipe.class));
 		}
 	}
 }
