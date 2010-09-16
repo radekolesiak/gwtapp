@@ -15,8 +15,6 @@ public class PipesManager {
 	private final static Map<Class<?>, Value<?>> models = new HashMap<Class<?>, Value<?>>();
 
 	private final Map<Class<?>, List<Pipe<?>>> pipes = new HashMap<Class<?>, List<Pipe<?>>>();
-	// private final Map<Pipe<?>, PipeHandler<?>> handlers = new
-	// HashMap<Pipe<?>, PipeHandler<?>>();
 
 	private boolean connected = false;
 
@@ -28,26 +26,10 @@ public class PipesManager {
 			models.put(c, new Value<T>());
 		}
 		pipes.get(c).add(pipe);
-		/*-
-		PipeHandler<T> handler = new PipeHandler<T>() {
-			@Override
-			public void onChangeValue(T value) {
-				fireValueChangeEvent(pipe, c, value);
-			}
-		};
-		pipe.addHandler(handler);
-		handlers.put(pipe, handler);
-		 */
 	}
 
 	public <T> void removePipe(Class<Pipe<T>> c, Pipe<T> pipe) {
 		if (pipes.containsKey(c)) {
-			/*-
-			@SuppressWarnings("unchecked")
-			PipeHandler<T> handler = (PipeHandler<T>) handlers.get(pipe);
-			if (handler != null) {
-				pipe.removeHandler(handler);
-			}*/
 			pipes.get(c).remove(pipe);
 		}
 	}
@@ -64,24 +46,45 @@ public class PipesManager {
 		connected = false;
 	}
 
-	public <T> void fireValueChangeEvent(Class<Pipe<T>> c, T value) {
-		fireValueChangeEvent(null, c, value);
+	public <T> void fireValueChange(Class<Pipe<T>> c, T value) {
+		fireValueChange(c, value, null);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> void fireValueChangeEvent(Pipe<T> sender, Class<Pipe<T>> c,
-			T value) {
+	public <T> void fireValueChange(Class<Pipe<T>> c, T value, Pipe<T> skip) {
 		Value<T> model = (Value<T>) models.get(c);
 		if (model != null) {
 			model.set(value);
 		}
 		if (pipes.get(c) != null) {
 			for (Pipe<?> pipe : pipes.get(c)) {
-				if (pipe != sender) {
+				if (pipe != skip) {
 					((Pipe<T>) pipe).fireValueChange(value);
 				}
 			}
 		}
+	}
+
+	public <T> void setValue(Class<Pipe<T>> c, T value) {
+		setValue(c, value, this);
+	}
+
+	public static <T> void setValue(Class<Pipe<T>> c, T value, Pipe<T> skip) {
+		for (PipesManager manager : managers) {
+			manager.fireValueChange(c, value, skip);
+		}
+	}
+
+	public static <T> void setValue(Class<Pipe<T>> c, T value, PipesManager skip) {
+		for (PipesManager manager : managers) {
+			if (manager != skip) {
+				manager.fireValueChange(c, value);
+			}
+		}
+	}
+
+	public static <T> void setBroadcastValue(Class<Pipe<T>> c, T value) {
+		setValue(c, value, (PipesManager) null);
 	}
 
 	public static <T> T getValue(Class<Pipe<T>> c) {
@@ -91,25 +94,6 @@ public class PipesManager {
 			return model.get();
 		} else {
 			return null;
-		}
-	}
-
-	public static <T> void setValue(Class<Pipe<T>> c, T value) {
-		setValue((PipesManager) null, c, value);
-	}
-
-	public static <T> void setValue(Pipe<T> sender, Class<Pipe<T>> c, T value) {
-		for (PipesManager manager : managers) {
-			manager.fireValueChangeEvent(sender, c, value);
-		}
-	}
-
-	public static <T> void setValue(PipesManager sender, Class<Pipe<T>> c,
-			T value) {
-		for (PipesManager manager : managers) {
-			if (manager != sender) {
-				manager.fireValueChangeEvent(null, c, value);
-			}
 		}
 	}
 }
