@@ -1,11 +1,13 @@
 package org.gwtapp.ccalc.client.ui.book;
 
 import org.gwtapp.ccalc.client.CCalc;
+import org.gwtapp.ccalc.client.pipe.BaseCurrencyPipe;
 import org.gwtapp.ccalc.client.ui.fields.EnumField;
 import org.gwtapp.ccalc.client.ui.page.PagesListPanel;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.BookImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
+import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -19,11 +21,11 @@ public class BookPanel extends TemplateModelPanel<Book> {
 	private final TextBoxHandler description = new TextBoxHandler();
 	private final TextBoxHandler mail = new TextBoxHandler();
 	private final UiHandler<EnumField<Currency>> baseCurrency = //
-	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(Currency
-			.values()));
+	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(
+			Currency.values()));
 	private final UiHandler<EnumField<Currency>> defaultCurrency = //
-	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(Currency
-			.values()));
+	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(
+			Currency.values()));
 	private final UiHandler<PagesListPanel> pages = //
 	new UiHandler<PagesListPanel>(new PagesListPanel());
 
@@ -49,6 +51,7 @@ public class BookPanel extends TemplateModelPanel<Book> {
 					@Override
 					public void onValueChange(ValueChangeEvent<Currency> event) {
 						updateCalculations(event.getValue());
+						updateBaseCurrencyPipe(event.getValue());
 					}
 				});
 		defaultCurrency.getWidget().addValueChangeHandler(
@@ -63,10 +66,16 @@ public class BookPanel extends TemplateModelPanel<Book> {
 	@Override
 	public void setValue(Book value, boolean fireEvents) {
 		if (isTemplated()) {
+			PipeManager.setBroadcastValue(BaseCurrencyPipe.class,
+					value.getBaseCurrency());
 			updateBaseCurrencyStyle(value.getBaseCurrency());
 			updateDefaultCurrency(value.getDefaultCurrency());
 		}
 		super.setValue(value, fireEvents);
+	}
+
+	private void updateBaseCurrencyPipe(Currency baseCurrency) {
+		getPipeManager().setValue(BaseCurrencyPipe.class, baseCurrency);
 	}
 
 	private void updateCalculations(Currency baseCurrency) {

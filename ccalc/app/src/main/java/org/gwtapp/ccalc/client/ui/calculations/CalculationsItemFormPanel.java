@@ -9,6 +9,7 @@ import org.gwtapp.ccalc.client.handler.fields.DoubleNumberHandler;
 import org.gwtapp.ccalc.client.handler.fields.EnumHandler;
 import org.gwtapp.ccalc.client.handler.fields.ExchangeLabelHandler;
 import org.gwtapp.ccalc.client.handler.fields.LabelHandler;
+import org.gwtapp.ccalc.client.pipe.BaseCurrencyPipe;
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
@@ -16,6 +17,8 @@ import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
 import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
 import org.gwtapp.core.client.SimpleAsyncCallback;
+import org.gwtapp.core.client.pipe.PipeHandler;
+import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.extension.widget.client.handler.DatePickerHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -86,20 +89,28 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		if (componentValue != null) {
 			setComponentValue(componentValue);
 		}
-
 		ratio.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				fetchRatio();
 			}
 		});
+		PipeHandler<Currency> pipeHandler = new PipeHandler<Currency>() {
+			@Override
+			public void onChangeValue(Currency value) {
+				System.out.println("PIPE RECEIVED: " + value);
+			}
+		};
+		getPipeManager().addPipe(BaseCurrencyPipe.class,
+				new BaseCurrencyPipe(pipeHandler));
 	}
 
 	private void fetchRatio() {
 		Date date = getField(Calculation.DATE).getValue();
 		Currency from = getField(Calculation.CURRENCY).getValue();
 		if (date != null && from != null) {
-			CCalc.getRatio(date, from,
+			CCalc.ccalc.getRatio(date, from,
+					PipeManager.getBroadcastValue(BaseCurrencyPipe.class),
 					create(new SimpleAsyncCallback<Double>() {
 						@Override
 						public void onSuccess(Double result) {
