@@ -148,6 +148,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	@Override
 	protected void onDetach() {
+		super.onDetach();
 		getPipeManager().disconnect();
 	}
 
