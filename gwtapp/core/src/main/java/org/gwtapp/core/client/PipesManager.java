@@ -95,12 +95,21 @@ public class PipesManager {
 	}
 
 	public static <T> void setValue(Class<Pipe<T>> c, T value) {
-		setValue(null, c, value);
+		setValue((PipesManager) null, c, value);
 	}
 
 	public static <T> void setValue(Pipe<T> sender, Class<Pipe<T>> c, T value) {
 		for (PipesManager manager : managers) {
 			manager.fireValueChangeEvent(sender, c, value);
+		}
+	}
+
+	public static <T> void setValue(PipesManager sender, Class<Pipe<T>> c,
+			T value) {
+		for (PipesManager manager : managers) {
+			if (manager != sender) {
+				manager.fireValueChangeEvent(null, c, value);
+			}
 		}
 	}
 }
