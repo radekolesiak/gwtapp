@@ -64,7 +64,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	private T injectInitValue = null;
 
-	private final PipeManager pipesManager = new PipeManager();
+	private final PipeManager pipeManager = new PipeManager();
 
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -260,7 +260,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		return validator;
 	}
 
-	public PipeManager getPipesManager() {
-		return pipesManager;
+	public PipeManager getPipeManager() {
+		return pipeManager;
 	}
 }
