@@ -123,7 +123,6 @@ public class GwtTestPipe extends GWTTestCore {
 		assertFalse(PipeManager.getBroadcastValue(TestPipe.class));
 	}
 
-/*-
 	@Test
 	public void testPipeSetterHandlers() {
 		PipeManager.resetAll();
@@ -153,9 +152,15 @@ public class GwtTestPipe extends GWTTestCore {
 			m1.setValue(TestPipe.class, true);
 			assertNull(v1.get());
 			assertNull(v2.get());
+			assertNull(PipeManager.getBroadcastValue(TestPipe.class));
+			PipeManager.setBroadcastValue(TestPipe.class, true);
+			assertNull(v1.get());
+			assertNull(v2.get());
+			assertTrue(PipeManager.getBroadcastValue(TestPipe.class));
 			m2.setValue(TestPipe.class, false);
 			assertNull(v1.get());
 			assertNull(v2.get());
+			assertTrue(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 		m1.connect();
 		m2.connect();
@@ -172,12 +177,14 @@ public class GwtTestPipe extends GWTTestCore {
 			m1.setValue(TestPipe.class, false);
 			assertFalse(v1.get());
 			assertTrue(v2.get());
+			assertFalse(PipeManager.getBroadcastValue(TestPipe.class));
 		}
 		m2.connect();
 		{
 			m1.setValue(TestPipe.class, false);
 			assertFalse(v1.get());
 			assertFalse(v1.get());
+			assertFalse(PipeManager.getBroadcastValue(TestPipe.class));
 		}
-	}*/
+	}
 }
