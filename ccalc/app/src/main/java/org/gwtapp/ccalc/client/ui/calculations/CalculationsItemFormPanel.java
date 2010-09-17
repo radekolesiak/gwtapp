@@ -13,12 +13,16 @@ import org.gwtapp.ccalc.client.pipe.BaseCurrencyPipe;
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.data.book.CalculationImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
+import org.gwtapp.ccalc.rpc.data.book.FetchedRatio;
+import org.gwtapp.ccalc.rpc.data.book.FetchedRatioImpl;
 import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
 import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
+import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.client.pipe.PipeHandler;
 import org.gwtapp.core.client.pipe.PipeManager;
+import org.gwtapp.core.rpc.data.AbstractModelData;
 import org.gwtapp.extension.widget.client.handler.DatePickerHandler;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
@@ -26,11 +30,17 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 
 	public static enum State {
 		NONE, ADD, REMOVE;
+	}
+
+	private static enum FetchRatioState {
+		NONE, FETCHING, SAME, DIFFERENT, FAILURE
 	}
 
 	private final static List<String> CALCULATION_FIELDS_ONLY = new ArrayList<String>();
@@ -49,6 +59,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	private final WidgetHandler ratio = new WidgetHandler();
 
 	private State state = State.NONE;
+	private FetchRatioState fetchRatioState = FetchRatioState.NONE;
 
 	private Double componentValue = null;
 
@@ -103,26 +114,32 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		};
 		getPipeManager().addPipe(BaseCurrencyPipe.class,
 				new BaseCurrencyPipe(pipeHandler));
+		addValueChangeHandler(new ValueChangeHandler<Operation>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Operation> event) {
+				compareFetchedRatio();
+			}
+		});
 	}
 
 	private void fetchRatio() {
-		Date date = getField(Calculation.DATE).getValue();
-		Currency from = getField(Calculation.CURRENCY).getValue();
+		final Date date = getField(Calculation.DATE).getValue();
+		final Currency from = getField(Calculation.CURRENCY).getValue();
 		if (date != null && from != null) {
+			setFetchRatioState(FetchRatioState.FETCHING);
 			CCalc.ccalc.getRatio(date, from,
 					PipeManager.getBroadcastValue(BaseCurrencyPipe.class),
 					create(new SimpleAsyncCallback<Double>() {
 						@Override
 						public void onSuccess(Double result) {
-							setCurrencyRatio(result);
+							setCurrencyRatio(date, from, result);
+						}
+
+						@Override
+						public void onFailure(Throwable e) {
+							setFetchRatioState(FetchRatioState.FAILURE);
 						}
 					}));
-		}
-	}
-
-	private void setCurrencyRatio(Double ratio) {
-		if (ratio != null) {
-			getField(Calculation.EXCHANGE).setValue(ratio, true);
 		}
 	}
 
@@ -150,5 +167,44 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		if (fireEvents) {
 			fireChangeEvent();
 		}
+	}
+
+	private void setCurrencyRatio(Date date, Currency currency, Double ratio) {
+		FetchedRatio fetched = new FetchedRatioImpl(date, currency, ratio);
+		Operation operation = getValue();
+		operation.setFetchedRatio(fetched);
+		if (ratio != null) {
+			getField(Calculation.EXCHANGE).setValue(ratio, true);
+		}
+		compareFetchedRatio();
+	}
+
+	private void setFetchRatioState(FetchRatioState fetchRatioState) {
+		this.fetchRatioState = fetchRatioState;
+		if (isTemplated()) {
+			ratio.getWidget().setHTML(
+					ratio.getMessage(fetchRatioState.name().toLowerCase()));
+		}
+	}
+
+	private FetchRatioState getFetchRatioState() {
+		return fetchRatioState;
+	}
+
+	private void compareFetchedRatio() {
+		Operation operation = getValue();
+		FetchedRatio fetched = operation.getFetchedRatio();
+		boolean equals = fetched != null;
+		if (fetched != null) {
+			equals &= AbstractModelData.equalsAB(fetched.getDate(),
+					operation.getDate());
+			equals &= AbstractModelData.equalsAB(fetched.getCurrency(),
+					operation.getCurrency());
+			equals &= AbstractModelData.equalsAB(
+					Calculator.r(fetched.getRatio()),
+					Calculator.r(operation.getExchange()));
+		}
+		setFetchRatioState(equals ? FetchRatioState.SAME
+				: FetchRatioState.DIFFERENT);
 	}
 }

@@ -11,6 +11,15 @@ public class FetchedRatioImpl extends HashModelData implements FetchedRatio {
 	private Currency currency = CURRENCY.add(this).def();
 	private Double ratio = RATIO.add(this).def();
 
+	public FetchedRatioImpl() {
+	}
+
+	public FetchedRatioImpl(Date date, Currency currency, Double ratio) {
+		setDate(date);
+		setCurrency(currency);
+		setRatio(ratio);
+	}
+
 	@Override
 	public void setDate(Date date) {
 		this.date = date;
