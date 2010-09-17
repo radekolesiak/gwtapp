@@ -15,6 +15,7 @@ public class OperationImpl extends HashModelData implements Operation,
 	private Double value = VALUE.add(this).def();
 	private Double exchange = EXCHANGE.add(this).def();
 	private Currency currency = CURRENCY.add(this).def();
+	private FetchedRatio fetchedRatio = FETCHED_RATIO.add(this).def();
 
 	public OperationImpl() {
 	}
@@ -76,6 +77,16 @@ public class OperationImpl extends HashModelData implements Operation,
 	@Override
 	public Currency getCurrency() {
 		return currency;
+	}
+
+	@Override
+	public FetchedRatio getFetchedRatio() {
+		return fetchedRatio;
+	}
+
+	@Override
+	public void setFetchedRatio(FetchedRatio fetchedRatio) {
+		this.fetchedRatio = fetchedRatio;
 	}
 
 }

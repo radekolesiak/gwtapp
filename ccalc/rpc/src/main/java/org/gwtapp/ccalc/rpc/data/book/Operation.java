@@ -6,6 +6,7 @@ import java.util.Date;
 import org.gwtapp.ccalc.rpc.data.book.metafield.operation.CurrencyMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.operation.DateMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.operation.ExchangeMetaField;
+import org.gwtapp.ccalc.rpc.data.book.metafield.operation.FetchedRatioMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.operation.NameMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.operation.ValueMetaField;
 import org.gwtapp.core.rpc.data.ModelData;
@@ -19,24 +20,29 @@ public interface Operation extends IsSerializable, Serializable, ModelData {
 	public final static ValueMetaField VALUE = new ValueMetaField();
 	public final static ExchangeMetaField EXCHANGE = new ExchangeMetaField();
 	public final static CurrencyMetaField CURRENCY = new CurrencyMetaField();
+	public final static FetchedRatioMetaField FETCHED_RATIO = new FetchedRatioMetaField();
 
-	public void setName(String name);
+	void setName(String name);
 
-	public String getName();
+	String getName();
 
-	public void setDate(Date date);
+	void setDate(Date date);
 
-	public Date getDate();
+	Date getDate();
 
-	public void setValue(Double value);
+	void setValue(Double value);
 
-	public Double getValue();
+	Double getValue();
 
-	public void setExchange(Double exchange);
+	void setExchange(Double exchange);
 
-	public Double getExchange();
+	Double getExchange();
 
-	public void setCurrency(Currency currency);
+	void setCurrency(Currency currency);
 
-	public Currency getCurrency();
+	Currency getCurrency();
+
+	FetchedRatio getFetchedRatio();
+
+	void setFetchedRatio(FetchedRatio fetchedRatio);
 }
