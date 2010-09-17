@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.gwtapp.core.rpc.data.HashModelData;
 
+@SuppressWarnings("serial")
 public class FetchedRatioImpl extends HashModelData implements FetchedRatio {
 
 	private Date date = DATE.add(this).def();

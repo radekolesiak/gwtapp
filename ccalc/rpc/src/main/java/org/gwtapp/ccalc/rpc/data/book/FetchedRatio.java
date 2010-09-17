@@ -1,12 +1,16 @@
 package org.gwtapp.ccalc.rpc.data.book;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.gwtapp.ccalc.rpc.data.book.metafield.fetchedratio.CurrencyMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.fetchedratio.DateMetaField;
 import org.gwtapp.ccalc.rpc.data.book.metafield.fetchedratio.RatioMetaField;
+import org.gwtapp.core.rpc.data.ModelData;
 
-public interface FetchedRatio {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public interface FetchedRatio extends IsSerializable, Serializable, ModelData {
 
 	public final static DateMetaField DATE = new DateMetaField();
 	public final static CurrencyMetaField CURRENCY = new CurrencyMetaField();
