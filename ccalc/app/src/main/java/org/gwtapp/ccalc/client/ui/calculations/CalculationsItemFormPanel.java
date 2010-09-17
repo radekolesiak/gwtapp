@@ -40,7 +40,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	}
 
 	private static enum FetchRatioState {
-		NONE, FETCHING, SAME, DIFFERENT, FAILURE
+		FIELDS_INCOMPLETE, FETCHING, SAME, DIFFERENT, FAILURE
 	}
 
 	private final static List<String> CALCULATION_FIELDS_ONLY = new ArrayList<String>();
@@ -59,7 +59,6 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	private final WidgetHandler ratio = new WidgetHandler();
 
 	private State state = State.NONE;
-	private FetchRatioState fetchRatioState = FetchRatioState.NONE;
 
 	private Double componentValue = null;
 
@@ -117,9 +116,10 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		addValueChangeHandler(new ValueChangeHandler<Operation>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Operation> event) {
-				compareFetchedRatio();
+				updateFetchedRatioState();
 			}
 		});
+		updateFetchedRatioState();
 	}
 
 	private void fetchRatio() {
@@ -176,35 +176,33 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		if (ratio != null) {
 			getField(Calculation.EXCHANGE).setValue(ratio, true);
 		}
-		compareFetchedRatio();
+		updateFetchedRatioState();
+	}
+
+	private void updateFetchedRatioState() {
+		Operation operation = getValue();
+		if (operation == null || operation.getDate() == null
+				|| operation.getCurrency() == null) {
+			setFetchRatioState(FetchRatioState.FIELDS_INCOMPLETE);
+		} else {
+			FetchedRatio fetched = operation.getFetchedRatio();
+			boolean equals = fetched != null;
+			if (fetched != null) {
+				equals &= AbstractModelData.equalsAB(fetched.getDate(),
+						operation.getDate());
+				equals &= AbstractModelData.equalsAB(fetched.getCurrency(),
+						operation.getCurrency());
+				equals &= AbstractModelData.equalsAB(
+						Calculator.r(fetched.getRatio()),
+						Calculator.r(operation.getExchange()));
+			}
+			setFetchRatioState(equals ? FetchRatioState.SAME
+					: FetchRatioState.DIFFERENT);
+		}
 	}
 
 	private void setFetchRatioState(FetchRatioState fetchRatioState) {
-		this.fetchRatioState = fetchRatioState;
-		if (isTemplated()) {
-			ratio.getWidget().setHTML(
-					ratio.getMessage(fetchRatioState.name().toLowerCase()));
-		}
-	}
-
-	private FetchRatioState getFetchRatioState() {
-		return fetchRatioState;
-	}
-
-	private void compareFetchedRatio() {
-		Operation operation = getValue();
-		FetchedRatio fetched = operation.getFetchedRatio();
-		boolean equals = fetched != null;
-		if (fetched != null) {
-			equals &= AbstractModelData.equalsAB(fetched.getDate(),
-					operation.getDate());
-			equals &= AbstractModelData.equalsAB(fetched.getCurrency(),
-					operation.getCurrency());
-			equals &= AbstractModelData.equalsAB(
-					Calculator.r(fetched.getRatio()),
-					Calculator.r(operation.getExchange()));
-		}
-		setFetchRatioState(equals ? FetchRatioState.SAME
-				: FetchRatioState.DIFFERENT);
+		ratio.getWidget().setHTML(
+				ratio.getMessage(fetchRatioState.name().toLowerCase()));
 	}
 }
