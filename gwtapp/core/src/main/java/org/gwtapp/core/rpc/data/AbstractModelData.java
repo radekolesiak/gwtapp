@@ -7,7 +7,7 @@ public abstract class AbstractModelData implements ModelData {
 		return set(property, (X) null);
 	}
 
-	private boolean equalsAB(Object a, Object b) {
+	public static boolean equalsAB(Object a, Object b) {
 		if (a == b) {
 			return true;
 		} else if (a == null) {
