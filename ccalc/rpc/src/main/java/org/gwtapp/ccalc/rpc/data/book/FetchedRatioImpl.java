@@ -8,6 +8,7 @@ import org.gwtapp.core.rpc.data.HashModelData;
 public class FetchedRatioImpl extends HashModelData implements FetchedRatio {
 
 	private Date date = DATE.add(this).def();
+	private Currency baseCurrency = BASE_CURRENCY.add(this).def();
 	private Currency currency = CURRENCY.add(this).def();
 	private Double ratio = RATIO.add(this).def();
 
@@ -28,6 +29,16 @@ public class FetchedRatioImpl extends HashModelData implements FetchedRatio {
 	@Override
 	public Date getDate() {
 		return date;
+	}
+
+	@Override
+	public void setBaseCurrency(Currency baseCurrency) {
+		this.baseCurrency = baseCurrency;
+	}
+
+	@Override
+	public Currency getBaseCurrency() {
+		return baseCurrency;
 	}
 
 	@Override

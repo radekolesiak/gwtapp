@@ -108,7 +108,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		PipeHandler<Currency> pipeHandler = new PipeHandler<Currency>() {
 			@Override
 			public void onChangeValue(Currency value) {
-				System.out.println("PIPE RECEIVED: " + value);
+				updateFetchedRatioState();
 			}
 		};
 		getPipeManager().addPipe(BaseCurrencyPipe.class,
@@ -127,8 +127,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		final Currency from = getField(Calculation.CURRENCY).getValue();
 		if (date != null && from != null) {
 			setFetchRatioState(FetchRatioState.FETCHING);
-			CCalc.ccalc.getRatio(date, from,
-					PipeManager.getBroadcastValue(BaseCurrencyPipe.class),
+			CCalc.ccalc.getRatio(date, from, getBaseCurrency(),
 					create(new SimpleAsyncCallback<Double>() {
 						@Override
 						public void onSuccess(Double result) {
@@ -182,7 +181,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	private void updateFetchedRatioState() {
 		Operation operation = getValue();
 		if (operation == null || operation.getDate() == null
-				|| operation.getCurrency() == null) {
+				|| getBaseCurrency() == null || operation.getCurrency() == null) {
 			setFetchRatioState(FetchRatioState.FIELDS_INCOMPLETE);
 		} else {
 			FetchedRatio fetched = operation.getFetchedRatio();
@@ -190,6 +189,8 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 			if (fetched != null) {
 				equals &= AbstractModelData.equalsAB(fetched.getDate(),
 						operation.getDate());
+				equals &= AbstractModelData.equalsAB(fetched.getBaseCurrency(),
+						getBaseCurrency());
 				equals &= AbstractModelData.equalsAB(fetched.getCurrency(),
 						operation.getCurrency());
 				equals &= AbstractModelData.equalsAB(
@@ -204,5 +205,9 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	private void setFetchRatioState(FetchRatioState fetchRatioState) {
 		ratio.getWidget().setHTML(
 				ratio.getMessage(fetchRatioState.name().toLowerCase()));
+	}
+
+	private Currency getBaseCurrency() {
+		return PipeManager.getBroadcastValue(BaseCurrencyPipe.class);
 	}
 }
