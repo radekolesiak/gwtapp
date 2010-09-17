@@ -18,7 +18,6 @@ import org.gwtapp.ccalc.rpc.data.book.FetchedRatioImpl;
 import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.OperationImpl;
 import org.gwtapp.ccalc.rpc.data.book.metafield.calculation.FifoMetaField;
-import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
 import org.gwtapp.core.client.SimpleAsyncCallback;
 import org.gwtapp.core.client.pipe.PipeHandler;
 import org.gwtapp.core.client.pipe.PipeManager;
@@ -193,9 +192,8 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 						getBaseCurrency());
 				equals &= AbstractModelData.equalsAB(fetched.getCurrency(),
 						operation.getCurrency());
-				equals &= AbstractModelData.equalsAB(
-						Calculator.r(fetched.getRatio()),
-						Calculator.r(operation.getExchange()));
+				equals &= AbstractModelData.equalsAB(r(fetched.getRatio()),
+						r(operation.getExchange()));
 			}
 			setFetchRatioState(equals ? FetchRatioState.SAME
 					: FetchRatioState.DIFFERENT);
@@ -210,4 +208,12 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	private Currency getBaseCurrency() {
 		return PipeManager.getBroadcastValue(BaseCurrencyPipe.class);
 	}
+
+	private Double r(Double v) {
+		if (v == null) {
+			return null;
+		}
+		return Math.round(v * 1e8) / 1e8;
+	}
+
 }
