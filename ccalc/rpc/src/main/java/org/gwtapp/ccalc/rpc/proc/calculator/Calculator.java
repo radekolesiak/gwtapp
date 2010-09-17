@@ -123,7 +123,7 @@ public class Calculator {
 		return Math.round(v * 1e4) / 1e4;
 	}
 
-	public static double calculateDiff(Calculation summary){
+	public static double calculateDiff(Calculation summary) {
 		Double fifo = summary.getFifoBase();
 		Double income = summary.getIncome();
 		Double cost = summary.getCost();
@@ -139,16 +139,18 @@ public class Calculator {
 		}
 		diff = r(fifo - (income - cost));
 		return diff;
-		
 	}
+
 	private void calculateBaseCurrency() {
 		for (Calculation c : calculations) {
 			if (c.getCurrency() == baseCurrency) {
 				c.setFifoBase(c.getValue());
-				if (r(c.getValue()) >= 0.0) {
-					c.setIncome(+c.getValue());
-				} else {
-					c.setCost(-c.getValue());
+				if (c.getValue() != null) {
+					if (r(c.getValue()) >= 0.0) {
+						c.setIncome(+c.getValue());
+					} else {
+						c.setCost(-c.getValue());
+					}
 				}
 			}
 		}

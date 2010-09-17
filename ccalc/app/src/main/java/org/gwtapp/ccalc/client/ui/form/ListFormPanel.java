@@ -75,6 +75,7 @@ public class ListFormPanel<T extends ModelData> extends
 		((TemplateFormPanel<T>) rowPanel).setValue(item);
 		insert(rowPanel, row + 1);
 		rows.add(row, rowPanel);
+		fireValueChangeEvent();
 	}
 
 	public void insert(Widget w, int beforeIndex) {
@@ -88,6 +89,7 @@ public class ListFormPanel<T extends ModelData> extends
 	public void removeRow(int row) {
 		remove(row + 1);
 		rows.remove(row);
+		fireValueChangeEvent();
 	}
 
 	public int getRowIndex(Widget rowPanel) {
