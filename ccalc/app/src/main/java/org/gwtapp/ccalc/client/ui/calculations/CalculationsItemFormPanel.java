@@ -34,6 +34,8 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 
+	private final static long DAY = 24L * 60L * 60L * 1000L;
+
 	public static enum State {
 		NONE, ADD, REMOVE;
 	}
@@ -121,12 +123,17 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		updateFetchedRatioState();
 	}
 
+	@SuppressWarnings("deprecation")
 	private void fetchRatio() {
 		final Date date = getField(Calculation.DATE).getValue();
 		final Currency from = getField(Calculation.CURRENCY).getValue();
 		if (date != null && from != null) {
 			setFetchRatioState(FetchRatioState.FETCHING);
-			CCalc.ccalc.getRatio(date, from, getBaseCurrency(),
+			Date shifted = new Date(date.getTime() - DAY);
+			int year = shifted.getYear() + 1900;
+			int month = shifted.getMonth() + 1;
+			int day = shifted.getDate();
+			CCalc.ccalc.getRatio(year, month, day, from, getBaseCurrency(),
 					new SimpleAsyncCallback<Double>() {
 						@Override
 						public void onSuccess(Double result) {

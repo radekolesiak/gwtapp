@@ -1,7 +1,5 @@
 package org.gwtapp.ccalc.server.test;
 
-import java.util.Date;
-
 import org.gwtapp.ccalc.rpc.api.CCalcService;
 import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
@@ -23,9 +21,9 @@ public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 	}
 
 	@Override
-	public Double getRatio(Date date, Currency from, Currency to)
-			throws RpcException {
-		return getService().getRatio(date, from, to);
+	public Double getRatio(int year, int month, int day, Currency from,
+			Currency to) throws RpcException {
+		return getService().getRatio(day, month, day, from, to);
 	}
 
 	protected CCalcService getService() {
