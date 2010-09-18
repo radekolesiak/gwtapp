@@ -14,7 +14,7 @@ import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
-import org.gwtapp.extension.user.server.stub.UserAddService;
+import org.gwtapp.extension.user.server.stub.UserAdd;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -22,7 +22,7 @@ import com.google.inject.Singleton;
 import com.wideplay.warp.persist.Transactional;
 
 @Singleton
-public class UserServiceImpl implements UserService, UserAddService {
+public class UserServiceImpl implements UserService, UserAdd {
 
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 

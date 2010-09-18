@@ -7,7 +7,7 @@ import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.user.server.remote.ReCaptchaUserRemote;
-import org.gwtapp.extension.user.server.stub.UserAddService;
+import org.gwtapp.extension.user.server.stub.UserAdd;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
 import org.gwtapp.startapp.server.servlet.EnumValidationCssServlet;
 import org.gwtapp.startapp.server.servlet.GroupValidationCssServlet;
@@ -41,7 +41,7 @@ public class StartAppModule extends ServletModule {
 	}
 
 	private void setupServices() {
-		bind(UserAddService.class).to(UserServiceImpl.class);
+		bind(UserAdd.class).to(UserServiceImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 	}
 

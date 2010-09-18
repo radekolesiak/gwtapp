@@ -10,15 +10,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.extension.user.client.data.ReCaptcha;
-import org.gwtapp.extension.user.server.stub.ReCaptchaService;
+import org.gwtapp.extension.user.server.stub.ReCaptchaVerify;
 
 /*
  * http://code.google.com/apis/recaptcha/docs/verify.html
  */
-public class ReCaptchaServiceImpl implements ReCaptchaService {
+public class ReCaptchaVerifyImpl implements ReCaptchaVerify {
 
 	private final static Logger log = Logger
-			.getLogger(ReCaptchaServiceImpl.class);
+			.getLogger(ReCaptchaVerifyImpl.class);
 
 	public final static String RECAPTCHA_URL = "http://www.google.com/recaptcha/api/verify";
 

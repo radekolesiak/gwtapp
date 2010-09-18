@@ -3,7 +3,7 @@ package org.gwtapp.extension.user.server.remote;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
-import org.gwtapp.extension.user.server.stub.UserAddService;
+import org.gwtapp.extension.user.server.stub.UserAdd;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
@@ -15,7 +15,7 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 		ReCaptchaUserService {
 
 	@Inject
-	private UserAddService userAddService;
+	private UserAdd userAddService;
 
 	@Override
 	public long addUser(ReCaptchaUser user) throws RpcException {
