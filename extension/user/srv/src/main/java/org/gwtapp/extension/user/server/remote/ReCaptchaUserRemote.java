@@ -30,7 +30,7 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 		assert reCaptchaVerify != null;
 		assert reCaptchaPrivateKey != null;
 		if (!reCaptchaVerify.verify(user, reCaptchaPrivateKey.getPrivateKey(),
-				"127.0.0.1")) {
+				getThreadLocalRequest().getRemoteAddr())) {
 			throw new ReCaptchaUserValidationException();
 		}
 		return userAddService.addUser(user);
