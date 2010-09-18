@@ -101,28 +101,6 @@ public class Calculator {
 		}
 	}
 
-	private double o(Double v) {
-		if (v == null) {
-			return 0.0;
-		} else {
-			return v;
-		}
-	}
-
-	public static Double r(Double v) {
-		if (v == null) {
-			return null;
-		}
-		return Math.round(v * 1e2) / 1e2;
-	}
-
-	public static Double q(Double v) {
-		if (v == null) {
-			return null;
-		}
-		return Math.round(v * 1e4) / 1e4;
-	}
-
 	public static double calculateDiff(Calculation summary) {
 		Double fifo = summary.getFifoBase();
 		Double income = summary.getIncome();
@@ -233,9 +211,10 @@ public class Calculator {
 		for (Point p : plus) {
 			Calculation c = calculations.get(p.i);
 			double r = calculations.get(p.i).getExchange();
+			double v = p.v * r;
 			c.setFifo(currency, p.v);
-			c.setFifoBase(p.v * r);
-			c.setIncome(p.v * r);
+			c.setFifoBase(v);
+			c.setIncome(v);
 		}
 	}
 
@@ -276,10 +255,35 @@ public class Calculator {
 		return ratio;
 	}
 
+	private double o(Double v) {
+		if (v == null) {
+			return 0.0;
+		} else {
+			return v;
+		}
+	}
+
+	public static Double r(Double v) {
+		if (v == null) {
+			return null;
+		}
+		return Math.round(v * 1e2) / 1e2;
+	}
+
+	public static Double q(Double v) {
+		if (v == null) {
+			return null;
+		}
+		return Math.round(v * 1e4) / 1e4;
+	}
+
 	private static Calculation r(Calculation c) {
 		c.setFifoBase(r(c.getFifoBase()));
 		c.setIncome(r(c.getIncome()));
 		c.setCost(r(c.getCost()));
+		for (Currency currency : Currency.values()) {
+			c.setFifo(currency, q(c.getFifo(currency)));
+		}
 		return c;
 	}
 }
