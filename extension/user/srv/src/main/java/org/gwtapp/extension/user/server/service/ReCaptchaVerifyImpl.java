@@ -25,34 +25,35 @@ public class ReCaptchaVerifyImpl implements ReCaptchaVerify {
 	@Override
 	public boolean verify(ReCaptcha reCaptcha, String privateKey,
 			String remoteIP) {
-		List<String> response = fetchUrl(getURL(reCaptcha, privateKey, remoteIP));
-		log.debug(response);
-		if (response != null && response.size() == 1) {
-			return response.get(0).equalsIgnoreCase("true");
-		} else {
-			return false;
-		}
-	}
-
-	public HttpURLConnection getURL(ReCaptcha reCaptcha, String privateKey,
-			String remoteIP) {
-		// http://www.java-samples.com/java/POST-toHTTPS-url-free-java-sample-program.htm
-		HttpURLConnection connection = null;
 		try {
-			String s = "";
-			s += "privatekey=" + privateKey;
-			s += "&";
-			s += "remoteip=" + remoteIP;
-			s += "&";
-			s += "challenge=" + reCaptcha.getChallenge();
-			s += "&";
-			s += "response=" + reCaptcha.getResponse();
-			log.debug(s);
-			URL url = new URL(RECAPTCHA_URL + "?" + s);
-			connection = (HttpURLConnection) url.openConnection();
+			List<String> response = fetchUrl(getURL(reCaptcha, privateKey,
+					remoteIP));
+			log.debug(response);
+			// TODO throw exception on not 'true' response
+			if (response != null && response.size() == 1) {
+				return response.get(0).equalsIgnoreCase("true");
+			}
 		} catch (Exception e) {
 			log.error("", e);
 		}
+		return false;
+	}
+
+	public HttpURLConnection getURL(ReCaptcha reCaptcha, String privateKey,
+			String remoteIP) throws IOException {
+		// http://www.java-samples.com/java/POST-toHTTPS-url-free-java-sample-program.htm
+		HttpURLConnection connection = null;
+		String s = "";
+		s += "privatekey=" + privateKey;
+		s += "&";
+		s += "remoteip=" + remoteIP;
+		s += "&";
+		s += "challenge=" + reCaptcha.getChallenge();
+		s += "&";
+		s += "response=" + reCaptcha.getResponse();
+		log.debug(s);
+		URL url = new URL(RECAPTCHA_URL + "?" + s);
+		connection = (HttpURLConnection) url.openConnection();
 		return connection;
 	}
 
