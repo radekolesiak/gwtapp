@@ -33,19 +33,21 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(final ReCaptchaUser user) {
-		service.addUser(
+		service.addReCaptchaUser(
 				user,
 				create(new ValidationAsyncCallback<Long, UserValidationException>() {
 					@Override
 					public void onSuccess(Long result) {
 						user.setId(result);
 						userPanel.getValidator().clearValidation();
+						getValidator().clearValidation();
 						Window.alert("SUCCESS: User has been added");
 					}
 
 					@Override
 					public void onValidation(UserValidationException validation) {
 						userPanel.getValidator().setValidation(validation);
+						getValidator().setValidation(validation);
 					}
 				}));
 	}

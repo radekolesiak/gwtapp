@@ -1,14 +1,13 @@
 package org.gwtapp.extension.user.client.data.exception;
 
 import org.gwtapp.validation.rpc.exception.Validation;
-import org.gwtapp.validation.rpc.exception.ValidationException;
 import org.gwtapp.validation.rpc.exception.ValidationField;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 @SuppressWarnings("serial")
 @Validation
-public class ReCaptchaUserValidationException extends ValidationException {
+public class ReCaptchaUserValidationException extends UserValidationException {
 
 	public final static String RECAPTCHA = "recaptcha";
 

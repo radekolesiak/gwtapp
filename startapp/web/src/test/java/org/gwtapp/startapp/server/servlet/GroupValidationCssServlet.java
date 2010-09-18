@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.gwtapp.extension.user.client.data.exception.UserValidationException;
+import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException;
 import org.gwtapp.validation.server.GroupValidationCssGenerator;
 
 import com.google.inject.Singleton;
@@ -22,7 +22,7 @@ public class GroupValidationCssServlet extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		GroupValidationCssGenerator generator = new GroupValidationCssGenerator();
-		generator.setValidationClass(UserValidationException.class);
+		generator.setValidationClass(ReCaptchaUserValidationException.class);
 		generator.setPrefix(getParam(request, "prefix"));
 		generator.setSeparator(getParam(request, "separator"));
 		generator.setStyle(getParam(request, "style"));

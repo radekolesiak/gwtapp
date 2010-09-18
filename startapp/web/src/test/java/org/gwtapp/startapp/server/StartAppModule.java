@@ -57,7 +57,7 @@ public class StartAppModule extends ServletModule {
 		bind(UserPassword.class).to(UserPasswordImpl.class);
 	}
 
-	private class ReCaptchaPrivateKeyProvider implements ReCaptchaPrivateKey {
+	private static class ReCaptchaPrivateKeyProvider implements ReCaptchaPrivateKey {
 		@Override
 		public String getPrivateKey() {
 			return "";

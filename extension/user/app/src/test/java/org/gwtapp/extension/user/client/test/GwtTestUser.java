@@ -92,7 +92,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new ReCaptchaUserImpl("aba", "", ""),
+		user.addReCaptchaUser(new ReCaptchaUserImpl("aba", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -114,7 +114,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addUser(new ReCaptchaUserImpl("xyz", "", ""),
+		user.addReCaptchaUser(new ReCaptchaUserImpl("xyz", "", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
