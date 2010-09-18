@@ -94,6 +94,6 @@ public class GwtTestWrapperValueCache extends TemplateTest {
 			assertEquals(value, wrapper.getValue());
 		}
 		long t2 = System.currentTimeMillis();
-		assertTrue((t1 - t0) < (t2 - t1) / 2);
+		assertTrue((t1 - t0) < (t2 - t1));
 	}
 }
