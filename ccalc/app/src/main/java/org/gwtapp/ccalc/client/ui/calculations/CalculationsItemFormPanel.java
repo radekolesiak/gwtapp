@@ -127,7 +127,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		if (date != null && from != null) {
 			setFetchRatioState(FetchRatioState.FETCHING);
 			CCalc.ccalc.getRatio(date, from, getBaseCurrency(),
-					create(new SimpleAsyncCallback<Double>() {
+					new SimpleAsyncCallback<Double>() {
 						@Override
 						public void onSuccess(Double result) {
 							setCurrencyRatio(date, from, result);
@@ -137,7 +137,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 						public void onFailure(Throwable e) {
 							setFetchRatioState(FetchRatioState.FAILURE);
 						}
-					}));
+					});
 		}
 	}
 
@@ -215,5 +215,4 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		}
 		return Math.round(v * 1e8) / 1e8;
 	}
-
 }
