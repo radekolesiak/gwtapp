@@ -8,5 +8,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("extension.recaptchauser.rpc")
 public interface ReCaptchaUserService extends RemoteService {
-	long addUser(ReCaptchaUser user) throws RpcException;
+	long addReCaptchaUser(ReCaptchaUser user) throws RpcException;
 }

@@ -7,6 +7,9 @@ import org.gwtapp.extension.user.client.data.UserImpl;
 import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.user.server.remote.ReCaptchaUserRemote;
+import org.gwtapp.extension.user.server.service.ReCaptchaVerifyImpl;
+import org.gwtapp.extension.user.server.stub.ReCaptchaPrivateKey;
+import org.gwtapp.extension.user.server.stub.ReCaptchaVerify;
 import org.gwtapp.extension.user.server.stub.UserAdd;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
 import org.gwtapp.startapp.server.servlet.EnumValidationCssServlet;
@@ -36,17 +39,28 @@ public class StartAppModule extends ServletModule {
 	private void setupServlets() {
 		serve("/gwt.startappmanualtestentry/extension.recaptchauser.rpc").with(
 				ReCaptchaUserRemote.class);
-		serve("/css/validation-by-group.css").with(GroupValidationCssServlet.class);
-		serve("/css/validation-by-enum.css").with(EnumValidationCssServlet.class);
+		serve("/css/validation-by-group.css").with(
+				GroupValidationCssServlet.class);
+		serve("/css/validation-by-enum.css").with(
+				EnumValidationCssServlet.class);
 	}
 
 	private void setupServices() {
 		bind(UserAdd.class).to(UserServiceImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
+		bind(ReCaptchaVerify.class).to(ReCaptchaVerifyImpl.class);
+		bind(ReCaptchaPrivateKey.class).to(ReCaptchaPrivateKeyProvider.class);
 	}
 
 	private void setupModels() {
 		bind(User.class).to(UserImpl.class);
 		bind(UserPassword.class).to(UserPasswordImpl.class);
+	}
+
+	private class ReCaptchaPrivateKeyProvider implements ReCaptchaPrivateKey {
+		@Override
+		public String getPrivateKey() {
+			return "";
+		}
 	}
 }

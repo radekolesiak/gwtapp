@@ -49,7 +49,7 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 	}
 
 	@Override
-	public long addUser(ReCaptchaUser user) throws RpcException {
+	public long addReCaptchaUser(ReCaptchaUser user) throws RpcException {
 		UserValidationException validation = new UserValidationException();
 		if ("aba".equalsIgnoreCase(user.getUser().getLogin())) {
 			validation.addLogin(Login.ALREADY_EXISTS);

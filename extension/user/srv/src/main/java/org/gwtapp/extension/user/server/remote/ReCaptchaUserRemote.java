@@ -3,6 +3,7 @@ package org.gwtapp.extension.user.server.remote;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
+import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException;
 import org.gwtapp.extension.user.server.stub.ReCaptchaPrivateKey;
 import org.gwtapp.extension.user.server.stub.ReCaptchaVerify;
 import org.gwtapp.extension.user.server.stub.UserAdd;
@@ -24,10 +25,14 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 	private ReCaptchaPrivateKey reCaptchaPrivateKey;
 
 	@Override
-	public long addUser(ReCaptchaUser user) throws RpcException {
+	public long addReCaptchaUser(ReCaptchaUser user) throws RpcException {
 		assert userAddService != null;
 		assert reCaptchaVerify != null;
 		assert reCaptchaPrivateKey != null;
+		if (!reCaptchaVerify.verify(user, reCaptchaPrivateKey.getPrivateKey(),
+				"127.0.0.1")) {
+			throw new ReCaptchaUserValidationException();
+		}
 		return userAddService.addUser(user);
 	}
 }
