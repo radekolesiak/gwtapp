@@ -1,7 +1,10 @@
 package org.gwtapp.validation.server;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.gwtapp.validation.rpc.exception.ValidationException;
 import org.gwtapp.validation.rpc.exception.ValidationField;
@@ -50,6 +53,23 @@ public abstract class ValidationCssGeneratorBase implements ValidationCss {
 	@Override
 	public String getStyle() {
 		return style;
+	}
+
+	public Map<String, Class<? extends ValidationException>> getChildrenFields() {
+		Map<String, Class<? extends ValidationException>> children = new HashMap<String, Class<? extends ValidationException>>();
+		Field[] fields = getValidationClass().getDeclaredFields();
+		for (Field field : fields) {
+			ValidationField annotation = field
+					.getAnnotation(ValidationField.class);
+			if (annotation != null) {
+				try {
+					children.put(annotation.value(), field.getType()
+							.asSubclass(ValidationException.class));
+				} catch (Exception e) {
+				}
+			}
+		}
+		return children;
 	}
 
 	public List<Class<?>> getAnnotatedSubclasses() {
