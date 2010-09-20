@@ -38,6 +38,7 @@ public class ReCaptchaUserValidationException extends ValidationException {
 	public void setUserValidationException(
 			UserValidationException userValidationException) {
 		this.userValidationException = userValidationException;
+		set(USER, userValidationException);
 	}
 
 	public UserValidationException getUserValidationException() {
