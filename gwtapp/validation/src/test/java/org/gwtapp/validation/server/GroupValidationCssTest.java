@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.gwtapp.validation.rpc.exception.ValidationException;
-import org.gwtapp.validation.server.GroupValidationCssGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,10 +63,10 @@ public class GroupValidationCssTest {
 		Assert.assertEquals(
 				""//
 						+ ".user-panel .validation-email .validation.email { background-color: orange; }\n"
-						+ ".user-panel .validation-login .validation.login { background-color: orange; }\n",
+						+ ".user-panel .validation-login .validation.login { background-color: orange; }\n"
+						+ ".user-panel .validation-subvalidation-password .validation.subvalidation-password { background-color: orange; }\n",
 				generator.getCSS());
 	}
-	
 
 	@Test
 	public void testSubvalidationClasses() {

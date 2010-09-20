@@ -1,8 +1,19 @@
 package org.gwtapp.validation.server;
 
+import java.util.Map.Entry;
+
+import org.apache.commons.lang.StringUtils;
+import org.gwtapp.validation.rpc.exception.ValidationException;
+
 public class GroupValidationCssGenerator extends ValidationCssGeneratorBase {
 
+	private String child = "";
+
 	public GroupValidationCssGenerator() {
+	}
+
+	public GroupValidationCssGenerator(String child) {
+		this.child=child;
 	}
 
 	@Override
@@ -11,6 +22,20 @@ public class GroupValidationCssGenerator extends ValidationCssGeneratorBase {
 		for (Class<?> c : getAnnotatedSubclasses()) {
 			getCssForGroup(s, c);
 		}
+		for (Entry<String, Class<? extends ValidationException>> child : getChildrenFields()
+				.entrySet()) {
+			String name = child.getKey();
+			if (StringUtils.isNotEmpty(this.child)) {
+				name = child + "-" + name;
+			}
+			GroupValidationCssGenerator generator = new GroupValidationCssGenerator(
+					name);
+			generator.setPrefix(getPrefix());
+			generator.setSeparator(getSeparator());
+			generator.setStyle(getStyle());
+			generator.setValidationClass(child.getValue());
+			s.append(generator.getCSS());
+		}		
 		return s.toString();
 	}
 
@@ -28,9 +53,17 @@ public class GroupValidationCssGenerator extends ValidationCssGeneratorBase {
 		s.append(prefix);
 		s.append(" ");
 		s.append(".validation-");
+		if (StringUtils.isNotEmpty(child)) {
+			s.append(child);
+			s.append("-");
+		}
 		s.append(fieldName);
 		s.append(" ");
 		s.append(separator);
+		if (StringUtils.isNotEmpty(child)) {
+			s.append(child);
+			s.append("-");
+		}
 		s.append(fieldName);
 	}
 
