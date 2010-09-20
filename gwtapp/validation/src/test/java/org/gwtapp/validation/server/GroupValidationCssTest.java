@@ -1,7 +1,9 @@
 package org.gwtapp.validation.server;
 
 import java.util.List;
+import java.util.Map;
 
+import org.gwtapp.validation.rpc.exception.ValidationException;
 import org.gwtapp.validation.server.GroupValidationCssGenerator;
 import org.junit.Assert;
 import org.junit.Before;
@@ -64,5 +66,29 @@ public class GroupValidationCssTest {
 						+ ".user-panel .validation-email .validation.email { background-color: orange; }\n"
 						+ ".user-panel .validation-login .validation.login { background-color: orange; }\n",
 				generator.getCSS());
+	}
+	
+
+	@Test
+	public void testSubvalidationClasses() {
+		Map<String, Class<? extends ValidationException>> subvalidation = generator
+				.getChildrenFields();
+		Assert.assertNotNull(subvalidation);
+		Assert.assertEquals(1, subvalidation.size());
+		Class<? extends ValidationException> c = subvalidation
+				.get("subvalidation");
+
+		GroupValidationCssGenerator subgenerator = new GroupValidationCssGenerator();
+		subgenerator.setValidationClass(c);
+		List<Class<?>> subclasses = subgenerator.getAnnotatedSubclasses();
+		Assert.assertNotNull(subclasses);
+		Assert.assertEquals(1, subclasses.size());
+		Assert.assertEquals(SubValidationTestException.Password.class,
+				subclasses.get(0));
+		List<Enum<?>> enums = subgenerator.getEnumConstants(subclasses.get(0));
+		Assert.assertNotNull(enums);
+		Assert.assertEquals(1, enums.size());
+		Assert.assertEquals(SubValidationTestException.Password.INVALID,
+				enums.get(0));
 	}
 }
