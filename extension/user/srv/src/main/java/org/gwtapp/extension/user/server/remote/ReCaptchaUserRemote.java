@@ -53,6 +53,7 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 				getThreadLocalRequest().getRemoteAddr())) {
 			validation.addReCaptcha(ReCaptcha.INVALID);
 		}
+		// TODO add password validation
 		validation.validate();
 	}
 }
