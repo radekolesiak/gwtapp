@@ -20,7 +20,7 @@ public class ReCaptchaUserValidationException extends ValidationException {
 
 	@ValidationField(PASSWORD)
 	public static enum Password implements IsSerializable {
-		EMPTY, NOT_EQUALS, NOT_BETWEEN_6_20_CHARS
+		EMPTY, NOT_EQUALS, NOT_BETWEEN_RANGE
 	}
 
 	private UserValidationException userValidationException;
