@@ -41,8 +41,12 @@ public class ReCaptchaUserRegisterServicePanel extends
 					}
 
 					@Override
-					public void onValidation(ReCaptchaUserValidationException validation) {
-						ReCaptchaPanel.reload();
+					public void onValidation(
+							ReCaptchaUserValidationException validation) {
+						if (validation
+								.get(ReCaptchaUserValidationException.RECAPTCHA) == null) {
+							ReCaptchaPanel.reload();
+						}
 						getValidator().setValidation(validation);
 					}
 				}));

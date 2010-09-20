@@ -17,7 +17,7 @@ public class ValidationHandler<T extends ValidationException> extends
 		return style.replaceAll("_", "-").toLowerCase();
 	}
 
-	public String getStyleClass(ValidationException validation) {
+	public String getStyleName(ValidationException validation) {
 		String s = "";
 		for (Map.Entry<String, List<Enum<?>>> list : validation.getFields()
 				.entrySet()) {
@@ -36,7 +36,10 @@ public class ValidationHandler<T extends ValidationException> extends
 	@Override
 	public void setValidation(T validation) {
 		clearValidation();
-		getWidget().addStyleName(getStyleClass(validation));
+		String styleName = getStyleName(validation);
+		if (!styleName.isEmpty()) {
+			getWidget().addStyleName(styleName);
+		}
 	}
 
 	@Override
