@@ -131,7 +131,8 @@ public class EnumValidationCssTest {
 						+ ".user-panel .validation-login-too-short .validation.login-too-short { display: block; }\n"
 						+ ".user-panel .validation-login-not-letters-only .validation.login-not-letters-only { display: block; }\n"
 						+ ".user-panel .validation-login-not-lower-case .validation.login-not-lower-case { display: block; }\n"
-						+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n",
+						+ ".user-panel .validation-login-already-exists .validation.login-already-exists { display: block; }\n"
+						+ ".user-panel .validation-subvalidation-password-invalid .validation.subvalidation-password-invalid { display: block; }\n",
 				generator.getCSS());
 	}
 
@@ -149,7 +150,8 @@ public class EnumValidationCssTest {
 		List<Class<?>> subclasses = subgenerator.getAnnotatedSubclasses();
 		Assert.assertNotNull(subclasses);
 		Assert.assertEquals(1, subclasses.size());
-		Assert.assertEquals(SubValidationTestException.Password.class, subclasses.get(0));
+		Assert.assertEquals(SubValidationTestException.Password.class,
+				subclasses.get(0));
 		List<Enum<?>> enums = subgenerator.getEnumConstants(subclasses.get(0));
 		Assert.assertNotNull(enums);
 		Assert.assertEquals(1, enums.size());

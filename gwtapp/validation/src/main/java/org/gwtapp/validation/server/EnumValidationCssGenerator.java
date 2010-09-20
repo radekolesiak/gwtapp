@@ -1,8 +1,19 @@
 package org.gwtapp.validation.server;
 
+import java.util.Map.Entry;
+
+import org.apache.commons.lang.StringUtils;
+import org.gwtapp.validation.rpc.exception.ValidationException;
+
 public class EnumValidationCssGenerator extends ValidationCssGeneratorBase {
 
+	private String child = "";
+
 	public EnumValidationCssGenerator() {
+	}
+
+	public EnumValidationCssGenerator(String child) {
+		this.child = child;
 	}
 
 	@Override
@@ -10,6 +21,20 @@ public class EnumValidationCssGenerator extends ValidationCssGeneratorBase {
 		StringBuilder s = new StringBuilder();
 		for (Class<?> c : getAnnotatedSubclasses()) {
 			getCssForEnum(s, c);
+		}
+		for (Entry<String, Class<? extends ValidationException>> child : getChildrenFields()
+				.entrySet()) {
+			String name = child.getKey();
+			if (StringUtils.isNotEmpty(this.child)) {
+				name = child + "-" + name;
+			}
+			EnumValidationCssGenerator generator = new EnumValidationCssGenerator(
+					name);
+			generator.setPrefix(getPrefix());
+			generator.setSeparator(getSeparator());
+			generator.setStyle(getStyle());
+			generator.setValidationClass(child.getValue());
+			s.append(generator.getCSS());
 		}
 		return s.toString();
 	}
@@ -33,9 +58,17 @@ public class EnumValidationCssGenerator extends ValidationCssGeneratorBase {
 		s.append(prefix);
 		s.append(" ");
 		s.append(".validation-");
+		if (StringUtils.isNotEmpty(child)) {
+			s.append(child);
+			s.append("-");
+		}
 		s.append(enumFieldName);
 		s.append(" ");
 		s.append(separator);
+		if (StringUtils.isNotEmpty(child)) {
+			s.append(child);
+			s.append("-");
+		}
 		s.append(enumFieldName);
 	}
 
