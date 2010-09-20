@@ -37,6 +37,26 @@ public class UserServiceImpl implements UserService, UserAdd {
 
 	@Override
 	public long addUser(UserPassword up) throws RpcException {
+		try {
+			addUserValidate(up);
+			persistUser(up.getUser());
+		} catch (RollbackException e) {
+			if (e.getCause() instanceof EntityExistsException) {
+				UserValidationException validation = new UserValidationException();
+				// TODO determine which one already exist
+				validation.addLogin(Login.ALREADY_EXISTS);
+				validation.addEmail(Email.ALREADY_EXISTS);
+				validation.validate();
+			} else {
+				throw e;
+			}
+		}
+		log.debug("persisted id=" + up.getUser().getId());
+		return up.getUser().getId();
+	}
+
+	@Override
+	public void addUserValidate(UserPassword up) throws UserValidationException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(up.getUser().getLogin())) {
 			validation.addLogin(Login.EMPTY);
@@ -60,25 +80,10 @@ public class UserServiceImpl implements UserService, UserAdd {
 			validation.addEmail(Email.INVALID);
 		}
 		validation.validate();
-		try {
-			persistUser(up.getUser());
-		} catch (RollbackException e) {
-			if (e.getCause() instanceof EntityExistsException) {
-				// TODO determine which one already exist
-				validation.addLogin(Login.ALREADY_EXISTS);
-				validation.addEmail(Email.ALREADY_EXISTS);
-				validation.validate();
-			} else {
-				throw e;
-			}
-		}
-		log.debug("persisted id=" + up.getUser().getId());
-		return up.getUser().getId();
 	}
 
 	@Transactional
 	protected void persistUser(User user) {
 		em.get().persist(user);
 	}
-
 }

@@ -29,19 +29,30 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 	@Override
 	public long addReCaptchaUser(ReCaptchaUser user) throws RpcException {
 		assert userAddService != null;
-		assert reCaptchaVerify != null;
 		assert reCaptchaPrivateKey != null;
+		try {
+			addReCaptchaUserValidate(user);
+			return userAddService.addUser(user);
+		} catch (UserValidationException userValidation) {
+			ReCaptchaUserValidationException validation = new ReCaptchaUserValidationException();
+			validation.setUserValidationException(userValidation);
+			throw validation;
+		}
+	}
+
+	private void addReCaptchaUserValidate(ReCaptchaUser user) {
+		assert userAddService != null;
+		assert reCaptchaVerify != null;
 		ReCaptchaUserValidationException validation = new ReCaptchaUserValidationException();
+		try {
+			userAddService.addUserValidate(user);
+		} catch (UserValidationException userValidationException) {
+			validation.setUserValidationException(userValidationException);
+		}
 		if (!reCaptchaVerify.verify(user, reCaptchaPrivateKey.getPrivateKey(),
 				getThreadLocalRequest().getRemoteAddr())) {
 			validation.addReCaptcha(ReCaptcha.INVALID);
 		}
 		validation.validate();
-		try {
-			return userAddService.addUser(user);
-		} catch (UserValidationException userValidation) {
-			validation.setUserValidationException(userValidation);
-			throw validation;
-		}
 	}
 }
