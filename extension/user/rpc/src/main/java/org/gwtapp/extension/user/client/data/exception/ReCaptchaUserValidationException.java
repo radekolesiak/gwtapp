@@ -12,6 +12,7 @@ public class ReCaptchaUserValidationException extends ValidationException {
 
 	public final static String RECAPTCHA = "recaptcha";
 	public final static String PASSWORD = "password";
+	public final static String USER = "user";
 
 	@ValidationField(RECAPTCHA)
 	public static enum ReCaptcha implements IsSerializable {
@@ -23,6 +24,7 @@ public class ReCaptchaUserValidationException extends ValidationException {
 		EMPTY, NOT_EQUALS, NOT_BETWEEN_RANGE
 	}
 
+	@ValidationField(USER)
 	private UserValidationException userValidationException;
 
 	public void addReCaptcha(ReCaptcha reCaptcha) {
