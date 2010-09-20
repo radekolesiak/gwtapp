@@ -3,7 +3,7 @@ package org.gwtapp.extension.user.client;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserServiceAsync;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
-import org.gwtapp.extension.user.client.data.exception.UserValidationException;
+import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException;
 import org.gwtapp.validation.client.ValidationAsyncCallback;
 
 import com.google.gwt.core.client.GWT;
@@ -18,12 +18,9 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private static final ReCaptchaUserServiceAsync service = GWT
 			.create(ReCaptchaUserService.class);
 
-	private final UserPanel userPanel;
-
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(Provider provider) {
 		super(provider);
-		this.userPanel = provider.userPanel;
 		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {
@@ -35,7 +32,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 	private void doUserRegister(final ReCaptchaUser user) {
 		service.addReCaptchaUser(
 				user,
-				create(new ValidationAsyncCallback<Long, UserValidationException>() {
+				create(new ValidationAsyncCallback<Long, ReCaptchaUserValidationException>() {
 					@Override
 					public void onSuccess(Long result) {
 						user.setId(result);
@@ -44,7 +41,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 					}
 
 					@Override
-					public void onValidation(UserValidationException validation) {
+					public void onValidation(ReCaptchaUserValidationException validation) {
 						ReCaptchaPanel.reload();
 						getValidator().setValidation(validation);
 					}

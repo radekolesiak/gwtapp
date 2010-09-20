@@ -25,10 +25,6 @@ public class ReCaptchaUserValidationException extends ValidationException {
 
 	private UserValidationException userValidationException;
 
-	public ReCaptchaUserValidationException() {
-		addReCaptcha(ReCaptcha.INVALID);
-	}
-
 	public void addReCaptcha(ReCaptcha reCaptcha) {
 		add(RECAPTCHA, reCaptcha);
 	}

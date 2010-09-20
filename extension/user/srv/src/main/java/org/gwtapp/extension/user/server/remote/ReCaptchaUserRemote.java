@@ -4,6 +4,8 @@ import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException;
+import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException.ReCaptcha;
+import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.server.stub.ReCaptchaPrivateKey;
 import org.gwtapp.extension.user.server.stub.ReCaptchaVerify;
 import org.gwtapp.extension.user.server.stub.UserAdd;
@@ -29,10 +31,17 @@ public class ReCaptchaUserRemote extends RemoteServiceServlet implements
 		assert userAddService != null;
 		assert reCaptchaVerify != null;
 		assert reCaptchaPrivateKey != null;
+		ReCaptchaUserValidationException validation = new ReCaptchaUserValidationException();
 		if (!reCaptchaVerify.verify(user, reCaptchaPrivateKey.getPrivateKey(),
 				getThreadLocalRequest().getRemoteAddr())) {
-			throw new ReCaptchaUserValidationException();
+			validation.addReCaptcha(ReCaptcha.INVALID);
 		}
-		return userAddService.addUser(user);
+		validation.validate();
+		try {
+			return userAddService.addUser(user);
+		} catch (UserValidationException userValidation) {
+			validation.setUserValidationException(userValidation);
+			throw validation;
+		}
 	}
 }
