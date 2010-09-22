@@ -17,6 +17,7 @@ public class PipeManager {
 	private final Map<Class<?>, List<Pipe<?>>> pipes = new HashMap<Class<?>, List<Pipe<?>>>();
 
 	private boolean connected = false;
+	private boolean enabled = true;
 
 	public <T> void addPipe(final Class<? extends Pipe<T>> c, final Pipe<T> pipe) {
 		if (!pipes.containsKey(c)) {
@@ -50,8 +51,16 @@ public class PipeManager {
 		return connected;
 	}
 
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
 	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value) {
-		if (isConnected()) {
+		if (isUsable()) {
 			fireValueChange(c, value, null);
 		}
 	}
@@ -59,7 +68,7 @@ public class PipeManager {
 	@SuppressWarnings("unchecked")
 	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value,
 			Pipe<T> skip) {
-		if (isConnected()) {
+		if (isUsable()) {
 			getModel(c).set(value);
 			if (pipes.get(c) != null) {
 				for (Pipe<?> pipe : pipes.get(c)) {
@@ -72,14 +81,14 @@ public class PipeManager {
 	}
 
 	public <T> void setValue(Class<? extends Pipe<T>> c, T value) {
-		if (isConnected()) {
+		if (isUsable()) {
 			setValue(c, value, this);
 		}
 	}
 
 	public <T> void setValue(Class<? extends Pipe<T>> c, T value,
 			PipeManager skip) {
-		if (isConnected()) {
+		if (isUsable()) {
 			getModel(c).set(value);
 			for (PipeManager manager : managers) {
 				if (manager != skip) {
@@ -90,7 +99,7 @@ public class PipeManager {
 	}
 
 	public <T> void setValue(Class<? extends Pipe<T>> c, T value, Pipe<T> skip) {
-		if (isConnected()) {
+		if (isUsable()) {
 			for (PipeManager manager : managers) {
 				manager.fireValueChange(c, value, skip);
 			}
@@ -112,6 +121,10 @@ public class PipeManager {
 	public static void resetAll() {
 		managers.clear();
 		models.clear();
+	}
+
+	private boolean isUsable() {
+		return isConnected() && isEnabled();
 	}
 
 	@SuppressWarnings("unchecked")
