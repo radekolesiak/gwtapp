@@ -14,6 +14,14 @@ public class ReCaptchaUserValidationException extends ValidationException {
 	public final static String PASSWORD = "password";
 	public final static String USER = "user";
 
+	public ReCaptchaUserValidationException() {
+	}
+
+	public ReCaptchaUserValidationException(
+			UserValidationException userValidationException) {
+		setUserValidationException(userValidationException);
+	}
+
 	@ValidationField(RECAPTCHA)
 	public static enum ReCaptcha implements IsSerializable {
 		INVALID

@@ -8,5 +8,5 @@ public interface UserAdd {
 
 	long addUser(UserPassword user) throws RpcException;
 
-	void addUserValidate(UserPassword user) throws UserValidationException;
+	void validateBeforeAddUser(UserPassword user) throws UserValidationException;
 }

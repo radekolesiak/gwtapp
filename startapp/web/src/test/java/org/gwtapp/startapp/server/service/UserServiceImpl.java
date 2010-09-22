@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 	@Override
 	public long addUser(UserPassword up) throws RpcException {
 		try {
-			addUserValidate(up);
+			validateBeforeAddUser(up);
 			persistUser(up.getUser());
 		} catch (RollbackException e) {
 			if (e.getCause() instanceof EntityExistsException) {
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 	}
 
 	@Override
-	public void addUserValidate(UserPassword up) throws UserValidationException {
+	public void validateBeforeAddUser(UserPassword up) throws UserValidationException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(up.getUser().getLogin())) {
 			validation.addLogin(Login.EMPTY);
