@@ -251,6 +251,7 @@
 				<div class="cell"><t:amazon></t:amazon></div>
 			</div>
 		</div>
+		<t:adwords></t:adwords>
 		<t:ga></t:ga>
 	</body>
 </html>
