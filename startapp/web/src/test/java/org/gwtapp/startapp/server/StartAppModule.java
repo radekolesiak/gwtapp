@@ -10,7 +10,7 @@ import org.gwtapp.extension.user.server.local.service.ReCaptchaVerifyImpl;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaPrivateKey;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaVerify;
 import org.gwtapp.extension.user.server.local.stub.UserAdd;
-import org.gwtapp.extension.user.server.remote.service.ReCaptchaUserRemote;
+import org.gwtapp.extension.user.server.remote.service.ReCaptchaUserRemoteService;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
 import org.gwtapp.startapp.server.servlet.EnumValidationCssServlet;
 import org.gwtapp.startapp.server.servlet.GroupValidationCssServlet;
@@ -38,7 +38,7 @@ public class StartAppModule extends ServletModule {
 
 	private void setupServlets() {
 		serve("/gwt.startappmanualtestentry/extension.recaptchauser.rpc").with(
-				ReCaptchaUserRemote.class);
+				ReCaptchaUserRemoteService.class);
 		serve("/css/validation-by-group.css").with(
 				GroupValidationCssServlet.class);
 		serve("/css/validation-by-enum.css").with(

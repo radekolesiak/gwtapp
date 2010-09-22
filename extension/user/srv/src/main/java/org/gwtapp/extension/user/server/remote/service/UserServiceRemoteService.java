@@ -10,7 +10,7 @@ import com.google.inject.Singleton;
 
 @SuppressWarnings("serial")
 @Singleton
-public class UserServiceRemote extends RemoteServiceServlet implements
+public class UserServiceRemoteService extends RemoteServiceServlet implements
 		UserService {
 
 	@Inject

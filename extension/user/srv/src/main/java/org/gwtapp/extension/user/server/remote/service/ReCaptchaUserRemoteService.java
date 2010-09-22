@@ -16,7 +16,7 @@ import com.google.inject.Singleton;
 
 @SuppressWarnings("serial")
 @Singleton
-public class ReCaptchaUserRemote extends RemoteServiceServlet implements
+public class ReCaptchaUserRemoteService extends RemoteServiceServlet implements
 		ReCaptchaUserService {
 
 	@Inject
