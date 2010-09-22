@@ -14,7 +14,7 @@ import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
-import org.gwtapp.extension.user.server.stub.UserAdd;
+import org.gwtapp.extension.user.server.local.stub.UserAdd;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;

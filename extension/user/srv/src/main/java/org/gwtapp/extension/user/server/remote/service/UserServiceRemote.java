@@ -1,4 +1,4 @@
-package org.gwtapp.extension.user.server.remote;
+package org.gwtapp.extension.user.server.remote.service;
 
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.UserService;

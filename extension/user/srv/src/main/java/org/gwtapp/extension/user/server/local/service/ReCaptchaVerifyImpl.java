@@ -1,11 +1,11 @@
-package org.gwtapp.extension.user.server.service;
+package org.gwtapp.extension.user.server.local.service;
 
 import net.tanesha.recaptcha.ReCaptchaImpl;
 import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.apache.log4j.Logger;
 import org.gwtapp.extension.user.client.data.ReCaptcha;
-import org.gwtapp.extension.user.server.stub.ReCaptchaVerify;
+import org.gwtapp.extension.user.server.local.stub.ReCaptchaVerify;
 
 /*
  * http://code.google.com/apis/recaptcha/docs/verify.html

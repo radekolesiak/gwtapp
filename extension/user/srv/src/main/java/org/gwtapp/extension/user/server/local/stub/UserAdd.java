@@ -1,4 +1,4 @@
-package org.gwtapp.extension.user.server.stub;
+package org.gwtapp.extension.user.server.local.stub;
 
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.data.UserPassword;
