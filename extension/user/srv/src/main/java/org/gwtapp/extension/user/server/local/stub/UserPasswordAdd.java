@@ -4,9 +4,9 @@ import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 
-public interface UserAdd {
+public interface UserPasswordAdd {
 
-	long addUser(UserPassword user) throws RpcException;
+	long addUserPassword(UserPassword user) throws RpcException;
 
-	void validateBeforeAddUser(UserPassword user) throws UserValidationException;
+	void validateBeforeAddUserPassword(UserPassword user) throws UserValidationException;
 }

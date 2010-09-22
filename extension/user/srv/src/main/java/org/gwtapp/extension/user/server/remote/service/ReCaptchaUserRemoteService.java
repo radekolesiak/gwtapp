@@ -8,7 +8,7 @@ import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationEx
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaPrivateKey;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaVerify;
-import org.gwtapp.extension.user.server.local.stub.UserAdd;
+import org.gwtapp.extension.user.server.local.stub.UserPasswordAdd;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
@@ -20,7 +20,7 @@ public class ReCaptchaUserRemoteService extends RemoteServiceServlet implements
 		ReCaptchaUserService {
 
 	@Inject
-	private UserAdd userAddService;
+	private UserPasswordAdd userAddService;
 	@Inject
 	private ReCaptchaVerify reCaptchaVerify;
 	@Inject
@@ -31,7 +31,7 @@ public class ReCaptchaUserRemoteService extends RemoteServiceServlet implements
 		assert userAddService != null;
 		validateBeforeAddReCaptchaUser(user);
 		try {
-			return userAddService.addUser(user);
+			return userAddService.addUserPassword(user);
 		} catch (UserValidationException userValidationException) {
 			throw new ReCaptchaUserValidationException(userValidationException);
 		}
@@ -43,7 +43,7 @@ public class ReCaptchaUserRemoteService extends RemoteServiceServlet implements
 		assert reCaptchaPrivateKey != null;
 		ReCaptchaUserValidationException validation = new ReCaptchaUserValidationException();
 		try {
-			userAddService.validateBeforeAddUser(user);
+			userAddService.validateBeforeAddUserPassword(user);
 		} catch (UserValidationException userValidationException) {
 			validation.setUserValidationException(userValidationException);
 		}

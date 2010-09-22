@@ -14,7 +14,7 @@ import org.gwtapp.extension.user.client.data.UserPassword;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
-import org.gwtapp.extension.user.server.local.stub.UserAdd;
+import org.gwtapp.extension.user.server.local.stub.UserPasswordAdd;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -22,7 +22,7 @@ import com.google.inject.Singleton;
 import com.wideplay.warp.persist.Transactional;
 
 @Singleton
-public class UserServiceImpl implements UserService, UserAdd {
+public class UserServiceImpl implements UserService, UserPasswordAdd {
 
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
@@ -36,9 +36,9 @@ public class UserServiceImpl implements UserService, UserAdd {
 	}
 
 	@Override
-	public long addUser(UserPassword up) throws RpcException {
+	public long addUserPassword(UserPassword up) throws RpcException {
 		try {
-			validateBeforeAddUser(up);
+			validateBeforeAddUserPassword(up);
 			persistUser(up.getUser());
 		} catch (RollbackException e) {
 			if (e.getCause() instanceof EntityExistsException) {
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 	}
 
 	@Override
-	public void validateBeforeAddUser(UserPassword up) throws UserValidationException {
+	public void validateBeforeAddUserPassword(UserPassword up) throws UserValidationException {
 		UserValidationException validation = new UserValidationException();
 		if (StringUtils.isEmpty(up.getUser().getLogin())) {
 			validation.addLogin(Login.EMPTY);
