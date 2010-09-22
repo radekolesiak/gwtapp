@@ -33,7 +33,7 @@ public class StartAppModule extends ServletModule {
 	private void setupTransactional() {
 		install(PersistenceService.usingJpa().across(UnitOfWork.TRANSACTION)
 				.buildModule());
-		bindConstant().annotatedWith(JpaUnit.class).to("derby");
+		bindConstant().annotatedWith(JpaUnit.class).to("derby-startapp-manual-test");
 	}
 
 	private void setupServlets() {

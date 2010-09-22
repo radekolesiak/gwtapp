@@ -21,7 +21,7 @@ public abstract class RemoteServiceDBServlet extends RemoteServiceServlet {
 	private static EntityManager em;
 
 	static {
-		emf = Persistence.createEntityManagerFactory("derby-extension-user");
+		emf = Persistence.createEntityManagerFactory("derby-extension-user-test");
 		em = emf.createEntityManager();
 		initDB();
 	}

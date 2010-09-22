@@ -23,7 +23,7 @@ public class CCalcServiceTestImpl extends RemoteServiceDBServlet implements
 	@Override
 	public Double getRatio(int year, int month, int day, Currency from,
 			Currency to) throws RpcException {
-		return getService().getRatio(day, month, day, from, to);
+		return getService().getRatio(year, month, day, from, to);
 	}
 
 	protected CCalcService getService() {
