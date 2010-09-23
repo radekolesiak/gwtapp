@@ -1,7 +1,11 @@
 package org.gwtapp.extension.user.server.test;
 
+import java.util.List;
+
+import javax.persistence.Query;
 import javax.persistence.RollbackException;
 
+import org.gwtapp.extension.user.client.data.User;
 import org.gwtapp.extension.user.client.data.UserImpl;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,5 +40,20 @@ public class DBUserTest extends UserInit {
 		em.persist(new UserImpl("b", "b"));
 		em.persist(new UserImpl("b", "b"));
 		tx.commit();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testQueryParameters() {
+		String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
+		String login = "a";
+		Query query = em.createQuery(q);
+		query.setMaxResults(1);
+		query.setParameter("login", login);
+		List<User> users = query.getResultList();
+		Assert.assertNotNull(users);
+		Assert.assertEquals(1, users.size());
+		User user = users.get(0);
+		Assert.assertEquals(login, user.getLogin());
 	}
 }

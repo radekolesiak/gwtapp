@@ -34,10 +34,9 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 			return null;
 		} else {
 			String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
-			q = q.replace(":login", "'" + login + "'");
 			Query query = getEntityManager().createQuery(q);
 			query.setMaxResults(1);
-			// query.setParameter("login", login); // TODO why doesn't work now?
+			query.setParameter("login", login);
 			List<UserImpl> users = query.getResultList();
 			if (users.isEmpty()) {
 				throw new RpcException();
