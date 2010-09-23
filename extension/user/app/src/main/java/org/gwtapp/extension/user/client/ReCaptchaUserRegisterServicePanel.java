@@ -34,20 +34,25 @@ public class ReCaptchaUserRegisterServicePanel extends
 				user,
 				create(new ValidationAsyncCallback<Long, ReCaptchaUserValidationException>() {
 					@Override
-					public void onSuccess(Long result) {
+					public void onCallbackSuccess(Long result) {
 						user.setId(result);
 						getValidator().clearValidation();
 						Window.alert("SUCCESS: User has been added");
 					}
 
 					@Override
-					public void onValidation(
+					public void onCallbackValidation(
 							ReCaptchaUserValidationException validation) {
 						if (validation
 								.get(ReCaptchaUserValidationException.RECAPTCHA) == null) {
 							ReCaptchaPanel.reload();
 						}
 						getValidator().setValidation(validation);
+					}
+
+					@Override
+					public void onCallbackFailure(Throwable e) {
+						ReCaptchaPanel.reload();
 					}
 				}));
 	}
