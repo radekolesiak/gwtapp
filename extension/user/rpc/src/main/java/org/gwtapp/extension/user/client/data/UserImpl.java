@@ -25,16 +25,12 @@ public class UserImpl extends HashModelData implements User {
 	@Column(nullable = false, unique = true)
 	private String email = EMAIL.add(this).def();
 
-	@Basic
-	private String name = NAME.add(this).def();
-
 	public UserImpl() {
 	}
 
-	public UserImpl(String login, String email, String name) {
+	public UserImpl(String login, String email) {
 		setLogin(login);
 		setEmail(email);
-		setName(name);
 	}
 
 	@Override
@@ -65,15 +61,5 @@ public class UserImpl extends HashModelData implements User {
 	@Override
 	public String getEmail() {
 		return email;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String getName() {
-		return name;
 	}
 }

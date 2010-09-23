@@ -22,6 +22,5 @@ public class UserPanel extends TemplateModelPanel<User> {
 		super(callback);
 		add(User.LOGIN, new TextBoxHandler());
 		add(User.EMAIL, new TextBoxHandler());
-		add(User.NAME, new TextBoxHandler());
 	}
 }

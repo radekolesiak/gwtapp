@@ -29,7 +29,6 @@ public class UserServiceTestImpl extends RemoteServiceDBServlet implements
 			user.setId(1L);
 			user.setLogin(login);
 			user.setEmail(login + "@email.com");
-			user.setName("Name: " + login);
 			return user;
 		} else if ("xyz".equals(login)) {
 			return null;

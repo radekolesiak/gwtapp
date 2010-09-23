@@ -31,8 +31,8 @@ public class UserPasswordImpl extends HashModelData implements UserPassword {
 	public UserPasswordImpl() {
 	}
 
-	public UserPasswordImpl(String login, String email, String name) {
-		setUser(new UserImpl(login, email, name));
+	public UserPasswordImpl(String login, String email) {
+		setUser(new UserImpl(login, email));
 	}
 
 	@Override

@@ -13,5 +13,5 @@
 		<div class="validation user-email-invalid">Invalid e-mail</div>
 		<div class="validation user-email-already-exists">Already Exists Email</div>
 	</div>
-	<div>Name: <input type="text" t:field="name"></input></div>
+	<%--<div>Name: <input type="text" t:field="name"></input></div>--%>
 </t:template>

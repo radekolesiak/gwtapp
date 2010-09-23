@@ -41,7 +41,6 @@ public abstract class RemoteServiceDBServlet extends RemoteServiceServlet {
 	}
 
 	private static void initDB() {
-		getEntityManager().persist(
-				new UserImpl("012", "012@012.com", "Zero One Two"));
+		getEntityManager().persist(new UserImpl("012", "012@012.com"));
 	}
 }

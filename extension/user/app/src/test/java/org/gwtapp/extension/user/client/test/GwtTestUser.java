@@ -26,7 +26,6 @@ public class GwtTestUser extends UserTestCase {
 				assertEquals(new Long(1L), user.getId());
 				assertEquals("aba", user.getLogin());
 				assertEquals("aba@email.com", user.getEmail());
-				assertEquals("Name: aba", user.getName());
 				finishTest();
 			}
 		});
@@ -69,7 +68,6 @@ public class GwtTestUser extends UserTestCase {
 				assertNotNull(user.getId());
 				assertEquals("012", user.getLogin());
 				assertEquals("012@012.com", user.getEmail());
-				assertEquals("Zero One Two", user.getName());
 				finishTest();
 			}
 		});
@@ -92,7 +90,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsABAInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addReCaptchaUser(new ReCaptchaUserImpl("aba", "", ""),
+		user.addReCaptchaUser(new ReCaptchaUserImpl("aba", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {
@@ -114,7 +112,7 @@ public class GwtTestUser extends UserTestCase {
 	@Test
 	public void testAddUserAlreadyExistsXYZInvalidEmail() {
 		ReCaptchaUserServiceAsync user = GWT.create(ReCaptchaUserService.class);
-		user.addReCaptchaUser(new ReCaptchaUserImpl("xyz", "", ""),
+		user.addReCaptchaUser(new ReCaptchaUserImpl("xyz", ""),
 				new SimpleAsyncCallback<Long>() {
 					@Override
 					public void onFailure(Throwable e) {

@@ -19,24 +19,22 @@ public class DBUserTest extends UserInit {
 		UserImpl user = new UserImpl();
 		Assert.assertNull(user.getLogin());
 		Assert.assertNull(user.getEmail());
-		Assert.assertNull(user.getName());
 		em.persist(user);
 		tx.commit();
 	}
 
 	@Test
 	public void testCreateUser() {
-		UserImpl user = new UserImpl("a", "a", "a");
+		UserImpl user = new UserImpl("a", "a");
 		Assert.assertNotNull(user.getLogin());
 		Assert.assertNotNull(user.getEmail());
-		Assert.assertNotNull(user.getName());
 		em.persist(user);
 	}
 
 	@Test(expected = RollbackException.class)
 	public void testCreateUserDouble() {
-		em.persist(new UserImpl("b", "b", "b"));
-		em.persist(new UserImpl("b", "b", "b"));
+		em.persist(new UserImpl("b", "b"));
+		em.persist(new UserImpl("b", "b"));
 		tx.commit();
 	}
 }

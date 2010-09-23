@@ -11,8 +11,8 @@ public class ReCaptchaUserImpl extends UserPasswordImpl implements
 	public ReCaptchaUserImpl() {
 	}
 
-	public ReCaptchaUserImpl(String login, String email, String name) {
-		super(login, email, name);
+	public ReCaptchaUserImpl(String login, String email) {
+		super(login, email);
 	}
 
 	@Override

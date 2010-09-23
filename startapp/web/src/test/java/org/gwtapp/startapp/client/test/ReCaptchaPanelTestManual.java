@@ -34,8 +34,6 @@ public class ReCaptchaPanelTestManual extends FlowPanel {
 								+ value.getValue().getUser().getLogin());
 						GWT.log("userRegister-email: "
 								+ value.getValue().getUser().getEmail());
-						GWT.log("userRegister-name: "
-								+ value.getValue().getUser().getName());
 						GWT.log("userRegister-password: "
 								+ value.getValue().getPassword());
 						GWT.log("userRegister-password-verify: "
