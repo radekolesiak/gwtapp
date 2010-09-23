@@ -62,7 +62,6 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 	@Override
 	public void validateBeforeAddUserPassword(UserPassword up)
 			throws UserValidationException {
-		for(int i=0;i<100;i++)System.out.println("XYZ");
 		UserValidationException validation = new UserValidationException();
 		try {
 			if (StringUtils.isEmpty(up.getUser().getLogin())) {
