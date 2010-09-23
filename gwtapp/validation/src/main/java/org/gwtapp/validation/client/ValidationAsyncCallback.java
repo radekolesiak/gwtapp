@@ -9,23 +9,35 @@ public class ValidationAsyncCallback<T, V extends ValidationException>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void onFailure(Throwable e) {
+	public final void onFailure(Throwable e) {
 		if (e instanceof ValidationException) {
 			V validation = null;
 			try {
 				validation = (V) e;
+				if (validation != null) {
+					onCallbackValidation(validation);
+				}
 			} catch (Exception v) {
+				onCallbackFailure(v);
 			}
-			if (validation != null) {
-				onValidation(validation);
-			}
+		} else {
+			onCallbackFailure(e);
 		}
 	}
 
 	@Override
-	public void onSuccess(T result) {
+	public final void onSuccess(T result) {
+		onCallbackSuccess(result);
 	}
 
-	public void onValidation(V validation) {
+	public void onCallbackSuccess(T result) {
+
+	}
+
+	public void onCallbackValidation(V validation) {
+	}
+
+	public void onCallbackFailure(Throwable e) {
+
 	}
 }

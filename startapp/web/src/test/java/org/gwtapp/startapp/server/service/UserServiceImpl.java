@@ -2,6 +2,7 @@ package org.gwtapp.startapp.server.service;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.RollbackException;
 
 import org.apache.commons.lang.StringUtils;
@@ -43,9 +44,12 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 		} catch (RollbackException e) {
 			if (e.getCause() instanceof EntityExistsException) {
 				UserValidationException validation = new UserValidationException();
-				// TODO determine which one already exist
-				validation.addLogin(Login.ALREADY_EXISTS);
-				validation.addEmail(Email.ALREADY_EXISTS);
+				if (!isLoginAvailable(up.getUser().getLogin())) {
+					validation.addLogin(Login.ALREADY_EXISTS);
+				}
+				if (!isEmailAvailable(up.getUser().getEmail())) {
+					validation.addEmail(Email.ALREADY_EXISTS);
+				}
 				validation.validate();
 			} else {
 				throw e;
@@ -56,34 +60,68 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 	}
 
 	@Override
-	public void validateBeforeAddUserPassword(UserPassword up) throws UserValidationException {
+	public void validateBeforeAddUserPassword(UserPassword up)
+			throws UserValidationException {
+		for(int i=0;i<100;i++)System.out.println("XYZ");
 		UserValidationException validation = new UserValidationException();
-		if (StringUtils.isEmpty(up.getUser().getLogin())) {
-			validation.addLogin(Login.EMPTY);
-		} else {
-			if (up.getUser().getLogin()
-					.matches(UserValidationException.ANY_UPPER_CASE_REGEXP)) {
-				validation.addLogin(Login.NOT_LOWER_CASE);
+		try {
+			if (StringUtils.isEmpty(up.getUser().getLogin())) {
+				validation.addLogin(Login.EMPTY);
+			} else {
+				if (up.getUser().getLogin()
+						.matches(UserValidationException.ANY_UPPER_CASE_REGEXP)) {
+					validation.addLogin(Login.NOT_LOWER_CASE);
+				}
+				if (!up.getUser().getLogin()
+						.matches(UserValidationException.ONLY_LETTERS_REGEXP)) {
+					validation.addLogin(Login.NOT_LETTERS_ONLY);
+				}
+				if (up.getUser().getLogin().length() < 3) {
+					validation.addLogin(Login.TOO_SHORT);
+				}
+				if (!isLoginAvailable(up.getUser().getLogin())) {
+					validation.addLogin(Login.ALREADY_EXISTS);
+				}
 			}
-			if (!up.getUser().getLogin()
-					.matches(UserValidationException.ONLY_LETTERS_REGEXP)) {
-				validation.addLogin(Login.NOT_LETTERS_ONLY);
+			if (StringUtils.isEmpty(up.getUser().getEmail())) {
+				validation.addEmail(Email.EMPTY);
+			} else {
+				if (!up.getUser().getEmail()
+						.matches(UserValidationException.EMAIL_REGEXP)) {
+					validation.addEmail(Email.INVALID);
+				}
+				//if (!isEmailAvailable(up.getUser().getEmail())) {
+				//	validation.addEmail(Email.ALREADY_EXISTS);
+				//}
 			}
-			if (up.getUser().getLogin().length() < 3) {
-				validation.addLogin(Login.TOO_SHORT);
-			}
+			validation.validate();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			log.error("", e);
+			//throw e;
 		}
-		if (StringUtils.isEmpty(up.getUser().getEmail())) {
-			validation.addEmail(Email.EMPTY);
-		} else if (!up.getUser().getEmail()
-				.matches(UserValidationException.EMAIL_REGEXP)) {
-			validation.addEmail(Email.INVALID);
-		}
-		validation.validate();
 	}
 
 	@Transactional
 	protected void persistUser(User user) {
 		em.get().persist(user);
+	}
+
+	//@Transactional
+	protected boolean isLoginAvailable(String login) {
+		String q = "SELECT u FROM UserEntity u WHERE u.login = ?1";
+		Query query = em.get().createQuery(q);
+		//query.setMaxResults(1);
+		query.setParameter(1, login);
+		return query.getResultList().isEmpty();
+	}
+
+	//@Transactional
+	protected boolean isEmailAvailable(String email) {
+		String q = "SELECT u FROM UserEntity u WHERE u.email = ?1";
+		Query query = em.get().createQuery(q);
+		//query.setMaxResults(1);
+		query.setParameter(1, email);
+		return query.getResultList().isEmpty();
 	}
 }
