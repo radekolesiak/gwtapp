@@ -2,7 +2,7 @@
 <persistence version="1.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-	<persistence-unit name="derby-startapp-manual-test" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="derby-startapp-manual-test-x" transaction-type="RESOURCE_LOCAL">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<class>org.gwtapp.extension.user.client.data.UserImpl</class>
 		<properties>
@@ -12,7 +12,6 @@
 			<property name="openjpa.ConnectionPassword" value="app" />
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(SchemaAction='add,deleteTableContents')" />
 			<property name="openjpa.Log" value="DefaultLevel=WARN,SQL=TRACE" />
-			<property name="openjpa.RuntimeUnenhancedClasses" value="supported"/> 
 		</properties>
 	</persistence-unit>
 </persistence>
