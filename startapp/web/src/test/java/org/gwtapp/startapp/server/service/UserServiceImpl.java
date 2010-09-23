@@ -16,6 +16,7 @@ import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Email;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException.Login;
 import org.gwtapp.extension.user.server.local.stub.UserPasswordAdd;
+import org.gwtapp.validation.rpc.exception.ValidationException;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -78,9 +79,9 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 				if (up.getUser().getLogin().length() < 3) {
 					validation.addLogin(Login.TOO_SHORT);
 				}
-				if (!isLoginAvailable(up.getUser().getLogin())) {
-					validation.addLogin(Login.ALREADY_EXISTS);
-				}
+				//if (!isLoginAvailable(up.getUser().getLogin())) {
+					//validation.addLogin(Login.ALREADY_EXISTS);
+				//}
 			}
 			if (StringUtils.isEmpty(up.getUser().getEmail())) {
 				validation.addEmail(Email.EMPTY);
@@ -94,10 +95,11 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 				//}
 			}
 			validation.validate();
+		} catch (ValidationException e) {
+			throw e;
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			log.error("", e);
-			//throw e;
+			throw e;
 		}
 	}
 
