@@ -79,9 +79,9 @@ public class UserServiceImpl implements UserService, UserPasswordAdd {
 				if (up.getUser().getLogin().length() < 3) {
 					validation.addLogin(Login.TOO_SHORT);
 				}
-				//if (!isLoginAvailable(up.getUser().getLogin())) {
-					//validation.addLogin(Login.ALREADY_EXISTS);
-				//}
+				if (!isLoginAvailable(up.getUser().getLogin())) {
+					validation.addLogin(Login.ALREADY_EXISTS);
+				}
 			}
 			if (StringUtils.isEmpty(up.getUser().getEmail())) {
 				validation.addEmail(Email.EMPTY);
