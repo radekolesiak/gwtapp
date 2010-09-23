@@ -178,12 +178,6 @@
 			<version>${geronimo.jpa_3.0_spec.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa-all</artifactId>
-			<version>${openjpa.version}</version>
-			<scope>runtime</scope>
-		</dependency>
 		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
