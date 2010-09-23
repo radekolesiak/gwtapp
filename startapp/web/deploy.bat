@@ -1,1 +1,1 @@
-mvn gae:unpack gae:deploy
+mvn clean gae:unpack gae:deploy
