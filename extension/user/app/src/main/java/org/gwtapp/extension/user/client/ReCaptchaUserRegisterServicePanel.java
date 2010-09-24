@@ -9,7 +9,6 @@ import org.gwtapp.validation.client.ValidationAsyncCallback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 
 public class ReCaptchaUserRegisterServicePanel extends
@@ -21,10 +20,12 @@ public class ReCaptchaUserRegisterServicePanel extends
 	@Inject
 	public ReCaptchaUserRegisterServicePanel(Provider provider) {
 		super(provider);
-		addValueChangeHandler(new ValueChangeHandler<ReCaptchaUser>() {
+		addStateChangedHandler(new ValueChangeHandler<State>() {
 			@Override
-			public void onValueChange(ValueChangeEvent<ReCaptchaUser> event) {
-				doUserRegister(event.getValue());
+			public void onValueChange(ValueChangeEvent<State> event) {
+				if (event.getValue() == State.REGISTER_BUTTON_CLICKED) {
+					doUserRegister(getValue());
+				}
 			}
 		});
 	}
@@ -39,7 +40,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 						onCallback();
 						user.setId(result);
 						getValidator().clearValidation();
-						Window.alert("SUCCESS: User has been added");
+						fireValueChangeEvent();
 					}
 
 					@Override

@@ -12,6 +12,8 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Element;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
@@ -34,6 +36,10 @@ public class ReCaptchaUserRegisterPanel extends
 		@Inject
 		@Bind
 		public ReCaptchaUser value;
+	}
+
+	public static enum State {
+		RECAPTCHA_LOADED, REGISTER_BUTTON_CLICKED
 	}
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
@@ -66,7 +72,7 @@ public class ReCaptchaUserRegisterPanel extends
 		register.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				fireValueChangeEvent();
+				fireStateChanged(State.REGISTER_BUTTON_CLICKED);
 			}
 		});
 		showReCaptcha(element, createCallback(callback));
@@ -93,12 +99,22 @@ public class ReCaptchaUserRegisterPanel extends
 		return inProgress;
 	}
 
+	public void addStateChangedHandler(ValueChangeHandler<State> handler) {
+		getTemplatePanelHandlerManager().addHandler(ValueChangeEvent.getType(),
+				handler);
+	}
+
 	protected void onReCaptchaLoaded() {
 		String reCaptchaStyle = register.getMessage("reCaptchaStyle");
 		if (!reCaptchaStyle.isEmpty()) {
 			addStyleName(reCaptchaStyle);
 		}
-		fireChangeEvent();
+		fireStateChanged(State.RECAPTCHA_LOADED);
+	}
+
+	protected void fireStateChanged(State state) {
+		getTemplatePanelHandlerManager().fireEvent(
+				new TemplatePanelValueChangeEvent<State>(state));
 	}
 
 	protected native void showReCaptcha(Element element,
