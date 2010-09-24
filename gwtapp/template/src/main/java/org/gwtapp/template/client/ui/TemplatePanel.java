@@ -21,7 +21,6 @@ import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasName;
@@ -73,8 +72,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private T injectInitValue = null;
 
 	private final PipeManager pipeManager = new PipeManager();
-
-	private final HandlerManager handlerManager = new HandlerManager(this);
 
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -279,9 +276,5 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public PipeManager getPipeManager() {
 		return pipeManager;
-	}
-
-	protected HandlerManager getTemplatePanelHandlerManager() {
-		return handlerManager;
 	}
 }

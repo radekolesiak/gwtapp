@@ -14,6 +14,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Element;
 import com.google.inject.BindingAnnotation;
@@ -42,6 +43,8 @@ public class ReCaptchaUserRegisterPanel extends
 	public static enum State {
 		RECAPTCHA_LOADED, REGISTER_BUTTON_CLICKED
 	}
+
+	private final HandlerManager stateHandlerManager = new HandlerManager(this);
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
@@ -102,8 +105,7 @@ public class ReCaptchaUserRegisterPanel extends
 
 	public HandlerRegistration addStateChangedHandler(
 			ValueChangeHandler<State> handler) {
-		return getTemplatePanelHandlerManager().addHandler(
-				ValueChangeEvent.getType(), handler);
+		return stateHandlerManager.addHandler(ValueChangeEvent.getType(), handler);
 	}
 
 	protected void onReCaptchaLoaded() {
@@ -115,8 +117,8 @@ public class ReCaptchaUserRegisterPanel extends
 	}
 
 	protected void fireStateChanged(State state) {
-		getTemplatePanelHandlerManager().fireEvent(
-				new TemplatePanelValueChangeEvent<State>(state));
+		stateHandlerManager
+				.fireEvent(new TemplatePanelValueChangeEvent<State>(state));
 	}
 
 	protected native void showReCaptcha(Element element,
