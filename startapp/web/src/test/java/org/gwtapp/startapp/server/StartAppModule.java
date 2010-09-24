@@ -9,7 +9,7 @@ import org.gwtapp.extension.user.client.data.UserPasswordImpl;
 import org.gwtapp.extension.user.server.local.service.ReCaptchaVerifyImpl;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaPrivateKey;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaVerify;
-import org.gwtapp.extension.user.server.local.stub.UserPasswordAdd;
+import org.gwtapp.extension.user.server.local.stub.UserAdd;
 import org.gwtapp.extension.user.server.remote.service.ReCaptchaUserRemoteService;
 import org.gwtapp.startapp.server.service.UserServiceImpl;
 import org.gwtapp.startapp.server.servlet.EnumValidationCssServlet;
@@ -46,7 +46,7 @@ public class StartAppModule extends ServletModule {
 	}
 
 	private void setupServices() {
-		bind(UserPasswordAdd.class).to(UserServiceImpl.class);
+		bind(UserAdd.class).to(UserServiceImpl.class);
 		bind(ReCaptchaUser.class).to(ReCaptchaUserImpl.class);
 		bind(ReCaptchaVerify.class).to(ReCaptchaVerifyImpl.class);
 		bind(ReCaptchaPrivateKey.class).to(ReCaptchaPrivateKeyProvider.class);

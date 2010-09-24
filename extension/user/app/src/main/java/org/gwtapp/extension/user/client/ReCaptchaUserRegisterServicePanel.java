@@ -35,6 +35,7 @@ public class ReCaptchaUserRegisterServicePanel extends
 				create(new ValidationAsyncCallback<Long, ReCaptchaUserValidationException>() {
 					@Override
 					public void onCallbackSuccess(Long result) {
+						ReCaptchaPanel.reload();
 						user.setId(result);
 						getValidator().clearValidation();
 						Window.alert("SUCCESS: User has been added");
