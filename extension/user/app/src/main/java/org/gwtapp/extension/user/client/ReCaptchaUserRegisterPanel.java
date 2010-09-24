@@ -38,6 +38,9 @@ public class ReCaptchaUserRegisterPanel extends
 
 	private final WidgetHandler reCaptcha = new WidgetHandler();
 	private final WidgetHandler register = new WidgetHandler();
+	private final WidgetHandler indicator = new WidgetHandler();
+
+	private boolean inProgress = false;
 
 	@Inject
 	public ReCaptchaUserRegisterPanel(Provider provider) {
@@ -48,6 +51,7 @@ public class ReCaptchaUserRegisterPanel extends
 		add(ReCaptchaUser.USER, new UiHandler<UserPanel>(provider.userPanel));
 		add("reCaptchaContainer", reCaptcha);
 		add("register", register);
+		add("indicator", indicator);
 	}
 
 	@Override
@@ -66,6 +70,7 @@ public class ReCaptchaUserRegisterPanel extends
 			}
 		});
 		showReCaptcha(element, createCallback(callback));
+		setInProgress(isInProgress());
 	}
 
 	@Override
@@ -74,6 +79,18 @@ public class ReCaptchaUserRegisterPanel extends
 		value.setResponse(ReCaptchaPanel.getResponse());
 		value.setChallenge(ReCaptchaPanel.getChallenge());
 		return value;
+	}
+
+	public void setInProgress(boolean inProgress) {
+		this.inProgress = inProgress;
+		if (isTemplated()) {
+			register.getWidget().setEnabled(!inProgress);
+			indicator.getWidget().setVisible(inProgress);
+		}
+	}
+
+	public boolean isInProgress() {
+		return inProgress;
 	}
 
 	protected void onReCaptchaLoaded() {

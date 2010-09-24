@@ -13,5 +13,6 @@
 		<div class="validation recaptcha-invalid">Invalid Re-Captcha</div>
 	</div>
 	<button class="register" t:field="register" t:msg="reCaptchaStyle:recaptcha-loaded;">Register</button>
+	<div t:field="indicator" style="display:none;"><img src="images/indicator.gif"></div>
 </div>
 </t:template>

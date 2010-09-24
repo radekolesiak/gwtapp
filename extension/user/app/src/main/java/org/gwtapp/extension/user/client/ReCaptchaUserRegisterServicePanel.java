@@ -30,12 +30,13 @@ public class ReCaptchaUserRegisterServicePanel extends
 	}
 
 	private void doUserRegister(final ReCaptchaUser user) {
+		setInProgress(true);
 		service.addReCaptchaUser(
 				user,
 				create(new ValidationAsyncCallback<Long, ReCaptchaUserValidationException>() {
 					@Override
 					public void onCallbackSuccess(Long result) {
-						ReCaptchaPanel.reload();
+						onCallback();
 						user.setId(result);
 						getValidator().clearValidation();
 						Window.alert("SUCCESS: User has been added");
@@ -44,12 +45,17 @@ public class ReCaptchaUserRegisterServicePanel extends
 					@Override
 					public void onCallbackValidation(
 							ReCaptchaUserValidationException validation) {
-						ReCaptchaPanel.reload();
+						onCallback();
 						getValidator().setValidation(validation);
 					}
 
 					@Override
 					public void onCallbackFailure(Throwable e) {
+						onCallback();
+					}
+
+					private void onCallback() {
+						setInProgress(false);
 						ReCaptchaPanel.reload();
 					}
 				}));
