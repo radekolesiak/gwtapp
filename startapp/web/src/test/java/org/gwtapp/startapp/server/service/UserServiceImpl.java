@@ -76,6 +76,8 @@ public class UserServiceImpl implements UserService, UserAdd {
 				}
 				if (user.getLogin().length() < 3) {
 					validation.addLogin(Login.TOO_SHORT);
+				} else if (user.getLogin().length() > 25) {
+					validation.addLogin(Login.TOO_LONG);
 				}
 				if (!isLoginAvailable(user.getLogin())) {
 					validation.addLogin(Login.ALREADY_EXISTS);

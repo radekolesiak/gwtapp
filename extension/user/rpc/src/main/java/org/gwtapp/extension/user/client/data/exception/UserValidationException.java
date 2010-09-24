@@ -19,7 +19,7 @@ public class UserValidationException extends ValidationException {
 
 	@ValidationField(LOGIN)
 	public static enum Login implements IsSerializable {
-		EMPTY, TOO_SHORT, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
+		EMPTY, TOO_SHORT, TOO_LONG, NOT_LETTERS_ONLY, NOT_LOWER_CASE, ALREADY_EXISTS
 	}
 
 	@ValidationField(EMAIL)
