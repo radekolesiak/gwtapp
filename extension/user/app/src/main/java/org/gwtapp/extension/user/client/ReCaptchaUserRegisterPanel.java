@@ -14,6 +14,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Element;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
@@ -99,9 +100,10 @@ public class ReCaptchaUserRegisterPanel extends
 		return inProgress;
 	}
 
-	public void addStateChangedHandler(ValueChangeHandler<State> handler) {
-		getTemplatePanelHandlerManager().addHandler(ValueChangeEvent.getType(),
-				handler);
+	public HandlerRegistration addStateChangedHandler(
+			ValueChangeHandler<State> handler) {
+		return getTemplatePanelHandlerManager().addHandler(
+				ValueChangeEvent.getType(), handler);
 	}
 
 	protected void onReCaptchaLoaded() {
