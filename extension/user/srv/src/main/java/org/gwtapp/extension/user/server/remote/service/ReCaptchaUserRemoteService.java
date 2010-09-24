@@ -1,9 +1,11 @@
 package org.gwtapp.extension.user.server.remote.service;
 
+import org.apache.commons.lang.StringUtils;
 import org.gwtapp.core.rpc.exception.RpcException;
 import org.gwtapp.extension.user.client.api.ReCaptchaUserService;
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException;
+import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException.Password;
 import org.gwtapp.extension.user.client.data.exception.ReCaptchaUserValidationException.ReCaptcha;
 import org.gwtapp.extension.user.client.data.exception.UserValidationException;
 import org.gwtapp.extension.user.server.local.stub.ReCaptchaPrivateKey;
@@ -47,7 +49,17 @@ public class ReCaptchaUserRemoteService extends RemoteServiceServlet implements
 		} catch (UserValidationException userValidationException) {
 			validation.setUserValidationException(userValidationException);
 		}
-		// TODO validate password here
+		if (StringUtils.isEmpty(user.getPassword())) {
+			validation.addPassword(Password.EMPTY);
+		} else {
+			if (!user.getPassword().equals(user.getPasswordVerify())) {
+				validation.addPassword(Password.NOT_EQUALS);
+			}
+			if (user.getPassword().length() < 6
+					|| user.getPassword().length() > 20) {
+				validation.addPassword(Password.NOT_BETWEEN_RANGE);
+			}
+		}
 		if (!reCaptchaVerify.verify(user, reCaptchaPrivateKey.getPrivateKey(),
 				getThreadLocalRequest().getRemoteAddr())) {
 			validation.addReCaptcha(ReCaptcha.INVALID);
