@@ -15,6 +15,7 @@ import org.gwtapp.template.client.GwtTestReplaceParameters;
 import org.gwtapp.template.client.GwtTestTemplateRepository;
 import org.gwtapp.template.client.GwtTestUtilsReplaceTemplate;
 import org.gwtapp.template.client.callback.GwtTestTFieldCallback;
+import org.gwtapp.template.client.callback.GwtTestWidgetsCallback;
 import org.gwtapp.template.client.ui.GwtTestBooleanWrapper;
 import org.gwtapp.template.client.ui.GwtTestTemplateFormPanel;
 import org.gwtapp.template.client.ui.GwtTestTemplatePanel;
@@ -41,6 +42,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		suite.addTestSuite(GwtTestTemplateFormPanel.class);
 		suite.addTestSuite(GwtTestWrapperValueCache.class);
 		suite.addTestSuite(GwtTestTFieldCallback.class);
+		suite.addTestSuite(GwtTestWidgetsCallback.class);
 		suite.addTestSuite(GwtTestTemplateModelPanel.class);
 		suite.addTestSuite(GwtTestIOClient.class);
 		return suite;

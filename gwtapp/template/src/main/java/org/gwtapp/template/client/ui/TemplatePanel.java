@@ -1,6 +1,8 @@
 package org.gwtapp.template.client.ui;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
@@ -44,6 +46,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		Element getElement();
 	}
 
+	public static interface WidgetsCallback {
+		void onAddWidgets();
+	}
+
 	protected static class TemplatePanelValueChangeEvent<T> extends
 			ValueChangeEvent<T> {
 		public TemplatePanelValueChangeEvent(T value) {
@@ -72,6 +78,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private T injectInitValue = null;
 
 	private final PipeManager pipeManager = new PipeManager();
+
+	private final List<WidgetsCallback> widgetsCallbacks = new ArrayList<WidgetsCallback>();
 
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -166,6 +174,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		try {
 			callback.template(this, widgetHandlers);
 			onAddWidgets();
+			for (WidgetsCallback callback : widgetsCallbacks) {
+				callback.onAddWidgets();
+			}
+			widgetsCallbacks.clear();
 		} finally {
 			templated = true;
 			if (getInitValue() != null) {
@@ -213,6 +225,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 			ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	};
+
+	public void addWidgetsCallback(WidgetsCallback callback) {
+		widgetsCallbacks.add(callback);
+	}
 
 	public void fireChangeEvent() {
 		ChangeEvent.fireNativeEvent(Document.get().createChangeEvent(), this);
