@@ -109,15 +109,17 @@ public class UserServiceImpl implements UserService, UserAdd {
 	}
 
 	protected boolean isLoginAvailable(String login) {
-		String q = "SELECT u FROM UserEntity u WHERE u.login = '" + login + "'";
+		String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
 		Query query = em.get().createQuery(q);
+		query.setParameter("login", login);
 		query.setMaxResults(1);
 		return query.getResultList().isEmpty();
 	}
 
 	protected boolean isEmailAvailable(String email) {
-		String q = "SELECT u FROM UserEntity u WHERE u.email = '" + email + "'";
+		String q = "SELECT u FROM UserEntity u WHERE u.email = :email";
 		Query query = em.get().createQuery(q);
+		query.setParameter("email", email);
 		query.setMaxResults(1);
 		return query.getResultList().isEmpty();
 	}

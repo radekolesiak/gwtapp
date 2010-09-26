@@ -10,20 +10,20 @@ public class HashModelData extends AbstractModelData implements HasMetaField {
 
 	@SuppressWarnings("rawtypes")
 	@Transient
-	private Map<String, MetaField> autofields = new HashMap<String, MetaField>();
+	private Map<String, MetaField> metafields = new HashMap<String, MetaField>();
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void addMetaField(MetaField field) {
 		assert field.name() != null && !field.name().isEmpty();
-		autofields.put(field.name(), field);
+		metafields.put(field.name(), field);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public <X> X get(String property) {
-		if (autofields.containsKey(property)) {
-			MetaField field = autofields.get(property);
+		if (metafields.containsKey(property)) {
+			MetaField field = metafields.get(property);
 			return (X) field.get(this);
 		} else {
 			throw new IllegalArgumentException("Unknown property: " + property);
@@ -33,8 +33,8 @@ public class HashModelData extends AbstractModelData implements HasMetaField {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public <X> X set(String property, X value) {
-		if (autofields.containsKey(property)) {
-			MetaField field = autofields.get(property);
+		if (metafields.containsKey(property)) {
+			MetaField field = metafields.get(property);
 			X oldValue = (X) field.get(this);
 			field.set(this, value);
 			return oldValue;
@@ -45,7 +45,7 @@ public class HashModelData extends AbstractModelData implements HasMetaField {
 
 	@Override
 	public Collection<String> getPropertyNames() {
-		return autofields.keySet();
+		return metafields.keySet();
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -54,7 +54,7 @@ public class HashModelData extends AbstractModelData implements HasMetaField {
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
 		boolean empty = true;
-		for (Map.Entry<String, MetaField> entry : autofields.entrySet()) {
+		for (Map.Entry<String, MetaField> entry : metafields.entrySet()) {
 			if (!empty) {
 				sb.append(",");
 			}
