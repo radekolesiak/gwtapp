@@ -7,6 +7,7 @@ import org.gwtapp.core.client.di.GwtTestAsyncCallbackInjector;
 import org.gwtapp.core.client.pipe.GwtTestPipe;
 import org.gwtapp.core.client.ui.GwtTestDelegatedPanel;
 import org.gwtapp.extension.user.client.test.GwtTestUser;
+import org.gwtapp.extension.widget.client.ui.template.GwtTestWidget;
 import org.gwtapp.form.client.ui.GwtTestTemplateModelPanel;
 import org.gwtapp.io.client.GwtTestIOClient;
 import org.gwtapp.template.client.GwtTestHtmlRepository;
@@ -44,6 +45,7 @@ public class GwtTestSuiteStartApp extends GWTTestSuite {
 		suite.addTestSuite(GwtTestTFieldCallback.class);
 		suite.addTestSuite(GwtTestWidgetsCallback.class);
 		suite.addTestSuite(GwtTestTemplateModelPanel.class);
+		suite.addTestSuite(GwtTestWidget.class);
 		suite.addTestSuite(GwtTestIOClient.class);
 		return suite;
 	}
