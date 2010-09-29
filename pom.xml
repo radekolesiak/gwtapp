@@ -15,7 +15,7 @@
 		<ccalc.version>1.0</ccalc.version>
 		<gwt.version>2.0.4</gwt.version>
 		<com.google.gwt.version>2.0.4</com.google.gwt.version>
-		<gae.version>1.3.6</gae.version>
+		<gae.version>1.3.7</gae.version>
 		<gin.version>1.0</gin.version>
 		<guice.version>2.0</guice.version>
 		<openjpa.version>2.0.0</openjpa.version>
