@@ -92,6 +92,13 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.gwtapp.extension</groupId>
+			<artifactId>extension-widget</artifactId>
+			<version>${gwtapp.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.gwtapp.ccalc</groupId>
 			<artifactId>ccalc-srv</artifactId>
 			<version>${ccalc.version}</version>
