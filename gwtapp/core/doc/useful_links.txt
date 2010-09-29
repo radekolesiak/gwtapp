@@ -13,6 +13,7 @@ II. GWTApp HTML module:
 	http://www.webtoolkit.info/javascript-base64.html , http://www.webtoolkit.info/licence.html
 	
 III. GAE Maven:
+	http://code.google.com/p/maven-gae-plugin/
 	http://www.kindleit.net/maven_gae_plugin/plugin-info.html
 	http://www.kindleit.net/maven_gae_plugin/examples/passwordPrompt.html
 	http://64.34.178.139/maven_gae_plugin/usage.html
