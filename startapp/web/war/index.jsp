@@ -48,7 +48,7 @@
 							<li>Strong typing in MVC including Java generics.</li>
 							<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
 							<!-- <li>Very simple one-to-one mapping of GWT RPC servlets to REST. The <a href="rest.jsp">sample</a>.</li> -->
-							<li>Pipe channels for MVC controllers communication over like-tree MVC widgets hierarchy.</li>
+							<li>Pipe channels for MVC controllers communication to skip over a MVC widgets like-tree hierarchy.</li>
 							<li>Modular structure in Maven.</li>
 						</ul>
     				</div>
