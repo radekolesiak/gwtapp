@@ -12,6 +12,7 @@ import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
@@ -58,6 +59,20 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	private final UiHandler<ListBox> listBox;
 
+	private final ChangeHandler handler = new ChangeHandler() {
+		@Override
+		public void onChange(ChangeEvent event) {
+			int selected = listBox.getWidget().getSelectedIndex();
+			if (selected >= 0) {
+				setValue(ListPanel.this.items.get(selected), true);
+			} else if (getValue() != null) {
+				setValue(null);
+			}
+		}
+	};
+
+	private HandlerRegistration registration = null;
+
 	public ListPanel() {
 		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
 				new DefaultFormatter<T>(), new ArrayList<T>(), true);
@@ -75,17 +90,6 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 		super(callback);
 		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
-		listBox.addChangeHandler(new ChangeHandler() {
-			@Override
-			public void onChange(ChangeEvent event) {
-				int selected = listBox.getSelectedIndex();
-				if (selected >= 0) {
-					setValue(ListPanel.this.items.get(selected), true);
-				} else if (getValue() != null) {
-					setValue(null);
-				}
-			}
-		});
 		if (items != null) {
 			setItems(items);
 		}
@@ -97,6 +101,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 				}
 			});
 		}
+		setHandlerConnected(true);
 	}
 
 	@Override
@@ -146,16 +151,34 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 	}
 
 	protected void selectTo(T value) {
-		if (value != null) {
-			for (int i = 0; i < items.size(); i++) {
-				T item = items.get(i);
-				if (value == item || value.equals(item)) {
-					listBox.getWidget().setSelectedIndex(i);
-					break;
+		try {
+			setHandlerConnected(false);
+			if (value != null) {
+				for (int i = 0; i < items.size(); i++) {
+					T item = items.get(i);
+					if (value == item || value.equals(item)) {
+						listBox.getWidget().setSelectedIndex(i);
+						break;
+					}
 				}
+			} else {
+				listBox.getWidget().setSelectedIndex(-1);
+			}
+		} finally {
+			setHandlerConnected(true);
+		}
+	}
+
+	private void setHandlerConnected(boolean connect) {
+		if (connect) {
+			if (registration == null) {
+				registration = listBox.getWidget().addChangeHandler(handler);
 			}
 		} else {
-			listBox.getWidget().setSelectedIndex(-1);
+			if (registration != null) {
+				registration.removeHandler();
+				registration = null;
+			}
 		}
 	}
 }

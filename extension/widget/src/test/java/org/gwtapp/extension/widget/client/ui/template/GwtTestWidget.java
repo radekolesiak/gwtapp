@@ -124,4 +124,38 @@ public class GwtTestWidget extends WidgetTestCase {
 		assertNull(panel.getValue());
 		assertEquals(-1, panel.getSelectedIndex());
 	}
+
+	@Test
+	public void testValueChangeHandlerCount() {
+		final Value<Integer> count = new Value<Integer>(0);
+		final Value<Double> value = new Value<Double>();
+		ListPanel<Double> panel = new ListPanel<Double>();
+		List<Double> items = new ArrayList<Double>();
+		items.add(1.3);
+		items.add(null);
+		items.add(2.4);
+		items.add(null);
+		items.add(3.5);
+		items.add(null);
+		items.add(2.4);
+		panel.setItems(items);
+		panel.addValueChangeHandler(new ValueChangeHandler<Double>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Double> event) {
+				count.set(count.get() + 1);
+				value.set(event.getValue());
+			}
+		});
+		RootPanel.get().add(panel);
+		panel.setValue(3.5);
+		assertEquals(new Integer(0), count.get());
+		assertNull(value.get());
+		assertEquals(new Double(3.5), panel.getValue());
+		count.set(0);
+		value.set(null);
+		panel.setValue(3.5, true);
+		assertEquals(new Integer(1), count.get());
+		assertEquals(new Double(3.5), value.get());
+		assertEquals(new Double(3.5), panel.getValue());
+	}
 }
