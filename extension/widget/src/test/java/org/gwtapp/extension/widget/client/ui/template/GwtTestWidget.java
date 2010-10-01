@@ -35,6 +35,8 @@ public class GwtTestWidget extends WidgetTestCase {
 		items.add(2.4);
 		items.add(null);
 		items.add(3.5);
+		items.add(null);
+		items.add(2.4);
 		panel.setItems(items);
 		panel.setFormatter(formatter);
 		assertEquals(items, panel.getItems());
