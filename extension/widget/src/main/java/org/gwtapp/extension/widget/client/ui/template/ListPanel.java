@@ -82,7 +82,11 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 			@Override
 			public void onChange(ChangeEvent event) {
 				int selected = listBox.getSelectedIndex();
-				setValue(ListPanel.this.items.get(selected), true);
+				if (selected >= 0) {
+					setValue(ListPanel.this.items.get(selected), true);
+				} else if (getValue() != null) {
+					setValue(null);
+				}
 			}
 		});
 		if (items != null) {
