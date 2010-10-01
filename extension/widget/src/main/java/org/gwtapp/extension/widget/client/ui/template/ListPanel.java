@@ -58,8 +58,6 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	private final UiHandler<ListBox> listBox;
 
-	private boolean fixedTemplate;
-
 	public ListPanel() {
 		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
 				new DefaultFormatter<T>(), new ArrayList<T>(), true);
@@ -77,7 +75,6 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 		super(callback);
 		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
-		this.fixedTemplate = fixedTemplate;
 		listBox.addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
@@ -92,17 +89,14 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 		if (items != null) {
 			setItems(items);
 		}
-	}
-
-	@Override
-	public final void onAddWidgets() {
 		if (fixedTemplate) {
-			add(listBox.getWidget());
+			addWidgetsCallback(new WidgetsCallback() {
+				@Override
+				public void onAddWidgets() {
+					add(listBox);
+				}
+			});
 		}
-		onAddListPanelWidgets();
-	}
-
-	public void onAddListPanelWidgets() {
 	}
 
 	@Override
