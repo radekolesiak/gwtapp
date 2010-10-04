@@ -6,6 +6,7 @@ import java.util.List;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.extension.widget.client.WidgetTestCase;
 import org.gwtapp.extension.widget.client.ui.template.ListPanel.DefaultFormatter;
+import org.gwtapp.extension.widget.client.ui.template.ListPanel.Formatter;
 import org.junit.Test;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -157,5 +158,13 @@ public class GwtTestWidget extends WidgetTestCase {
 		assertEquals(new Integer(1), count.get());
 		assertEquals(new Double(3.5), value.get());
 		assertEquals(new Double(3.5), panel.getValue());
+	}
+
+	@Test
+	public void testDefaultFormatter() {
+		Formatter<Double> formatter = new ListPanel.DefaultFormatter<Double>();
+		assertEquals("null", formatter.format(null, null, -1));
+		assertEquals("1.1", formatter.format(null, 1.1, -1));
+		assertEquals("-31.31", formatter.format(null, -31.31, -1));
 	}
 }
