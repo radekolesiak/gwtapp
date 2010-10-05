@@ -43,14 +43,15 @@
     					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features and benefits like:</div>
 	    				<ul>
 							<li>Declarative HTML templating at runtime without application recompiling and templates content generated dynamically by JSP and JSTL.</li>
-							<li>Holds GWT's as a reliable business logic framework by moving out a view decorations into HTML templates.</li>
+							<li>Holds GWT's primarily as a reliable business logic framework by moving out a view decorations into HTML templates.</li>
 							<li>SEO support by means of HTML templates embeddable into the main page.</li>
 							<li>MetaField to simulate Java annotation and for RPC data auto binding.</li>
 							<li>Strong typing in MVC including Java generics.</li>
 							<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
 							<!-- <li>Very simple one-to-one mapping of GWT RPC servlets to REST. The <a href="rest.jsp">sample</a>.</li> -->
-							<li>Pipe channels for MVC controllers communication to skip over MVC widgets like-tree hierarchy.</li>
-							<li>Modular structure in Maven.</li>
+							<li>Like-tree hierarchical MVC structure.</li>
+							<li>Pipe channels for MVC controllers communication to skip over units in like-tree MVC hierarchy.</li>
+							<li>Modular acyclic structure in Maven.</li>
 						</ul>
     				</div>
     			</div>
@@ -160,6 +161,24 @@
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
+							<div class="cell">
+								<b>Like-tree hierarchical MVC structure</b>
+								<ul>
+									<li>any controller can split, merge and transform a domain model</li>
+									<li>domain models are <a href="http://en.wikipedia.org/wiki/Transitive_relation">transitive</a> on any path of tree structure</li>
+									<li>domain models are passive and:
+									<ul>
+										<li>only view and controller can operate upon events related to their state and domain model</li>
+										<li>only controller can send events to another controller</li>
+										<li>only controller can update a model and state of another unit</li>										
+									</ul> 
+								</ul>
+							</div>
+						</div>
+					</div>
+			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
+					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
+						<div class="row">
 							<div class="cell" style="text-align: center;"><b>Module unit and its layers dependency structure</b></div>
 							<div class="cell" style="text-align: center;"><b>Modules dependency structure</b></div>
 						</div>
@@ -226,7 +245,7 @@
 									<li>Cross browser, optimal and obfuscated JavaScript code generator</li>
 									<li>Code splitting</li>
 									<li>UI widgets quite similar to Swing MVC</li>
-									<li>Integration with IDE like Eclipse, IDEA</li>
+									<li>Integration with IDE like Eclipse, IntelliJ IDEA, NetBeans</li>
 									<li>Easy and reliable code refactorization</li>
 								</ul> 
 							</div>
