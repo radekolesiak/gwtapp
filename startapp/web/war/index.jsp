@@ -170,7 +170,7 @@
 									<ul>
 										<li>only view and controller can operate upon events related to their state and domain model</li>
 										<li>only controller can send events to another controller</li>
-										<li>only controller can update a model and state of another unit</li>										
+										<li>only controller can update a model and state of another component</li>										
 									</ul> 
 								</ul>
 							</div>
