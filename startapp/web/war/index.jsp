@@ -168,9 +168,9 @@
 									<li>domain models are <a href="http://en.wikipedia.org/wiki/Transitive_relation">transitive</a> on any path of tree structure</li>
 									<li>domain models are passive and:
 									<ul>
-										<li>view and controller can operate upon events and methods related to their own component's local state and domain model</li>
+										<li>view and controller can operate on local state and domain model of their own component upon events and methods</li>
 										<li>controller can return a model and state or send related event to another controller</li>
-										<li>controller can update and read a model and state of another UI component</li>										
+										<li>controller can update and read a model and state of another UI component unit</li>										
 									</ul> 
 								</ul>
 							</div>
