@@ -43,7 +43,7 @@
     					<div style="margin-left:25px;margin-top:10px;"><b>GWT App</b> provides several features and benefits like:</div>
 	    				<ul>
 							<li>Declarative HTML templating at runtime without application recompiling and templates content generated dynamically by JSP and JSTL.</li>
-							<li>Reducing GWT's role as a reliable business logic framework by moving out a view decorations into HTML templates.</li>
+							<li>Holds GWT's as a reliable business logic framework by moving out a view decorations into HTML templates.</li>
 							<li>SEO support by means of HTML templates embeddable into the main page.</li>
 							<li>MetaField to simulate Java annotation and for RPC data auto binding.</li>
 							<li>Strong typing in MVC including Java generics.</li>
