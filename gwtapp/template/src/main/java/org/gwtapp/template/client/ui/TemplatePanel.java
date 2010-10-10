@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.pipe.PipeManager;
+import org.gwtapp.core.client.ui.HasEnable;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
@@ -31,7 +32,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
-		HasName, HasChangeHandlers, HasClickHandlers {
+		HasName, HasChangeHandlers, HasClickHandlers, HasEnable {
 
 	public static interface Callback {
 		void template(TemplatePanel<?> owner,
@@ -80,6 +81,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	private final PipeManager pipeManager = new PipeManager();
 
 	private final List<WidgetsCallback> widgetsCallbacks = new ArrayList<WidgetsCallback>();
+
+	private boolean enabled = true;
 
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
@@ -135,6 +138,15 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		add(w, getElement());
 	}
 
+	public void add(String name, final Widget widget) {
+		add(name, new TemplateHandler() {
+			@Override
+			public Widget onWidget(String id) {
+				return widget;
+			}
+		});
+	}
+
 	public <H extends TemplateHandler & HasName> H add(H handler) {
 		return add(handler.getName(), handler);
 	}
@@ -143,15 +155,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		assert name != null && !name.isEmpty();
 		widgetHandlers.put(name, handler);
 		return handler;
-	}
-
-	public void add(String name, final Widget widget) {
-		add(name, new TemplateHandler() {
-			@Override
-			public Widget onWidget(String id) {
-				return widget;
-			}
-		});
 	}
 
 	@Override
@@ -292,5 +295,21 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 
 	public PipeManager getPipeManager() {
 		return pipeManager;
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+		for (int i = 0; i < getWidgetCount(); i++) {
+			Widget widget = getWidget(i);
+			if (widget instanceof HasEnable) {
+				((HasEnable) widget).setEnabled(enabled);
+			}
+		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return enabled;
 	}
 }

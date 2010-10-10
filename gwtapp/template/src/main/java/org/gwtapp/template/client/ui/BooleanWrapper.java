@@ -1,5 +1,7 @@
 package org.gwtapp.template.client.ui;
 
+import org.gwtapp.core.client.ui.HasEnable;
+
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -10,7 +12,8 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
 
-public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean> {
+public class BooleanWrapper extends WidgetWrapper implements HasValue<Boolean>,
+		HasEnable {
 
 	private final InputElement e;
 	private boolean value;

@@ -94,7 +94,7 @@ public class ReCaptchaUserRegisterPanel extends
 	public void setInProgress(boolean inProgress) {
 		this.inProgress = inProgress;
 		if (isTemplated()) {
-			register.getWidget().setEnabled(!inProgress);
+			setEnabled(!inProgress);
 			indicator.getWidget().setVisible(inProgress);
 		}
 	}
@@ -105,7 +105,8 @@ public class ReCaptchaUserRegisterPanel extends
 
 	public HandlerRegistration addStateChangedHandler(
 			ValueChangeHandler<State> handler) {
-		return stateHandlerManager.addHandler(ValueChangeEvent.getType(), handler);
+		return stateHandlerManager.addHandler(ValueChangeEvent.getType(),
+				handler);
 	}
 
 	protected void onReCaptchaLoaded() {
@@ -117,8 +118,8 @@ public class ReCaptchaUserRegisterPanel extends
 	}
 
 	protected void fireStateChanged(State state) {
-		stateHandlerManager
-				.fireEvent(new TemplatePanelValueChangeEvent<State>(state));
+		stateHandlerManager.fireEvent(new TemplatePanelValueChangeEvent<State>(
+				state));
 	}
 
 	protected native void showReCaptcha(Element element,

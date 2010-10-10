@@ -1,5 +1,6 @@
 package org.gwtapp.template.client.ui;
 
+import org.gwtapp.core.client.ui.HasEnable;
 import org.gwtapp.template.client.TemplateUtils;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -8,7 +9,8 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 
-public class PasswordTextBoxWrapper extends PasswordTextBox {
+public class PasswordTextBoxWrapper extends PasswordTextBox implements
+		HasEnable {
 
 	private String value;
 

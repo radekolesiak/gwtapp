@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 		em.get().persist(user);
 	}
 
-	protected boolean isLoginAvailable(String login) {
+	private boolean isLoginAvailable(String login) {
 		String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
 		Query query = em.get().createQuery(q);
 		query.setParameter("login", login);
@@ -116,7 +116,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 		return query.getResultList().isEmpty();
 	}
 
-	protected boolean isEmailAvailable(String email) {
+	private boolean isEmailAvailable(String email) {
 		String q = "SELECT u FROM UserEntity u WHERE u.email = :email";
 		Query query = em.get().createQuery(q);
 		query.setParameter("email", email);
