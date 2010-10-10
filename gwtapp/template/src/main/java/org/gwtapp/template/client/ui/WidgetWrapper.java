@@ -1,5 +1,7 @@
 package org.gwtapp.template.client.ui;
 
+import org.gwtapp.core.client.ui.HasEnable;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;

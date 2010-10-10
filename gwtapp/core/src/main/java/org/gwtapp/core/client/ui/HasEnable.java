@@ -1,4 +1,4 @@
-package org.gwtapp.template.client.ui;
+package org.gwtapp.core.client.ui;
 
 public interface HasEnable {
 	
