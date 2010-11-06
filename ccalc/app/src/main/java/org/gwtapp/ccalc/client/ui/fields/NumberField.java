@@ -60,8 +60,8 @@ public class NumberField<T extends Number & Comparable<T>> extends FlowPanel
 			public void onValueChange(ValueChangeEvent<String> event) {
 				final HandlerRegistration hr = addHandler(handler,
 						ValueChangeEvent.getType());
-				ValueChangeEvent.fire(NumberField.this, NumberField.this
-						.getValue());
+				ValueChangeEvent.fire(NumberField.this,
+						NumberField.this.getValue());
 				DeferredCommand.addCommand(new Command() {
 					@Override
 					public void execute() {
