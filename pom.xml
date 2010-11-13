@@ -10,6 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- dependencies -->
 		<gwtapp.version>1.3.0</gwtapp.version>
 		<ccalc.version>1.0</ccalc.version>
