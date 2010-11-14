@@ -47,6 +47,12 @@
 			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- GWT deps -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
