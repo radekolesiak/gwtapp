@@ -22,9 +22,10 @@
 	</developers>
 
 	<dependencies>
+		<!-- GWTApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>startapp-rpc</artifactId>
+			<artifactId>gwtapp-template</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
@@ -33,12 +34,24 @@
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-validation</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<!-- StartApp -->
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>startapp-rpc</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<!-- Test -->
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- GWT deps -->
+		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
