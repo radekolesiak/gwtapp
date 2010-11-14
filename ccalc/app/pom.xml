@@ -22,11 +22,13 @@
 	</developers>
 
 	<dependencies>
+		<!-- CCalc -->
 		<dependency>
 			<groupId>org.gwtapp.ccalc</groupId>
 			<artifactId>ccalc-rpc</artifactId>
 			<version>${ccalc.version}</version>
 		</dependency>
+		<!-- GWTApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-form</artifactId>
@@ -39,38 +41,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-widget</artifactId>
-			<version>${gwtapp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
+		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<!-- GWT deps -->
-		<dependency>
-			<groupId>com.googlecode.gwt.inject</groupId>
-			<artifactId>gin</artifactId>
-			<version>${gin.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
