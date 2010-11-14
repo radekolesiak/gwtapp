@@ -30,7 +30,7 @@
 		<junit.version>4.7</junit.version>
 		<log4j.version>1.2.13</log4j.version>
 		<taglibs.standard.version>1.1.2</taglibs.standard.version>
-		<jstl.version>1.1.2</jstl.version>
+		<jstl.version>1.2</jstl.version>
 		<jdo2.api.version>2.3-eb</jdo2.api.version>
 		<javax.transaction.jta.version>1.1</javax.transaction.jta.version>
 		<datanucleus.core.version>1.1.5</datanucleus.core.version>
