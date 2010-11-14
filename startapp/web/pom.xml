@@ -23,6 +23,7 @@
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-io</artifactId>
 			<version>${gwtapp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- StartApp -->
 		<dependency>
@@ -42,13 +43,13 @@
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>${taglibs.standard.version}</version>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		<!-- GAE -->
 		<dependency>
@@ -74,7 +75,7 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -192,9 +193,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<properties>
-		<gwt.module>org.gwtapp.startapp.StartAppEntryPoint</gwt.module>
-	</properties>
 	<build>
 		<outputDirectory>war/WEB-INF/classes</outputDirectory>		
 		<resources>

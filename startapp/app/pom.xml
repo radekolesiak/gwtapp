@@ -27,22 +27,26 @@
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-template</artifactId>
 			<version>${gwtapp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-form</artifactId>
 			<version>${gwtapp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-validation</artifactId>
 			<version>${gwtapp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-rpc</artifactId>
 			<version>${gwtapp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- Test -->
 		<dependency>
