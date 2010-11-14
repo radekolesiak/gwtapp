@@ -20,50 +20,18 @@
 	</developers>
 
 	<dependencies>
+		<!-- GWTApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-form</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-template</artifactId>
-			<version>${gwtapp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-core</artifactId>
-			<version>${gwtapp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
+		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<!-- GWT -->
-		<dependency>
-			<groupId>com.googlecode.gwt.inject</groupId>
-			<artifactId>gin</artifactId>
-			<version>${gin.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>

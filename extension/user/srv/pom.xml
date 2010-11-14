@@ -20,24 +20,13 @@
 	</developers>
 
 	<dependencies>
+		<!-- GWTApp -->
 		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>${guice.version}</version>
-			<scope>provided</scope>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-form</artifactId>
+			<version>${gwtapp.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-servlet</artifactId>
-			<version>${guice.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- General -->
 		<dependency>
 			<groupId>net.tanesha.recaptcha4j</groupId>
 			<artifactId>recaptcha4j</artifactId>
@@ -49,6 +38,7 @@
 			<version>${derby.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Test -->
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa-persistence-jdbc</artifactId>

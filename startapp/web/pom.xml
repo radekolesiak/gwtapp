@@ -18,65 +18,31 @@
 		</developer>
 	</developers>
 	<dependencies>
-		<!-- GWTApp -->
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-io</artifactId>
-			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-app</artifactId>
 			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-srv</artifactId>
 			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<!-- JSTL -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>${taglibs.standard.version}</version>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- GAE -->
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
 		<!-- GWT -->
-		<dependency>
-			<groupId>com.googlecode.gwt.inject</groupId>
-			<artifactId>gin</artifactId>
-			<version>${gin.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
@@ -85,22 +51,9 @@
 		</dependency>
 		<!-- General -->
 		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa-persistence</artifactId>
-			<version>${openjpa.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.wideplay.warp</groupId>
 			<artifactId>warp-persist</artifactId>
 			<version>${warp.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<!-- Test -->
 		<dependency>
@@ -193,6 +146,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<outputDirectory>war/WEB-INF/classes</outputDirectory>		
 		<resources>

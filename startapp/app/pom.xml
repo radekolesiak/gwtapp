@@ -22,31 +22,22 @@
 	</developers>
 
 	<dependencies>
-		<!-- GWTApp -->
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-template</artifactId>
-			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-form</artifactId>
-			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-validation</artifactId>
-			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-rpc</artifactId>
 			<version>${gwtapp.version}</version>
-			<scope>provided</scope>
+		</dependency>
+		<!-- GWTApp -->
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-form</artifactId>
+			<version>${gwtapp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.version}</version>
 		</dependency>
 		<!-- Test -->
 		<dependency>
@@ -54,19 +45,6 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<!-- GWT -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

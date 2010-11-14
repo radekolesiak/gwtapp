@@ -20,32 +20,24 @@
 	</developers>
 
 	<dependencies>
+		<!-- StartApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>startapp-rpc</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
+		<!-- GWTApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-rest</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-			<scope>provided</scope>
+			<groupId>org.gwtapp</groupId>
+			<artifactId>gwtapp-io</artifactId>
+			<version>${gwtapp.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>${guice.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-servlet</artifactId>
-			<version>${guice.version}</version>
-		</dependency>
+		<!-- General -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -55,17 +47,12 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons.io.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
 			<version>${gae.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
