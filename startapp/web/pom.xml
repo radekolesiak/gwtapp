@@ -58,7 +58,7 @@
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- General -->
+		<!-- Warp -->
 		<dependency>
 			<groupId>com.wideplay.warp</groupId>
 			<artifactId>warp-persist</artifactId>
