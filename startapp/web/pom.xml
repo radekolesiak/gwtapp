@@ -54,6 +54,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
@@ -108,6 +114,20 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>${derby.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa-all</artifactId>
+			<version>${openjpa.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- 
+		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
@@ -116,14 +136,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-user-srv</artifactId>
+			<artifactId>extension-widget</artifactId>
 			<version>${gwtapp.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-widget</artifactId>
+			<artifactId>extension-user-srv</artifactId>
 			<version>${gwtapp.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
@@ -141,19 +161,8 @@
 			<version>${ccalc.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>${derby.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa-all</artifactId>
-			<version>${openjpa.version}</version>
-			<scope>test</scope>
-		</dependency>
+		</dependency>		
+		 -->
 	</dependencies>
 
 	<build>
