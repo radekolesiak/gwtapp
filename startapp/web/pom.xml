@@ -126,17 +126,16 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-user-app</artifactId>
+			<artifactId>extension-widget</artifactId>
 			<version>${gwtapp.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
-			<artifactId>extension-widget</artifactId>
+			<artifactId>extension-user-app</artifactId>
 			<version>${gwtapp.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
@@ -162,7 +161,6 @@
 			<classifier>tests</classifier>
 			<scope>test</scope>
 		</dependency>		
-		 -->
 	</dependencies>
 
 	<build>
