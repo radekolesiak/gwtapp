@@ -72,6 +72,12 @@
 		</dependency>
 		<!-- Test -->
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-core</artifactId>
 			<version>${gwtapp.version}</version>
@@ -125,7 +131,6 @@
 			<version>${openjpa.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.gwtapp.extension</groupId>
 			<artifactId>extension-widget</artifactId>
@@ -160,7 +165,7 @@
 			<version>${ccalc.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
