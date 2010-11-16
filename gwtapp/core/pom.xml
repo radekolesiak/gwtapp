@@ -22,7 +22,7 @@
 	<dependencies>
 		<!-- GWT -->
 		<dependency>
-			<groupId>com.googlecode.gwt.inject</groupId>
+			<groupId>com.google.gwt.inject</groupId>
 			<artifactId>gin</artifactId>
 			<version>${gin.version}</version>
 		</dependency>
@@ -47,7 +47,7 @@
 			<groupId>com.google.inject.extensions</groupId>
 			<artifactId>guice-servlet</artifactId>
 			<version>${guice.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa-persistence</artifactId>
