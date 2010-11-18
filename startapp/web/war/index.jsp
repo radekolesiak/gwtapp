@@ -238,11 +238,11 @@
 								<b>GWT features and benefits:</b>
 								<ul>
 									<li>Java language</li>
-									<li>RPC api, data structures and exceptions in Java shared on client and server sides</li>
-									<li><a href="http://code.google.com/p/google-gin/">Gin</a> Dependency Injection</li>
+									<li>RPC api, data structures and exceptions Java single code shared on client and server sides</li>
+									<li><a href="http://code.google.com/p/google-gin/">Gin</a> dependency injection</li>
 									<li>Debugging</li>
 									<li>JUnit testing</li>
-									<li>Cross browser, optimal and obfuscated JavaScript code generator</li>
+									<li>Cross browser, optimal and obfuscated JavaScript code generation</li>
 									<li>Code splitting</li>
 									<li>UI widgets quite similar to Swing MVC</li>
 									<li>Integration with IDE like Eclipse, IntelliJ IDEA, NetBeans</li>
