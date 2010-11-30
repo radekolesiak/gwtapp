@@ -32,13 +32,13 @@
 			<artifactId>recaptcha4j</artifactId>
 			<version>${recaptcha4j.version}</version>
 		</dependency>
+		<!-- Test -->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<version>${derby.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Test -->
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa-persistence-jdbc</artifactId>
