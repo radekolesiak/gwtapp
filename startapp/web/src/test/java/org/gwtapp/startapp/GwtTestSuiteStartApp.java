@@ -3,6 +3,7 @@ package org.gwtapp.startapp;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.gwtapp.core.client.GwtTestRPC;
 import org.gwtapp.core.client.di.GwtTestAsyncCallbackInjector;
 import org.gwtapp.core.client.pipe.GwtTestPipe;
 import org.gwtapp.core.client.ui.GwtTestDelegatedPanel;
@@ -28,6 +29,7 @@ import com.google.gwt.junit.tools.GWTTestSuite;
 public class GwtTestSuiteStartApp extends GWTTestSuite {
 	public static Test suite() throws ClassNotFoundException {
 		TestSuite suite = new TestSuite("Tests for GWTApp and StartApp applications");
+		suite.addTestSuite(GwtTestRPC.class);
 		suite.addTestSuite(GwtTestUser.class);
 		suite.addTestSuite(GwtTestPipe.class);
 		suite.addTestSuite(GwtTestDelegatedPanel.class);

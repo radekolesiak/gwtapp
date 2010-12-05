@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<servlet path='/a.rpc' class='org.gwtapp.core.server.AServiceImpl' />
+	<inherits name='org.gwtapp.core.Core' />
+	<source path='client' />
+	<source path='rpc' />
+</module>

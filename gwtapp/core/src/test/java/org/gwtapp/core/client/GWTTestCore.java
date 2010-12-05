@@ -5,6 +5,6 @@ import com.google.gwt.junit.client.GWTTestCase;
 public class GWTTestCore extends GWTTestCase {
 	@Override
 	public String getModuleName() {
-		return "org.gwtapp.core.Core";
+		return "org.gwtapp.core.CoreTest";
 	}
 }
