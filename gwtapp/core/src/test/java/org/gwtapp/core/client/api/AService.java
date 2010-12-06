@@ -7,5 +7,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("a.rpc")
 public interface AService extends RemoteService {
+
 	B getB();
+
+	boolean setB(B b);
 }
