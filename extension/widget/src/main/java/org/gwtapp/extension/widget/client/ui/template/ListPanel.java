@@ -112,10 +112,10 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 
 	@Override
 	public void setValues(Collection<T> items) {
-		setItems(items, -1);
+		setValues(items, -1);
 	}
 
-	public void setItems(final Collection<T> items, int selected) {
+	public void setValues(final Collection<T> items, int selected) {
 		this.items = new ArrayList<T>(items);
 		listBox.getWidget().clear();
 		T selectedItem = null;
