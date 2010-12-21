@@ -53,7 +53,7 @@ public class ListPanelTestManual extends FlowPanel {
 	public ListPanelTestManual() {
 		ListPanel<Item> listPanel = new ListPanel<Item>();
 		listPanel.setFormatter(new Formatter());
-		listPanel.setItems(new ItemsProvider().get());
+		listPanel.setValues(new ItemsProvider().get());
 		addListPanel(StartAppManualTestEntryPoint.gin.getListPanel());
 		addListPanel(listPanel);
 	}
@@ -68,7 +68,7 @@ public class ListPanelTestManual extends FlowPanel {
 			}
 		});
 		add(listPanel);
-		for (final Item item : listPanel.getItems()) {
+		for (final Item item : listPanel.getValues()) {
 			Button btn = new Button("Set item: {" + "name=" + item.name + " "
 					+ "surname=" + item.surname + "}");
 			btn.addClickHandler(new ClickHandler() {

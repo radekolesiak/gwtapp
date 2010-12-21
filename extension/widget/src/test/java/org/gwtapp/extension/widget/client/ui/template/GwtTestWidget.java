@@ -30,10 +30,10 @@ public class GwtTestWidget extends WidgetTestCase {
 	public void testInitState() {
 		ListPanel<Double> panel = new ListPanel<Double>();
 		assertNotNull(panel.getFormatter());
-		assertNotNull(panel.getItems());
+		assertNotNull(panel.getValues());
 		assertNull(panel.getValue());
 		assertTrue(panel.getFormatter() instanceof DefaultFormatter);
-		assertTrue(panel.getItems() instanceof ArrayList);
+		assertTrue(panel.getValues() instanceof ArrayList);
 		List<Double> items = new ArrayList<Double>();
 		DoubleFormatter formatter = new DoubleFormatter();
 		items.add(1.3);
@@ -43,9 +43,9 @@ public class GwtTestWidget extends WidgetTestCase {
 		items.add(3.5);
 		items.add(null);
 		items.add(2.4);
-		panel.setItems(items);
+		panel.setValues(items);
 		panel.setFormatter(formatter);
-		assertEquals(items, panel.getItems());
+		assertEquals(items, panel.getValues());
 		assertEquals(formatter, panel.getFormatter());
 		assertNull(panel.getValue());
 	}
@@ -62,7 +62,7 @@ public class GwtTestWidget extends WidgetTestCase {
 		items.add(3.5);
 		items.add(null);
 		items.add(2.4);
-		panel.setItems(items);
+		panel.setValues(items);
 		panel.setFormatter(formatter);
 		panel.setValue(null);
 		assertNull(panel.getValue());
@@ -89,7 +89,7 @@ public class GwtTestWidget extends WidgetTestCase {
 		items.add(3.5);
 		items.add(null);
 		items.add(2.4);
-		panel.setItems(items);
+		panel.setValues(items);
 		panel.setFormatter(formatter);
 		panel.addValueChangeHandler(new ValueChangeHandler<Double>() {
 			@Override
@@ -139,7 +139,7 @@ public class GwtTestWidget extends WidgetTestCase {
 		items.add(3.5);
 		items.add(null);
 		items.add(2.4);
-		panel.setItems(items);
+		panel.setValues(items);
 		panel.addValueChangeHandler(new ValueChangeHandler<Double>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<Double> event) {

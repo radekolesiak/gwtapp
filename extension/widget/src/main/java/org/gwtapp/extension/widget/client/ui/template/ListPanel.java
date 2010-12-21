@@ -5,7 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtapp.core.rpc.data.HasItems;
+import org.gwtapp.core.rpc.data.HasValues;
 import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.ui.TemplatePanel;
@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
 
-public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
+public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
@@ -91,7 +91,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
 		if (items != null) {
-			setItems(items);
+			setValues(items);
 		}
 		if (fixedTemplate) {
 			addWidgetsCallback(new WidgetsCallback() {
@@ -105,12 +105,12 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 	}
 
 	@Override
-	public List<T> getItems() {
+	public List<T> getValues() {
 		return items;
 	}
 
 	@Override
-	public void setItems(final List<T> items) {
+	public void setValues(final List<T> items) {
 		setItems(items, -1);
 	}
 
@@ -137,7 +137,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasItems<T> {
 
 	public void setFormatter(Formatter<T> formatter) {
 		this.formatter = formatter;
-		setItems(getItems());
+		setValues(getValues());
 	}
 
 	public int getSelectedIndex() {
