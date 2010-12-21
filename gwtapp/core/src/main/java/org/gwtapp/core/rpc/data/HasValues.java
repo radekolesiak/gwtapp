@@ -1,10 +1,10 @@
 package org.gwtapp.core.rpc.data;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface HasValues<T> {
 	
-	void setValues(List<T> items);
+	void setValues(Collection<T> items);
 
-	List<T> getValues();
+	Collection<T> getValues();
 }

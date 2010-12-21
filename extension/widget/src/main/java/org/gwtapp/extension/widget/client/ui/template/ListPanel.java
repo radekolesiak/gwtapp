@@ -3,6 +3,7 @@ package org.gwtapp.extension.widget.client.ui.template;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.gwtapp.core.rpc.data.HasValues;
@@ -105,22 +106,22 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 	}
 
 	@Override
-	public List<T> getValues() {
+	public Collection<T> getValues() {
 		return items;
 	}
 
 	@Override
-	public void setValues(final List<T> items) {
+	public void setValues(Collection<T> items) {
 		setItems(items, -1);
 	}
 
-	public void setItems(final List<T> items, int selected) {
-		this.items = items;
+	public void setItems(final Collection<T> items, int selected) {
+		this.items = new ArrayList<T>(items);
 		listBox.getWidget().clear();
 		T selectedItem = null;
 		if (items != null) {
 			for (int i = 0; i < items.size(); i++) {
-				T item = items.get(i);
+				T item = this.items.get(i);
 				if (i == selected) {
 					selectedItem = item;
 				}
