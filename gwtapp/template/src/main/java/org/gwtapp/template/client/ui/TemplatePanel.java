@@ -11,6 +11,7 @@ import org.gwtapp.core.client.ui.HasEnable;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.TemplateHandler;
+import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.handler.ValidationHandler;
 import org.gwtapp.validation.rpc.exception.ValidationException;
 
@@ -87,6 +88,10 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	@Inject(optional = true)
 	private AsyncCallbackInjector asyncCallbackInjector;
 
+	public TemplatePanel() {
+		this(new SimpleTemplateCallback());
+	}
+	
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
 		this.callback = callback;

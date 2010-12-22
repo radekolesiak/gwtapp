@@ -85,7 +85,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 				provider.formatter, provider.items, false);
 	}
 
-	protected ListPanel(TemplateCallback callback, final ListBox listBox,
+	public ListPanel(TemplateCallback callback, final ListBox listBox,
 			String widgetName, Formatter<T> formatter, List<T> items,
 			boolean fixedTemplate) {
 		super(callback);
