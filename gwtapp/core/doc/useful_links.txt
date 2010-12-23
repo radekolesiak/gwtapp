@@ -38,3 +38,6 @@ VII. JSON RPC and JSNI:
 VIII. OpenJPA enhance:
 	http://blog.japila.pl/2007/04/optymistyczne-blokowanie-w-jpa.html
 	http://www.kindleit.net/maven_gae_plugin/examples/index.html
+	
+IX. About GWT:
+http://code.google.com/intl/pl-PL/webtoolkit/doc/latest/DevGuide.html
