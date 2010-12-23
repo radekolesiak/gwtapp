@@ -102,6 +102,12 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 				}
 			});
 		}
+		addWidgetsCallback(new WidgetsCallback() {
+			@Override
+			public void onAddWidgets() {
+				selectTo(getValue());
+			}
+		});
 		setHandlerConnected(true);
 	}
 
