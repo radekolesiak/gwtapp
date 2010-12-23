@@ -32,7 +32,11 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 	public static class DefaultFormatter<T> implements Formatter<T> {
 		@Override
 		public String format(ListPanel<T> owner, T item, int index) {
-			return "" + item;
+			if (item == null) {
+				return "";
+			} else {
+				return item.toString();
+			}
 		}
 	};
 
