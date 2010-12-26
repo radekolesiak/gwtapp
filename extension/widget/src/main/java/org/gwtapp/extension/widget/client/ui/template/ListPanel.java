@@ -18,7 +18,11 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;
 
+// http://code.google.com/p/google-web-toolkit/source/browse/releases/2.1/user/src/com/google/gwt/user/client/ui/ValueListBox.java
 public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
+
+	// TODO add HasConstrainedValue<T>
+	// TODO add Renderer<T> instead of Formatter<T>
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@BindingAnnotation
@@ -49,7 +53,7 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 		public ListBox listBox;
 		@Inject
 		@Bind
-		public String widgetName;
+		public String field;
 		@Inject
 		@Bind
 		public Formatter<T> formatter;
@@ -79,21 +83,21 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 	private HandlerRegistration registration = null;
 
 	public ListPanel() {
-		this(new SimpleTemplateCallback(), new ListBox(), "listBox",
+		this(new SimpleTemplateCallback(), "listBox", new ListBox(),
 				new DefaultFormatter<T>(), new ArrayList<T>(), true);
 	}
 
 	@Inject
 	public ListPanel(Provider<T> provider) {
-		this(provider.callback, provider.listBox, provider.widgetName,
+		this(provider.callback, provider.field, provider.listBox,
 				provider.formatter, provider.items, false);
 	}
 
-	protected ListPanel(TemplateCallback callback, final ListBox listBox,
-			String widgetName, Formatter<T> formatter, List<T> items,
+	protected ListPanel(TemplateCallback callback, String field,
+			final ListBox listBox, Formatter<T> formatter, List<T> items,
 			boolean fixedTemplate) {
 		super(callback);
-		this.listBox = add(widgetName, new UiHandler<ListBox>(listBox));
+		this.listBox = add(field, new UiHandler<ListBox>(listBox));
 		this.formatter = formatter;
 		if (items != null) {
 			setValues(items);
