@@ -26,7 +26,7 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		uploadForm.getWidget().setFileUpload(fileUpload.getWidget());
 		uploadButton.getWidget().addClickHandler(new ClickHandler() {
 			@Override

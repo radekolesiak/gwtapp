@@ -35,7 +35,7 @@ public class FeedbackPanel extends TemplatePanel<Void> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		send.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

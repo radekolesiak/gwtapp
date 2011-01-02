@@ -49,7 +49,7 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		headerPanel.getWidget().addValueChangeHandler(
 				new ValueChangeHandler<Model>() {
 					@Override

@@ -52,8 +52,8 @@ public class TemplateModelPanel<T extends ModelData> extends
 	}
 
 	@Override
-	public final void onAddWidgets() {
-		super.onAddWidgets();
+	public final void onWidgets() {
+		super.onWidgets();
 		for (Map.Entry<String, UiHandler<?>> entry : fields.entrySet()) {
 			addField(entry.getKey(), (HasValue<?>) entry.getValue().getWidget());
 		}

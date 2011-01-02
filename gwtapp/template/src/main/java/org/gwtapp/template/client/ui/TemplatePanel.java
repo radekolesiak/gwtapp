@@ -49,7 +49,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	public static interface WidgetsCallback {
-		void onAddWidgets();
+		void onWidgets();
 	}
 
 	protected static class TemplatePanelValueChangeEvent<T> extends
@@ -181,9 +181,9 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		}
 		try {
 			callback.template(this, widgetHandlers);
-			onAddWidgets();
+			onWidgets();
 			for (WidgetsCallback callback : widgetsCallbacks) {
-				callback.onAddWidgets();
+				callback.onWidgets();
 			}
 			widgetsCallbacks.clear();
 		} finally {
@@ -194,7 +194,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		}
 	}
 
-	public void onAddWidgets() {
+	public void onWidgets() {
 	}
 
 	public boolean isTemplated() {

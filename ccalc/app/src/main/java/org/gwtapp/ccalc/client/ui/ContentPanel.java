@@ -41,7 +41,7 @@ public class ContentPanel extends TemplatePanel<Book> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		onBackupLabel();
 		submit.getWidget().addClickHandler(new ClickHandler() {
 			@Override

@@ -45,7 +45,7 @@ public class PageHeaderPanel extends TemplateFormPanel<PageHeaderPanel.Model> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		if (full) {
 			addStyleName(title.getMessage("fullStyle"));
 		}

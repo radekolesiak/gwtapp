@@ -22,7 +22,7 @@ public class CalculationsHeaderFormPanel extends
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		add.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

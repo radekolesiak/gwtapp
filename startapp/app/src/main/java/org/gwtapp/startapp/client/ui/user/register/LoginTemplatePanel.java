@@ -17,7 +17,7 @@ public class LoginTemplatePanel extends TemplatePanel<String> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		login.getWidget().addValueChangeHandler(
 				new ValueChangeHandler<String>() {
 					@Override

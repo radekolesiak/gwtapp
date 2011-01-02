@@ -105,14 +105,14 @@ public class ListPanel<T> extends TemplatePanel<T> implements HasValues<T> {
 		if (fixedTemplate) {
 			addWidgetsCallback(new WidgetsCallback() {
 				@Override
-				public void onAddWidgets() {
+				public void onWidgets() {
 					add(listBox);
 				}
 			});
 		}
 		addWidgetsCallback(new WidgetsCallback() {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				selectTo(getValue());
 			}
 		});

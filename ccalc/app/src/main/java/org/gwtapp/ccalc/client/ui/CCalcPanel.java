@@ -33,7 +33,7 @@ public class CCalcPanel extends TemplatePanel<Book> {
 	}
 
 	@Override
-	public void onAddWidgets() {
+	public void onWidgets() {
 		uploadPanel.getWidget().addValueChangeHandler(
 				new ValueChangeHandler<Book>() {
 					@Override

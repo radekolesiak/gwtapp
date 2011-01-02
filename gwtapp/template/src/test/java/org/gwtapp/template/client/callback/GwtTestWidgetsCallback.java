@@ -21,7 +21,7 @@ public class GwtTestWidgetsCallback extends TemplateTest {
 		TemplatePanel<Void> panel = new TemplatePanel<Void>(
 				loadTemplateCallback(new Template(), new TFieldCallback())) {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				assertNull(onAddWidgets.get());
 				assertNull(onWidgetsCallback1.get());
 				assertNull(onWidgetsCallback2.get());
@@ -30,7 +30,7 @@ public class GwtTestWidgetsCallback extends TemplateTest {
 		};
 		panel.addWidgetsCallback(new WidgetsCallback() {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				assertTrue(onAddWidgets.get());
 				assertNull(onWidgetsCallback1.get());
 				assertNull(onWidgetsCallback2.get());
@@ -39,7 +39,7 @@ public class GwtTestWidgetsCallback extends TemplateTest {
 		});
 		panel.addWidgetsCallback(new WidgetsCallback() {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				assertTrue(onAddWidgets.get());
 				assertTrue(onWidgetsCallback1.get());
 				assertNull(onWidgetsCallback2.get());

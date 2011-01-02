@@ -63,7 +63,7 @@ public class GwtTestMessages extends TemplateTest {
 		MessagePanel mp = new MessagePanel(
 				"<div t:field=\"test\" t:msg=\"ab:xyz; cd:012;ef:;\"></div>") {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				TemplateMessage tm = getTemplateMessage();
 				assertNotNull(tm);
 				assertNotNull(tm.getPattern("ab"));
@@ -81,7 +81,7 @@ public class GwtTestMessages extends TemplateTest {
 		MessagePanel mp = new MessagePanel(
 				"<div t:field=\"test\" t:msg=\"ab:x{1}y{2}z; cd:0{1}1{2}2;ef:;\"></div>") {
 			@Override
-			public void onAddWidgets() {
+			public void onWidgets() {
 				TemplateMessage tm = getTemplateMessage();
 				assertNotNull(tm);
 				assertNotNull(tm.getPattern("ab"));
