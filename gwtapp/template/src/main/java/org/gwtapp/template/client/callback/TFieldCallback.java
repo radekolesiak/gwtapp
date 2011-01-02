@@ -14,7 +14,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TFieldCallback implements TemplatePanel.Callback {
 
-	private String pattern = "t:field";
+	private static String defaultPattern = "t:field";
+
+	private String pattern = getDefaultPattern();
 
 	public TFieldCallback() {
 	}
@@ -28,14 +30,12 @@ public class TFieldCallback implements TemplatePanel.Callback {
 	}
 
 	@Override
-	public void template(TemplatePanel<?> owner,
-			Map<String, TemplateHandler> widgetHandlers) {
+	public void template(TemplatePanel<?> owner, Map<String, TemplateHandler> widgetHandlers) {
 		Map<String, String> ids = new HashMap<String, String>();
 		for (String template : widgetHandlers.keySet()) {
 			ids.put(template, HTMLPanel.createUniqueId());
 		}
-		DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(
-				getPattern(), DOM.getInnerHTML(owner.getElement()), ids));
+		DOM.setInnerHTML(owner.getElement(), TemplateUtils.replaceTemplate(getPattern(), DOM.getInnerHTML(owner.getElement()), ids));
 		for (Map.Entry<String, String> entry : ids.entrySet()) {
 			String field = entry.getKey();
 			String id = entry.getValue();
@@ -58,5 +58,13 @@ public class TFieldCallback implements TemplatePanel.Callback {
 				}
 			}
 		}
+	}
+
+	public static void setDefaultPattern(String defaultPattern) {
+		TFieldCallback.defaultPattern = defaultPattern;
+	}
+
+	public static String getDefaultPattern() {
+		return defaultPattern;
 	}
 }
