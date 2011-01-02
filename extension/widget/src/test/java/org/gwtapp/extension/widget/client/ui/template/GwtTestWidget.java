@@ -163,7 +163,7 @@ public class GwtTestWidget extends WidgetTestCase {
 	@Test
 	public void testDefaultFormatter() {
 		Formatter<Double> formatter = new ListPanel.DefaultFormatter<Double>();
-		assertEquals("null", formatter.format(null, null, -1));
+		assertEquals("", formatter.format(null, null, -1));
 		assertEquals("1.1", formatter.format(null, 1.1, -1));
 		assertEquals("-31.31", formatter.format(null, -31.31, -1));
 	}
