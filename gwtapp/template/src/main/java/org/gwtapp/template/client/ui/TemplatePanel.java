@@ -12,6 +12,7 @@ import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.handler.TemplateHandler;
+import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.handler.ValidationHandler;
 import org.gwtapp.validation.rpc.exception.ValidationException;
 
@@ -32,12 +33,10 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
-public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
-		HasName, HasChangeHandlers, HasClickHandlers, HasEnable {
+public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName, HasChangeHandlers, HasClickHandlers, HasEnable {
 
 	public static interface Callback {
-		void template(TemplatePanel<?> owner,
-				Map<String, TemplateHandler> widgetHandlers);
+		void template(TemplatePanel<?> owner, Map<String, TemplateHandler> widgetHandlers);
 	}
 
 	public static interface TemplateCallback extends Callback {
@@ -52,8 +51,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		void onWidgets();
 	}
 
-	protected static class TemplatePanelValueChangeEvent<T> extends
-			ValueChangeEvent<T> {
+	protected static class TemplatePanelValueChangeEvent<T> extends ValueChangeEvent<T> {
 		public TemplatePanelValueChangeEvent(T value) {
 			super(value);
 		}
@@ -91,19 +89,16 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	public TemplatePanel() {
 		this(new SimpleTemplateCallback());
 	}
-	
+
 	public TemplatePanel(TemplateCallback callback) {
 		super(callback.getTemplate().getTag(), callback.getTemplate().getHtml());
 		this.callback = callback;
 		addStyleName(Style.TEMPLATE_PANEL);
-		if (callback.getTemplate().getStyleClass() != null
-				&& !callback.getTemplate().getStyleClass().isEmpty()) {
+		if (callback.getTemplate().getStyleClass() != null && !callback.getTemplate().getStyleClass().isEmpty()) {
 			addStyleName(callback.getTemplate().getStyleClass());
 		}
-		if (callback.getTemplate().getStyle() != null
-				&& !callback.getTemplate().getStyle().isEmpty()) {
-			getElement().setAttribute("style",
-					callback.getTemplate().getStyle());
+		if (callback.getTemplate().getStyle() != null && !callback.getTemplate().getStyle().isEmpty()) {
+			getElement().setAttribute("style", callback.getTemplate().getStyle());
 		}
 		init();
 	}
@@ -143,13 +138,8 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		add(w, getElement());
 	}
 
-	public void add(String name, final Widget widget) {
-		add(name, new TemplateHandler() {
-			@Override
-			public Widget onWidget(String id) {
-				return widget;
-			}
-		});
+	public <W extends Widget> UiHandler<W> add(String name, final W widget) {
+		return add(name, new UiHandler<W>(widget));
 	}
 
 	public <H extends TemplateHandler & HasName> H add(H handler) {
@@ -229,8 +219,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 	}
 
 	@Override
-	public HandlerRegistration addValueChangeHandler(
-			ValueChangeHandler<T> handler) {
+	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	};
 
@@ -276,8 +265,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>,
 		}
 	}
 
-	public void setAsyncCallbackInjector(
-			AsyncCallbackInjector asyncCallbackInjector) {
+	public void setAsyncCallbackInjector(AsyncCallbackInjector asyncCallbackInjector) {
 		this.asyncCallbackInjector = asyncCallbackInjector;
 	}
 
