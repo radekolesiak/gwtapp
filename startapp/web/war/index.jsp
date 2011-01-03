@@ -217,6 +217,7 @@
 								<ul>
 									<li>Subversion repository of <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a></li>
 									<li>Maven repository on <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a></li>
+									<li>JIRA tasks <a href="https://jira.imdapi.com/browse/GWTAPP">repository</a></li>
 								</ul> 
 							</div>
 						</div>		
