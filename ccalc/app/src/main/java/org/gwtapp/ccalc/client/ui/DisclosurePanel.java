@@ -1,6 +1,6 @@
 package org.gwtapp.ccalc.client.ui;
 
-import org.gwtapp.template.client.UiHandler;
+import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;

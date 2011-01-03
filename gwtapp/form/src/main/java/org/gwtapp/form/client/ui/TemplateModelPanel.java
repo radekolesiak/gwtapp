@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.ModelData;
-import org.gwtapp.template.client.UiHandler;
+import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 
 import com.google.gwt.user.client.ui.HasValue;

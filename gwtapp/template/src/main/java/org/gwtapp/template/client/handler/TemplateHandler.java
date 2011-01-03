@@ -1,4 +1,4 @@
-package org.gwtapp.template.client;
+package org.gwtapp.template.client.handler;
 
 import com.google.gwt.user.client.ui.Widget;
 

@@ -15,8 +15,8 @@ import org.gwtapp.ccalc.rpc.data.book.Operation;
 import org.gwtapp.ccalc.rpc.data.book.Page;
 import org.gwtapp.ccalc.rpc.data.book.PageImpl;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
-import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
+import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 

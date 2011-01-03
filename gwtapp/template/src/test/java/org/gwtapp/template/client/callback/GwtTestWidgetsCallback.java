@@ -4,8 +4,8 @@ import java.util.Map;
 
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.TemplateTest;
+import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.gwtapp.template.client.ui.TemplatePanel.WidgetsCallback;
 import org.junit.Test;

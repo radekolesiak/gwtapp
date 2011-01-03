@@ -3,6 +3,7 @@ package org.gwtapp.template.client;
 import java.util.Map;
 
 import org.gwtapp.template.client.callback.TFieldCallback;
+import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.user.client.ui.HTML;

@@ -1,4 +1,7 @@
-package org.gwtapp.template.client;
+package org.gwtapp.template.client.handler;
+
+import org.gwtapp.template.client.Param;
+import org.gwtapp.template.client.TemplateMessage;
 
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;

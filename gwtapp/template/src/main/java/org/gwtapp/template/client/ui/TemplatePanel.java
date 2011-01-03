@@ -10,8 +10,8 @@ import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.core.client.ui.HasEnable;
 import org.gwtapp.core.rpc.data.Value;
 import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
+import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.handler.ValidationHandler;
 import org.gwtapp.validation.rpc.exception.ValidationException;
 

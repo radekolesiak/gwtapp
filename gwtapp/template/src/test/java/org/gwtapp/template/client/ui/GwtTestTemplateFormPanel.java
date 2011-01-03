@@ -3,9 +3,9 @@ package org.gwtapp.template.client.ui;
 import java.util.Map;
 
 import org.gwtapp.template.client.Template;
-import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.TemplateTest;
 import org.gwtapp.template.client.Value;
+import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.ui.TemplateFormPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;

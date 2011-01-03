@@ -7,8 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.gwtapp.core.rpc.data.HasValues;
-import org.gwtapp.template.client.UiHandler;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
+import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
 import com.google.gwt.event.dom.client.ChangeEvent;

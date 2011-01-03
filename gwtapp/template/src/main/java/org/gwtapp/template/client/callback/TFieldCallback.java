@@ -3,8 +3,8 @@ package org.gwtapp.template.client.callback;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.gwtapp.template.client.TemplateHandler;
 import org.gwtapp.template.client.TemplateUtils;
+import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.ui.HTMLPanel;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
