@@ -8,21 +8,20 @@ import org.gwtapp.template.client.handler.FileUploadHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
 import org.gwtapp.template.client.ui.TemplatePanel;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 
 public class BookUploadPanel extends TemplatePanel<Book> {
 
-	private final WidgetHandler uploadButton = new WidgetHandler();
-	private final UploadFormHandler uploadForm = new UploadFormHandler();
-	private final FileUploadHandler fileUpload = new FileUploadHandler();
+	private final WidgetHandler uploadButton = add("uploadButton", new WidgetHandler());
+	private final UploadFormHandler uploadForm = add("formPanel", new UploadFormHandler());
+	private final FileUploadHandler fileUpload = add("fileUpload", new FileUploadHandler());
 
 	public BookUploadPanel() {
 		super(CCalc.templateService.load("book/BookUploadPanel.jsp"));
-		add("formPanel", uploadForm);
-		add("fileUpload", fileUpload);
-		add("uploadButton", uploadButton);
 	}
 
 	@Override
@@ -31,7 +30,13 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 		uploadButton.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				uploadForm.getWidget().upload();
+				upload();
+			}
+		});
+		fileUpload.getWidget().addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent event) {
+				upload();
 			}
 		});
 		uploadForm.getWidget().addSubmitCompleteHandler(
@@ -46,5 +51,9 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 						setValue(result, true);
 					}
 				});
+	}
+	
+	private void upload(){
+		uploadForm.getWidget().upload();
 	}
 }
