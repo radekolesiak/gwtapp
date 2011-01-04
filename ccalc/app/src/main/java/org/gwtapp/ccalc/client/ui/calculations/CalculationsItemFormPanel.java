@@ -83,8 +83,8 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 	}
 
 	@Override
-	public void onAddFormWidgets() {
-		super.onAddFormWidgets();
+	public void onFormWidgets() {
+		super.onFormWidgets();
 		add.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

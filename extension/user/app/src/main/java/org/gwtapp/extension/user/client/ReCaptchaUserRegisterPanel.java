@@ -65,7 +65,7 @@ public class ReCaptchaUserRegisterPanel extends
 	}
 
 	@Override
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 		Element element = reCaptcha.getWidget().getElement();
 		ReCaptchaCallback callback = new ReCaptchaCallback() {
 			@Override

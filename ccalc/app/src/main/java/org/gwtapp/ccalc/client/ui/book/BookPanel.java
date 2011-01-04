@@ -42,7 +42,7 @@ public class BookPanel extends TemplateModelPanel<Book> {
 	}
 
 	@Override
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 		pages.getWidget().setBaseCurrency(getValue().getBaseCurrency());
 		baseCurrency.getWidget().addValueChangeHandler(new ValueChangeHandler<Currency>() {
 			@Override

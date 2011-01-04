@@ -25,7 +25,7 @@ public class UserRegisterTemplatePanel extends TemplateModelPanel<UserRegisterMo
 	}
 
 	@Override
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {

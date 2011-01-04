@@ -76,6 +76,14 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 		return field;
 	}
 
+	public void setAutoValueChangeFire(boolean autoValueChangeFire) {
+		this.autoValueChangeFire = autoValueChangeFire;
+	}
+
+	public boolean isAutoValueChangeFire() {
+		return autoValueChangeFire;
+	}
+
 	@SuppressWarnings("rawtypes")
 	public HasValue getField(String name) {
 		assert name != null && !name.isEmpty();
@@ -85,13 +93,5 @@ public class TemplateFormPanel<T> extends TemplatePanel<T> {
 	@SuppressWarnings("rawtypes")
 	protected Map<String, HasValue> getFields() {
 		return fields;
-	}
-
-	public void setAutoValueChangeFire(boolean autoValueChangeFire) {
-		this.autoValueChangeFire = autoValueChangeFire;
-	}
-
-	public boolean isAutoValueChangeFire() {
-		return autoValueChangeFire;
 	}
 }

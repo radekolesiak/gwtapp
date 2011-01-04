@@ -57,10 +57,10 @@ public class TemplateModelPanel<T extends ModelData> extends
 		for (Map.Entry<String, UiHandler<?>> entry : fields.entrySet()) {
 			addField(entry.getKey(), (HasValue<?>) entry.getValue().getWidget());
 		}
-		onAddFormWidgets();
+		onFormWidgets();
 	}
 
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 	}
 
 	@SuppressWarnings("unchecked")

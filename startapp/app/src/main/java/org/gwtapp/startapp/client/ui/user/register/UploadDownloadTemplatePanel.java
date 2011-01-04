@@ -45,7 +45,7 @@ public class UploadDownloadTemplatePanel extends
 	}
 
 	@Override
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 		clearBtn.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

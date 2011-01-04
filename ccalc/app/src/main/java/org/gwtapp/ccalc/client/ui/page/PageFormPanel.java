@@ -89,7 +89,7 @@ public class PageFormPanel extends TemplateModelPanel<Page> implements
 	}
 
 	@Override
-	public void onAddFormWidgets() {
+	public void onFormWidgets() {
 		print.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
