@@ -43,7 +43,7 @@
 		<rhino.version>1.7R2</rhino.version>
 		<!-- plugins -->
 		<maven.surefire.plugin.version>2.6</maven.surefire.plugin.version>
-		<maven.gae.plugin.version>0.7.1</maven.gae.plugin.version>
+		<maven.gae.plugin.version>0.7.3</maven.gae.plugin.version>
 		<!-- config -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javac.source.version>1.6</javac.source.version>
@@ -60,7 +60,6 @@
 			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
-
 
 	<pluginRepositories>
 		<pluginRepository>
