@@ -66,14 +66,9 @@ public class PageHeaderPanel extends TemplateFormPanel<PageHeaderPanel.Model> {
 	}
 
 	@Override
-	public void setValue(Model value, boolean fireEvents) {
-		if (isTemplated()) {
-			if (value.state == Model.State.NONE) {
-				title.getWidget().setText(
-						title.getParamMessage("title", new Param("title",
-								value.title)));
-			}
+	public void setTemplateValue(Model value) {
+		if (value.state == Model.State.NONE) {
+			title.getWidget().setText(title.getParamMessage("title", new Param("title", value.title)));
 		}
-		super.setValue(value, fireEvents);
 	}
 }

@@ -6,14 +6,12 @@ import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 
-public class CalculationsSummaryRowPanel extends
-		TemplateModelPanel<Calculation> {
+public class CalculationsSummaryRowPanel extends TemplateModelPanel<Calculation> {
 
 	private final LabelHandler<Double> diff = new LabelHandler<Double>();
 
 	public CalculationsSummaryRowPanel() {
-		super(CCalc.templateService
-				.load("calculations/CalculationsSummaryRowPanel.jsp"));
+		super(CCalc.templateService.load("calculations/CalculationsSummaryRowPanel.jsp"));
 		add(Calculation.FIFO_BASE, new LabelHandler<Double>());
 		add(Calculation.INCOME, new LabelHandler<Double>());
 		add(Calculation.COST, new LabelHandler<Double>());
@@ -21,10 +19,7 @@ public class CalculationsSummaryRowPanel extends
 	}
 
 	@Override
-	public void setValue(Calculation value, boolean fireEvents) {
-		if (isTemplated()) {
-			diff.getWidget().setValue(Calculator.calculateDiff(value));
-		}
-		super.setValue(value, fireEvents);
+	public void setTemplateValue(Calculation value) {
+		diff.getWidget().setValue(Calculator.calculateDiff(value));
 	}
 }

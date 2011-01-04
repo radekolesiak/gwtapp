@@ -13,14 +13,12 @@ import org.gwtapp.template.client.handler.WidgetHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-public class UserRegisterTemplatePanel extends
-		TemplateModelPanel<UserRegisterModel> {
+public class UserRegisterTemplatePanel extends TemplateModelPanel<UserRegisterModel> {
 
 	private final WidgetHandler summary = add("summary", new WidgetHandler());
 
 	public UserRegisterTemplatePanel() {
-		super(StartAppEntryPoint.templates.load("startapp.jsp"),
-				new UserRegisterModelImpl());
+		super(StartAppEntryPoint.templates.load("startapp.jsp"), new UserRegisterModelImpl());
 		add(UserRegister.LOGIN, new LoginHandler());
 		add(UserRegister.EMAIL, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());
@@ -31,34 +29,27 @@ public class UserRegisterTemplatePanel extends
 		addValueChangeHandler(new ValueChangeHandler<UserRegisterModel>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<UserRegisterModel> event) {
-				updateMsg(event.getValue());
+				setValue(event.getValue());
 			}
 		});
 	}
 
 	@Override
-	public void setValue(UserRegisterModel value, boolean fireEvents) {
-		updateMsg(value);
-		super.setValue(value, fireEvents);
-	}
-
-	private void updateMsg(UserRegisterModel value) {
-		if (isTemplated()) {
-			String login = value.getLogin();
-			String password = value.getPassword();
-			String email = value.getEmail();
-			if (isEmpty(login) && isEmpty(password) && isEmpty(email)) {
-				summary.updateWidgetMessage("empty");
-			} else {
-				String loginMsg = getFieldMsg("login", login);
-				String passwordMsg = getFieldMsg("password", password);
-				String emailMsg = getFieldMsg("email", email);
-				summary.updateWidgetParamMessage("any",//
-						new Param("login", loginMsg),//		
-						new Param("password", passwordMsg),//		
-						new Param("email", emailMsg)//		
-						);
-			}
+	public void setTemplateValue(UserRegisterModel value) {
+		String login = value.getLogin();
+		String password = value.getPassword();
+		String email = value.getEmail();
+		if (isEmpty(login) && isEmpty(password) && isEmpty(email)) {
+			summary.updateWidgetMessage("empty");
+		} else {
+			String loginMsg = getFieldMsg("login", login);
+			String passwordMsg = getFieldMsg("password", password);
+			String emailMsg = getFieldMsg("email", email);
+			summary.updateWidgetParamMessage("any",//
+					new Param("login", loginMsg),//
+					new Param("password", passwordMsg),//
+					new Param("email", emailMsg)//
+			);
 		}
 	}
 

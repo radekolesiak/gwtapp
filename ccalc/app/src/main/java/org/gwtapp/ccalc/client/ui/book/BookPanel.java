@@ -21,11 +21,9 @@ public class BookPanel extends TemplateModelPanel<Book> {
 	private final TextBoxHandler description = new TextBoxHandler();
 	private final TextBoxHandler mail = new TextBoxHandler();
 	private final UiHandler<EnumField<Currency>> baseCurrency = //
-	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(
-			Currency.values()));
+	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(Currency.values()));
 	private final UiHandler<EnumField<Currency>> defaultCurrency = //
-	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(
-			Currency.values()));
+	new UiHandler<EnumField<Currency>>(new EnumField<Currency>(Currency.values()));
 	private final UiHandler<PagesListPanel> pages = //
 	new UiHandler<PagesListPanel>(new PagesListPanel());
 
@@ -46,32 +44,26 @@ public class BookPanel extends TemplateModelPanel<Book> {
 	@Override
 	public void onAddFormWidgets() {
 		pages.getWidget().setBaseCurrency(getValue().getBaseCurrency());
-		baseCurrency.getWidget().addValueChangeHandler(
-				new ValueChangeHandler<Currency>() {
-					@Override
-					public void onValueChange(ValueChangeEvent<Currency> event) {
-						updateCalculations(event.getValue());
-						updateBaseCurrencyPipe(event.getValue());
-					}
-				});
-		defaultCurrency.getWidget().addValueChangeHandler(
-				new ValueChangeHandler<Currency>() {
-					@Override
-					public void onValueChange(ValueChangeEvent<Currency> event) {
-						updateDefaultCurrency(event.getValue());
-					}
-				});
+		baseCurrency.getWidget().addValueChangeHandler(new ValueChangeHandler<Currency>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Currency> event) {
+				updateCalculations(event.getValue());
+				updateBaseCurrencyPipe(event.getValue());
+			}
+		});
+		defaultCurrency.getWidget().addValueChangeHandler(new ValueChangeHandler<Currency>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Currency> event) {
+				updateDefaultCurrency(event.getValue());
+			}
+		});
 	}
 
 	@Override
-	public void setValue(Book value, boolean fireEvents) {
-		if (isTemplated()) {
-			PipeManager.setBroadcastValue(BaseCurrencyPipe.class,
-					value.getBaseCurrency());
-			updateBaseCurrencyStyle(value.getBaseCurrency());
-			updateDefaultCurrency(value.getDefaultCurrency());
-		}
-		super.setValue(value, fireEvents);
+	public void setTemplateValue(Book value) {
+		PipeManager.setBroadcastValue(BaseCurrencyPipe.class, value.getBaseCurrency());
+		updateBaseCurrencyStyle(value.getBaseCurrency());
+		updateDefaultCurrency(value.getDefaultCurrency());
 	}
 
 	private void updateBaseCurrencyPipe(Currency baseCurrency) {

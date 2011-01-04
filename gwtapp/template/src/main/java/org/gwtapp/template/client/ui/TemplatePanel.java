@@ -9,6 +9,7 @@ import org.gwtapp.core.client.AsyncCallbackInjector;
 import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.core.client.ui.HasEnable;
 import org.gwtapp.core.rpc.data.Value;
+import org.gwtapp.template.client.HasTemplateValue;
 import org.gwtapp.template.client.Template;
 import org.gwtapp.template.client.callback.SimpleTemplateCallback;
 import org.gwtapp.template.client.handler.TemplateHandler;
@@ -33,7 +34,7 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
-public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName, HasChangeHandlers, HasClickHandlers, HasEnable {
+public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasTemplateValue<T>, HasName, HasChangeHandlers, HasClickHandlers, HasEnable {
 
 	public static interface Callback {
 		void template(TemplatePanel<?> owner, Map<String, TemplateHandler> widgetHandlers);
@@ -194,7 +195,11 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName,
 	@Override
 	public T getValue() {
 		if (getInitValue() == null) {
-			return value;
+			if (isTemplated()) {
+				return getTemplateValue();
+			} else {
+				return value;
+			}
 		} else {
 			return getInitValue();
 		}
@@ -210,6 +215,7 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName,
 		if (isTemplated()) {
 			setInitValue(null);
 			this.value = value;
+			setTemplateValue(value);
 			if (fireEvents) {
 				ValueChangeEvent.fire(this, value);
 			}
@@ -243,26 +249,6 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName,
 	@Override
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return addDomHandler(handler, ClickEvent.getType());
-	}
-
-	private void setInitValue() {
-		if (getInitValue() != null) {
-			T localvalue = getInitValue();
-			setInitValue(null);
-			setValue(localvalue);
-		}
-	}
-
-	private void setInitValue(T initValue) {
-		this.initValue = new Value<T>(initValue);
-	}
-
-	private T getInitValue() {
-		if (initValue != null) {
-			return initValue.get();
-		} else {
-			return injectInitValue;
-		}
 	}
 
 	public void setAsyncCallbackInjector(AsyncCallbackInjector asyncCallbackInjector) {
@@ -304,5 +290,34 @@ public class TemplatePanel<T> extends HTMLPanel implements HasValue<T>, HasName,
 	@Override
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	@Override
+	public void setTemplateValue(T value) {
+	}
+
+	@Override
+	public T getTemplateValue() {
+		return value;
+	}
+
+	private void setInitValue() {
+		if (getInitValue() != null) {
+			T localvalue = getInitValue();
+			setInitValue(null);
+			setValue(localvalue);
+		}
+	}
+
+	private void setInitValue(T initValue) {
+		this.initValue = new Value<T>(initValue);
+	}
+
+	private T getInitValue() {
+		if (initValue != null) {
+			return initValue.get();
+		} else {
+			return injectInitValue;
+		}
 	}
 }

@@ -33,11 +33,9 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 
 	private final List<PageFormPanel> pageFormPanels = new ArrayList<PageFormPanel>();
 
-	private final UiHandler<FlowPanel> pagesPanel = new UiHandler<FlowPanel>(
-			new FlowPanel());
+	private final UiHandler<FlowPanel> pagesPanel = new UiHandler<FlowPanel>(new FlowPanel());
 
-	private final UiHandler<PageHeaderPanel> headerPanel = new UiHandler<PageHeaderPanel>(
-			new PageHeaderPanel(false));
+	private final UiHandler<PageHeaderPanel> headerPanel = new UiHandler<PageHeaderPanel>(new PageHeaderPanel(false));
 
 	private List<Page> pages = new ArrayList<Page>();
 	private Currency baseCurrency = null;
@@ -50,15 +48,14 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 
 	@Override
 	public void onWidgets() {
-		headerPanel.getWidget().addValueChangeHandler(
-				new ValueChangeHandler<Model>() {
-					@Override
-					public void onValueChange(ValueChangeEvent<Model> event) {
-						if (event.getValue().state == Model.State.ADD) {
-							insertPage(0, createPage());
-						}
-					}
-				});
+		headerPanel.getWidget().addValueChangeHandler(new ValueChangeHandler<Model>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Model> event) {
+				if (event.getValue().state == Model.State.ADD) {
+					insertPage(0, createPage());
+				}
+			}
+		});
 	}
 
 	private Page createPage() {
@@ -68,36 +65,25 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 	}
 
 	@Override
-	public List<Page> getValue() {
+	public List<Page> getTemplateValue() {
 		return pages;
 	}
 
 	@Override
-	public void setValue(List<Page> value) {
-		setValue(value, false);
-	}
-
-	@Override
-	public void setValue(final List<Page> value, boolean fireEvents) {
-		if (isTemplated()) {
-			pagesPanel.getWidget().clear();
-			pageFormPanels.clear();
-			pages = new ArrayList<Page>();
-			for (int i = 0; i < value.size(); i++) {
-				insertPage(i, value.get(i));
-			}
-			calculate(value);
-			if (fireEvents) {
-				ValueChangeEvent.fire(this, value);
-			}
+	public void setTemplateValue(List<Page> value) {
+		pagesPanel.getWidget().clear();
+		pageFormPanels.clear();
+		pages = new ArrayList<Page>();
+		for (int i = 0; i < value.size(); i++) {
+			insertPage(i, value.get(i));
 		}
+		calculate(value);
 	}
 
 	public void insertPage(final int index, final Page page) {
 		final PageHeaderPanel header = new PageHeaderPanel(true);
 		final PageFormPanel form = new PageFormPanel();
-		final DisclosurePanel disclosure = new DisclosurePanel(
-				CCalc.templateService.load("DisclosurePanel.jsp"), header, form);
+		final DisclosurePanel disclosure = new DisclosurePanel(CCalc.templateService.load("DisclosurePanel.jsp"), header, form);
 		pagesPanel.getWidget().insert(disclosure, index);
 		pageFormPanels.add(index, form);
 		pages.add(index, page);
@@ -115,8 +101,7 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 					insertPage(getRowIndex(disclosure) + 1, createPage());
 					break;
 				case REMOVE:
-					if (Window.confirm(headerPanel.getParamMessage(
-							"pageToRemove", new Param("name", page.getName())))) {
+					if (Window.confirm(headerPanel.getParamMessage("pageToRemove", new Param("name", page.getName())))) {
 						removePage(getRowIndex(disclosure));
 					}
 					break;
@@ -151,14 +136,12 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 		updateOpenedModeView(disclosure, header);
 	}
 
-	private void updatePageModelView(Page page, DisclosurePanel disclosure,
-			PageHeaderPanel header) {
+	private void updatePageModelView(Page page, DisclosurePanel disclosure, PageHeaderPanel header) {
 		pages.set(getRowIndex(disclosure), page);
 		header.setValue(new PageHeaderPanel.Model(page.getName()));
 	}
 
-	private void updateOpenedModeView(DisclosurePanel disclosure,
-			PageHeaderPanel header) {
+	private void updateOpenedModeView(DisclosurePanel disclosure, PageHeaderPanel header) {
 		if (disclosure.getValue()) {
 			header.addStyleName(headerPanel.getMessage("openedStyle"));
 			header.removeStyleName(headerPanel.getMessage("closedStyle"));
@@ -168,8 +151,7 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 		}
 	}
 
-	private void updatePrintModeView(DisclosurePanel disclosure,
-			PageHeaderPanel header, PageFormPanel form) {
+	private void updatePrintModeView(DisclosurePanel disclosure, PageHeaderPanel header, PageFormPanel form) {
 		boolean printMode = form.isPrintMode();
 		header.setVisible(!printMode);
 		headerPanel.getWidget().setVisible(!printMode);
@@ -187,8 +169,7 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 	}
 
 	private int getRowIndex(DisclosurePanel disclosurePanel) {
-		return Math.max(-1, pagesPanel.getWidget().getWidgetIndex(
-				disclosurePanel));
+		return Math.max(-1, pagesPanel.getWidget().getWidgetIndex(disclosurePanel));
 	}
 
 	public void calculate() {
@@ -202,8 +183,7 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 			summariesPoints.add(page.getOperations().size());
 			operations.addAll(page.getOperations());
 		}
-		Calculator calculator = new Calculator(getBaseCurrency(),
-				summariesPoints, operations);
+		Calculator calculator = new Calculator(getBaseCurrency(), summariesPoints, operations);
 		List<Calculation> calculations = calculator.getCalculations();
 		List<Calculation> summaries = calculator.getSummaries();
 
@@ -211,13 +191,10 @@ public class PagesListPanel extends TemplatePanel<List<Page>> {
 		for (int page = 0; page < pages.size(); page++) {
 			PageFormPanel form = pageFormPanels.get(page);
 			if (form.isAnytimeDisplayed()) {
-				List<TemplateFormPanel<? extends Operation>> formPanelList = form
-						.getRows();
+				List<TemplateFormPanel<? extends Operation>> formPanelList = form.getRows();
 				for (int i = 0; i < formPanelList.size(); i++) {
-					Calculation calculation = calculations
-							.get(calculationIndex++);
-					CalculationsItemFormPanel itemPanel = (CalculationsItemFormPanel) formPanelList
-							.get(i);
+					Calculation calculation = calculations.get(calculationIndex++);
+					CalculationsItemFormPanel itemPanel = (CalculationsItemFormPanel) formPanelList.get(i);
 					itemPanel.setCalculationValue(calculation);
 				}
 				Calculation summary = summaries.get(page);

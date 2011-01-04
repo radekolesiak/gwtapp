@@ -10,8 +10,7 @@ public class DisclosurePanel extends TemplatePanel<Boolean> {
 
 	private final Widget content;
 
-	public <E extends Widget & HasClickHandlers> DisclosurePanel(
-			TemplatePanel.TemplateCallback template, E label, Widget content) {
+	public <E extends Widget & HasClickHandlers> DisclosurePanel(TemplatePanel.TemplateCallback template, E label, Widget content) {
 		super(template, false);
 		this.content = content;
 		add("label", new UiHandler<E>(label));
@@ -20,10 +19,7 @@ public class DisclosurePanel extends TemplatePanel<Boolean> {
 	}
 
 	@Override
-	public void setValue(Boolean value, boolean fireEvents) {
-		if (isTemplated()) {
-			content.setVisible(value);
-		}
-		super.setValue(value, fireEvents);
+	public void setTemplateValue(Boolean value) {
+		content.setVisible(value);
 	}
 }
