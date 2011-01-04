@@ -1,11 +1,11 @@
 package org.gwtapp.extension.widget.client.ui;
 
+import org.gwtapp.core.client.ui.FileUpload;
 import org.gwtapp.template.client.ui.FormWrapper;
 
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 
 public class UploadFormWrapper extends FormWrapper {
