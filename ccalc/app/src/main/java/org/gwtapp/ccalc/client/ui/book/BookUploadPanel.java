@@ -30,13 +30,13 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 		uploadButton.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				upload();
+				uploadForm.getWidget().upload(true);
 			}
 		});
 		fileUpload.getWidget().addChangeHandler(new ChangeHandler() {
 			@Override
 			public void onChange(ChangeEvent event) {
-				upload();
+				uploadForm.getWidget().upload(false);
 			}
 		});
 		uploadForm.getWidget().addSubmitCompleteHandler(
@@ -51,9 +51,5 @@ public class BookUploadPanel extends TemplatePanel<Book> {
 						setValue(result, true);
 					}
 				});
-	}
-	
-	private void upload(){
-		uploadForm.getWidget().upload();
 	}
 }
