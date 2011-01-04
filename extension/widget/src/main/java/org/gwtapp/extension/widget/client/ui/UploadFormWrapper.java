@@ -34,13 +34,13 @@ public class UploadFormWrapper extends FormWrapper {
 	}
 
 	// TODO make customizable messages
-	public void upload() {
+	public void upload(boolean confirm) {
 		FileUpload fileUpload = getFileUpload();
 		if (fileUpload != null) {
 			if (fileUpload.getFilename().isEmpty()) {
 				Window.alert("Please choose file.");
 			} else {
-				if (Window.confirm("Load this form?")) {
+				if (!confirm || Window.confirm("Load this form?")) {
 					try {
 						submit();
 					} catch (JavaScriptException e) {
