@@ -27,5 +27,4 @@ public class LoginMetaField extends MetaFieldAdapter<UserRegister, String> {
 	public String def() {
 		return "Login Default Value";
 	}
-
 }

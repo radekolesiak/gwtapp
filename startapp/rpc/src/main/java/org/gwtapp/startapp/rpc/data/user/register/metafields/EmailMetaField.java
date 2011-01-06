@@ -22,5 +22,4 @@ public class EmailMetaField extends MetaFieldAdapter<UserRegister, String> {
 	public void set(UserRegister model, String value) {
 		model.setEmail(value);
 	}
-
 }

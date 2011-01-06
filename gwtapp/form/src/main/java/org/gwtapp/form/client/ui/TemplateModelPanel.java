@@ -11,8 +11,7 @@ import org.gwtapp.template.client.ui.TemplateFormPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TemplateModelPanel<T extends ModelData> extends
-		TemplateFormPanel<T> {
+public class TemplateModelPanel<T extends ModelData> extends TemplateFormPanel<T> {
 
 	private Map<String, UiHandler<?>> fields = new HashMap<String, UiHandler<?>>();
 
@@ -32,21 +31,22 @@ public class TemplateModelPanel<T extends ModelData> extends
 		super(callback, value);
 	}
 
-	public <X, E extends Widget & HasValue<? extends X>> UiHandler<E> add(
-			MetaField<?, ? extends X> metafield, UiHandler<E> handler) {
+	public <X, E extends Widget & HasValue<? extends X>> UiHandler<E> add(MetaField<?, ? extends X> metafield, E widget) {
+		return add(metafield, new UiHandler<E>(widget));
+	}
+
+	public <X, E extends Widget & HasValue<? extends X>> UiHandler<E> add(MetaField<?, ? extends X> metafield, UiHandler<E> handler) {
 		addFieldHandler(metafield, handler);
 		return handler;
 	}
 
-	public <X, E extends Widget & HasValue<? extends X>> void addFieldHandler(
-			MetaField<?, ? extends X> autofield, UiHandler<E> handler) {
+	public <X, E extends Widget & HasValue<? extends X>> void addFieldHandler(MetaField<?, ? extends X> autofield, UiHandler<E> handler) {
 		assert autofield.name() != null && !autofield.name().isEmpty();
 		add(autofield.name(), handler);
 		fields.put(autofield.name(), handler);
 	}
 
-	public <X, E extends Widget & HasValue<? extends X>> void addFieldHandler(
-			MetaField<?, ? extends X> autofield, E field) {
+	public <X, E extends Widget & HasValue<? extends X>> void addFieldHandler(MetaField<?, ? extends X> autofield, E field) {
 		add(autofield.name(), field);
 		addField(autofield.name(), field);
 	}

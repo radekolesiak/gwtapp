@@ -2,8 +2,7 @@ package org.gwtapp.startapp.rpc.data.user.register;
 
 import org.gwtapp.core.rpc.data.HashModelData;
 
-public class UserRegisterModelImpl extends HashModelData implements
-		UserRegisterModel {
+public class UserRegisterModelImpl extends HashModelData implements UserRegisterModel {
 
 	private String login = UserRegister.LOGIN.add(this).def();
 	private String email = UserRegister.EMAIL.add(this).def();
