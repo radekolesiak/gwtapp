@@ -15,23 +15,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 
-public class UploadDownloadTemplatePanel extends
-		TemplateModelPanel<UserRegisterModel> {
+public class UploadDownloadTemplatePanel extends TemplateModelPanel<UserRegisterModel> {
 
-	private final UploadFormHandler//
-	uploadForm = add("upload-form", new UploadFormHandler());
-
-	private final FileUploadHandler//
-	fileUpload = add("upload-file", new FileUploadHandler());
-
-	private final WidgetHandler//
-	uploadBtn = add("upload-btn", new WidgetHandler());
-
-	private final WidgetHandler//
-	downloadBtn = add("download-btn", new WidgetHandler());
-
-	private final WidgetHandler//
-	clearBtn = add("clear-btn", new WidgetHandler());
+	private final UploadFormHandler uploadForm = add("upload-form", new UploadFormHandler());
+	private final FileUploadHandler fileUpload = add("upload-file", new FileUploadHandler());
+	private final WidgetHandler uploadBtn = add("upload-btn", new WidgetHandler());
+	private final WidgetHandler downloadBtn = add("download-btn", new WidgetHandler());
+	private final WidgetHandler clearBtn = add("clear-btn", new WidgetHandler());
 
 	public UploadDownloadTemplatePanel(String id) {
 		this(new UserRegisterModelImpl(), id);
@@ -55,8 +45,7 @@ public class UploadDownloadTemplatePanel extends
 		downloadBtn.getWidget().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				StartAppEntryPoint.downloader.download(getValue(),
-						StartAppEntryPoint.callback);
+				StartAppEntryPoint.downloader.download(getValue(), StartAppEntryPoint.callback);
 			}
 		});
 		uploadBtn.getWidget().addClickHandler(new ClickHandler() {
@@ -66,18 +55,17 @@ public class UploadDownloadTemplatePanel extends
 			}
 		});
 		uploadForm.getWidget().setFileUpload(fileUpload.getWidget());
-		uploadForm.getWidget().addSubmitCompleteHandler(
-				new IOSubmitCompleteHandler<UserRegisterModel>() {
-					@Override
-					public void onFailure(Throwable e) {
-						Window.alert("There was a problem while uploading");
-					}
+		uploadForm.getWidget().addSubmitCompleteHandler(new IOSubmitCompleteHandler<UserRegisterModel>() {
+			@Override
+			public void onFailure(Throwable e) {
+				Window.alert("There was a problem while uploading");
+			}
 
-					@Override
-					public void onSuccess(UserRegisterModel result) {
-						setValue(result, true);
-					}
-				});
+			@Override
+			public void onSuccess(UserRegisterModel result) {
+				setValue(result, true);
+			}
+		});
 	}
 
 	private UserRegisterModel getEmptyModel() {

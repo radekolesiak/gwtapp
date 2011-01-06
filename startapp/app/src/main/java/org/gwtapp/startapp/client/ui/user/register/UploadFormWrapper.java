@@ -28,7 +28,7 @@ public class UploadFormWrapper extends FormWrapper {
 	}
 
 	private void init() {
-		// Force form parameters:
+		// Force a form parameters:
 		setMethod(FormPanel.METHOD_POST);
 		setEncoding(FormPanel.ENCODING_MULTIPART);
 	}

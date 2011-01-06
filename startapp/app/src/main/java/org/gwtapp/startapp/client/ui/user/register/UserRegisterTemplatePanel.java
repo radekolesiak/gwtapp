@@ -2,7 +2,6 @@ package org.gwtapp.startapp.client.ui.user.register;
 
 import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
-import org.gwtapp.startapp.client.handlers.user.register.LoginHandler;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegister;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModel;
 import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
@@ -19,7 +18,7 @@ public class UserRegisterTemplatePanel extends TemplateModelPanel<UserRegisterMo
 
 	public UserRegisterTemplatePanel() {
 		super(StartAppEntryPoint.templates.load("startapp.jsp"), new UserRegisterModelImpl());
-		add(UserRegister.LOGIN, new LoginHandler());
+		add(UserRegister.LOGIN, new LoginTemplatePanel());
 		add(UserRegister.EMAIL, new TextBoxHandler());
 		add(UserRegister.PASSWORD, new TextBoxHandler());
 	}
