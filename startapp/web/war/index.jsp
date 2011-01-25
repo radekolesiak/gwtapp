@@ -65,7 +65,7 @@
 						<div class="row header">
 							<div class="cell">
 								<div>Online Help Providing</div>
-								<div style="padding: 15px 0;font-weight: bold;">If you are interested to get a help or improve code of your GWT project please contact <a href="mailto:radek@olesiak.biz">here</a>.</div>
+								<div style="padding: 15px 0;font-weight: bold;">If you are interested to get a help or improve code in your GWT project please contact <a href="mailto:radek@olesiak.biz">here</a>.</div>
 							</div>
 						</div>
 					</div>
