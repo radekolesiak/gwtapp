@@ -273,7 +273,7 @@
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
 							<div class="cell">		
-								<div style="padding:10px 0 10px 0">Author: <a href="mailto:r.olesiak@gmail.com">Radek Olesiak</a></div>
+								<div style="padding:10px 0 10px 0">Author: <a href="mailto:radek@olesiak.biz">Radek Olesiak</a></div>
 							</div>
 						</div>
 					</div>
