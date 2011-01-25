@@ -118,3 +118,7 @@ div.table.main .header .cell {
 #ud a:hover {
 	color: #aabb44;
 }
+
+.center {
+	text-align: center;
+}

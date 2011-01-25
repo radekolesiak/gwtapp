@@ -49,8 +49,8 @@
 							<li>Strong typing in MVC including Java generics.</li>
 							<li>Passing serialized RPC data into HTML main page for no delay access to the initial data.</li>
 							<!-- <li>Very simple one-to-one mapping of GWT RPC servlets to REST. The <a href="rest.jsp">sample</a>.</li> -->
-							<li>Like-tree hierarchical MVC structure.</li>
-							<li>Pipe channels for MVC controllers communication to skip over units in like-tree MVC hierarchy.</li>
+							<li>Like-tree hierarchical MVC structure (<a href="http://en.wikipedia.org/wiki/Presentation-abstraction-control">PAC/HMVC</a>).</li>
+							<li>Pipe channels to skip over the model flow between units in the like-tree MVC hierarchy.</li>
 							<li>Modular acyclic structure in Maven.</li>
 						</ul>
     				</div>
@@ -60,6 +60,15 @@
 		<div class="table">
 			<div class="row">
 				<div class="cell">
+			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
+					<div class="table main">
+						<div class="row header">
+							<div class="cell">
+								<div>Online Help Providing</div>
+								<div style="padding: 15px 0;font-weight: bold;">If you are interested to get a help or improve code of your GWT project please contact <a href="mailto:radek@olesiak.biz">here</a>.</div>
+							</div>
+						</div>
+					</div>
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main">
 						<div class="row header">
