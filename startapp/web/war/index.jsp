@@ -1,17 +1,7 @@
 <!DOCTYPE html SYSTEM "http://web.gwtapp.org/dtd/gwtapp.dtd"> 
 <%@page pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="keywords" content="GWT,html,templating,html templating,upload,download,requests,request,single request,rpc,wrap,wrapping,wrapper,ajax,javascript,ria,mvc,java,reflection" />
-		<title>StartApp</title>
-		<style type="text/css"> 
-			@import "startapp.css";
-		</style>
-		<meta name="google-site-verification" content="MQgpkCJ4iFxqkOgblvs97GQ0z95dpCep6IuF_lFScaM" />
-		<!-- StartApp GWT application -->
-		<jsp:useBean id="ae" class="org.gwtapp.startapp.server.AppEngineBean"/>
-		<script type="text/javascript" src="gwt.startappentry/gwt.startappentry.nocache.js?t=${ae.deployVersion}"></script>
+	<t:head module="startapp" title="StartApp">
 		<t:include repository="/templates/" template="startapp.jsp"/>
 		<t:include repository="/templates/" template="login.jsp"/>
 		<t:include repository="/templates/" template="feedback.jsp"/>
@@ -25,7 +15,7 @@
 			var RpcValues = new Array();
 			RpcValues["userregister"] = "${userregister.asHtmlRpc}";
 		</script>
-	</head>
+	</t:head>
 	<body>
 		<!--[if lt IE 8]>
 		<h3 style="color:orange;">Please use Internet Explorer 8.0 or newer version to display this page properly.</h3>
@@ -65,7 +55,7 @@
 						<div class="row header">
 							<div class="cell">
 								<div>Online Help Providing</div>
-								<div style="padding: 15px 0;font-weight: bold;">If you are interested to get a help or improve code in your GWT project please contact <a href="mailto:radek@olesiak.biz">here</a>.</div>
+								<div style="padding: 15px 0;font-weight: bold;">If you are interested to get a help or improve code in your GWT project please contact <a href="contact.jsp">here</a>.</div>
 							</div>
 						</div>
 					</div>
@@ -282,7 +272,6 @@
 				<div class="cell"><t:amazon></t:amazon></div>
 			</div>
 		</div>
-		<t:adwords></t:adwords>
-		<t:ga></t:ga>
+		<t:footer></t:footer>
 	</body>
 </html>
