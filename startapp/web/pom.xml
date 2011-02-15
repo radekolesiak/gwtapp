@@ -64,13 +64,13 @@
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Warp -->
+		<!-- Test -->
 		<dependency>
 			<groupId>com.wideplay.warp</groupId>
 			<artifactId>warp-persist</artifactId>
 			<version>${warp.version}</version>
+			<scope>test</scope>
 		</dependency>
-		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
