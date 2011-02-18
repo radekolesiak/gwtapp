@@ -290,6 +290,8 @@
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
+							<scope>test</scope>
+							<excludeGroupIds>org.gwtapp</excludeGroupIds>
 						</configuration>
 					</execution>
 				</executions>
