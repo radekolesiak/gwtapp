@@ -38,9 +38,6 @@
 		<datanucleus.appengine.version>1.0.4.1</datanucleus.appengine.version>
 		<geronimo.jpa_3.0_spec.version>1.1.1</geronimo.jpa_3.0_spec.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
-		<!-- deprecated -->		
-		<httpunit.version>1.7</httpunit.version>
-		<rhino.version>1.7R2</rhino.version>
 		<!-- plugins -->
 		<maven.surefire.plugin.version>2.6</maven.surefire.plugin.version>
 		<maven.gae.plugin.version>0.7.3</maven.gae.plugin.version>
@@ -52,24 +49,19 @@
 
 	<inceptionYear>2008</inceptionYear>
 	<url>http://sourceforge.net/projects/gwtapp/</url>
-	<description>GwtWebApp. Demo http://gwtapp.org/</description>
+	<description>GWTApp http://gwtapp.org/</description>
 
 	<distributionManagement>
 		<site>
 			<id>gwtapp.sourceforge.net</id>
-			<url>scp://cuprum@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
+			<url>scp://radekolesiak@shell.sourceforge.net/home/groups/g/gw/gwtapp/htdocs/</url>
 		</site>
 	</distributionManagement>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>maven-gae-plugin-repo</id>
-			<name>maven-gae-plugin repository</name>
-			<url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>gwt-maven</id>
-			<url> http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
+			<id>atlassian</id>
+			<url>http://maven.atlassian.com/repository/public</url>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -77,24 +69,6 @@
 		<repository>
 			<id>atlassian</id>
 			<url>http://maven.atlassian.com/repository/public</url>
-		</repository>
-		<repository>
-			<id>maven-gae-plugin-repo</id>
-			<name>maven-gae-plugin repository</name>
-			<url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
-		</repository>
-		<repository>
-			<id>jboss-maven</id>
-			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-		<repository>
-			<id>objectify-appengine</id>
-			<url>http://objectify-appengine.googlecode.com/svn/maven</url>
-		</repository>
-		<repository>
-			<id>warp-persist-neodatis</id>
-			<name>warp-persist-neodatis</name>
-			<url>http://warp-persist-neodatis.googlecode.com/svn/trunk/repo/</url>
 		</repository>
 	</repositories>
 	

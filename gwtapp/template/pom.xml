@@ -33,20 +33,6 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>rhino</groupId>
-			<artifactId>js</artifactId>
-			<version>${rhino.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>httpunit</groupId>
-			<artifactId>httpunit</artifactId>
-			<version>${httpunit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		 -->
 	</dependencies>
 	
 	<build>

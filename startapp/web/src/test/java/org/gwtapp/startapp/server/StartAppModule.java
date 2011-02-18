@@ -1,5 +1,9 @@
 package org.gwtapp.startapp.server;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
 import org.gwtapp.extension.user.client.data.ReCaptchaUserImpl;
 import org.gwtapp.extension.user.client.data.User;
@@ -15,12 +19,13 @@ import org.gwtapp.startapp.server.service.UserServiceImpl;
 import org.gwtapp.startapp.server.servlet.EnumValidationCssServlet;
 import org.gwtapp.startapp.server.servlet.GroupValidationCssServlet;
 
+import com.google.inject.Provider;
 import com.google.inject.servlet.ServletModule;
-import com.wideplay.warp.jpa.JpaUnit;
-import com.wideplay.warp.persist.PersistenceService;
-import com.wideplay.warp.persist.UnitOfWork;
 
 public class StartAppModule extends ServletModule {
+
+	private static EntityManagerFactory emf;
+	private static EntityManager em;
 
 	@Override
 	protected void configureServlets() {
@@ -31,9 +36,10 @@ public class StartAppModule extends ServletModule {
 	}
 
 	private void setupTransactional() {
-		install(PersistenceService.usingJpa().across(UnitOfWork.TRANSACTION)
-				.buildModule());
-		bindConstant().annotatedWith(JpaUnit.class).to("derby-startapp-manual-test-x");
+		emf = Persistence
+				.createEntityManagerFactory("derby-startapp-manual-test-x");
+		em = emf.createEntityManager();
+		bind(EntityManager.class).toProvider(EntityManagerProvider.class);
 	}
 
 	private void setupServlets() {
@@ -62,6 +68,14 @@ public class StartAppModule extends ServletModule {
 		@Override
 		public String getPrivateKey() {
 			return "6LexqMESAAAAANbEWWSLTo49JIVrQQ8NEB32ug-i";
+		}
+	}
+
+	private static class EntityManagerProvider implements
+			Provider<EntityManager> {
+		@Override
+		public EntityManager get() {
+			return em;
 		}
 	}
 }

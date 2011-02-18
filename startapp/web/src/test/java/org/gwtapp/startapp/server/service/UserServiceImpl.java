@@ -2,6 +2,7 @@ package org.gwtapp.startapp.server.service;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
 
@@ -18,9 +19,7 @@ import org.gwtapp.extension.user.server.local.stub.UserAdd;
 import org.gwtapp.validation.rpc.exception.ValidationException;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
-import com.wideplay.warp.persist.Transactional;
 
 @Singleton
 public class UserServiceImpl implements UserService, UserAdd {
@@ -28,7 +27,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
 	@Inject
-	Provider<EntityManager> em;
+	EntityManager em;
 
 	@Override
 	public User getUser(String login) throws RpcException {
@@ -103,14 +102,20 @@ public class UserServiceImpl implements UserService, UserAdd {
 		}
 	}
 
-	@Transactional
 	protected void persistUser(User user) {
-		em.get().persist(user);
+		EntityTransaction tx = em.getTransaction();
+		try {
+			em.persist(user);
+		} finally {
+			if (tx.isActive()) {
+				tx.commit();
+			}
+		}
 	}
 
 	private boolean isLoginAvailable(String login) {
 		String q = "SELECT u FROM UserEntity u WHERE u.login = :login";
-		Query query = em.get().createQuery(q);
+		Query query = em.createQuery(q);
 		query.setParameter("login", login);
 		query.setMaxResults(1);
 		return query.getResultList().isEmpty();
@@ -118,7 +123,7 @@ public class UserServiceImpl implements UserService, UserAdd {
 
 	private boolean isEmailAvailable(String email) {
 		String q = "SELECT u FROM UserEntity u WHERE u.email = :email";
-		Query query = em.get().createQuery(q);
+		Query query = em.createQuery(q);
 		query.setParameter("email", email);
 		query.setMaxResults(1);
 		return query.getResultList().isEmpty();
