@@ -61,7 +61,7 @@ public class StartAppModule extends ServletModule {
 			ReCaptchaPrivateKey {
 		@Override
 		public String getPrivateKey() {
-			return System.getenv("StartAppReCaptchaPrivateKey");
+			return "6LexqMESAAAAANbEWWSLTo49JIVrQQ8NEB32ug-i";
 		}
 	}
 }

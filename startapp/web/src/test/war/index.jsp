@@ -15,7 +15,7 @@
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script type="text/javascript">
 function showReCaptcha(element, gwtCallback) {
-	return Recaptcha.create("6LczcLwSAAAAAN_L7K-7iynvj5ResMcKNSskUSO8", element, 
+	return Recaptcha.create("6LexqMESAAAAAEG-wSaclbA_SC03JMA2Mn8GAuc9", element, 
 		{
 			theme: "red",
 			callback: gwtCallback

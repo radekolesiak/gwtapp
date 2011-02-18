@@ -18,6 +18,15 @@ public class ReCaptchaVerifyImpl implements ReCaptchaVerify {
 	@Override
 	public boolean verify(ReCaptcha reCaptcha, String privateKey,
 			String remoteIP) {
+		if (reCaptcha == null) {
+			log.warn("reCaptcha variable is null");
+		}
+		if (remoteIP == null) {
+			log.warn("remoteIP variable is null");
+		}
+		if (privateKey == null) {
+			log.warn("privateKey variable is null");
+		}
 		ReCaptchaImpl service = new ReCaptchaImpl();
 		service.setPrivateKey(privateKey);
 		ReCaptchaResponse response = service.checkAnswer(remoteIP,
