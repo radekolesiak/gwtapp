@@ -27,8 +27,7 @@
 		<module>core</module>
 		<module>validation</module>
 		<module>io</module>		
-		<module>template</module>
-		<module>form</module>
+		<module>template</module>		
 		<module>rest</module>
 	</modules>
 
