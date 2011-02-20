@@ -31,7 +31,7 @@
 		<!-- GWTApp -->
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-form</artifactId>
+			<artifactId>gwtapp-template</artifactId>
 			<version>${gwtapp.version}</version>
 		</dependency>
 		<dependency>

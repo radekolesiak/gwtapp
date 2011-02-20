@@ -80,13 +80,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.gwtapp</groupId>
-			<artifactId>gwtapp-form</artifactId>
-			<version>${gwtapp.version}</version>
-			<classifier>tests</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtapp</groupId>
 			<artifactId>gwtapp-io</artifactId>
 			<version>${gwtapp.version}</version>
 			<classifier>tests</classifier>
