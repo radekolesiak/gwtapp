@@ -8,9 +8,9 @@ import org.gwtapp.ccalc.rpc.data.book.Book;
 import org.gwtapp.ccalc.rpc.data.book.BookImpl;
 import org.gwtapp.ccalc.rpc.data.book.Currency;
 import org.gwtapp.core.client.pipe.PipeManager;
-import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.UiHandler;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

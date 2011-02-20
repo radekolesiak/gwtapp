@@ -1,6 +1,5 @@
 package org.gwtapp.startapp.client.ui.user.register;
 
-import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.io.client.IOSubmitCompleteHandler;
 import org.gwtapp.startapp.client.StartAppEntryPoint;
 import org.gwtapp.startapp.client.handlers.user.register.UploadFormHandler;
@@ -10,6 +9,7 @@ import org.gwtapp.startapp.rpc.data.user.register.UserRegisterModelImpl;
 import org.gwtapp.template.client.handler.FileUploadHandler;
 import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

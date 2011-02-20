@@ -23,9 +23,9 @@ import org.gwtapp.core.client.pipe.PipeHandler;
 import org.gwtapp.core.client.pipe.PipeManager;
 import org.gwtapp.core.rpc.data.AbstractModelData;
 import org.gwtapp.extension.widget.client.handler.DatePickerHandler;
-import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

@@ -1,4 +1,4 @@
-package org.gwtapp.form.client.ui;
+package org.gwtapp.template.client.ui;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,6 @@ import java.util.Map;
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.ModelData;
 import org.gwtapp.template.client.handler.UiHandler;
-import org.gwtapp.template.client.ui.TemplateFormPanel;
 
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;

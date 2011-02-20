@@ -1,4 +1,4 @@
-package org.gwtapp.form.client.ui;
+package org.gwtapp.template.client.ui;
 
 import java.util.Map;
 
@@ -7,11 +7,10 @@ import org.gwtapp.core.rpc.data.HashModelData;
 import org.gwtapp.core.rpc.data.MetaField;
 import org.gwtapp.core.rpc.data.MetaFieldAdapter;
 import org.gwtapp.core.rpc.data.Value;
-import org.gwtapp.form.client.FormTest;
 import org.gwtapp.template.client.Template;
+import org.gwtapp.template.client.TemplateTest;
 import org.gwtapp.template.client.handler.TemplateHandler;
 import org.gwtapp.template.client.handler.UiHandler;
-import org.gwtapp.template.client.ui.TemplatePanel;
 import org.junit.Test;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -20,7 +19,7 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-public class GwtTestTemplateModelPanel extends FormTest {
+public class GwtTestTemplateModelPanel extends TemplateTest {
 
 	class LongBox extends DelegatedPanel<Long, String> {
 

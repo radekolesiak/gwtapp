@@ -4,10 +4,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import org.gwtapp.extension.user.client.data.ReCaptchaUser;
-import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.PasswordTextBoxHandler;
 import org.gwtapp.template.client.handler.UiHandler;
 import org.gwtapp.template.client.handler.WidgetHandler;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;

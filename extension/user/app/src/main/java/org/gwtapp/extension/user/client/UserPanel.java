@@ -4,8 +4,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import org.gwtapp.extension.user.client.data.User;
-import org.gwtapp.form.client.ui.TemplateModelPanel;
 import org.gwtapp.template.client.handler.TextBoxHandler;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 import com.google.inject.BindingAnnotation;
 import com.google.inject.Inject;

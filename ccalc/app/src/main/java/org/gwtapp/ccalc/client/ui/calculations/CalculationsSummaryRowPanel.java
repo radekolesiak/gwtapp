@@ -4,7 +4,7 @@ import org.gwtapp.ccalc.client.CCalc;
 import org.gwtapp.ccalc.client.handler.fields.LabelHandler;
 import org.gwtapp.ccalc.rpc.data.book.Calculation;
 import org.gwtapp.ccalc.rpc.proc.calculator.Calculator;
-import org.gwtapp.form.client.ui.TemplateModelPanel;
+import org.gwtapp.template.client.ui.TemplateModelPanel;
 
 public class CalculationsSummaryRowPanel extends TemplateModelPanel<Calculation> {
 
