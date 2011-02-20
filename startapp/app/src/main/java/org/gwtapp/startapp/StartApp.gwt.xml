@@ -1,6 +1,6 @@
 <module>
 	<inherits name='org.gwtapp.io.IO'/>
-	<inherits name='org.gwtapp.form.Form'/>
+	<inherits name='org.gwtapp.template.Template'/>
 	<source path='client' />
 	<source path='rpc' />
 </module>
