@@ -50,7 +50,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa-persistence-jdbc</artifactId>
+			<artifactId>openjpa-persistence</artifactId>
 			<version>${openjpa.version}</version>
 		</dependency>
 		<dependency>
