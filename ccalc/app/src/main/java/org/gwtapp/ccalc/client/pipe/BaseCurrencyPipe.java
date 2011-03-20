@@ -5,10 +5,6 @@ import org.gwtapp.core.client.pipe.Pipe;
 import org.gwtapp.core.client.pipe.PipeHandler;
 
 public class BaseCurrencyPipe extends Pipe<Currency> {
-
-	public BaseCurrencyPipe() {
-	}
-
 	public BaseCurrencyPipe(PipeHandler<Currency> handler) {
 		super(handler);
 	}
