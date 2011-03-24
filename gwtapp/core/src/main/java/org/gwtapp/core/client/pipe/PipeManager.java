@@ -16,8 +16,15 @@ public class PipeManager {
 
 	private final Map<Class<?>, List<Pipe<?>>> pipes = new HashMap<Class<?>, List<Pipe<?>>>();
 
+	private static int nextHashCode;
+	private final int index;
+
 	private boolean connected = false;
 	private boolean enabled = true;
+
+	public PipeManager() {
+		index = nextHashCode++;
+	}
 
 	public <T> void addPipe(final Class<? extends Pipe<T>> c, final Pipe<T> pipe) {
 		if (!pipes.containsKey(c)) {
@@ -57,6 +64,11 @@ public class PipeManager {
 
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	@Override
+	public int hashCode() {
+		return index;
 	}
 
 	public <T> void fireValueChanged(Class<? extends Pipe<T>> c, T value) {
