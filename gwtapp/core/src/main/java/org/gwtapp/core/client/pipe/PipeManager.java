@@ -59,14 +59,14 @@ public class PipeManager {
 		return enabled;
 	}
 
-	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value) {
+	public <T> void fireValueChanged(Class<? extends Pipe<T>> c, T value) {
 		if (isUsable()) {
-			fireValueChange(c, value, null);
+			fireValueChanged(c, value, null);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> void fireValueChange(Class<? extends Pipe<T>> c, T value,
+	public <T> void fireValueChanged(Class<? extends Pipe<T>> c, T value,
 			Pipe<T> skip) {
 		if (isUsable()) {
 			getModel(c).set(value);
@@ -92,7 +92,7 @@ public class PipeManager {
 			getModel(c).set(value);
 			for (PipeManager manager : managers) {
 				if (manager != skip) {
-					manager.fireValueChange(c, value);
+					manager.fireValueChanged(c, value);
 				}
 			}
 		}
@@ -101,7 +101,7 @@ public class PipeManager {
 	public <T> void setValue(Class<? extends Pipe<T>> c, T value, Pipe<T> skip) {
 		if (isUsable()) {
 			for (PipeManager manager : managers) {
-				manager.fireValueChange(c, value, skip);
+				manager.fireValueChanged(c, value, skip);
 			}
 		}
 	}
@@ -109,7 +109,7 @@ public class PipeManager {
 	public static <T> void setBroadcastValue(Class<? extends Pipe<T>> c, T value) {
 		getModel(c).set(value);
 		for (PipeManager manager : managers) {
-			manager.fireValueChange(c, value);
+			manager.fireValueChanged(c, value);
 		}
 	}
 
