@@ -73,7 +73,7 @@ public class PipeManager {
 			if (pipes.get(c) != null) {
 				for (Pipe<?> pipe : pipes.get(c)) {
 					if (pipe != skip) {
-						((Pipe<T>) pipe).fireValueChange(value);
+						((Pipe<T>) pipe).fireValueChanged(value);
 					}
 				}
 			}

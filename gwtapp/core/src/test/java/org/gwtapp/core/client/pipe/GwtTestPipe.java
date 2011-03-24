@@ -25,13 +25,13 @@ public class GwtTestPipe extends GWTTestCore {
 		PipeManager m2 = new PipeManager();
 		PipeHandler<Boolean> h1 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v1.set(value);
 			}
 		};
 		PipeHandler<Boolean> h2 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v2.set(value);
 			}
 		};
@@ -129,13 +129,13 @@ public class GwtTestPipe extends GWTTestCore {
 		PipeManager m2 = new PipeManager();
 		PipeHandler<Boolean> h1 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v1.set(value);
 			}
 		};
 		PipeHandler<Boolean> h2 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v2.set(value);
 			}
 		};
@@ -195,13 +195,13 @@ public class GwtTestPipe extends GWTTestCore {
 		PipeManager m2 = new PipeManager();
 		PipeHandler<Boolean> h1 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v1.set(value);
 			}
 		};
 		PipeHandler<Boolean> h2 = new PipeHandler<Boolean>() {
 			@Override
-			public void onChangeValue(Boolean value) {
+			public void onValueChanged(Boolean value) {
 				v2.set(value);
 			}
 		};

@@ -14,9 +14,9 @@ public class Pipe<T> {
 		handlers.add(handler);
 	}
 
-	public void fireValueChange(T value) {
+	public void fireValueChanged(T value) {
 		for (PipeHandler<T> handler : handlers) {
-			handler.onChangeValue(value);
+			handler.onValueChanged(value);
 		}
 	}
 

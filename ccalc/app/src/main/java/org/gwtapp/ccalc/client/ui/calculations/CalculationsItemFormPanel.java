@@ -108,7 +108,7 @@ public class CalculationsItemFormPanel extends TemplateModelPanel<Operation> {
 		});
 		PipeHandler<Currency> pipeHandler = new PipeHandler<Currency>() {
 			@Override
-			public void onChangeValue(Currency value) {
+			public void onValueChanged(Currency value) {
 				updateFetchedRatioState();
 			}
 		};
