@@ -50,6 +50,7 @@
 		<div class="table">
 			<div class="row">
 				<div class="cell">
+					<!--
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main">
 						<div class="row header">
@@ -59,6 +60,7 @@
 							</div>
 						</div>
 					</div>
+					-->
 			    	<div class="center menu" style="width:200px;"><b>&nbsp;</b></div>
 					<div class="table main">
 						<div class="row header">
