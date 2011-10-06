@@ -214,10 +214,10 @@
 					<div class="table main" style="width:100%;border: 1px solid #666666;background-color: #ccc;">
 						<div class="row">
 							<div class="cell">
-								<b>GWT App code repositories:</b>
+								<b>GWT App source code repositories:</b>
 								<ul>
-									<li>Subversion repository of <a href="http://sourceforge.net/projects/gwtapp/develop/">source code</a></li>
-									<li>Maven repository on <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a></li>
+									<li><a href="https://github.com/radekolesiak/gwtapp">GIT repository</a> with the source code</li>
+									<!-- <li>Maven repository on <a href="http://mvn.gwtapp.org/org/gwtapp/">http://mvn.gwtapp.org/</a></li> -->
 									<!-- <li>JIRA tasks <a href="https://jira.imdapi.com/browse/GWTAPP">repository</a></li> -->
 								</ul> 
 							</div>
